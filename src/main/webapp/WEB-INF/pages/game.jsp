@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Clash of Dynasties</title>
+    <link rel="stylesheet" href="/css/theme.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" type="text/css">
+    <script type="text/javascript" src="/lib/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="/lib/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="/lib/crafty-min.js"></script>
+    <script type="text/javascript" src="/src/helper.js"></script>
+    <script type="text/javascript" src="/src/menus.js"></script>
+    <script type="text/javascript" src="/src/cities.js"></script>
+    <script type="text/javascript" src="/src/cityEntity.js"></script>
+    <script type="text/javascript" src="/src/roadEntity.js"></script>
+    <script type="text/javascript" src="/src/roads.js"></script>
+    <script type="text/javascript" src="/src/game.js"></script>
+</head>
+<body>
+<div id="cr-stage"></div>
+<div id="wrapper">
+    <div id="top">
+        <div style="width:200px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/Coins.png" style="width:22px;" /> <span id="globalCoins">${player.coins}</span> (<span id="globalBalance" class="green">10</span>)</div>
+        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/People.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalPeople">${people}</span></div>
+        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/Cities.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCities">${cities.size()}</span></div>
+    </div>
+    <div id="header">
+        <ul>
+            <li class="menus">
+                <a id="menu1">ranking</a>
+            </li>
+            <li class="menus">
+                <a id="menu2">profil</a>
+            </li>
+            <li class="menus">
+                <a id="menu3">demographie</a>
+            </li>
+            <li class="menus">
+                <a id="menu4">diplomatie</a>
+            </li>
+            <li class="menus">
+                <a id="menu5" href="/logout">logout</a>
+            </li>
+        </ul>
+    </div>
+    <div id="body" style="display: none;">
+    </div>
+    <div id="controls"></div>
+</div>
+</body>
+</html>

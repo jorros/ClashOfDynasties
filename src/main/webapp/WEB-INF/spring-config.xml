@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/data/mongo
+          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+    <security:debug />
+
+    <security:global-method-security jsr250-annotations="enabled" pre-post-annotations="enabled" secured-annotations="enabled" />
+
+    <mongo:db-factory id="mongoFactory" host="localhost" port="27017" dbname="test"/>
+
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongoFactory"/>
+    </bean>
+
+    <mongo:repositories base-package="de.clashofdynasties.repository"/>
+
+    <bean id="customUserDetailsService" class="de.clashofdynasties.service.CustomUserDetailsService"/>
+
+    <security:http>
+        <security:intercept-url pattern="/game" access="ROLE_USER" />
+        <security:intercept-url pattern="/game/*" access="ROLE_USER" />
+        <security:intercept-url pattern="/editor" access="ROLE_USER" />
+        <security:intercept-url pattern="/editor/*" access="ROLE_USER" />
+        <security:form-login login-processing-url="/login" login-page="/"
+                             username-parameter="username" password-parameter="password"
+                             default-target-url="/game" authentication-failure-url="/?auth=fail"/>
+        <security:logout logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID"/>
+        <security:remember-me user-service-ref="customUserDetailsService" />
+        <security:session-management invalid-session-url="/">
+            <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
+        </security:session-management>
+    </security:http>
+
+    <security:authentication-manager>
+        <security:authentication-provider user-service-ref="customUserDetailsService">
+            <security:password-encoder hash="md5"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <context:component-scan base-package="de.clashofdynasties"/>
+
+    <mvc:annotation-driven/>
+
+    <mvc:resources mapping="/images/**" location="/resources/images/"/>
+    <mvc:resources mapping="/css/**" location="/resources/css/"/>
+    <mvc:resources mapping="/fonts/**" location="/resources/fonts/"/>
+    <mvc:resources mapping="/lib/**" location="/resources/lib/"/>
+    <mvc:resources mapping="/src/**" location="/resources/game/"/>
+    <mvc:resources mapping="/assets/**" location="/resources/assets/"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

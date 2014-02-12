@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CustomBeanRegistry">
+    <option name="map">
+      <map>
+        <entry key="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;mongo:db-factory xmlns:mongo=&quot;http://www.springframework.org/schema/data/mongo&quot; id=&quot;mongo&quot; host=&quot;localhost&quot; port=&quot;27017&quot; dbname=&quot;test&quot; /&gt;&#10;&#10;">
+          <value>
+            <list>
+              <CustomBeanInfo>
+                <option name="beanName" value="org.springframework.beans.factory.config.CustomEditorConfigurer#0" />
+                <option name="beanClassName" value="org.springframework.beans.factory.config.CustomEditorConfigurer" />
+              </CustomBeanInfo>
+              <CustomBeanInfo>
+                <option name="beanName" value="mongo" />
+                <option name="beanClassName" value="org.springframework.data.mongodb.core.SimpleMongoDbFactory" />
+                <option name="idAttribute" value="id" />
+                <option name="constructorArgumentCount" value="2" />
+              </CustomBeanInfo>
+            </list>
+          </value>
+        </entry>
+        <entry key="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;mongo:db-factory xmlns:mongo=&quot;http://www.springframework.org/schema/data/mongo&quot; id=&quot;mongoFactory&quot; host=&quot;localhost&quot; port=&quot;27017&quot; dbname=&quot;test&quot; /&gt;&#10;&#10;">
+          <value>
+            <list>
+              <CustomBeanInfo>
+                <option name="beanName" value="org.springframework.beans.factory.config.CustomEditorConfigurer#0" />
+                <option name="beanClassName" value="org.springframework.beans.factory.config.CustomEditorConfigurer" />
+              </CustomBeanInfo>
+              <CustomBeanInfo>
+                <option name="beanName" value="mongoFactory" />
+                <option name="beanClassName" value="org.springframework.data.mongodb.core.SimpleMongoDbFactory" />
+                <option name="idAttribute" value="id" />
+                <option name="constructorArgumentCount" value="2" />
+              </CustomBeanInfo>
+            </list>
+          </value>
+        </entry>
+        <entry key="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;mongo:repositories xmlns:mongo=&quot;http://www.springframework.org/schema/data/mongo&quot; base-package=&quot;de.clashofdynasties.repository&quot; mongo-template-ref=&quot;mongoTemplate&quot; create-query-indexes=&quot;false&quot; /&gt;&#10;&#10;">
+          <value>
+            <list>
+              <CustomBeanInfo>
+                <option name="beanName" value="playerRepository" />
+                <option name="beanClassName" value="org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean" />
+              </CustomBeanInfo>
+              <CustomBeanInfo>
+                <option name="beanName" value="cityRepository" />
+                <option name="beanClassName" value="org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean" />
+              </CustomBeanInfo>
+              <CustomBeanInfo>
+                <option name="beanName" value="roadRepository" />
+                <option name="beanClassName" value="org.springframework.data.mongodb.repository.support.MongoRepositoryFactoryBean" />
+              </CustomBeanInfo>
+              <CustomBeanInfo>
+                <option name="beanName" value="org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor#0" />
+                <option name="beanClassName" value="org.springframework.data.repository.core.support.RepositoryInterfaceAwareBeanPostProcessor" />
+              </CustomBeanInfo>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
+
