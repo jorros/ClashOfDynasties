@@ -1,0 +1,381 @@
+@font-face {
+    font-family: 'Philosopher-Regular';
+    src: url('/fonts/Philosopher-Regular/Philosopher-Regular.eot');
+    src: url('/fonts/Philosopher-Regular/Philosopher-Regular.woff') format('woff'), url('/fonts/Philosopher-Regular/Philosopher-Regular.ttf') format('truetype'), url('/fonts/Philosopher-Regular/Philosopher-Regular.svg') format('svg');
+}
+@font-face {
+    font-family: 'Philosopher-Bold';
+    src: url('/fonts/Philosopher-Bold/Philosopher-Bold.eot');
+    src: url('/fonts/Philosopher-Bold/Philosopher-Bold.woff') format('woff'), url('/fonts/Philosopher-Bold/Philosopher-Bold.ttf') format('truetype'), url('/fonts/Philosopher-Bold/Philosopher-Bold.svg') format('svg');
+}
+body {
+    background: url(/images/bg-page.jpg) no-repeat bottom center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #727272;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    margin: 0;
+    min-width: 960px;
+    padding: 0;
+}
+#wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation */
+#top {
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position:absolute;
+    width: 880px;
+    z-index: 103;
+    top: 0;
+    background-color: #1c1919;
+    color: #a8a8a8;
+    font-size: 20px;
+    line-height: 20px;
+    vertical-align: bottom;
+    font-family: 'Philosopher-Bold';
+}
+#header {
+    height: 147px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    width: 960px;
+    z-index: 102;
+    top: 20px;
+}
+#header ul {
+    background: url(/images/bg-navigation.png) no-repeat center center;
+    height: 98px;
+    left: 30px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 9px 17px;
+    position: absolute;
+    width: 865px;
+}
+#header ul li {
+    display: block;
+    float: left;
+    list-style: none;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}
+#header ul li a {
+    background: url(/images/menu.png) no-repeat;
+    color: #a8a8a8;
+    display: block;
+    font-family: 'Philosopher-Bold';
+    font-size: 16px;
+    font-weight: normal;
+    height: 98px;
+    letter-spacing: 0.07em;
+    line-height: 104px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 163px;
+}
+#header ul li #menu1 {
+    background-position: 0 0;
+}
+#header ul li #menu2 {
+    background-position: -168px 0;
+}
+#header ul li #menu3 {
+    background-position: -335px 0;
+}
+#header ul li #menu4 {
+    background-position: -502px 0;
+}
+#header ul li #menu5 {
+    background-position: -669px 0;
+}
+#header ul li a:hover, #header ul li.selected a {
+    color: #fff;
+}
+#header ul li #menu1:hover, #header ul li.selected #menu1 {
+    background-position: 0 -113px;
+}
+#header ul li #menu2:hover, #header ul li.selected #menu2 {
+    background-position: -168px -113px;
+}
+#header ul li #menu3:hover, #header ul li.selected #menu3 {
+    background-position: -335px -113px;
+}
+#header ul li #menu4:hover, #header ul li.selected #menu4 {
+    background-position: -502px -113px;
+}
+#header ul li #menu5:hover, #header ul li.selected #menu5 {
+    background-position: -669px -113px;
+}
+
+/* Input Styles */
+label {
+    font-size: 18px;
+}
+input[type=text] {
+    -moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+    border:0;
+    font-size: 18px;
+    font-family: 'Philosopher-Regular';
+    color:#000;
+    margin:0 0 20px;
+    background-color: #b0b0b0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 30px;
+    padding: 10px;
+}
+input[type=password] {
+    -moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+    border:0;
+    font-size: 18px;
+    font-family: 'Philosopher-Regular';
+    color:#000;
+    margin:0 0 20px;
+    background-color: #b0b0b0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 30px;
+    padding: 10px;
+}
+button {
+    height: 46px;
+    border: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: url(/images/button.png) repeat-x;
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Philosopher-Regular';
+}
+
+button:active {
+    -moz-box-shadow: inset 0 0 8px rgba(0,0,0,1);
+    -webkit-box-shadow: inset 0 0 8px rgba(0, 0, 0, 1);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 1);
+    border:0;
+}
+button:focus {
+    outline: 0;
+}
+button:disabled {
+    background: url(/images/buttondisabled.png) repeat-x;
+}
+
+button.remove {
+    height: 28px;
+    width: 37px;
+    background-image: url(/images/removebutton.png);
+}
+
+button:active.remove {
+    background-image: url(/images/removebutton2.png);
+    box-shadow: none;
+}
+
+button:disabled.remove {
+    background-image: url(/images/removebutton3.png);
+    box-shadow: none;
+}
+
+/* Tooltip */
+span.tooltip {
+    position: absolute;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: rgb(113, 157, 171);
+    background: rgb(255, 255, 255);
+    border: 4px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    text-shadow: rgba(0, 0, 0, 0.1) 1px 1px 1px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px;
+}
+
+span.tooltip:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #FFFFFF transparent transparent transparent;
+    top: 44px;
+    left: 50px;
+}
+
+/* Menü */
+#body {
+    background-image: url(/images/bg-body-header.png), url(/images/bg-body-footer.png);
+    background-position: top center, bottom center;
+    background-repeat: no-repeat, no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    padding: 112px 0 40px;
+    width: 960px;
+    position:absolute;
+    top: 52px;
+    z-index: 101;
+    height: 564px;
+}
+#body h1 {
+    color: #fff;
+    font-family: 'Philosopher-Bold';
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+    height: 50px;
+    letter-spacing: 0.07em;
+    line-height: 0px;
+    margin-top: -25px;
+    margin-bottom: -25px;
+    text-transform: uppercase;
+}
+#content {
+    background: #0a0a0a url(/images/bg-body.png) repeat-x bottom center;
+    height: 450px;
+    overflow: hidden;
+    margin: 0;
+    padding: 20px;
+}
+#content p {
+    margin: 0;
+    padding: 0;
+}
+#content p a {
+    color: #797979;
+}
+#content p a:hover {
+    color: #a3a3a3;
+}
+#content p {
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+}
+#content a {
+    color: #727272;
+}
+#content a.more {
+    background: url(/images/bg-more.png) no-repeat center center;
+    color: #bababa;
+    display: inline-block;
+    height: 23px;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 22px;
+    margin: 0 0 0 12px;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: lowercase;
+    width: 70px;
+}
+#content a:hover {
+    color: #a3a3a3;
+}
+#content a.more:hover {
+    background: url(/images/bg-more-hover.png) no-repeat center center;
+    color: #bababa;
+}
+#content h1 {
+    color: #fff;
+    font-family: 'Philosopher-Bold';
+    font-size: 22px;
+    font-weight: normal;
+    text-align: center;
+    height: 50px;
+    letter-spacing: 0.07em;
+    line-height: 55px;
+    margin-top: -25px;
+    text-transform: uppercase;
+}
+#content a.figure {
+    border: 1px solid #22272a;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+#content a.figure:hover {
+    opacity: 0.8;
+}
+#content a.figure img {
+    border: 1px solid #000;
+    display: block;
+}
+
+h4 {
+    font-family: 'Philosopher-Bold';
+    font-size: 18px;
+    line-height: 20px;
+}
+
+/* Sektionen */
+.section {
+    background: url(/images/border.gif) repeat-x top left;
+    margin: 0 10px;
+    padding: 3px 0 0;
+    width: 220px;
+}
+.section:first-child {
+    width: 440px;
+}
+.section h4 {
+    background: #070707 url(/images/gradient2.png) repeat-x top center;
+    border: 1px solid #22272a;
+    color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 1px;
+    padding: 10px 19px;
+    font-family: 'Philosopher-Bold';
+}
+.section div {
+    background: #181818;
+    border: 1px solid #22272a;
+    margin: 0;
+    padding: 10px 19px;
+}
+.section:first-child div {
+    padding: 14px 19px 30px;
+}
+
+/* Sonstiges */
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+.red {
+    color: #FF1A00;
+}
+.green {
+    color: #6BBA70;
+}
