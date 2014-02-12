@@ -242,6 +242,21 @@ public class City
         return counter;
     }
 
+    public int countUnits(int blueprint)
+    {
+        int counter = 0;
+        if(units != null)
+        {
+            for(Unit unit : units)
+            {
+                if(unit.getBlueprint().getId() == blueprint)
+                    counter++;
+            }
+        }
+
+        return counter;
+    }
+
     public double calculateCoins()
     {
         return (this.getPopulation() * ((double)this.getSatisfaction() / 100)) / 60;

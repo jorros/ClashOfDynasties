@@ -1,9 +1,9 @@
 package de.clashofdynasties.game;
 
 import de.clashofdynasties.models.City;
-import de.clashofdynasties.repository.BuildingBlueprintRepository;
-import de.clashofdynasties.repository.CityRepository;
-import de.clashofdynasties.repository.PlayerRepository;
+import de.clashofdynasties.models.Nation;
+import de.clashofdynasties.models.UnitBlueprint;
+import de.clashofdynasties.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,8 +24,14 @@ public class CityController
 	@Autowired
 	BuildingBlueprintRepository buildingBlueprintRepository;
 
+    @Autowired
+    UnitBlueprintRepository unitBlueprintRepository;
+
 	@Autowired
 	PlayerRepository playerRepository;
+
+    @Autowired
+    NationRepository nationRepository;
 
 	@RequestMapping(value = "/game/cities/load", method = RequestMethod.GET)
 	public @ResponseBody
@@ -50,6 +56,7 @@ public class CityController
 	{
 		map.addAttribute("city", cityRepository.findOne(id));
 		map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll());
+        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll());
 		map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
 		return "city/build";

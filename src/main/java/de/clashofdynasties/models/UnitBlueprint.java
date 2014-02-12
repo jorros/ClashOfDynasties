@@ -14,12 +14,13 @@ public class UnitBlueprint
 
 	private String name;
 	private int price;
+    private int requiredProduction;
 
 	@DBRef
 	private Nation nation;
 
 	private String description;
-	private Map<String, Float> effects;
+	private Map<String, Double> effects;
 
 	public int getId()
 	{
@@ -71,15 +72,25 @@ public class UnitBlueprint
 		this.description = description;
 	}
 
-	public Map<String, Float> getEffects()
+	public Map<String, Double> getEffects()
 	{
 		return effects;
 	}
 
-	public void setEffects(Map<String, Float> effects)
+	public void setEffects(Map<String, Double> effects)
 	{
 		this.effects = effects;
 	}
+
+    public int getRequiredProduction()
+    {
+        return requiredProduction;
+    }
+
+    public void setRequiredProduction(int requiredProduction)
+    {
+        this.requiredProduction = requiredProduction;
+    }
 
     public boolean equals(Object other)
     {

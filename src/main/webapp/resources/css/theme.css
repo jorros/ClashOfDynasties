@@ -264,6 +264,7 @@ span.tooltip:after {
     background: #0a0a0a url(/images/bg-body.png) repeat-x bottom center;
     height: 450px;
     overflow: hidden;
+    overflow-y:auto;
     margin: 0;
     padding: 20px;
 }

@@ -120,9 +120,27 @@
 
                 <br>
 
+                <button id="unit-1" onclick=""><img style="width:32px;height:32px;" src="assets/units/1.png" /></button>
+                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(1)}" default="0" /></span>
+                <button <c:if test="${city.countUnits(1) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+
+                <button id="unit-5" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/5.png" /></button>
+                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(5)}" default="0" /></span>
+                <button <c:if test="${city.countUnits(5) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+
+                <button id="unit-6" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/6.png" /></button>
+                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(6)}" default="0" /></span>
+                <button <c:if test="${city.countUnits(6) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+
                 <br>
 
+                <button id="unit-7" onclick=""><img style="width:32px;height:32px;" src="assets/units/7.png" /></button>
+                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(7)}" default="0" /></span>
+                <button <c:if test="${city.countUnits(7) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
 
+                <button id="unit-8" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/8.png" /></button>
+                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(8)}" default="0" /></span>
+                <button <c:if test="${city.countUnits(8) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
             </div>
         </div>
     </div>
@@ -131,6 +149,10 @@
 <script>
     <c:forEach items="${buildingBlueprints}" var="building">
         $("#building-${building.id}").tooltip({
-            content: "<h4>${building.name}</h4>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span style='color:#FF1A00'>Benötigt: </span><span style='color:#<c:if test="${building.requiredBiomes.contains(city.biome)}">6BBA70</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">FF1A00</c:if>;'><c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span style='color:#FF1A00;'>Benötigt: </span><img style='vertical-align:bottom;' src='assets/resources/${building.requiredResource.id}.png' /> <span style='color:#<c:if test="${city.resource == building.requiredResource}">6BBA70</c:if><c:if test="${city.resource != building.requiredResource}">FF1A00</c:if>;'>${building.requiredResource.name}</span></c:if>", show: { effect: "fade", duration: 400 }, items: "button" });
+            content: "<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${building.name}</span><br><br>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span style='color:#FF1A00'>Benötigt: </span><span style='color:#<c:if test="${building.requiredBiomes.contains(city.biome)}">6BBA70</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">FF1A00</c:if>;'><c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span style='color:#FF1A00;'>Benötigt: </span><img style='vertical-align:bottom;' src='assets/resources/${building.requiredResource.id}.png' /> <span style='color:#<c:if test="${city.resource == building.requiredResource}">6BBA70</c:if><c:if test="${city.resource != building.requiredResource}">FF1A00</c:if>;'>${building.requiredResource.name}</span></c:if>", show: { effect: "fade", duration: 400 }, items: "button" });
+    </c:forEach>
+    <c:forEach items="${unitBlueprints}" var="unit">
+    $("#unit-${unit.id}").tooltip({
+        content: "<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${unit.name}</span><br><br>Kosten: ${unit.price}<br>${unit.description}<br><br><span class='red'>Benötigt: </span><span class='<c:if test="${city.countBuildings(7) == 0}">red</c:if><c:if test="${city.countBuildings(7) > 0}">green</c:if>'>Militäranlage</span>", show: { effect: "fade", duration: 400 }, items: "button" });
     </c:forEach>
 </script>
