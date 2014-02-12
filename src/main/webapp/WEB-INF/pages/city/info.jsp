@@ -15,7 +15,7 @@
     </tr>
     <c:if test="${ city.player == player }">
     <tr>
-        <td colspan="2">Bilanz: 3 (<span class="green">10</span>/<span class="red">7</span>)</td>
+        <td colspan="2">Bilanz: ${city.getIncome() - city.getOutcome()} (<span class="green">${city.getIncome()}</span>/<span class="red">${city.getOutcome()}</span>)</td>
     </tr>
     </c:if>
     <tr>

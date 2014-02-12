@@ -47,7 +47,7 @@ public class City
 	private List<Unit> units;
 
 	@DBRef
-	private Map<Item, Integer> items;
+	private Map<Item, Double> items;
 
 	public int getId()
 	{
@@ -169,12 +169,12 @@ public class City
 		this.requiredItemTypes = requiredItemTypes;
 	}
 
-	public Map<Item, Integer> getItems()
+	public Map<Item, Double> getItems()
 	{
 		return items;
 	}
 
-	public void setItems(Map<Item, Integer> items)
+	public void setItems(Map<Item, Double> items)
 	{
 		this.items = items;
 	}
@@ -245,5 +245,15 @@ public class City
     public double calculateCoins()
     {
         return (this.getPopulation() * ((double)this.getSatisfaction() / 100)) / 60;
+    }
+
+    public int getIncome()
+    {
+        return (int)Math.floor(this.calculateCoins() * 60);
+    }
+
+    public int getOutcome()
+    {
+        return 0;
     }
 }

@@ -52,7 +52,7 @@ public class CityController
 		map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll());
 		map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
-		return "build";
+		return "city/build";
 	}
 
 	@RequestMapping(value="/game/controls/city", method = RequestMethod.GET)
@@ -86,6 +86,6 @@ public class CityController
 		map.addAttribute("freeSlots", freeSlots);
 		map.addAttribute("maxSlots", maxSlots);
 
-		return "info";
+		return "city/info";
 	}
 }

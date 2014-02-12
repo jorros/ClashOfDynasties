@@ -7,7 +7,7 @@ public class BuildingConstruction
     @DBRef
     private BuildingBlueprint blueprint;
 
-    private int production;
+    private double production;
 
     public BuildingBlueprint getBlueprint()
     {
@@ -19,13 +19,18 @@ public class BuildingConstruction
         this.blueprint = blueprint;
     }
 
-    public int getProduction()
+    public double getProduction()
     {
         return production;
     }
 
-    public void setProduction(int production)
+    public void setProduction(double production)
     {
         this.production = production;
+    }
+
+    public void addProduction(double production)
+    {
+        this.production += production;
     }
 }

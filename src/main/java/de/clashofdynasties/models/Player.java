@@ -15,7 +15,7 @@ public class Player
 	private String name;
 
 	private String password;
-	private int coins;
+	private double coins;
 	private int clan;
 
 	@DBRef
@@ -34,10 +34,10 @@ public class Player
 
 	public int getCoins()
 	{
-		return coins;
+		return (int)Math.floor(this.coins);
 	}
 
-	public void setCoins(int coins)
+	public void setCoins(double coins)
 	{
 		this.coins = coins;
 	}
@@ -91,6 +91,16 @@ public class Player
 	{
 		this.nation = nation;
 	}
+
+    public double getRawCoins()
+    {
+        return this.coins;
+    }
+
+    public void addCoins(double coins)
+    {
+        this.coins += coins;
+    }
 
     public boolean equals(Object other)
     {

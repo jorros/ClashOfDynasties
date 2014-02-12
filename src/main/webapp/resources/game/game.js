@@ -69,12 +69,13 @@ window.onload = function() {
         // Initialisiere
         cityEntity();
         roadEntity();
+        loadTop();
         loadAllCities();
-        loadAllRoads();
 
         // Update Callback
         var updateCallback = function()
         {
+            loadTop();
             updateCities();
             window.setTimeout(updateCallback, 1000);
         }
