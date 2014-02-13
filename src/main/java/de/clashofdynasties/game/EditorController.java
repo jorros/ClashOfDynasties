@@ -2,6 +2,7 @@ package de.clashofdynasties.game;
 
 import de.clashofdynasties.models.BuildingBlueprint;
 import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.ItemType;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
@@ -13,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class EditorController
@@ -91,7 +95,45 @@ public class EditorController
 		city.setName(name);
 		city.setCapacity(capacity);
 		city.setResource(resourceRepository.findOne(resource));
-		city.setType(cityTypeRepository.findOne(type));
+        if(city.getType().getId() != type)
+        {
+            city.setType(cityTypeRepository.findOne(type));
+            List<ItemType> types = city.getRequiredItemTypes();
+
+            if(types == null)
+                types = new ArrayList<ItemType>();
+            else
+                types.clear();
+
+            int i;
+            switch(type)
+            {
+                case 3:
+                    i = (int) (Math.random()*2+1);
+                    if(i == 1)
+                        types.add(itemTypeRepository.findOne(3));
+                    else
+                        types.add(itemTypeRepository.findOne(5));
+
+                case 2:
+                    i = (int) (Math.random()*3+1);
+                    if(i == 1)
+                        types.add(itemTypeRepository.findOne(4));
+                    else if(i == 2)
+                        types.add(itemTypeRepository.findOne(6));
+                    else
+                        types.add(itemTypeRepository.findOne(7));
+
+                case 1:
+                    types.add(itemTypeRepository.findOne(1));
+                    types.add(itemTypeRepository.findOne(2));
+                    break;
+
+                case 4:
+                    break;
+            }
+            city.setRequiredItemTypes(types);
+        }
 		cityRepository.save(city);
 		return null;
 	}

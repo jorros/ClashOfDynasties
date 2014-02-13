@@ -3,7 +3,7 @@
 
 <button><img src="assets/setCaravan.png" /></button>
 <button><img src="assets/setFormation.png" /></button>
-<button><img src="assets/showItems.png" /></button>
+<button onclick="openMenu('game/menu/items?city=${city.id}')"><img src="assets/showItems.png" /></button>
 <br><br>
 <table style="width:100%;">
     <tr>
@@ -22,7 +22,7 @@
         <td></td>
     </tr>
     <tr>
-        <td colspan="2"><span style="vertical-align: bottom;">Wertvolle Resource: </span><img src="assets/resources/${city.resource.id}.png" /> ${city.resource.name}</td>
+        <td colspan="2"><span style="vertical-align: bottom;">Wertvolle Resource: </span><img style="vertical-align:bottom;" src="assets/resources/${city.resource.id}.png" /> ${city.resource.name}</td>
     </tr>
     <tr>
         <td colspan="2">Stadttyp: ${city.type.name} (${city.biome.name})</td>
