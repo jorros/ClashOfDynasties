@@ -3,6 +3,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <h1>Bauen (${city.name})</h1>
+<c:if test="${player == city.player}">
 <div id="content">
     <div style="float:left;">
         <div class="section" style="width:285px; margin-bottom:20px;">
@@ -131,3 +132,4 @@
         content: "<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${unit.name}</span><br><br>Kosten: ${unit.price}<br>${unit.description}<br><br><span class='red'>Benötigt: </span><span class='<c:if test="${city.countBuildings(7) == 0}">red</c:if><c:if test="${city.countBuildings(7) > 0}">green</c:if>'>Militäranlage</span>", show: { effect: "fade", duration: 400 }, items: "button" });
     </c:forEach>
 </script>
+</c:if>

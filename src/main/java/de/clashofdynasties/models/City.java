@@ -1,6 +1,7 @@
 package de.clashofdynasties.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -31,6 +32,12 @@ public class City
 
 	@DBRef
 	private CityType type;
+
+    @Transient
+    private List<Formation> formations;
+
+    @Transient
+    private int diplomacy;
 
 	private int capacity;
 	private String name;
@@ -217,6 +224,26 @@ public class City
     public void setBuildingConstruction(BuildingConstruction buildingConstruction)
     {
         this.buildingConstruction = buildingConstruction;
+    }
+
+    public List<Formation> getFormations()
+    {
+        return formations;
+    }
+
+    public void setFormations(List<Formation> formations)
+    {
+        this.formations = formations;
+    }
+
+    public int getDiplomacy()
+    {
+        return diplomacy;
+    }
+
+    public void setDiplomacy(int diplomacy)
+    {
+        this.diplomacy = diplomacy;
     }
 
     public boolean equals(Object other)

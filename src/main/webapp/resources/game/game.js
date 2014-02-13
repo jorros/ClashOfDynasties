@@ -1,4 +1,3 @@
-var Cities = {};
 var Roads = {};
 var Editor = false;
 var Selected = null;

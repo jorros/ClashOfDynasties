@@ -19,10 +19,10 @@ function roadEntity()
             this._city1 = road.point1.id;
             this._city2 = road.point2.id;
 
-            this.x1 = Cities[this._city1].getX();
-            this.y1 = Cities[this._city1].getY();
-            this.x2 = Cities[this._city2].getX();
-            this.y2 = Cities[this._city2].getY();
+            this.x1 = CityEntities[this._city1].getX();
+            this.y1 = CityEntities[this._city1].getY();
+            this.x2 = CityEntities[this._city2].getX();
+            this.y2 = CityEntities[this._city2].getY();
 
             this.x = Math.min(this.x1, this.x2);
             this.y = Math.min(this.y1, this.y2);

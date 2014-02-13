@@ -1,8 +1,6 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Nation;
-import de.clashofdynasties.models.UnitBlueprint;
+import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import javafx.scene.control.TableColumn;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.security.krb5.PrincipalName;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CityController
@@ -38,22 +40,47 @@ public class CityController
     @Autowired
     ItemRepository itemRepository;
 
-	@RequestMapping(value = "/game/cities/load", method = RequestMethod.GET)
+    @Autowired
+    FormationRepository formationRepository;
+
+	@RequestMapping(value = "/game/cities/all", method = RequestMethod.GET)
 	public @ResponseBody
-	List<City> loadAllCities()
+    Map<Integer, City> loadAllCities(Principal principal)
 	{
+        Player player = playerRepository.findByName(principal.getName());
+
 		List<City> cities = cityRepository.findAll();
+        List<Formation> formations = formationRepository.findAll();
+        HashMap<Integer, City> data = new HashMap<Integer, City>();
 
-		return cities;
-	}
+        for(City city : cities)
+        {
+            for(Formation formation : formations)
+            {
+                if(formation.getRoute() == null && formation.getLastCity() == city)
+                {
+                    if(city.getFormations() == null)
+                        city.setFormations(new ArrayList<Formation>());
 
-	@RequestMapping(value = "/game/cities/update", method = RequestMethod.GET)
-	public @ResponseBody
-	List<City> updateCities()
-	{
-		List<City> cities = cityRepository.findAll();
+                    city.getFormations().add(formation);
+                }
+            }
 
-		return cities;
+            // Diplomatie setzen
+            if(player.equals(city.getPlayer()))
+                city.setDiplomacy(1);
+
+            // Wenn Spieler neutral
+            if(city.getPlayer().getId() == 1)
+            {
+                city.setDiplomacy(4);
+                city.setSatisfaction(-1);
+            }
+
+            data.put(city.getId(), city);
+        }
+
+		return data;
 	}
 
 	@RequestMapping(value="/game/menu/build", method = RequestMethod.GET)
@@ -74,6 +101,7 @@ public class CityController
 
         map.addAttribute("city", city);
         map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
         return "city/items";
     }
@@ -89,16 +117,16 @@ public class CityController
         if(city.getBuildings() != null)
 		    freeSlots -= city.getBuildings().size();
 
-        String smiley = "happy";
+        String smiley = "Happy";
 
         if(city.getPopulation() > 0)
         {
             if(city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
-                smiley = "satisfied";
+                smiley = "Satisfied";
             else if(city.getSatisfaction() < 60 && city.getSatisfaction() >= 30)
-                smiley = "unhappy";
+                smiley = "Unhappy";
             else
-                smiley = "angry";
+                smiley = "Angry";
         }
         else
             smiley = null;
