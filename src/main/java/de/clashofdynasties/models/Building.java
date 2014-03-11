@@ -1,9 +1,15 @@
 package de.clashofdynasties.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Building
 {
+    @Id
+    private int id;
+
 	@DBRef
 	private BuildingBlueprint blueprint;
 
@@ -28,4 +34,14 @@ public class Building
 	{
 		this.health = health;
 	}
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 }

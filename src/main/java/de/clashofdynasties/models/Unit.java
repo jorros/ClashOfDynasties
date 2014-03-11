@@ -1,9 +1,15 @@
 package de.clashofdynasties.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Unit
 {
+    @Id
+    private int id;
+
 	@DBRef
 	private UnitBlueprint blueprint;
 
@@ -28,4 +34,23 @@ public class Unit
 	{
 		this.health = health;
 	}
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public boolean equals(Object other)
+    {
+        if(other instanceof Unit && ((Unit)other).getId() == this.id)
+            return true;
+        else
+            return false;
+    }
+
 }

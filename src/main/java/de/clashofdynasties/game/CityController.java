@@ -2,6 +2,7 @@ package de.clashofdynasties.game;
 
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
+import de.clashofdynasties.service.CounterService;
 import javafx.scene.control.TableColumn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -14,10 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sun.security.krb5.PrincipalName;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class CityController
@@ -43,7 +41,13 @@ public class CityController
     @Autowired
     FormationRepository formationRepository;
 
-	@RequestMapping(value = "/game/cities/all", method = RequestMethod.GET)
+    @Autowired
+    CounterService counterService;
+
+    @Autowired
+    UnitRepository unitRepository;
+
+    @RequestMapping(value = "/game/cities/all", method = RequestMethod.GET)
 	public @ResponseBody
     Map<Integer, City> loadAllCities(Principal principal)
 	{

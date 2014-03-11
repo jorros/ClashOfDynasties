@@ -10,21 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/Formations.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/FormationsBlack.png" />
-      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\angry32.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/satisfaction/Angry.png" />
-      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\happy32.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/satisfaction/Happy.png" />
-      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\satisfied32.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/satisfaction/Satisfied.png" />
-      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\unhappy32.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/satisfaction/Unhappy.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/jquery.contextMenu.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/lib/jquery.contextMenu.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/lib/jquery.multisortable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formation/setup.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/build.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/build.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/cities.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/cities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/items.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/items.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/roadEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/roadEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -89,70 +88,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CityController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+      <file leaf-file-name="EditorController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/EditorController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="41" selection-start="2350" selection-end="2350" vertical-scroll-proportion="0.0" vertical-offset="473" max-vertical-offset="2227">
-              <folding>
-                <element signature="e#1611#1626#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="5" selection-start="1478" selection-end="1478" vertical-scroll-proportion="0.0" vertical-offset="518" max-vertical-offset="1207">
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#502#503#0" expanded="false" />
-                <element signature="e#518#519#0" expanded="false" />
-                <element signature="e#549#550#0" expanded="false" />
-                <element signature="e#568#569#0" expanded="false" />
-                <element signature="method#getCoins#0;class#Player#0" expanded="false" />
-                <element signature="e#676#677#0" expanded="false" />
-                <element signature="e#701#702#0" expanded="false" />
-                <element signature="e#727#728#0" expanded="false" />
-                <element signature="e#745#746#0" expanded="false" />
-                <element signature="e#780#781#0" expanded="false" />
-                <element signature="e#803#804#0" expanded="false" />
-                <element signature="e#832#833#0" expanded="false" />
-                <element signature="e#850#851#0" expanded="false" />
-                <element signature="e#888#889#0" expanded="false" />
-                <element signature="e#911#912#0" expanded="false" />
-                <element signature="e#944#945#0" expanded="false" />
-                <element signature="e#966#967#0" expanded="false" />
-                <element signature="e#1012#1013#0" expanded="false" />
-                <element signature="e#1043#1044#0" expanded="false" />
-                <element signature="e#1073#1074#0" expanded="false" />
-                <element signature="e#1092#1093#0" expanded="false" />
-                <element signature="e#1132#1133#0" expanded="false" />
-                <element signature="e#1157#1158#0" expanded="false" />
-                <element signature="e#1188#1189#0" expanded="false" />
-                <element signature="e#1208#1209#0" expanded="false" />
-                <element signature="e#1250#1251#0" expanded="false" />
-                <element signature="e#1277#1278#0" expanded="false" />
-                <element signature="e#1316#1317#0" expanded="false" />
-                <element signature="e#1349#1350#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GlobalController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GlobalController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="31" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1292">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cities.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cities.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="38" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+            <state line="59" column="4" selection-start="1475" selection-end="1517" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3961">
               <folding />
             </state>
           </provider>
@@ -161,21 +100,12 @@
       <file leaf-file-name="cityEntity.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="54" selection-start="4080" selection-end="4080" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="3400">
+            <state line="118" column="0" selection-start="6632" selection-end="6632" vertical-scroll-proportion="0.0" vertical-offset="2006" max-vertical-offset="3400">
               <folding>
-                <marker date="1392319379592" expanded="true" signature="1240:1277" placeholder="..." />
-                <marker date="1392319379592" expanded="true" signature="2406:2439" placeholder="..." />
-                <marker date="1392319379592" expanded="true" signature="2996:3020" placeholder="..." />
+                <marker date="1392572024108" expanded="false" signature="1240:1277" placeholder="..." />
+                <marker date="1392572024108" expanded="false" signature="2406:2439" placeholder="..." />
+                <marker date="1392572024108" expanded="false" signature="2996:3020" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="items.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/items.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="12" selection-start="3548" selection-end="3548" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1377">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -183,7 +113,7 @@
       <file leaf-file-name="build.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/build.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="134" column="7" selection-start="14519" selection-end="14519" vertical-scroll-proportion="-21.076923" vertical-offset="1730" max-vertical-offset="2380">
+            <state line="10" column="17" selection-start="327" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2380">
               <folding />
             </state>
           </provider>
@@ -192,37 +122,69 @@
       <file leaf-file-name="City.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="15" selection-start="436" selection-end="439" vertical-scroll-proportion="-0.65384614" vertical-offset="255" max-vertical-offset="3383">
-              <folding>
-                <element signature="e#3275#3276#0" expanded="true" />
-                <element signature="e#3308#3309#0" expanded="true" />
-                <element signature="e#3373#3374#0" expanded="true" />
-                <element signature="e#3417#3418#0" expanded="true" />
-                <element signature="e#3454#3455#0" expanded="true" />
-                <element signature="e#3486#3487#0" expanded="true" />
-                <element signature="e#3537#3538#0" expanded="true" />
-                <element signature="e#3579#3580#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="info.jsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="105" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.83254343" vertical-offset="17" max-vertical-offset="680">
-              <folding>
-                <marker date="1392319850866" expanded="true" signature="528:856" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+            <state line="255" column="0" selection-start="3586" selection-end="3768" vertical-scroll-proportion="0.0" vertical-offset="1962" max-vertical-offset="3179">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Unit.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="41" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+              <folding>
+                <element signature="e#625#626#0" expanded="true" />
+                <element signature="e#650#651#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CityController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="96" column="0" selection-start="2979" selection-end="2979" vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2329">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnitBlueprintRepository.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitBlueprintRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="64" selection-start="208" selection-end="223" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setup.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formation/setup.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="20" selection-start="815" selection-end="815" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="1139">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="18" selection-start="186" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="697">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormationController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="157" column="54" selection-start="5828" selection-end="5828" vertical-scroll-proportion="0.37804878" vertical-offset="1894" max-vertical-offset="2669">
+              <folding>
+                <element signature="e#5937#5943#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -240,15 +202,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ItemTypeRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/Resource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ResourceRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitBlueprint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitBlueprintRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/FormationRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/CustomUserDetailsService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editorMenus.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
@@ -256,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/roads.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor/resource.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor/city.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/CityType.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Biome.java" />
@@ -266,14 +221,12 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Nation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Resource.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/build.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/info.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/top.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/jquery-ui-1.10.4.custom.css" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor/building.jsp" />
@@ -288,9 +241,18 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/items.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/build.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formation/setup.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
       </list>
     </option>
   </component>
@@ -528,40 +490,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="editor" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clash of Dynasties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clash of Dynasties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="city" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -640,79 +568,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clash of Dynasties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clash of Dynasties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clash of Dynasties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Clash of Dynasties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="satisfaction" />
+              <option name="myItemId" value="clashofdynasties" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -739,6 +599,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="clashofdynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -804,8 +668,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -826,7 +690,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30107528" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
-    <property name="options.lastSelected" value="editor.preferences.appearance" />
+    <property name="options.lastSelected" value="appearance" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -840,14 +704,11 @@
       <recent name="de.clashofdynasties.jdbc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\lib" />
+      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\css" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\satisfaction" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\items" />
-      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\units" />
-      <recent name="C:\Users\Jörg\Mediencenter\Projekte\Clash of Dynasties\Source\src\main\webapp\resources\assets" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="de.clashofdynasties" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\WEB-INF\pages\city" />
@@ -856,8 +717,17 @@
       <recent name="C:\Users\Jörg\Dropbox\Projekte\Clash of Dynasties\Source\src\main\webapp\WEB-INF\pages" />
       <recent name="C:\Users\Jörg\Dropbox\Projekte\Clash of Dynasties\Source\src\main\webapp\WEB-INF\pages\editor" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="de.clashofdynasties" />
+    </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0.47">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails" singleton="true">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -865,12 +735,6 @@
       <setting name="depsClasspath" value="false" />
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -904,6 +768,19 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -929,19 +806,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -978,22 +842,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -1011,6 +859,22 @@
       <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 7.0.47" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.47" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -1131,7 +995,14 @@
       <workItem from="1392119980177" duration="19791000" />
       <workItem from="1392206906032" duration="327000" />
       <workItem from="1392207283651" duration="17474000" />
-      <workItem from="1392294484470" duration="13311000" />
+      <workItem from="1392294484470" duration="14381000" />
+      <workItem from="1392397093828" duration="9055000" />
+      <workItem from="1392464748870" duration="610000" />
+      <workItem from="1392569066300" duration="5350000" />
+      <workItem from="1394106958127" duration="12000" />
+      <workItem from="1394361000812" duration="4267000" />
+      <workItem from="1394395335039" duration="642000" />
+      <workItem from="1394530947983" duration="3628000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1157,11 +1028,15 @@
       <created>1392251769472</created>
       <updated>1392251769472</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Berechtigungsfix und Optimierung der Entities in JS">
+      <created>1392323334950</created>
+      <updated>1392323334950</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279186000" />
+    <option name="totallyTimeSpent" value="303820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1182,15 +1057,15 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32982087" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32771337" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32721382" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17891374" sideWeight="0.4163987" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17864583" sideWeight="0.5836013" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26448894" sideWeight="0.64739585" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1826411" sideWeight="0.5836013" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26349893" sideWeight="0.64739585" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.29697624" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1220,7 +1095,8 @@
     <MESSAGE value="int -&gt; double für alle wachsenden Größen (Produktion und Coins)&#10;Dynamische Aktualisierung für Topleiste&#10;Verschiebung der City Views in eigenen Ordner&#10;Ersetzen von restlichen Platzhaltern in den Views durch Variabeln" />
     <MESSAGE value="Hinzufügen von Units zum Buildmenu" />
     <MESSAGE value="Hinzufügen des Itemmenüs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hinzufügen des Itemmenüs" />
+    <MESSAGE value="Berechtigungsfix und Optimierung der Entities in JS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Berechtigungsfix und Optimierung der Entities in JS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1230,78 +1106,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="55" selection-start="464" selection-end="464" vertical-scroll-proportion="0.24959217" vertical-offset="0" max-vertical-offset="969">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/crafty-min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="655" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/demography.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="67" selection-end="114" vertical-scroll-proportion="0.052713178" vertical-offset="0" max-vertical-offset="645" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="2293" selection-end="2293" vertical-scroll-proportion="0.0" vertical-offset="978" max-vertical-offset="1649">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editorMenus.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="42" selection-start="673" selection-end="673" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/3.2.0.RELEASE/spring-webmvc-3.2.0.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="19" selection-start="7547" selection-end="7547" vertical-scroll-proportion="0.33728814" vertical-offset="1671" max-vertical-offset="2261" />
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/3.2.0.RELEASE/spring-web-3.2.0.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="29" selection-start="2403" selection-end="2403" vertical-scroll-proportion="-18.48" vertical-offset="82" max-vertical-offset="697" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="463" selection-end="463" vertical-scroll-proportion="0.43070045" vertical-offset="0" max-vertical-offset="671">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="19" selection-start="5841" selection-end="5841" vertical-scroll-proportion="0.0" vertical-offset="1902" max-vertical-offset="9129" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/CityType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="4" selection-start="585" selection-end="774" vertical-scroll-proportion="0.63338304" vertical-offset="0" max-vertical-offset="671">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Biome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="4" selection-start="842" selection-end="1025" vertical-scroll-proportion="0.7600596" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="4" selection-start="631" selection-end="812" vertical-scroll-proportion="0.68405366" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/ItemType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="4" selection-start="430" selection-end="619" vertical-scroll-proportion="0.5067064" vertical-offset="0" max-vertical-offset="671">
@@ -1323,20 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="4" selection-start="791" selection-end="972" vertical-scroll-proportion="0.6453055" vertical-offset="145" max-vertical-offset="816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="5" selection-start="447" selection-end="447" vertical-scroll-proportion="0.43070045" vertical-offset="0" max-vertical-offset="671">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="5" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
@@ -1351,9 +1141,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/PlayerRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.101341285" vertical-offset="0" max-vertical-offset="671">
-          <folding />
-        </state>
+        <state line="5" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.101341285" vertical-offset="0" max-vertical-offset="671" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ResourceRepository.java">
@@ -1363,30 +1151,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/NationRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="51" selection-start="203" selection-end="203" vertical-scroll-proportion="0.101341285" vertical-offset="0" max-vertical-offset="671">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="32" selection-start="2814" selection-end="2814" vertical-scroll-proportion="0.40577507" vertical-offset="464" max-vertical-offset="1122">
-          <folding />
-        </state>
+        <state line="5" column="51" selection-start="203" selection-end="203" vertical-scroll-proportion="0.101341285" vertical-offset="0" max-vertical-offset="671" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="304" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
-          <folding />
-        </state>
+        <state line="10" column="27" selection-start="304" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="14" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <folding />
-        </state>
+        <state line="14" column="14" selection-start="507" selection-end="507" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java">
@@ -1406,11 +1181,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/jquery-ui-1.10.4.custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="607" column="1" selection-start="12927" selection-end="12927" vertical-scroll-proportion="0.0" vertical-offset="9536" max-vertical-offset="20128">
-          <folding>
-            <element signature="e#11673#11756#2" expanded="false" />
-          </folding>
-        </state>
+        <state line="607" column="1" selection-start="12927" selection-end="12927" vertical-scroll-proportion="0.0" vertical-offset="9536" max-vertical-offset="20128" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java">
@@ -1460,44 +1231,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor/building.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="165" selection-end="165" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
+        <state line="3" column="17" selection-start="165" selection-end="165" vertical-scroll-proportion="-1.9615384" vertical-offset="0" max-vertical-offset="697" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/top.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="45" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <folding />
-        </state>
+        <state line="10" column="45" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/theme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="338" column="4" selection-start="7871" selection-end="7887" vertical-scroll-proportion="0.0" vertical-offset="5253" max-vertical-offset="6579">
-          <folding />
-        </state>
+        <state line="338" column="4" selection-start="7871" selection-end="7887" vertical-scroll-proportion="0.0" vertical-offset="5253" max-vertical-offset="6579" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor/city.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="66" selection-end="130" vertical-scroll-proportion="0.026898734" vertical-offset="0" max-vertical-offset="632">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/EditorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="45" selection-start="3938" selection-end="3938" vertical-scroll-proportion="0.0" vertical-offset="1371" max-vertical-offset="3961">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="39" selection-start="382" selection-end="382" vertical-scroll-proportion="0.50595236" vertical-offset="0" max-vertical-offset="697">
-          <folding />
-        </state>
+        <state line="1" column="0" selection-start="66" selection-end="130" vertical-scroll-proportion="0.026898734" vertical-offset="0" max-vertical-offset="632" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java">
@@ -1537,6 +1286,104 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/roads.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="1" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/roadEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="41" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/items.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="12" selection-start="3548" selection-end="3548" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="5" selection-start="1478" selection-end="1478" vertical-scroll-proportion="0.0" vertical-offset="518" max-vertical-offset="1207">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/jquery.contextMenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="28560" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/jquery.contextMenu.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2516" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="38" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="71" selection-start="297" selection-end="297" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1292" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="62" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="680" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/awt/image/BufferedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1016" column="29" selection-start="41359" selection-end="41359" vertical-scroll-proportion="0.33333334" vertical-offset="16167" max-vertical-offset="27064" />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/java/awt/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="433" column="11" selection-start="12715" selection-end="12715" vertical-scroll-proportion="0.0" vertical-offset="5882" max-vertical-offset="20757" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="11" selection-start="3533" selection-end="3533" vertical-scroll-proportion="1.2003034" vertical-offset="212" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/jquery.multisortable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4403" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="65" selection-start="622" selection-end="622" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1020" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="5" selection-start="642" selection-end="642" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#666#667#0" expanded="false" />
+            <element signature="e#703#704#0" expanded="false" />
+            <element signature="e#731#732#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="28" selection-start="497" selection-end="502" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
@@ -1544,141 +1391,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GlobalController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="138" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-15.038462" vertical-offset="0" max-vertical-offset="969">
+        <state line="38" column="0" selection-start="1168" selection-end="1168" vertical-scroll-proportion="0.0" vertical-offset="201" max-vertical-offset="1292">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/roads.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="1" selection-start="196" selection-end="196" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/roadEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="41" selection-start="644" selection-end="644" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/items.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="12" selection-start="3548" selection-end="3548" vertical-scroll-proportion="-18.307692" vertical-offset="0" max-vertical-offset="1377">
-          <folding />
+        <state line="5" column="77" selection-start="231" selection-end="231" vertical-scroll-proportion="0.12648809" vertical-offset="0" max-vertical-offset="672">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/build.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="7" selection-start="14519" selection-end="14519" vertical-scroll-proportion="-21.076923" vertical-offset="1730" max-vertical-offset="2380">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="5" selection-start="1478" selection-end="1478" vertical-scroll-proportion="0.0" vertical-offset="518" max-vertical-offset="1207">
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#502#503#0" expanded="false" />
-            <element signature="e#518#519#0" expanded="false" />
-            <element signature="e#549#550#0" expanded="false" />
-            <element signature="e#568#569#0" expanded="false" />
-            <element signature="method#getCoins#0;class#Player#0" expanded="false" />
-            <element signature="e#676#677#0" expanded="false" />
-            <element signature="e#701#702#0" expanded="false" />
-            <element signature="e#727#728#0" expanded="false" />
-            <element signature="e#745#746#0" expanded="false" />
-            <element signature="e#780#781#0" expanded="false" />
-            <element signature="e#803#804#0" expanded="false" />
-            <element signature="e#832#833#0" expanded="false" />
-            <element signature="e#850#851#0" expanded="false" />
-            <element signature="e#888#889#0" expanded="false" />
-            <element signature="e#911#912#0" expanded="false" />
-            <element signature="e#944#945#0" expanded="false" />
-            <element signature="e#966#967#0" expanded="false" />
-            <element signature="e#1012#1013#0" expanded="false" />
-            <element signature="e#1043#1044#0" expanded="false" />
-            <element signature="e#1073#1074#0" expanded="false" />
-            <element signature="e#1092#1093#0" expanded="false" />
-            <element signature="e#1132#1133#0" expanded="false" />
-            <element signature="e#1157#1158#0" expanded="false" />
-            <element signature="e#1188#1189#0" expanded="false" />
-            <element signature="e#1208#1209#0" expanded="false" />
-            <element signature="e#1250#1251#0" expanded="false" />
-            <element signature="e#1277#1278#0" expanded="false" />
-            <element signature="e#1316#1317#0" expanded="false" />
-            <element signature="e#1349#1350#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GlobalController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="31" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1292">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="15" selection-start="436" selection-end="439" vertical-scroll-proportion="-0.65384614" vertical-offset="255" max-vertical-offset="3383">
-          <folding>
-            <element signature="e#3275#3276#0" expanded="true" />
-            <element signature="e#3308#3309#0" expanded="true" />
-            <element signature="e#3373#3374#0" expanded="true" />
-            <element signature="e#3417#3418#0" expanded="true" />
-            <element signature="e#3454#3455#0" expanded="true" />
-            <element signature="e#3486#3487#0" expanded="true" />
-            <element signature="e#3537#3538#0" expanded="true" />
-            <element signature="e#3579#3580#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="41" selection-start="2350" selection-end="2350" vertical-scroll-proportion="0.0" vertical-offset="473" max-vertical-offset="2227">
-          <folding>
-            <element signature="e#1611#1626#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="38" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
+        <state line="10" column="17" selection-start="327" selection-end="448" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="2380">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="54" selection-start="4080" selection-end="4080" vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="3400">
+        <state line="118" column="0" selection-start="6632" selection-end="6632" vertical-scroll-proportion="0.0" vertical-offset="2635" max-vertical-offset="3400">
           <folding>
-            <marker date="1392319379592" expanded="true" signature="1240:1277" placeholder="..." />
-            <marker date="1392319379592" expanded="true" signature="2406:2439" placeholder="..." />
-            <marker date="1392319379592" expanded="true" signature="2996:3020" placeholder="..." />
+            <marker date="1392572024108" expanded="false" signature="1240:1277" placeholder="..." />
+            <marker date="1392572024108" expanded="false" signature="2406:2439" placeholder="..." />
+            <marker date="1392572024108" expanded="false" signature="2996:3020" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/city/info.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="105" selection-start="1575" selection-end="1575" vertical-scroll-proportion="0.83254343" vertical-offset="17" max-vertical-offset="680">
+        <state line="96" column="0" selection-start="2979" selection-end="2979" vertical-scroll-proportion="0.0" vertical-offset="1232" max-vertical-offset="2584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="4" selection-start="791" selection-end="972" vertical-scroll-proportion="0.6371951" vertical-offset="160" max-vertical-offset="816">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitBlueprintRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="64" selection-start="208" selection-end="223" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
           <folding>
-            <marker date="1392319850866" expanded="true" signature="528:856" placeholder="..." />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/EditorController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="4" selection-start="1475" selection-end="1517" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="18" selection-start="186" selection-end="195" vertical-scroll-proportion="0.0" vertical-offset="8" max-vertical-offset="697">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/formation/setup.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="20" selection-start="815" selection-end="815" vertical-scroll-proportion="-11.115385" vertical-offset="0" max-vertical-offset="1139">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="70" selection-start="220" selection-end="220" vertical-scroll-proportion="0.103658535" vertical-offset="0" max-vertical-offset="656">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="255" column="0" selection-start="3586" selection-end="3768" vertical-scroll-proportion="0.0" vertical-offset="1962" max-vertical-offset="3179">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="41" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <folding>
+            <element signature="e#625#626#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="157" column="54" selection-start="5828" selection-end="5828" vertical-scroll-proportion="0.37804878" vertical-offset="1894" max-vertical-offset="2669">
+          <folding>
+            <element signature="e#5937#5943#0" expanded="true" />
           </folding>
         </state>
       </provider>

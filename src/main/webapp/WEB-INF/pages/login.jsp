@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Clash of Dynasties</title>
     <link rel="stylesheet" href="/css/theme.css" type="text/css">
-    <script type="text/javascript" src="/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="/lib/jquery-2.1.0.js"></script>
 </head>
 <body>
 <div id="wrapper">

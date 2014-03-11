@@ -5,8 +5,11 @@
     <title>Clash of Dynasties</title>
     <link rel="stylesheet" href="/css/theme.css" type="text/css">
     <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" type="text/css">
+    <link rel="stylesheet" href="/css/jquery.contextMenu.css" type="text/css">
     <script type="text/javascript" src="/lib/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="/lib/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="/lib/jquery.contextMenu.js"></script>
+    <script type="text/javascript" src="/lib/jquery.multisortable.js"></script>
     <script type="text/javascript" src="/lib/crafty-min.js"></script>
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/menus.js"></script>

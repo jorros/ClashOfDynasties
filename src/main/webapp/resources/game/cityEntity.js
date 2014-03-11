@@ -99,11 +99,11 @@ function cityEntity()
         _updateDiplomacy: function() {
             if(Cities[this._cid].diplomacy == 1) // Selbst
                 this._textEntity.css("background-color", "#4096EE");
-            else if(Cities[this._cid].diplomacy) // Verbündet
+            else if(Cities[this._cid].diplomacy == 2) // Verbündet
                 this._textEntity.css("background-color", "#356AA0");
-            else if(Cities[this._cid].diplomacy) // Verfeindet
+            else if(Cities[this._cid].diplomacy == 3) // Verfeindet
                 this._textEntity.css("background-color", "#D01F3C");
-            else if(Cities[this._cid].diplomacy) // Neutral
+            else if(Cities[this._cid].diplomacy == 4) // Neutral
                 this._textEntity.css("background-color", "#EEEEEE");
         },
 

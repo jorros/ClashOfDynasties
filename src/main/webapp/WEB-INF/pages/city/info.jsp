@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <button><img src="assets/setCaravan.png" /></button>
-<button><img src="assets/setFormation.png" /></button>
+<button onclick="openMenu('game/menu/formation?city=${city.id}')"><img src="assets/setFormation.png" /></button>
 <button onclick="openMenu('game/menu/items?city=${city.id}')"><img src="assets/showItems.png" /></button>
 <br><br>
 <table style="width:100%;">
