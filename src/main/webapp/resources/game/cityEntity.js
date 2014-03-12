@@ -2,43 +2,101 @@ function cityEntity()
 {
     Crafty.c("City", {
         _cid: 0,
-        _textEntity: {},
+        _infoEntity: {},
+        _formationsInfoEntity: {},
+
+        _getMenu: function($trigger, e) {
+            var items = {};
+
+            var id = $trigger.find("span").attr("id").slice(0, -11);
+
+            $.each(Cities[id].formations, function(key, val) {
+                items[val.id] = { name: val.name, icon: "edit" };
+            });
+
+            return {
+                callback: function(key, options) {
+                    openControl("game/controls/formation?formation=" + key);
+                },
+                items: items
+            }
+        },
 
         _buildInfo: function() {
-            this._textEntity = Crafty.e("2D, DOM").attr({
+            this._infoEntity = Crafty.e("2D, DOM").attr({
                 w: 270,
                 h: 35,
-                x: (this.getX() - this._textEntity._w / 2),
+                x: (this.getX() - this._infoEntity._w / 2),
                 y: (this._y - 40),
                 z: 11
             }); //.text(this._name).textFont("size", "24px").textFont("family", "Philosopher-Regular").unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
 
-            this._textEntity.css({ "border-radius": "20px", "-moz-border-radius": "20px", "border": "1px #000 solid", "text-align": "center", "color": "#000", "font-family": "Philosopher-Regular", "font-size": "18px", "line-height": "35px", "vertical-align": "middle" });
-            this.attach(this._textEntity);
+            this._infoEntity.css({ "border-radius": "20px", "-moz-border-radius": "20px", "border": "1px #000 solid", "text-align": "center", "color": "#000", "font-family": "Philosopher-Regular", "font-size": "18px", "line-height": "35px", "vertical-align": "middle" });
+            this.attach(this._infoEntity);
+
+            this._formationsInfoEntity = Crafty.e("2D, DOM").attr({
+                w: 50,
+                h: 20,
+                x: this._infoEntity.x + 25,
+                y: (this._y - 75),
+                z: 11
+            });
+
+            this._formationsInfoEntity.css({
+                "-webkit-border-top-left-radius": "20px",
+                "-webkit-border-top-right-radius": "20px",
+                "-moz-border-radius-topleft": "20px",
+                "-moz-border-radius-topright": "20px",
+                "border-top-left-radius": "20px",
+                "border-top-right-radius": "20px",
+                "border": "1px #000 solid",
+                "text-align": "center",
+                "color": "#fff",
+                "font-family": "Philosopher-Regular",
+                "font-size": "18px",
+                "background-color": "#36393D",
+                "cursor": "pointer"
+            });
+            this.attach(this._formationsInfoEntity);
 
             if(Editor)
             {
-                $(this._textEntity._element).html('<span id="' + this._cid + '_name" onclick="openControl(\'editor/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
-                $(this._textEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource.id + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
-                $(this._textEntity._element).append('<span id="' + this._cid + '_capacity" style="float:left; margin-left:10px; font-size:22px">' + Cities[this._cid].capacity + '</span>');
+                $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openControl(\'editor/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
+                $(this._infoEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource.id + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
+                $(this._infoEntity._element).append('<span id="' + this._cid + '_capacity" style="float:left; margin-left:10px; font-size:22px">' + Cities[this._cid].capacity + '</span>');
             }
             else
             {
-                $(this._textEntity._element).html('<span id="' + this._cid + '_name" onclick="openControl(\'game/controls/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
-                $(this._textEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'game/menu/build?city=' + this._cid + '\'); openControl(\'game/controls/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
-                $(this._textEntity._element).append('<span id="' + this._cid + '_people" style="float:left; margin-left:10px; font-size:22px">?</span>');
-                $(this._textEntity._element).append('<img id="' + this._cid + '_satisfaction" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/satisfaction/Happy.png" />');
-                $(this._textEntity._element).append('<div id="' + this._cid + '_formations" style="float:right; margin-top:3px; margin-right:5px; cursor:pointer;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_numFormations" style="font-size:22px; vertical-align:top;">0</span></div>');
+                $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openControl(\'game/controls/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
+                $(this._infoEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'game/menu/build?city=' + this._cid + '\'); openControl(\'game/controls/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
+                $(this._infoEntity._element).append('<span id="' + this._cid + '_people" style="float:left; margin-left:10px; font-size:22px">?</span>');
+                $(this._infoEntity._element).append('<img id="' + this._cid + '_satisfaction" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/satisfaction/Happy.png" />');
+                $(this._infoEntity._element).append('<div id="' + this._cid + '_defense" style="float:right; margin-top:3px; margin-right:5px;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_defensePoints" style="font-size:22px; vertical-align:top;">0</span></div>');
+
+                $(this._formationsInfoEntity._element).html('<span style="line-height: 20px;" id="' + this._cid + '_formations">0</span>');
+
+                $.contextMenu({
+                    selector: "#" + this._formationsInfoEntity.getDomId(),
+                    trigger: 'left',
+                    zIndex: 20,
+                    build: this._getMenu
+                });
             }
 
-            this._textEntity.draw();
+            this._infoEntity.draw();
+            this._formationsInfoEntity.draw();
         },
 
         _updateInfo: function() {
-            this._textEntity.h = 35;
-            this._textEntity.w = 270;
-            this._textEntity.x = this.getX() - this._textEntity._w / 2;
-            this._textEntity.y = this._y - 40;
+            this._infoEntity.h = 35;
+            this._infoEntity.w = 270;
+            this._infoEntity.x = this.getX() - this._infoEntity._w / 2;
+            this._infoEntity.y = this._y - 40;
+
+            this._formationsInfoEntity.w = 50;
+            this._formationsInfoEntity.h = 20;
+            this._formationsInfoEntity.x = this._infoEntity.x + (this._infoEntity._w / 2 - 25);
+            this._formationsInfoEntity.y = (this._y - 61);
 
             $("#" + this._cid + "_name").text(Cities[this._cid].name);
 
@@ -79,11 +137,11 @@ function cityEntity()
 
                 if(Cities[this._cid].formations != null && Cities[this._cid].formations.length > 0)
                 {
-                    $("#" + this._cid + "_numFormations").text(Cities[this._cid].formations.length);
-                    $("#" + this._cid + "_formations").show();
+                    $("#" + this._cid + "_formations").text(Cities[this._cid].formations.length);
+                    $(this._formationsInfoEntity._element).show();
                 }
                 else
-                    $("#" + this._cid + "_formations").hide();
+                    $(this._formationsInfoEntity._element).hide();
             }
         },
 
@@ -98,13 +156,13 @@ function cityEntity()
 
         _updateDiplomacy: function() {
             if(Cities[this._cid].diplomacy == 1) // Selbst
-                this._textEntity.css("background-color", "#4096EE");
+                this._infoEntity.css("background-color", "#4096EE");
             else if(Cities[this._cid].diplomacy == 2) // Verbündet
-                this._textEntity.css("background-color", "#356AA0");
+                this._infoEntity.css("background-color", "#356AA0");
             else if(Cities[this._cid].diplomacy == 3) // Verfeindet
-                this._textEntity.css("background-color", "#D01F3C");
+                this._infoEntity.css("background-color", "#D01F3C");
             else if(Cities[this._cid].diplomacy == 4) // Neutral
-                this._textEntity.css("background-color", "#EEEEEE");
+                this._infoEntity.css("background-color", "#EEEEEE");
         },
 
         select: function() {

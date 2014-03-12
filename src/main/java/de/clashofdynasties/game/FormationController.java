@@ -139,9 +139,20 @@ public class FormationController
         }
     }
 
+    @RequestMapping(value="/game/controls/formation", method = RequestMethod.GET)
+    public String showInfoMenu(ModelMap map, Principal principal, @RequestParam("formation") int id)
+    {
+        Formation formation = formationRepository.findOne(id);
+
+        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("formation", formation);
+
+        return "formation/info";
+    }
+
     @RequestMapping(value="/game/formations/save", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public String save(@RequestParam("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)
+    public String save(Principal principal, @RequestParam("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)
     {
         City city = cityRepository.findOne(cityId);
 
@@ -156,6 +167,7 @@ public class FormationController
             formation.setHealth(100);
             formation.setLastCity(city);
             formation.setRoute(new ArrayList<City>());
+            formation.setPlayer(playerRepository.findByName(principal.getName()));
         }
 
         if(formation.getRoute().isEmpty())
