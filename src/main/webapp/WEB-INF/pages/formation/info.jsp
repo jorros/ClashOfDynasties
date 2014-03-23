@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <button onclick="openMenu('game/menu/formation?formation=${formation.id}')"><img src="assets/setFormation.png" /></button>
+<button onclick="openMenu('game/formations/remove?formation=${formation.id}')"><img src="assets/removeCaravan.png" /></button>
 <br><br>
 <table style="width:100%;">
     <tr>
@@ -9,5 +10,9 @@
     </tr>
     <tr>
         <td colspan="2">Kampfstärke: 150</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
     </tr>
 </table>

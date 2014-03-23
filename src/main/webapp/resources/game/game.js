@@ -6,6 +6,8 @@ window.onload = function() {
     Crafty.init();
     Crafty.canvas.init();
 
+    console.log("Crafty " + Crafty.getVersion());
+
     Crafty.scene("loading", function() {
        Crafty.background = "#000";
 
@@ -68,14 +70,17 @@ window.onload = function() {
         // Initialisiere
         cityEntity();
         roadEntity();
+        formationEntity();
         loadTop();
         loadAllCities();
+        loadAllFormations();
 
         // Update Callback
         var updateCallback = function()
         {
             loadTop();
             updateCities();
+            updateFormations();
             window.setTimeout(updateCallback, 1000);
         }
         window.setTimeout(updateCallback, 1000);

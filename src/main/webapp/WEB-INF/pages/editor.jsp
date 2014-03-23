@@ -14,6 +14,8 @@
     <script type="text/javascript" src="/src/cityEntity.js"></script>
     <script type="text/javascript" src="/src/roads.js"></script>
     <script type="text/javascript" src="/src/roadEntity.js"></script>
+    <script type="text/javascript" src="/src/formationEntity.js"></script>
+    <script type="text/javascript" src="/src/formations.js"></script>
     <script type="text/javascript" src="/src/editor.js"></script>
 </head>
 <body>

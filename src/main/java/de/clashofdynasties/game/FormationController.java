@@ -53,7 +53,7 @@ public class FormationController
 
     @RequestMapping(value = "/game/formations/all", method = RequestMethod.GET)
     public @ResponseBody
-    Map<Integer, Formation> loadAllCities(Principal principal)
+    Map<Integer, Formation> loadAllFormations(Principal principal)
     {
         Player player = playerRepository.findByName(principal.getName());
 
@@ -62,7 +62,7 @@ public class FormationController
 
         for(Formation formation : formations)
         {
-            if(formation.getRoute() != null)
+            if(formation.getRoute() != null && !formation.getRoute().isEmpty())
                 data.put(formation.getId(), formation);
         }
 
@@ -154,39 +154,48 @@ public class FormationController
     @ResponseStatus(value = HttpStatus.OK)
     public String save(Principal principal, @RequestParam("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)
     {
+        // Formation, City und Player vorbereiten
         City city = cityRepository.findOne(cityId);
+        Player player = playerRepository.findByName(principal.getName());
 
-        Formation formation;
-        if(formationId > 0)
-            formation = formationRepository.findOne(formationId);
-        else
+        // Formation nur fetchen, wenn City dem Spieler gehört
+        if(player.equals(city.getPlayer()))
         {
-            formation = new Formation();
-            formation.setId(counterService.getNextSequence("formation"));
-            formation.setUnits(new ArrayList<Unit>());
-            formation.setHealth(100);
-            formation.setLastCity(city);
-            formation.setRoute(new ArrayList<City>());
-            formation.setPlayer(playerRepository.findByName(principal.getName()));
-        }
-
-        if(formation.getRoute().isEmpty())
-        {
-            List<Unit> units = new ArrayList<Unit>();
-            for(int unitId : unitsId)
+            Formation formation;
+            if(formationId > 0)
+                formation = formationRepository.findOne(formationId);
+            else
             {
-                Unit unit = unitRepository.findOne(unitId);
-                if(city.getUnits().contains(unit))
-                {
-                    city.getUnits().remove(unit);
-                    formation.getUnits().add(unit);
-                }
+                formation = new Formation();
+                formation.setId(counterService.getNextSequence("formation"));
+                formation.setUnits(new ArrayList<Unit>());
+                formation.setHealth(100);
+                formation.setLastCity(city);
+                formation.setRoute(new ArrayList<City>());
+                formation.setPlayer(player);
             }
 
-            formation.setName(name);
+            if(player.equals(formation.getPlayer()))
+            {
+                if(formation.getRoute().isEmpty())
+                {
+                    List<Unit> units = new ArrayList<Unit>();
+                    for(int unitId : unitsId)
+                    {
+                        Unit unit = unitRepository.findOne(unitId);
+                        if(city.getUnits().contains(unit))
+                        {
+                            city.getUnits().remove(unit);
+                            formation.getUnits().add(unit);
+                        }
+                    }
 
-            cityRepository.save(city);
-            formationRepository.save(formation);
+                    formation.setName(name);
+
+                    cityRepository.save(city);
+                    formationRepository.save(formation);
+                }
+            }
         }
 
         return null;
