@@ -1,6 +1,7 @@
 var Roads = {};
 var Editor = false;
 var Selected = null;
+var isFormationSelected = false;
 
 window.onload = function() {
     Crafty.init();

@@ -6,15 +6,31 @@ function formationEntity()
         _textEntity: {},
         _diplomacy: 1,
 
+        _buildInfo: function() {
+            this._textEntity = Crafty.e("2D, DOM, Text").attr({
+                x: this._x,
+                y: this._y - 40,
+                w: 220,
+                h: 35,
+                z: 11
+            }).textFont({ size: "24px", family: "Philosopher-Regular" }).unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
+
+            this.attach(this._textEntity);
+        },
+
+        _updateInfo: function() {
+            this._textEntity.text(Formations[this._fid].name);
+        },
+
         _updateDiplomacy: function() {
-            if(this._diplomacy == 1) // Selbst
-                this._infoEntity.css("color", "#4096EE");
-            else if(this._diplomacy == 2) // Verbündet
-                this._infoEntity.css("color", "#356AA0");
-            else if(this._diplomacy == 3) // Verfeindet
-                this._infoEntity.css("color", "#D01F3C");
-            else if(this._diplomacy == 4) // Neutral
-                this._infoEntity.css("color", "#EEEEEE");
+            if(Formations[this._fid].diplomacy == 1) // Selbst
+                this._textEntity.css("color", "#4096EE");
+            else if(Formations[this._fid].diplomacy == 2) // Verbündet
+                this._textEntity.css("color", "#356AA0");
+            else if(Formations[this._fid].diplomacy == 3) // Verfeindet
+                this._textEntity.css("color", "#D01F3C");
+            else if(Formations[this._fid].diplomacy == 4) // Neutral
+                this._textEntity.css("color", "#EEEEEE");
         },
 
         select: function() {
@@ -23,71 +39,59 @@ function formationEntity()
 
             Selected = this;
 
+            isFormationSelected = true;
+
             openControl('game/controls/formation?formation=' + this._cid, this._name);
         },
 
         deselect: function() {
+            isFormationSelected = false;
         },
 
         init: function() {
             this.requires("2D, Canvas, Image, Mouse");
-            this.image("assets/Formation.png");
-            this.w = 105;
-            this.h = 90;
         },
 
-        formation: function(formation) {
-            this._fid = formation.id;
-            this.x = formation.x;
-            this.y = formation.y;
-            this._name = formation.name;
+        formation: function(id) {
+            this._fid = id;
             this.z = 11;
+
+            this.image("assets/Formation.png");
+            this.w = 60;
+            this.h = 52;
 
             // Selektionsanbindung
             this.bind("Click", this.select);
 
-            // Erstellen der Textentity
-            this._infoEntity = Crafty.e("2D, DOM, Text").attr({
-                x: this._x,
-                y: this._y - 40,
-                w: 220,
-                h: 35,
-                z: 11
-            }).text(this._name).textFont({ size: "24px", family: "Philosopher-Regular" }).unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
-
-            this.attach(this._infoEntity);
-
-            this._updateDiplomacy();
+            this._buildInfo();
+            this._updateInfo();
 
             return this;
         },
 
         getX: function() {
-            return this._x + this._w / 2;
+            return Math.round(this._x + this._w / 2);
         },
 
         getY: function() {
-            return this._y + this._h / 2;
+            return Math.round(this._y + this._h / 2);
         },
 
-        update: function(formation) {
-            if(formation.id != this._fid)
-                this._fid = formation.id;
-
-            if(this._x != formation.x)
+        update: function() {
+            if(Formations[this._fid] == null)
+                this.destroy();
+            else
             {
-                this.x = formation.x;
-            }
+                this.x = Formations[this._fid].x;
+                this.y = Formations[this._fid].y;
 
-            if(this._y != formation.y)
-            {
-                this.y = formation.y;
-            }
+                if(Formations[this._fid].deployed)
+                    this.visible = false;
+                else
+                    this.visible = true;
 
-            if(formation.name != this._name)
-            {
-                this._name = formation.name;
-                this._infoEntity.text(this._name);
+                this._updateDiplomacy();
+                this._updateInfo();
             }
 
             return this;

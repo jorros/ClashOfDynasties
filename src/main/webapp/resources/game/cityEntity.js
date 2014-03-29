@@ -16,7 +16,7 @@ function cityEntity()
 
             return {
                 callback: function(key, options) {
-                    openControl("game/controls/formation?formation=" + key);
+                    Formations[key].select();
                 },
                 items: items
             }
@@ -205,6 +205,16 @@ function cityEntity()
         deselect: function() {
         },
 
+        over: function() {
+            if(isFormationSelected)
+            {
+                $.getJSON("game/formation/way", { "formation": Selected._fid, "target": this._cid }, function(data)
+                {
+
+                });
+            }
+        },
+
         init: function() {
             this.requires("2D, Canvas, Image, Mouse");
         },
@@ -215,6 +225,7 @@ function cityEntity()
 
             // Selektionsanbindung
             this.bind("Click", this.select);
+            this.bind("MouseOver", this.over);
 
             this._buildInfo();
             this._updateInfo();

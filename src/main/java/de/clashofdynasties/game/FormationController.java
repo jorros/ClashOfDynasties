@@ -9,6 +9,7 @@ import de.clashofdynasties.repository.FormationRepository;
 import de.clashofdynasties.repository.PlayerRepository;
 import de.clashofdynasties.repository.UnitRepository;
 import de.clashofdynasties.service.CounterService;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpHeaders;
@@ -62,8 +63,25 @@ public class FormationController
 
         for(Formation formation : formations)
         {
+            // Deploy Status ermitteln
             if(formation.getRoute() != null && !formation.getRoute().isEmpty())
-                data.put(formation.getId(), formation);
+                formation.setDeployed(false);
+            else
+            {
+                formation.setDeployed(true);
+            }
+
+            // Diplomatie ermitteln
+            if(player.equals(formation.getPlayer()))
+                formation.setDiplomacy(1);
+
+            // Wenn Spieler neutral
+            if(formation.getPlayer().getId() == 1)
+            {
+                formation.setDiplomacy(4);
+            }
+
+            data.put(formation.getId(), formation);
         }
 
         return data;
@@ -150,6 +168,19 @@ public class FormationController
         return "formation/info";
     }
 
+    @RequestMapping(value="/game/formation/way", method = RequestMethod.GET)
+    public @ResponseBody List<Integer> calculateWay(@RequestParam("formation") int id, @RequestParam("target") int cityid)
+    {
+        ArrayList<Integer> route = new ArrayList<Integer>();
+
+        Formation formation = formationRepository.findOne(id);
+        City city = cityRepository.findOne(cityid);
+
+        route.add(city.getId());
+
+        return route;
+    }
+
     @RequestMapping(value="/game/formations/save", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public String save(Principal principal, @RequestParam("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)
@@ -173,6 +204,8 @@ public class FormationController
                 formation.setLastCity(city);
                 formation.setRoute(new ArrayList<City>());
                 formation.setPlayer(player);
+                formation.setX(city.getX());
+                formation.setY(city.getY());
             }
 
             if(player.equals(formation.getPlayer()))

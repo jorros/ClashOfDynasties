@@ -1,6 +1,7 @@
 package de.clashofdynasties.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -29,6 +30,12 @@ public class Formation
 
 	@DBRef
 	private List<City> route;
+
+    @Transient
+    private boolean deployed;
+
+    @Transient
+    private int diplomacy;
 
 	public int getId()
 	{
@@ -119,6 +126,26 @@ public class Formation
 	{
 		this.route = route;
 	}
+
+    public boolean isDeployed()
+    {
+        return deployed;
+    }
+
+    public void setDeployed(boolean deployed)
+    {
+        this.deployed = deployed;
+    }
+
+    public int getDiplomacy()
+    {
+        return diplomacy;
+    }
+
+    public void setDiplomacy(int diplomacy)
+    {
+        this.diplomacy = diplomacy;
+    }
 
     public boolean equals(Object other)
     {

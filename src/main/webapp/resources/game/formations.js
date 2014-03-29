@@ -23,8 +23,9 @@ function updateFormations()
                 console.log("Formation");
                 FormationEntites[id] = Crafty.e("Formation").formation(id);
             }
-            else
+            else {
                 FormationEntites[id].update();
+            }
         });
     })
 }
