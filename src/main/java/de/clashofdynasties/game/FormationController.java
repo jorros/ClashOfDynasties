@@ -1,9 +1,6 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Formation;
-import de.clashofdynasties.models.Player;
-import de.clashofdynasties.models.Unit;
+import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.FormationRepository;
 import de.clashofdynasties.repository.PlayerRepository;
@@ -64,7 +61,7 @@ public class FormationController
         for(Formation formation : formations)
         {
             // Deploy Status ermitteln
-            if(formation.getRoute() != null && !formation.getRoute().isEmpty())
+            if(formation.getRoute() != null)
                 formation.setDeployed(false);
             else
             {
@@ -169,14 +166,14 @@ public class FormationController
     }
 
     @RequestMapping(value="/game/formation/way", method = RequestMethod.GET)
-    public @ResponseBody List<Integer> calculateWay(@RequestParam("formation") int id, @RequestParam("target") int cityid)
+    public @ResponseBody Route calculateWay(@RequestParam("formation") int id, @RequestParam("target") int cityid)
     {
-        ArrayList<Integer> route = new ArrayList<Integer>();
+        Route route = new Route();
 
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(cityid);
 
-        route.add(city.getId());
+        route.setNext(city);
 
         return route;
     }
@@ -202,7 +199,7 @@ public class FormationController
                 formation.setUnits(new ArrayList<Unit>());
                 formation.setHealth(100);
                 formation.setLastCity(city);
-                formation.setRoute(new ArrayList<City>());
+                formation.setRoute(null);
                 formation.setPlayer(player);
                 formation.setX(city.getX());
                 formation.setY(city.getY());
@@ -210,7 +207,7 @@ public class FormationController
 
             if(player.equals(formation.getPlayer()))
             {
-                if(formation.getRoute().isEmpty())
+                if(formation.getRoute() == null)
                 {
                     List<Unit> units = new ArrayList<Unit>();
                     for(int unitId : unitsId)

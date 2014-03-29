@@ -28,8 +28,7 @@ public class Formation
 	@DBRef
 	private List<Unit> units;
 
-	@DBRef
-	private List<City> route;
+	private Route route;
 
     @Transient
     private boolean deployed;
@@ -117,12 +116,12 @@ public class Formation
 		this.units = units;
 	}
 
-	public List<City> getRoute()
+	public Route getRoute()
 	{
 		return route;
 	}
 
-	public void setRoute(List<City> route)
+	public void setRoute(Route route)
 	{
 		this.route = route;
 	}
