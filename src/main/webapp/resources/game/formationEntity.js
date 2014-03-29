@@ -2,9 +2,7 @@ function formationEntity()
 {
     Crafty.c("Formation", {
         _fid: 0,
-        _name: "Unbekannt",
         _textEntity: {},
-        _diplomacy: 1,
 
         _buildInfo: function() {
             this._textEntity = Crafty.e("2D, DOM, Text").attr({
@@ -41,7 +39,7 @@ function formationEntity()
 
             isFormationSelected = true;
 
-            openControl('game/controls/formation?formation=' + this._cid, this._name);
+            openControl('game/controls/formation?formation=' + this._fid, Formations[this._fid].name);
         },
 
         deselect: function() {

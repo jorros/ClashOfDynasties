@@ -16,7 +16,7 @@ function cityEntity()
 
             return {
                 callback: function(key, options) {
-                    Formations[key].select();
+                    FormationEntites[key].select();
                 },
                 items: items
             }

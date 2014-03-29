@@ -61,7 +61,7 @@ public class CityController
         {
             for(Formation formation : formations)
             {
-                if((formation.getRoute() == null || formation.getRoute().isEmpty()) && formation.getLastCity().equals(city))
+                if(formation.getRoute() == null && formation.getLastCity().equals(city))
                 {
                     if(city.getFormations() == null)
                         city.setFormations(new ArrayList<Formation>());
