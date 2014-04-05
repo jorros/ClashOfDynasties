@@ -102,7 +102,7 @@ function cityEntity()
 
             if(Editor)
             {
-                $("#" + this._cid + "_resource").attr("src", "assets/resources/" + Cities[this._cid].resource + ".png");
+                $("#" + this._cid + "_resource").attr("src", "assets/resources/" + Cities[this._cid].resource.id + ".png");
                 $("#" + this._cid + "_capacity").text(Cities[this._cid].capacity);
             }
             else
@@ -206,11 +206,17 @@ function cityEntity()
         },
 
         over: function() {
-            if(isFormationSelected)
+            if(isFormationSelected && tempRouteEntity == null)
             {
+                tempRouteEntity = "";
                 $.getJSON("game/formation/way", { "formation": Selected._fid, "target": this._cid }, function(data)
                 {
+                    tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next.id);
+                    tempRoute = data.roads;
 
+                    $.each(tempRoute, function(index, road) {
+                        Roads[road.id].mark(true);
+                    });
                 });
             }
         },

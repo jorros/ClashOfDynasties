@@ -3,6 +3,9 @@ var Editor = false;
 var Selected = null;
 var isFormationSelected = false;
 
+var tempRoute = null;
+var tempRouteEntity = null;
+
 window.onload = function() {
     Crafty.init();
     Crafty.canvas.init();
@@ -53,6 +56,20 @@ window.onload = function() {
             .bind("MouseMove", function(e)
             {
                 Crafty.viewport.mouselook('drag', e);
+
+                if(tempRouteEntity != null) {
+                    tempRouteEntity.destroy();
+                    tempRouteEntity = null;
+                }
+
+                if(tempRoute != null)
+                {
+                    $.each(tempRoute, function(index, road) {
+                        Roads[road.id].mark(false);
+                    });
+
+                    tempRoute = null;
+                }
             })
             .bind("MouseUp", function()
             {

@@ -128,7 +128,7 @@ public class Formation
 
     public boolean isDeployed()
     {
-        return deployed;
+        return (this.getRoute() == null);
     }
 
     public void setDeployed(boolean deployed)

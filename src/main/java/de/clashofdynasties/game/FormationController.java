@@ -1,10 +1,8 @@
 package de.clashofdynasties.game;
 
+import de.clashofdynasties.helper.Routing;
 import de.clashofdynasties.models.*;
-import de.clashofdynasties.repository.CityRepository;
-import de.clashofdynasties.repository.FormationRepository;
-import de.clashofdynasties.repository.PlayerRepository;
-import de.clashofdynasties.repository.UnitRepository;
+import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
 import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +45,13 @@ public class FormationController
     UnitRepository unitRepository;
 
     @Autowired
+    RoadRepository roadRepository;
+
+    @Autowired
     CounterService counterService;
+
+    @Autowired
+    Routing routing;
 
     @RequestMapping(value = "/game/formations/all", method = RequestMethod.GET)
     public @ResponseBody
@@ -168,12 +172,10 @@ public class FormationController
     @RequestMapping(value="/game/formation/way", method = RequestMethod.GET)
     public @ResponseBody Route calculateWay(@RequestParam("formation") int id, @RequestParam("target") int cityid)
     {
-        Route route = new Route();
-
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(cityid);
 
-        route.setNext(city);
+        Route route = routing.calculateRoute(formation, city);
 
         return route;
     }

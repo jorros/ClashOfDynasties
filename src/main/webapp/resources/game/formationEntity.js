@@ -83,10 +83,14 @@ function formationEntity()
                 this.x = Formations[this._fid].x;
                 this.y = Formations[this._fid].y;
 
-                if(Formations[this._fid].deployed)
+                if(Formations[this._fid].deployed) {
                     this.visible = false;
-                else
+                    this._textEntity.visible = false;
+                }
+                else {
                     this.visible = true;
+                    this._textEntity.visible = true;
+                }
 
                 this._updateDiplomacy();
                 this._updateInfo();
