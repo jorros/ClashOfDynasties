@@ -30,39 +30,37 @@
     </div>
     <div id="body">
             <div id="content">
-                <div class="section">
-                    <div style="width:440px; height:191px; margin:0 auto;">
-                        <h3>Login</h3>
-                        <div>
-                            <form action="/login" id="login" method="post">
-                                <table>
-                                    <tr>
-                                        <td><label for="username">Benutzer:</label></td>
-                                        <td><input type="text" id="username" name="username" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td><label for="password">Passwort:</label></td>
-                                        <td><input type="password" id="password" name="password" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><label for="rememberme">Angemeldet bleiben?</label><input type="checkbox" id="rememberme" /></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><a href="/resetpassword">Passwort vergessen?</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2"><button type="submit" style="width:100%">Einloggen</button></td>
-                                    </tr>
-                                </table>
-                            </form>
-                        </div>
-                        <c:if test="${'fail' eq param.auth}">
-                            <div style="color:red">
-                                Fehler beim Login!<br />
-                                Grund : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-                            </div>
-                        </c:if>
+                <div class="section" style="width:440px; height:191px; margin:0 auto;">
+                    <h4>Login</h4>
+                    <div>
+                        <form action="/login" id="login" method="post">
+                            <table>
+                                <tr>
+                                    <td><label for="username">Benutzer:</label></td>
+                                    <td><input type="text" id="username" name="username" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="password">Passwort:</label></td>
+                                    <td><input type="password" id="password" name="password" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><label for="rememberme">Angemeldet bleiben?</label><input type="checkbox" id="rememberme" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><a href="/resetpassword">Passwort vergessen?</a></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><button type="submit" style="width:100%">Einloggen</button></td>
+                                </tr>
+                            </table>
+                        </form>
                     </div>
+                    <c:if test="${'fail' eq param.auth}">
+                        <div style="color:red">
+                            Fehler beim Login!<br />
+                            Grund : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+                        </div>
+                    </c:if>
                 </div>
             </div>
     </div>
