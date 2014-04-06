@@ -82,6 +82,7 @@ public class EditorController
 		city.setX(x);
 		city.setY(y);
 		city.setType(cityTypeRepository.findOne(1));
+        city.setResource(resourceRepository.findOne(1));
 
 		cityRepository.save(city);
 

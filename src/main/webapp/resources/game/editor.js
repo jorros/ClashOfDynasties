@@ -67,9 +67,7 @@ window.onload = function() {
 
                     if(SelectionMode == 1)
                     {
-                        $.getJSON("/editor/createCity", { x: e.realX, y: e.realY}, function(city){
-                            Cities[city.id] = Crafty.e("City").city(city);
-                        });
+                        $.get("/editor/createCity", { x: e.realX, y: e.realY});
                     }
                 }
             })
@@ -77,12 +75,15 @@ window.onload = function() {
         // Initialisiere
         cityEntity();
         roadEntity();
+        formationEntity();
         loadAllCities();
+        loadAllFormations();
 
         // Update Callback
         var updateCallback = function()
         {
             updateCities();
+            updateFormations();
             window.setTimeout(updateCallback, 1000);
         }
         window.setTimeout(updateCallback, 1000);
