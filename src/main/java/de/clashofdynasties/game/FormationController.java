@@ -193,8 +193,14 @@ public class FormationController
             Route route = routing.calculateRoute(formation, city);
             if(route != null)
             {
-                formation.setRoute(route);
-                formation.move(30);
+                if(formation.isDeployed())
+                {
+                    formation.setRoute(route);
+                    formation.move(70);
+                }
+                else
+                    formation.setRoute(route);
+
                 formationRepository.save(formation);
             }
         }

@@ -52,7 +52,7 @@ function formationEntity()
 
         formation: function(id) {
             this._fid = id;
-            this.z = 11;
+            this.z = 12;
 
             this.image("assets/Formation.png");
             this.w = 60;
@@ -67,21 +67,13 @@ function formationEntity()
             return this;
         },
 
-        getX: function() {
-            return Math.round(this._x + this._w / 2);
-        },
-
-        getY: function() {
-            return Math.round(this._y + this._h / 2);
-        },
-
         update: function() {
             if(Formations[this._fid] == null)
                 this.destroy();
             else
             {
-                this.x = Formations[this._fid].x;
-                this.y = Formations[this._fid].y;
+                this.x = Math.round(Formations[this._fid].x - this._w / 2);
+                this.y = Math.round(Formations[this._fid].y - this._h / 2);
 
                 if(Formations[this._fid].deployed) {
                     this.visible = false;

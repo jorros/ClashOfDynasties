@@ -32,10 +32,10 @@ function roadEntity()
                 var city1 = Roads[this._rid].point1.id;
                 var city2 = Roads[this._rid].point2.id;
 
-                this.x1 = CityEntities[city1].getX();
-                this.y1 = CityEntities[city1].getY();
-                this.x2 = CityEntities[city2].getX();
-                this.y2 = CityEntities[city2].getY();
+                this.x1 = Cities[city1].x;
+                this.y1 = Cities[city1].y;
+                this.x2 = Cities[city2].x;
+                this.y2 = Cities[city2].y;
 
                 this.x = Math.min(this.x1, this.x2);
                 this.y = Math.min(this.y1, this.y2);
@@ -45,10 +45,10 @@ function roadEntity()
         },
 
         temp: function(formation, city) {
-            this.x1 = FormationEntities[formation].getX();
-            this.y1 = FormationEntities[formation].getY();
-            this.x2 = CityEntities[city].getX();
-            this.y2 = CityEntities[city].getY();
+            this.x1 = Formations[formation].x;
+            this.y1 = Formations[formation].y;
+            this.x2 = Cities[city].x;
+            this.y2 = Cities[city].y;
 
             this.x = Math.min(this.x1, this.x2);
             this.y = Math.min(this.y1, this.y2);

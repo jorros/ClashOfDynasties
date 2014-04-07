@@ -26,7 +26,7 @@ function cityEntity()
             this._infoEntity = Crafty.e("2D, DOM").attr({
                 w: 270,
                 h: 35,
-                x: (this.getX() - this._infoEntity._w / 2),
+                x: (Cities[this._cid].x - this._infoEntity._w / 2),
                 y: (this._y - 40),
                 z: 11
             }); //.text(this._name).textFont("size", "24px").textFont("family", "Philosopher-Regular").unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
@@ -90,7 +90,7 @@ function cityEntity()
         _updateInfo: function() {
             this._infoEntity.h = 35;
             this._infoEntity.w = 270;
-            this._infoEntity.x = this.getX() - this._infoEntity._w / 2;
+            this._infoEntity.x = Cities[this._cid].x - this._infoEntity._w / 2;
             this._infoEntity.y = this._y - 40;
 
             this._formationsInfoEntity.w = 50;
@@ -247,26 +247,15 @@ function cityEntity()
             return this;
         },
 
-        getX: function() {
-            return Math.round(this._x + this._w / 2);
-        },
-
-        getY: function() {
-            return Math.round(this._y + this._h / 2);
-        },
-
         update: function() {
             if(Cities[this._cid] == null)
                 this.destroy();
             else
             {
-                this.x = Cities[this._cid].x;
-                this.y = Cities[this._cid].y;
+                this._setType();
 
-                if(Cities[this._cid].type.id != this._type)
-                {
-                    this._setType();
-                }
+                this.x = Math.round(Cities[this._cid].x - this._w / 2);
+                this.y = Math.round(Cities[this._cid].y - this._h / 2);
 
                 this._updateDiplomacy();
                 this._updateInfo();
