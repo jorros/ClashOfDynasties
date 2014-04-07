@@ -31,13 +31,40 @@ function formationEntity()
                 this._textEntity.css("color", "#EEEEEE");
         },
 
+        showRoute: function(to) {
+            hideRoute();
+
+            if(to == undefined) {
+                tempRouteEntity = Crafty.e("Road").temp(Selected._fid, Formations[Selected._fid].route.next.id);
+                tempRoute = Formations[Selected._fid].route.roads;
+
+                $.each(tempRoute, function (index, road) {
+                    RoadEntities[road.id].mark(true);
+                });
+            }
+            else {
+                tempRouteEntity = "";
+                tempRoute = "";
+                $.getJSON("game/formation/way", { "formation": Selected._fid, "target": to }, function(data)
+                {
+                    isCalculatedRoute = true;
+                    tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next.id);
+                    tempRoute = data.roads;
+
+                    $.each(tempRoute, function(index, road) {
+                        RoadEntities[road.id].mark(true);
+                    });
+                });
+            }
+        },
+
         select: function() {
-            if(Selected != null)
-                Selected.deselect();
-
+            deselect();
             Selected = this;
-
             isFormationSelected = true;
+
+            if(Formations[this._fid].route != null)
+                this.showRoute();
 
             openControl('game/controls/formation?formation=' + this._fid, Formations[this._fid].name);
         },

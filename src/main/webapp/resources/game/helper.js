@@ -30,6 +30,33 @@ function openControl(path, title)
     }
 }
 
+function hideRoute()
+{
+    if(tempRouteEntity != null && tempRouteEntity != "") {
+        tempRouteEntity.destroy();
+    }
+
+    if(tempRoute != null && tempRouteEntity != "") {
+        $.each(tempRoute, function(index, road) {
+            RoadEntities[road.id].mark(false);
+        });
+    }
+
+    tempRouteEntity = null;
+    tempRoute = null;
+}
+
+function deselect()
+{
+    if(Selected != null)
+        Selected.deselect();
+
+    closeMenu();
+    closeControl();
+
+    hideRoute();
+}
+
 function closeControl()
 {
     $("#controls").dialog("close");

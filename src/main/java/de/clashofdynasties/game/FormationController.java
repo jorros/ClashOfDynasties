@@ -208,6 +208,27 @@ public class FormationController
         return null;
     }
 
+    @RequestMapping(value="/game/formations/remove", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public String remove(Principal principal, @RequestParam("formation") int formationId)
+    {
+        Player player = playerRepository.findByName(principal.getName());
+        Formation formation = formationRepository.findOne(formationId);
+
+        if(formation.getPlayer().equals(player) && formation.isDeployed() && formation.getLastCity().getPlayer().equals(formation.getPlayer()))
+        {
+            City city = formation.getLastCity();
+
+            for(Unit unit : formation.getUnits())
+            {
+                city.getUnits().add(unit);
+            }
+            cityRepository.save(city);
+            formationRepository.delete(formation);
+        }
+        return null;
+    }
+
     @RequestMapping(value="/game/formations/save", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public String save(Principal principal, @RequestParam("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)

@@ -1,6 +1,7 @@
 var Editor = false;
 var Selected = null;
 var isFormationSelected = false;
+var isCalculatedRoute = false;
 
 var tempRoute = null;
 var tempRouteEntity = null;
@@ -56,18 +57,15 @@ window.onload = function() {
             {
                 Crafty.viewport.mouselook('drag', e);
 
-                if(tempRouteEntity != null) {
-                    tempRouteEntity.destroy();
-                    tempRouteEntity = null;
-                }
-
-                if(tempRoute != null)
-                {
-                    $.each(tempRoute, function(index, road) {
-                        RoadEntities[road.id].mark(false);
-                    });
-
-                    tempRoute = null;
+                if(Selected != null && Selected._fid != null) {
+                    if(isCalculatedRoute && !Formations[Selected._fid].deployed) {
+                        isCalculatedRoute = false;
+                        Selected.showRoute();
+                    }
+                    else if(isCalculatedRoute) {
+                        isCalculatedRoute = false;
+                        hideRoute();
+                    }
                 }
             })
             .bind("MouseUp", function()
@@ -76,11 +74,7 @@ window.onload = function() {
 
                 if(lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y)
                 {
-                    if(Selected != null)
-                        Selected.deselect();
-
-                    closeMenu();
-                    closeControl();
+                    deselect();
                 }
             })
 

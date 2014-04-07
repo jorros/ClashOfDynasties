@@ -204,9 +204,7 @@ function cityEntity()
                     openControl('game/controls/city?city=' + this._cid, this._name);
             }
 
-            if(Selected != null)
-                Selected.deselect();
-
+            deselect();
             Selected = this;
         },
 
@@ -214,18 +212,10 @@ function cityEntity()
         },
 
         over: function() {
-            if(isFormationSelected && tempRouteEntity == null)
+            if(isFormationSelected && !isCalculatedRoute)
             {
-                tempRouteEntity = "";
-                $.getJSON("game/formation/way", { "formation": Selected._fid, "target": this._cid }, function(data)
-                {
-                    tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next.id);
-                    tempRoute = data.roads;
-
-                    $.each(tempRoute, function(index, road) {
-                        RoadEntities[road.id].mark(true);
-                    });
-                });
+                Selected.showRoute(this._cid);
+                isCalculatedRoute = true;
             }
         },
 
