@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ClashOfDynasties:war exploded">
+  <artifact type="exploded-war" name="Clash of Dynasties:war exploded">
     <output-path>$PROJECT_DIR$/target/SpringAppSecurity</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Clash of Dynasties/web/Web" />
@@ -18,6 +18,7 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.1.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:3.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:3.1.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.7.2" />
@@ -26,10 +27,9 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:3.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:3.1.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:3.1.3.RELEASE" />
-          <element id="library" level="project" name="org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
-          <element id="library" level="project" name="org.springframework.data:spring-data-mongodb:1.3.3.RELEASE" />
           <element id="library" level="project" name="org.mongodb:mongo-java-driver:2.11.4" />
-          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="org.springframework.data:spring-data-mongodb:1.3.3.RELEASE" />
+          <element id="library" level="project" name="org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
         </element>
       </element>
     </root>

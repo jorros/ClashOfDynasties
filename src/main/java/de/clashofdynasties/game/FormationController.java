@@ -180,6 +180,28 @@ public class FormationController
         return route;
     }
 
+    @RequestMapping(value="/game/formation/move", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public String move(Principal principal, @RequestMapping("formation") int formationId, @RequestMapping("target") int cityId)
+    {
+        Formation formation = formationRepository.findOne(formationId);
+        City city = cityRepository.findOne(cityId);
+        Player player = playerRepository.findByName(principal.getName());
+
+        if(player.equals(formation.getPlayer()))
+        {
+            Route route = routing.calculateRoute(formation, city);
+            if(route != null)
+            {
+                formation.setRoute(route);
+                formation.move(30);
+                formationRepository.save(formation);
+            }
+        }
+
+        return null;
+    }
+
     @RequestMapping(value="/game/formations/save", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public String save(Principal principal, @RequestParam("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)

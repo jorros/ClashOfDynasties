@@ -166,11 +166,6 @@ function cityEntity()
         },
 
         select: function() {
-            if(Selected != null)
-                Selected.deselect();
-
-            Selected = this;
-
             if(Editor)
             {
                 openControl('editor/city?city=' + this._cid, Cities[this._cid].name);
@@ -198,8 +193,21 @@ function cityEntity()
                     }
                 }
             }
-            else
-                openControl('game/controls/city?city=' + this._cid, this._name);
+            else {
+                if(isFormationSelected)
+                {
+                    $.get("game/formation/move", { "formation": Selected._fid, "target": this._cid });
+
+                    return;
+                }
+                else
+                    openControl('game/controls/city?city=' + this._cid, this._name);
+            }
+
+            if(Selected != null)
+                Selected.deselect();
+
+            Selected = this;
         },
 
         deselect: function() {

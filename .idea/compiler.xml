@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Clash of Dynasties" />
         <module name="Source" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Clash of Dynasties" target="1.6" />
       <module name="Source" target="1.6" />
     </bytecodeTargetLevel>
   </component>

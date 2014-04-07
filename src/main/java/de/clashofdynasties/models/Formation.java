@@ -146,6 +146,23 @@ public class Formation
         this.diplomacy = diplomacy;
     }
 
+    public void move(int pixel)
+    {
+        if(!isDeployed())
+        {
+            City to = route.getNext();
+
+            int vecX = to.getX() - this.getX();
+            int vecY = to.getY() - this.getY();
+            double distance = Math.sqrt(Math.pow(to.getX() - getX(), 2) + Math.pow(to.getY() - getY(), 2));
+
+            double multiplier = pixel / distance;
+
+            setX(new Double(getX() + vecX * multiplier).intValue());
+            setY(new Double(getY() + vecY * multiplier).intValue());
+        }
+    }
+
     public boolean equals(Object other)
     {
         if(other instanceof Formation && ((Formation)other).getId() == this.id)
