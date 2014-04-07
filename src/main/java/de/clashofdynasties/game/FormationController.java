@@ -182,7 +182,7 @@ public class FormationController
 
     @RequestMapping(value="/game/formation/move", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public String move(Principal principal, @RequestMapping("formation") int formationId, @RequestMapping("target") int cityId)
+    public String move(Principal principal, @RequestParam("formation") int formationId, @RequestParam("target") int cityId)
     {
         Formation formation = formationRepository.findOne(formationId);
         City city = cityRepository.findOne(cityId);
