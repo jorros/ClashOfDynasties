@@ -1,4 +1,3 @@
-var Roads = {};
 var Editor = false;
 var Selected = null;
 var isFormationSelected = false;
@@ -65,7 +64,7 @@ window.onload = function() {
                 if(tempRoute != null)
                 {
                     $.each(tempRoute, function(index, road) {
-                        Roads[road.id].mark(false);
+                        RoadEntities[road.id].mark(false);
                     });
 
                     tempRoute = null;
@@ -90,8 +89,8 @@ window.onload = function() {
         roadEntity();
         formationEntity();
         loadTop();
-        loadAllCities();
-        loadAllFormations();
+        updateCities();
+        updateFormations();
 
         // Update Callback
         var updateCallback = function()

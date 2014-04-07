@@ -16,7 +16,7 @@ function cityEntity()
 
             return {
                 callback: function(key, options) {
-                    FormationEntites[key].select();
+                    FormationEntities[key].select();
                 },
                 items: items
             }
@@ -179,7 +179,7 @@ function cityEntity()
                         var _temp1 = SelectedWay._cid;
                         var _temp2 = this._cid;
                         $.get("/editor/addWay", { point1: _temp1, point2: _temp2 }, function(data){
-                            loadAllRoads();
+                            updateRoads();
                             if(data == "ok")
                             {
                                 var weight = prompt("Geschwindigkeitsfaktor angeben (zwischen 0 und 1)");
@@ -223,7 +223,7 @@ function cityEntity()
                     tempRoute = data.roads;
 
                     $.each(tempRoute, function(index, road) {
-                        Roads[road.id].mark(true);
+                        RoadEntities[road.id].mark(true);
                     });
                 });
             }

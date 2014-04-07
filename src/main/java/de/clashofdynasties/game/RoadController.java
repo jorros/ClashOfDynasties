@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class RoadController
@@ -16,12 +18,18 @@ public class RoadController
 	@Autowired
 	private RoadRepository roadRepository;
 
-	@RequestMapping(value = "/game/roads/load", method = RequestMethod.GET)
+	@RequestMapping(value = "/game/roads/all", method = RequestMethod.GET)
 	public @ResponseBody
-	List<Road> loadAllRoads()
+    Map<Integer, Road> loadAllRoads()
 	{
 		List<Road> roads = roadRepository.findAll();
+        HashMap<Integer, Road> data = new HashMap<Integer, Road>();
 
-		return roads;
+        for(Road road : roads)
+        {
+            data.put(road.getId(), road);
+        }
+
+		return data;
 	}
 }

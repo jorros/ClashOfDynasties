@@ -1,17 +1,5 @@
 var Formations = {};
-var FormationEntites = {};
-
-function loadAllFormations()
-{
-    $.getJSON("/game/formations/all", function(data){
-        Formations = data;
-        $.each(data, function(id, formation) {
-            console.log(formation.name);
-            FormationEntites[id] = Crafty.e("Formation").formation(id);
-            FormationEntites[id].update();
-        });
-    })
-}
+var FormationEntities = {};
 
 function updateFormations()
 {
@@ -20,12 +8,10 @@ function updateFormations()
         $.each(data, function(id, formation) {
             if(FormationEntites[id] == null)
             {
-                console.log("Formation");
-                FormationEntites[id] = Crafty.e("Formation").formation(id);
+                FormationEntities[id] = Crafty.e("Formation").formation(id);
             }
-            else {
-                FormationEntites[id].update();
-            }
+
+            FormationEntities[id].update();
         });
     })
 }

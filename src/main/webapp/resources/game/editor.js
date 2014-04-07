@@ -1,5 +1,3 @@
-var Cities = {};
-var Roads = {};
 var Editor = true;
 var SelectionMode = 0;
 var Selected = null;
@@ -76,8 +74,8 @@ window.onload = function() {
         cityEntity();
         roadEntity();
         formationEntity();
-        loadAllCities();
-        loadAllFormations();
+        updateCities();
+        updateFormations();
 
         // Update Callback
         var updateCallback = function()

@@ -2,8 +2,6 @@ function roadEntity()
 {
     Crafty.c("Road", {
         _rid: 0,
-        _city1: 0,
-        _city2: 0,
         x1: 0,
         y1: 0,
         x2: 0,
@@ -15,20 +13,8 @@ function roadEntity()
             this.bind("Draw", this._draw);
         },
 
-        road: function(road) {
-            this._rid = road.id;
-            this._city1 = road.point1.id;
-            this._city2 = road.point2.id;
-
-            this.x1 = CityEntities[this._city1].getX();
-            this.y1 = CityEntities[this._city1].getY();
-            this.x2 = CityEntities[this._city2].getX();
-            this.y2 = CityEntities[this._city2].getY();
-
-            this.x = Math.min(this.x1, this.x2);
-            this.y = Math.min(this.y1, this.y2);
-            this.w = Math.max(this.x1, this.x2) - Math.min(this.x1, this.x2);
-            this.h = Math.max(this.y1, this.y2) - Math.min(this.y1, this.y2);
+        road: function(id) {
+            this._rid = id;
             this.z = 10;
 
             this.ready = true;
@@ -36,9 +22,31 @@ function roadEntity()
             return this;
         },
 
+        update: function() {
+            if(Roads[this._rid] == null)
+            {
+                this.destroy();
+            }
+            else
+            {
+                var city1 = Roads[this._rid].point1.id;
+                var city2 = Roads[this._rid].point2.id;
+
+                this.x1 = CityEntities[city1].getX();
+                this.y1 = CityEntities[city1].getY();
+                this.x2 = CityEntities[city2].getX();
+                this.y2 = CityEntities[city2].getY();
+
+                this.x = Math.min(this.x1, this.x2);
+                this.y = Math.min(this.y1, this.y2);
+                this.w = Math.max(this.x1, this.x2) - Math.min(this.x1, this.x2);
+                this.h = Math.max(this.y1, this.y2) - Math.min(this.y1, this.y2);
+            }
+        },
+
         temp: function(formation, city) {
-            this.x1 = FormationEntites[formation].getX();
-            this.y1 = FormationEntites[formation].getY();
+            this.x1 = FormationEntities[formation].getX();
+            this.y1 = FormationEntities[formation].getY();
             this.x2 = CityEntities[city].getX();
             this.y2 = CityEntities[city].getY();
 
@@ -46,7 +54,7 @@ function roadEntity()
             this.y = Math.min(this.y1, this.y2);
             this.w = Math.max(this.x1, this.x2) - Math.min(this.x1, this.x2);
             this.h = Math.max(this.y1, this.y2) - Math.min(this.y1, this.y2);
-            this.z = 11;
+            this.z = 10;
 
             this.marked = true;
             this.ready = true;
