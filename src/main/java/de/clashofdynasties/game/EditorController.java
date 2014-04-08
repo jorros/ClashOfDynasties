@@ -1,9 +1,6 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.BuildingBlueprint;
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.ItemType;
-import de.clashofdynasties.models.Road;
+import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -212,6 +209,14 @@ public class EditorController
         return "editor/building";
     }
 
+    @RequestMapping(value="/editor/menu/unit", method = RequestMethod.GET)
+    public String showUnitMenu(ModelMap map)
+    {
+        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+
+        return "editor/unit";
+    }
+
     @RequestMapping(value="/editor/building/setDesc", method = RequestMethod.GET)
     @ResponseBody
     public String setBuildingDesc(@RequestParam("id") int id, @RequestParam("value") String value)
@@ -239,6 +244,46 @@ public class EditorController
         BuildingBlueprint bp = buildingBlueprintRepository.findOne(id);
         bp.setPrice(value);
         buildingBlueprintRepository.save(bp);
+        return "OK";
+    }
+
+    @RequestMapping(value="/editor/unit/setDesc", method = RequestMethod.GET)
+    @ResponseBody
+    public String setUnitDesc(@RequestParam("id") int id, @RequestParam("value") String value)
+    {
+        UnitBlueprint bp = unitBlueprintRepository.findOne(id);
+        bp.setDescription(value);
+        unitBlueprintRepository.save(bp);
+        return "OK";
+    }
+
+    @RequestMapping(value="/editor/unit/setProduction", method = RequestMethod.GET)
+    @ResponseBody
+    public String setUnitProduction(@RequestParam("id") int id, @RequestParam("value") int value)
+    {
+        UnitBlueprint bp = unitBlueprintRepository.findOne(id);
+        bp.setRequiredProduction(value);
+        unitBlueprintRepository.save(bp);
+        return "OK";
+    }
+
+    @RequestMapping(value="/editor/unit/setPrice", method = RequestMethod.GET)
+    @ResponseBody
+    public String setUnitPrice(@RequestParam("id") int id, @RequestParam("value") int value)
+    {
+        UnitBlueprint bp = unitBlueprintRepository.findOne(id);
+        bp.setPrice(value);
+        unitBlueprintRepository.save(bp);
+        return "OK";
+    }
+
+    @RequestMapping(value="/editor/unit/setSpeed", method = RequestMethod.GET)
+    @ResponseBody
+    public String setUnitSpeed(@RequestParam("id") int id, @RequestParam("value") int value)
+    {
+        UnitBlueprint bp = unitBlueprintRepository.findOne(id);
+        bp.setSpeed(value);
+        unitBlueprintRepository.save(bp);
         return "OK";
     }
 }
