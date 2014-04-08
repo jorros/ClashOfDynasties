@@ -66,7 +66,10 @@ public class FormationController
         {
             // Deploy Status ermitteln
             if(formation.getRoute() != null)
+            {
                 formation.setDeployed(false);
+                formation.getRoute().setTime(calculateTime(formation, formation.getRoute()));
+            }
             else
             {
                 formation.setDeployed(true);
@@ -162,6 +165,8 @@ public class FormationController
     public String showInfoMenu(ModelMap map, Principal principal, @RequestParam("formation") int id)
     {
         Formation formation = formationRepository.findOne(id);
+        if(!formation.isDeployed())
+            formation.getRoute().setTime(calculateTime(formation, formation.getRoute()));
 
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
         map.addAttribute("formation", formation);
@@ -176,8 +181,33 @@ public class FormationController
         City city = cityRepository.findOne(cityid);
 
         Route route = routing.calculateRoute(formation, city);
+        route.setTime(calculateTime(formation, route));
 
         return route;
+    }
+
+    private int calculateTime(Formation formation, Route route)
+    {
+        ArrayList<Road> roads = new ArrayList<Road>();
+        roads.add(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
+        roads.addAll(route.getRoads());
+
+        int time = 0;
+        boolean deployed = formation.isDeployed();
+
+        for(Road road : roads)
+        {
+            int subtract = 140;
+            double length = road.getLength();
+            if(!deployed)
+            {
+                subtract = 70;
+                deployed = true;
+                length = Math.sqrt(Math.pow(formation.getX() - formation.getX(), 2) + Math.pow(route.getNext().getY() - route.getNext().getY(), 2));
+            }
+            time += new Double((length - subtract) / (formation.getSpeed() * road.getWeight())).intValue();
+        }
+        return time;
     }
 
     @RequestMapping(value="/game/formation/move", method = RequestMethod.GET)
@@ -248,7 +278,6 @@ public class FormationController
                 formation = new Formation();
                 formation.setId(counterService.getNextSequence("formation"));
                 formation.setUnits(new ArrayList<Unit>());
-                formation.setHealth(100);
                 formation.setLastCity(city);
                 formation.setRoute(null);
                 formation.setPlayer(player);

@@ -37,6 +37,7 @@ function formationEntity()
             if(to == undefined) {
                 tempRouteEntity = Crafty.e("Road").temp(Selected._fid, Formations[Selected._fid].route.next.id);
                 tempRoute = Formations[Selected._fid].route.roads;
+                tempTime = Formations[Selected._fid].route.time;
 
                 $.each(tempRoute, function (index, road) {
                     RoadEntities[road.id].mark(true);
@@ -50,6 +51,7 @@ function formationEntity()
                     isCalculatedRoute = true;
                     tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next.id);
                     tempRoute = data.roads;
+                    tempTime = data.time;
 
                     $.each(tempRoute, function(index, road) {
                         RoadEntities[road.id].mark(true);

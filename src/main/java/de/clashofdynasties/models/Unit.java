@@ -45,6 +45,13 @@ public class Unit
         this.id = id;
     }
 
+    public double getSpeed()
+    {
+        double speed = blueprint.getSpeed();
+
+        return speed / 2 + (speed / 2) * (health / 100);
+    }
+
     public boolean equals(Object other)
     {
         if(other instanceof Unit && ((Unit)other).getId() == this.id)

@@ -1,7 +1,11 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.RoadRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Route
@@ -11,6 +15,9 @@ public class Route
 
     @DBRef
     private List<Road> roads;
+
+    @Transient
+    private int time;
 
     public City getNext()
     {
@@ -30,5 +37,15 @@ public class Route
     public void setRoads(List<Road> roads)
     {
         this.roads = roads;
+    }
+
+    public int getTime()
+    {
+        return time;
+    }
+
+    public void setTime(int time)
+    {
+        this.time = time;
     }
 }

@@ -1,10 +1,13 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.RoadRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -22,7 +25,9 @@ public class Formation
 	@DBRef
 	private City lastCity;
 
+    @Transient
 	private int health;
+
 	private String name;
 
 	@DBRef
@@ -66,14 +71,21 @@ public class Formation
 		this.y = y;
 	}
 
-	public int getHealth()
+	public double getHealth()
 	{
-		return health;
-	}
+        if(units == null || units.isEmpty())
+            return 100;
 
-	public void setHealth(int health)
-	{
-		this.health = health;
+        int maxHealth = 0;
+        int health = 0;
+
+        for(Unit unit : units)
+        {
+            maxHealth += 100;
+            health += unit.getHealth();
+        }
+
+        return health / maxHealth * 100;
 	}
 
 	public String getName()
@@ -144,6 +156,19 @@ public class Formation
     public void setDiplomacy(int diplomacy)
     {
         this.diplomacy = diplomacy;
+    }
+
+    public double getSpeed()
+    {
+        double speed = Double.MAX_VALUE;
+
+        for(Unit unit : units)
+        {
+            if(unit.getSpeed() < speed)
+                speed = unit.getSpeed();
+        }
+
+        return speed;
     }
 
     public void move(int pixel)

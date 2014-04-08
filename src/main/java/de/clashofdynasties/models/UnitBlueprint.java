@@ -15,6 +15,7 @@ public class UnitBlueprint
 	private String name;
 	private int price;
     private int requiredProduction;
+    private int speed;
 
 	@DBRef
 	private Nation nation;
@@ -90,6 +91,16 @@ public class UnitBlueprint
     public void setRequiredProduction(int requiredProduction)
     {
         this.requiredProduction = requiredProduction;
+    }
+
+    public int getSpeed()
+    {
+        return speed;
+    }
+
+    public void setSpeed(int speed)
+    {
+        this.speed = speed;
     }
 
     public boolean equals(Object other)

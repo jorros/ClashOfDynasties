@@ -15,6 +15,27 @@
         <td colspan="2">Kampfstärke: 150</td>
     </tr>
     <tr>
+        <td colspan="2">Leben: ${formation.getHealth()}</td>
+    </tr>
+    <tr>
+        <c:if test="${formation.isDeployed()}">
+            <td colspan="2">Stationiert in ${formation.lastCity.name}</td>
+        </c:if>
+        <c:if test="${!formation.isDeployed()}">
+            <c:if test="${!formation.route.roads.isEmpty()}">
+                <td colspan="2">Marschiert über ${formation.route.next.name} nach ${formation.route.roads[formation.route.roads.size() - 1]}</td>
+            </c:if>
+            <c:if test="${formation.route.roads.isEmpty()}">
+                <td colspan="2">Marschiert nach ${formation.route.next.name}</td>
+            </c:if>
+        </c:if>
+    </tr>
+    <c:if test="${!formation.isDeployed()}">
+        <tr>
+            <td colspan="2">Dauer bis Ankunft: ${formation.route.time}</td>
+        </tr>
+    </c:if>
+    <tr>
         <td></td>
         <td></td>
     </tr>

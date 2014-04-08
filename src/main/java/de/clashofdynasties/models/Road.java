@@ -58,6 +58,11 @@ public class Road
 		this.weight = weight;
 	}
 
+    public double getLength()
+    {
+        return Math.sqrt(Math.pow(point1.getX() - point2.getX(), 2) + Math.pow(point1.getY() - point2.getY(), 2));
+    }
+
     public boolean equals(Object other)
     {
         if(other instanceof Road && ((Road)other).getId() == this.id)

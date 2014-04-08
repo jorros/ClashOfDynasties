@@ -216,6 +216,14 @@ function cityEntity()
             {
                 Selected.showRoute(this._cid);
                 isCalculatedRoute = true;
+
+                var totalSeconds = tempTime;
+                var hours = Math.floor(totalSeconds / 3600);
+                totalSeconds %= 3600;
+                var minutes = Math.floor(totalSeconds / 60);
+
+                $(document).data('powertip' , hours + ' Stunden ' + minutes + ' Minuten');
+                $.powerTip.show($(document));
             }
         },
 

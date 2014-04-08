@@ -5,6 +5,7 @@ var isCalculatedRoute = false;
 
 var tempRoute = null;
 var tempRouteEntity = null;
+var tempTime = 0;
 
 window.onload = function() {
     Crafty.init();
@@ -65,6 +66,7 @@ window.onload = function() {
                     else if(isCalculatedRoute) {
                         isCalculatedRoute = false;
                         hideRoute();
+                        $.powerTip.hide();
                     }
                 }
             })
@@ -85,6 +87,8 @@ window.onload = function() {
         loadTop();
         updateCities();
         updateFormations();
+
+        $(document).powerTip({smartPlacement: true, followMouse: true, manual: true});
 
         // Update Callback
         var updateCallback = function()
