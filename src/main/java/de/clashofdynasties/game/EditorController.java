@@ -279,7 +279,7 @@ public class EditorController
 
     @RequestMapping(value="/editor/unit/setSpeed", method = RequestMethod.GET)
     @ResponseBody
-    public String setUnitSpeed(@RequestParam("id") int id, @RequestParam("value") int value)
+    public String setUnitSpeed(@RequestParam("id") int id, @RequestParam("value") double value)
     {
         UnitBlueprint bp = unitBlueprintRepository.findOne(id);
         bp.setSpeed(value);

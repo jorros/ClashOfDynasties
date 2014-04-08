@@ -53,6 +53,20 @@ function formationEntity()
                     tempRoute = data.roads;
                     tempTime = data.time;
 
+                    var totalSeconds = tempTime;
+                    var hours = Math.floor(totalSeconds / 3600);
+                    totalSeconds %= 3600;
+                    var minutes = Math.floor(totalSeconds / 60);
+
+                    var output = "";
+                    if(hours > 0)
+                        output += hours + " Stunden ";
+                    if(minutes > 0)
+                        output += minutes + " Minuten";
+
+                    $(document).data('powertip' , output);
+                    $.powerTip.show($(document));
+
                     $.each(tempRoute, function(index, road) {
                         RoadEntities[road.id].mark(true);
                     });

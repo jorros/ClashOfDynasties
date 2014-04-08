@@ -15,7 +15,7 @@ public class UnitBlueprint
 	private String name;
 	private int price;
     private int requiredProduction;
-    private int speed;
+    private double speed;
 
 	@DBRef
 	private Nation nation;
@@ -93,12 +93,12 @@ public class UnitBlueprint
         this.requiredProduction = requiredProduction;
     }
 
-    public int getSpeed()
+    public double getSpeed()
     {
         return speed;
     }
 
-    public void setSpeed(int speed)
+    public void setSpeed(double speed)
     {
         this.speed = speed;
     }
