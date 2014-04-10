@@ -66,18 +66,7 @@ function closeControl()
 (function ($)
 {
     $.put = function(url, data, callback) {
-        var first = true;
-        $.each(data, function(param, value) {
-            if(first) {
-                url += "?";
-                first = false;
-            }
-            else
-                url += "&";
-
-            url += param + "=" + value
-        })
-        $.ajax(url, { type: "PUT", success: function(data, textStatus, jqXHR) {
+        $.ajax(url + "?" + $.param(data), { type: "PUT", success: function(data, textStatus, jqXHR) {
             if(callback != undefined)
                 callback(data);
         }});
