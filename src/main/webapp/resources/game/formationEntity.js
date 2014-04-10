@@ -111,7 +111,7 @@ function formationEntity()
         },
 
         update: function() {
-            if(Formations[this._fid] == null)
+            if(Formations[this._fid] == undefined)
                 this.destroy();
             else
             {

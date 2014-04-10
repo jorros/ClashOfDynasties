@@ -23,7 +23,7 @@ function roadEntity()
         },
 
         update: function() {
-            if(Roads[this._rid] == null)
+            if(Roads[this._rid] == undefined)
             {
                 this.destroy();
             }

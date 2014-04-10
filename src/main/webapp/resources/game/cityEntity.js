@@ -238,7 +238,7 @@ function cityEntity()
         },
 
         update: function() {
-            if(Cities[this._cid] == null)
+            if(Cities[this._cid] == undefined)
                 this.destroy();
             else
             {
