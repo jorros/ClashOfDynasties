@@ -84,7 +84,7 @@ function closeControl()
     };
 
     $.delete = function(url, callback) {
-        $.ajax(url, { type: "PUT", success: function(data, textStatus, jqXHR) {
+        $.ajax(url, { type: "DELETE", success: function(data, textStatus, jqXHR) {
             if(callback != undefined)
                 callback(data);
         }});
