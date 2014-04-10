@@ -1,6 +1,6 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.helper.Routing;
+import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
@@ -38,7 +38,7 @@ public class FormationController
     CounterService counterService;
 
     @Autowired
-    Routing routing;
+    RoutingService routing;
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody

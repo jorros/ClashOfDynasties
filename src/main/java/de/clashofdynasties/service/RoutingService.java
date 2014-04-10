@@ -1,4 +1,4 @@
-package de.clashofdynasties.helper;
+package de.clashofdynasties.service;
 
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class Routing
+public class RoutingService
 {
     private PriorityQueue<Node> openList;
     private LinkedList<Node> closedList;

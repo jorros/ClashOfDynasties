@@ -1,6 +1,6 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.helper.Routing;
+import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
 import de.clashofdynasties.repository.*;
@@ -33,7 +33,7 @@ public class CommandController
     ResourceRepository resourceRepository;
 
     @Autowired
-    Routing routing;
+    RoutingService routing;
 
     @RequestMapping(value="/formation", method = RequestMethod.GET)
     public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") int id)
