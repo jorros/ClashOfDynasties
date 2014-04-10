@@ -25,13 +25,10 @@
     <bean id="Routing" class="de.clashofdynasties.helper.Routing"/>
 
     <security:http>
-        <security:intercept-url pattern="/game" access="ROLE_USER" />
         <security:intercept-url pattern="/game/*" access="ROLE_USER" />
-        <security:intercept-url pattern="/editor" access="ROLE_USER" />
-        <security:intercept-url pattern="/editor/*" access="ROLE_USER" />
         <security:form-login login-processing-url="/login" login-page="/"
                              username-parameter="username" password-parameter="password"
-                             default-target-url="/game" authentication-failure-url="/?auth=fail"/>
+                             default-target-url="/" authentication-failure-url="/?auth=fail"/>
         <security:logout logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID"/>
         <security:remember-me user-service-ref="customUserDetailsService" />
         <security:session-management invalid-session-url="/">

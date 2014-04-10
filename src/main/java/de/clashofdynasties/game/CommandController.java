@@ -60,7 +60,7 @@ public class CommandController
         map.addAttribute("formation", formation);
         map.addAttribute("time", time);
 
-        return "formation/info";
+        return "command/formation";
     }
 
     @RequestMapping(value="/city", method = RequestMethod.GET)
@@ -94,7 +94,7 @@ public class CommandController
         map.addAttribute("freeSlots", freeSlots);
         map.addAttribute("maxSlots", maxSlots);
 
-        return "city/info";
+        return "command/city";
     }
 
     @RequestMapping(value="/editcity", method = RequestMethod.GET)
@@ -107,6 +107,6 @@ public class CommandController
         map.addAttribute("types", cityTypeRepository.findAll());
         map.addAttribute("resources", resourceRepository.findAll());
 
-        return "editor/city";
+        return "command/editcity";
     }
 }

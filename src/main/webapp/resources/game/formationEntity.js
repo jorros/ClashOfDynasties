@@ -46,7 +46,7 @@ function formationEntity()
             else {
                 tempRouteEntity = "";
                 tempRoute = "";
-                $.getJSON("game/formation/way", { "formation": Selected._fid, "target": to }, function(data)
+                $.getJSON("game/formations/" + Selected._fid + "/route", { "target": to }, function(data)
                 {
                     isCalculatedRoute = true;
                     tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next.id);

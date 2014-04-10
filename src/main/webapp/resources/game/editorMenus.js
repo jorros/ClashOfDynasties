@@ -8,13 +8,13 @@ $(document).ready(function() {
             $(this).addClass("selected");
 
             if($(this).find("a").attr("id") == "menu1")
-                openMenu("editor/menu/resource");
+                openMenu("editresources");
             else if($(this).find("a").attr("id") == "menu2")
-                openMenu("editor/menu/production");
+                openMenu("editproduction");
             else if($(this).find("a").attr("id") == "menu3")
-                openMenu("editor/menu/building");
+                openMenu("editbuildings");
             else if($(this).find("a").attr("id") == "menu4")
-                openMenu("editor/menu/unit");
+                openMenu("editunits");
         }
         else
         {

@@ -3,7 +3,7 @@ var CityEntities = {};
 
 function updateCities()
 {
-    $.getJSON("/game/citiy", function(data){
+    $.getJSON("/game/cities", function(data){
         Cities = data;
         $.each(data, function(id, city) {
             if(CityEntities[id] == null)

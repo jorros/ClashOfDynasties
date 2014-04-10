@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javax.servlet:servlet-api:2.5" type="repository">
+    <properties maven-id="javax.servlet:servlet-api:2.5" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Dropbox/Projekte/Clash of Dynasties/Source/lib/servlet-api-2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -3,7 +3,7 @@ var FormationEntities = {};
 
 function updateFormations()
 {
-    $.getJSON("/game/formation", function(data){
+    $.getJSON("/game/formations", function(data){
         Formations = data;
         $.each(data, function(id, formation) {
             if(FormationEntities[id] == null)

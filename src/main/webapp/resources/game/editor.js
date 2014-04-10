@@ -65,7 +65,7 @@ window.onload = function() {
 
                     if(SelectionMode == 1)
                     {
-                        $.get("/editor/createCity", { x: e.realX, y: e.realY});
+                        $.post("/game/cities", { x: e.realX, y: e.realY});
                     }
                 }
             })

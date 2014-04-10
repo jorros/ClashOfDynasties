@@ -73,10 +73,10 @@ public class FormationController
     }
 
     @RequestMapping(value="/{formation}/route", method = RequestMethod.GET)
-    public @ResponseBody Route calculateRoute(@PathVariable("formation") int id, @RequestParam("target") int cityid)
+    public @ResponseBody Route calculateRoute(@PathVariable("formation") int id, @RequestParam int target)
     {
         Formation formation = formationRepository.findOne(id);
-        City city = cityRepository.findOne(cityid);
+        City city = cityRepository.findOne(target);
 
         Route route = routing.calculateRoute(formation, city);
         route.setTime(routing.calculateTime(formation, route));
@@ -86,10 +86,10 @@ public class FormationController
 
     @RequestMapping(value="/{formation}/move", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public void move(Principal principal, @PathVariable("formation") int formationId, @RequestParam("target") int cityId)
+    public void move(Principal principal, @PathVariable("formation") int formationId, @RequestParam int target)
     {
         Formation formation = formationRepository.findOne(formationId);
-        City city = cityRepository.findOne(cityId);
+        City city = cityRepository.findOne(target);
         Player player = playerRepository.findByName(principal.getName());
 
         if(player.equals(formation.getPlayer()))

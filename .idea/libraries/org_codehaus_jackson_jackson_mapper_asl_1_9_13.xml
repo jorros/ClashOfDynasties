@@ -5,9 +5,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jackson-mapper-asl-1.9.13.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jackson-core-asl-1.9.13.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/lib/jackson-mapper-asl-1.9.13-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES />
   </library>
 </component>

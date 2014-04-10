@@ -1,6 +1,6 @@
 function loadTop()
 {
-    $.getJSON("/game/menu/top", function(data){
+    $.getJSON("/game/menus/top", function(data){
         $("#globalCoins").text(data.player.coins);
         $("#globalBalance").text(data.balance);
 

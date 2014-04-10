@@ -8,9 +8,11 @@ import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,6 +59,9 @@ public class CityController
     @Autowired
     ResourceRepository resourceRepository;
 
+    @Autowired
+    BiomeRepository biomeRepository;
+
     @RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody
     Map<Integer, City> getCities(Principal principal)
@@ -102,6 +107,7 @@ public class CityController
 
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
     public void remove(Principal principal, @PathVariable("city") int id)
     {
         cityRepository.delete(id);
@@ -109,22 +115,44 @@ public class CityController
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("type") int type, @RequestParam("capacity") int capacity, @RequestParam("resource") int resource)
+    @Secured("ROLE_ADMIN")
+    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource)
     {
-        // ToDo: Defaultwerte für Create
-        save(principal, 0, name, type, capacity, resource);
+        City city = new City();
+        city.setId(counterService.getNextSequence("city"));
+        city.setName("Neu - " + city.getId());
+        city.setCapacity(0);
+        city.setHealth(100);
+        city.setBiome(biomeRepository.findOne(1));
+        city.setPlayer(playerRepository.findOne(1));
+        city.setX(x);
+        city.setY(y);
+        city.setType(cityTypeRepository.findOne(1));
+        city.setResource(resourceRepository.findOne(1));
+
+        cityRepository.save(city);
+        save(request, principal, city.getId(), name, type, capacity, resource);
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(Principal principal, @PathVariable("city") int id, @RequestParam("name") String name, @RequestParam("type") int type, @RequestParam("capacity") int capacity, @RequestParam("resource") int resource)
+    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource)
     {
-        // ToDo: nur gesetzte Werte einspeichern
         City city = cityRepository.findOne(id);
-        city.setName(name);
-        city.setCapacity(capacity);
-        city.setResource(resourceRepository.findOne(resource));
-        if(city.getType().getId() != type)
+
+        if(city == null)
+            return;
+
+        if(name != null)
+            city.setName(name);
+
+        if(capacity != null && request.isUserInRole("ROLE_ADMIN"))
+            city.setCapacity(capacity);
+
+        if(resource != null && request.isUserInRole("ROLE_ADMIN"))
+            city.setResource(resourceRepository.findOne(resource));
+
+        if(type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN"))
         {
             city.setType(cityTypeRepository.findOne(type));
             List<ItemType> types = city.getRequiredItemTypes();
@@ -163,6 +191,7 @@ public class CityController
             }
             city.setRequiredItemTypes(types);
         }
+
         cityRepository.save(city);
     }
 }

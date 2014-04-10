@@ -2,7 +2,7 @@ function openMenu(menu)
 {
     if(menu != undefined)
     {
-        $.get("/game/menu/" + menu, function(data) {
+        $.get("/game/menus/" + menu, function(data) {
             $("#body").html(data);
             $("#body").show();
         });
@@ -21,7 +21,7 @@ function openCommand(command, title)
         $("#controls").dialog("close");
     if(command != undefined)
     {
-        $.get("/game/command/" + command, function(data) {
+        $.get("/game/commands/" + command, function(data) {
             $("#controls").html(data);
             $("#controls").dialog("option", "title", title);
             if(!$("#controls").dialog("isOpen"))
@@ -62,3 +62,32 @@ function closeControl()
 {
     $("#controls").dialog("close");
 }
+
+(function ($)
+{
+    $.put = function(url, data, callback) {
+        var first = true;
+        $.each(data, function(param, value) {
+            if(first) {
+                url += "?";
+                first = false;
+            }
+            else
+                url += "&";
+
+            url += param + "=" + value
+        })
+        $.ajax(url, { type: "PUT", success: function(data, textStatus, jqXHR) {
+            if(callback != undefined)
+                callback(data);
+        }});
+    };
+
+    $.delete = function(url, callback) {
+        $.ajax(url, { type: "PUT", success: function(data, textStatus, jqXHR) {
+            if(callback != undefined)
+                callback(data);
+        }});
+    }
+
+}( jQuery ));

@@ -95,56 +95,7 @@ public class MenuController
             map.addAttribute("city", cityRepository.findOne(cityID));
         }
 
-        return "formation/setup";
-    }
-
-    @RequestMapping(value="/unit", headers = "Accept=image/png", method = RequestMethod.GET)
-    public ResponseEntity getUnitHealth(HttpServletRequest request, @RequestParam("unit") int unit, @RequestParam("health") double health)
-    {
-        try
-        {
-            InputStream is = request.getSession().getServletContext().getResourceAsStream("/resources/assets/units/" + unit + ".png");
-            BufferedImage img = ImageIO.read(is);
-
-            int width = img.getWidth();
-            int height = img.getHeight();
-
-            int healthWidth = (int)(health / (double)100 * width);
-
-            for(int xx = 0; xx < width; xx++)
-            {
-                for(int yy = 0; yy < height; yy++)
-                {
-                    Color originalColor = new Color(img.getRGB(xx, yy), true);
-
-                    Color red = new Color(Color.RED.getRed(), Color.RED.getGreen(), Color.RED.getBlue(), originalColor.getAlpha());
-                    img.setRGB(xx, yy, red.getRGB());
-                }
-            }
-
-            for(int xx = 0; xx < healthWidth; xx++)
-            {
-                for(int yy = 0; yy < height; yy++)
-                {
-                    Color originalColor = new Color(img.getRGB(xx, yy), true);
-
-                    Color green = new Color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), originalColor.getAlpha());
-                    img.setRGB(xx, yy, green.getRGB());
-                }
-            }
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(img, "png", baos);
-            byte[] imageInByte = baos.toByteArray();
-
-            final HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(new MediaType("image","png"));
-            return new ResponseEntity(imageInByte, headers, HttpStatus.CREATED);
-        }
-        catch(IOException e)
-        {
-            throw new RuntimeException(e);
-        }
+        return "menu/formation";
     }
 
     @RequestMapping(value="/build", method = RequestMethod.GET)
@@ -155,7 +106,7 @@ public class MenuController
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll());
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
-        return "city/build";
+        return "menu/build";
     }
 
     @RequestMapping(value="/store", method = RequestMethod.GET)
@@ -166,31 +117,31 @@ public class MenuController
         map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
-        return "city/items";
+        return "menu/store";
     }
 
 	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
 	public String showRanking(ModelMap map)
 	{
-		return "ranking";
+		return "menu/ranking";
 	}
 
 	@RequestMapping(value = "/settings", method = RequestMethod.GET)
 	public String showSettings(ModelMap map)
 	{
-		return "settings";
+		return "menu/settings";
 	}
 
 	@RequestMapping(value = "/demography", method = RequestMethod.GET)
 	public String showDemography(ModelMap map)
 	{
-		return "demography";
+		return "menu/demography";
 	}
 
 	@RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
 	public String showDiplomacy(ModelMap map)
 	{
-		return "diplomacy";
+		return "menu/diplomacy";
 	}
 
     @RequestMapping(value="/editresources", method = RequestMethod.GET)
@@ -198,7 +149,7 @@ public class MenuController
     {
         map.addAttribute("items", itemRepository.findAll());
 
-        return "editor/building";
+        return "menu/editbuildings";
     }
 
     @RequestMapping(value="/editbuildings", method = RequestMethod.GET)
@@ -206,7 +157,7 @@ public class MenuController
     {
         map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
-        return "editor/building";
+        return "menu/editbuildings";
     }
 
     @RequestMapping(value="/editunits", method = RequestMethod.GET)
@@ -214,6 +165,6 @@ public class MenuController
     {
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
-        return "editor/unit";
+        return "menu/editunits";
     }
 }
