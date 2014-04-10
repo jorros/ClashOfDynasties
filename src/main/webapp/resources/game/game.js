@@ -6,6 +6,7 @@ var isCalculatedRoute = false;
 var tempRoute = null;
 var tempRouteEntity = null;
 var tempTime = 0;
+var routeShown = false;
 
 window.onload = function() {
     Crafty.init();
@@ -61,6 +62,7 @@ window.onload = function() {
                 if(Selected != null && Selected._fid != null) {
                     if(isCalculatedRoute && !Formations[Selected._fid].deployed) {
                         isCalculatedRoute = false;
+                        $.powerTip.hide();
                         Selected.showRoute();
                     }
                     else if(isCalculatedRoute) {

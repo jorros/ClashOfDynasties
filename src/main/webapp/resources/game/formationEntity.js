@@ -72,6 +72,7 @@ function formationEntity()
                     });
                 });
             }
+            routeShown = true;
         },
 
         select: function() {

@@ -32,7 +32,7 @@
     </tr>
     <c:if test="${!formation.isDeployed()}">
         <tr>
-            <td colspan="2">Dauer bis Ankunft: ${formation.route.time}</td>
+            <td colspan="2">Dauer bis Ankunft: ${time}</td>
         </tr>
     </c:if>
     <tr>

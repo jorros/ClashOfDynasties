@@ -44,6 +44,7 @@ function hideRoute()
 
     tempRouteEntity = null;
     tempRoute = null;
+    routeShown = false;
 }
 
 function deselect()

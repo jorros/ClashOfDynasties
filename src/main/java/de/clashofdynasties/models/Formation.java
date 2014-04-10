@@ -13,27 +13,27 @@ import java.util.List;
 @Document
 public class Formation
 {
-	@Id
-	private int id;
+    @Id
+    private int id;
 
-	private int x;
-	private int y;
+    private int x;
+    private int y;
 
-	@DBRef
-	private Player player;
+    @DBRef
+    private Player player;
 
-	@DBRef
-	private City lastCity;
+    @DBRef
+    private City lastCity;
 
     @Transient
-	private int health;
+    private int health;
 
-	private String name;
+    private String name;
 
-	@DBRef
-	private List<Unit> units;
+    @DBRef
+    private List<Unit> units;
 
-	private Route route;
+    private Route route;
 
     @Transient
     private boolean deployed;
@@ -41,38 +41,41 @@ public class Formation
     @Transient
     private int diplomacy;
 
-	public int getId()
-	{
-		return id;
-	}
+    @DBRef
+    private Road currentRoad;
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    public int getId()
+    {
+        return id;
+    }
 
-	public int getX()
-	{
-		return x;
-	}
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-	public void setX(int x)
-	{
-		this.x = x;
-	}
+    public int getX()
+    {
+        return x;
+    }
 
-	public int getY()
-	{
-		return y;
-	}
+    public void setX(int x)
+    {
+        this.x = x;
+    }
 
-	public void setY(int y)
-	{
-		this.y = y;
-	}
+    public int getY()
+    {
+        return y;
+    }
 
-	public double getHealth()
-	{
+    public void setY(int y)
+    {
+        this.y = y;
+    }
+
+    public double getHealth()
+    {
         if(units == null || units.isEmpty())
             return 100;
 
@@ -86,57 +89,57 @@ public class Formation
         }
 
         return health / maxHealth * 100;
-	}
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName()
+    {
+        return name;
+    }
 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    public void setName(String name)
+    {
+        this.name = name;
+    }
 
-	public Player getPlayer()
-	{
-		return player;
-	}
+    public Player getPlayer()
+    {
+        return player;
+    }
 
-	public void setPlayer(Player player)
-	{
-		this.player = player;
-	}
+    public void setPlayer(Player player)
+    {
+        this.player = player;
+    }
 
-	public City getLastCity()
-	{
-		return lastCity;
-	}
+    public City getLastCity()
+    {
+        return lastCity;
+    }
 
-	public void setLastCity(City lastCity)
-	{
-		this.lastCity = lastCity;
-	}
+    public void setLastCity(City lastCity)
+    {
+        this.lastCity = lastCity;
+    }
 
-	public List<Unit> getUnits()
-	{
-		return units;
-	}
+    public List<Unit> getUnits()
+    {
+        return units;
+    }
 
-	public void setUnits(List<Unit> units)
-	{
-		this.units = units;
-	}
+    public void setUnits(List<Unit> units)
+    {
+        this.units = units;
+    }
 
-	public Route getRoute()
-	{
-		return route;
-	}
+    public Route getRoute()
+    {
+        return route;
+    }
 
-	public void setRoute(Route route)
-	{
-		this.route = route;
-	}
+    public void setRoute(Route route)
+    {
+        this.route = route;
+    }
 
     public boolean isDeployed()
     {
@@ -171,6 +174,16 @@ public class Formation
         return speed;
     }
 
+    public Road getCurrentRoad()
+    {
+        return currentRoad;
+    }
+
+    public void setCurrentRoad(Road currentRoad)
+    {
+        this.currentRoad = currentRoad;
+    }
+
     public void move(int pixel)
     {
         if(!isDeployed())
@@ -190,7 +203,7 @@ public class Formation
 
     public boolean equals(Object other)
     {
-        if(other instanceof Formation && ((Formation)other).getId() == this.id)
+        if(other instanceof Formation && ((Formation) other).getId() == this.id)
             return true;
         else
             return false;

@@ -165,11 +165,26 @@ public class FormationController
     public String showInfoMenu(ModelMap map, Principal principal, @RequestParam("formation") int id)
     {
         Formation formation = formationRepository.findOne(id);
+
+        String time = "";
+
         if(!formation.isDeployed())
-            formation.getRoute().setTime(calculateTime(formation, formation.getRoute()));
+        {
+            int seconds = calculateTime(formation, formation.getRoute());
+            int hr = (int)(seconds/3600);
+            int rem = (int)(seconds%3600);
+            int mn = rem/60;
+
+            if(hr > 0)
+                time += hr + " Stunden ";
+
+            if(mn > 0)
+                time += mn + " Minuten";
+        }
 
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
         map.addAttribute("formation", formation);
+        map.addAttribute("time", time);
 
         return "formation/info";
     }
@@ -188,24 +203,27 @@ public class FormationController
 
     private int calculateTime(Formation formation, Route route)
     {
-        ArrayList<Road> roads = new ArrayList<Road>();
-        roads.add(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
-        roads.addAll(route.getRoads());
+        List<Road> roads = route.getRoads();
+
+        Road currentRoad;
 
         int time = 0;
-        boolean deployed = formation.isDeployed();
+
+        int subtract = 70;
+        if(formation.isDeployed())
+        {
+            subtract = 140;
+            currentRoad = roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId());
+        }
+        else
+            currentRoad = formation.getCurrentRoad();
+
+        double length = Math.sqrt(Math.pow(formation.getX() - route.getNext().getX(), 2) + Math.pow(formation.getY() - route.getNext().getY(), 2));
+        time += new Double((length - subtract) / (formation.getSpeed() * currentRoad.getWeight())).intValue();
 
         for(Road road : roads)
         {
-            int subtract = 140;
-            double length = road.getLength();
-            if(!deployed)
-            {
-                subtract = 70;
-                deployed = true;
-                length = Math.sqrt(Math.pow(formation.getX() - formation.getX(), 2) + Math.pow(route.getNext().getY() - route.getNext().getY(), 2));
-            }
-            time += new Double((length - subtract) / (formation.getSpeed() * road.getWeight())).intValue();
+            time += new Double((road.getLength() - 140) / (formation.getSpeed() * road.getWeight())).intValue();
         }
         return time;
     }
@@ -226,6 +244,7 @@ public class FormationController
                 if(formation.isDeployed())
                 {
                     formation.setRoute(route);
+                    formation.setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
                     formation.move(70);
                 }
                 else
