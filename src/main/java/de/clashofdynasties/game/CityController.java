@@ -1,23 +1,24 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.*;
+import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Formation;
+import de.clashofdynasties.models.ItemType;
+import de.clashofdynasties.models.Player;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
-import javafx.scene.control.TableColumn;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import sun.security.krb5.PrincipalName;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
+@RequestMapping("/game/cities")
 public class CityController
 {
 	@Autowired
@@ -47,9 +48,18 @@ public class CityController
     @Autowired
     UnitRepository unitRepository;
 
-    @RequestMapping(value = "/game/cities/all", method = RequestMethod.GET)
+    @Autowired
+    ItemTypeRepository itemTypeRepository;
+
+    @Autowired
+    CityTypeRepository cityTypeRepository;
+
+    @Autowired
+    ResourceRepository resourceRepository;
+
+    @RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody
-    Map<Integer, City> loadAllCities(Principal principal)
+    Map<Integer, City> getCities(Principal principal)
 	{
         Player player = playerRepository.findByName(principal.getName());
 
@@ -90,60 +100,69 @@ public class CityController
 		return data;
 	}
 
-	@RequestMapping(value="/game/menu/build", method = RequestMethod.GET)
-	public String showBuildMenu(ModelMap map, Principal principal, @RequestParam("city") int id)
-	{
-		map.addAttribute("city", cityRepository.findOne(id));
-		map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll());
-        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll());
-		map.addAttribute("player", playerRepository.findByName(principal.getName()));
-
-		return "city/build";
-	}
-
-    @RequestMapping(value="/game/menu/items", method = RequestMethod.GET)
-    public String showItemsMenu(ModelMap map, Principal principal, @RequestParam("city") int id)
+    @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void remove(Principal principal, @PathVariable("city") int id)
     {
-        City city = cityRepository.findOne(id);
-
-        map.addAttribute("city", city);
-        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
-        map.addAttribute("player", playerRepository.findByName(principal.getName()));
-
-        return "city/items";
+        cityRepository.delete(id);
     }
 
-	@RequestMapping(value="/game/controls/city", method = RequestMethod.GET)
-	public String showInfoMenu(ModelMap map, Principal principal, @RequestParam("city") int id)
-	{
-		City city = cityRepository.findOne(id);
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("type") int type, @RequestParam("capacity") int capacity, @RequestParam("resource") int resource)
+    {
+        // ToDo: Defaultwerte für Create
+        save(principal, 0, name, type, capacity, resource);
+    }
 
-		int maxSlots = Math.round(city.getCapacity() * city.getType().getCapacity());
-        int freeSlots = maxSlots;
-
-        if(city.getBuildings() != null)
-		    freeSlots -= city.getBuildings().size();
-
-        String smiley = "Happy";
-
-        if(city.getPopulation() > 0)
+    @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void save(Principal principal, @PathVariable("city") int id, @RequestParam("name") String name, @RequestParam("type") int type, @RequestParam("capacity") int capacity, @RequestParam("resource") int resource)
+    {
+        // ToDo: nur gesetzte Werte einspeichern
+        City city = cityRepository.findOne(id);
+        city.setName(name);
+        city.setCapacity(capacity);
+        city.setResource(resourceRepository.findOne(resource));
+        if(city.getType().getId() != type)
         {
-            if(city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
-                smiley = "Satisfied";
-            else if(city.getSatisfaction() < 60 && city.getSatisfaction() >= 30)
-                smiley = "Unhappy";
+            city.setType(cityTypeRepository.findOne(type));
+            List<ItemType> types = city.getRequiredItemTypes();
+
+            if(types == null)
+                types = new ArrayList<ItemType>();
             else
-                smiley = "Angry";
+                types.clear();
+
+            int i;
+            switch(type)
+            {
+                case 3:
+                    i = (int) (Math.random()*2+1);
+                    if(i == 1)
+                        types.add(itemTypeRepository.findOne(3));
+                    else
+                        types.add(itemTypeRepository.findOne(5));
+
+                case 2:
+                    i = (int) (Math.random()*3+1);
+                    if(i == 1)
+                        types.add(itemTypeRepository.findOne(4));
+                    else if(i == 2)
+                        types.add(itemTypeRepository.findOne(6));
+                    else
+                        types.add(itemTypeRepository.findOne(7));
+
+                case 1:
+                    types.add(itemTypeRepository.findOne(1));
+                    types.add(itemTypeRepository.findOne(2));
+                    break;
+
+                case 4:
+                    break;
+            }
+            city.setRequiredItemTypes(types);
         }
-        else
-            smiley = null;
-
-        map.addAttribute("satisfaction", smiley);
-        map.addAttribute("player", playerRepository.findByName(principal.getName()));
-		map.addAttribute("city", city);
-		map.addAttribute("freeSlots", freeSlots);
-		map.addAttribute("maxSlots", maxSlots);
-
-		return "city/info";
-	}
+        cityRepository.save(city);
+    }
 }

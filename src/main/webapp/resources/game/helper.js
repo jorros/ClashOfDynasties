@@ -1,8 +1,8 @@
-function openMenu(path)
+function openMenu(menu)
 {
-    if(path != null)
+    if(menu != undefined)
     {
-        $.get(path, function(data) {
+        $.get("/game/menu/" + menu, function(data) {
             $("#body").html(data);
             $("#body").show();
         });
@@ -15,13 +15,13 @@ function closeMenu()
     $(".menus").removeClass("selected");
 }
 
-function openControl(path, title)
+function openCommand(command, title)
 {
     if($("#controls").dialog("isOpen"))
         $("#controls").dialog("close");
-    if(path != null)
+    if(command != undefined)
     {
-        $.get(path, function(data) {
+        $.get("/game/command/" + command, function(data) {
             $("#controls").html(data);
             $("#controls").dialog("option", "title", title);
             if(!$("#controls").dialog("isOpen"))

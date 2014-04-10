@@ -61,14 +61,14 @@ function cityEntity()
 
             if(Editor)
             {
-                $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openControl(\'editor/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
+                $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'editor/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
                 $(this._infoEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource.id + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
                 $(this._infoEntity._element).append('<span id="' + this._cid + '_capacity" style="float:left; margin-left:10px; font-size:22px">' + Cities[this._cid].capacity + '</span>');
             }
             else
             {
-                $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openControl(\'game/controls/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
-                $(this._infoEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'game/menu/build?city=' + this._cid + '\'); openControl(\'game/controls/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
+                $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'game/command/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
+                $(this._infoEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'game/menu/build?city=' + this._cid + '\'); openCommand(\'game/command/city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
                 $(this._infoEntity._element).append('<span id="' + this._cid + '_people" style="float:left; margin-left:10px; font-size:22px">?</span>');
                 $(this._infoEntity._element).append('<img id="' + this._cid + '_satisfaction" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/satisfaction/Happy.png" />');
                 $(this._infoEntity._element).append('<div id="' + this._cid + '_defense" style="float:right; margin-top:3px; margin-right:5px;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_defensePoints" style="font-size:22px; vertical-align:top;">0</span></div>');
@@ -168,7 +168,7 @@ function cityEntity()
         select: function() {
             if(Editor)
             {
-                openControl('editor/city?city=' + this._cid, Cities[this._cid].name);
+                openCommand('editor/city?city=' + this._cid, Cities[this._cid].name);
 
                 if(SelectionMode == 2)
                 {
@@ -201,7 +201,7 @@ function cityEntity()
                     return;
                 }
                 else
-                    openControl('game/controls/city?city=' + this._cid, this._name);
+                    openCommand('city?city=' + this._cid, this._name);
             }
 
             deselect();

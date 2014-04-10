@@ -8,13 +8,13 @@ $(document).ready(function() {
             $(this).addClass("selected");
 
             if($(this).find("a").attr("id") == "menu1")
-                openMenu("game/menu/ranking");
+                openMenu("ranking");
             else if($(this).find("a").attr("id") == "menu2")
-                openMenu("game/menu/settings");
+                openMenu("settings");
             else if($(this).find("a").attr("id") == "menu3")
-                openMenu("game/menu/demography");
+                openMenu("demography");
             else if($(this).find("a").attr("id") == "menu4")
-                openMenu("game/menu/diplomacy");
+                openMenu("diplomacy");
         }
         else
         {

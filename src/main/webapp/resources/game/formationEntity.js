@@ -83,7 +83,7 @@ function formationEntity()
             if(Formations[this._fid].route != null)
                 this.showRoute();
 
-            openControl('game/controls/formation?formation=' + this._fid, Formations[this._fid].name);
+            openCommand('formation?formation=' + this._fid, Formations[this._fid].name);
         },
 
         deselect: function() {

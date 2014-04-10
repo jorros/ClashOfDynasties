@@ -217,4 +217,31 @@ public class Routing
 
         return null;
     }
+
+    public int calculateTime(Formation formation, Route route)
+    {
+        List<Road> roads = route.getRoads();
+
+        Road currentRoad;
+
+        int time = 0;
+
+        int subtract = 70;
+        if(formation.isDeployed())
+        {
+            subtract = 140;
+            currentRoad = roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId());
+        }
+        else
+            currentRoad = formation.getCurrentRoad();
+
+        double length = Math.sqrt(Math.pow(formation.getX() - route.getNext().getX(), 2) + Math.pow(formation.getY() - route.getNext().getY(), 2));
+        time += new Double((length - subtract) / (formation.getSpeed() * currentRoad.getWeight())).intValue();
+
+        for(Road road : roads)
+        {
+            time += new Double((road.getLength() - 140) / (formation.getSpeed() * road.getWeight())).intValue();
+        }
+        return time;
+    }
 }

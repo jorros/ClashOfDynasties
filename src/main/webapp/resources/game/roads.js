@@ -2,7 +2,7 @@ var Roads = {};
 var RoadEntities = {};
 
 function updateRoads() {
-    $.getJSON("/game/roads/all", function(data){
+    $.getJSON("/game/road", function(data){
         Roads = data;
         $.each(data, function(id, road) {
             if(RoadEntities[id] == null)

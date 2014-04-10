@@ -11,6 +11,7 @@ public class PublicController
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(ModelMap map)
 	{
+        // ToDo: Check if Login or Game
         return "login";
     }
 
