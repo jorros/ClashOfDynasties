@@ -22,7 +22,7 @@
 
     <bean id="customUserDetailsService" class="de.clashofdynasties.service.CustomUserDetailsService"/>
 
-    <bean id="Routing" class="de.clashofdynasties.service.RoutingService"/>
+    <bean id="routingService" class="de.clashofdynasties.service.RoutingService"/>
 
     <security:http>
         <security:intercept-url pattern="/game/*" access="ROLE_USER" />
