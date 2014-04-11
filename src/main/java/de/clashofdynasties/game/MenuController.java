@@ -6,10 +6,6 @@ import de.clashofdynasties.models.Player;
 import de.clashofdynasties.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
@@ -80,22 +69,32 @@ public class MenuController
     @RequestMapping(value="/formation", method = RequestMethod.GET)
     public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) Integer id, @RequestParam(value = "city", required = false) Integer cityID)
     {
+        Player player = playerRepository.findByName(principal.getName());
+
         if(id != null)
         {
             Formation formation = formationRepository.findOne(id);
             map.addAttribute("formation", formation);
             map.addAttribute("city", formation.getLastCity());
+
+            if(!formation.getPlayer().equals(player) || !formation.isDeployed())
+                return "menu/infoFormation";
         }
         else if(cityID != null)
         {
+            City city = cityRepository.findOne(cityID);
+
+            if(!city.getPlayer().equals(player))
+                return null;
+
             Formation formation = new Formation();
             formation.setName("Neue Formation");
 
             map.addAttribute("formation", formation);
-            map.addAttribute("city", cityRepository.findOne(cityID));
+            map.addAttribute("city", city);
         }
 
-        return "menu/formation";
+        return "menu/setupFormation";
     }
 
     @RequestMapping(value="/build", method = RequestMethod.GET)
