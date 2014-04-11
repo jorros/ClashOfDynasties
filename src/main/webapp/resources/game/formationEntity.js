@@ -78,7 +78,9 @@ function formationEntity()
         select: function() {
             deselect();
             Selected = this;
-            isFormationSelected = true;
+
+            if(Formations[this._fid].diplomacy == 1)
+                isFormationSelected = true;
 
             if(Formations[this._fid].route != null)
                 this.showRoute();
