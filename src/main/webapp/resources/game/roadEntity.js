@@ -26,6 +26,7 @@ function roadEntity()
             if(Roads[this._rid] == undefined)
             {
                 this.destroy();
+                delete RoadEntities[this._rid];
             }
             else
             {

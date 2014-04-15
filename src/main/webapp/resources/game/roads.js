@@ -2,13 +2,15 @@ var Roads = {};
 var RoadEntities = {};
 
 function updateRoads() {
-    $.getJSON("/game/roads", function(data){
+    $.getJSON("/game/roads", function(data) {
         Roads = data;
         $.each(data, function(id, road) {
-            if(RoadEntities[id] == null)
+            if(RoadEntities[id] == undefined)
                 RoadEntities[id] = Crafty.e("Road").road(id);
-
-            RoadEntities[id].update();
         });
-    })
+
+        $.each(RoadEntities, function(id, entity) {
+            entity.update();
+        });
+    });
 }

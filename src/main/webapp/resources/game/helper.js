@@ -32,19 +32,21 @@ function openCommand(command, title)
 
 function hideRoute()
 {
-    if(tempRouteEntity != null && tempRouteEntity != "") {
-        tempRouteEntity.destroy();
-    }
+    if(!Editor) {
+        if (tempRouteEntity != null && tempRouteEntity != "") {
+            tempRouteEntity.destroy();
+        }
 
-    if(tempRoute != null && tempRouteEntity != "") {
-        $.each(tempRoute, function(index, road) {
-            RoadEntities[road.id].mark(false);
-        });
-    }
+        if (tempRoute != null && tempRouteEntity != "") {
+            $.each(tempRoute, function (index, road) {
+                RoadEntities[road.id].mark(false);
+            });
+        }
 
-    tempRouteEntity = null;
-    tempRoute = null;
-    routeShown = false;
+        tempRouteEntity = null;
+        tempRoute = null;
+        routeShown = false;
+    }
 }
 
 function deselect()

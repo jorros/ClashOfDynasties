@@ -1,16 +1,18 @@
 var Cities = {};
 var CityEntities = {};
 
-function updateCities()
-{
-    $.getJSON("/game/cities", function(data){
+function updateCities() {
+    $.getJSON("/game/cities", function(data) {
         Cities = data;
         $.each(data, function(id, city) {
-            if(CityEntities[id] == null)
+            if(CityEntities[id] == undefined)
                 CityEntities[id] = Crafty.e("City").city(id);
-
-            CityEntities[id].update();
-            updateRoads();
         });
-    })
+
+        $.each(CityEntities, function(id, entity) {
+            entity.update();
+        });
+
+        updateRoads();
+    });
 }

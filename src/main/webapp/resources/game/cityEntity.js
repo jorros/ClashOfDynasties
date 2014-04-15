@@ -217,7 +217,7 @@ function cityEntity()
         },
 
         over: function() {
-            if(isFormationSelected && !isCalculatedRoute)
+            if(!Editor && isFormationSelected && !isCalculatedRoute)
             {
                 Selected.showRoute(this._cid);
                 isCalculatedRoute = true;
@@ -243,8 +243,10 @@ function cityEntity()
         },
 
         update: function() {
-            if(Cities[this._cid] == undefined)
+            if(Cities[this._cid] == undefined) {
                 this.destroy();
+                delete CityEntities[this._cid];
+            }
             else
             {
                 this._setType();

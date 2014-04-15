@@ -114,8 +114,10 @@ function formationEntity()
         },
 
         update: function() {
-            if(Formations[this._fid] == undefined)
+            if(Formations[this._fid] == undefined) {
                 this.destroy();
+                delete FormationEntities[this._fid];
+            }
             else
             {
                 this.x = Math.round(Formations[this._fid].x - this._w / 2);
