@@ -16,6 +16,9 @@ public class Route
     @DBRef
     private List<Road> roads;
 
+    @DBRef
+    private City target;
+
     @Transient
     private int time;
 
@@ -47,5 +50,15 @@ public class Route
     public void setTime(int time)
     {
         this.time = time;
+    }
+
+    public City getTarget()
+    {
+        return target;
+    }
+
+    public void setTarget(City target)
+    {
+        this.target = target;
     }
 }

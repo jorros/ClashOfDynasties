@@ -179,6 +179,7 @@ public class RoutingService
                 break;
         }
 
+        route.setTarget((City)goal.getObject());
         route.setRoads(roads);
 
         return route;

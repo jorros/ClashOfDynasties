@@ -25,7 +25,7 @@
         </c:if>
         <c:if test="${!formation.isDeployed()}">
             <c:if test="${!formation.route.roads.isEmpty()}">
-                <td colspan="2">Marschiert über ${formation.route.next.name} nach ${formation.route.roads[formation.route.roads.size() - 1]}</td>
+                <td colspan="2">Marschiert über ${formation.route.next.name} nach ${formation.route.target.name}</td>
             </c:if>
             <c:if test="${formation.route.roads.isEmpty()}">
                 <td colspan="2">Marschiert nach ${formation.route.next.name}</td>
