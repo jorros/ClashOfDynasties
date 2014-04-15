@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="Clash of Dynasties:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="SpringAppSecurity.war">
-      <element id="artifact" artifact-name="Clash of Dynasties:war exploded" />
-    </root>
-  </artifact>
-</component>
