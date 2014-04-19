@@ -2,12 +2,10 @@
   <library name="cglib:cglib:2.2.2" type="repository">
     <properties maven-id="cglib:cglib:2.2.2" />
     <CLASSES>
-      <root url="jar://$USER_HOME$/Dropbox/Projekte/Clash of Dynasties/Source/lib/cglib-2.2.2.jar!/" />
-      <root url="jar://$USER_HOME$/Dropbox/Projekte/Clash of Dynasties/Source/lib/asm-3.3.1.jar!/" />
+      <root url="jar://$USER_HOME$/Dropbox/Clash Libs/cglib-2.2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Dropbox/Clash Libs/asm-3.3.1.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$USER_HOME$/Dropbox/Projekte/Clash of Dynasties/Source/lib/cglib-2.2.2-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES />
   </library>
 </component>
