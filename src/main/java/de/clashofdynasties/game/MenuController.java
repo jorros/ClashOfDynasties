@@ -1,9 +1,8 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Formation;
-import de.clashofdynasties.models.Player;
+import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
+import de.clashofdynasties.service.CounterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -14,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/game/menus")
@@ -38,6 +39,9 @@ public class MenuController
 
     @Autowired
     ItemRepository itemRepository;
+
+    @Autowired
+    CounterService counterService;
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
@@ -106,6 +110,17 @@ public class MenuController
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
         return "menu/build";
+    }
+
+    @RequestMapping(value="/report", method = RequestMethod.GET)
+    public String showReport(ModelMap map, Principal principal, @RequestParam("city") int id) {
+        City city = cityRepository.findOne(id);
+
+        map.addAttribute("city", city);
+        map.addAttribute("formations", formationRepository.findByCity(id));
+        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+
+        return "menu/report";
     }
 
     @RequestMapping(value="/store", method = RequestMethod.GET)

@@ -6,6 +6,9 @@
 <button onclick="openMenu('formation?city=${city.id}')"><img src="assets/setFormation.png" /></button>
 </c:if>
 <button onclick="openMenu('store?city=${city.id}')"><img src="assets/showItems.png" /></button>
+<c:if test="${city.report != null}">
+    <button onclick="openMenu('report?city=${city.id}')"><img src="assets/report.png" /></button>
+</c:if>
 <br><br>
 <table style="width:100%;">
     <tr>

@@ -16,7 +16,9 @@ public class Player
 
 	private String password;
 	private double coins;
-	private int clan;
+
+    @DBRef
+	private Clan clan;
 
 	@DBRef
 	private Nation nation;
@@ -42,12 +44,12 @@ public class Player
 		this.coins = coins;
 	}
 
-	public int getClan()
+	public Clan getClan()
 	{
 		return clan;
 	}
 
-	public void setClan(int clan)
+	public void setClan(Clan clan)
 	{
 		this.clan = clan;
 	}

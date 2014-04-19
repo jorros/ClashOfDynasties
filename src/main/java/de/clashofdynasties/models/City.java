@@ -33,6 +33,8 @@ public class City
 	@DBRef
 	private CityType type;
 
+    private Report report;
+
     @Transient
     private List<Formation> formations;
 
@@ -215,6 +217,16 @@ public class City
 	{
 		this.units = units;
 	}
+
+    public Report getReport()
+    {
+        return report;
+    }
+
+    public void setReport(Report report)
+    {
+        this.report = report;
+    }
 
     public BuildingConstruction getBuildingConstruction()
     {

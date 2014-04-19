@@ -13,6 +13,7 @@
     <script type="text/javascript" src="/lib/jquery.multisortable.js"></script>
     <script type="text/javascript" src="/lib/crafty-min.js"></script>
     <script type="text/javascript" src="/lib/jquery.powertip.min.js"></script>
+    <script type="text/javascript" src="/lib/Chart.min.js"></script>
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/menus.js"></script>
     <script type="text/javascript" src="/src/top.js"></script>

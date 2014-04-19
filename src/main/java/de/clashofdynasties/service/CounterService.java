@@ -17,7 +17,17 @@ public class CounterService
 
 	public int getNextSequence(String collectionName)
 	{
-		Counter counter = mongo.findAndModify(new Query(Criteria.where("_id").is(collectionName)), new Update().inc("seq", 1), FindAndModifyOptions.options().returnNew(true), Counter.class);
+        Counter counter;
+
+        if(mongo.exists(new Query(Criteria.where("_id").is(collectionName)), Counter.class))
+		    counter = mongo.findAndModify(new Query(Criteria.where("_id").is(collectionName)), new Update().inc("seq", 1), FindAndModifyOptions.options().returnNew(true), Counter.class);
+        else
+        {
+            counter = new Counter();
+            counter.setId(collectionName);
+            counter.setSeq(1);
+            mongo.insert(counter);
+        }
 
 		return counter.getSeq();
 	}
