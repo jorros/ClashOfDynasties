@@ -6,6 +6,7 @@ import de.clashofdynasties.models.ItemType;
 import de.clashofdynasties.models.Player;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -64,13 +65,13 @@ public class CityController
 
     @RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody
-    Map<Integer, City> getCities(Principal principal)
+    Map<Integer, ObjectNode> getCities(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp)
 	{
         Player player = playerRepository.findByName(principal.getName());
 
 		List<City> cities = cityRepository.findAll();
         List<Formation> formations = formationRepository.findAll();
-        HashMap<Integer, City> data = new HashMap<Integer, City>();
+        HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
 
         for(City city : cities)
         {
@@ -88,7 +89,7 @@ public class CityController
             // Diplomatie setzen
             if(player.equals(city.getPlayer()))
                 city.setDiplomacy(1);
-            // Wenn Spieler neutral
+                // Wenn Spieler neutral
             else if(city.getPlayer().getId() == 1)
             {
                 city.setDiplomacy(4);
@@ -97,9 +98,10 @@ public class CityController
             else
             {
                 city.setDiplomacy(3);
+                city.setSatisfaction(-1);
             }
 
-            data.put(city.getId(), city);
+            data.put(city.getId(), city.toJSON(editor, timestamp));
         }
 
 		return data;
@@ -129,6 +131,7 @@ public class CityController
         city.setY(y);
         city.setType(cityTypeRepository.findOne(1));
         city.setResource(resourceRepository.findOne(1));
+        city.updateTimestamp();
 
         cityRepository.save(city);
         save(request, principal, city.getId(), name, type, capacity, resource);
@@ -191,6 +194,8 @@ public class CityController
             }
             city.setRequiredItemTypes(types);
         }
+
+        city.updateTimestamp();
 
         cityRepository.save(city);
     }

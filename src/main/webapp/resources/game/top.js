@@ -1,7 +1,7 @@
 function loadTop()
 {
     $.getJSON("/game/menus/top", function(data){
-        $("#globalCoins").text(data.player.coins);
+        $("#globalCoins").text(data.coins);
         $("#globalBalance").text(data.balance);
 
         $("#globalBalance").removeClass();

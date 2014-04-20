@@ -8,6 +8,8 @@ var tempRouteEntity = null;
 var tempTime = 0;
 var routeShown = false;
 
+var lastUpdate = 0;
+
 window.onload = function() {
     Crafty.init();
     Crafty.canvas.init();
@@ -98,9 +100,11 @@ window.onload = function() {
             loadTop();
             updateCities();
             updateFormations();
-            window.setTimeout(updateCallback, 1000);
+            updateTimestamp();
+
+            window.setTimeout(updateCallback, 10000);
         }
-        window.setTimeout(updateCallback, 1000);
+        window.setTimeout(updateCallback, 10000);
     });
 
     Crafty.scene("loading");

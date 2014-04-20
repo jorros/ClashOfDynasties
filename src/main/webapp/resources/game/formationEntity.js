@@ -35,12 +35,12 @@ function formationEntity()
             hideRoute();
 
             if(to == undefined) {
-                tempRouteEntity = Crafty.e("Road").temp(Selected._fid, Formations[Selected._fid].route.next.id);
+                tempRouteEntity = Crafty.e("Road").temp(Selected._fid, Formations[Selected._fid].route.next);
                 tempRoute = Formations[Selected._fid].route.roads;
                 tempTime = Formations[Selected._fid].route.time;
 
                 $.each(tempRoute, function (index, road) {
-                    RoadEntities[road.id].mark(true);
+                    RoadEntities[road].mark(true);
                 });
             }
             else {
@@ -49,7 +49,7 @@ function formationEntity()
                 $.getJSON("game/formations/" + Selected._fid + "/route", { "target": to }, function(data)
                 {
                     isCalculatedRoute = true;
-                    tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next.id);
+                    tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next);
                     tempRoute = data.roads;
                     tempTime = data.time;
 
@@ -68,7 +68,7 @@ function formationEntity()
                     $.powerTip.show($(document));
 
                     $.each(tempRoute, function(index, road) {
-                        RoadEntities[road.id].mark(true);
+                        RoadEntities[road].mark(true);
                     });
                 });
             }
@@ -82,7 +82,7 @@ function formationEntity()
             if(Formations[this._fid].diplomacy == 1)
                 isFormationSelected = true;
 
-            if(Formations[this._fid].route != null)
+            if(Formations[this._fid].route != undefined)
                 this.showRoute();
 
             openCommand('formation?formation=' + this._fid, Formations[this._fid].name);

@@ -1,5 +1,7 @@
 package de.clashofdynasties.models;
 
+import org.codehaus.jackson.node.JsonNodeFactory;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -69,5 +71,15 @@ public class Road
             return true;
         else
             return false;
+    }
+
+    public ObjectNode toJSON() {
+        JsonNodeFactory factory = JsonNodeFactory.instance;
+        ObjectNode node = factory.objectNode();
+
+        node.put("point1", getPoint1().getId());
+        node.put("point2", getPoint2().getId());
+
+        return node;
     }
 }

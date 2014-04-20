@@ -1,10 +1,15 @@
 package de.clashofdynasties.models;
 
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.node.ArrayNode;
+import org.codehaus.jackson.node.JsonNodeFactory;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +62,8 @@ public class City
 
 	@DBRef
 	private Map<Item, Double> items;
+
+    private long timestamp;
 
 	public int getId()
 	{
@@ -309,5 +316,67 @@ public class City
     public int getOutcome()
     {
         return 0;
+    }
+
+    public long getTimestamp()
+    {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp)
+    {
+        this.timestamp = timestamp;
+    }
+
+    public void updateTimestamp()
+    {
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public ObjectNode toJSON(boolean editor, long timestamp)
+    {
+        JsonNodeFactory factory = JsonNodeFactory.instance;
+        ObjectNode node = factory.objectNode();
+
+        if(getTimestamp() >= timestamp)
+        {
+            node.put("x", getX());
+            node.put("y", getY());
+            node.put("type", getType().getId());
+            node.put("diplomacy", getDiplomacy());
+            node.put("name", getName());
+            node.put("nn", false);
+
+            if(editor)
+            {
+                node.put("resource", getResource().getId());
+                node.put("capacity", getCapacity());
+            }
+            else
+            {
+                node.put("satisfaction", getSatisfaction());
+                node.put("population", getPopulation());
+
+                List<Formation> formations = getFormations();
+                ArrayNode formationNodes = factory.arrayNode();
+
+                if(formations != null)
+                {
+                    for(Formation formation : formations)
+                    {
+                        ObjectNode formationNode = factory.objectNode();
+                        formationNode.put("id", formation.getId());
+                        formationNode.put("name", formation.getName());
+                        formationNodes.add(formationNode);
+                    }
+                }
+
+                node.put("formations", formationNodes);
+            }
+        }
+        else
+            node.put("nn", true);
+
+        return node;
     }
 }

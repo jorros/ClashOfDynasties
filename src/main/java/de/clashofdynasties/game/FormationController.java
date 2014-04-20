@@ -4,6 +4,7 @@ import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -42,11 +43,11 @@ public class FormationController
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    Map<Integer, Formation> getFormations(Principal principal) {
+    Map<Integer, ObjectNode> getFormations(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
         Player player = playerRepository.findByName(principal.getName());
 
         List<Formation> formations = formationRepository.findAll();
-        HashMap<Integer, Formation> data = new HashMap<Integer, Formation>();
+        HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
 
         for (Formation formation : formations) {
             // Deploy Status ermitteln
@@ -66,14 +67,14 @@ public class FormationController
                 formation.setDiplomacy(4);
             }
 
-            data.put(formation.getId(), formation);
+            data.put(formation.getId(), formation.toJSON(editor, timestamp));
         }
 
         return data;
     }
 
     @RequestMapping(value="/{formation}/route", method = RequestMethod.GET)
-    public @ResponseBody Route calculateRoute(@PathVariable("formation") int id, @RequestParam int target)
+    public @ResponseBody ObjectNode calculateRoute(@PathVariable("formation") int id, @RequestParam int target)
     {
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(target);
@@ -81,7 +82,7 @@ public class FormationController
         Route route = routing.calculateRoute(formation, city);
         route.setTime(routing.calculateTime(formation, route));
 
-        return route;
+        return route.toJSON();
     }
 
     @RequestMapping(value="/{formation}/move", method = RequestMethod.GET)
@@ -106,6 +107,7 @@ public class FormationController
                 else
                     formation.setRoute(route);
 
+                formation.updateTimestamp();
                 formationRepository.save(formation);
             }
         }
@@ -180,6 +182,7 @@ public class FormationController
                     }
 
                     formation.setName(name);
+                    formation.updateTimestamp();
 
                     cityRepository.save(city);
                     formationRepository.save(formation);

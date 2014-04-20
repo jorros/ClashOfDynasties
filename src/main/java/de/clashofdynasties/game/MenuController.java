@@ -3,6 +3,8 @@ package de.clashofdynasties.game;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
+import org.codehaus.jackson.node.JsonNodeFactory;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -45,9 +47,9 @@ public class MenuController
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
-    public HashMap<String, Object> getTop(Principal principal)
+    public ObjectNode getTop(Principal principal)
     {
-        HashMap<String, Object> map = new HashMap<String, Object>();
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
 
         Player player = playerRepository.findByName(principal.getName());
         List<City> cities = cityRepository.findByPlayer(player);
@@ -61,13 +63,12 @@ public class MenuController
             balance += city.getIncome() - city.getOutcome();
         }
 
-        map.put("player", player);
-        map.put("cities", cities);
-        map.put("people", people);
-        map.put("balance", balance);
-        map.put("cityNum", cities.size());
+        node.put("coins", player.getCoins());
+        node.put("people", people);
+        node.put("balance", balance);
+        node.put("cityNum", cities.size());
 
-        return map;
+        return node;
     }
 
     @RequestMapping(value="/formation", method = RequestMethod.GET)
@@ -180,5 +181,11 @@ public class MenuController
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
         return "menu/editunits";
+    }
+
+    @RequestMapping(value="/timestamp", method = RequestMethod.GET)
+    public @ResponseBody long getTimestamp()
+    {
+        return System.currentTimeMillis();
     }
 }

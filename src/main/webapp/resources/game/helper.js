@@ -39,7 +39,7 @@ function hideRoute()
 
         if (tempRoute != null && tempRouteEntity != "") {
             $.each(tempRoute, function (index, road) {
-                RoadEntities[road.id].mark(false);
+                RoadEntities[road].mark(false);
             });
         }
 
@@ -63,6 +63,12 @@ function deselect()
 function closeControl()
 {
     $("#controls").dialog("close");
+}
+
+function updateTimestamp() {
+    $.get("/game/menus/timestamp", function(data) {
+        lastUpdate = data;
+    });
 }
 
 (function ($)

@@ -4,6 +4,7 @@ function cityEntity()
         _cid: 0,
         _infoEntity: {},
         _formationsInfoEntity: {},
+        _type: 0,
 
         _getMenu: function($trigger, e) {
             var items = {};
@@ -62,7 +63,7 @@ function cityEntity()
             if(Editor)
             {
                 $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'editcity?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
-                $(this._infoEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource.id + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
+                $(this._infoEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
                 $(this._infoEntity._element).append('<span id="' + this._cid + '_capacity" style="float:left; margin-left:10px; font-size:22px">' + Cities[this._cid].capacity + '</span>');
             }
             else
@@ -102,7 +103,7 @@ function cityEntity()
 
             if(Editor)
             {
-                $("#" + this._cid + "_resource").attr("src", "assets/resources/" + Cities[this._cid].resource.id + ".png");
+                $("#" + this._cid + "_resource").attr("src", "assets/resources/" + Cities[this._cid].resource + ".png");
                 $("#" + this._cid + "_capacity").text(Cities[this._cid].capacity);
             }
             else
@@ -146,12 +147,16 @@ function cityEntity()
         },
 
         _setType: function() {
-            this.image("assets/cities/" + Cities[this._cid].type.id + ".png");
+            if(Cities[this._cid].type != this._type) {
+                this.image("assets/cities/" + Cities[this._cid].type + ".png");
 
-            var img = new Image();
-            img.src = "assets/cities/" + Cities[this._cid].type.id + ".png";
-            this.w = img.width;
-            this.h = img.height;
+                var img = new Image();
+                img.src = "assets/cities/" + Cities[this._cid].type + ".png";
+                this.w = img.width;
+                this.h = img.height;
+
+                this._type = Cities[this._cid].type;
+            }
         },
 
         _updateDiplomacy: function() {

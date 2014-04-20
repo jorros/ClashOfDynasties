@@ -82,9 +82,10 @@ window.onload = function() {
         {
             updateCities();
             updateFormations();
-            window.setTimeout(updateCallback, 1000);
+            updateTimestamp();
+            window.setTimeout(updateCallback, 10000);
         }
-        window.setTimeout(updateCallback, 1000);
+        window.setTimeout(updateCallback, 10000);
     });
 
     Crafty.scene("loading");

@@ -4,6 +4,7 @@ import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.RoadRepository;
 import de.clashofdynasties.service.CounterService;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -29,14 +30,14 @@ public class RoadController
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody
-    Map<Integer, Road> getRoads()
+    Map<Integer, ObjectNode> getRoads()
 	{
 		List<Road> roads = roadRepository.findAll();
-        HashMap<Integer, Road> data = new HashMap<Integer, Road>();
+        HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
 
         for(Road road : roads)
         {
-            data.put(road.getId(), road);
+            data.put(road.getId(), road.toJSON());
         }
 
 		return data;

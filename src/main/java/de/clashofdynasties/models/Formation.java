@@ -1,6 +1,8 @@
 package de.clashofdynasties.models;
 
 import de.clashofdynasties.repository.RoadRepository;
+import org.codehaus.jackson.node.JsonNodeFactory;
+import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -43,6 +45,8 @@ public class Formation
 
     @DBRef
     private Road currentRoad;
+
+    private long timestamp;
 
     public int getId()
     {
@@ -184,6 +188,21 @@ public class Formation
         this.currentRoad = currentRoad;
     }
 
+    public long getTimestamp()
+    {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp)
+    {
+        this.timestamp = timestamp;
+    }
+
+    public void updateTimestamp()
+    {
+        this.timestamp = System.currentTimeMillis();
+    }
+
     public void move(int pixel)
     {
         if(!isDeployed())
@@ -207,5 +226,27 @@ public class Formation
             return true;
         else
             return false;
+    }
+
+    public ObjectNode toJSON(boolean editor, long timestamp)
+    {
+        JsonNodeFactory factory = JsonNodeFactory.instance;
+        ObjectNode node = factory.objectNode();
+
+        if(getTimestamp() >= timestamp)
+        {
+            node.put("x", getX());
+            node.put("y", getY());
+            node.put("deployed", isDeployed());
+            node.put("diplomacy", getDiplomacy());
+            node.put("name", getName());
+
+            if(getRoute() != null)
+                node.put("route", getRoute().toJSON());
+        }
+        else
+            node.put("nn", true);
+
+        return node;
     }
 }

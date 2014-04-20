@@ -30,8 +30,8 @@ function roadEntity()
             }
             else
             {
-                var city1 = Roads[this._rid].point1.id;
-                var city2 = Roads[this._rid].point2.id;
+                var city1 = Roads[this._rid].point1;
+                var city2 = Roads[this._rid].point2;
 
                 this.x1 = Cities[city1].x;
                 this.y1 = Cities[city1].y;
