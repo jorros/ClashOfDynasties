@@ -123,7 +123,15 @@ public class RoutingService
     // Distanz zwischen a und b berechnen
     private double caluclateG(Node a, Node b)
     {
-        return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2));
+        double factor = 2.0;
+        if(a.getObject() instanceof City && b.getObject() instanceof City) {
+            Road road = roadRepository.findByCities(((City) a.getObject()).getId(), ((City) b.getObject()).getId());
+            if(road != null)
+                factor -= road.getWeight();
+        }
+        else
+            factor = 1.0;
+        return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2)) * factor;
     }
 
     private void expandNode(Node current)
