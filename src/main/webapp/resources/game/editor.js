@@ -15,7 +15,7 @@ window.onload = function() {
             y: 0
         }).text("Laden (" + 0 + "%)").textColor("#FFF", 1);
 
-        Crafty.load(["assets/cities/3.png", "assets/Formation.png", "assets/map.jpg", "assets/cities/5.png", "assets/cities/2.png", "assets/cities/1.png", "assets/cities/4.png"], function() {
+        Crafty.load(Assets, function() {
                 Crafty.scene("main");
             },
 

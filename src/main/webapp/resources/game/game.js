@@ -17,28 +17,24 @@ window.onload = function() {
     console.log("Crafty " + Crafty.getVersion());
 
     Crafty.scene("loading", function() {
-       Crafty.background = "#000";
+        var logo = Crafty.e("2D, DOM, Image").image("/images/Logo.png", "no-repeat").attr({ x: Crafty.viewport.width / 2 - 200, y: Crafty.viewport.height / 2 - 100 });
+        var progress = Crafty.e("2D, DOM, Color").color("#FFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
 
-        var txt = Crafty.e("2D, DOM, Text").attr({
-            x: 0,
-            y: 0
-        }).text("Laden (" + 0 + "%)").textColor("#FFF", 1);
-
-        Crafty.load(["assets/cities/3.png", "assets/Formation.png", "assets/map.jpg", "assets/cities/5.png", "assets/cities/2.png", "assets/cities/1.png", "assets/cities/4.png"], function() {
-            Crafty.scene("main");
-        },
+        Crafty.load(Assets, function() {
+                Crafty.scene("main");
+            },
 
             function(e) {
-            txt.text("Laden (" + e.percent + "%)");
-        }),
+                progress.w = e.percent * 4;
+            }),
 
             function(e) {
-                txt.text("Fehler beim Laden");
+                console.log("Fehler beim Laden");
             }
     });
 
     Crafty.scene("main", function() {
-        Crafty.background = "#000";
+        Crafty.background("#000");
 
         Crafty.viewport.mouselook(true);
 
@@ -49,7 +45,8 @@ window.onload = function() {
             x: 0,
             y: 0,
             w: 5100,
-            h: 3600
+            h: 3600,
+            z: 0
         }).image("assets/map.jpg")
             .bind("MouseDown", function(e)
             {

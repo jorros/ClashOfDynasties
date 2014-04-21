@@ -14,6 +14,7 @@
     <script type="text/javascript" src="/lib/crafty-min.js"></script>
     <script type="text/javascript" src="/lib/jquery.powertip.min.js"></script>
     <script type="text/javascript" src="/lib/Chart.min.js"></script>
+    <script type="text/javascript" src="/src/assets.js"></script>
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/menus.js"></script>
     <script type="text/javascript" src="/src/top.js"></script>
@@ -26,7 +27,8 @@
     <script type="text/javascript" src="/src/game.js"></script>
 </head>
 <body>
-<div id="cr-stage"></div>
+<div id="cr-stage">
+</div>
 <div id="wrapper">
     <div id="top">
         <div style="width:200px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/Coins.png" style="vertical-align:bottom; width:22px;" /> <span id="globalCoins">0</span> (<span id="globalBalance" class="green">0</span>)</div>
