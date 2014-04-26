@@ -3,8 +3,8 @@ package de.clashofdynasties.game;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
-import org.codehaus.jackson.node.JsonNodeFactory;
-import org.codehaus.jackson.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -44,6 +44,9 @@ public class MenuController
 
     @Autowired
     CounterService counterService;
+
+    @Autowired
+    CaravanRepository caravanRepository;
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
@@ -122,6 +125,33 @@ public class MenuController
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
         return "menu/report";
+    }
+
+    @RequestMapping(value="/caravan", method = RequestMethod.GET)
+    public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) Integer point1, @RequestParam(required = false) Integer point2, @RequestParam(value = "caravan", required = false) Integer id) {
+        Player player = playerRepository.findByName(principal.getName());
+
+        if(id != null) {
+            Caravan caravan = caravanRepository.findOne(id);
+
+            if(caravan.getPlayer().equals(player)) {
+                map.addAttribute("caravan", caravan);
+                map.addAttribute("point1", caravan.getPoint1());
+                map.addAttribute("point2", caravan.getPoint2());
+            }
+        }
+        else {
+            Caravan caravan = new Caravan();
+            caravan.setName("Neue Karawane");
+
+            map.addAttribute("caravan", caravan);
+            map.addAttribute("point1", cityRepository.findOne(point1));
+            map.addAttribute("point2", cityRepository.findOne(point2));
+        }
+
+        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+
+        return "menu/caravan";
     }
 
     @RequestMapping(value="/store", method = RequestMethod.GET)

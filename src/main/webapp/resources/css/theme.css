@@ -142,7 +142,7 @@ input[type=text] {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    height: 30px;
+    height: 20px;
     padding: 10px;
 }
 input[type=password] {
@@ -158,7 +158,7 @@ input[type=password] {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    height: 30px;
+    height: 20px;
     padding: 10px;
 }
 button {
@@ -354,8 +354,8 @@ h4 {
     background: #070707 url(/images/gradient2.png) repeat-x top center;
     border: 1px solid #22272a;
     color: #fff;
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 15px;
     margin: 0 0 1px;
     padding: 10px 19px;
     font-family: 'Philosopher-Bold';

@@ -1,6 +1,7 @@
 var Editor = false;
 var Selected = null;
 var isFormationSelected = false;
+var isCaravanSelected = false;
 var isCalculatedRoute = false;
 
 var tempRoute = null;
@@ -70,6 +71,10 @@ window.onload = function() {
                         $.powerTip.hide();
                     }
                 }
+                else if(Selected != null && Selected.has("City") && isCaravanSelected) {
+                    hideRoute();
+                    $.powerTip.hide();
+                }
             })
             .bind("MouseUp", function()
             {
@@ -77,7 +82,12 @@ window.onload = function() {
 
                 if(lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y)
                 {
-                    deselect();
+                    if(isCaravanSelected) {
+                        isCaravanSelected = false;
+                        $("#caravanText").hide();
+                    }
+                    else
+                        deselect();
                 }
             })
 
@@ -85,9 +95,7 @@ window.onload = function() {
         cityEntity();
         roadEntity();
         formationEntity();
-        loadTop();
-        updateCities();
-        updateFormations();
+        caravanEntity();
 
         $(document).powerTip({smartPlacement: true, followMouse: true, manual: true});
 
@@ -97,11 +105,12 @@ window.onload = function() {
             loadTop();
             updateCities();
             updateFormations();
+            updateCaravans();
             updateTimestamp();
 
             window.setTimeout(updateCallback, 10000);
         }
-        window.setTimeout(updateCallback, 10000);
+        updateCallback();
     });
 
     Crafty.scene("loading");

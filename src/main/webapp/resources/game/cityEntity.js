@@ -204,11 +204,19 @@ function cityEntity()
                 }
             }
             else {
-                if(isFormationSelected)
-                {
+                if(isFormationSelected) {
                     $.get("game/formations/" + Selected._fid + "/move", { "target": this._cid });
 
                     return;
+                }
+                else if(isCaravanSelected) {
+                    if(Selected._cid != this._cid) {
+                        openMenu("caravan?point1=" + Selected._cid + "&point2=" + this._cid);
+
+                        isCaravanSelected = false;
+                        $("#caravanText").hide();
+                        $.powerTip.hide();
+                    }
                 }
                 else
                     openCommand('city?city=' + this._cid, this._name);
@@ -226,6 +234,34 @@ function cityEntity()
             {
                 Selected.showRoute(this._cid);
                 isCalculatedRoute = true;
+            }
+            else if(!Editor && isCaravanSelected && Selected._cid != this._cid)
+            {
+                tempRoute = "";
+                $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function(data)
+                {
+                    isCalculatedRoute = true;
+                    tempRoute = data.roads;
+                    tempTime = data.time;
+
+                    var totalSeconds = tempTime;
+                    var hours = Math.floor(totalSeconds / 3600);
+                    totalSeconds %= 3600;
+                    var minutes = Math.floor(totalSeconds / 60);
+
+                    var output = "";
+                    if(hours > 0)
+                        output += hours + " Stunden ";
+                    if(minutes > 0)
+                        output += minutes + " Minuten";
+
+                    $(document).data('powertip' , output);
+                    $.powerTip.show($(document));
+
+                    $.each(tempRoute, function(index, road) {
+                        RoadEntities[road].mark(true);
+                    });
+                });
             }
         },
 

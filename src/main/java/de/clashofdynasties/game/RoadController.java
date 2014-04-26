@@ -1,10 +1,10 @@
 package de.clashofdynasties.game;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.RoadRepository;
 import de.clashofdynasties.service.CounterService;
-import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -35,10 +35,7 @@ public class RoadController
 		List<Road> roads = roadRepository.findAll();
         HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
 
-        for(Road road : roads)
-        {
-            data.put(road.getId(), road.toJSON());
-        }
+        roads.forEach(road -> data.put(road.getId(), road.toJSON()));
 
 		return data;
 	}

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Servlet API 3.1" type="repository">
+    <properties maven-id="javax.servlet:javax.servlet-api:3.1.0" />
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Dropbox/Clash Libs/javax.servlet-api-3.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -98,7 +98,7 @@ function formationEntity()
 
         formation: function(id) {
             this._fid = id;
-            this.z = 12;
+            this.z = 13;
 
             this.image("assets/Formation.png");
             this.w = 60;

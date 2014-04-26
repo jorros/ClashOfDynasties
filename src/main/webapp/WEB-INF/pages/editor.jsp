@@ -18,6 +18,8 @@
     <script type="text/javascript" src="/src/roadEntity.js"></script>
     <script type="text/javascript" src="/src/formationEntity.js"></script>
     <script type="text/javascript" src="/src/formations.js"></script>
+    <script type="text/javascript" src="/src/caravanEntity.js"></script>
+    <script type="text/javascript" src="/src/caravans.js"></script>
     <script type="text/javascript" src="/src/editor.js"></script>
 </head>
 <body>

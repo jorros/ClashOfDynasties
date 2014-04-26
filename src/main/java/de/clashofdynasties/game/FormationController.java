@@ -1,10 +1,10 @@
 package de.clashofdynasties.game;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
-import org.codehaus.jackson.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -124,10 +124,8 @@ public class FormationController
         {
             City city = formation.getLastCity();
 
-            for(Unit unit : formation.getUnits())
-            {
-                city.getUnits().add(unit);
-            }
+            formation.getUnits().forEach(u -> city.getUnits().add(u));
+
             cityRepository.save(city);
             formationRepository.delete(formation);
         }

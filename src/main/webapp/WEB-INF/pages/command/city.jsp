@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${player == city.player}">
-<button><img src="assets/setCaravan.png" /></button>
+<button><img src="assets/setCaravan.png" onclick="isCaravanSelected=true; $('#caravanText').show();" /></button>
 <button onclick="openMenu('formation?city=${city.id}')"><img src="assets/setFormation.png" /></button>
 </c:if>
 <button onclick="openMenu('store?city=${city.id}')"><img src="assets/showItems.png" /></button>

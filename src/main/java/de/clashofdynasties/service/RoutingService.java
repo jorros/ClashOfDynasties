@@ -168,18 +168,26 @@ public class RoutingService
             if(lastNode.getObject() instanceof City)
             {
                 // Wenn Aktueller und Vorgänger Knoten Städte sind, Road ermitteln
-                if(lastNode.parent.getObject() instanceof City)
+                if(lastNode.parent != null && lastNode.parent.getObject() instanceof City && lastNode.parent.parent != null)
                 {
                     City p1 = (City) lastNode.getObject();
                     City p2 = (City) lastNode.parent.getObject();
 
                     roads.add(roadRepository.findByCities(p1.getId(), p2.getId()));
                 }
-                else if(lastNode.parent.getObject() instanceof Formation)
+                else if(lastNode.parent != null && (lastNode.parent.getObject() instanceof Formation || lastNode.parent.parent == null))
                 {
                     // Wenn parent Formation ist, currentNode als nächste Stadt setzen
+                    if(lastNode.parent.getObject() instanceof City) {
+                        City p1 = (City) lastNode.getObject();
+                        City p2 = (City) lastNode.parent.getObject();
+
+                        roads.add(roadRepository.findByCities(p1.getId(), p2.getId()));
+                    }
                     route.setNext((City) lastNode.getObject());
                 }
+                else if(lastNode.parent == null)
+                    break;
 
                 lastNode = lastNode.parent;
             }
@@ -227,6 +235,34 @@ public class RoutingService
         return null;
     }
 
+    public Route calculateRoute(City start, City end) {
+        openList = new PriorityQueue<Node>();
+        closedList = new LinkedList<Node>();
+        goal = null;
+
+        Node from = new Node(start);
+        goal = new Node(end);
+
+        openList.offer(from);
+
+        while(!openList.isEmpty())
+        {
+            Node currentNode = openList.poll();
+
+            if(currentNode.getObject() instanceof City)
+            {
+                City currC = (City)currentNode.getObject();
+                if(currC.equals(end))
+                    return createRoute(currentNode);
+
+                closedList.add(currentNode);
+                expandNode(currentNode);
+            }
+        }
+
+        return null;
+    }
+
     public int calculateTime(Formation formation, Route route)
     {
         List<Road> roads = route.getRoads();
@@ -250,6 +286,19 @@ public class RoutingService
         for(Road road : roads)
         {
             time += new Double((road.getLength() - 140) / (formation.getSpeed() * road.getWeight())).intValue();
+        }
+        return time;
+    }
+
+    public int calculateTime(Route route)
+    {
+        List<Road> roads = route.getRoads();
+
+        int time = 0;
+
+        for(Road road : roads)
+        {
+            time += new Double((road.getLength() - 140) / (0.1 * road.getWeight())).intValue();
         }
         return time;
     }
