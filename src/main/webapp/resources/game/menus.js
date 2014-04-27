@@ -22,5 +22,5 @@ $(document).ready(function() {
         }
     });
 
-    $("#controls").dialog({ width: 400, dialogClass: "no-close", position: { my: "left top", at: "left bottom" }, draggable: false, autoOpen: false });
+    $("#controls").dialog({ width: 400, dialogClass: "no-close no-titlebar", position: { my: "left top", at: "left bottom" }, draggable: false, autoOpen: false });
 });

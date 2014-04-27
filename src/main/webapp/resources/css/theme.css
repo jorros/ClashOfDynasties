@@ -374,6 +374,9 @@ h4 {
 .no-close .ui-dialog-titlebar-close {
     display: none;
 }
+.no-titlebar .ui-dialog-titlebar {
+    display: none;
+}
 .red {
     color: #FF1A00;
 }
