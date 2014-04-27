@@ -104,6 +104,9 @@
             $("#point1ItemText").text(name + " (" + type + ")");
             $("#point1ItemIcon").attr("src", "assets/items/"+id+".png");
 
+            $("#point1ItemLoadText").text(point1Load + "t");
+            $("#slider1").slider("value", point1Load);
+
             $("#slider1").slider("enable");
         } else {
             point2Item = id;
@@ -111,6 +114,9 @@
 
             $("#point2ItemText").text(name + " (" + type + ")");
             $("#point2ItemIcon").attr("src", "assets/items/"+id+".png");
+
+            $("#point2ItemLoadText").text(point2Load + "t");
+            $("#slider2").slider("value", point2Load);
 
             $("#slider2").slider("enable");
         }
