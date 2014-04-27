@@ -88,7 +88,7 @@ public class CaravanController
         Caravan caravan = caravanRepository.findOne(caravanId);
 
         if(caravan.getPlayer().equals(player)) {
-            caravan.setTerminate(true);
+            caravan.setTerminate(!caravan.isTerminate());
             caravanRepository.save(caravan);
         }
     }
@@ -121,6 +121,17 @@ public class CaravanController
 
                 caravan.setName(name);
                 caravan.setPlayer(player);
+
+                double amount = (city1.getStoredItem(point1Item) - point1Load > 0) ? point1Load : Math.floor(city1.getStoredItem(point1Item));
+
+                if(city1.getItems() == null)
+                    city1.setItems(new HashMap<>());
+
+                city1.getItems().put(point1Item, city1.getStoredItem(point1Item) - amount);
+                cityRepository.save(city1);
+
+                caravan.setPoint1Store(new Double(amount).intValue());
+                caravan.setPoint1StoreItem(itemRepository.findOne(point1Item));
 
                 caravan.move(70);
 

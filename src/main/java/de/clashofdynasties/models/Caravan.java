@@ -36,13 +36,17 @@ public class Caravan
 
     @DBRef
     private Item point1Item;
-    private int point1Store;
     private int point1Load;
+
+    @DBRef Item point1StoreItem;
+    private int point1Store;
 
     @DBRef
     private Item point2Item;
-    private int point2Store;
     private int point2Load;
+
+    @DBRef Item point2StoreItem;
+    private int point2Store;
 
     private boolean terminate;
 
@@ -204,6 +208,26 @@ public class Caravan
     public void setTerminate(boolean terminate)
     {
         this.terminate = terminate;
+    }
+
+    public Item getPoint1StoreItem()
+    {
+        return point1StoreItem;
+    }
+
+    public void setPoint1StoreItem(Item point1StoreItem)
+    {
+        this.point1StoreItem = point1StoreItem;
+    }
+
+    public Item getPoint2StoreItem()
+    {
+        return point2StoreItem;
+    }
+
+    public void setPoint2StoreItem(Item point2StoreItem)
+    {
+        this.point2StoreItem = point2StoreItem;
     }
 
     public void move(int pixel)

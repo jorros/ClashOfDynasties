@@ -49,7 +49,7 @@ function caravanEntity() {
             if(Caravans[this._cid].route != undefined)
                 this.showRoute();
 
-            openCommand('caravan?caravan=' + this._fid, Caravans[this._cid].name);
+            openCommand('caravan?caravan=' + this._cid, Caravans[this._cid].name);
         },
 
         deselect: function() {
@@ -60,8 +60,8 @@ function caravanEntity() {
             this.requires("2D, Canvas, Image, Mouse");
         },
 
-        formation: function(id) {
-            this._fid = id;
+        caravan: function(id) {
+            this._cid = id;
             this.z = 12;
 
             this.image("assets/Caravan.png");

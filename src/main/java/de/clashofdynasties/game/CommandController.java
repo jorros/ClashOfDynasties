@@ -1,5 +1,6 @@
 package de.clashofdynasties.game;
 
+import de.clashofdynasties.models.Caravan;
 import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
@@ -33,6 +34,9 @@ public class CommandController
     ResourceRepository resourceRepository;
 
     @Autowired
+    CaravanRepository caravanRepository;
+
+    @Autowired
     RoutingService routing;
 
     @RequestMapping(value="/formation", method = RequestMethod.GET)
@@ -61,6 +65,31 @@ public class CommandController
         map.addAttribute("time", time);
 
         return "command/formation";
+    }
+
+    @RequestMapping(value="/caravan", method = RequestMethod.GET)
+    public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") int id)
+    {
+        Caravan caravan = caravanRepository.findOne(id);
+
+        String time = "";
+
+        int seconds = routing.calculateTime(caravan.getRoute());
+        int hr = (int)(seconds / 3600);
+        int rem = (int)(seconds % 3600);
+        int mn = rem / 60;
+
+        if(hr > 0)
+            time += hr + " Stunden ";
+
+        if(mn > 0)
+            time += mn + " Minuten";
+
+        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("caravan", caravan);
+        map.addAttribute("time", time);
+
+        return "command/caravan";
     }
 
     @RequestMapping(value="/city", method = RequestMethod.GET)

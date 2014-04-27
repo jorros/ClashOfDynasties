@@ -59,8 +59,7 @@ public class City
 	@DBRef
 	private List<Unit> units;
 
-	@DBRef
-	private Map<Item, Double> items;
+	private Map<Integer, Double> items;
 
     private long timestamp;
 
@@ -184,12 +183,12 @@ public class City
 		this.requiredItemTypes = requiredItemTypes;
 	}
 
-	public Map<Item, Double> getItems()
+	public Map<Integer, Double> getItems()
 	{
 		return items;
 	}
 
-	public void setItems(Map<Item, Double> items)
+	public void setItems(Map<Integer, Double> items)
 	{
 		this.items = items;
 	}
@@ -262,6 +261,16 @@ public class City
     public void setDiplomacy(int diplomacy)
     {
         this.diplomacy = diplomacy;
+    }
+
+    public double getStoredItem(int id) {
+        if(getItems() == null)
+            return 0;
+
+        if(getItems().get(id) == null)
+            return 0;
+
+        return getItems().get(id);
     }
 
     public boolean equals(Object other)
