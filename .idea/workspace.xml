@@ -7,7 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/lib/jquery.mousewheel.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -71,6 +75,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="game.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1309">
+              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editor.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.576923" vertical-offset="16" max-vertical-offset="1088">
+              <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Event.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Event.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -123,21 +147,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Formation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
+      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1632" max-vertical-offset="2754">
-              <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="170" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1382" max-vertical-offset="2278">
+              <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="107" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+      <file leaf-file-name="editor.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1371" max-vertical-offset="2108">
-              <caret line="97" column="74" selection-start-line="97" selection-start-column="74" selection-end-line="97" selection-end-column="74" />
+            <state vertical-scroll-proportion="0.7454243" vertical-offset="946" max-vertical-offset="1717">
+              <caret line="82" column="11" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -169,35 +193,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CityController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60714287" vertical-offset="850" max-vertical-offset="3094">
+            <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="3094">
               <caret line="89" column="45" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
               <folding>
                 <element signature="e#3329#3330#0" expanded="true" />
                 <element signature="e#3370#3371#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="840" max-vertical-offset="1632">
-              <caret line="86" column="44" selection-start-line="86" selection-start-column="44" selection-end-line="86" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="caravans.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/caravans.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
-              <caret line="4" column="73" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="73" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -232,11 +236,9 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cities.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/formations.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/roadEntity.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CaravanRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-config.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" />
@@ -257,15 +259,17 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Event.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/top.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
       </list>
     </option>
   </component>
@@ -546,6 +550,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="command" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Clash of Dynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Clash of Dynasties" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -893,15 +927,15 @@
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\game" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="de.clashofdynasties" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\images" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\lib" />
+      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\images" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\WEB-INF\pages\menu" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\WEB-INF\pages\command" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\WEB-INF\pages\commands" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="de.clashofdynasties" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.0.5">
@@ -1362,7 +1396,7 @@
       <workItem from="1398602076550" duration="15756000" />
       <workItem from="1398681397636" duration="1971000" />
       <workItem from="1398772284404" duration="8678000" />
-      <workItem from="1398936583894" duration="6902000" />
+      <workItem from="1398936583894" duration="11166000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1552,11 +1586,15 @@
       <created>1398947755911</created>
       <updated>1398947755911</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Zufriedenheit wird in Stadtleiste bei Population == 0 ausgeblendet">
+      <created>1398948677348</created>
+      <updated>1398948677348</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="534309000" />
+    <option name="totallyTimeSpent" value="538573000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1602,7 +1640,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25974026" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31926408" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.41612902" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26594594" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26406926" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.41612902" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973376" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1634,7 +1672,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Festgelegte Route für ausgewähltes Objekt wird dargestellt" />
     <MESSAGE value="Geschätzte Zeit für Route" />
     <MESSAGE value="UnitEditor hinzugefügt" />
     <MESSAGE value="Zeitanzeige Fix" />
@@ -1659,7 +1696,8 @@
     <MESSAGE value="Anzeige der Karawanenladung bei Wahl gefixt" />
     <MESSAGE value="Code Reformat + Events hinzugefügt" />
     <MESSAGE value="Letzte Scrollposition wird gespeichert&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Letzte Scrollposition wird gespeichert&#10;" />
+    <MESSAGE value="Zufriedenheit wird in Stadtleiste bei Population == 0 ausgeblendet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zufriedenheit wird in Stadtleiste bei Population == 0 ausgeblendet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1715,13 +1753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
@@ -1746,13 +1777,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/assets/Caravan.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5263158" vertical-offset="57" max-vertical-offset="1071">
-          <caret line="21" column="67" selection-start-line="21" selection-start-column="67" selection-end-line="21" selection-end-column="67" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java">
@@ -1945,14 +1969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.192308" vertical-offset="434" max-vertical-offset="1292">
-          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-28.115385" vertical-offset="1496" max-vertical-offset="2380">
@@ -2049,20 +2065,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1371" max-vertical-offset="2108">
-          <caret line="97" column="74" selection-start-line="97" selection-start-column="74" selection-end-line="97" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.0199668" vertical-offset="1619" max-vertical-offset="4131">
           <caret line="292" column="40" selection-start-line="292" selection-start-column="8" selection-end-line="292" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2081,12 +2089,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60714287" vertical-offset="850" max-vertical-offset="3094">
+        <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="3094">
           <caret line="89" column="45" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
           <folding>
             <element signature="e#3329#3330#0" expanded="true" />
             <element signature="e#3370#3371#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.807693" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.576923" vertical-offset="16" max-vertical-offset="1088">
+          <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1382" max-vertical-offset="2278">
+          <caret line="99" column="8" selection-start-line="99" selection-start-column="8" selection-end-line="107" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7454243" vertical-offset="946" max-vertical-offset="1717">
+          <caret line="82" column="11" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

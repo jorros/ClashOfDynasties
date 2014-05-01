@@ -85,7 +85,7 @@ window.onload = function () {
                     else
                         deselect();
                 } else {
-                    $.put("/game/menus/scroll", { x: Crafty.viewport.x, y: Crafty.viewport.y });
+                    $.put("/game/menus/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
                 }
             })
 
@@ -96,6 +96,16 @@ window.onload = function () {
         caravanEntity();
 
         $(document).powerTip({smartPlacement: true, followMouse: true, manual: true});
+
+        $(document).on("mousewheel", function(event) {
+            var calcScale = Crafty.viewport._scale + (event.deltaY / 10);
+            if(calcScale < 1 && calcScale > 0.5)
+                Crafty.viewport.scale(calcScale);
+            else if(calcScale > 1)
+                Crafty.viewport.scale(1);
+            else if(calcScale < 0.5)
+                Crafty.viewport.scale(0.5);
+        });
 
         // Update Callback
         var updateCallback = function () {

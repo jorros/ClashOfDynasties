@@ -9,6 +9,7 @@
     <script type="text/javascript" src="/lib/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="/lib/jquery-ui-1.10.4.custom.js"></script>
     <script type="text/javascript" src="/lib/crafty-min.js"></script>
+    <script type="text/javascript" src="/lib/jquery.mousewheel.min.js"></script>
     <script type="text/javascript" src="/src/assets.js"></script>
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/editorMenus.js"></script>
