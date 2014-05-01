@@ -23,6 +23,7 @@ function updateCities() {
             entity.update();
         });
 
-        updateRoads();
+        if(Editor || $.isEmptyObject(Roads))
+            updateRoads();
     });
 }
