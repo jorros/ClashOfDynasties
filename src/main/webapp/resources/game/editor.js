@@ -3,6 +3,8 @@ var SelectionMode = 0;
 var Selected = null;
 var SelectedWay = null;
 
+var lastUpdate = 0;
+
 function updateGame() {
     updateCities();
     updateTimestamp();

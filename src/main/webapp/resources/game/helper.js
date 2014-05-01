@@ -82,7 +82,7 @@ function sendDelete (url, data, callback) {
         if(data == undefined) {
             sendDelete(url);
         } else if(typeof(data) == "function") {
-            sendDelete(url, undefined, data);
+            sendDelete(url, {}, data);
         } else {
             sendDelete(url, data, callback);
         }
