@@ -70,7 +70,7 @@ window.onload = function () {
         roadEntity();
         updateCities();
 
-        $(document).on("mousewheel", function(event) {
+        $("#cr-stage").on("mousewheel", function(event) {
             var calcScale = Crafty.viewport._scale + (event.deltaY / 10);
             if(calcScale < 1 && calcScale > 0.5)
                 Crafty.viewport.scale(calcScale);
