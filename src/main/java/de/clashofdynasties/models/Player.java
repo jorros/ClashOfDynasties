@@ -28,6 +28,9 @@ public class Player {
 
     private List<Event> events;
 
+    private int lastScrollX;
+    private int lastScrollY;
+
     public int getId() {
         return id;
     }
@@ -107,6 +110,22 @@ public class Player {
         }
 
         getEvents().add(event);
+    }
+
+    public int getLastScrollX() {
+        return lastScrollX;
+    }
+
+    public void setLastScrollX(int lastScrollX) {
+        this.lastScrollX = lastScrollX;
+    }
+
+    public int getLastScrollY() {
+        return lastScrollY;
+    }
+
+    public void setLastScrollY(int lastScrollY) {
+        this.lastScrollY = lastScrollY;
     }
 
     public boolean equals(Object other) {

@@ -87,6 +87,28 @@ public class MenuController {
         }
     }
 
+    @RequestMapping(value = "/scroll", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void updateScrollPosition(Principal principal, @RequestParam int x, @RequestParam int y) {
+        Player player = playerRepository.findByName(principal.getName());
+
+        player.setLastScrollX(x);
+        player.setLastScrollY(y);
+
+        playerRepository.save(player);
+    }
+
+    @RequestMapping(value = "/scroll", method = RequestMethod.GET)
+    public @ResponseBody ObjectNode getScrollPosition(Principal principal) {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        Player player = playerRepository.findByName(principal.getName());
+
+        node.put("x", player.getLastScrollX());
+        node.put("y", player.getLastScrollY());
+
+        return node;
+    }
+
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) Integer id, @RequestParam(value = "city", required = false) Integer cityID) {
         Player player = playerRepository.findByName(principal.getName());

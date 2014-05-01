@@ -84,6 +84,8 @@ window.onload = function () {
                     }
                     else
                         deselect();
+                } else {
+                    $.put("/game/menus/scroll", { x: Crafty.viewport.x, y: Crafty.viewport.y });
                 }
             })
 
@@ -106,6 +108,11 @@ window.onload = function () {
             window.setTimeout(updateCallback, 10000);
         }
         updateCallback();
+
+        $.getJSON("/game/menus/scroll", function(data) {
+            Crafty.viewport.x = data.x;
+            Crafty.viewport.y = data.y;
+        });
     });
 
     Crafty.scene("loading");
