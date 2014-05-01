@@ -68,9 +68,7 @@ window.onload = function () {
         // Initialisiere
         cityEntity();
         roadEntity();
-        formationEntity();
         updateCities();
-        updateFormations();
 
         $(document).on("mousewheel", function(event) {
             var calcScale = Crafty.viewport._scale + (event.deltaY / 10);
@@ -85,7 +83,6 @@ window.onload = function () {
         // Update Callback
         var updateCallback = function () {
             updateCities();
-            updateFormations();
             updateTimestamp();
             window.setTimeout(updateCallback, 10000);
         }
