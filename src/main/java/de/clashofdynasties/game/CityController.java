@@ -83,9 +83,13 @@ public class CityController {
             }
 
             // Diplomatie setzen
-            if (player.equals(city.getPlayer()))
+            if (player.equals(city.getPlayer())) {
                 city.setDiplomacy(1);
-                // Wenn Spieler neutral
+
+                if(city.getPopulation() <= 0)
+                    city.setSatisfaction(-1);
+            }
+            // Wenn Spieler neutral
             else if (city.getPlayer().getId() == 1) {
                 city.setDiplomacy(4);
                 city.setSatisfaction(-1);
