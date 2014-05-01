@@ -5,108 +5,112 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document
-public class Player
-{
-	@Id
-	private int id;
+public class Player {
+    @Id
+    private int id;
 
-	@Indexed
-	private String name;
+    @Indexed
+    private String name;
 
-	private String password;
-	private double coins;
+    private String password;
+    private double coins;
 
     @DBRef
-	private Clan clan;
+    private Clan clan;
 
-	@DBRef
-	private Nation nation;
-	private String email;
+    @DBRef
+    private Nation nation;
+    private String email;
 
-	public int getId()
-	{
-		return id;
-	}
+    private List<Event> events;
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getCoins()
-	{
-		return (int)Math.floor(this.coins);
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setCoins(double coins)
-	{
-		this.coins = coins;
-	}
+    public int getCoins() {
+        return (int) Math.floor(this.coins);
+    }
 
-	public Clan getClan()
-	{
-		return clan;
-	}
+    public void setCoins(double coins) {
+        this.coins = coins;
+    }
 
-	public void setClan(Clan clan)
-	{
-		this.clan = clan;
-	}
+    public Clan getClan() {
+        return clan;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public void setClan(Clan clan) {
+        this.clan = clan;
+    }
 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getPassword()
-	{
-		return password;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPassword(String password)
-	{
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getEmail()
-	{
-		return email;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setEmail(String email)
-	{
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Nation getNation()
-	{
-		return nation;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setNation(Nation nation)
-	{
-		this.nation = nation;
-	}
+    public Nation getNation() {
+        return nation;
+    }
 
-    public double getRawCoins()
-    {
+    public void setNation(Nation nation) {
+        this.nation = nation;
+    }
+
+    public double getRawCoins() {
         return this.coins;
     }
 
-    public void addCoins(double coins)
-    {
+    public void addCoins(double coins) {
         this.coins += coins;
     }
 
-    public boolean equals(Object other)
-    {
-        if(other instanceof Player && ((Player)other).getId() == this.id)
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
+    public void addEvent(Event event) {
+        if(getEvents() == null) {
+            ArrayList<Event> events = new ArrayList<>();
+            setEvents(events);
+        }
+
+        getEvents().add(event);
+    }
+
+    public boolean equals(Object other) {
+        if (other instanceof Player && ((Player) other).getId() == this.id)
             return true;
         else
             return false;

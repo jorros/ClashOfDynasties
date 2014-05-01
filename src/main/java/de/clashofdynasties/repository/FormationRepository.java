@@ -6,8 +6,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface FormationRepository extends MongoRepository<Formation, Integer>
-{
+public interface FormationRepository extends MongoRepository<Formation, Integer> {
     @Query("{lastCity.$id: ?0, route: null}")
     List<Formation> findByCity(int city);
 }

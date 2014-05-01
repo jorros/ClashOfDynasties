@@ -21,50 +21,44 @@ import java.io.InputStream;
 
 @Controller
 @RequestMapping("/game/units")
-public class UnitController
-{
+public class UnitController {
     @Autowired
     UnitBlueprintRepository unitBlueprintRepository;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double speed)
-    {
+    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double speed) {
         UnitBlueprint blueprint = unitBlueprintRepository.findOne(id);
 
-        if(description != null)
+        if (description != null)
             blueprint.setDescription(description);
 
-        if(production != null)
+        if (production != null)
             blueprint.setRequiredProduction(production);
 
-        if(price != null)
+        if (price != null)
             blueprint.setPrice(price);
 
-        if(speed != null)
+        if (speed != null)
             blueprint.setSpeed(speed);
 
         unitBlueprintRepository.save(blueprint);
     }
 
-    @RequestMapping(value="/{unit}/icon", headers = "Accept=image/png", method = RequestMethod.GET)
-    public ResponseEntity health(HttpServletRequest request, @PathVariable int unit, @RequestParam double health)
-    {
-        try
-        {
+    @RequestMapping(value = "/{unit}/icon", headers = "Accept=image/png", method = RequestMethod.GET)
+    public ResponseEntity health(HttpServletRequest request, @PathVariable int unit, @RequestParam double health) {
+        try {
             InputStream is = request.getSession().getServletContext().getResourceAsStream("/resources/assets/units/" + unit + ".png");
             BufferedImage img = ImageIO.read(is);
 
             int width = img.getWidth();
             int height = img.getHeight();
 
-            int healthWidth = (int)(health / (double)100 * width);
+            int healthWidth = (int) (health / (double) 100 * width);
 
-            for(int xx = 0; xx < width; xx++)
-            {
-                for(int yy = 0; yy < height; yy++)
-                {
+            for (int xx = 0; xx < width; xx++) {
+                for (int yy = 0; yy < height; yy++) {
                     Color originalColor = new Color(img.getRGB(xx, yy), true);
 
                     Color red = new Color(Color.RED.getRed(), Color.RED.getGreen(), Color.RED.getBlue(), originalColor.getAlpha());
@@ -72,10 +66,8 @@ public class UnitController
                 }
             }
 
-            for(int xx = 0; xx < healthWidth; xx++)
-            {
-                for(int yy = 0; yy < height; yy++)
-                {
+            for (int xx = 0; xx < healthWidth; xx++) {
+                for (int yy = 0; yy < height; yy++) {
                     Color originalColor = new Color(img.getRGB(xx, yy), true);
 
                     Color green = new Color(Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue(), originalColor.getAlpha());
@@ -88,11 +80,9 @@ public class UnitController
             byte[] imageInByte = baos.toByteArray();
 
             final HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(new MediaType("image","png"));
+            headers.setContentType(new MediaType("image", "png"));
             return new ResponseEntity(imageInByte, headers, HttpStatus.CREATED);
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

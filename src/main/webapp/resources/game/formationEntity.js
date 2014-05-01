@@ -1,10 +1,9 @@
-function formationEntity()
-{
+function formationEntity() {
     Crafty.c("Formation", {
         _fid: 0,
         _textEntity: {},
 
-        _buildInfo: function() {
+        _buildInfo: function () {
             this._textEntity = Crafty.e("2D, DOM, Text").attr({
                 x: this._x,
                 y: this._y - 40,
@@ -16,25 +15,25 @@ function formationEntity()
             this.attach(this._textEntity);
         },
 
-        _updateInfo: function() {
+        _updateInfo: function () {
             this._textEntity.text(Formations[this._fid].name);
         },
 
-        _updateDiplomacy: function() {
-            if(Formations[this._fid].diplomacy == 1) // Selbst
+        _updateDiplomacy: function () {
+            if (Formations[this._fid].diplomacy == 1) // Selbst
                 this._textEntity.css("color", "#4096EE");
-            else if(Formations[this._fid].diplomacy == 2) // Verbündet
+            else if (Formations[this._fid].diplomacy == 2) // Verbündet
                 this._textEntity.css("color", "#356AA0");
-            else if(Formations[this._fid].diplomacy == 3) // Verfeindet
+            else if (Formations[this._fid].diplomacy == 3) // Verfeindet
                 this._textEntity.css("color", "#D01F3C");
-            else if(Formations[this._fid].diplomacy == 4) // Neutral
+            else if (Formations[this._fid].diplomacy == 4) // Neutral
                 this._textEntity.css("color", "#EEEEEE");
         },
 
-        showRoute: function(to) {
+        showRoute: function (to) {
             hideRoute();
 
-            if(to == undefined) {
+            if (to == undefined) {
                 tempRouteEntity = Crafty.e("Road").temp(Selected._fid, Formations[Selected._fid].route.next);
                 tempRoute = Formations[Selected._fid].route.roads;
                 tempTime = Formations[Selected._fid].route.time;
@@ -46,8 +45,7 @@ function formationEntity()
             else {
                 tempRouteEntity = "";
                 tempRoute = "";
-                $.getJSON("game/formations/" + Selected._fid + "/route", { "target": to }, function(data)
-                {
+                $.getJSON("game/formations/" + Selected._fid + "/route", { "target": to }, function (data) {
                     isCalculatedRoute = true;
                     tempRouteEntity = Crafty.e("Road").temp(Selected._fid, data.next);
                     tempRoute = data.roads;
@@ -59,15 +57,15 @@ function formationEntity()
                     var minutes = Math.floor(totalSeconds / 60);
 
                     var output = "";
-                    if(hours > 0)
+                    if (hours > 0)
                         output += hours + " Stunden ";
-                    if(minutes > 0)
+                    if (minutes > 0)
                         output += minutes + " Minuten";
 
-                    $(document).data('powertip' , output);
+                    $(document).data('powertip', output);
                     $.powerTip.show($(document));
 
-                    $.each(tempRoute, function(index, road) {
+                    $.each(tempRoute, function (index, road) {
                         RoadEntities[road].mark(true);
                     });
                 });
@@ -75,28 +73,28 @@ function formationEntity()
             routeShown = true;
         },
 
-        select: function() {
+        select: function () {
             deselect();
             Selected = this;
 
-            if(Formations[this._fid].diplomacy == 1)
+            if (Formations[this._fid].diplomacy == 1)
                 isFormationSelected = true;
 
-            if(Formations[this._fid].route != undefined)
+            if (Formations[this._fid].route != undefined)
                 this.showRoute();
 
             openCommand('formation?formation=' + this._fid, Formations[this._fid].name);
         },
 
-        deselect: function() {
+        deselect: function () {
             isFormationSelected = false;
         },
 
-        init: function() {
+        init: function () {
             this.requires("2D, Canvas, Image, Mouse");
         },
 
-        formation: function(id) {
+        formation: function (id) {
             this._fid = id;
             this.z = 13;
 
@@ -113,17 +111,16 @@ function formationEntity()
             return this;
         },
 
-        update: function() {
-            if(Formations[this._fid] == undefined) {
+        update: function () {
+            if (Formations[this._fid] == undefined) {
                 this.destroy();
                 delete FormationEntities[this._fid];
             }
-            else
-            {
+            else {
                 this.x = Math.round(Formations[this._fid].x - this._w / 2);
                 this.y = Math.round(Formations[this._fid].y - this._h / 2);
 
-                if(Formations[this._fid].deployed) {
+                if (Formations[this._fid].deployed) {
                     this.visible = false;
                     this._textEntity.visible = false;
                 }

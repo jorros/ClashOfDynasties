@@ -10,8 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Document
-public class Formation
-{
+public class Formation {
     @Id
     private int id;
 
@@ -45,46 +44,38 @@ public class Formation
 
     private long timestamp;
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getX()
-    {
+    public int getX() {
         return x;
     }
 
-    public void setX(int x)
-    {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public int getY()
-    {
+    public int getY() {
         return y;
     }
 
-    public void setY(int y)
-    {
+    public void setY(int y) {
         this.y = y;
     }
 
-    public double getHealth()
-    {
-        if(units == null || units.isEmpty())
+    public double getHealth() {
+        if (units == null || units.isEmpty())
             return 100;
 
         int maxHealth = 0;
         int health = 0;
 
-        for(Unit unit : units)
-        {
+        for (Unit unit : units) {
             maxHealth += 100;
             health += unit.getHealth();
         }
@@ -92,118 +83,95 @@ public class Formation
         return health / maxHealth * 100;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Player getPlayer()
-    {
+    public Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player)
-    {
+    public void setPlayer(Player player) {
         this.player = player;
     }
 
-    public City getLastCity()
-    {
+    public City getLastCity() {
         return lastCity;
     }
 
-    public void setLastCity(City lastCity)
-    {
+    public void setLastCity(City lastCity) {
         this.lastCity = lastCity;
     }
 
-    public List<Unit> getUnits()
-    {
+    public List<Unit> getUnits() {
         return units;
     }
 
-    public void setUnits(List<Unit> units)
-    {
+    public void setUnits(List<Unit> units) {
         this.units = units;
     }
 
-    public Route getRoute()
-    {
+    public Route getRoute() {
         return route;
     }
 
-    public void setRoute(Route route)
-    {
+    public void setRoute(Route route) {
         this.route = route;
     }
 
-    public boolean isDeployed()
-    {
+    public boolean isDeployed() {
         return (this.getRoute() == null);
     }
 
-    public void setDeployed(boolean deployed)
-    {
+    public void setDeployed(boolean deployed) {
         this.deployed = deployed;
     }
 
-    public int getDiplomacy()
-    {
+    public int getDiplomacy() {
         return diplomacy;
     }
 
-    public void setDiplomacy(int diplomacy)
-    {
+    public void setDiplomacy(int diplomacy) {
         this.diplomacy = diplomacy;
     }
 
-    public double getSpeed()
-    {
+    public double getSpeed() {
         double speed = Double.MAX_VALUE;
 
-        for(Unit unit : units)
-        {
-            if(unit.getSpeed() < speed)
+        for (Unit unit : units) {
+            if (unit.getSpeed() < speed)
                 speed = unit.getSpeed();
         }
 
         return speed;
     }
 
-    public Road getCurrentRoad()
-    {
+    public Road getCurrentRoad() {
         return currentRoad;
     }
 
-    public void setCurrentRoad(Road currentRoad)
-    {
+    public void setCurrentRoad(Road currentRoad) {
         this.currentRoad = currentRoad;
     }
 
-    public long getTimestamp()
-    {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp)
-    {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
-    public void updateTimestamp()
-    {
+    public void updateTimestamp() {
         this.timestamp = System.currentTimeMillis();
     }
 
-    public void move(int pixel)
-    {
-        if(!isDeployed())
-        {
+    public void move(int pixel) {
+        if (!isDeployed()) {
             City to = route.getNext();
 
             int vecX = to.getX() - this.getX();
@@ -217,31 +185,27 @@ public class Formation
         }
     }
 
-    public boolean equals(Object other)
-    {
-        if(other instanceof Formation && ((Formation) other).getId() == this.id)
+    public boolean equals(Object other) {
+        if (other instanceof Formation && ((Formation) other).getId() == this.id)
             return true;
         else
             return false;
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp)
-    {
+    public ObjectNode toJSON(boolean editor, long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        if(getTimestamp() >= timestamp)
-        {
+        if (getTimestamp() >= timestamp) {
             node.put("x", getX());
             node.put("y", getY());
             node.put("deployed", isDeployed());
             node.put("diplomacy", getDiplomacy());
             node.put("name", getName());
 
-            if(getRoute() != null)
+            if (getRoute() != null)
                 node.put("route", getRoute().toJSON());
-        }
-        else
+        } else
             node.put("nn", true);
 
         return node;

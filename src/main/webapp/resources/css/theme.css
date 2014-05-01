@@ -370,6 +370,27 @@ h4 {
     padding: 14px 19px 30px;
 }
 
+/* Events */
+#events {
+    width: 55px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 30;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.event {
+    margin-bottom: 5px;
+}
+
+.event img {
+    float: left;
+}
+
 /* Sonstiges */
 .no-close .ui-dialog-titlebar-close {
     display: none;

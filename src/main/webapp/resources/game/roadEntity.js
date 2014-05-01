@@ -1,5 +1,4 @@
-function roadEntity()
-{
+function roadEntity() {
     Crafty.c("Road", {
         _rid: 0,
         x1: 0,
@@ -8,12 +7,12 @@ function roadEntity()
         y2: 0,
         marked: false,
 
-        init: function() {
+        init: function () {
             this.requires("2D, Canvas");
             this.bind("Draw", this._draw);
         },
 
-        road: function(id) {
+        road: function (id) {
             this._rid = id;
             this.z = 10;
 
@@ -22,14 +21,12 @@ function roadEntity()
             return this;
         },
 
-        update: function() {
-            if(Roads[this._rid] == undefined)
-            {
+        update: function () {
+            if (Roads[this._rid] == undefined) {
                 this.destroy();
                 delete RoadEntities[this._rid];
             }
-            else
-            {
+            else {
                 var city1 = Roads[this._rid].point1;
                 var city2 = Roads[this._rid].point2;
 
@@ -45,7 +42,7 @@ function roadEntity()
             }
         },
 
-        temp: function(formation, city) {
+        temp: function (formation, city) {
             this.x1 = Formations[formation].x;
             this.y1 = Formations[formation].y;
             this.x2 = Cities[city].x;
@@ -63,12 +60,12 @@ function roadEntity()
             return this;
         },
 
-        mark: function(val) {
+        mark: function (val) {
             this.marked = val;
             Crafty.DrawManager.drawAll();
         },
 
-        _draw: function(e) {
+        _draw: function (e) {
             var ctx = Crafty.canvas.context;
 
             ctx.lineWidth = 1;
@@ -76,7 +73,7 @@ function roadEntity()
             ctx.moveTo(this.x1, this.y1);
             ctx.lineTo(this.x2, this.y2);
 
-            if(this.marked)
+            if (this.marked)
                 ctx.strokeStyle = "#FF0000";
             else
                 ctx.strokeStyle = "#000000";

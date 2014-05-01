@@ -5,43 +5,36 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Building
-{
+public class Building {
     @Id
     private int id;
 
-	@DBRef
-	private BuildingBlueprint blueprint;
+    @DBRef
+    private BuildingBlueprint blueprint;
 
-	private int health;
+    private int health;
 
-	public BuildingBlueprint getBlueprint()
-	{
-		return blueprint;
-	}
+    public BuildingBlueprint getBlueprint() {
+        return blueprint;
+    }
 
-	public void setBlueprint(BuildingBlueprint blueprint)
-	{
-		this.blueprint = blueprint;
-	}
+    public void setBlueprint(BuildingBlueprint blueprint) {
+        this.blueprint = blueprint;
+    }
 
-	public int getHealth()
-	{
-		return health;
-	}
+    public int getHealth() {
+        return health;
+    }
 
-	public void setHealth(int health)
-	{
-		this.health = health;
-	}
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 }

@@ -6,11 +6,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Route
-{
+public class Route {
     @DBRef
     private City next;
 
@@ -23,43 +21,35 @@ public class Route
     @Transient
     private int time;
 
-    public City getNext()
-    {
+    public City getNext() {
         return next;
     }
 
-    public void setNext(City next)
-    {
+    public void setNext(City next) {
         this.next = next;
     }
 
-    public List<Road> getRoads()
-    {
+    public List<Road> getRoads() {
         return roads;
     }
 
-    public void setRoads(List<Road> roads)
-    {
+    public void setRoads(List<Road> roads) {
         this.roads = roads;
     }
 
-    public int getTime()
-    {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(int time)
-    {
+    public void setTime(int time) {
         this.time = time;
     }
 
-    public City getTarget()
-    {
+    public City getTarget() {
         return target;
     }
 
-    public void setTarget(City target)
-    {
+    public void setTarget(City target) {
         this.target = target;
     }
 
@@ -73,7 +63,7 @@ public class Route
         List<Road> roads = getRoads();
         ArrayNode roadNodes = factory.arrayNode();
 
-        for(Road road : roads) {
+        for (Road road : roads) {
             roadNodes.add(road.getId());
         }
         node.put("roads", roadNodes);

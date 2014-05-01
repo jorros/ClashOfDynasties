@@ -1,23 +1,21 @@
-$(document).ready(function() {
-    $(".menus").click(function() {
+$(document).ready(function () {
+    $(".menus").click(function () {
         var selected = !$(this).hasClass("selected");
         $(".menus").removeClass("selected");
 
-        if(selected)
-        {
+        if (selected) {
             $(this).addClass("selected");
 
-            if($(this).find("a").attr("id") == "menu1")
+            if ($(this).find("a").attr("id") == "menu1")
                 openMenu("editresources");
-            else if($(this).find("a").attr("id") == "menu2")
+            else if ($(this).find("a").attr("id") == "menu2")
                 openMenu("editproduction");
-            else if($(this).find("a").attr("id") == "menu3")
+            else if ($(this).find("a").attr("id") == "menu3")
                 openMenu("editbuildings");
-            else if($(this).find("a").attr("id") == "menu4")
+            else if ($(this).find("a").attr("id") == "menu4")
                 openMenu("editunits");
         }
-        else
-        {
+        else {
             closeMenu();
         }
     });

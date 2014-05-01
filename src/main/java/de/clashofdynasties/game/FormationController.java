@@ -1,10 +1,10 @@
 package de.clashofdynasties.game;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
+import de.clashofdynasties.service.RoutingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -18,8 +18,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/game/formations")
-public class FormationController
-{
+public class FormationController {
     @Autowired
     FormationRepository formationRepository;
 
@@ -42,7 +41,8 @@ public class FormationController
     RoutingService routing;
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody
+    public
+    @ResponseBody
     Map<Integer, ObjectNode> getFormations(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
         Player player = playerRepository.findByName(principal.getName());
 
@@ -73,9 +73,10 @@ public class FormationController
         return data;
     }
 
-    @RequestMapping(value="/{formation}/route", method = RequestMethod.GET)
-    public @ResponseBody ObjectNode calculateRoute(@PathVariable("formation") int id, @RequestParam int target)
-    {
+    @RequestMapping(value = "/{formation}/route", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    ObjectNode calculateRoute(@PathVariable("formation") int id, @RequestParam int target) {
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(target);
 
@@ -85,26 +86,21 @@ public class FormationController
         return route.toJSON();
     }
 
-    @RequestMapping(value="/{formation}/move", method = RequestMethod.GET)
+    @RequestMapping(value = "/{formation}/move", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public void move(Principal principal, @PathVariable("formation") int formationId, @RequestParam int target)
-    {
+    public void move(Principal principal, @PathVariable("formation") int formationId, @RequestParam int target) {
         Formation formation = formationRepository.findOne(formationId);
         City city = cityRepository.findOne(target);
         Player player = playerRepository.findByName(principal.getName());
 
-        if(player.equals(formation.getPlayer()))
-        {
+        if (player.equals(formation.getPlayer())) {
             Route route = routing.calculateRoute(formation, city);
-            if(route != null)
-            {
-                if(formation.isDeployed())
-                {
+            if (route != null) {
+                if (formation.isDeployed()) {
                     formation.setRoute(route);
                     formation.setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
                     formation.move(70);
-                }
-                else
+                } else
                     formation.setRoute(route);
 
                 formation.updateTimestamp();
@@ -113,15 +109,13 @@ public class FormationController
         }
     }
 
-    @RequestMapping(value="/{formation}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{formation}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void remove(Principal principal, @PathVariable("formation") int formationId)
-    {
+    public void remove(Principal principal, @PathVariable("formation") int formationId) {
         Player player = playerRepository.findByName(principal.getName());
         Formation formation = formationRepository.findOne(formationId);
 
-        if(formation.getPlayer().equals(player) && formation.isDeployed() && formation.getLastCity().getPlayer().equals(formation.getPlayer()))
-        {
+        if (formation.getPlayer().equals(player) && formation.isDeployed() && formation.getLastCity().getPlayer().equals(formation.getPlayer())) {
             City city = formation.getLastCity();
 
             formation.getUnits().forEach(u -> city.getUnits().add(u));
@@ -133,27 +127,23 @@ public class FormationController
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)
-    {
+    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId) {
         save(principal, 0, name, cityId, unitsId);
     }
 
-    @RequestMapping(value="/{formation}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{formation}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(Principal principal, @PathVariable("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId)
-    {
+    public void save(Principal principal, @PathVariable("formation") int formationId, @RequestParam("name") String name, @RequestParam("city") int cityId, @RequestParam("units[]") List<Integer> unitsId) {
         // Formation, City und Player vorbereiten
         City city = cityRepository.findOne(cityId);
         Player player = playerRepository.findByName(principal.getName());
 
         // Formation nur fetchen, wenn City dem Spieler gehört
-        if(player.equals(city.getPlayer()))
-        {
+        if (player.equals(city.getPlayer())) {
             Formation formation;
-            if(formationId > 0)
+            if (formationId > 0)
                 formation = formationRepository.findOne(formationId);
-            else
-            {
+            else {
                 formation = new Formation();
                 formation.setId(counterService.getNextSequence("formation"));
                 formation.setUnits(new ArrayList<Unit>());
@@ -164,16 +154,12 @@ public class FormationController
                 formation.setY(city.getY());
             }
 
-            if(player.equals(formation.getPlayer()))
-            {
-                if(formation.getRoute() == null)
-                {
+            if (player.equals(formation.getPlayer())) {
+                if (formation.getRoute() == null) {
                     List<Unit> units = new ArrayList<Unit>();
-                    for(int unitId : unitsId)
-                    {
+                    for (int unitId : unitsId) {
                         Unit unit = unitRepository.findOne(unitId);
-                        if(city.getUnits().contains(unit))
-                        {
+                        if (city.getUnits().contains(unit)) {
                             city.getUnits().remove(unit);
                             formation.getUnits().add(unit);
                         }

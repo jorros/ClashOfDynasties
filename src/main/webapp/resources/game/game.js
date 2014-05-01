@@ -11,30 +11,30 @@ var routeShown = false;
 
 var lastUpdate = 0;
 
-window.onload = function() {
+window.onload = function () {
     Crafty.init();
     Crafty.canvas.init();
 
     console.log("Crafty " + Crafty.getVersion());
 
-    Crafty.scene("loading", function() {
+    Crafty.scene("loading", function () {
         var logo = Crafty.e("2D, DOM, Image").image("/images/Logo.png", "no-repeat").attr({ x: Crafty.viewport.width / 2 - 200, y: Crafty.viewport.height / 2 - 100 });
         var progress = Crafty.e("2D, DOM, Color").color("#FFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
 
-        Crafty.load(Assets, function() {
+        Crafty.load(Assets, function () {
                 Crafty.scene("main");
             },
 
-            function(e) {
+            function (e) {
                 progress.w = e.percent * 4;
             }),
 
-            function(e) {
+            function (e) {
                 console.log("Fehler beim Laden");
             }
     });
 
-    Crafty.scene("main", function() {
+    Crafty.scene("main", function () {
         Crafty.background("#000");
 
         Crafty.viewport.mouselook(true);
@@ -49,40 +49,36 @@ window.onload = function() {
             h: 3600,
             z: 0
         }).image("assets/map.jpg")
-            .bind("MouseDown", function(e)
-            {
+            .bind("MouseDown", function (e) {
                 Crafty.viewport.mouselook('start', e);
                 lastViewX = Crafty.viewport.x;
                 lastViewY = Crafty.viewport.y;
             })
-            .bind("MouseMove", function(e)
-            {
+            .bind("MouseMove", function (e) {
                 Crafty.viewport.mouselook('drag', e);
 
-                if(Selected != null && Selected._fid != null) {
-                    if(isCalculatedRoute && !Formations[Selected._fid].deployed) {
+                if (Selected != null && Selected._fid != null) {
+                    if (isCalculatedRoute && !Formations[Selected._fid].deployed) {
                         isCalculatedRoute = false;
                         $.powerTip.hide();
                         Selected.showRoute();
                     }
-                    else if(isCalculatedRoute) {
+                    else if (isCalculatedRoute) {
                         isCalculatedRoute = false;
                         hideRoute();
                         $.powerTip.hide();
                     }
                 }
-                else if(Selected != null && Selected.has("City") && isCaravanSelected) {
+                else if (Selected != null && Selected.has("City") && isCaravanSelected) {
                     hideRoute();
                     $.powerTip.hide();
                 }
             })
-            .bind("MouseUp", function()
-            {
+            .bind("MouseUp", function () {
                 Crafty.viewport.mouselook('stop');
 
-                if(lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y)
-                {
-                    if(isCaravanSelected) {
+                if (lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y) {
+                    if (isCaravanSelected) {
                         isCaravanSelected = false;
                         $("#caravanText").hide();
                     }
@@ -100,8 +96,7 @@ window.onload = function() {
         $(document).powerTip({smartPlacement: true, followMouse: true, manual: true});
 
         // Update Callback
-        var updateCallback = function()
-        {
+        var updateCallback = function () {
             loadTop();
             updateCities();
             updateFormations();

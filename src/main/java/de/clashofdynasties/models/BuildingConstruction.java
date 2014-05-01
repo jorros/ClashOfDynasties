@@ -2,35 +2,29 @@ package de.clashofdynasties.models;
 
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
-public class BuildingConstruction
-{
+public class BuildingConstruction {
     @DBRef
     private BuildingBlueprint blueprint;
 
     private double production;
 
-    public BuildingBlueprint getBlueprint()
-    {
+    public BuildingBlueprint getBlueprint() {
         return blueprint;
     }
 
-    public void setBlueprint(BuildingBlueprint blueprint)
-    {
+    public void setBlueprint(BuildingBlueprint blueprint) {
         this.blueprint = blueprint;
     }
 
-    public double getProduction()
-    {
+    public double getProduction() {
         return production;
     }
 
-    public void setProduction(double production)
-    {
+    public void setProduction(double production) {
         this.production = production;
     }
 
-    public void addProduction(double production)
-    {
+    public void addProduction(double production) {
         this.production += production;
     }
 }

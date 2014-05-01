@@ -7,11 +7,8 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Map;
-
 @Document
-public class Caravan
-{
+public class Caravan {
     @Id
     private int id;
 
@@ -38,200 +35,165 @@ public class Caravan
     private Item point1Item;
     private int point1Load;
 
-    @DBRef Item point1StoreItem;
+    @DBRef
+    Item point1StoreItem;
     private int point1Store;
 
     @DBRef
     private Item point2Item;
     private int point2Load;
 
-    @DBRef Item point2StoreItem;
+    @DBRef
+    Item point2StoreItem;
     private int point2Store;
 
     private boolean terminate;
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public City getPoint1()
-    {
+    public City getPoint1() {
         return point1;
     }
 
-    public void setPoint1(City point1)
-    {
+    public void setPoint1(City point1) {
         this.point1 = point1;
     }
 
-    public City getPoint2()
-    {
+    public City getPoint2() {
         return point2;
     }
 
-    public void setPoint2(City point2)
-    {
+    public void setPoint2(City point2) {
         this.point2 = point2;
     }
 
-    public Route getRoute()
-    {
+    public Route getRoute() {
         return route;
     }
 
-    public void setRoute(Route route)
-    {
+    public void setRoute(Route route) {
         this.route = route;
     }
 
-    public int getX()
-    {
+    public int getX() {
         return x;
     }
 
-    public void setX(int x)
-    {
+    public void setX(int x) {
         this.x = x;
     }
 
-    public int getY()
-    {
+    public int getY() {
         return y;
     }
 
-    public void setY(int y)
-    {
+    public void setY(int y) {
         this.y = y;
     }
 
-    public Player getPlayer()
-    {
+    public Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player)
-    {
+    public void setPlayer(Player player) {
         this.player = player;
     }
 
-    public Item getPoint1Item()
-    {
+    public Item getPoint1Item() {
         return point1Item;
     }
 
-    public void setPoint1Item(Item point1Item)
-    {
+    public void setPoint1Item(Item point1Item) {
         this.point1Item = point1Item;
     }
 
-    public int getPoint1Store()
-    {
+    public int getPoint1Store() {
         return point1Store;
     }
 
-    public void setPoint1Store(int point1Store)
-    {
+    public void setPoint1Store(int point1Store) {
         this.point1Store = point1Store;
     }
 
-    public int getPoint1Load()
-    {
+    public int getPoint1Load() {
         return point1Load;
     }
 
-    public void setPoint1Load(int point1Load)
-    {
+    public void setPoint1Load(int point1Load) {
         this.point1Load = point1Load;
     }
 
-    public Item getPoint2Item()
-    {
+    public Item getPoint2Item() {
         return point2Item;
     }
 
-    public void setPoint2Item(Item point2Item)
-    {
+    public void setPoint2Item(Item point2Item) {
         this.point2Item = point2Item;
     }
 
-    public int getPoint2Store()
-    {
+    public int getPoint2Store() {
         return point2Store;
     }
 
-    public void setPoint2Store(int point2Store)
-    {
+    public void setPoint2Store(int point2Store) {
         this.point2Store = point2Store;
     }
 
-    public int getPoint2Load()
-    {
+    public int getPoint2Load() {
         return point2Load;
     }
 
-    public void setPoint2Load(int point2Load)
-    {
+    public void setPoint2Load(int point2Load) {
         this.point2Load = point2Load;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName(String name)
-    {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getDiplomacy()
-    {
+    public int getDiplomacy() {
         return diplomacy;
     }
 
-    public void setDiplomacy(int diplomacy)
-    {
+    public void setDiplomacy(int diplomacy) {
         this.diplomacy = diplomacy;
     }
 
-    public boolean isTerminate()
-    {
+    public boolean isTerminate() {
         return terminate;
     }
 
-    public void setTerminate(boolean terminate)
-    {
+    public void setTerminate(boolean terminate) {
         this.terminate = terminate;
     }
 
-    public Item getPoint1StoreItem()
-    {
+    public Item getPoint1StoreItem() {
         return point1StoreItem;
     }
 
-    public void setPoint1StoreItem(Item point1StoreItem)
-    {
+    public void setPoint1StoreItem(Item point1StoreItem) {
         this.point1StoreItem = point1StoreItem;
     }
 
-    public Item getPoint2StoreItem()
-    {
+    public Item getPoint2StoreItem() {
         return point2StoreItem;
     }
 
-    public void setPoint2StoreItem(Item point2StoreItem)
-    {
+    public void setPoint2StoreItem(Item point2StoreItem) {
         this.point2StoreItem = point2StoreItem;
     }
 
-    public void move(int pixel)
-    {
+    public void move(int pixel) {
         City to = route.getNext();
 
         int vecX = to.getX() - this.getX();
@@ -244,16 +206,14 @@ public class Caravan
         setY(new Double(getY() + vecY * multiplier).intValue());
     }
 
-    public boolean equals(Object other)
-    {
-        if(other instanceof City && ((City) other).getId() == this.id)
+    public boolean equals(Object other) {
+        if (other instanceof City && ((City) other).getId() == this.id)
             return true;
         else
             return false;
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp)
-    {
+    public ObjectNode toJSON(boolean editor, long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 

@@ -1,29 +1,28 @@
-function cityEntity()
-{
+function cityEntity() {
     Crafty.c("City", {
         _cid: 0,
         _infoEntity: {},
         _formationsInfoEntity: {},
         _type: 0,
 
-        _getMenu: function($trigger, e) {
+        _getMenu: function ($trigger, e) {
             var items = {};
 
             var id = $trigger.find("span").attr("id").slice(0, -11);
 
-            $.each(Cities[id].formations, function(key, val) {
+            $.each(Cities[id].formations, function (key, val) {
                 items[val.id] = { name: val.name, icon: "edit" };
             });
 
             return {
-                callback: function(key, options) {
+                callback: function (key, options) {
                     FormationEntities[key].select();
                 },
                 items: items
             }
         },
 
-        _buildInfo: function() {
+        _buildInfo: function () {
             this._infoEntity = Crafty.e("2D, DOM").attr({
                 w: 270,
                 h: 35,
@@ -60,14 +59,12 @@ function cityEntity()
             });
             this.attach(this._formationsInfoEntity);
 
-            if(Editor)
-            {
+            if (Editor) {
                 $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'editcity?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
                 $(this._infoEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
                 $(this._infoEntity._element).append('<span id="' + this._cid + '_capacity" style="float:left; margin-left:10px; font-size:22px">' + Cities[this._cid].capacity + '</span>');
             }
-            else
-            {
+            else {
                 $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
                 $(this._infoEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'build?city=' + this._cid + '\'); openCommand(\'city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
                 $(this._infoEntity._element).append('<span id="' + this._cid + '_people" style="float:left; margin-left:10px; font-size:22px">?</span>');
@@ -88,7 +85,7 @@ function cityEntity()
             this._formationsInfoEntity.draw();
         },
 
-        _updateInfo: function() {
+        _updateInfo: function () {
             this._infoEntity.h = 35;
             this._infoEntity.w = 270;
             this._infoEntity.x = Cities[this._cid].x - this._infoEntity._w / 2;
@@ -101,28 +98,25 @@ function cityEntity()
 
             $("#" + this._cid + "_name").text(Cities[this._cid].name);
 
-            if(Editor)
-            {
+            if (Editor) {
                 $("#" + this._cid + "_resource").attr("src", "assets/resources/" + Cities[this._cid].resource + ".png");
                 $("#" + this._cid + "_capacity").text(Cities[this._cid].capacity);
             }
-            else
-            {
+            else {
                 var people = "?";
-                if(Cities[this._cid].population != null)
+                if (Cities[this._cid].population != null)
                     people = Cities[this._cid].population;
 
                 $("#" + this._cid + "_people").text(people);
 
-                if(Cities[this._cid].satisfaction >= 0)
-                {
+                if (Cities[this._cid].satisfaction >= 0) {
                     $("#" + this._cid + "_satisfaction").show();
                     var smiley = "Happy";
-                    if(Cities[this._cid].satisfaction < 80 && Cities[this._cid].satisfaction >= 60)
+                    if (Cities[this._cid].satisfaction < 80 && Cities[this._cid].satisfaction >= 60)
                         smiley = "Satisfied";
-                    else if(Cities[this._cid].satisfaction < 60 && Cities[this._cid].satisfaction >= 30)
+                    else if (Cities[this._cid].satisfaction < 60 && Cities[this._cid].satisfaction >= 30)
                         smiley = "Unhappy";
-                    else if(Cities[this._cid].satisfaction < 30)
+                    else if (Cities[this._cid].satisfaction < 30)
                         smiley = "Angry";
 
                     $("#" + this._cid + "_satisfaction").attr("src", "assets/satisfaction/" + smiley + ".png");
@@ -131,13 +125,12 @@ function cityEntity()
                 else
                     $("#" + this._cid + "_satisfaction").hide();
 
-                if(Cities[this._cid].diplomacy == 1)
+                if (Cities[this._cid].diplomacy == 1)
                     $("#" + this._cid + "_build").show();
                 else
                     $("#" + this._cid + "_build").hide();
 
-                if(Cities[this._cid].formations != null && Cities[this._cid].formations.length > 0)
-                {
+                if (Cities[this._cid].formations != null && Cities[this._cid].formations.length > 0) {
                     $("#" + this._cid + "_formations").text(Cities[this._cid].formations.length);
                     $(this._formationsInfoEntity._element).show();
                 }
@@ -146,8 +139,8 @@ function cityEntity()
             }
         },
 
-        _setType: function() {
-            if(Cities[this._cid].type != this._type) {
+        _setType: function () {
+            if (Cities[this._cid].type != this._type) {
                 this.image("assets/cities/" + Cities[this._cid].type + ".png");
 
                 var img = new Image();
@@ -159,42 +152,37 @@ function cityEntity()
             }
         },
 
-        _updateDiplomacy: function() {
-            if(Cities[this._cid].diplomacy == 1) // Selbst
+        _updateDiplomacy: function () {
+            if (Cities[this._cid].diplomacy == 1) // Selbst
                 this._infoEntity.css("background-color", "#4096EE");
-            else if(Cities[this._cid].diplomacy == 2) // Verbündet
+            else if (Cities[this._cid].diplomacy == 2) // Verbündet
                 this._infoEntity.css("background-color", "#356AA0");
-            else if(Cities[this._cid].diplomacy == 3) // Verfeindet
+            else if (Cities[this._cid].diplomacy == 3) // Verfeindet
                 this._infoEntity.css("background-color", "#D01F3C");
-            else if(Cities[this._cid].diplomacy == 4) // Neutral
+            else if (Cities[this._cid].diplomacy == 4) // Neutral
                 this._infoEntity.css("background-color", "#EEEEEE");
         },
 
-        select: function() {
-            if(Editor)
-            {
+        select: function () {
+            if (Editor) {
                 openCommand('editcity?city=' + this._cid, Cities[this._cid].name);
 
-                if(SelectionMode == 2)
-                {
-                    if(SelectedWay == null)
+                if (SelectionMode == 2) {
+                    if (SelectedWay == null)
                         SelectedWay = this;
-                    else if(SelectedWay != this)
-                    {
+                    else if (SelectedWay != this) {
                         var _temp1 = SelectedWay._cid;
                         var _temp2 = this._cid;
 
-                        $.get("/game/roads/getByPoints", { point1: _temp1, point2: _temp2 }, function(roadId) {
-                            if(roadId > 0)
-                            {
-                                $.delete("/game/roads/" + roadId, function() {
+                        $.get("/game/roads/getByPoints", { point1: _temp1, point2: _temp2 }, function (roadId) {
+                            if (roadId > 0) {
+                                $.delete("/game/roads/" + roadId, function () {
                                     updateRoads();
                                 });
                             }
-                            else
-                            {
+                            else {
                                 var weight = window.prompt("Wegbelastung festlegen (0-1)", "1");
-                                $.post("/game/roads", { point1: _temp1, point2: _temp2, "weight": weight }, function() {
+                                $.post("/game/roads", { point1: _temp1, point2: _temp2, "weight": weight }, function () {
                                     updateRoads();
                                 });
                             }
@@ -204,13 +192,13 @@ function cityEntity()
                 }
             }
             else {
-                if(isFormationSelected) {
+                if (isFormationSelected) {
                     $.get("game/formations/" + Selected._fid + "/move", { "target": this._cid });
 
                     return;
                 }
-                else if(isCaravanSelected) {
-                    if(Selected._cid != this._cid) {
+                else if (isCaravanSelected) {
+                    if (Selected._cid != this._cid) {
                         openMenu("caravan?point1=" + Selected._cid + "&point2=" + this._cid);
 
                         isCaravanSelected = false;
@@ -226,20 +214,17 @@ function cityEntity()
             Selected = this;
         },
 
-        deselect: function() {
+        deselect: function () {
         },
 
-        over: function() {
-            if(!Editor && isFormationSelected && !isCalculatedRoute)
-            {
+        over: function () {
+            if (!Editor && isFormationSelected && !isCalculatedRoute) {
                 Selected.showRoute(this._cid);
                 isCalculatedRoute = true;
             }
-            else if(!Editor && isCaravanSelected && Selected._cid != this._cid)
-            {
+            else if (!Editor && isCaravanSelected && Selected._cid != this._cid) {
                 tempRoute = "";
-                $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function(data)
-                {
+                $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function (data) {
                     isCalculatedRoute = true;
                     tempRoute = data.roads;
                     tempTime = data.time;
@@ -250,26 +235,26 @@ function cityEntity()
                     var minutes = Math.floor(totalSeconds / 60);
 
                     var output = "";
-                    if(hours > 0)
+                    if (hours > 0)
                         output += hours + " Stunden ";
-                    if(minutes > 0)
+                    if (minutes > 0)
                         output += minutes + " Minuten";
 
-                    $(document).data('powertip' , output);
+                    $(document).data('powertip', output);
                     $.powerTip.show($(document));
 
-                    $.each(tempRoute, function(index, road) {
+                    $.each(tempRoute, function (index, road) {
                         RoadEntities[road].mark(true);
                     });
                 });
             }
         },
 
-        init: function() {
+        init: function () {
             this.requires("2D, Canvas, Image, Mouse");
         },
 
-        city: function(id) {
+        city: function (id) {
             this._cid = id;
             this.z = 11;
 
@@ -283,13 +268,12 @@ function cityEntity()
             return this;
         },
 
-        update: function() {
-            if(Cities[this._cid] == undefined) {
+        update: function () {
+            if (Cities[this._cid] == undefined) {
                 this.destroy();
                 delete CityEntities[this._cid];
             }
-            else
-            {
+            else {
                 this._setType();
 
                 this.x = Math.round(Cities[this._cid].x - this._w / 2);

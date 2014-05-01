@@ -3,11 +3,11 @@ var SelectionMode = 0;
 var Selected = null;
 var SelectedWay = null;
 
-window.onload = function() {
+window.onload = function () {
     Crafty.init();
     Crafty.canvas.init();
 
-    Crafty.scene("loading", function() {
+    Crafty.scene("loading", function () {
         Crafty.background = "#000";
 
         var txt = Crafty.e("2D, DOM, Text").attr({
@@ -15,20 +15,20 @@ window.onload = function() {
             y: 0
         }).text("Laden (" + 0 + "%)").textColor("#FFF", 1);
 
-        Crafty.load(Assets, function() {
+        Crafty.load(Assets, function () {
                 Crafty.scene("main");
             },
 
-            function(e) {
+            function (e) {
                 txt.text("Laden (" + e.percent + "%)");
             }),
 
-            function(e) {
+            function (e) {
                 txt.text("Fehler beim Laden");
             }
     });
 
-    Crafty.scene("main", function() {
+    Crafty.scene("main", function () {
         Crafty.background = "#000";
 
         Crafty.viewport.mouselook(true);
@@ -42,29 +42,24 @@ window.onload = function() {
             w: 5100,
             h: 3600
         }).image("assets/map.jpg")
-            .bind("MouseDown", function(e)
-            {
+            .bind("MouseDown", function (e) {
                 Crafty.viewport.mouselook('start', e);
                 lastViewX = Crafty.viewport.x;
                 lastViewY = Crafty.viewport.y;
             })
-            .bind("MouseMove", function(e)
-            {
+            .bind("MouseMove", function (e) {
                 Crafty.viewport.mouselook('drag', e);
             })
-            .bind("MouseUp", function(e)
-            {
+            .bind("MouseUp", function (e) {
                 Crafty.viewport.mouselook('stop');
 
-                if(lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y)
-                {
-                    if(Selected != null)
+                if (lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y) {
+                    if (Selected != null)
                         Selected.deselect();
 
                     closeMenu();
 
-                    if(SelectionMode == 1)
-                    {
+                    if (SelectionMode == 1) {
                         $.post("/game/cities", { x: e.realX, y: e.realY});
                     }
                 }
@@ -78,8 +73,7 @@ window.onload = function() {
         updateFormations();
 
         // Update Callback
-        var updateCallback = function()
-        {
+        var updateCallback = function () {
             updateCities();
             updateFormations();
             updateTimestamp();

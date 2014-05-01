@@ -1,29 +1,25 @@
 package de.clashofdynasties.game;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/game/menus")
-public class MenuController
-{
+public class MenuController {
     @Autowired
     PlayerRepository playerRepository;
 
@@ -50,49 +46,62 @@ public class MenuController
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
-    public ObjectNode getTop(Principal principal)
-    {
+    public ObjectNode getTop(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
 
-        Player player = playerRepository.findByName(principal.getName());
-        List<City> cities = cityRepository.findByPlayer(player);
+        if(!editor) {
+            Player player = playerRepository.findByName(principal.getName());
+            List<City> cities = cityRepository.findByPlayer(player);
 
-        int people = 0;
-        int balance = 0;
+            int people = 0;
+            int balance = 0;
+            ArrayNode events = JsonNodeFactory.instance.arrayNode();
 
-        for(City city : cities)
-        {
-            people += city.getPopulation();
-            balance += city.getIncome() - city.getOutcome();
+            for (City city : cities) {
+                people += city.getPopulation();
+                balance += city.getIncome() - city.getOutcome();
+            }
+
+            if(player.getEvents() != null) {
+                player.getEvents().stream().filter(e -> e.toJSON(timestamp) != null).forEach(e -> events.add(e.toJSON(timestamp)));
+            }
+
+            node.put("coins", player.getCoins());
+            node.put("people", people);
+            node.put("balance", balance);
+            node.put("cityNum", cities.size());
+            node.put("events", events);
         }
-
-        node.put("coins", player.getCoins());
-        node.put("people", people);
-        node.put("balance", balance);
-        node.put("cityNum", cities.size());
 
         return node;
     }
 
-    @RequestMapping(value="/formation", method = RequestMethod.GET)
-    public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) Integer id, @RequestParam(value = "city", required = false) Integer cityID)
-    {
+    @RequestMapping(value = "/event", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void removeEvent(Principal principal, @RequestParam long timestamp, @RequestParam String type, @RequestParam int city) {
         Player player = playerRepository.findByName(principal.getName());
 
-        if(id != null)
-        {
+        if(player.getEvents() != null) {
+            player.getEvents().removeIf(e -> e.getTimestamp() == timestamp && e.getCity().getId() == city && e.getType().equalsIgnoreCase(type));
+            playerRepository.save(player);
+        }
+    }
+
+    @RequestMapping(value = "/formation", method = RequestMethod.GET)
+    public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) Integer id, @RequestParam(value = "city", required = false) Integer cityID) {
+        Player player = playerRepository.findByName(principal.getName());
+
+        if (id != null) {
             Formation formation = formationRepository.findOne(id);
             map.addAttribute("formation", formation);
             map.addAttribute("city", formation.getLastCity());
 
-            if(!formation.getPlayer().equals(player) || !formation.isDeployed())
+            if (!formation.getPlayer().equals(player) || !formation.isDeployed())
                 return "menu/infoFormation";
-        }
-        else if(cityID != null)
-        {
+        } else if (cityID != null) {
             City city = cityRepository.findOne(cityID);
 
-            if(!city.getPlayer().equals(player))
+            if (!city.getPlayer().equals(player))
                 return null;
 
             Formation formation = new Formation();
@@ -105,9 +114,8 @@ public class MenuController
         return "menu/setupFormation";
     }
 
-    @RequestMapping(value="/build", method = RequestMethod.GET)
-    public String showBuild(ModelMap map, Principal principal, @RequestParam("city") int id)
-    {
+    @RequestMapping(value = "/build", method = RequestMethod.GET)
+    public String showBuild(ModelMap map, Principal principal, @RequestParam("city") int id) {
         map.addAttribute("city", cityRepository.findOne(id));
         map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll());
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll());
@@ -116,7 +124,7 @@ public class MenuController
         return "menu/build";
     }
 
-    @RequestMapping(value="/report", method = RequestMethod.GET)
+    @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String showReport(ModelMap map, Principal principal, @RequestParam("city") int id) {
         City city = cityRepository.findOne(id);
 
@@ -127,20 +135,19 @@ public class MenuController
         return "menu/report";
     }
 
-    @RequestMapping(value="/caravan", method = RequestMethod.GET)
+    @RequestMapping(value = "/caravan", method = RequestMethod.GET)
     public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) Integer point1, @RequestParam(required = false) Integer point2, @RequestParam(value = "caravan", required = false) Integer id) {
         Player player = playerRepository.findByName(principal.getName());
 
-        if(id != null) {
+        if (id != null) {
             Caravan caravan = caravanRepository.findOne(id);
 
-            if(caravan.getPlayer().equals(player)) {
+            if (caravan.getPlayer().equals(player)) {
                 map.addAttribute("caravan", caravan);
                 map.addAttribute("point1", caravan.getPoint1());
                 map.addAttribute("point2", caravan.getPoint2());
             }
-        }
-        else {
+        } else {
             Caravan caravan = new Caravan();
             caravan.setName("Neue Karawane");
 
@@ -154,7 +161,7 @@ public class MenuController
         return "menu/caravan";
     }
 
-    @RequestMapping(value="/store", method = RequestMethod.GET)
+    @RequestMapping(value = "/store", method = RequestMethod.GET)
     public String showStore(ModelMap map, Principal principal, @RequestParam("city") int id) {
         City city = cityRepository.findOne(id);
 
@@ -165,57 +172,51 @@ public class MenuController
         return "menu/store";
     }
 
-	@RequestMapping(value = "/ranking", method = RequestMethod.GET)
-	public String showRanking(ModelMap map)
-	{
-		return "menu/ranking";
-	}
+    @RequestMapping(value = "/ranking", method = RequestMethod.GET)
+    public String showRanking(ModelMap map) {
+        return "menu/ranking";
+    }
 
-	@RequestMapping(value = "/settings", method = RequestMethod.GET)
-	public String showSettings(ModelMap map)
-	{
-		return "menu/settings";
-	}
+    @RequestMapping(value = "/settings", method = RequestMethod.GET)
+    public String showSettings(ModelMap map) {
+        return "menu/settings";
+    }
 
-	@RequestMapping(value = "/demography", method = RequestMethod.GET)
-	public String showDemography(ModelMap map)
-	{
-		return "menu/demography";
-	}
+    @RequestMapping(value = "/demography", method = RequestMethod.GET)
+    public String showDemography(ModelMap map) {
+        return "menu/demography";
+    }
 
-	@RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
-	public String showDiplomacy(ModelMap map)
-	{
-		return "menu/diplomacy";
-	}
+    @RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
+    public String showDiplomacy(ModelMap map) {
+        return "menu/diplomacy";
+    }
 
-    @RequestMapping(value="/editresources", method = RequestMethod.GET)
-    public String showEditResources(ModelMap map)
-    {
+    @RequestMapping(value = "/editresources", method = RequestMethod.GET)
+    public String showEditResources(ModelMap map) {
         map.addAttribute("items", itemRepository.findAll());
 
         return "menu/editbuildings";
     }
 
-    @RequestMapping(value="/editbuildings", method = RequestMethod.GET)
-    public String showEditBuildings(ModelMap map)
-    {
+    @RequestMapping(value = "/editbuildings", method = RequestMethod.GET)
+    public String showEditBuildings(ModelMap map) {
         map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
         return "menu/editbuildings";
     }
 
-    @RequestMapping(value="/editunits", method = RequestMethod.GET)
-    public String showEditUnits(ModelMap map)
-    {
+    @RequestMapping(value = "/editunits", method = RequestMethod.GET)
+    public String showEditUnits(ModelMap map) {
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
         return "menu/editunits";
     }
 
-    @RequestMapping(value="/timestamp", method = RequestMethod.GET)
-    public @ResponseBody long getTimestamp()
-    {
+    @RequestMapping(value = "/timestamp", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    long getTimestamp() {
         return System.currentTimeMillis();
     }
 }

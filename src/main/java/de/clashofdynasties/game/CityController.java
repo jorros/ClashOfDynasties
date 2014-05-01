@@ -22,19 +22,18 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/game/cities")
-public class CityController
-{
-	@Autowired
-	CityRepository cityRepository;
+public class CityController {
+    @Autowired
+    CityRepository cityRepository;
 
-	@Autowired
-	BuildingBlueprintRepository buildingBlueprintRepository;
+    @Autowired
+    BuildingBlueprintRepository buildingBlueprintRepository;
 
     @Autowired
     UnitBlueprintRepository unitBlueprintRepository;
 
-	@Autowired
-	PlayerRepository playerRepository;
+    @Autowired
+    PlayerRepository playerRepository;
 
     @Autowired
     NationRepository nationRepository;
@@ -64,22 +63,19 @@ public class CityController
     BiomeRepository biomeRepository;
 
     @RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody
-    Map<Integer, ObjectNode> getCities(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp)
-	{
+    public
+    @ResponseBody
+    Map<Integer, ObjectNode> getCities(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
         Player player = playerRepository.findByName(principal.getName());
 
-		List<City> cities = cityRepository.findAll();
+        List<City> cities = cityRepository.findAll();
         List<Formation> formations = formationRepository.findAll();
         HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
 
-        for(City city : cities)
-        {
-            for(Formation formation : formations)
-            {
-                if(formation.getRoute() == null && formation.getLastCity().equals(city))
-                {
-                    if(city.getFormations() == null)
+        for (City city : cities) {
+            for (Formation formation : formations) {
+                if (formation.getRoute() == null && formation.getLastCity().equals(city)) {
+                    if (city.getFormations() == null)
                         city.setFormations(new ArrayList<Formation>());
 
                     city.getFormations().add(formation);
@@ -87,16 +83,13 @@ public class CityController
             }
 
             // Diplomatie setzen
-            if(player.equals(city.getPlayer()))
+            if (player.equals(city.getPlayer()))
                 city.setDiplomacy(1);
                 // Wenn Spieler neutral
-            else if(city.getPlayer().getId() == 1)
-            {
+            else if (city.getPlayer().getId() == 1) {
                 city.setDiplomacy(4);
                 city.setSatisfaction(-1);
-            }
-            else
-            {
+            } else {
                 city.setDiplomacy(3);
                 city.setSatisfaction(-1);
             }
@@ -104,22 +97,20 @@ public class CityController
             data.put(city.getId(), city.toJSON(editor, timestamp));
         }
 
-		return data;
-	}
+        return data;
+    }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void remove(Principal principal, @PathVariable("city") int id)
-    {
+    public void remove(Principal principal, @PathVariable("city") int id) {
         cityRepository.delete(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource)
-    {
+    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource) {
         City city = new City();
         city.setId(counterService.getNextSequence("city"));
         city.setName("Neu - " + city.getId());
@@ -139,47 +130,44 @@ public class CityController
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource)
-    {
+    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource) {
         City city = cityRepository.findOne(id);
 
-        if(city == null)
+        if (city == null)
             return;
 
-        if(name != null)
+        if (name != null)
             city.setName(name);
 
-        if(capacity != null && request.isUserInRole("ROLE_ADMIN"))
+        if (capacity != null && request.isUserInRole("ROLE_ADMIN"))
             city.setCapacity(capacity);
 
-        if(resource != null && request.isUserInRole("ROLE_ADMIN"))
+        if (resource != null && request.isUserInRole("ROLE_ADMIN"))
             city.setResource(resourceRepository.findOne(resource));
 
-        if(type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN"))
-        {
+        if (type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN")) {
             city.setType(cityTypeRepository.findOne(type));
             List<ItemType> types = city.getRequiredItemTypes();
 
-            if(types == null)
+            if (types == null)
                 types = new ArrayList<ItemType>();
             else
                 types.clear();
 
             int i;
-            switch(type)
-            {
+            switch (type) {
                 case 3:
-                    i = (int) (Math.random()*2+1);
-                    if(i == 1)
+                    i = (int) (Math.random() * 2 + 1);
+                    if (i == 1)
                         types.add(itemTypeRepository.findOne(3));
                     else
                         types.add(itemTypeRepository.findOne(5));
 
                 case 2:
-                    i = (int) (Math.random()*3+1);
-                    if(i == 1)
+                    i = (int) (Math.random() * 3 + 1);
+                    if (i == 1)
                         types.add(itemTypeRepository.findOne(4));
-                    else if(i == 2)
+                    else if (i == 2)
                         types.add(itemTypeRepository.findOne(6));
                     else
                         types.add(itemTypeRepository.findOne(7));

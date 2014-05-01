@@ -13,41 +13,37 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 
-public class CustomUserDetailsService implements UserDetailsService
-{
-	private MongoTemplate mongoTemplate;
+public class CustomUserDetailsService implements UserDetailsService {
+    private MongoTemplate mongoTemplate;
 
-	@Autowired
-	PlayerRepository playerRepository;
+    @Autowired
+    PlayerRepository playerRepository;
 
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
-	{
-		Player player = getUserDetail(username);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Player player = getUserDetail(username);
 
-		if(player == null)
-			System.out.println("Fehler");
+        if (player == null)
+            System.out.println("Fehler");
 
-		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        if(player.getName().equalsIgnoreCase("jorros"))
+        if (player.getName().equalsIgnoreCase("jorros"))
             authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
-		User userDetail = new User(player.getName(), player.getPassword(), true, true, true, true, authorities);
-		return userDetail;
-	}
+        User userDetail = new User(player.getName(), player.getPassword(), true, true, true, true, authorities);
+        return userDetail;
+    }
 
-	@Autowired
-	public void setMongoTemplate(MongoTemplate mongoTemplate)
-	{
-		this.mongoTemplate = mongoTemplate;
-	}
+    @Autowired
+    public void setMongoTemplate(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
-	public Player getUserDetail(String username)
-	{
-		//MongoOperations mongoOperation = (MongoOperations)mongoTemplate;
-		//Player player = mongoOperation.findOne(new Query(Criteria.where("name").is(username)), Player.class);
-		Player player = playerRepository.findByName(username);
-		return player;
-	}
+    public Player getUserDetail(String username) {
+        //MongoOperations mongoOperation = (MongoOperations)mongoTemplate;
+        //Player player = mongoOperation.findOne(new Query(Criteria.where("name").is(username)), Player.class);
+        Player player = playerRepository.findByName(username);
+        return player;
+    }
 }

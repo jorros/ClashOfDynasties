@@ -59,7 +59,13 @@
     <div id="body" style="display: none;">
     </div>
     <div id="controls"></div>
+    <div id="events"></div>
     <span id="caravanText" style="position:absolute; width:200px; margin:auto auto; left:50%; top:80%; font-family:'Philosopher-Bold'; font-size:28px; color:#000; text-align:center; z-index:30; display:none;">W&auml;hle eine Zielstadt aus!</span>
 </div>
+<script>
+    $(function() {
+        $("#events").css("height", window.innerHeight - 140 + "px");
+    });
+</script>
 </body>
 </html>

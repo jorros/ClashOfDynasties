@@ -2,11 +2,11 @@ var Cities = {};
 var CityEntities = {};
 
 function updateCities() {
-    $.getJSON("/game/cities", { timestamp: lastUpdate, editor: Editor }, function(data) {
+    $.getJSON("/game/cities", { timestamp: lastUpdate, editor: Editor }, function (data) {
         var tempCities = {};
 
-        $.each(data, function(id, city) {
-            if(city.nn)
+        $.each(data, function (id, city) {
+            if (city.nn)
                 tempCities[id] = Cities[id];
             else
                 tempCities[id] = city;
@@ -14,12 +14,12 @@ function updateCities() {
 
         Cities = tempCities;
 
-        $.each(data, function(id, city) {
-            if(CityEntities[id] == undefined)
+        $.each(data, function (id, city) {
+            if (CityEntities[id] == undefined)
                 CityEntities[id] = Crafty.e("City").city(id);
         });
 
-        $.each(CityEntities, function(id, entity) {
+        $.each(CityEntities, function (id, entity) {
             entity.update();
         });
 

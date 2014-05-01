@@ -5,49 +5,41 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Item
-{
-	@Id
-	private int id;
+public class Item {
+    @Id
+    private int id;
 
-	private String name;
+    private String name;
 
-	@DBRef
-	private ItemType type;
+    @DBRef
+    private ItemType type;
 
-	public int getId()
-	{
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public ItemType getType()
-	{
-		return type;
-	}
+    public ItemType getType() {
+        return type;
+    }
 
-	public void setType(ItemType type)
-	{
-		this.type = type;
-	}
+    public void setType(ItemType type) {
+        this.type = type;
+    }
 
-    public boolean equals(Object other)
-    {
-        if(other instanceof Item && ((Item)other).getId() == this.id)
+    public boolean equals(Object other) {
+        if (other instanceof Item && ((Item) other).getId() == this.id)
             return true;
         else
             return false;

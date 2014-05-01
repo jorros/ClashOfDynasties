@@ -1,10 +1,10 @@
 package de.clashofdynasties.game;
 
 import de.clashofdynasties.models.Caravan;
-import de.clashofdynasties.service.RoutingService;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
 import de.clashofdynasties.repository.*;
+import de.clashofdynasties.service.RoutingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,8 +16,7 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/game/commands")
-public class CommandController
-{
+public class CommandController {
     @Autowired
     FormationRepository formationRepository;
 
@@ -39,24 +38,22 @@ public class CommandController
     @Autowired
     RoutingService routing;
 
-    @RequestMapping(value="/formation", method = RequestMethod.GET)
-    public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") int id)
-    {
+    @RequestMapping(value = "/formation", method = RequestMethod.GET)
+    public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") int id) {
         Formation formation = formationRepository.findOne(id);
 
         String time = "";
 
-        if(!formation.isDeployed())
-        {
+        if (!formation.isDeployed()) {
             int seconds = routing.calculateTime(formation, formation.getRoute());
-            int hr = (int)(seconds / 3600);
-            int rem = (int)(seconds % 3600);
+            int hr = (int) (seconds / 3600);
+            int rem = (int) (seconds % 3600);
             int mn = rem / 60;
 
-            if(hr > 0)
+            if (hr > 0)
                 time += hr + " Stunden ";
 
-            if(mn > 0)
+            if (mn > 0)
                 time += mn + " Minuten";
         }
 
@@ -67,22 +64,21 @@ public class CommandController
         return "command/formation";
     }
 
-    @RequestMapping(value="/caravan", method = RequestMethod.GET)
-    public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") int id)
-    {
+    @RequestMapping(value = "/caravan", method = RequestMethod.GET)
+    public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") int id) {
         Caravan caravan = caravanRepository.findOne(id);
 
         String time = "";
 
         int seconds = routing.calculateTime(caravan.getRoute());
-        int hr = (int)(seconds / 3600);
-        int rem = (int)(seconds % 3600);
+        int hr = (int) (seconds / 3600);
+        int rem = (int) (seconds % 3600);
         int mn = rem / 60;
 
-        if(hr > 0)
+        if (hr > 0)
             time += hr + " Stunden ";
 
-        if(mn > 0)
+        if (mn > 0)
             time += mn + " Minuten";
 
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
@@ -92,29 +88,26 @@ public class CommandController
         return "command/caravan";
     }
 
-    @RequestMapping(value="/city", method = RequestMethod.GET)
-    public String showCity(ModelMap map, Principal principal, @RequestParam("city") int id)
-    {
+    @RequestMapping(value = "/city", method = RequestMethod.GET)
+    public String showCity(ModelMap map, Principal principal, @RequestParam("city") int id) {
         City city = cityRepository.findOne(id);
 
         int maxSlots = Math.round(city.getCapacity() * city.getType().getCapacity());
         int freeSlots = maxSlots;
 
-        if(city.getBuildings() != null)
+        if (city.getBuildings() != null)
             freeSlots -= city.getBuildings().size();
 
         String smiley = "Happy";
 
-        if(city.getPopulation() > 0)
-        {
-            if(city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
+        if (city.getPopulation() > 0) {
+            if (city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
                 smiley = "Satisfied";
-            else if(city.getSatisfaction() < 60 && city.getSatisfaction() >= 30)
+            else if (city.getSatisfaction() < 60 && city.getSatisfaction() >= 30)
                 smiley = "Unhappy";
             else
                 smiley = "Angry";
-        }
-        else
+        } else
             smiley = null;
 
         map.addAttribute("satisfaction", smiley);
@@ -126,9 +119,8 @@ public class CommandController
         return "command/city";
     }
 
-    @RequestMapping(value="/editcity", method = RequestMethod.GET)
-    public String showEditCity(ModelMap map, @RequestParam("city") int id)
-    {
+    @RequestMapping(value = "/editcity", method = RequestMethod.GET)
+    public String showEditCity(ModelMap map, @RequestParam("city") int id) {
         City city = cityRepository.findOne(id);
 
         map.addAttribute("city", city);

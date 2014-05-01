@@ -3,7 +3,7 @@ function caravanEntity() {
         _cid: 0,
         _textEntity: {},
 
-        _buildInfo: function() {
+        _buildInfo: function () {
             this._textEntity = Crafty.e("2D, DOM, Text").attr({
                 x: this._x,
                 y: this._y - 40,
@@ -15,22 +15,22 @@ function caravanEntity() {
             this.attach(this._textEntity);
         },
 
-        _updateInfo: function() {
+        _updateInfo: function () {
             this._textEntity.text(Caravans[this._cid].name);
         },
 
-        _updateDiplomacy: function() {
-            if(Caravans[this._cid].diplomacy == 1) // Selbst
+        _updateDiplomacy: function () {
+            if (Caravans[this._cid].diplomacy == 1) // Selbst
                 this._textEntity.css("color", "#4096EE");
-            else if(Caravans[this._cid].diplomacy == 2) // Verbündet
+            else if (Caravans[this._cid].diplomacy == 2) // Verbündet
                 this._textEntity.css("color", "#356AA0");
-            else if(Caravans[this._cid].diplomacy == 3) // Verfeindet
+            else if (Caravans[this._cid].diplomacy == 3) // Verfeindet
                 this._textEntity.css("color", "#D01F3C");
-            else if(Caravans[this._cid].diplomacy == 4) // Neutral
+            else if (Caravans[this._cid].diplomacy == 4) // Neutral
                 this._textEntity.css("color", "#EEEEEE");
         },
 
-        showRoute: function() {
+        showRoute: function () {
             hideRoute();
 
             tempRoute = Caravans[this._cid].route.roads;
@@ -42,25 +42,25 @@ function caravanEntity() {
             routeShown = true;
         },
 
-        select: function() {
+        select: function () {
             deselect();
             Selected = this;
 
-            if(Caravans[this._cid].route != undefined)
+            if (Caravans[this._cid].route != undefined)
                 this.showRoute();
 
             openCommand('caravan?caravan=' + this._cid, Caravans[this._cid].name);
         },
 
-        deselect: function() {
+        deselect: function () {
             isCaravanSelected = false;
         },
 
-        init: function() {
+        init: function () {
             this.requires("2D, Canvas, Image, Mouse");
         },
 
-        caravan: function(id) {
+        caravan: function (id) {
             this._cid = id;
             this.z = 12;
 
@@ -77,13 +77,12 @@ function caravanEntity() {
             return this;
         },
 
-        update: function() {
-            if(Caravans[this._cid] == undefined) {
+        update: function () {
+            if (Caravans[this._cid] == undefined) {
                 this.destroy();
                 delete CaravanEntities[this._cid];
             }
-            else
-            {
+            else {
                 this.x = Math.round(Caravans[this._cid].x - this._w / 2);
                 this.y = Math.round(Caravans[this._cid].y - this._h / 2);
 

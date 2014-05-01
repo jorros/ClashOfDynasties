@@ -10,25 +10,23 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/game/buildings")
-public class BuildingController
-{
+public class BuildingController {
     @Autowired
     BuildingBlueprintRepository buildingBlueprintRepository;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer price)
-    {
+    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer price) {
         BuildingBlueprint blueprint = buildingBlueprintRepository.findOne(id);
 
-        if(description != null)
+        if (description != null)
             blueprint.setDescription(description);
 
-        if(production != null)
+        if (production != null)
             blueprint.setRequiredProduction(production);
 
-        if(price != null)
+        if (price != null)
             blueprint.setPrice(price);
 
         buildingBlueprintRepository.save(blueprint);

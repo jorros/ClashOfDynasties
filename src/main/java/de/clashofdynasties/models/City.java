@@ -8,34 +8,32 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 @Document
-public class City
-{
-	@Id
-	private int id;
+public class City {
+    @Id
+    private int id;
 
-	private int x;
-	private int y;
+    private int x;
+    private int y;
 
-	@DBRef
-	private Player player;
+    @DBRef
+    private Player player;
 
-	private int population;
-	private int satisfaction;
-	private int health;
+    private int population;
+    private int satisfaction;
+    private int health;
 
-	@DBRef
-	private Resource resource;
+    @DBRef
+    private Resource resource;
 
-	@DBRef
-	private Biome biome;
+    @DBRef
+    private Biome biome;
 
-	@DBRef
-	private CityType type;
+    @DBRef
+    private CityType type;
 
     private Report report;
 
@@ -45,250 +43,206 @@ public class City
     @Transient
     private int diplomacy;
 
-	private int capacity;
-	private String name;
+    private int capacity;
+    private String name;
 
-	@DBRef
-	private List<ItemType> requiredItemTypes;
+    @DBRef
+    private List<ItemType> requiredItemTypes;
 
-	@DBRef
-	private List<Building> buildings;
+    @DBRef
+    private List<Building> buildings;
 
     private BuildingConstruction buildingConstruction;
 
-	@DBRef
-	private List<Unit> units;
+    @DBRef
+    private List<Unit> units;
 
-	private Map<Integer, Double> items;
+    private Map<Integer, Double> items;
 
     private long timestamp;
 
-	public int getId()
-	{
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public int getX()
-	{
-		return x;
-	}
+    public int getX() {
+        return x;
+    }
 
-	public void setX(int x)
-	{
-		this.x = x;
-	}
+    public void setX(int x) {
+        this.x = x;
+    }
 
-	public int getY()
-	{
-		return y;
-	}
+    public int getY() {
+        return y;
+    }
 
-	public void setY(int y)
-	{
-		this.y = y;
-	}
+    public void setY(int y) {
+        this.y = y;
+    }
 
-	public Player getPlayer()
-	{
-		return player;
-	}
+    public Player getPlayer() {
+        return player;
+    }
 
-	public void setPlayer(Player player)
-	{
-		this.player = player;
-	}
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
 
-	public int getPopulation()
-	{
-		return population;
-	}
+    public int getPopulation() {
+        return population;
+    }
 
-	public void setPopulation(int population)
-	{
-		this.population = population;
-	}
+    public void setPopulation(int population) {
+        this.population = population;
+    }
 
-	public int getSatisfaction()
-	{
-		return satisfaction;
-	}
+    public int getSatisfaction() {
+        return satisfaction;
+    }
 
-	public void setSatisfaction(int satisfaction)
-	{
-		this.satisfaction = satisfaction;
-	}
+    public void setSatisfaction(int satisfaction) {
+        this.satisfaction = satisfaction;
+    }
 
-	public int getHealth()
-	{
-		return health;
-	}
+    public int getHealth() {
+        return health;
+    }
 
-	public void setHealth(int health)
-	{
-		this.health = health;
-	}
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
-	public Resource getResource()
-	{
-		return resource;
-	}
+    public Resource getResource() {
+        return resource;
+    }
 
-	public void setResource(Resource resource)
-	{
-		this.resource = resource;
-	}
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
 
-	public Biome getBiome()
-	{
-		return biome;
-	}
+    public Biome getBiome() {
+        return biome;
+    }
 
-	public void setBiome(Biome biome)
-	{
-		this.biome = biome;
-	}
+    public void setBiome(Biome biome) {
+        this.biome = biome;
+    }
 
-	public int getCapacity()
-	{
-		return capacity;
-	}
+    public int getCapacity() {
+        return capacity;
+    }
 
-	public void setCapacity(int capacity)
-	{
-		this.capacity = capacity;
-	}
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
 
-	public String getName()
-	{
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name)
-	{
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public List<ItemType> getRequiredItemTypes()
-	{
-		return requiredItemTypes;
-	}
+    public List<ItemType> getRequiredItemTypes() {
+        return requiredItemTypes;
+    }
 
-	public void setRequiredItemTypes(List<ItemType> requiredItemTypes)
-	{
-		this.requiredItemTypes = requiredItemTypes;
-	}
+    public void setRequiredItemTypes(List<ItemType> requiredItemTypes) {
+        this.requiredItemTypes = requiredItemTypes;
+    }
 
-	public Map<Integer, Double> getItems()
-	{
-		return items;
-	}
+    public Map<Integer, Double> getItems() {
+        return items;
+    }
 
-	public void setItems(Map<Integer, Double> items)
-	{
-		this.items = items;
-	}
+    public void setItems(Map<Integer, Double> items) {
+        this.items = items;
+    }
 
-	public List<Building> getBuildings()
-	{
-		return buildings;
-	}
+    public List<Building> getBuildings() {
+        return buildings;
+    }
 
-	public void setBuildings(List<Building> buildings)
-	{
-		this.buildings = buildings;
-	}
+    public void setBuildings(List<Building> buildings) {
+        this.buildings = buildings;
+    }
 
-	public CityType getType()
-	{
-		return type;
-	}
+    public CityType getType() {
+        return type;
+    }
 
-	public void setType(CityType type)
-	{
-		this.type = type;
-	}
+    public void setType(CityType type) {
+        this.type = type;
+    }
 
-	public List<Unit> getUnits()
-	{
-		return units;
-	}
+    public List<Unit> getUnits() {
+        return units;
+    }
 
-	public void setUnits(List<Unit> units)
-	{
-		this.units = units;
-	}
+    public void setUnits(List<Unit> units) {
+        this.units = units;
+    }
 
-    public Report getReport()
-    {
+    public Report getReport() {
         return report;
     }
 
-    public void setReport(Report report)
-    {
+    public void setReport(Report report) {
         this.report = report;
     }
 
-    public BuildingConstruction getBuildingConstruction()
-    {
+    public BuildingConstruction getBuildingConstruction() {
         return buildingConstruction;
     }
 
-    public void setBuildingConstruction(BuildingConstruction buildingConstruction)
-    {
+    public void setBuildingConstruction(BuildingConstruction buildingConstruction) {
         this.buildingConstruction = buildingConstruction;
     }
 
-    public List<Formation> getFormations()
-    {
+    public List<Formation> getFormations() {
         return formations;
     }
 
-    public void setFormations(List<Formation> formations)
-    {
+    public void setFormations(List<Formation> formations) {
         this.formations = formations;
     }
 
-    public int getDiplomacy()
-    {
+    public int getDiplomacy() {
         return diplomacy;
     }
 
-    public void setDiplomacy(int diplomacy)
-    {
+    public void setDiplomacy(int diplomacy) {
         this.diplomacy = diplomacy;
     }
 
     public double getStoredItem(int id) {
-        if(getItems() == null)
+        if (getItems() == null)
             return 0;
 
-        if(getItems().get(id) == null)
+        if (getItems().get(id) == null)
             return 0;
 
         return getItems().get(id);
     }
 
-    public boolean equals(Object other)
-    {
-        if(other instanceof City && ((City)other).getId() == this.id)
+    public boolean equals(Object other) {
+        if (other instanceof City && ((City) other).getId() == this.id)
             return true;
         else
             return false;
     }
 
-    public int countBuildings(int blueprint)
-    {
+    public int countBuildings(int blueprint) {
         int counter = 0;
-        if(buildings != null)
-        {
-            for(Building building : buildings)
-            {
-                if(building.getBlueprint().getId() == blueprint)
+        if (buildings != null) {
+            for (Building building : buildings) {
+                if (building.getBlueprint().getId() == blueprint)
                     counter++;
             }
         }
@@ -296,14 +250,11 @@ public class City
         return counter;
     }
 
-    public int countUnits(int blueprint)
-    {
+    public int countUnits(int blueprint) {
         int counter = 0;
-        if(units != null)
-        {
-            for(Unit unit : units)
-            {
-                if(unit.getBlueprint().getId() == blueprint)
+        if (units != null) {
+            for (Unit unit : units) {
+                if (unit.getBlueprint().getId() == blueprint)
                     counter++;
             }
         }
@@ -311,43 +262,35 @@ public class City
         return counter;
     }
 
-    public double calculateCoins()
-    {
-        return (this.getPopulation() * ((double)this.getSatisfaction() / 100)) / 60;
+    public double calculateCoins() {
+        return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 60;
     }
 
-    public int getIncome()
-    {
-        return (int)Math.floor(this.calculateCoins() * 60);
+    public int getIncome() {
+        return (int) Math.floor(this.calculateCoins() * 60);
     }
 
-    public int getOutcome()
-    {
+    public int getOutcome() {
         return 0;
     }
 
-    public long getTimestamp()
-    {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp)
-    {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
-    public void updateTimestamp()
-    {
+    public void updateTimestamp() {
         this.timestamp = System.currentTimeMillis();
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp)
-    {
+    public ObjectNode toJSON(boolean editor, long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        if(getTimestamp() >= timestamp)
-        {
+        if (getTimestamp() >= timestamp) {
             node.put("x", getX());
             node.put("y", getY());
             node.put("type", getType().getId());
@@ -355,23 +298,18 @@ public class City
             node.put("name", getName());
             node.put("nn", false);
 
-            if(editor)
-            {
+            if (editor) {
                 node.put("resource", getResource().getId());
                 node.put("capacity", getCapacity());
-            }
-            else
-            {
+            } else {
                 node.put("satisfaction", getSatisfaction());
                 node.put("population", getPopulation());
 
                 List<Formation> formations = getFormations();
                 ArrayNode formationNodes = factory.arrayNode();
 
-                if(formations != null)
-                {
-                    for(Formation formation : formations)
-                    {
+                if (formations != null) {
+                    for (Formation formation : formations) {
                         ObjectNode formationNode = factory.objectNode();
                         formationNode.put("id", formation.getId());
                         formationNode.put("name", formation.getName());
@@ -381,8 +319,7 @@ public class City
 
                 node.put("formations", formationNodes);
             }
-        }
-        else
+        } else
             node.put("nn", true);
 
         return node;
