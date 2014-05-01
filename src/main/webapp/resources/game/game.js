@@ -11,6 +11,14 @@ var routeShown = false;
 
 var lastUpdate = 0;
 
+function updateGame() {
+    loadTop();
+    updateCities();
+    updateFormations();
+    updateCaravans();
+    updateTimestamp();
+}
+
 window.onload = function () {
     Crafty.init();
     Crafty.canvas.init();
@@ -109,11 +117,7 @@ window.onload = function () {
 
         // Update Callback
         var updateCallback = function () {
-            loadTop();
-            updateCities();
-            updateFormations();
-            updateCaravans();
-            updateTimestamp();
+            updateGame();
 
             window.setTimeout(updateCallback, 10000);
         }

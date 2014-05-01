@@ -3,6 +3,11 @@ var SelectionMode = 0;
 var Selected = null;
 var SelectedWay = null;
 
+function updateGame() {
+    updateCities();
+    updateTimestamp();
+}
+
 window.onload = function () {
     Crafty.init();
     Crafty.canvas.init();
@@ -82,8 +87,8 @@ window.onload = function () {
 
         // Update Callback
         var updateCallback = function () {
-            updateCities();
-            updateTimestamp();
+            updateGame();
+
             window.setTimeout(updateCallback, 10000);
         }
         window.setTimeout(updateCallback, 10000);

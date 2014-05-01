@@ -14,7 +14,9 @@
             assigned.push($(obj).attr("id").slice(5));
         });
 
-        $.put("/game/formations/${formation.id}", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() });
+        $.put("/game/formations/${formation.id}", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
+            updateGame();
+        });
         closeMenu();
     }
 </script>

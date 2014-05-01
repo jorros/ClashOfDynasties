@@ -92,6 +92,7 @@
         <c:if test="${caravan.id == 0}">
         $.post("/game/caravans/", data, function() {
             closeMenu();
+            updateGame();
         });
         </c:if>
     }
