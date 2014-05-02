@@ -31,23 +31,11 @@
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/People.png" style="width:22px;" /> <span id="globalPeople">100</span></div>
     </div>
     <div id="header">
-        <ul>
-            <li class="menus">
-                <a id="menu1">Ressourcen</a>
-            </li>
-            <li class="menus">
-                <a id="menu2">Produktion</a>
-            </li>
-            <li class="menus">
-                <a id="menu3">Geb&auml;ude</a>
-            </li>
-            <li class="menus">
-                <a id="menu4">Einheiten</a>
-            </li>
-            <li class="menus">
-                <a id="menu5" href="/logout">logout</a>
-            </li>
-        </ul>
+        <div id="menu1" class="menu menu-orange"><a>ressourcen</a></div>
+        <div id="menu2" class="menu menu-yellow"><a>produktion</a></div>
+        <div id="menu3" class="menu menu-cyan"><a>geb&auml;ude</a></div>
+        <div id="menu4" class="menu menu-green"><a>einheiten</a></div>
+        <div id="menu5" class="menu menu-red"><a>logout</a></div>
     </div>
     <div id="body" style="display: none;">
     </div>

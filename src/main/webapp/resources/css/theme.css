@@ -29,13 +29,13 @@ body {
 
 /* Navigation */
 #top {
-    height: 20px;
+    height: 28px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
     position:absolute;
-    width: 880px;
+    width: 100%;
     z-index: 103;
     top: 0;
     background-color: #1c1919;
@@ -46,83 +46,79 @@ body {
     font-family: 'Philosopher-Bold';
 }
 #header {
-    height: 120px;
+    height: 50px;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
     position: absolute;
-    width: 960px;
+    width: 800px;
     z-index: 102;
-    top: 20px;
+    top: 28px;
+    background-image: url(/images/top/HeaderBackground.png);
+    text-align: center;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
 }
-#header ul {
-    background: url(/images/bg-navigation.png) no-repeat center center;
-    height: 98px;
-    left: 30px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 9px 17px;
-    position: absolute;
-    width: 865px;
-}
-#header ul li {
-    display: block;
-    float: left;
-    list-style: none;
-    margin: 0 5px;
-    padding: 0;
+.menu {
+    height: 46px;
+    width: 131px;
+    display: inline-block;
+    text-align: center;
     cursor: pointer;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
 }
-#header ul li a {
-    background: url(/images/menu.png) no-repeat;
+.menu a {
     color: #a8a8a8;
-    display: block;
     font-family: 'Philosopher-Bold';
     font-size: 16px;
     font-weight: normal;
-    height: 98px;
     letter-spacing: 0.07em;
-    line-height: 104px;
+    line-height: 55px;
     margin: 0;
     padding: 0;
-    text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    width: 163px;
+    width: 131px;
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
 }
-#header ul li #menu1 {
-    background-position: 0 0;
+.menu-orange {
+    background-image: url(/images/top/OrangeButton.png);
 }
-#header ul li #menu2 {
-    background-position: -168px 0;
+.menu-yellow {
+    background-image: url(/images/top/YellowButton.png);
 }
-#header ul li #menu3 {
-    background-position: -335px 0;
+.menu-cyan {
+    background-image: url(/images/top/CyanButton.png);
 }
-#header ul li #menu4 {
-    background-position: -502px 0;
+.menu-green {
+    background-image: url(/images/top/GreenButton.png);
 }
-#header ul li #menu5 {
-    background-position: -669px 0;
+.menu-red {
+    background-image: url(/images/top/RedButton.png);
 }
-#header ul li a:hover, #header ul li.selected a {
+.menu-orange:hover, .menu-orange.selected {
+    background-image: url(/images/top/OrangeButtonHover.png);
+}
+.menu-yellow:hover, .menu-yellow.selected {
+    background-image: url(/images/top/YellowButtonHover.png);
+}
+.menu-cyan:hover, .menu-cyan.selected {
+    background-image: url(/images/top/CyanButtonHover.png);
+}
+.menu-green:hover, .menu-green.selected {
+    background-image: url(/images/top/GreenButtonHover.png);
+}
+.menu-red:hover, .menu-red.selected {
+    background-image: url(/images/top/RedButtonHover.png);
+}
+#header div:hover a, #header div.selected a {
     color: #fff;
-}
-#header ul li #menu1:hover, #header ul li.selected #menu1 {
-    background-position: 0 -113px;
-}
-#header ul li #menu2:hover, #header ul li.selected #menu2 {
-    background-position: -168px -113px;
-}
-#header ul li #menu3:hover, #header ul li.selected #menu3 {
-    background-position: -335px -113px;
-}
-#header ul li #menu4:hover, #header ul li.selected #menu4 {
-    background-position: -502px -113px;
-}
-#header ul li #menu5:hover, #header ul li.selected #menu5 {
-    background-position: -669px -113px;
 }
 
 /* Input Styles */
@@ -243,7 +239,7 @@ span.tooltip:after {
     padding: 112px 0 40px;
     width: 960px;
     position:absolute;
-    top: 52px;
+    top: 12px;
     z-index: 101;
     height: 564px;
 }

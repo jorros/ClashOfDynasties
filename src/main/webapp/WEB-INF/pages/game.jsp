@@ -39,23 +39,11 @@
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/Cities.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCities">0</span></div>
     </div>
     <div id="header">
-        <ul>
-            <li class="menus">
-                <a id="menu1">ranking</a>
-            </li>
-            <li class="menus">
-                <a id="menu2">profil</a>
-            </li>
-            <li class="menus">
-                <a id="menu3">demographie</a>
-            </li>
-            <li class="menus">
-                <a id="menu4">diplomatie</a>
-            </li>
-            <li class="menus">
-                <a id="menu5" href="/logout">logout</a>
-            </li>
-        </ul>
+        <div id="menu1" class="menu menu-orange"><a>ranking</a></div>
+        <div id="menu2" class="menu menu-yellow"><a>profil</a></div>
+        <div id="menu3" class="menu menu-cyan"><a>dein reich</a></div>
+        <div id="menu4" class="menu menu-green"><a>diplomatie</a></div>
+        <div id="menu5" class="menu menu-red"><a>logout</a></div>
     </div>
     <div id="body" style="display: none;">
     </div>
@@ -65,7 +53,7 @@
 </div>
 <script>
     $(function() {
-        $("#events").css("height", window.innerHeight - 140 + "px");
+        $("#events").css("height", window.innerHeight - 50 + "px");
     });
 </script>
 </body>

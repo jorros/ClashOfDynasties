@@ -1,19 +1,21 @@
 $(document).ready(function () {
-    $(".menus").click(function () {
+    $(".menu").click(function () {
         var selected = !$(this).hasClass("selected");
-        $(".menus").removeClass("selected");
+        $(".menu").removeClass("selected");
 
         if (selected) {
             $(this).addClass("selected");
 
-            if ($(this).find("a").attr("id") == "menu1")
+            if ($(this).attr("id") == "menu1")
                 openMenu("ranking");
-            else if ($(this).find("a").attr("id") == "menu2")
+            else if ($(this).attr("id") == "menu2")
                 openMenu("settings");
-            else if ($(this).find("a").attr("id") == "menu3")
+            else if ($(this).attr("id") == "menu3")
                 openMenu("demography");
-            else if ($(this).find("a").attr("id") == "menu4")
+            else if ($(this).attr("id") == "menu4")
                 openMenu("diplomacy");
+            else if ($(this).attr("id") == "menu5")
+                window.location = "/logout";
         }
         else {
             closeMenu();

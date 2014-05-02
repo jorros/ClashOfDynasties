@@ -9,7 +9,7 @@ function openMenu(menu) {
 
 function closeMenu() {
     $("#body").hide();
-    $(".menus").removeClass("selected");
+    $(".menu").removeClass("selected");
 }
 
 function openCommand(command, title) {
