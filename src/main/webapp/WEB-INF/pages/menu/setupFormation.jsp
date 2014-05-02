@@ -20,17 +20,15 @@
         closeMenu();
     }
 </script>
-<h1>Zusammenstellen (${formation.name})</h1>
+<h1>${formation.name}</h1>
 <div id="content" style="overflow:hidden;">
-    <div style="height:60px;">
-        <label for="formation_name">Name: </label>
-        <input id="formation_name" style="width:300px;" type="text" value="${formation.name}" />
-        <button onclick="save()" style="float:right;">Speichern</button>
+    <div style="text-align:center; margin-bottom:10px;">
+        <span style="color:white;">Ordne die Einheiten mittels Drag'n'Drop zu</span>
     </div>
     <div style="float:left;">
         <div class="section" style="width:400px; margin-bottom:20px;">
             <h4>${city.name}</h4>
-            <div style="height:270px; overflow-y:auto; overflow-x:hidden;">
+            <div style="height:290px; overflow-y:auto; overflow-x:hidden;">
                 <ul id="city_list" class="sortable">
                     <c:forEach items="${city.units}" var="unit">
                         <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
@@ -42,7 +40,7 @@
     <div style="float:right;">
         <div class="section" style="width:400px; margin-bottom:20px;">
             <h4>${formation.name}</h4>
-            <div style="height:270px; overflow-y:auto; overflow-x:hidden;">
+            <div style="height:290px; overflow-y:auto; overflow-x:hidden;">
                 <ul id="formation_list" class="sortable">
                     <c:forEach items="${formation.units}" var="unit">
                         <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
@@ -51,8 +49,13 @@
             </div>
         </div>
     </div>
-    <div style="clear:both; text-align:center;">
-        <span style="color:white;">Ordne die Einheiten mittels Drag'n'Drop zu</span>
+    <div style="clear:both;">
+    </div>
+    <div style="height:60px;">
+        <label for="formation_name">Name: </label>
+        <input id="formation_name" style="width:300px;" type="text" value="${formation.name}" />
+        <button onclick="save()" style="float:right;"><c:if test="${formation.id == 0}">Erstellen</c:if><c:if test="${formation.id != 0}">Ändern</c:if></button>
+        <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
     </div>
 </div>
 
