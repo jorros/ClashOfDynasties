@@ -52,6 +52,8 @@ public class MenuController {
         if(!editor) {
             Player player = playerRepository.findByName(principal.getName());
             List<City> cities = cityRepository.findByPlayer(player);
+            List<Formation> formations = formationRepository.findByPlayer(player);
+            List<Caravan> caravans = caravanRepository.findByPlayer(player);
 
             int people = 0;
             int balance = 0;
@@ -70,6 +72,9 @@ public class MenuController {
             node.put("people", people);
             node.put("balance", balance);
             node.put("cityNum", cities.size());
+            node.put("formationNum", formations.size());
+            node.put("caravanNum", caravans.size());
+            node.put("ranking", 1);
             node.put("events", events);
         }
 

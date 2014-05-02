@@ -11,6 +11,9 @@ function loadTop() {
 
         $("#globalPeople").text(data.people);
         $("#globalCities").text(data.cityNum);
+        $("#globalFormations").text(data.formationNum);
+        $("#globalCaravans").text(data.caravanNum);
+        $("#globalRanking").text(data.ranking);
 
         $.each(data.events, function(index, event) {
             $('<button class="event"><img src="assets/events/' + event.type + '.png" /></button>').appendTo("#events").mousedown(function(e) {
