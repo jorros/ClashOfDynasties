@@ -4,15 +4,15 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 
 public class BuildingConstruction {
     @DBRef
-    private BuildingBlueprint blueprint;
+    private IBlueprint blueprint;
 
     private double production;
 
-    public BuildingBlueprint getBlueprint() {
+    public IBlueprint getBlueprint() {
         return blueprint;
     }
 
-    public void setBlueprint(BuildingBlueprint blueprint) {
+    public void setBlueprint(IBlueprint blueprint) {
         this.blueprint = blueprint;
     }
 

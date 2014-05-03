@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Document
-public class BuildingBlueprint {
+public class BuildingBlueprint implements IBlueprint {
     @Id
     private int id;
 

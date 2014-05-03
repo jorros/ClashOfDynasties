@@ -14,8 +14,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("/game/menus")
@@ -143,10 +145,35 @@ public class MenuController {
 
     @RequestMapping(value = "/build", method = RequestMethod.GET)
     public String showBuild(ModelMap map, Principal principal, @RequestParam("city") int id) {
-        map.addAttribute("city", cityRepository.findOne(id));
+        City city = cityRepository.findOne(id);
+
+        map.addAttribute("city", city);
         map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll());
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll());
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
+
+        if(city.getBuildingConstruction() != null) {
+            double neededProduction = city.getBuildingConstruction().getBlueprint().getRequiredProduction();
+            double currentProduction = city.getBuildingConstruction().getProduction();
+            long delta = Math.round(neededProduction - currentProduction);
+
+            map.addAttribute("productionPercent", (long)(currentProduction / neededProduction * 100));
+
+            int day = (int) TimeUnit.SECONDS.toDays(delta);
+            long hours = TimeUnit.SECONDS.toHours(delta) - (day * 24);
+            long minute = TimeUnit.SECONDS.toMinutes(delta) - (hours * 60);
+
+            String timeDescription = "";
+            if(day > 0)
+                timeDescription += day + "T ";
+            if(hours > 0)
+                timeDescription += hours + "h ";
+            if(minute > 0)
+                timeDescription += minute + "m ";
+
+            map.addAttribute("productionTime", timeDescription);
+
+        }
 
         return "menu/build";
     }

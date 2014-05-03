@@ -1,12 +1,10 @@
 package de.clashofdynasties.game;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Formation;
-import de.clashofdynasties.models.ItemType;
-import de.clashofdynasties.models.Player;
+import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.CounterService;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -130,6 +128,55 @@ public class CityController {
 
         cityRepository.save(city);
         save(request, principal, city.getId(), name, type, capacity, resource);
+    }
+
+    @RequestMapping(value = "/{city}/build", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void build(Principal principal, @PathVariable("city") int id, @RequestParam int type, @RequestParam int blueprint) {
+        Player player = playerRepository.findByName(principal.getName());
+        City city = cityRepository.findOne(id);
+
+        if(city.getPlayer().equals(player)) {
+            BuildingConstruction construction = new BuildingConstruction();
+            construction.setProduction(0);
+
+            if(city.getBuildingConstruction() != null) {
+                stopBuild(principal, id);
+            }
+
+            if(type == 0) {
+                construction.setBlueprint(buildingBlueprintRepository.findOne(blueprint));
+            }
+            else if(type == 1) {
+                construction.setBlueprint(unitBlueprintRepository.findOne(blueprint));
+            }
+
+            if(player.getCoins() >= construction.getBlueprint().getPrice()) {
+                city.setBuildingConstruction(construction);
+                cityRepository.save(city);
+                player.addCoins(-construction.getBlueprint().getPrice());
+                playerRepository.save(player);
+            }
+        }
+    }
+
+    @RequestMapping(value = "/{city}/build", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.OK)
+    public void stopBuild(Principal principal, @PathVariable("city") int id) {
+        Player player = playerRepository.findByName(principal.getName());
+        City city = cityRepository.findOne(id);
+
+        if(city.getPlayer().equals(player) && city.getBuildingConstruction() != null) {
+            double neededProduction = city.getBuildingConstruction().getBlueprint().getRequiredProduction();
+            double currentProduction = city.getBuildingConstruction().getProduction();
+
+            player.addCoins(Math.floor(city.getBuildingConstruction().getBlueprint().getPrice() * (1 - currentProduction / neededProduction)));
+
+            city.setBuildingConstruction(null);
+
+            cityRepository.save(city);
+            playerRepository.save(player);
+        }
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
