@@ -7,9 +7,9 @@ $(document).ready(function () {
             $(this).addClass("selected");
 
             if ($(this).attr("id") == "menu1")
-                openMenu("editresources");
+                openMenu("editcity");
             else if ($(this).attr("id") == "menu2")
-                openMenu("editproduction");
+                openMenu("editresources");
             else if ($(this).attr("id") == "menu3")
                 openMenu("editbuildings");
             else if ($(this).attr("id") == "menu4")

@@ -27,11 +27,9 @@
 <div id="cr-stage"></div>
 <div id="wrapper">
     <div id="top">
-        <div style="width:200px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/Coins.png" style="width:22px;" /> <span id="globalCoins">10</span> (<span id="globalBalance" class="green">10</span>)</div>
-        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/People.png" style="width:22px;" /> <span id="globalPeople">100</span></div>
     </div>
     <div id="header">
-        <div id="menu1" class="menu menu-orange"><a>ressourcen</a></div>
+        <div id="menu1" class="menu menu-orange"><a>st&auml;dte</a></div>
         <div id="menu2" class="menu menu-yellow"><a>produktion</a></div>
         <div id="menu3" class="menu menu-cyan"><a>geb&auml;ude</a></div>
         <div id="menu4" class="menu menu-green"><a>einheiten</a></div>

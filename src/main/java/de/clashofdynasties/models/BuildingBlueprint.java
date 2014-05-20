@@ -28,6 +28,13 @@ public class BuildingBlueprint implements IBlueprint {
 
     private Map<String, Float> effects;
 
+    private int defencePoints;
+
+    @DBRef
+    private Item produceItem;
+
+    private double producePerStep;
+
     @DBRef
     private List<Biome> requiredBiomes;
 
@@ -93,6 +100,30 @@ public class BuildingBlueprint implements IBlueprint {
 
     public void setEffects(Map<String, Float> effects) {
         this.effects = effects;
+    }
+
+    public Item getProduceItem() {
+        return produceItem;
+    }
+
+    public void setProduceItem(Item produceItem) {
+        this.produceItem = produceItem;
+    }
+
+    public double getProducePerStep() {
+        return producePerStep;
+    }
+
+    public void setProducePerStep(double producePerStep) {
+        this.producePerStep = producePerStep;
+    }
+
+    public int getDefencePoints() {
+        return defencePoints;
+    }
+
+    public void setDefencePoints(int defencePoints) {
+        this.defencePoints = defencePoints;
     }
 
     public List<Biome> getRequiredBiomes() {

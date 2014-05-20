@@ -25,6 +25,6 @@
         <td><select id="resource"><c:forEach items="${resources}" var="resource"><option <c:if test="${resource.id == city.resource.id}">selected</c:if> value="${resource.id}">${resource.name}</option></c:forEach></select></td>
     </tr>
     <tr>
-        <td colspan="2"><button onclick="$.get('/editor/saveCity', { id: ${city.id}, name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val() });">Speichern</button> <button onclick="$.get('/editor/deleteCity', { id: ${city.id} })">Entfernen</button></td>
+        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val() });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}')">Entfernen</button></td>
     </tr>
 </table>

@@ -179,6 +179,26 @@ public class CityController {
         }
     }
 
+    @RequestMapping(value = "/{city}/consumption", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void toggleConsumption(Principal principal, @PathVariable("city") int id, @RequestParam("item") int itemId) {
+        City city = cityRepository.findOne(id);
+        Item item = itemRepository.findOne(itemId);
+        Player player = playerRepository.findByName(principal.getName());
+
+        if(city.getPlayer().equals(player)) {
+            if(city.getStopConsumption() == null)
+                city.setStopConsumption(new ArrayList<>());
+
+            if(city.getStopConsumption().contains(item))
+                city.getStopConsumption().remove(item);
+            else
+                city.getStopConsumption().add(item);
+
+            cityRepository.save(city);
+        }
+    }
+
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource) {

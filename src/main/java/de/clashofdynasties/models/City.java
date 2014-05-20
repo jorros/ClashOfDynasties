@@ -50,6 +50,9 @@ public class City {
     private List<ItemType> requiredItemTypes;
 
     @DBRef
+    private List<Item> stopConsumption;
+
+    @DBRef
     private List<Building> buildings;
 
     private BuildingConstruction buildingConstruction;
@@ -231,6 +234,14 @@ public class City {
         return getItems().get(id);
     }
 
+    public List<Item> getStopConsumption() {
+        return stopConsumption;
+    }
+
+    public void setStopConsumption(List<Item> stopConsumption) {
+        this.stopConsumption = stopConsumption;
+    }
+
     public boolean equals(Object other) {
         if (other instanceof City && ((City) other).getId() == this.id)
             return true;
@@ -286,6 +297,15 @@ public class City {
         this.timestamp = System.currentTimeMillis();
     }
 
+    public int getDefencePoints() {
+        int defence = getType().getDefence();
+
+        if(getBuildings() != null)
+            defence += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();
+
+        return defence;
+    }
+
     public ObjectNode toJSON(boolean editor, long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
@@ -304,6 +324,7 @@ public class City {
             } else {
                 node.put("satisfaction", getSatisfaction());
                 node.put("population", getPopulation());
+                node.put("defence", getDefencePoints());
 
                 List<Formation> formations = getFormations();
                 ArrayNode formationNodes = factory.arrayNode();

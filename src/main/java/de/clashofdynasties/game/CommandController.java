@@ -92,7 +92,7 @@ public class CommandController {
     public String showCity(ModelMap map, Principal principal, @RequestParam("city") int id) {
         City city = cityRepository.findOne(id);
 
-        int maxSlots = Math.round(city.getCapacity() * city.getType().getCapacity());
+        int maxSlots = Math.round((int)(city.getCapacity() * city.getType().getCapacity()));
         int freeSlots = maxSlots;
 
         if (city.getBuildings() != null)

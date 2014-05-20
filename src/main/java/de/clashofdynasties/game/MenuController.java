@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -45,6 +46,9 @@ public class MenuController {
 
     @Autowired
     CaravanRepository caravanRepository;
+
+    @Autowired
+    CityTypeRepository cityTypeRepository;
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
@@ -218,10 +222,76 @@ public class MenuController {
     @RequestMapping(value = "/store", method = RequestMethod.GET)
     public String showStore(ModelMap map, Principal principal, @RequestParam("city") int id) {
         City city = cityRepository.findOne(id);
+        List<Item> items = itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id"));
 
         map.addAttribute("city", city);
-        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("items", items);
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
+
+        HashMap<Integer, Integer> production = new HashMap<>();
+
+        if(city.getBuildings() != null) {
+            for(Building building : city.getBuildings()) {
+                Item item = building.getBlueprint().getProduceItem();
+                if(item != null) {
+                    if(production.containsKey(item.getId()))
+                        production.put(item.getId() - 1, production.get(item.getId() - 1) + (int)Math.floor(building.getBlueprint().getProducePerStep() * 60));
+                    else
+                        production.put(item.getId() - 1, (int)Math.floor(building.getBlueprint().getProducePerStep() * 60));
+                }
+            }
+        }
+        map.addAttribute("production", production);
+
+        HashMap<Integer, Integer> consumption = new HashMap<>();
+        HashMap<Integer, Integer> balance = new HashMap<>();
+
+        for(Item item : items) {
+            int consume = 0;
+            switch(item.getId()) {
+                case 1:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeBasic() * 0.001 * 60);
+                    break;
+                case 2:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeBasic() * 0.001 * 60);
+                    break;
+                case 3:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury1() * 0.001 * 60);
+                    break;
+                case 4:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury1() * 0.001 * 60);
+                    break;
+                case 5:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
+                    break;
+                case 6:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
+                    break;
+                case 7:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
+                    break;
+                case 8:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
+                    break;
+                case 9:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
+                    break;
+                case 10:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
+                    break;
+                case 11:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
+                    break;
+                case 12:
+                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
+                    break;
+            }
+
+            consumption.put(item.getId() - 1, consume);
+            balance.put(item.getId() - 1, production.getOrDefault(item.getId() - 1, 0) - consume);
+        }
+        map.addAttribute("consumption", consumption);
+        map.addAttribute("balance", balance);
 
         return "menu/store";
     }
@@ -246,11 +316,11 @@ public class MenuController {
         return "menu/diplomacy";
     }
 
-    @RequestMapping(value = "/editresources", method = RequestMethod.GET)
-    public String showEditResources(ModelMap map) {
-        map.addAttribute("items", itemRepository.findAll());
+    @RequestMapping(value = "/editcity", method = RequestMethod.GET)
+    public String showEditCity(ModelMap map) {
+        map.addAttribute("cityTypes", cityTypeRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
-        return "menu/editbuildings";
+        return "menu/editcity";
     }
 
     @RequestMapping(value = "/editbuildings", method = RequestMethod.GET)
@@ -258,6 +328,14 @@ public class MenuController {
         map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
         return "menu/editbuildings";
+    }
+
+    @RequestMapping(value = "/editresources", method = RequestMethod.GET)
+    public String showEditResources(ModelMap map) {
+        map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+
+        return "menu/editresources";
     }
 
     @RequestMapping(value = "/editunits", method = RequestMethod.GET)

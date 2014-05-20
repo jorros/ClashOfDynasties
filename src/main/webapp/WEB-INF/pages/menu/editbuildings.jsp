@@ -8,6 +8,7 @@
             <th>Beschreibung</th>
             <th>Voraussetzungen</th>
             <th>Kosten</th>
+            <th>V.Pkt.</th>
             <th>Produktion</th>
         </tr>
         <c:forEach items="${buildingBlueprints}" var="bp">
@@ -15,8 +16,9 @@
             <td style="font-weight: bold;"><c:out value="${bp.name}" /> :</td>
             <td><textarea id="${bp.id}_desc" style="width:300px; height:60px;"><c:out value="${bp.description}"></c:out></textarea></td>
             <td><c:if test="${bp.requiredResource != null}"><c:out value="${bp.requiredResource.name}" />, </c:if><c:forEach items="${bp.requiredBiomes}" var="biome">${biome.name}, </c:forEach></td>
-            <td><input id="${bp.id}_price" style="width:50px; height:10px;" type="text" value="${bp.price}" /></td>
-            <td><input id="${bp.id}_production" style="width:80px; height:10px;" type="text" value="${bp.requiredProduction}" /></td>
+            <td><input id="${bp.id}_price" style="width:30px; height:10px;" type="text" value="${bp.price}" /></td>
+            <td><input id="${bp.id}_defence" style="width:30px; height:10px;" type="text" value="${bp.defencePoints}" /></td>
+            <td><input id="${bp.id}_production" style="width:60px; height:10px;" type="text" value="${bp.requiredProduction}" /></td>
         </tr>
         </c:forEach>
     </table>
@@ -30,6 +32,9 @@
         });
         $("#${bp.id}_production").change(function() {
             $.put("/game/buildings/${bp.id}", { "production": $(this).val() });
+        });
+        $("#${bp.id}_defence").change(function() {
+            $.put("/game/buildings/${bp.id}", { "defence": $(this).val() });
         });
         </c:forEach>
     </script>

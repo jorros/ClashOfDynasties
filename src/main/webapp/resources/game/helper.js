@@ -64,7 +64,11 @@ function updateTimestamp() {
 }
 
 function sendDelete (url, data, callback) {
-    $.ajax(url + "?" + $.param(data), { type: "DELETE", success: function (data, textStatus, jqXHR) {
+    var c = url;
+
+    if(data != undefined)
+        c += "?" + $.param(data);
+    $.ajax(c, { type: "DELETE", success: function (data, textStatus, jqXHR) {
         if (callback != undefined)
             callback(data);
     }});

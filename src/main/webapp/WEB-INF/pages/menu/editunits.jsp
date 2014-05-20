@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h1>Gebäude</h1>
+<h1>Einheiten</h1>
 <div id="content">
     <table style="text-align:center; width:100%;">
         <tr>

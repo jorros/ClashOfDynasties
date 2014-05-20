@@ -43,7 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public Player getUserDetail(String username) {
         //MongoOperations mongoOperation = (MongoOperations)mongoTemplate;
         //Player player = mongoOperation.findOne(new Query(Criteria.where("name").is(username)), Player.class);
-        Player player = playerRepository.findByName(username);
+        Player player = playerRepository.findByNameIgnoreCase(username);
         return player;
     }
 }

@@ -69,7 +69,7 @@ function cityEntity() {
                 $(this._infoEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'build?city=' + this._cid + '\'); openCommand(\'city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
                 $(this._infoEntity._element).append('<span id="' + this._cid + '_people" style="float:left; margin-left:10px; font-size:22px">?</span>');
                 $(this._infoEntity._element).append('<img id="' + this._cid + '_satisfaction" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/satisfaction/Happy.png" />');
-                $(this._infoEntity._element).append('<div id="' + this._cid + '_defense" style="float:right; margin-top:3px; margin-right:5px;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_defensePoints" style="font-size:22px; vertical-align:top;">0</span></div>');
+                $(this._infoEntity._element).append('<div id="' + this._cid + '_defence" style="float:right; margin-top:3px; margin-right:5px;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_defencePoints" style="font-size:22px; vertical-align:top;">0</span></div>');
 
                 $(this._formationsInfoEntity._element).html('<span style="line-height: 20px;" id="' + this._cid + '_formations">0</span>');
 
@@ -97,6 +97,7 @@ function cityEntity() {
             this._formationsInfoEntity.y = (this._y - 61);
 
             $("#" + this._cid + "_name").text(Cities[this._cid].name);
+            $("#" + this._cid + "_defencePoints").text(Cities[this._cid].defence);
 
             if (Editor) {
                 $("#" + this._cid + "_resource").attr("src", "assets/resources/" + Cities[this._cid].resource + ".png");
