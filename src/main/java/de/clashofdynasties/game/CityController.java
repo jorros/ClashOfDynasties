@@ -142,6 +142,8 @@ public class CityController {
 
             if(city.getBuildingConstruction() != null) {
                 stopBuild(principal, id);
+                player = playerRepository.findByName(principal.getName());
+                city = cityRepository.findOne(id);
             }
 
             if(type == 0) {
