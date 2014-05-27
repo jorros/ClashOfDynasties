@@ -25,6 +25,14 @@
         <td><select id="resource"><c:forEach items="${resources}" var="resource"><option <c:if test="${resource.id == city.resource.id}">selected</c:if> value="${resource.id}">${resource.name}</option></c:forEach></select></td>
     </tr>
     <tr>
-        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val() });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}')">Entfernen</button></td>
+        <td>Biom:</td>
+        <td><select id="biome"><c:forEach items="${biomes}" var="biome"><option <c:if test="${biome == city.biome}">selected</c:if> value="${biome.id}">${biome.name}</option></c:forEach></select></td>
+    </tr>
+    <tr>
+        <td>Spieler:</td>
+        <td><select id="player"><c:forEach items="${players}" var="player"><option <c:if test="${player == city.player}">selected</c:if> value="${player.id}">${player.name}</option></c:forEach></select></td>
+    </tr>
+    <tr>
+        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val(), biome: $('#biome').val(), player: $('#player').val() });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}')">Entfernen</button></td>
     </tr>
 </table>

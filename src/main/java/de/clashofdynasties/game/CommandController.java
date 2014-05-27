@@ -36,6 +36,9 @@ public class CommandController {
     CaravanRepository caravanRepository;
 
     @Autowired
+    BiomeRepository biomeRepository;
+
+    @Autowired
     RoutingService routing;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
@@ -127,6 +130,8 @@ public class CommandController {
 
         map.addAttribute("types", cityTypeRepository.findAll());
         map.addAttribute("resources", resourceRepository.findAll());
+        map.addAttribute("biomes", biomeRepository.findAll());
+        map.addAttribute("players", playerRepository.findAll());
 
         return "command/editcity";
     }

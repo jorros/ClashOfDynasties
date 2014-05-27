@@ -112,7 +112,7 @@ public class CityController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource) {
+    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) Integer player) {
         City city = new City();
         city.setId(counterService.getNextSequence("city"));
         city.setName("Neu - " + city.getId());
@@ -127,7 +127,7 @@ public class CityController {
         city.updateTimestamp();
 
         cityRepository.save(city);
-        save(request, principal, city.getId(), name, type, capacity, resource);
+        save(request, principal, city.getId(), name, type, capacity, resource, biome, player);
     }
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.PUT)
@@ -201,7 +201,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource) {
+    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) Integer player) {
         City city = cityRepository.findOne(id);
 
         if (city == null)
@@ -215,6 +215,12 @@ public class CityController {
 
         if (resource != null && request.isUserInRole("ROLE_ADMIN"))
             city.setResource(resourceRepository.findOne(resource));
+
+        if (biome != null && request.isUserInRole("ROLE_ADMIN"))
+            city.setBiome(biomeRepository.findOne(biome));
+
+        if (player != null && request.isUserInRole("ROLE_ADMIN"))
+            city.setPlayer(playerRepository.findOne(player));
 
         if (type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN")) {
             city.setType(cityTypeRepository.findOne(type));
