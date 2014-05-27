@@ -403,3 +403,25 @@ h4 {
 .blue {
     color: #4095EF;
 }
+.ranking {
+    width: 100%;
+
+}
+.ranking thead {
+    background: #070707 url(/images/gradient2.png) repeat-x top center;
+}
+.ranking th {
+    height: 37px;
+    font-family: 'Philosopher-Bold';
+    font-size: 18px;
+    font-weight: normal;
+    text-align: center;
+}
+.ranking td {
+    font-size: 18px;
+    padding-top: 5px;
+    text-align: center;
+}
+.ranking tr {
+    color: #fff;
+}

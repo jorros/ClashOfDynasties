@@ -14,10 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Controller
@@ -297,7 +294,100 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/ranking", method = RequestMethod.GET)
-    public String showRanking(ModelMap map) {
+    public String showRanking(ModelMap map, Principal principal) {
+        HashMap<Integer, Integer> economy = new HashMap<>();
+        HashMap<Integer, Integer> demography = new HashMap<>();
+        HashMap<Integer, Integer> military = new HashMap<>();
+        HashMap<Integer, Integer> total = new HashMap<>();
+        HashMap<Integer, Player> playerMap = new HashMap<>();
+        int highestDemography = 0;
+        int highestEconomy = 0;
+        int highestMilitary = 0;
+        int highestDemographyVal = 0;
+        int highestEconomyVal = 0;
+        int highestMilitaryVal = 0;
+        List<Integer> ranking = new LinkedList<>();
+
+        Player player = playerRepository.findByName(principal.getName());
+        List<Player> players = playerRepository.findAll();
+        List<City> cities = cityRepository.findAll();
+        List<Formation> formations = formationRepository.findAll();
+        List<Caravan> caravans = caravanRepository.findAll();
+
+        for(Player p : players) {
+            economy.put(p.getId(), 0);
+            demography.put(p.getId(), 0);
+            military.put(p.getId(), 0);
+            playerMap.put(p.getId(), p);
+        }
+
+        for(City city : cities) {
+            int p = city.getPlayer().getId();
+
+            demography.put(p, demography.get(p) + city.getPopulation());
+            demography.put(p, demography.get(p) + city.getSatisfaction());
+            military.put(p, military.get(p) + city.getDefencePoints());
+
+            if(city.getBuildings() != null)
+                city.getBuildings().forEach(c -> economy.put(p, economy.get(p) + new Double(c.getBlueprint().getProducePerStep() * 100).intValue()));
+
+            if(city.getUnits() != null)
+                military.put(p, military.get(p) + city.getUnits().size() * 10);
+        }
+
+        for(Formation formation : formations) {
+            int p = formation.getPlayer().getId();
+
+            military.put(p, military.get(p) + 50);
+
+            if(formation.getUnits() != null)
+                military.put(p, military.get(p) + formation.getUnits().size() * 10);
+        }
+
+        for(Caravan caravan : caravans) {
+            int p = caravan.getPlayer().getId();
+
+            economy.put(p, economy.get(p) + 10);
+        }
+
+        for(Player p : players) {
+            economy.put(p.getId(), economy.get(p.getId()) + p.getCoins());
+            total.put(p.getId(), military.get(p.getId()) + demography.get(p.getId()) + economy.get(p.getId()));
+
+            if(demography.get(p.getId()) > highestDemographyVal) {
+                highestDemographyVal = demography.get(p.getId());
+                highestDemography = p.getId();
+            }
+            if(military.get(p.getId()) > highestMilitaryVal) {
+                highestMilitaryVal = military.get(p.getId());
+                highestMilitary = p.getId();
+            }
+            if(economy.get(p.getId()) > highestEconomyVal) {
+                highestEconomyVal = economy.get(p.getId());
+                highestEconomy = p.getId();
+            }
+        }
+
+        List<Object> list = new LinkedList<Object>(total.entrySet());
+        Collections.sort(list, (o1, o2) -> ((Comparable) ((Map.Entry) (o1)).getValue()).compareTo(((Map.Entry) (o2)).getValue()) * -1);
+
+        for (Object aList : list) {
+            Map.Entry entry = (Map.Entry) aList;
+            if ((Integer) entry.getKey() > 1)
+                ranking.add((Integer) entry.getKey());
+        }
+
+        map.addAttribute("player", player);
+        map.addAttribute("players", playerMap);
+        map.addAttribute("economy", economy);
+        map.addAttribute("demography", demography);
+        map.addAttribute("military", military);
+        map.addAttribute("total", total);
+        map.addAttribute("highestDemography", highestDemography);
+        map.addAttribute("highestEconomy", highestEconomy);
+        map.addAttribute("highestMilitary", highestMilitary);
+        map.addAttribute("ranking", ranking);
+
         return "menu/ranking";
     }
 
