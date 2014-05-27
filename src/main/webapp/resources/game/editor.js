@@ -67,7 +67,7 @@ window.onload = function () {
                     closeMenu();
 
                     if (SelectionMode == 1) {
-                        $.post("/game/cities", { x: e.realX, y: e.realY});
+                        $.post("/game/cities", { x: e.realX + 30, y: e.realY + 30});
                     }
                 }
             })
