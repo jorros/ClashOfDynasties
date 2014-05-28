@@ -10,15 +10,19 @@
             <th>Kosten</th>
             <th>V.Pkt.</th>
             <th>Produktion</th>
+            <th>Item</th>
+            <th>Rate</th>
         </tr>
         <c:forEach items="${buildingBlueprints}" var="bp">
         <tr>
             <td style="font-weight: bold;"><c:out value="${bp.name}" /> :</td>
-            <td><textarea id="${bp.id}_desc" style="width:300px; height:60px;"><c:out value="${bp.description}"></c:out></textarea></td>
+            <td><textarea id="${bp.id}_desc" style="width:230px; height:60px;"><c:out value="${bp.description}"></c:out></textarea></td>
             <td><c:if test="${bp.requiredResource != null}"><c:out value="${bp.requiredResource.name}" />, </c:if><c:forEach items="${bp.requiredBiomes}" var="biome">${biome.name}, </c:forEach></td>
             <td><input id="${bp.id}_price" style="width:30px; height:10px;" type="text" value="${bp.price}" /></td>
             <td><input id="${bp.id}_defence" style="width:30px; height:10px;" type="text" value="${bp.defencePoints}" /></td>
             <td><input id="${bp.id}_production" style="width:60px; height:10px;" type="text" value="${bp.requiredProduction}" /></td>
+            <td><select id="${bp.id}_item"><option <c:if test="${bp.produceItem == null}">selected</c:if> value="0">Kein</option><c:forEach items="${items}" var="item"><option <c:if test="${item == bp.produceItem}">selected</c:if> value="${item.id}">${item.name}</option></c:forEach></select></td>
+            <td><input id="${bp.id}_pps" style="width:30px; height:10px;" type="text" value="${bp.producePerStep}" /></td>
         </tr>
         </c:forEach>
     </table>
@@ -35,6 +39,12 @@
         });
         $("#${bp.id}_defence").change(function() {
             $.put("/game/buildings/${bp.id}", { "defence": $(this).val() });
+        });
+        $("#${bp.id}_pps").change(function() {
+            $.put("/game/buildings/${bp.id}", { "pps": $(this).val() });
+        });
+        $("#${bp.id}_item").change(function() {
+            $.put("/game/buildings/${bp.id}", { "item": $(this).val() });
         });
         </c:forEach>
     </script>

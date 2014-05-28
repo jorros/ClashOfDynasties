@@ -30,7 +30,7 @@
     </div>
     <div id="header">
         <div id="menu1" class="menu menu-orange"><a>st&auml;dte</a></div>
-        <div id="menu2" class="menu menu-yellow"><a>produktion</a></div>
+        <div id="menu2" class="menu menu-yellow"><a>spieler</a></div>
         <div id="menu3" class="menu menu-cyan"><a>geb&auml;ude</a></div>
         <div id="menu4" class="menu menu-green"><a>einheiten</a></div>
         <div id="menu5" class="menu menu-red"><a>logout</a></div>

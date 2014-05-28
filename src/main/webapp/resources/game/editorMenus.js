@@ -9,7 +9,7 @@ $(document).ready(function () {
             if ($(this).attr("id") == "menu1")
                 openMenu("editcity");
             else if ($(this).attr("id") == "menu2")
-                openMenu("editresources");
+                openMenu("editplayers");
             else if ($(this).attr("id") == "menu3")
                 openMenu("editbuildings");
             else if ($(this).attr("id") == "menu4")

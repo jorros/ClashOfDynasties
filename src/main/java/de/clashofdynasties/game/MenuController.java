@@ -416,16 +416,16 @@ public class MenuController {
     @RequestMapping(value = "/editbuildings", method = RequestMethod.GET)
     public String showEditBuildings(ModelMap map) {
         map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
         return "menu/editbuildings";
     }
 
-    @RequestMapping(value = "/editresources", method = RequestMethod.GET)
-    public String showEditResources(ModelMap map) {
-        map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
-        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+    @RequestMapping(value = "/editplayers", method = RequestMethod.GET)
+    public String showEditPlayers(ModelMap map) {
+        map.addAttribute("players", playerRepository.findAll());
 
-        return "menu/editresources";
+        return "menu/editplayers";
     }
 
     @RequestMapping(value = "/editunits", method = RequestMethod.GET)
