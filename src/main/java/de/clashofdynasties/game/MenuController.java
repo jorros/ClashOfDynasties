@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/game/menus")
@@ -46,6 +47,9 @@ public class MenuController {
 
     @Autowired
     CityTypeRepository cityTypeRepository;
+
+    @Autowired
+    ClanRepository clanRepository;
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
@@ -402,7 +406,24 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
-    public String showDiplomacy(ModelMap map) {
+    public String showDiplomacy(ModelMap map, Principal principal) {
+        Player player = playerRepository.findByName(principal.getName());
+        boolean isActivated = (playerRepository.findAll().stream().filter(p -> p.getClan() != null).count() > 0);
+
+        map.addAttribute("isActivated", isActivated);
+        if(isActivated) {
+            if(player.getClan() != null) {
+                List<Player> players = playerRepository.findByClan(player.getClan());
+            }
+            else {
+                List<Clan> clans = clanRepository.findAll().stream().filter(c -> c.getLeader().getNation().equals(player.getNation())).collect(Collectors.toList());
+
+                map.addAttribute("clans", clans);
+            }
+
+            map.addAttribute("player", player);
+        }
+
         return "menu/diplomacy";
     }
 
