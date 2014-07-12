@@ -64,7 +64,7 @@
     <div style="height:60px;">
         <label for="caravan_name">Name: </label>
         <input id="caravan_name" style="width:300px;" type="text" value="${caravan.name}" />
-        <button onclick="save()" style="float:right;"><c:if test="${caravan.id == 0}">Erstellen</c:if><c:if test="${caravan.id != 0}">Ändern</c:if></button>
+        <button onclick="save()" style="float:right;"><c:if test="${caravan.id == ''}">Erstellen</c:if><c:if test="${caravan.id != ''}">Ändern</c:if></button>
         <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
     </div>
 </div>

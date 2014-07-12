@@ -54,7 +54,7 @@
     <div style="height:60px;">
         <label for="formation_name">Name: </label>
         <input id="formation_name" style="width:300px;" type="text" value="${formation.name}" />
-        <button onclick="save()" style="float:right;"><c:if test="${formation.id == 0}">Erstellen</c:if><c:if test="${formation.id != 0}">Ändern</c:if></button>
+        <button onclick="save()" style="float:right;"><c:if test="${formation.id == ''}">Erstellen</c:if><c:if test="${formation.id != ''}">Ändern</c:if></button>
         <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
     </div>
 </div>
