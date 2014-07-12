@@ -29,6 +29,7 @@ public class Player {
     private int lastScrollY;
 
     private boolean computer;
+    private boolean activated;
 
     public String getId() {
         return id;
@@ -100,6 +101,14 @@ public class Player {
 
     public void setComputer(boolean isComputer) {
         this.computer = isComputer;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
+
+    public void setActivated(boolean activated) {
+        this.activated = activated;
     }
 
     public void addEvent(Event event) {

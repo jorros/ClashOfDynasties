@@ -54,9 +54,21 @@ public class PlayerController {
         playerRepository.delete(playerId);
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @Secured("ROLE_ADMIN")
+    @ResponseStatus(HttpStatus.OK)
+    public void create() {
+        Player player = new Player();
+        player.setActivated(false);
+        player.setCoins(100);
+        player.setName("Neuer Spieler");
+
+        playerRepository.save(player);
+    }
+
     @RequestMapping(value = "/reset/{player}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void reset(@PathVariable("player") int playerId) {
+    public void reset(@PathVariable("player") String playerId) {
     }
 }

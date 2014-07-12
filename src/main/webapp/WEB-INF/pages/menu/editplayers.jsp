@@ -9,13 +9,16 @@
             <th>Aktionen</th>
         </tr>
         <c:forEach items="${players}" var="player">
+            <c:if test="${!player.computer}">
             <tr>
                 <td style="font-weight: bold;"><c:out value="${player.name}" /> :</td>
                 <td>${player.email}</td>
-                <td><button id="${player.id}_delete">Löschen</button><button id="${player.id}_deleteUnits">Einheiten löschen</button><button id="${player.id}_reset">Reset</button></td>
+                <td><button id="${player.id}_delete">Löschen</button><c:if test="${player.activated}"><button id="${player.id}_deleteUnits">Einheiten löschen</button><button id="${player.id}_reset">Reset</button></c:if><c:if test="${!player.activated}"><button id="${player.id}_link">Link</button></c:if></td>
             </tr>
+            </c:if>
         </c:forEach>
     </table>
+    <button id="players_add">Spieler hinzufügen</button>
     <script>
         <c:forEach items="${players}" var="player">
             $("#${player.id}_delete").click(function() {
@@ -33,6 +36,15 @@
                     $.put("/game/reset/${player.id}");
                 }
             });
+            $("#${player.id}_link").click(function() {
+                window.prompt("Registrierungslink:", "http://www.clashofdynasties.de/register?key=${player.id}");
+            });
         </c:forEach>
+
+        $("#players_add").click(function() {
+            $.post("/game/players/", function() {
+                openMenu("editplayers");
+            });
+        });
     </script>
 </div>

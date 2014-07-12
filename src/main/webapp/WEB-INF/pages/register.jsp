@@ -13,12 +13,12 @@
         <h1>Registrieren</h1>
         <div id="content">
             <div style="width:317px; height:260px; margin: auto auto;">
-                <form action="/register" id="register" method="post">
+                <form action="/step1" id="register" method="post">
                     <input type="hidden" name="key" value="${key}" />
                     <table>
                         <tr>
-                            <td><label for="username">Name:</label></td>
-                            <td><input type="text" id="username" name="username" /></td>
+                            <td><label for="name">Name:</label></td>
+                            <td><input type="text" id="name" name="name" /></td>
                         </tr>
                         <tr>
                             <td><label for="password">Passwort:</label></td>

@@ -425,3 +425,6 @@ h4 {
 .ranking tr {
     color: #fff;
 }
+.chooser:hover {
+    opacity: 0.8;
+}
