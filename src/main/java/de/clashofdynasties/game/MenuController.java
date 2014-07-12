@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
-import de.clashofdynasties.service.CounterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -40,16 +39,10 @@ public class MenuController {
     ItemRepository itemRepository;
 
     @Autowired
-    CounterService counterService;
-
-    @Autowired
     CaravanRepository caravanRepository;
 
     @Autowired
     CityTypeRepository cityTypeRepository;
-
-    @Autowired
-    ClanRepository clanRepository;
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
@@ -90,7 +83,7 @@ public class MenuController {
 
     @RequestMapping(value = "/event", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void removeEvent(Principal principal, @RequestParam long timestamp, @RequestParam String type, @RequestParam int city) {
+    public void removeEvent(Principal principal, @RequestParam long timestamp, @RequestParam String type, @RequestParam String city) {
         Player player = playerRepository.findByName(principal.getName());
 
         if(player.getEvents() != null) {
@@ -122,7 +115,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
-    public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) Integer id, @RequestParam(value = "city", required = false) Integer cityID) {
+    public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) String id, @RequestParam(value = "city", required = false) String cityID) {
         Player player = playerRepository.findByName(principal.getName());
 
         if (id != null) {
@@ -149,7 +142,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/build", method = RequestMethod.GET)
-    public String showBuild(ModelMap map, Principal principal, @RequestParam("city") int id) {
+    public String showBuild(ModelMap map, Principal principal, @RequestParam("city") String id) {
         City city = cityRepository.findOne(id);
 
         map.addAttribute("city", city);
@@ -184,7 +177,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
-    public String showReport(ModelMap map, Principal principal, @RequestParam("city") int id) {
+    public String showReport(ModelMap map, Principal principal, @RequestParam("city") String id) {
         City city = cityRepository.findOne(id);
 
         map.addAttribute("city", city);
@@ -195,7 +188,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/caravan", method = RequestMethod.GET)
-    public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) Integer point1, @RequestParam(required = false) Integer point2, @RequestParam(value = "caravan", required = false) Integer id) {
+    public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) String point1, @RequestParam(required = false) String point2, @RequestParam(value = "caravan", required = false) String id) {
         Player player = playerRepository.findByName(principal.getName());
 
         if (id != null) {
@@ -221,7 +214,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/store", method = RequestMethod.GET)
-    public String showStore(ModelMap map, Principal principal, @RequestParam("city") int id) {
+    public String showStore(ModelMap map, Principal principal, @RequestParam("city") String id) {
         City city = cityRepository.findOne(id);
         List<Item> items = itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id"));
 
@@ -299,18 +292,18 @@ public class MenuController {
 
     @RequestMapping(value = "/ranking", method = RequestMethod.GET)
     public String showRanking(ModelMap map, Principal principal) {
-        HashMap<Integer, Integer> economy = new HashMap<>();
-        HashMap<Integer, Integer> demography = new HashMap<>();
-        HashMap<Integer, Integer> military = new HashMap<>();
-        HashMap<Integer, Integer> total = new HashMap<>();
-        HashMap<Integer, Player> playerMap = new HashMap<>();
-        int highestDemography = 0;
-        int highestEconomy = 0;
-        int highestMilitary = 0;
+        HashMap<String, Integer> economy = new HashMap<>();
+        HashMap<String, Integer> demography = new HashMap<>();
+        HashMap<String, Integer> military = new HashMap<>();
+        HashMap<String, Integer> total = new HashMap<>();
+        HashMap<String, Player> playerMap = new HashMap<>();
+        String highestDemography = "";
+        String highestEconomy = "";
+        String highestMilitary = "";
         int highestDemographyVal = 0;
         int highestEconomyVal = 0;
         int highestMilitaryVal = 0;
-        List<Integer> ranking = new LinkedList<>();
+        List<String> ranking = new LinkedList<>();
 
         Player player = playerRepository.findByName(principal.getName());
         List<Player> players = playerRepository.findAll();
@@ -326,7 +319,7 @@ public class MenuController {
         }
 
         for(City city : cities) {
-            int p = city.getPlayer().getId();
+            String p = city.getPlayer().getId();
 
             demography.put(p, demography.get(p) + city.getPopulation());
             demography.put(p, demography.get(p) + city.getSatisfaction());
@@ -340,7 +333,7 @@ public class MenuController {
         }
 
         for(Formation formation : formations) {
-            int p = formation.getPlayer().getId();
+            String p = formation.getPlayer().getId();
 
             military.put(p, military.get(p) + 50);
 
@@ -349,26 +342,28 @@ public class MenuController {
         }
 
         for(Caravan caravan : caravans) {
-            int p = caravan.getPlayer().getId();
+            String p = caravan.getPlayer().getId();
 
             economy.put(p, economy.get(p) + 10);
         }
 
         for(Player p : players) {
-            economy.put(p.getId(), economy.get(p.getId()) + p.getCoins());
-            total.put(p.getId(), military.get(p.getId()) + demography.get(p.getId()) + economy.get(p.getId()));
+            if(!p.isComputer()) {
+                economy.put(p.getId(), economy.get(p.getId()) + p.getCoins());
+                total.put(p.getId(), military.get(p.getId()) + demography.get(p.getId()) + economy.get(p.getId()));
 
-            if(demography.get(p.getId()) > highestDemographyVal) {
-                highestDemographyVal = demography.get(p.getId());
-                highestDemography = p.getId();
-            }
-            if(military.get(p.getId()) > highestMilitaryVal) {
-                highestMilitaryVal = military.get(p.getId());
-                highestMilitary = p.getId();
-            }
-            if(economy.get(p.getId()) > highestEconomyVal) {
-                highestEconomyVal = economy.get(p.getId());
-                highestEconomy = p.getId();
+                if(demography.get(p.getId()) > highestDemographyVal) {
+                    highestDemographyVal = demography.get(p.getId());
+                    highestDemography = p.getId();
+                }
+                if(military.get(p.getId()) > highestMilitaryVal) {
+                    highestMilitaryVal = military.get(p.getId());
+                    highestMilitary = p.getId();
+                }
+                if(economy.get(p.getId()) > highestEconomyVal) {
+                    highestEconomyVal = economy.get(p.getId());
+                    highestEconomy = p.getId();
+                }
             }
         }
 
@@ -377,8 +372,7 @@ public class MenuController {
 
         for (Object aList : list) {
             Map.Entry entry = (Map.Entry) aList;
-            if ((Integer) entry.getKey() > 1)
-                ranking.add((Integer) entry.getKey());
+            ranking.add((String) entry.getKey());
         }
 
         map.addAttribute("player", player);
@@ -408,21 +402,6 @@ public class MenuController {
     @RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
     public String showDiplomacy(ModelMap map, Principal principal) {
         Player player = playerRepository.findByName(principal.getName());
-        boolean isActivated = (playerRepository.findAll().stream().filter(p -> p.getClan() != null).count() > 0);
-
-        map.addAttribute("isActivated", isActivated);
-        if(isActivated) {
-            if(player.getClan() != null) {
-                List<Player> players = playerRepository.findByClan(player.getClan());
-            }
-            else {
-                List<Clan> clans = clanRepository.findAll().stream().filter(c -> c.getLeader().getNation().equals(player.getNation())).collect(Collectors.toList());
-
-                map.addAttribute("clans", clans);
-            }
-
-            map.addAttribute("player", player);
-        }
 
         return "menu/diplomacy";
     }

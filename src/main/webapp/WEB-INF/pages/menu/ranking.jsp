@@ -18,7 +18,6 @@
             <tr>
                 <td <c:if test="${player == players[position]}">class="green"</c:if>>${stat.count}</td>
                 <td <c:if test="${player == players[position]}">class="green"</c:if>>${players[position].name}</td>
-                <td>${players[position].clan}</td>
                 <td <c:if test="${highestEconomy == position}">class="green"</c:if>>${economy[position]}</td>
                 <td <c:if test="${highestMilitary == position}">class="green"</c:if>>${military[position]}</td>
                 <td <c:if test="${highestDemography == position}">class="green"</c:if>>${demography[position]}</td>

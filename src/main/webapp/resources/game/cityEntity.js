@@ -1,6 +1,6 @@
 function cityEntity() {
     Crafty.c("City", {
-        _cid: 0,
+        _cid: "",
         _infoEntity: {},
         _formationsInfoEntity: {},
         _type: 0,

@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Road {
     @Id
-    private int id;
+    private String id;
 
     @DBRef
     private City point1;
@@ -19,11 +19,11 @@ public class Road {
 
     private float weight;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -56,7 +56,7 @@ public class Road {
     }
 
     public boolean equals(Object other) {
-        if (other instanceof Road && ((Road) other).getId() == this.id)
+        if (other instanceof Road && ((Road) other).getId().equals(this.id))
             return true;
         else
             return false;

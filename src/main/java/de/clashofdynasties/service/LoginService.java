@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.ArrayList;
 
-public class CustomUserDetailsService implements UserDetailsService {
+public class LoginService implements UserDetailsService {
     private MongoTemplate mongoTemplate;
 
     @Autowired

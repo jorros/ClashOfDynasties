@@ -3,8 +3,6 @@ package de.clashofdynasties.game;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
-import de.clashofdynasties.service.CounterService;
-import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -43,9 +41,6 @@ public class CityController {
     FormationRepository formationRepository;
 
     @Autowired
-    CounterService counterService;
-
-    @Autowired
     UnitRepository unitRepository;
 
     @Autowired
@@ -63,12 +58,12 @@ public class CityController {
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<Integer, ObjectNode> getCities(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
+    Map<String, ObjectNode> getCities(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
         Player player = playerRepository.findByName(principal.getName());
 
         List<City> cities = cityRepository.findAll();
         List<Formation> formations = formationRepository.findAll();
-        HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
+        HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
 
         for (City city : cities) {
             for (Formation formation : formations) {
@@ -88,7 +83,7 @@ public class CityController {
                     city.setSatisfaction(-1);
             }
             // Wenn Spieler neutral
-            else if (city.getPlayer().getId() == 1) {
+            else if (city.getPlayer().isComputer()) {
                 city.setDiplomacy(4);
                 city.setSatisfaction(-1);
             } else {
@@ -105,21 +100,20 @@ public class CityController {
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void remove(Principal principal, @PathVariable("city") int id) {
+    public void remove(Principal principal, @PathVariable("city") String id) {
         cityRepository.delete(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) Integer player) {
+    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) String player) {
         City city = new City();
-        city.setId(counterService.getNextSequence("city"));
-        city.setName("Neu - " + city.getId());
+        city.setName("Neu Stadt");
         city.setCapacity(0);
         city.setHealth(100);
         city.setBiome(biomeRepository.findOne(1));
-        city.setPlayer(playerRepository.findOne(1));
+        city.setPlayer(playerRepository.findAll().get(0));
         city.setX(x);
         city.setY(y);
         city.setType(cityTypeRepository.findOne(1));
@@ -132,7 +126,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void build(Principal principal, @PathVariable("city") int id, @RequestParam int type, @RequestParam int blueprint) {
+    public void build(Principal principal, @PathVariable("city") String id, @RequestParam int type, @RequestParam int blueprint) {
         Player player = playerRepository.findByName(principal.getName());
         City city = cityRepository.findOne(id);
 
@@ -164,7 +158,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void stopBuild(Principal principal, @PathVariable("city") int id) {
+    public void stopBuild(Principal principal, @PathVariable("city") String id) {
         Player player = playerRepository.findByName(principal.getName());
         City city = cityRepository.findOne(id);
 
@@ -183,7 +177,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/consumption", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void toggleConsumption(Principal principal, @PathVariable("city") int id, @RequestParam("item") int itemId) {
+    public void toggleConsumption(Principal principal, @PathVariable("city") String id, @RequestParam("item") int itemId) {
         City city = cityRepository.findOne(id);
         Item item = itemRepository.findOne(itemId);
         Player player = playerRepository.findByName(principal.getName());
@@ -203,7 +197,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") int id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) Integer player) {
+    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") String id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) String player) {
         City city = cityRepository.findOne(id);
 
         if (city == null)

@@ -36,7 +36,7 @@ public class PlayerController {
     @RequestMapping(value = "/{player}/units", method = RequestMethod.DELETE)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void removeUnits(@PathVariable("player") int playerId) {
+    public void removeUnits(@PathVariable("player") String playerId) {
         Player player = playerRepository.findOne(playerId);
 
         List<Formation> formations = formationRepository.findByPlayer(player);
@@ -50,7 +50,7 @@ public class PlayerController {
     @RequestMapping(value = "/{player}", method = RequestMethod.DELETE)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void remove(@PathVariable("player") int playerId) {
+    public void remove(@PathVariable("player") String playerId) {
         playerRepository.delete(playerId);
     }
 

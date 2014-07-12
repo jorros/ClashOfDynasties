@@ -14,7 +14,7 @@
     <tr>
         <td colspan="2">Spieler: ${city.player.name} (${city.player.nation.name})</td>
     </tr>
-    <c:if test="${city.player.id != 1}">
+    <c:if test="${!city.player.computer}">
     <tr>
         <td style="width:45%;">Population: ${ city.population }</td>
         <td>Zustimmung: <c:if test="${satisfaction != null}"><img src="assets/satisfaction/${satisfaction}.png" style="width:16px; height:16px;" />(${city.satisfaction}%)</c:if><c:if test="${satisfaction == null}">?</c:if></td>

@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.RoadRepository;
-import de.clashofdynasties.service.CounterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -22,17 +21,14 @@ public class RoadController {
     private RoadRepository roadRepository;
 
     @Autowired
-    private CounterService counterService;
-
-    @Autowired
     private CityRepository cityRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<Integer, ObjectNode> getRoads() {
+    Map<String, ObjectNode> getRoads() {
         List<Road> roads = roadRepository.findAll();
-        HashMap<Integer, ObjectNode> data = new HashMap<Integer, ObjectNode>();
+        HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
 
         roads.forEach(road -> data.put(road.getId(), road.toJSON()));
 
@@ -41,11 +37,11 @@ public class RoadController {
 
     @RequestMapping(value = "/getByPoints", method = RequestMethod.GET)
     @ResponseBody
-    public int getIdByPoints(@RequestParam int point1, @RequestParam int point2) {
+    public String getIdByPoints(@RequestParam String point1, @RequestParam String point2) {
         Road road = roadRepository.findByCities(point1, point2);
 
         if (road == null)
-            return 0;
+            return "";
         else
             return road.getId();
     }
@@ -53,16 +49,15 @@ public class RoadController {
     @RequestMapping(value = "/{road}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void remove(@PathVariable("road") int id) {
+    public void remove(@PathVariable("road") String id) {
         roadRepository.delete(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void create(@RequestParam int point1, @RequestParam int point2, @RequestParam float weight) {
+    public void create(@RequestParam String point1, @RequestParam String point2, @RequestParam float weight) {
         Road road = new Road();
-        road.setId(counterService.getNextSequence("road"));
         roadRepository.save(road);
         save(road.getId(), point1, point2, weight);
     }
@@ -70,7 +65,7 @@ public class RoadController {
     @RequestMapping(value = "/{road}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void save(@PathVariable("road") int id, @RequestParam(required = false) Integer point1, @RequestParam(required = false) Integer point2, @RequestParam(required = false) Float weight) {
+    public void save(@PathVariable("road") String id, @RequestParam(required = false) String point1, @RequestParam(required = false) String point2, @RequestParam(required = false) Float weight) {
         Road road = roadRepository.findOne(id);
 
         if (point1 != null)

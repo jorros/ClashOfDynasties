@@ -6,6 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface CityRepository extends MongoRepository<City, Integer> {
+public interface CityRepository extends MongoRepository<City, String> {
     List<City> findByPlayer(Player player);
 }

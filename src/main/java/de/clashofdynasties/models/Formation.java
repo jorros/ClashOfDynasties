@@ -12,7 +12,7 @@ import java.util.List;
 @Document
 public class Formation {
     @Id
-    private int id;
+    private String id;
 
     private int x;
     private int y;
@@ -44,11 +44,11 @@ public class Formation {
 
     private long timestamp;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -186,7 +186,7 @@ public class Formation {
     }
 
     public boolean equals(Object other) {
-        if (other instanceof Formation && ((Formation) other).getId() == this.id)
+        if (other instanceof Formation && ((Formation) other).getId().equals(this.id))
             return true;
         else
             return false;

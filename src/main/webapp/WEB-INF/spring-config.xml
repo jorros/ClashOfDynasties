@@ -19,7 +19,7 @@
 
     <security:global-method-security jsr250-annotations="enabled" pre-post-annotations="enabled" secured-annotations="enabled" />
 
-    <mongo:db-factory id="mongoFactory" host="localhost" port="27017" dbname="test"/>
+    <mongo:db-factory id="mongoFactory" host="localhost" port="27017" dbname="clashofdynasties"/>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongoFactory"/>
@@ -27,7 +27,7 @@
 
     <mongo:repositories base-package="de.clashofdynasties.repository"/>
 
-    <bean id="customUserDetailsService" class="de.clashofdynasties.service.CustomUserDetailsService"/>
+    <bean id="loginService" class="de.clashofdynasties.service.LoginService"/>
 
     <bean id="routingService" class="de.clashofdynasties.service.RoutingService"/>
 
@@ -37,14 +37,14 @@
                              username-parameter="username" password-parameter="password"
                              default-target-url="/" authentication-failure-url="/?auth=fail"/>
         <security:logout logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID"/>
-        <security:remember-me user-service-ref="customUserDetailsService" />
+        <security:remember-me user-service-ref="loginService" />
         <security:session-management invalid-session-url="/">
             <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
         </security:session-management>
     </security:http>
 
     <security:authentication-manager>
-        <security:authentication-provider user-service-ref="customUserDetailsService">
+        <security:authentication-provider user-service-ref="loginService">
             <security:password-encoder hash="md5"/>
         </security:authentication-provider>
     </security:authentication-manager>

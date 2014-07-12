@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Unit {
     @Id
-    private int id;
+    private String id;
 
     @DBRef
     private UnitBlueprint blueprint;
@@ -30,11 +30,11 @@ public class Unit {
         this.health = health;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,7 +45,7 @@ public class Unit {
     }
 
     public boolean equals(Object other) {
-        if (other instanceof Unit && ((Unit) other).getId() == this.id)
+        if (other instanceof Unit && ((Unit) other).getId().equals(this.id))
             return true;
         else
             return false;

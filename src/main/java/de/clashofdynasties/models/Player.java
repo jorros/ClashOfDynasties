@@ -11,16 +11,13 @@ import java.util.List;
 @Document
 public class Player {
     @Id
-    private int id;
+    private String id;
 
     @Indexed
     private String name;
 
     private String password;
     private double coins;
-
-    @DBRef
-    private Clan clan;
 
     @DBRef
     private Nation nation;
@@ -31,11 +28,13 @@ public class Player {
     private int lastScrollX;
     private int lastScrollY;
 
-    public int getId() {
+    private boolean computer;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -45,14 +44,6 @@ public class Player {
 
     public void setCoins(double coins) {
         this.coins = coins;
-    }
-
-    public Clan getClan() {
-        return clan;
-    }
-
-    public void setClan(Clan clan) {
-        this.clan = clan;
     }
 
     public String getName() {
@@ -103,6 +94,14 @@ public class Player {
         this.events = events;
     }
 
+    public boolean isComputer() {
+        return computer;
+    }
+
+    public void setComputer(boolean isComputer) {
+        this.computer = isComputer;
+    }
+
     public void addEvent(Event event) {
         if(getEvents() == null) {
             ArrayList<Event> events = new ArrayList<>();
@@ -129,7 +128,7 @@ public class Player {
     }
 
     public boolean equals(Object other) {
-        if (other instanceof Player && ((Player) other).getId() == this.id)
+        if (other instanceof Player && ((Player) other).getId().equals(this.id))
             return true;
         else
             return false;

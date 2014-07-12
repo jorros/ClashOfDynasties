@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Caravan {
     @Id
-    private int id;
+    private String id;
 
     private String name;
 
@@ -49,11 +49,11 @@ public class Caravan {
 
     private boolean terminate;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -207,7 +207,7 @@ public class Caravan {
     }
 
     public boolean equals(Object other) {
-        if (other instanceof City && ((City) other).getId() == this.id)
+        if (other instanceof Caravan && ((Caravan) other).getId().equals(this.id))
             return true;
         else
             return false;

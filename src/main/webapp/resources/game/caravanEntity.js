@@ -1,6 +1,6 @@
 function caravanEntity() {
     Crafty.c("Caravan", {
-        _cid: 0,
+        _cid: "",
         _textEntity: {},
 
         _buildInfo: function () {

@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface RoadRepository extends MongoRepository<Road, Integer> {
+public interface RoadRepository extends MongoRepository<Road, String> {
     @Query("{ $or: [ {point1.$id: ?0, point2.$id: ?1}, {point1.$id: ?1, point2.$id: ?0} ]}")
-    Road findByCities(int city1, int city2);
+    Road findByCities(String city1, String city2);
 
     @Query("{ $or: [ {point1.$id: ?0}, {point2.$id: ?0} ]}")
-    List<Road> findByCity(int city);
+    List<Road> findByCity(String city);
 }
