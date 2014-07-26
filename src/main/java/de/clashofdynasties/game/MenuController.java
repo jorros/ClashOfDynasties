@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -43,6 +44,9 @@ public class MenuController {
 
     @Autowired
     CityTypeRepository cityTypeRepository;
+
+    @Autowired
+    RelationRepository relationRepository;
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
@@ -400,8 +404,56 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
-    public String showDiplomacy(ModelMap map, Principal principal) {
+    public String showDiplomacy(ModelMap map, Principal principal, @RequestParam(required = false) String pid) {
         Player player = playerRepository.findByName(principal.getName());
+        List<Player> players = playerRepository.findAll();
+        players.removeIf(p -> p.equals(player));
+        players.removeIf(p -> p.isComputer());
+
+        HashMap<String, Integer> relations = new HashMap<>();
+        for(Player p : players) {
+            Relation relation = relationRepository.findByPlayers(player.getOId(), p.getOId());
+
+            if(relation == null)
+                relations.put(p.getId(), 1);
+            else
+                relations.put(p.getId(), relation.getRelation());
+        }
+
+        map.addAttribute("player", player);
+        map.addAttribute("players", players);
+        map.addAttribute("relations", relations);
+
+        if(pid != null && playerRepository.exists(pid)) {
+            Player other = playerRepository.findOne(pid);
+            Relation relation = relationRepository.findByPlayers(player.getOId(), other.getOId());
+
+            if(relation == null) {
+                relation = new Relation();
+                relation.setCaravans(new ArrayList<>());
+                relation.setPendingCaravans(new ArrayList<>());
+                relation.setPlayer1(player);
+                relation.setPlayer2(playerRepository.findOne(pid));
+                relation.setRelation(1);
+                relationRepository.save(relation);
+
+                relation = relationRepository.findByPlayers(player.getOId(), other.getOId());
+
+                if(relation == null)
+                    relation = relationRepository.findByPlayers(player.getOId(), other.getOId());
+            }
+
+            map.addAttribute("relation", relation);
+            map.addAttribute("otherPlayer", other);
+
+            if(relation.getTicksLeft() != null) {
+                int hours = relation.getTicksLeft() / 3600;
+                int minutes = (relation.getTicksLeft() - hours * 3600) / 60;
+                map.addAttribute("hoursLeft", hours);
+                map.addAttribute("minutesLeft", minutes);
+            }
+        }
+
 
         return "menu/diplomacy";
     }

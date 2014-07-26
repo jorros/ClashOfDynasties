@@ -2,6 +2,7 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -209,5 +210,9 @@ public class Formation {
             node.put("nn", true);
 
         return node;
+    }
+
+    public ObjectId getOId() {
+        return new ObjectId(this.id);
     }
 }

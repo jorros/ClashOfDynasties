@@ -1,5 +1,6 @@
 package de.clashofdynasties.models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -134,6 +135,10 @@ public class Player {
 
     public void setLastScrollY(int lastScrollY) {
         this.lastScrollY = lastScrollY;
+    }
+
+    public ObjectId getOId() {
+        return new ObjectId(this.id);
     }
 
     public boolean equals(Object other) {

@@ -2,6 +2,7 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -70,5 +71,9 @@ public class Road {
         node.put("point2", getPoint2().getId());
 
         return node;
+    }
+
+    public ObjectId getOId() {
+        return new ObjectId(this.id);
     }
 }

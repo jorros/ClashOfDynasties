@@ -2,6 +2,7 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -48,6 +49,8 @@ public class Caravan {
     private int point2Store;
 
     private boolean terminate;
+
+    private boolean started;
 
     public String getId() {
         return id;
@@ -193,6 +196,14 @@ public class Caravan {
         this.point2StoreItem = point2StoreItem;
     }
 
+    public boolean isStarted() {
+        return started;
+    }
+
+    public void setStarted(boolean started) {
+        this.started = started;
+    }
+
     public void move(int pixel) {
         City to = route.getNext();
 
@@ -217,12 +228,18 @@ public class Caravan {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        node.put("x", x);
-        node.put("y", y);
-        node.put("diplomacy", getDiplomacy());
-        node.put("name", getName());
-        node.put("route", getRoute().toJSON());
+        if(started) {
+            node.put("x", x);
+            node.put("y", y);
+            node.put("diplomacy", getDiplomacy());
+            node.put("name", getName());
+            node.put("route", getRoute().toJSON());
+        }
 
         return node;
+    }
+
+    public ObjectId getOId() {
+        return new ObjectId(this.id);
     }
 }
