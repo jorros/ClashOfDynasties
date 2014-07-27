@@ -12,10 +12,10 @@ public class Relation {
     @Id
     private String id;
 
-    @DBRef
+    @DBRef(lazy = true)
     private Player player1;
 
-    @DBRef
+    @DBRef(lazy = true)
     private Player player2;
 
     private int relation;

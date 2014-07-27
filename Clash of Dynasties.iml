@@ -30,13 +30,13 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Spring-4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Spring MVC-4.0.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Spring Security-3.2.3" level="project" />
-    <orderEntry type="library" name="org.springframework.data:spring-data-mongodb:1.4.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Spring-4.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Spring MVC-4.0.6.RELEASE" level="project" />
+    <orderEntry type="library" name="Spring Security-3.2.4" level="project" />
     <orderEntry type="library" name="Jackson 2.0.2" level="project" />
     <orderEntry type="library" name="Servlet API 3.1" level="project" />
     <orderEntry type="library" name="jstl-1.2" level="project" />
+    <orderEntry type="library" name="org.springframework.data:spring-data-mongodb:1.5.1.RELEASE" level="project" />
   </component>
 </module>
 

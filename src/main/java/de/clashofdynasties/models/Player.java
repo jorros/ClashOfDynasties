@@ -24,8 +24,6 @@ public class Player {
     private Nation nation;
     private String email;
 
-    private List<Event> events;
-
     private int lastScrollX;
     private int lastScrollY;
 
@@ -88,14 +86,6 @@ public class Player {
         this.coins += coins;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
     public boolean isComputer() {
         return computer;
     }
@@ -110,15 +100,6 @@ public class Player {
 
     public void setActivated(boolean activated) {
         this.activated = activated;
-    }
-
-    public void addEvent(Event event) {
-        if(getEvents() == null) {
-            ArrayList<Event> events = new ArrayList<>();
-            setEvents(events);
-        }
-
-        getEvents().add(event);
     }
 
     public int getLastScrollX() {

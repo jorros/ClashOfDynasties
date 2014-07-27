@@ -18,11 +18,14 @@ function loadTop() {
         $.each(data.events, function(index, event) {
             $('<button class="event"><img src="assets/events/' + event.type + '.png" /></button>').appendTo("#events").mousedown(function(e) {
                 if(e.which === 1) {
-                    Crafty.viewport.centerOn(CityEntities[event.city], 100)
+                    if(event.city != undefined)
+                        Crafty.viewport.centerOn(CityEntities[event.city], 100)
+                    else if(event.action != undefined)
+                        openMenu(event.action);
                 }
                 else if(e.which == 3) {
                     $(this).fadeOut();
-                    $.delete("/game/menus/event", { timestamp: event.timestamp, type: event.type, city: event.city });
+                    $.delete("/game/menus/event", { id: event.id });
                 }
             }).contextmenu(function() {
                 return false;

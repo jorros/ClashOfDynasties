@@ -48,6 +48,9 @@ public class MenuController {
     @Autowired
     RelationRepository relationRepository;
 
+    @Autowired
+    EventRepository eventRepository;
+
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
     public ObjectNode getTop(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
@@ -68,8 +71,9 @@ public class MenuController {
                 balance += city.getIncome() - city.getOutcome();
             }
 
-            if(player.getEvents() != null) {
-                player.getEvents().stream().filter(e -> e.toJSON(timestamp) != null).forEach(e -> events.add(e.toJSON(timestamp)));
+            List<Event> eventList = eventRepository.findByPlayer(player);
+            if(eventList != null) {
+                eventList.stream().filter(e -> e.toJSON(timestamp) != null).forEach(e -> events.add(e.toJSON(timestamp)));
             }
 
             node.put("coins", player.getCoins());
@@ -87,12 +91,12 @@ public class MenuController {
 
     @RequestMapping(value = "/event", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void removeEvent(Principal principal, @RequestParam long timestamp, @RequestParam String type, @RequestParam String city) {
+    public void removeEvent(Principal principal, @RequestParam String id) {
         Player player = playerRepository.findByName(principal.getName());
+        Event event = eventRepository.findOne(id);
 
-        if(player.getEvents() != null) {
-            player.getEvents().removeIf(e -> e.getTimestamp() == timestamp && e.getCity().getId() == city && e.getType().equalsIgnoreCase(type));
-            playerRepository.save(player);
+        if(event != null && event.getPlayer().equals(player)) {
+            eventRepository.delete(event);
         }
     }
 

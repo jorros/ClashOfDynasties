@@ -87,7 +87,7 @@
                         <td>${caravan.point2.name}</td>
                         <td>${caravan.point1Load}t ${caravan.point1Item.name}</td>
                         <td>${caravan.point2Load}t ${caravan.point2Item.name}</td>
-                        <td><c:if test="${caravan.point1.player == player}"><button style="height:30px;">Zurücknehmen</button></c:if><c:if test="${caravan.point1.player != player}"><button style="height:30px;">Ja</button> <button style="height:30px;">Nein</button></c:if></td>
+                        <td><c:if test="${caravan.point1.player == player}"><button id="dipl_removepending_${caravan.id}" style="height:30px;">Zurücknehmen</button></c:if><c:if test="${caravan.point1.player != player}"><button id="dipl_accept_${caravan.id}" style="height:30px;">Ja</button> <button id="dipl_decline_${caravan.id}" style="height:30px;">Nein</button></c:if></td>
                     </tr>
                 </c:forEach>
                 <c:forEach items="${relation.caravans}" var="caravan">
@@ -97,7 +97,7 @@
                         <td>${caravan.point2.name}</td>
                         <td>${caravan.point1Load}t ${caravan.point1Item.name}</td>
                         <td>${caravan.point2Load}t ${caravan.point2Item.name}</td>
-                        <td><button style="height:30px;">Auflösen</button></td>
+                        <td><c:if test="${!caravan.terminate}"><button id="dipl_terminate_${caravan.id}" style="height:30px;">Auflösen</button></c:if></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -105,39 +105,58 @@
             <script>
                 $("#proposeWar").click(function() {
                     $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 0, accept: true }, function() {
-                        openMenu("diplomacy?pid=${otherPlayer.id}")
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#proposeTrading").click(function() {
                     $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 2, accept: true }, function() {
-                        openMenu("diplomacy?pid=${otherPlayer.id}")
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#proposeAlliance").click(function() {
                     $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 3, accept: true }, function() {
-                        openMenu("diplomacy?pid=${otherPlayer.id}")
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#declineTrading").click(function() {
                     $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 2, accept: false }, function() {
-                        openMenu("diplomacy?pid=${otherPlayer.id}")
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#declineAlliance").click(function() {
                     $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 3, accept: false }, function() {
-                        openMenu("diplomacy?pid=${otherPlayer.id}")
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#declinePeace").click(function() {
                     $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 0, accept: false }, function() {
-                        openMenu("diplomacy?pid=${otherPlayer.id}")
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
+
+                <c:forEach items="${relation.pendingCaravans}" var="caravan">
+                    $("#dipl_removepending_${caravan.id}").click(function() {
+
+                    });
+                    $("#dipl_accept_${caravan.id}").click(function() {
+
+                    });
+                    $("#dipl_decline_${caravan.id}").click(function() {
+
+                    });
+                </c:forEach>
+
+                <c:forEach items="${relation.caravans}" var="caravan">
+                    $("#dipl_terminate_${caravan.id}").click(function() {
+                        $.delete("game/caravans/${caravan.id}");
+                        openMenu("diplomacy?pid=${otherPlayer.id}");
+                    });
+                </c:forEach>
             </script>
         </c:if>
     </div>
