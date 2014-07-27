@@ -6,11 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Routing bezieht Diplomatiestatus ein">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -106,10 +105,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoutingService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="RoutingService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3063763" vertical-offset="3475" max-vertical-offset="5168">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3475" max-vertical-offset="5168">
               <caret line="168" column="66" selection-start-line="168" selection-start-column="66" selection-end-line="168" selection-end-column="66" />
               <folding />
             </state>
@@ -129,13 +128,33 @@
       <file leaf-file-name="cityEntity.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3655" max-vertical-offset="5066">
-              <caret line="228" column="43" selection-start-line="228" selection-start-column="43" selection-end-line="228" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5219">
+              <caret line="140" column="20" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="20" />
               <folding>
-                <marker date="1406476234143" expanded="false" signature="2743:2780" placeholder="..." />
-                <marker date="1406476234143" expanded="false" signature="3856:3889" placeholder="..." />
-                <marker date="1406476234143" expanded="false" signature="4427:4451" placeholder="..." />
+                <marker date="1406479057900" expanded="false" signature="2743:2780" placeholder="..." />
+                <marker date="1406479057900" expanded="false" signature="3856:3889" placeholder="..." />
+                <marker date="1406479057900" expanded="false" signature="4427:4451" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.62986004" vertical-offset="1652" max-vertical-offset="2346">
+              <caret line="121" column="47" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editor.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1142" max-vertical-offset="1785">
+              <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -153,8 +172,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editresources.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editorMenus.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Clan.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ClanRepository.java" />
@@ -202,8 +219,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/diplomacy.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
       </list>
     </option>
   </component>
@@ -1103,7 +1122,7 @@
       <workItem from="1406049237611" duration="25000" />
       <workItem from="1406365938811" duration="14215000" />
       <workItem from="1406451871205" duration="11720000" />
-      <workItem from="1406473158037" duration="3806000" />
+      <workItem from="1406473158037" duration="5771000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1393,11 +1412,15 @@
       <created>1406464109084</created>
       <updated>1406464109084</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Routing bezieht Diplomatiestatus ein">
+      <created>1406476989461</created>
+      <updated>1406476989461</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="676566000" />
+    <option name="totallyTimeSpent" value="678531000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1476,7 +1499,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Zufriedenheit wird in Stadtleiste bei Population == 0 ausgeblendet" />
     <MESSAGE value="Zoomfunktionalität hinzugefügt" />
     <MESSAGE value="Straßen werden nur noch im Editor aktualisiert" />
     <MESSAGE value="Formationen werden im Editor nicht mehr dargestellt" />
@@ -1501,7 +1523,8 @@
     <MESSAGE value="Diplomatie fertiggestellt" />
     <MESSAGE value="Events um Diplomatie erweitert" />
     <MESSAGE value="ObjectId für ID" />
-    <option name="LAST_COMMIT_MESSAGE" value="ObjectId für ID" />
+    <MESSAGE value="Routing bezieht Diplomatiestatus ein" />
+    <option name="LAST_COMMIT_MESSAGE" value="Routing bezieht Diplomatiestatus ein" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1513,20 +1536,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.107086614" vertical-offset="0" max-vertical-offset="635">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1632">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78582674" vertical-offset="2204" max-vertical-offset="2839">
@@ -1877,18 +1886,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3655" max-vertical-offset="5066">
-          <caret line="228" column="43" selection-start-line="228" selection-start-column="43" selection-end-line="228" selection-end-column="43" />
-          <folding>
-            <marker date="1406476234143" expanded="false" signature="2743:2780" placeholder="..." />
-            <marker date="1406476234143" expanded="false" signature="3856:3889" placeholder="..." />
-            <marker date="1406476234143" expanded="false" signature="4427:4451" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="538" max-vertical-offset="2703">
@@ -1899,8 +1896,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3063763" vertical-offset="3475" max-vertical-offset="5168">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3475" max-vertical-offset="5168">
           <caret line="168" column="66" selection-start-line="168" selection-start-column="66" selection-end-line="168" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5219">
+          <caret line="140" column="20" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="20" />
+          <folding>
+            <marker date="1406479057900" expanded="false" signature="2743:2780" placeholder="..." />
+            <marker date="1406479057900" expanded="false" signature="3856:3889" placeholder="..." />
+            <marker date="1406479057900" expanded="false" signature="4427:4451" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1142" max-vertical-offset="1785">
+          <caret line="93" column="47" selection-start-line="93" selection-start-column="47" selection-end-line="93" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62986004" vertical-offset="1652" max-vertical-offset="2346">
+          <caret line="121" column="47" selection-start-line="121" selection-start-column="47" selection-end-line="121" selection-end-column="47" />
           <folding />
         </state>
       </provider>

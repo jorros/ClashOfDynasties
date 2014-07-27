@@ -119,7 +119,7 @@ window.onload = function () {
         var updateCallback = function () {
             updateGame();
 
-            window.setTimeout(updateCallback, 10000);
+            window.setTimeout(updateCallback, 5000);
         }
         updateCallback();
 

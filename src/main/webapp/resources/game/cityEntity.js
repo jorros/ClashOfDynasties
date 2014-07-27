@@ -111,7 +111,6 @@ function cityEntity() {
                 $("#" + this._cid + "_people").text(people);
 
                 if (Cities[this._cid].satisfaction >= 0) {
-                    $("#" + this._cid + "_satisfaction").show();
                     var smiley = "Happy";
                     if (Cities[this._cid].satisfaction < 80 && Cities[this._cid].satisfaction >= 60)
                         smiley = "Satisfied";
@@ -138,6 +137,17 @@ function cityEntity() {
                 else
                     $(this._formationsInfoEntity._element).hide();
             }
+
+            var test = $("#" + this._cid + "_name").width() + 50 + $("#" + this._cid + "_defence").width() + $("#" + this._cid + "_people").width();
+
+            if($("#" + this._cid + "_build").is(":visible"))
+                test += $("#" + this._cid + "_build").width();
+
+            if($("#" + this._cid + "_satisfaction").is(":visible"))
+                test += $("#" + this._cid + "_satisfaction").width();
+
+            this._infoEntity.w = test;
+            this._infoEntity.x = Cities[this._cid].x - this._infoEntity._w / 2;
         },
 
         _setType: function () {
@@ -226,7 +236,6 @@ function cityEntity() {
             else if (!Editor && isCaravanSelected && Selected._cid != this._cid) {
                 tempRoute = "";
                 $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function (data) {
-                    console.log("Test: " + data);
                     if(data != undefined) {
                         isCalculatedRoute = true;
                         tempRoute = data.roads;
