@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Caravan {
     @Id
-    private String id;
+    private ObjectId id;
 
     private String name;
 
@@ -52,11 +52,11 @@ public class Caravan {
 
     private boolean started;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -237,9 +237,5 @@ public class Caravan {
         }
 
         return node;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 }

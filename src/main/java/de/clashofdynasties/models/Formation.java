@@ -13,7 +13,7 @@ import java.util.List;
 @Document
 public class Formation {
     @Id
-    private String id;
+    private ObjectId id;
 
     private int x;
     private int y;
@@ -45,11 +45,11 @@ public class Formation {
 
     private long timestamp;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -210,9 +210,5 @@ public class Formation {
             node.put("nn", true);
 
         return node;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 }

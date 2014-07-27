@@ -104,37 +104,37 @@
 
             <script>
                 $("#proposeWar").click(function() {
-                    $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 0, accept: true }, function() {
+                    $.put("/game/players/relation", { pid: "${otherPlayer.id}", pendingRelation: 0, accept: true }, function() {
                         openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#proposeTrading").click(function() {
-                    $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 2, accept: true }, function() {
+                    $.put("/game/players/relation", { pid: "${otherPlayer.id}", pendingRelation: 2, accept: true }, function() {
                         openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#proposeAlliance").click(function() {
-                    $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 3, accept: true }, function() {
+                    $.put("/game/players/relation", { pid: "${otherPlayer.id}", pendingRelation: 3, accept: true }, function() {
                         openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#declineTrading").click(function() {
-                    $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 2, accept: false }, function() {
+                    $.put("/game/players/relation", { pid: "${otherPlayer.id}", pendingRelation: 2, accept: false }, function() {
                         openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#declineAlliance").click(function() {
-                    $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 3, accept: false }, function() {
+                    $.put("/game/players/relation", { pid: "${otherPlayer.id}", pendingRelation: 3, accept: false }, function() {
                         openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });
 
                 $("#declinePeace").click(function() {
-                    $.put("/game/players/${player.id}/relation", { otherId: "${otherPlayer.id}", pendingRelation: 0, accept: false }, function() {
+                    $.put("/game/players/relation", { pid: "${otherPlayer.id}", pendingRelation: 0, accept: false }, function() {
                         openMenu("diplomacy?pid=${otherPlayer.id}");
                     });
                 });

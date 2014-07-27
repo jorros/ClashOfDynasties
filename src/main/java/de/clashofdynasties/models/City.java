@@ -15,7 +15,7 @@ import java.util.Map;
 @Document
 public class City {
     @Id
-    private String id;
+    private ObjectId id;
 
     private int x;
     private int y;
@@ -65,11 +65,11 @@ public class City {
 
     private long timestamp;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -333,7 +333,7 @@ public class City {
                 if (formations != null) {
                     for (Formation formation : formations) {
                         ObjectNode formationNode = factory.objectNode();
-                        formationNode.put("id", formation.getId());
+                        formationNode.put("id", formation.getId().toHexString());
                         formationNode.put("name", formation.getName());
                         formationNodes.add(formationNode);
                     }
@@ -345,9 +345,5 @@ public class City {
             node.put("nn", true);
 
         return node;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 }

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Road {
     @Id
-    private String id;
+    private ObjectId id;
 
     @DBRef
     private City point1;
@@ -20,11 +20,11 @@ public class Road {
 
     private float weight;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -67,13 +67,9 @@ public class Road {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        node.put("point1", getPoint1().getId());
-        node.put("point2", getPoint2().getId());
+        node.put("point1", getPoint1().getId().toHexString());
+        node.put("point2", getPoint2().getId().toHexString());
 
         return node;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 }

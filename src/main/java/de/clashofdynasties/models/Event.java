@@ -2,6 +2,7 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Event {
     @Id
-    String id;
+    ObjectId id;
 
     @DBRef(lazy = true)
     private City city;
@@ -45,11 +46,11 @@ public class Event {
         updateTimestamp();
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -120,13 +121,13 @@ public class Event {
             JsonNodeFactory factory = JsonNodeFactory.instance;
             ObjectNode node = factory.objectNode();
 
-            if(city != null)
-                node.put("city", getCity().getId());
+            if(city != null && city.getId() != null)
+                node.put("city", getCity().getId().toHexString());
 
             if(action != null)
                 node.put("action", action);
 
-            node.put("id", getId());
+            node.put("id", getId().toString());
             node.put("type", getType());
             node.put("description", getDescription());
             node.put("title", getTitle());

@@ -3,6 +3,7 @@ package de.clashofdynasties.game;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -91,7 +92,7 @@ public class CityController {
                 city.setSatisfaction(-1);
             }
 
-            data.put(city.getId(), city.toJSON(editor, timestamp));
+            data.put(city.getId().toHexString(), city.toJSON(editor, timestamp));
         }
 
         return data;
@@ -100,14 +101,14 @@ public class CityController {
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void remove(Principal principal, @PathVariable("city") String id) {
+    public void remove(Principal principal, @PathVariable("city") ObjectId id) {
         cityRepository.delete(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) String player) {
+    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
         City city = new City();
         city.setName("Neu Stadt");
         city.setCapacity(0);
@@ -126,7 +127,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void build(Principal principal, @PathVariable("city") String id, @RequestParam int type, @RequestParam int blueprint) {
+    public void build(Principal principal, @PathVariable("city") ObjectId id, @RequestParam int type, @RequestParam int blueprint) {
         Player player = playerRepository.findByName(principal.getName());
         City city = cityRepository.findOne(id);
 
@@ -158,7 +159,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void stopBuild(Principal principal, @PathVariable("city") String id) {
+    public void stopBuild(Principal principal, @PathVariable("city") ObjectId id) {
         Player player = playerRepository.findByName(principal.getName());
         City city = cityRepository.findOne(id);
 
@@ -177,7 +178,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/consumption", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void toggleConsumption(Principal principal, @PathVariable("city") String id, @RequestParam("item") int itemId) {
+    public void toggleConsumption(Principal principal, @PathVariable("city") ObjectId id, @RequestParam("item") int itemId) {
         City city = cityRepository.findOne(id);
         Item item = itemRepository.findOne(itemId);
         Player player = playerRepository.findByName(principal.getName());
@@ -197,7 +198,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") String id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) String player) {
+    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
         City city = cityRepository.findOne(id);
 
         if (city == null)

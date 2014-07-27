@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Unit {
     @Id
-    private String id;
+    private ObjectId id;
 
     @DBRef
     private UnitBlueprint blueprint;
@@ -31,11 +31,11 @@ public class Unit {
         this.health = health;
     }
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -50,9 +50,5 @@ public class Unit {
             return true;
         else
             return false;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 }

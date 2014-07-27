@@ -5,6 +5,7 @@ import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.RoutingService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,7 +43,7 @@ public class CommandController {
     RoutingService routing;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
-    public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") String id) {
+    public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") ObjectId id) {
         Formation formation = formationRepository.findOne(id);
 
         String time = "";
@@ -68,7 +69,7 @@ public class CommandController {
     }
 
     @RequestMapping(value = "/caravan", method = RequestMethod.GET)
-    public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") String id) {
+    public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") ObjectId id) {
         Caravan caravan = caravanRepository.findOne(id);
 
         String time = "";
@@ -92,7 +93,7 @@ public class CommandController {
     }
 
     @RequestMapping(value = "/city", method = RequestMethod.GET)
-    public String showCity(ModelMap map, Principal principal, @RequestParam("city") String id) {
+    public String showCity(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
         City city = cityRepository.findOne(id);
 
         int maxSlots = Math.round((int)(city.getCapacity() * city.getType().getCapacity()));
@@ -123,7 +124,7 @@ public class CommandController {
     }
 
     @RequestMapping(value = "/editcity", method = RequestMethod.GET)
-    public String showEditCity(ModelMap map, @RequestParam("city") String id) {
+    public String showEditCity(ModelMap map, @RequestParam("city") ObjectId id) {
         City city = cityRepository.findOne(id);
 
         map.addAttribute("city", city);

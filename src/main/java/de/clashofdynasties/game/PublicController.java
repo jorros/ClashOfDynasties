@@ -4,6 +4,7 @@ import de.clashofdynasties.models.Player;
 import de.clashofdynasties.repository.NationRepository;
 import de.clashofdynasties.repository.PlayerRepository;
 import de.clashofdynasties.service.LoginService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -45,7 +46,7 @@ public class PublicController {
     }
 
     @RequestMapping(value = "/step1", method = RequestMethod.POST)
-    public String registerStep1(ModelMap map, @RequestParam String key, @RequestParam String name, @RequestParam String password, @RequestParam String email) {
+    public String registerStep1(ModelMap map, @RequestParam ObjectId key, @RequestParam String name, @RequestParam String password, @RequestParam String email) {
         Player player = playerRepository.findOne(key);
         Md5PasswordEncoder encoder = new Md5PasswordEncoder();
 
@@ -58,7 +59,7 @@ public class PublicController {
     }
 
     @RequestMapping(value = "/step2", method = RequestMethod.GET)
-    public String registerStep2(ModelMap map, @RequestParam String key, @RequestParam int nation) {
+    public String registerStep2(ModelMap map, @RequestParam ObjectId key, @RequestParam int nation) {
         Player player = playerRepository.findOne(key);
 
         player.setNation(nationRepository.findOne(nation));
@@ -73,7 +74,7 @@ public class PublicController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register(ModelMap map, @RequestParam(required = false) String key) {
+    public String register(ModelMap map, @RequestParam(required = false) ObjectId key) {
         if(key != null) {
             Player player = playerRepository.findOne(key);
 

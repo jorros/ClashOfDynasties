@@ -57,14 +57,14 @@ public class Route {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        node.put("next", getNext().getId());
+        node.put("next", getNext().getId().toHexString());
         node.put("time", getTime());
 
         List<Road> roads = getRoads();
         ArrayNode roadNodes = factory.arrayNode();
 
         for (Road road : roads) {
-            roadNodes.add(road.getId());
+            roadNodes.add(road.getId().toHexString());
         }
         node.put("roads", roadNodes);
 

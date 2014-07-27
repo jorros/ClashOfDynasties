@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.RoutingService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -63,7 +64,7 @@ public class FormationController {
                 formation.setDiplomacy(4);
             }
 
-            data.put(formation.getId(), formation.toJSON(editor, timestamp));
+            data.put(formation.getId().toHexString(), formation.toJSON(editor, timestamp));
         }
 
         return data;
@@ -72,7 +73,7 @@ public class FormationController {
     @RequestMapping(value = "/{formation}/route", method = RequestMethod.GET)
     public
     @ResponseBody
-    ObjectNode calculateRoute(@PathVariable("formation") String id, @RequestParam String target) {
+    ObjectNode calculateRoute(@PathVariable("formation") ObjectId id, @RequestParam ObjectId target) {
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(target);
 
@@ -84,7 +85,7 @@ public class FormationController {
 
     @RequestMapping(value = "/{formation}/move", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public void move(Principal principal, @PathVariable("formation") String formationId, @RequestParam String target) {
+    public void move(Principal principal, @PathVariable("formation") ObjectId formationId, @RequestParam ObjectId target) {
         Formation formation = formationRepository.findOne(formationId);
         City city = cityRepository.findOne(target);
         Player player = playerRepository.findByName(principal.getName());
@@ -107,7 +108,7 @@ public class FormationController {
 
     @RequestMapping(value = "/{formation}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void remove(Principal principal, @PathVariable("formation") String formationId) {
+    public void remove(Principal principal, @PathVariable("formation") ObjectId formationId) {
         Player player = playerRepository.findByName(principal.getName());
         Formation formation = formationRepository.findOne(formationId);
 
@@ -123,13 +124,13 @@ public class FormationController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") String cityId, @RequestParam("units[]") List<String> unitsId) {
-        save(principal, "", name, cityId, unitsId);
+    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam("units[]") List<ObjectId> unitsId) {
+        save(principal, null, name, cityId, unitsId);
     }
 
     @RequestMapping(value = "/{formation}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(Principal principal, @PathVariable("formation") String formationId, @RequestParam("name") String name, @RequestParam("city") String cityId, @RequestParam("units[]") List<String> unitsId) {
+    public void save(Principal principal, @PathVariable("formation") ObjectId formationId, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam("units[]") List<ObjectId> unitsId) {
         // Formation, City und Player vorbereiten
         City city = cityRepository.findOne(cityId);
         Player player = playerRepository.findByName(principal.getName());
@@ -137,7 +138,7 @@ public class FormationController {
         // Formation nur fetchen, wenn City dem Spieler gehört
         if (player.equals(city.getPlayer())) {
             Formation formation;
-            if (!formationId.isEmpty())
+            if (formationId != null)
                 formation = formationRepository.findOne(formationId);
             else {
                 formation = new Formation();
@@ -152,7 +153,7 @@ public class FormationController {
             if (player.equals(formation.getPlayer())) {
                 if (formation.getRoute() == null) {
                     List<Unit> units = new ArrayList<Unit>();
-                    for (String unitId : unitsId) {
+                    for (ObjectId unitId : unitsId) {
                         Unit unit = unitRepository.findOne(unitId);
                         if (city.getUnits().contains(unit)) {
                             city.getUnits().remove(unit);

@@ -12,7 +12,7 @@ import java.util.List;
 @Document
 public class Player {
     @Id
-    private String id;
+    private ObjectId id;
 
     @Indexed
     private String name;
@@ -30,11 +30,11 @@ public class Player {
     private boolean computer;
     private boolean activated;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -116,10 +116,6 @@ public class Player {
 
     public void setLastScrollY(int lastScrollY) {
         this.lastScrollY = lastScrollY;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 
     public boolean equals(Object other) {

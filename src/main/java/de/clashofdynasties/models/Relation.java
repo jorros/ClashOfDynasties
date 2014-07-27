@@ -10,7 +10,7 @@ import java.util.List;
 @Document
 public class Relation {
     @Id
-    private String id;
+    private ObjectId id;
 
     @DBRef(lazy = true)
     private Player player1;
@@ -32,11 +32,11 @@ public class Relation {
 
     private Integer ticksLeft;
 
-    public String getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -86,10 +86,6 @@ public class Relation {
 
     public void setPendingRelation(Integer pendingRelation) {
         this.pendingRelation = pendingRelation;
-    }
-
-    public ObjectId getOId() {
-        return new ObjectId(this.id);
     }
 
     public Player getPendingRelationPlayer() {

@@ -10,6 +10,7 @@ import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.ItemRepository;
 import de.clashofdynasties.repository.PlayerRepository;
 import de.clashofdynasties.service.RoutingService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -56,7 +57,7 @@ public class CaravanController {
                 caravan.setDiplomacy(4);
             }
 
-            data.put(caravan.getId(), caravan.toJSON(editor, timestamp));
+            data.put(caravan.getId().toHexString(), caravan.toJSON(editor, timestamp));
         }
 
         return data;
@@ -65,7 +66,7 @@ public class CaravanController {
     @RequestMapping(value = "/route", method = RequestMethod.GET)
     public
     @ResponseBody
-    ObjectNode calculateRoute(@RequestParam String point1, @RequestParam String point2) {
+    ObjectNode calculateRoute(@RequestParam ObjectId point1, @RequestParam ObjectId point2) {
         City city1 = cityRepository.findOne(point1);
         City city2 = cityRepository.findOne(point2);
 
@@ -81,7 +82,7 @@ public class CaravanController {
 
     @RequestMapping(value = "/{caravan}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
-    public void remove(Principal principal, @PathVariable("caravan") String caravanId) {
+    public void remove(Principal principal, @PathVariable("caravan") ObjectId caravanId) {
         Player player = playerRepository.findByName(principal.getName());
         Caravan caravan = caravanRepository.findOne(caravanId);
 
@@ -93,7 +94,7 @@ public class CaravanController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void create(Principal principal, @RequestParam String name, @RequestParam String point1, @RequestParam Integer point1Item, @RequestParam Integer point1Load, @RequestParam String point2, @RequestParam Integer point2Item, @RequestParam Integer point2Load) {
+    public void create(Principal principal, @RequestParam String name, @RequestParam ObjectId point1, @RequestParam Integer point1Item, @RequestParam Integer point1Load, @RequestParam ObjectId point2, @RequestParam Integer point2Item, @RequestParam Integer point2Load) {
         Player player = playerRepository.findByName(principal.getName());
         City city1 = cityRepository.findOne(point1);
         City city2 = cityRepository.findOne(point2);
@@ -138,7 +139,7 @@ public class CaravanController {
 
     @RequestMapping(value = "/{caravan}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(Principal principal, @PathVariable("caravan") String id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer point1Item, @RequestParam(required = false) Integer point1Load, @RequestParam(required = false) Integer point2Item, @RequestParam(required = false) Integer point2Load) {
+    public void save(Principal principal, @PathVariable("caravan") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer point1Item, @RequestParam(required = false) Integer point1Load, @RequestParam(required = false) Integer point2Item, @RequestParam(required = false) Integer point2Load) {
         Player player = playerRepository.findByName(principal.getName());
         Caravan caravan = caravanRepository.findOne(id);
 
