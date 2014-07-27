@@ -1,9 +1,7 @@
 package de.clashofdynasties.service;
 
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Formation;
-import de.clashofdynasties.models.Road;
-import de.clashofdynasties.models.Route;
+import de.clashofdynasties.models.*;
+import de.clashofdynasties.repository.RelationRepository;
 import de.clashofdynasties.repository.RoadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +19,9 @@ public class RoutingService {
 
     @Autowired
     private RoadRepository roadRepository;
+
+    @Autowired
+    private RelationRepository relationRepository;
 
     private class Node implements Comparable {
         private Object object;
@@ -51,6 +52,43 @@ public class RoutingService {
                 return ((Formation) object).getY();
             else
                 return 0;
+        }
+
+        public boolean isNegotiable(Player player, boolean isBorder, boolean isCaravan) {
+            if(object instanceof City) {
+                Player other = ((City)object).getPlayer();
+
+                Relation relation = relationRepository.findByPlayers(player.getId(), other.getId());
+
+                if(relation != null) {
+                    switch(relation.getRelation()) {
+                        case 0:
+                            return isBorder && !isCaravan;
+
+                        case 1:
+                            return false;
+
+                        case 2:
+                            return isCaravan;
+
+                        case 3:
+                            return (relation.getTicksLeft() == null || isCaravan);
+                    }
+                }
+                else
+                    return false;
+            }
+
+            return false;
+        }
+
+        public Player getPlayer() {
+            if (object instanceof City)
+                return ((City) object).getPlayer();
+            else if (object instanceof Formation)
+                return ((Formation) object).getPlayer();
+            else
+                return null;
         }
 
         // Heuristik: geschätzter Restweg (Luftlinie)
@@ -117,7 +155,7 @@ public class RoutingService {
         return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2)) * factor;
     }
 
-    private void expandNode(Node current) {
+    private void expandNode(Node current, Player player, boolean isCaravan) {
         List<Node> neighbours = current.getNeighbours();
         for (Node n : neighbours) {
             if (closedList.contains(n))
@@ -126,6 +164,11 @@ public class RoutingService {
             double tempG = n.g + caluclateG(current, n);
 
             if (openList.contains(n) && tempG >= n.g)
+                continue;
+
+            boolean isBorder = player.equals(current.getPlayer());
+
+            if(!n.isNegotiable(player, isBorder, isCaravan))
                 continue;
 
             n.parent = current;
@@ -174,7 +217,7 @@ public class RoutingService {
         return route;
     }
 
-    public Route calculateRoute(Formation formation, City city) {
+    public Route calculateRoute(Formation formation, City city, Player player) {
         openList = new PriorityQueue<Node>();
         closedList = new LinkedList<Node>();
         goal = null;
@@ -193,17 +236,17 @@ public class RoutingService {
                     return createRoute(currentNode);
 
                 closedList.add(currentNode);
-                expandNode(currentNode);
+                expandNode(currentNode, player, false);
             } else if (currentNode.getObject() instanceof Formation) {
                 closedList.add(currentNode);
-                expandNode(currentNode);
+                expandNode(currentNode, player, false);
             }
         }
 
         return null;
     }
 
-    public Route calculateRoute(City start, City end) {
+    public Route calculateRoute(City start, City end, Player player) {
         openList = new PriorityQueue<Node>();
         closedList = new LinkedList<Node>();
         goal = null;
@@ -222,7 +265,7 @@ public class RoutingService {
                     return createRoute(currentNode);
 
                 closedList.add(currentNode);
-                expandNode(currentNode);
+                expandNode(currentNode, player, true);
             }
         }
 
@@ -253,13 +296,16 @@ public class RoutingService {
     }
 
     public int calculateTime(Route route) {
-        List<Road> roads = route.getRoads();
-
         int time = 0;
 
-        for (Road road : roads) {
-            time += new Double((road.getLength() - 140) / (0.1 * road.getWeight())).intValue();
+        if(route != null) {
+            List<Road> roads = route.getRoads();
+
+            for (Road road : roads) {
+                time += new Double((road.getLength() - 140) / (0.1 * road.getWeight())).intValue();
+            }
         }
+
         return time;
     }
 }

@@ -66,13 +66,20 @@ public class CaravanController {
     @RequestMapping(value = "/route", method = RequestMethod.GET)
     public
     @ResponseBody
-    ObjectNode calculateRoute(@RequestParam ObjectId point1, @RequestParam ObjectId point2) {
+    ObjectNode calculateRoute(Principal principal, @RequestParam ObjectId point1, @RequestParam ObjectId point2) {
+        Player player = playerRepository.findByName(principal.getName());
         City city1 = cityRepository.findOne(point1);
         City city2 = cityRepository.findOne(point2);
 
+        System.out.println("Von " + city1.getName() + " nach " + city2.getName());
+
         if (city1 != null && city2 != null) {
-            Route route = routingService.calculateRoute(city1, city2);
-            route.setTime(routingService.calculateTime(route));
+            Route route = routingService.calculateRoute(city1, city2, player);
+
+            if(route != null)
+                route.setTime(routingService.calculateTime(route));
+            else
+                return null;
 
             return route.toJSON();
         }
@@ -100,7 +107,7 @@ public class CaravanController {
         City city2 = cityRepository.findOne(point2);
 
         if (city1 != null && city2 != null) {
-            Route route = routingService.calculateRoute(city1, city2);
+            Route route = routingService.calculateRoute(city1, city2, player);
 
             if (route != null) {
                 Caravan caravan = new Caravan();

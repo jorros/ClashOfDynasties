@@ -73,11 +73,12 @@ public class FormationController {
     @RequestMapping(value = "/{formation}/route", method = RequestMethod.GET)
     public
     @ResponseBody
-    ObjectNode calculateRoute(@PathVariable("formation") ObjectId id, @RequestParam ObjectId target) {
+    ObjectNode calculateRoute(Principal principal, @PathVariable("formation") ObjectId id, @RequestParam ObjectId target) {
+        Player player = playerRepository.findByName(principal.getName());
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(target);
 
-        Route route = routing.calculateRoute(formation, city);
+        Route route = routing.calculateRoute(formation, city, player);
         route.setTime(routing.calculateTime(formation, route));
 
         return route.toJSON();
@@ -91,7 +92,7 @@ public class FormationController {
         Player player = playerRepository.findByName(principal.getName());
 
         if (player.equals(formation.getPlayer())) {
-            Route route = routing.calculateRoute(formation, city);
+            Route route = routing.calculateRoute(formation, city, player);
             if (route != null) {
                 if (formation.isDeployed()) {
                     formation.setRoute(route);
