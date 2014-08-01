@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/data/mongo
+       http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security-3.2.xsd
-       http://www.springframework.org/schema/mvc
-       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.0.xsd
-       http://www.springframework.org/schema/data/mongo
-       http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
-    <security:debug />
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 
     <security:global-method-security jsr250-annotations="enabled" pre-post-annotations="enabled" secured-annotations="enabled" />
 
@@ -24,12 +23,6 @@
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongoFactory"/>
     </bean>
-
-    <mongo:repositories base-package="de.clashofdynasties.repository"/>
-
-    <bean id="loginService" class="de.clashofdynasties.service.LoginService"/>
-
-    <bean id="routingService" class="de.clashofdynasties.service.RoutingService"/>
 
     <security:http>
         <security:intercept-url pattern="/game/*" access="ROLE_USER" />
@@ -49,19 +42,9 @@
         </security:authentication-provider>
     </security:authentication-manager>
 
-    <context:component-scan base-package="de.clashofdynasties"/>
+    <mongo:repositories base-package="de.clashofdynasties.repository"/>
 
-    <mvc:annotation-driven/>
+    <context:component-scan base-package="de.clashofdynasties.service"/>
 
-    <mvc:resources mapping="/images/**" location="/resources/images/"/>
-    <mvc:resources mapping="/css/**" location="/resources/css/"/>
-    <mvc:resources mapping="/fonts/**" location="/resources/fonts/"/>
-    <mvc:resources mapping="/lib/**" location="/resources/lib/"/>
-    <mvc:resources mapping="/src/**" location="/resources/game/"/>
-    <mvc:resources mapping="/assets/**" location="/resources/assets/"/>
-
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
+    <task:annotation-driven/>
 </beans>
