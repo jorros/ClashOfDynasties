@@ -1,8 +1,6 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.Caravan;
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Formation;
+import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.RoutingService;
 import org.bson.types.ObjectId;
@@ -41,6 +39,9 @@ public class CommandController {
 
     @Autowired
     RoutingService routing;
+
+    @Autowired
+    RelationRepository relationRepository;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") ObjectId id) {
@@ -95,6 +96,7 @@ public class CommandController {
     @RequestMapping(value = "/city", method = RequestMethod.GET)
     public String showCity(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
         City city = cityRepository.findOne(id);
+        Player player = playerRepository.findByName(principal.getName());
 
         int maxSlots = Math.round((int)(city.getCapacity() * city.getType().getCapacity()));
         int freeSlots = maxSlots;
@@ -115,7 +117,7 @@ public class CommandController {
             smiley = null;
 
         map.addAttribute("satisfaction", smiley);
-        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("player", player);
         map.addAttribute("city", city);
         map.addAttribute("freeSlots", freeSlots);
         map.addAttribute("maxSlots", maxSlots);

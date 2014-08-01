@@ -71,8 +71,6 @@ public class CaravanController {
         City city1 = cityRepository.findOne(point1);
         City city2 = cityRepository.findOne(point2);
 
-        System.out.println("Von " + city1.getName() + " nach " + city2.getName());
-
         if (city1 != null && city2 != null) {
             Route route = routingService.calculateRoute(city1, city2, player);
 

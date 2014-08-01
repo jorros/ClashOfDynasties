@@ -56,6 +56,12 @@ public class CityController {
     @Autowired
     BiomeRepository biomeRepository;
 
+    @Autowired
+    RelationRepository relationRepository;
+
+    @Autowired
+    RoadRepository roadRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
@@ -76,26 +82,45 @@ public class CityController {
                 }
             }
 
-            // Diplomatie setzen
-            if (player.equals(city.getPlayer())) {
-                city.setDiplomacy(1);
-
-                if(city.getPopulation() <= 0)
-                    city.setSatisfaction(-1);
-            }
-            // Wenn Spieler neutral
-            else if (city.getPlayer().isComputer()) {
+            // Diplomatie
+            if(city.getPlayer().equals(player))
                 city.setDiplomacy(4);
-                city.setSatisfaction(-1);
-            } else {
-                city.setDiplomacy(3);
-                city.setSatisfaction(-1);
+            else {
+                Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
+                city.setDiplomacy(relation.getRelation());
+            }
+
+            // Sicht
+            if(city.getDiplomacy() >= 3)
+                city.setVisible(true);
+            else {
+                city.setVisible(isVisible(city, player, city.getType().getId()));
             }
 
             data.put(city.getId().toHexString(), city.toJSON(editor, timestamp));
         }
 
         return data;
+    }
+
+    private boolean isVisible(City city, Player player, int level) {
+        boolean visible = false;
+
+        for (Road r : roadRepository.findByCity(city.getId())) {
+            if(r.getPoint1().getPlayer().equals(player) || r.getPoint2().getPlayer().equals(player))
+                visible = true;
+            else if(level > 1) {
+                if(r.getPoint1().equals(city))
+                    visible = isVisible(r.getPoint2(), player, level - 1);
+                else
+                    visible = isVisible(r.getPoint1(), player, level - 1);
+            }
+
+            if(visible)
+                break;
+        }
+
+        return visible;
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)

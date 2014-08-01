@@ -9,6 +9,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -62,6 +63,9 @@ public class City {
     private List<Unit> units;
 
     private Map<Integer, Double> items;
+
+    @Transient
+    boolean visible;
 
     private long timestamp;
 
@@ -307,6 +311,14 @@ public class City {
         return defence;
     }
 
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
     public ObjectNode toJSON(boolean editor, long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
@@ -315,31 +327,35 @@ public class City {
             node.put("x", getX());
             node.put("y", getY());
             node.put("type", getType().getId());
-            node.put("diplomacy", getDiplomacy());
-            node.put("name", getName());
-            node.put("nn", false);
+            node.put("visible", isVisible());
 
-            if (editor) {
-                node.put("resource", getResource().getId());
-                node.put("capacity", getCapacity());
-            } else {
-                node.put("satisfaction", getSatisfaction());
-                node.put("population", getPopulation());
-                node.put("defence", getDefencePoints());
+            if(isVisible() || editor) {
+                node.put("diplomacy", getDiplomacy());
+                node.put("name", getName());
+                node.put("nn", false);
 
-                List<Formation> formations = getFormations();
-                ArrayNode formationNodes = factory.arrayNode();
+                if (editor) {
+                    node.put("resource", getResource().getId());
+                    node.put("capacity", getCapacity());
+                } else {
+                    node.put("satisfaction", getSatisfaction());
+                    node.put("population", getPopulation());
+                    node.put("defence", getDefencePoints());
 
-                if (formations != null) {
-                    for (Formation formation : formations) {
-                        ObjectNode formationNode = factory.objectNode();
-                        formationNode.put("id", formation.getId().toHexString());
-                        formationNode.put("name", formation.getName());
-                        formationNodes.add(formationNode);
+                    List<Formation> formations = getFormations();
+                    ArrayNode formationNodes = factory.arrayNode();
+
+                    if (formations != null) {
+                        for (Formation formation : formations) {
+                            ObjectNode formationNode = factory.objectNode();
+                            formationNode.put("id", formation.getId().toHexString());
+                            formationNode.put("name", formation.getName());
+                            formationNodes.add(formationNode);
+                        }
                     }
-                }
 
-                node.put("formations", formationNodes);
+                    node.put("formations", formationNodes);
+                }
             }
         } else
             node.put("nn", true);

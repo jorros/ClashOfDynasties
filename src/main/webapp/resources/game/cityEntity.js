@@ -1,7 +1,7 @@
 function cityEntity() {
     Crafty.c("City", {
         _cid: "",
-        _infoEntity: {},
+        _infoEntity: undefined,
         _formationsInfoEntity: {},
         _type: 0,
 
@@ -26,7 +26,7 @@ function cityEntity() {
             this._infoEntity = Crafty.e("2D, DOM").attr({
                 w: 270,
                 h: 35,
-                x: (Cities[this._cid].x - this._infoEntity._w / 2),
+                x: (Cities[this._cid].x - 270 / 2),
                 y: (this._y - 40),
                 z: 11
             }); //.text(this._name).textFont("size", "24px").textFont("family", "Philosopher-Regular").unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
@@ -164,13 +164,15 @@ function cityEntity() {
         },
 
         _updateDiplomacy: function () {
-            if (Cities[this._cid].diplomacy == 1) // Selbst
+            if (Cities[this._cid].diplomacy == 4) // Selbst
                 this._infoEntity.css("background-color", "#4096EE");
-            else if (Cities[this._cid].diplomacy == 2) // Verbündet
+            else if (Cities[this._cid].diplomacy == 3) // Verbündet
                 this._infoEntity.css("background-color", "#356AA0");
-            else if (Cities[this._cid].diplomacy == 3) // Verfeindet
+            else if (Cities[this._cid].diplomacy == 2) // Handelspartner
+                this._infoEntity.css("background-color", "#356AA0");
+            else if (Cities[this._cid].diplomacy == 0) // Verfeindet
                 this._infoEntity.css("background-color", "#D01F3C");
-            else if (Cities[this._cid].diplomacy == 4) // Neutral
+            else if (Cities[this._cid].diplomacy == 1) // Neutral
                 this._infoEntity.css("background-color", "#EEEEEE");
         },
 
@@ -202,7 +204,7 @@ function cityEntity() {
                     }
                 }
             }
-            else {
+            else if(Cities[this._cid].visible) {
                 if (isFormationSelected) {
                     $.get("game/formations/" + Selected._fid + "/move", { "target": this._cid });
 
@@ -229,37 +231,39 @@ function cityEntity() {
         },
 
         over: function () {
-            if (!Editor && isFormationSelected && !isCalculatedRoute) {
-                Selected.showRoute(this._cid);
-                isCalculatedRoute = true;
-            }
-            else if (!Editor && isCaravanSelected && Selected._cid != this._cid) {
-                tempRoute = "";
-                $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function (data) {
-                    if(data != undefined) {
-                        isCalculatedRoute = true;
-                        tempRoute = data.roads;
-                        tempTime = data.time;
+            if(Cities[this._cid].visible) {
+                if (!Editor && isFormationSelected && !isCalculatedRoute) {
+                    Selected.showRoute(this._cid);
+                    isCalculatedRoute = true;
+                }
+                else if (!Editor && isCaravanSelected && Selected._cid != this._cid) {
+                    tempRoute = "";
+                    $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function (data) {
+                        if (data != undefined) {
+                            isCalculatedRoute = true;
+                            tempRoute = data.roads;
+                            tempTime = data.time;
 
-                        var totalSeconds = tempTime;
-                        var hours = Math.floor(totalSeconds / 3600);
-                        totalSeconds %= 3600;
-                        var minutes = Math.floor(totalSeconds / 60);
+                            var totalSeconds = tempTime;
+                            var hours = Math.floor(totalSeconds / 3600);
+                            totalSeconds %= 3600;
+                            var minutes = Math.floor(totalSeconds / 60);
 
-                        var output = "";
-                        if (hours > 0)
-                            output += hours + " Stunden ";
-                        if (minutes > 0)
-                            output += minutes + " Minuten";
+                            var output = "";
+                            if (hours > 0)
+                                output += hours + " Stunden ";
+                            if (minutes > 0)
+                                output += minutes + " Minuten";
 
-                        $(document).data('powertip', output);
-                        $.powerTip.show($(document));
+                            $(document).data('powertip', output);
+                            $.powerTip.show($(document));
 
-                        $.each(tempRoute, function (index, road) {
-                            RoadEntities[road].mark(true);
-                        });
-                    }
-                });
+                            $.each(tempRoute, function (index, road) {
+                                RoadEntities[road].mark(true);
+                            });
+                        }
+                    });
+                }
             }
         },
 
@@ -275,8 +279,10 @@ function cityEntity() {
             this.bind("Click", this.select);
             this.bind("MouseOver", this.over);
 
-            this._buildInfo();
-            this._updateInfo();
+            if(Cities[this._cid].visible || Editor) {
+                this._buildInfo();
+                this._updateInfo();
+            }
 
             return this;
         },
@@ -292,8 +298,20 @@ function cityEntity() {
                 this.x = Math.round(Cities[this._cid].x - this._w / 2);
                 this.y = Math.round(Cities[this._cid].y - this._h / 2);
 
-                this._updateDiplomacy();
-                this._updateInfo();
+                if(Cities[this._cid].visible || Editor) {
+                    if(this._infoEntity == undefined)
+                        this._buildInfo();
+
+                    this._updateDiplomacy();
+                    this._updateInfo();
+
+                    this.alpha = 1.0;
+                } else if(this._infoEntity != undefined) {
+                    this._infoEntity.destroy();
+                    this.alpha = 0.6;
+                }
+                else
+                    this.alpha = 0.6;
             }
 
             return this;
