@@ -110,7 +110,7 @@ function cityEntity() {
 
                 $("#" + this._cid + "_people").text(people);
 
-                if (Cities[this._cid].satisfaction >= 0) {
+                if (Cities[this._cid].population > 0) {
                     var smiley = "Happy";
                     if (Cities[this._cid].satisfaction < 80 && Cities[this._cid].satisfaction >= 60)
                         smiley = "Satisfied";
@@ -125,7 +125,7 @@ function cityEntity() {
                 else
                     $("#" + this._cid + "_satisfaction").hide();
 
-                if (Cities[this._cid].diplomacy == 1)
+                if (Cities[this._cid].diplomacy == 4)
                     $("#" + this._cid + "_build").show();
                 else
                     $("#" + this._cid + "_build").hide();

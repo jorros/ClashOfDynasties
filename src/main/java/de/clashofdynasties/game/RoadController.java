@@ -31,7 +31,8 @@ public class RoadController {
         List<Road> roads = roadRepository.findAll();
         HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
 
-        roads.forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
+        if(roads != null && !roads.isEmpty())
+            roads.forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
 
         return data;
     }

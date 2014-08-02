@@ -37,6 +37,7 @@
     <orderEntry type="library" name="Servlet API 3.1" level="project" />
     <orderEntry type="library" name="jstl-1.2" level="project" />
     <orderEntry type="library" name="org.springframework.data:spring-data-mongodb:1.5.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="jsp-api" level="project" />
   </component>
 </module>
 

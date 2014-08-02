@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -69,6 +70,15 @@ public class City {
 
     private long timestamp;
 
+    public City() {
+        units = new ArrayList<>();
+        items = new HashMap<>();
+        buildings = new ArrayList<>();
+        requiredItemTypes = new ArrayList<>();
+        stopConsumption = new ArrayList<>();
+        formations = new ArrayList<>();
+    }
+
     public ObjectId getId() {
         return id;
     }
@@ -99,6 +109,7 @@ public class City {
 
     public void setPlayer(Player player) {
         this.player = player;
+        updateTimestamp();
     }
 
     public int getPopulation() {
@@ -107,6 +118,7 @@ public class City {
 
     public void setPopulation(int population) {
         this.population = population;
+        updateTimestamp();
     }
 
     public int getSatisfaction() {
@@ -115,6 +127,7 @@ public class City {
 
     public void setSatisfaction(int satisfaction) {
         this.satisfaction = satisfaction;
+        updateTimestamp();
     }
 
     public int getHealth() {
@@ -123,6 +136,7 @@ public class City {
 
     public void setHealth(int health) {
         this.health = health;
+        updateTimestamp();
     }
 
     public Resource getResource() {
@@ -131,6 +145,7 @@ public class City {
 
     public void setResource(Resource resource) {
         this.resource = resource;
+        updateTimestamp();
     }
 
     public Biome getBiome() {
@@ -139,14 +154,16 @@ public class City {
 
     public void setBiome(Biome biome) {
         this.biome = biome;
+        updateTimestamp();
     }
 
     public int getCapacity() {
-        return capacity;
+        return (int)Math.ceil(capacity * type.getCapacity());
     }
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+        updateTimestamp();
     }
 
     public String getName() {
@@ -155,6 +172,7 @@ public class City {
 
     public void setName(String name) {
         this.name = name;
+        updateTimestamp();
     }
 
     public List<ItemType> getRequiredItemTypes() {
@@ -203,6 +221,7 @@ public class City {
 
     public void setReport(Report report) {
         this.report = report;
+        updateTimestamp();
     }
 
     public BuildingConstruction getBuildingConstruction() {
@@ -211,6 +230,13 @@ public class City {
 
     public void setBuildingConstruction(BuildingConstruction buildingConstruction) {
         this.buildingConstruction = buildingConstruction;
+    }
+
+    public double getProductionRate() {
+        if(population > 0)
+            return population * type.getProductionRate();
+        else
+            return type.getProductionRate();
     }
 
     public List<Formation> getFormations() {
@@ -247,6 +273,16 @@ public class City {
         this.stopConsumption = stopConsumption;
     }
 
+    public void toggleConsumption(Item item) {
+        if(getStopConsumption() == null)
+            setStopConsumption(new ArrayList<>());
+
+        if(getStopConsumption().contains(item))
+            getStopConsumption().remove(item);
+        else
+            getStopConsumption().add(item);
+    }
+
     public boolean equals(Object other) {
         if (other instanceof City && ((City) other).getId().equals(this.id))
             return true;
@@ -279,15 +315,17 @@ public class City {
     }
 
     public double calculateCoins() {
-        return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 60;
+        return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 360;
     }
 
+    public double calculateMaintenance() { return ((double)this.getBuildings().size() / 360); }
+
     public int getIncome() {
-        return (int) Math.floor(this.calculateCoins() * 60);
+        return (int) Math.ceil(this.calculateCoins() * 360);
     }
 
     public int getOutcome() {
-        return 0;
+        return (int) Math.ceil(this.calculateMaintenance() * 360);
     }
 
     public long getTimestamp() {

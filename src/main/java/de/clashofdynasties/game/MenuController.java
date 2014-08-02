@@ -164,6 +164,8 @@ public class MenuController {
 
             map.addAttribute("productionPercent", (long)(currentProduction / neededProduction * 100));
 
+            delta /= city.getProductionRate();
+
             int day = (int) TimeUnit.SECONDS.toDays(delta);
             long hours = TimeUnit.SECONDS.toHours(delta) - (day * 24);
             long minute = TimeUnit.SECONDS.toMinutes(delta) - (hours * 60);
@@ -174,7 +176,9 @@ public class MenuController {
             if(hours > 0)
                 timeDescription += hours + "h ";
             if(minute > 0)
-                timeDescription += minute + "m ";
+                timeDescription += minute + "min ";
+            else
+                timeDescription = "unter 1min ";
 
             map.addAttribute("productionTime", timeDescription);
 
@@ -228,71 +232,6 @@ public class MenuController {
         map.addAttribute("city", city);
         map.addAttribute("items", items);
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
-
-        HashMap<Integer, Integer> production = new HashMap<>();
-
-        if(city.getBuildings() != null) {
-            for(Building building : city.getBuildings()) {
-                Item item = building.getBlueprint().getProduceItem();
-                if(item != null) {
-                    if(production.containsKey(item.getId()))
-                        production.put(item.getId() - 1, production.get(item.getId() - 1) + (int)Math.floor(building.getBlueprint().getProducePerStep() * 60));
-                    else
-                        production.put(item.getId() - 1, (int)Math.floor(building.getBlueprint().getProducePerStep() * 60));
-                }
-            }
-        }
-        map.addAttribute("production", production);
-
-        HashMap<Integer, Integer> consumption = new HashMap<>();
-        HashMap<Integer, Integer> balance = new HashMap<>();
-
-        for(Item item : items) {
-            int consume = 0;
-            switch(item.getId()) {
-                case 1:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeBasic() * 0.001 * 60);
-                    break;
-                case 2:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeBasic() * 0.001 * 60);
-                    break;
-                case 3:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury1() * 0.001 * 60);
-                    break;
-                case 4:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury1() * 0.001 * 60);
-                    break;
-                case 5:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
-                    break;
-                case 6:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
-                    break;
-                case 7:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
-                    break;
-                case 8:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
-                    break;
-                case 9:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
-                    break;
-                case 10:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury3() * 0.001 * 60);
-                    break;
-                case 11:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
-                    break;
-                case 12:
-                    consume = (int)Math.floor(city.getPopulation() * city.getType().getConsumeLuxury2() * 0.001 * 60);
-                    break;
-            }
-
-            consumption.put(item.getId() - 1, consume);
-            balance.put(item.getId() - 1, production.getOrDefault(item.getId() - 1, 0) - consume);
-        }
-        map.addAttribute("consumption", consumption);
-        map.addAttribute("balance", balance);
 
         return "menu/store";
     }

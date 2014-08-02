@@ -104,10 +104,12 @@ public class CommandController {
         if (city.getBuildings() != null)
             freeSlots -= city.getBuildings().size();
 
-        String smiley = "Happy";
+        String smiley;
 
         if (city.getPopulation() > 0) {
-            if (city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
+            if(city.getSatisfaction() > 80)
+                smiley = "Happy";
+            else if (city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
                 smiley = "Satisfied";
             else if (city.getSatisfaction() < 60 && city.getSatisfaction() >= 30)
                 smiley = "Unhappy";

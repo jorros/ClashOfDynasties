@@ -87,7 +87,10 @@ public class CityController {
                 city.setDiplomacy(4);
             else {
                 Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
-                city.setDiplomacy(relation.getRelation());
+                if(relation == null)
+                    city.setDiplomacy(1);
+                else
+                    city.setDiplomacy(relation.getRelation());
             }
 
             // Sicht
@@ -144,6 +147,29 @@ public class CityController {
         city.setY(y);
         city.setType(cityTypeRepository.findOne(1));
         city.setResource(resourceRepository.findOne(1));
+
+        List<ItemType> types = city.getRequiredItemTypes();
+
+        types.add(itemTypeRepository.findOne(1));
+        types.add(itemTypeRepository.findOne(2));
+
+        int i;
+        i = (int) (Math.random() * 3 + 1);
+        if (i == 1)
+            types.add(itemTypeRepository.findOne(4));
+        else if (i == 2)
+            types.add(itemTypeRepository.findOne(6));
+        else
+            types.add(itemTypeRepository.findOne(7));
+
+        i = (int) (Math.random() * 2 + 1);
+        if (i == 1)
+            types.add(itemTypeRepository.findOne(3));
+        else
+            types.add(itemTypeRepository.findOne(5));
+
+        city.setRequiredItemTypes(types);
+
         city.updateTimestamp();
 
         cityRepository.save(city);
@@ -167,13 +193,17 @@ public class CityController {
             }
 
             if(type == 0) {
-                construction.setBlueprint(buildingBlueprintRepository.findOne(blueprint));
+                BuildingBlueprint blp = buildingBlueprintRepository.findOne(blueprint);
+
+                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())))
+                    construction.setBlueprint(blp);
             }
             else if(type == 1) {
-                construction.setBlueprint(unitBlueprintRepository.findOne(blueprint));
+                if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 15).count() > 0)
+                    construction.setBlueprint(unitBlueprintRepository.findOne(blueprint));
             }
 
-            if(player.getCoins() >= construction.getBlueprint().getPrice()) {
+            if(construction.getBlueprint() != null && player.getCoins() >= construction.getBlueprint().getPrice()) {
                 city.setBuildingConstruction(construction);
                 cityRepository.save(city);
                 player.addCoins(-construction.getBlueprint().getPrice());
@@ -209,13 +239,7 @@ public class CityController {
         Player player = playerRepository.findByName(principal.getName());
 
         if(city.getPlayer().equals(player)) {
-            if(city.getStopConsumption() == null)
-                city.setStopConsumption(new ArrayList<>());
-
-            if(city.getStopConsumption().contains(item))
-                city.getStopConsumption().remove(item);
-            else
-                city.getStopConsumption().add(item);
+            city.toggleConsumption(item);
 
             cityRepository.save(city);
         }
@@ -244,43 +268,8 @@ public class CityController {
         if (player != null && request.isUserInRole("ROLE_ADMIN"))
             city.setPlayer(playerRepository.findOne(player));
 
-        if (type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN")) {
+        if (type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN"))
             city.setType(cityTypeRepository.findOne(type));
-            List<ItemType> types = city.getRequiredItemTypes();
-
-            if (types == null)
-                types = new ArrayList<ItemType>();
-            else
-                types.clear();
-
-            int i;
-            switch (type) {
-                case 3:
-                    i = (int) (Math.random() * 2 + 1);
-                    if (i == 1)
-                        types.add(itemTypeRepository.findOne(3));
-                    else
-                        types.add(itemTypeRepository.findOne(5));
-
-                case 2:
-                    i = (int) (Math.random() * 3 + 1);
-                    if (i == 1)
-                        types.add(itemTypeRepository.findOne(4));
-                    else if (i == 2)
-                        types.add(itemTypeRepository.findOne(6));
-                    else
-                        types.add(itemTypeRepository.findOne(7));
-
-                case 1:
-                    types.add(itemTypeRepository.findOne(1));
-                    types.add(itemTypeRepository.findOne(2));
-                    break;
-
-                case 4:
-                    break;
-            }
-            city.setRequiredItemTypes(types);
-        }
 
         city.updateTimestamp();
 

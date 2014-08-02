@@ -28,20 +28,22 @@ public class Event {
 
     }
 
-    public Event(String type, String title, String description, String action) {
+    public Event(String type, String title, String description, String action, Player player) {
         this.action = action;
         this.type = type;
         this.title = title;
         this.description = description;
+        this.player = player;
 
         updateTimestamp();
     }
 
-    public Event(String type, String title, String description, City city) {
+    public Event(String type, String title, String description, City city, Player player) {
         this.type = type;
         this.title = title;
         this.description = description;
         this.city = city;
+        this.player = player;
 
         updateTimestamp();
     }
