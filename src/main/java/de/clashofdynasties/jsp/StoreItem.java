@@ -55,7 +55,7 @@ public class StoreItem extends SimpleTagSupport {
                     break;
             }
 
-            if(city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) {
+            if((city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) && city.getRequiredItemTypes().contains(item.getType())) {
                 consumption = new Double(city.getPopulation() * rate * 360).intValue();
             }
 
