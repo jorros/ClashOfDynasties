@@ -28,7 +28,7 @@
         <security:intercept-url pattern="/game/*" access="ROLE_USER" />
         <security:form-login login-processing-url="/login" login-page="/"
                              username-parameter="username" password-parameter="password"
-                             default-target-url="/" authentication-failure-url="/?auth=fail"/>
+                             default-target-url="/" authentication-failure-url="/?auth=fail" always-use-default-target="true"/>
         <security:logout logout-url="/logout" logout-success-url="/" delete-cookies="JSESSIONID"/>
         <security:remember-me user-service-ref="loginService" />
         <security:session-management invalid-session-url="/">
@@ -44,6 +44,7 @@
 
     <mongo:repositories base-package="de.clashofdynasties.repository"/>
 
+    <context:component-scan base-package="de.clashofdynasties.logic"/>
     <context:component-scan base-package="de.clashofdynasties.service"/>
 
     <task:annotation-driven/>

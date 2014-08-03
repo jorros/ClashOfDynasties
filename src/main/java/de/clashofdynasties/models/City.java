@@ -66,7 +66,9 @@ public class City {
     private Map<Integer, Double> items;
 
     @Transient
-    boolean visible;
+    private boolean visible;
+
+    private boolean sightUpdate;
 
     private long timestamp;
 
@@ -355,6 +357,14 @@ public class City {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public boolean isSightUpdate() {
+        return sightUpdate;
+    }
+
+    public void setSightUpdate(boolean sightUpdate) {
+        this.sightUpdate = sightUpdate;
     }
 
     public ObjectNode toJSON(boolean editor, long timestamp) {
