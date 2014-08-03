@@ -8,8 +8,8 @@ var tempRoute = null;
 var tempRouteEntity = null;
 var tempTime = 0;
 var routeShown = false;
-
 var lastUpdate = 0;
+var stopMenuUpdate = false;
 
 function updateGame() {
     loadTop();
@@ -17,6 +17,12 @@ function updateGame() {
     updateFormations();
     updateCaravans();
     updateTimestamp();
+
+    if(currentMenuRefresh && currentMenu != undefined && !stopMenuUpdate)
+        openMenu(currentMenu);
+
+    if(currentCommand != undefined)
+        openCommand(currentCommand);
 }
 
 window.onload = function () {

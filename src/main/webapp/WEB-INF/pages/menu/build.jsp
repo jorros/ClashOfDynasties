@@ -127,8 +127,16 @@
 
 <script>
     <c:forEach items="${buildingBlueprints}" var="building">
-        $("#building-${building.id}").tooltip({
-            content: "<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${building.name}</span><br><br>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span class='<c:if test="${building.requiredBiomes.contains(city.biome)}">green</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>'>Benötigt: <c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span class='<c:if test="${city.resource == building.requiredResource}">green</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>'>Benötigt: </span><img style='vertical-align:bottom;' src='assets/resources/${building.requiredResource.id}.png' /> <span>${building.requiredResource.name}</span></c:if>", show: { effect: "fade", duration: 400 }, items: "button" });
+        $("#building-${building.id}").tooltipster({
+            theme: 'tooltipster-light',
+            functionReady: function() {
+                stopMenuUpdate = true;
+            },
+            functionAfter: function() {
+                stopMenuUpdate = false;
+            },
+            content: $('<span style="font-family:"Philosopher-Bold"; font-size:18px;">${building.name}</span><br><br>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span class="<c:if test="${building.requiredBiomes.contains(city.biome)}">green</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>">Benötigt: <c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span class="<c:if test="${city.resource == building.requiredResource}">green</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>">Benötigt: </span><img style="vertical-align:bottom;" src="assets/resources/${building.requiredResource.id}.png" /> <span>${building.requiredResource.name}</span></c:if>')
+        });
     </c:forEach>
     <c:forEach items="${unitBlueprints}" var="unit">
     $("#unit-${unit.id}").tooltip({

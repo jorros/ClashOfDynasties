@@ -3,11 +3,11 @@
 
 <c:if test="${player == city.player}">
 <button><img src="assets/setCaravan.png" onclick="isCaravanSelected=true; $('#caravanText').show();" /></button>
-<button onclick="openMenu('formation?city=${city.id}')"><img src="assets/setFormation.png" /></button>
+<button onclick="openMenu('formation?city=${city.id}', false)"><img src="assets/setFormation.png" /></button>
 </c:if>
 <button onclick="openMenu('store?city=${city.id}')"><img src="assets/showItems.png" /></button>
 <c:if test="${city.report != null}">
-    <button onclick="openMenu('report?city=${city.id}')"><img src="assets/report.png" /></button>
+    <button onclick="openMenu('report?city=${city.id}', false)"><img src="assets/report.png" /></button>
 </c:if>
 <br><br>
 <table style="width:100%;">

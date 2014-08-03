@@ -1,8 +1,20 @@
-function openMenu(menu) {
+var currentMenu = undefined;
+var currentMenuRefresh = true;
+var isRefreshing = false;
+
+function openMenu(menu, refresh) {
     if (menu != undefined) {
+        if(refresh != undefined)
+            currentMenuRefresh = refresh;
+        else
+            currentMenuRefresh = true;
+        currentMenu = menu;
+
         $.get("/game/menus/" + menu, function (data) {
+            isRefreshing = true;
             $("#body").html(data);
             $("#body").show();
+            isRefreshing = false;
         });
     }
 }
@@ -10,15 +22,19 @@ function openMenu(menu) {
 function closeMenu() {
     $("#body").hide();
     $(".menu").removeClass("selected");
+    currentMenu = undefined;
 }
 
+var currentCommand = undefined;
+
 function openCommand(command, title) {
-    if ($("#controls").dialog("isOpen"))
+    if ($("#controls").dialog("isOpen") && command != currentCommand)
         $("#controls").dialog("close");
     if (command != undefined) {
+        currentCommand = command;
+
         $.get("/game/commands/" + command, function (data) {
             $("#controls").html(data);
-            $("#controls").dialog("option", "title", title);
             if (!$("#controls").dialog("isOpen"))
                 $("#controls").dialog("open");
         });
@@ -55,6 +71,7 @@ function deselect() {
 
 function closeControl() {
     $("#controls").dialog("close");
+    currentCommand = undefined;
 }
 
 function updateTimestamp() {

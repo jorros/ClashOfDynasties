@@ -82,7 +82,7 @@ public class StoreItem extends SimpleTagSupport {
                     out.print("<a style=\"font-weight:bold; cursor:pointer;\" onclick=\"toggleConsumption(" + item.getId() + ");\">" + linkName + "</a>");
                 }
                 else
-                    out.print("<span style=\"font-weight:bold;\">Exportgut</span>");
+                    out.print("<br><span style=\"font-weight:bold;\">Exportgut</span>");
             }
             else
                 out.print("<br>");
