@@ -160,13 +160,16 @@ public class CityLogic {
 
         city.setSatisfaction(computedSatisfaction);
 
-        long maxPeople = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 1).count() * 10;
+        long maxPeople = (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 1).count() * 10) + 5;
 
-        if((city.getSatisfaction() >= 60 || city.getPopulation() == 0) && Math.random() < 0.01 && city.getPopulation() < maxPeople) {
+        if(city.getSatisfaction() >= 60 && Math.random() < 0.01 && city.getPopulation() < maxPeople) {
             city.setPopulation(city.getPopulation() + 1);
         } else if(((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation()) && city.getPopulation() > 0) {
             city.setPopulation(city.getPopulation() - 1);
         }
+
+        if(city.getPopulation() < 5)
+            city.setPopulation(5);
     }
 
     public void processProduction(City city) {

@@ -147,6 +147,7 @@ public class CityController {
         city.setY(y);
         city.setType(cityTypeRepository.findOne(1));
         city.setResource(resourceRepository.findOne(1));
+        city.setPopulation(5);
 
         List<ItemType> types = city.getRequiredItemTypes();
 
