@@ -32,12 +32,49 @@ public class CityLogic {
     @Autowired
     private CityTypeRepository cityTypeRepository;
 
+    private double getSatisfactionModifier(int itemType, int cityType) {
+        switch(cityType) {
+            case 1:
+                if(itemType == 1)
+                    return 2.0/3;
+                else if(itemType == 2)
+                    return 1.0/3;
+                else
+                    return 0;
+
+            case 2:
+                if(itemType == 1)
+                    return 3.0/6;
+                else if(itemType == 2)
+                    return 2.0/6;
+                else if(itemType == 3)
+                    return 1.0/6;
+                else
+                    return 0;
+
+            case 3:
+                if(itemType == 1)
+                    return 10.0/27;
+                else if(itemType == 2)
+                    return 7.0/27;
+                else if(itemType == 3)
+                    return 6.0/27;
+                else
+                    return 4.0/27;
+
+        }
+
+        return 0;
+    }
+
     public void processPopulation(City city) {
         CityType cityType = city.getType();
         Map<Integer, Double> store = city.getItems();
         List<ItemType> requiredItems = city.getRequiredItemTypes();
 
-        double satisfaction = 0;
+        double maxSatisfaction = 0;
+        double firstLevelSatisfaction = 0;
+        double secondLevelSatisfaction = 0;
 
         for(ItemType itemType : requiredItems) {
             boolean provided = false;
@@ -66,27 +103,56 @@ public class CityLogic {
             for(Item item : items) {
                 if(store.containsKey(item.getId()) && (city.getStopConsumption() == null || !city.getStopConsumption().contains(item))) {
                     double amount = store.get(item.getId());
+                    double satisfied = 1;
 
                     amount -= city.getPopulation() * consumRate;
+
                     if(amount < 0) {
-                        satisfaction += amount;
+                        amount /= city.getPopulation() * consumRate;
+                        satisfied -= amount;
                         amount = 0;
                     }
 
                     store.put(item.getId(), amount);
+                    satisfied *= getSatisfactionModifier(itemType.getId(), cityType.getId());
+                    firstLevelSatisfaction += satisfied;
 
                     provided = true;
                     break;
                 }
             }
-
-            if(!provided)
-                satisfaction -= city.getPopulation() * consumRate;
         }
-        if(satisfaction == 0)
-            satisfaction = 10;
 
-        int computedSatisfaction = city.getSatisfaction() + (int)Math.ceil(satisfaction / 10);
+        if(city.getBuildings().size() <= city.getCapacity()) {
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 4).count() > 0)
+                secondLevelSatisfaction += (5.0/14);
+
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 6).count() > 0)
+                secondLevelSatisfaction += 4.0/14;
+
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 11).count() > 0)
+                secondLevelSatisfaction += 3.0/14;
+
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 13).count() > 0)
+                secondLevelSatisfaction += 2.0/14;
+
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 14).count() > 0)
+                secondLevelSatisfaction += 2.0/14;
+
+            if(secondLevelSatisfaction > 1)
+                secondLevelSatisfaction = 1;
+        }
+
+        maxSatisfaction = (firstLevelSatisfaction * 2.0/3 + secondLevelSatisfaction * 1.0/3) * 100;
+
+        double computedSatisfaction;
+        if(maxSatisfaction > city.getRawSatisfaction())
+            computedSatisfaction = city.getRawSatisfaction() + 1.0/360;
+        else if(maxSatisfaction < city.getRawSatisfaction())
+            computedSatisfaction = city.getRawSatisfaction() - 1.0/360;
+        else
+            computedSatisfaction = city.getRawSatisfaction();
+
         if(computedSatisfaction > 100)
             computedSatisfaction = 100;
         else if(computedSatisfaction < 0)
@@ -178,9 +244,6 @@ public class CityLogic {
                 city.setType(cityTypeRepository.findOne(2));
             else
                 city.setType(cityTypeRepository.findOne(3));
-
-            if(city.getBuildings().size() > city.getCapacity())
-                city.setSatisfaction(20);
         }
     }
 }

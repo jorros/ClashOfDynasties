@@ -142,7 +142,7 @@ public class CityController {
         city.setCapacity(0);
         city.setHealth(100);
         city.setBiome(biomeRepository.findOne(1));
-        city.setPlayer(playerRepository.findAll().get(0));
+        city.setPlayer(playerRepository.findAll().stream().filter(p -> p.isComputer()).findFirst().get());
         city.setX(x);
         city.setY(y);
         city.setType(cityTypeRepository.findOne(1));
@@ -195,7 +195,7 @@ public class CityController {
             if(type == 0) {
                 BuildingBlueprint blp = buildingBlueprintRepository.findOne(blueprint);
 
-                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())))
+                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity())
                     construction.setBlueprint(blp);
             }
             else if(type == 1) {

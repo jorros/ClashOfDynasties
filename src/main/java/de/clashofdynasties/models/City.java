@@ -26,7 +26,7 @@ public class City {
     private Player player;
 
     private int population;
-    private int satisfaction;
+    private double satisfaction;
     private int health;
 
     @DBRef
@@ -124,10 +124,14 @@ public class City {
     }
 
     public int getSatisfaction() {
+        return (int)Math.round(satisfaction);
+    }
+
+    public double getRawSatisfaction() {
         return satisfaction;
     }
 
-    public void setSatisfaction(int satisfaction) {
+    public void setSatisfaction(double satisfaction) {
         this.satisfaction = satisfaction;
         updateTimestamp();
     }
