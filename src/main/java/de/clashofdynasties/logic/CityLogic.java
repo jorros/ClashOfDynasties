@@ -170,6 +170,9 @@ public class CityLogic {
 
         if(city.getPopulation() < 5)
             city.setPopulation(5);
+
+        if(city.getPlayer().isComputer() || city.getType().getId() == 4)
+            city.setSatisfaction(100);
     }
 
     public void processProduction(City city) {
