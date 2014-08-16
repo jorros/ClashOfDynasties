@@ -81,7 +81,7 @@ public class MenuController {
             node.put("cityNum", cities.size());
             node.put("formationNum", formations.size());
             node.put("caravanNum", caravans.size());
-            node.put("ranking", 1);
+            node.put("ranking", player.getStatistic() == null ? "Unplatziert" : Integer.valueOf(player.getStatistic().getRank()).toString());
             node.put("events", events);
         }
 
@@ -238,99 +238,20 @@ public class MenuController {
 
     @RequestMapping(value = "/ranking", method = RequestMethod.GET)
     public String showRanking(ModelMap map, Principal principal) {
-        HashMap<ObjectId, Integer> economy = new HashMap<>();
-        HashMap<ObjectId, Integer> demography = new HashMap<>();
-        HashMap<ObjectId, Integer> military = new HashMap<>();
-        HashMap<ObjectId, Integer> total = new HashMap<>();
-        HashMap<ObjectId, Player> playerMap = new HashMap<>();
-        String highestDemography = "";
-        String highestEconomy = "";
-        String highestMilitary = "";
-        int highestDemographyVal = 0;
-        int highestEconomyVal = 0;
-        int highestMilitaryVal = 0;
-        List<ObjectId> ranking = new LinkedList<>();
-
         Player player = playerRepository.findByName(principal.getName());
         List<Player> players = playerRepository.findAll();
-        List<City> cities = cityRepository.findAll();
-        List<Formation> formations = formationRepository.findAll();
-        List<Caravan> caravans = caravanRepository.findAll();
+        players.removeIf(p -> p.getStatistic() == null);
+        Collections.sort(players, (Player p1, Player p2) -> Integer.compare(p1.getStatistic().getRank(), p2.getStatistic().getRank()));
 
-        for(Player p : players) {
-            economy.put(p.getId(), 0);
-            demography.put(p.getId(), 0);
-            military.put(p.getId(), 0);
-            playerMap.put(p.getId(), p);
-        }
-
-        for(City city : cities) {
-            ObjectId p = city.getPlayer().getId();
-
-            demography.put(p, demography.get(p) + city.getPopulation());
-            demography.put(p, demography.get(p) + city.getSatisfaction());
-            military.put(p, military.get(p) + city.getDefencePoints());
-
-            if(city.getBuildings() != null)
-                city.getBuildings().forEach(c -> economy.put(p, economy.get(p) + new Double(c.getBlueprint().getProducePerStep() * 100).intValue()));
-
-            if(city.getUnits() != null)
-                military.put(p, military.get(p) + city.getUnits().size() * 10);
-        }
-
-        for(Formation formation : formations) {
-            ObjectId p = formation.getPlayer().getId();
-
-            military.put(p, military.get(p) + 50);
-
-            if(formation.getUnits() != null)
-                military.put(p, military.get(p) + formation.getUnits().size() * 10);
-        }
-
-        for(Caravan caravan : caravans) {
-            ObjectId p = caravan.getPlayer().getId();
-
-            economy.put(p, economy.get(p) + 10);
-        }
-
-        for(Player p : players) {
-            if(!p.isComputer()) {
-                economy.put(p.getId(), economy.get(p.getId()) + p.getCoins());
-                total.put(p.getId(), military.get(p.getId()) + demography.get(p.getId()) + economy.get(p.getId()));
-
-                if(demography.get(p.getId()) > highestDemographyVal) {
-                    highestDemographyVal = demography.get(p.getId());
-                    highestDemography = p.getId().toHexString();
-                }
-                if(military.get(p.getId()) > highestMilitaryVal) {
-                    highestMilitaryVal = military.get(p.getId());
-                    highestMilitary = p.getId().toHexString();
-                }
-                if(economy.get(p.getId()) > highestEconomyVal) {
-                    highestEconomyVal = economy.get(p.getId());
-                    highestEconomy = p.getId().toHexString();
-                }
-            }
-        }
-
-        List<Object> list = new LinkedList<Object>(total.entrySet());
-        Collections.sort(list, (o1, o2) -> ((Comparable) ((Map.Entry) (o1)).getValue()).compareTo(((Map.Entry) (o2)).getValue()) * -1);
-
-        for (Object aList : list) {
-            Map.Entry entry = (Map.Entry) aList;
-            ranking.add((ObjectId) entry.getKey());
-        }
+        Player maxDemography = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getDemography(), p2.getStatistic().getDemography())).get();
+        Player maxEconomy = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getEconomy(), p2.getStatistic().getEconomy())).get();
+        Player maxMilitary = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getMilitary(), p2.getStatistic().getMilitary())).get();
 
         map.addAttribute("player", player);
-        map.addAttribute("players", playerMap);
-        map.addAttribute("economy", economy);
-        map.addAttribute("demography", demography);
-        map.addAttribute("military", military);
-        map.addAttribute("total", total);
-        map.addAttribute("highestDemography", highestDemography);
-        map.addAttribute("highestEconomy", highestEconomy);
-        map.addAttribute("highestMilitary", highestMilitary);
-        map.addAttribute("ranking", ranking);
+        map.addAttribute("players", players);
+        map.addAttribute("maxDemography", maxDemography);
+        map.addAttribute("maxEconomy", maxEconomy);
+        map.addAttribute("maxMilitary", maxMilitary);
 
         return "menu/ranking";
     }

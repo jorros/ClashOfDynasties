@@ -68,111 +68,112 @@ public class CityLogic {
     }
 
     public void processPopulation(City city) {
-        CityType cityType = city.getType();
-        Map<Integer, Double> store = city.getItems();
-        List<ItemType> requiredItems = city.getRequiredItemTypes();
+        if(city.getPlayer().isComputer() || city.getType().getId() == 4)
+            city.setSatisfaction(100);
+        else {
+            CityType cityType = city.getType();
+            Map<Integer, Double> store = city.getItems();
+            List<ItemType> requiredItems = city.getRequiredItemTypes();
 
-        double maxSatisfaction = 0;
-        double firstLevelSatisfaction = 0;
-        double secondLevelSatisfaction = 0;
+            double maxSatisfaction = 0;
+            double firstLevelSatisfaction = 0;
+            double secondLevelSatisfaction = 0;
 
-        for(ItemType itemType : requiredItems) {
-            boolean provided = false;
+            for (ItemType itemType : requiredItems) {
+                boolean provided = false;
 
-            double consumRate = cityType.getConsumeBasic();
+                double consumRate = cityType.getConsumeBasic();
 
-            switch(itemType.getType()) {
-                case 1:
-                    consumRate = cityType.getConsumeBasic();
-                    break;
+                switch (itemType.getType()) {
+                    case 1:
+                        consumRate = cityType.getConsumeBasic();
+                        break;
 
-                case 2:
-                    consumRate = cityType.getConsumeLuxury1();
-                    break;
+                    case 2:
+                        consumRate = cityType.getConsumeLuxury1();
+                        break;
 
-                case 3:
-                    consumRate = cityType.getConsumeLuxury2();
-                    break;
+                    case 3:
+                        consumRate = cityType.getConsumeLuxury2();
+                        break;
 
-                case 4:
-                    consumRate = cityType.getConsumeLuxury3();
-                    break;
-            }
+                    case 4:
+                        consumRate = cityType.getConsumeLuxury3();
+                        break;
+                }
 
-            List<Item> items = itemRepository.findByType(itemType);
-            for(Item item : items) {
-                if(store.containsKey(item.getId()) && (city.getStopConsumption() == null || !city.getStopConsumption().contains(item))) {
-                    double amount = store.get(item.getId());
-                    double satisfied = 1;
+                List<Item> items = itemRepository.findByType(itemType);
+                for (Item item : items) {
+                    if (store.containsKey(item.getId()) && (city.getStopConsumption() == null || !city.getStopConsumption().contains(item))) {
+                        double amount = store.get(item.getId());
+                        double satisfied = 1;
 
-                    amount -= city.getPopulation() * consumRate;
+                        amount -= city.getPopulation() * consumRate;
 
-                    if(amount < 0) {
-                        amount /= city.getPopulation() * consumRate;
-                        satisfied -= amount;
-                        amount = 0;
+                        if (amount < 0) {
+                            amount /= city.getPopulation() * consumRate;
+                            satisfied -= amount;
+                            amount = 0;
+                        }
+
+                        store.put(item.getId(), amount);
+                        satisfied *= getSatisfactionModifier(itemType.getId(), cityType.getId());
+                        firstLevelSatisfaction += satisfied;
+
+                        provided = true;
+                        break;
                     }
-
-                    store.put(item.getId(), amount);
-                    satisfied *= getSatisfactionModifier(itemType.getId(), cityType.getId());
-                    firstLevelSatisfaction += satisfied;
-
-                    provided = true;
-                    break;
                 }
             }
-        }
 
-        if(city.getBuildings().size() <= city.getCapacity()) {
-            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 4).count() > 0)
-                secondLevelSatisfaction += (5.0/14);
+            if (city.getBuildings().size() <= city.getCapacity()) {
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 4).count() > 0)
+                    secondLevelSatisfaction += (5.0 / 14);
 
-            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 6).count() > 0)
-                secondLevelSatisfaction += 4.0/14;
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 6).count() > 0)
+                    secondLevelSatisfaction += 4.0 / 14;
 
-            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 11).count() > 0)
-                secondLevelSatisfaction += 3.0/14;
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 11).count() > 0)
+                    secondLevelSatisfaction += 3.0 / 14;
 
-            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 13).count() > 0)
-                secondLevelSatisfaction += 2.0/14;
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 13).count() > 0)
+                    secondLevelSatisfaction += 2.0 / 14;
 
-            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 14).count() > 0)
-                secondLevelSatisfaction += 2.0/14;
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 14).count() > 0)
+                    secondLevelSatisfaction += 2.0 / 14;
 
-            if(secondLevelSatisfaction > 1)
-                secondLevelSatisfaction = 1;
-        }
+                if (secondLevelSatisfaction > 1)
+                    secondLevelSatisfaction = 1;
+            }
 
-        maxSatisfaction = (firstLevelSatisfaction * 2.0/3 + secondLevelSatisfaction * 1.0/3) * 100;
+            maxSatisfaction = (firstLevelSatisfaction * 2.0 / 3 + secondLevelSatisfaction * 1.0 / 3) * 100;
 
-        double computedSatisfaction;
-        if(maxSatisfaction > city.getRawSatisfaction())
-            computedSatisfaction = city.getRawSatisfaction() + 1.0/360;
-        else if(maxSatisfaction < city.getRawSatisfaction())
-            computedSatisfaction = city.getRawSatisfaction() - 1.0/360;
-        else
-            computedSatisfaction = city.getRawSatisfaction();
+            double computedSatisfaction;
+            if (maxSatisfaction > city.getRawSatisfaction())
+                computedSatisfaction = city.getRawSatisfaction() + 1.0 / 360;
+            else if (maxSatisfaction < city.getRawSatisfaction())
+                computedSatisfaction = city.getRawSatisfaction() - 1.0 / 360;
+            else
+                computedSatisfaction = city.getRawSatisfaction();
 
-        if(computedSatisfaction > 100)
-            computedSatisfaction = 100;
-        else if(computedSatisfaction < 0)
-            computedSatisfaction = 0;
+            if (computedSatisfaction > 100)
+                computedSatisfaction = 100;
+            else if (computedSatisfaction < 0)
+                computedSatisfaction = 0;
 
-        city.setSatisfaction(computedSatisfaction);
+            city.setSatisfaction(computedSatisfaction);
 
-        long maxPeople = (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 1).count() * 10) + 5;
+            long maxPeople = (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 1).count() * 10) + 5;
 
-        if(city.getSatisfaction() >= 60 && Math.random() < 0.01 && city.getPopulation() < maxPeople) {
-            city.setPopulation(city.getPopulation() + 1);
-        } else if(((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation()) && city.getPopulation() > 0) {
-            city.setPopulation(city.getPopulation() - 1);
+            if (city.getSatisfaction() >= 60 && Math.random() < 0.01 && city.getPopulation() < maxPeople) {
+                city.setPopulation(city.getPopulation() + 1);
+            } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation()) && city.getPopulation() > 0) {
+                city.setPopulation(city.getPopulation() - 1);
+            }
         }
 
         if(city.getPopulation() < 5)
             city.setPopulation(5);
-
-        if(city.getPlayer().isComputer() || city.getType().getId() == 4)
-            city.setSatisfaction(100);
     }
 
     public void processProduction(City city) {

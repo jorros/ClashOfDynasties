@@ -30,6 +30,8 @@ public class Player {
     private boolean computer;
     private boolean activated;
 
+    private Statistic statistic;
+
     public ObjectId getId() {
         return id;
     }
@@ -116,6 +118,14 @@ public class Player {
 
     public void setLastScrollY(int lastScrollY) {
         this.lastScrollY = lastScrollY;
+    }
+
+    public Statistic getStatistic() {
+        return statistic;
+    }
+
+    public void setStatistic(Statistic statistic) {
+        this.statistic = statistic;
     }
 
     public boolean equals(Object other) {

@@ -7,21 +7,20 @@
         <thead>
             <th>Platz</th>
             <th>Spieler</th>
-            <th>Haus</th>
             <th>Wirtschaft</th>
             <th>Militär</th>
             <th>Demografie</th>
             <th>Gesamt</th>
         </thead>
         <tbody>
-        <c:forEach items="${ranking}" var="position" varStatus="stat">
+        <c:forEach items="${players}" var="rankedPlayer">
             <tr>
-                <td <c:if test="${player == players[position]}">class="green"</c:if>>${stat.count}</td>
-                <td <c:if test="${player == players[position]}">class="green"</c:if>>${players[position].name}</td>
-                <td <c:if test="${highestEconomy == position}">class="green"</c:if>>${economy[position]}</td>
-                <td <c:if test="${highestMilitary == position}">class="green"</c:if>>${military[position]}</td>
-                <td <c:if test="${highestDemography == position}">class="green"</c:if>>${demography[position]}</td>
-                <td>${total[position]}</td>
+                <td <c:if test="${player == rankedPlayer}">class="green"</c:if>>${rankedPlayer.statistic.rank}</td>
+                <td <c:if test="${player == rankedPlayer}">class="green"</c:if>>${rankedPlayer.name}</td>
+                <td <c:if test="${maxEconomy == rankedPlayer}">class="green"</c:if>>${rankedPlayer.statistic.economy}</td>
+                <td <c:if test="${maxMilitary == rankedPlayer}">class="green"</c:if>>${rankedPlayer.statistic.military}</td>
+                <td <c:if test="${maxDemography == rankedPlayer}">class="green"</c:if>>${rankedPlayer.statistic.demography}</td>
+                <td <c:if test="${rankedPlayer.statistic.rank == 1}">class="green"</c:if>>${rankedPlayer.statistic.total}</td>
             </tr>
         </c:forEach>
         </tbody>

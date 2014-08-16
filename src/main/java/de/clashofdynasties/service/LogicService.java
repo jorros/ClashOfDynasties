@@ -1,6 +1,7 @@
 package de.clashofdynasties.service;
 
 import de.clashofdynasties.logic.CityLogic;
+import de.clashofdynasties.logic.PlayerLogic;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,16 +18,23 @@ public class LogicService {
     private CityLogic cityLogic;
 
     @Autowired
+    private PlayerLogic playerLogic;
+
+    @Autowired
     private CityRepository cityRepository;
+
+    @Autowired
+    private PlayerRepository playerRepository;
+
+    private long tick = 599;
 
     @Scheduled(fixedDelay = 1000)
     public void Worker() {
         try {
             processCities();
-            processRanking();
+            processPlayer();
             processFormations();
             processCaravans();
-            processDiplomacy();
             processWar();
         }
         catch(Exception ex) {
@@ -48,8 +56,18 @@ public class LogicService {
         }
     }
 
-    private void processRanking() {
+    private void processPlayer() {
+        List<Player> players = playerRepository.findAll();
+        tick++;
 
+        if(tick == 600) {
+        for(Player player : players) {
+                playerLogic.processStatistics(player);
+                playerRepository.save(player);
+            }
+            tick = 0;
+            playerLogic.processRanking();
+        }
     }
 
     private void processFormations() {
@@ -57,10 +75,6 @@ public class LogicService {
     }
 
     private void processCaravans() {
-
-    }
-
-    private void processDiplomacy() {
 
     }
 
