@@ -1,6 +1,8 @@
 package de.clashofdynasties.game;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.logic.CityLogic;
+import de.clashofdynasties.logic.PlayerLogic;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import org.bson.types.ObjectId;
@@ -10,7 +12,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,46 +22,49 @@ import java.util.Map;
 @RequestMapping("/game/cities")
 public class CityController {
     @Autowired
-    CityRepository cityRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    BuildingBlueprintRepository buildingBlueprintRepository;
+    private BuildingBlueprintRepository buildingBlueprintRepository;
 
     @Autowired
-    UnitBlueprintRepository unitBlueprintRepository;
+    private UnitBlueprintRepository unitBlueprintRepository;
 
     @Autowired
-    PlayerRepository playerRepository;
+    private PlayerRepository playerRepository;
 
     @Autowired
-    NationRepository nationRepository;
+    private NationRepository nationRepository;
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     @Autowired
-    FormationRepository formationRepository;
+    private FormationRepository formationRepository;
 
     @Autowired
-    UnitRepository unitRepository;
+    private UnitRepository unitRepository;
 
     @Autowired
-    ItemTypeRepository itemTypeRepository;
+    private ItemTypeRepository itemTypeRepository;
 
     @Autowired
-    CityTypeRepository cityTypeRepository;
+    private CityTypeRepository cityTypeRepository;
 
     @Autowired
-    ResourceRepository resourceRepository;
+    private ResourceRepository resourceRepository;
 
     @Autowired
-    BiomeRepository biomeRepository;
+    private BiomeRepository biomeRepository;
 
     @Autowired
-    RelationRepository relationRepository;
+    private RelationRepository relationRepository;
 
     @Autowired
-    RoadRepository roadRepository;
+    private RoadRepository roadRepository;
+
+    @Autowired
+    private PlayerLogic playerLogic;
 
     @RequestMapping(method = RequestMethod.GET)
     public
@@ -70,13 +74,13 @@ public class CityController {
 
         List<City> cities = cityRepository.findAll();
         List<Formation> formations = formationRepository.findAll();
-        HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
+        HashMap<String, ObjectNode> data = new HashMap<>();
 
         for (City city : cities) {
             for (Formation formation : formations) {
                 if (formation.getRoute() == null && formation.getLastCity().equals(city)) {
                     if (city.getFormations() == null)
-                        city.setFormations(new ArrayList<Formation>());
+                        city.setFormations(new ArrayList<>());
 
                     city.getFormations().add(formation);
                 }
@@ -93,56 +97,29 @@ public class CityController {
                     city.setDiplomacy(relation.getRelation());
             }
 
-            // Sicht
-            if(city.getDiplomacy() >= 3)
-                city.setVisible(true);
-            else {
-                city.setVisible(isVisible(city, player, city.getType().getId()));
-            }
-
-            data.put(city.getId().toHexString(), city.toJSON(editor, timestamp));
+            data.put(city.getId().toHexString(), city.toJSON(editor, timestamp, player));
         }
 
         return data;
     }
 
-    private boolean isVisible(City city, Player player, int level) {
-        boolean visible = false;
-
-        for (Road r : roadRepository.findByCity(city.getId())) {
-            if(r.getPoint1().getPlayer().equals(player) || r.getPoint2().getPlayer().equals(player))
-                visible = true;
-            else if(level > 1) {
-                if(r.getPoint1().equals(city))
-                    visible = isVisible(r.getPoint2(), player, level - 1);
-                else
-                    visible = isVisible(r.getPoint1(), player, level - 1);
-            }
-
-            if(visible)
-                break;
-        }
-
-        return visible;
-    }
-
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void remove(Principal principal, @PathVariable("city") ObjectId id) {
+    public void remove(@PathVariable("city") ObjectId id) {
         cityRepository.delete(id);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
-    public void create(HttpServletRequest request, Principal principal, @RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
+    public void create(@RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
         City city = new City();
         city.setName("Neu Stadt");
         city.setCapacity(0);
         city.setHealth(100);
         city.setBiome(biomeRepository.findOne(1));
-        city.setPlayer(playerRepository.findAll().stream().filter(p -> p.isComputer()).findFirst().get());
+        city.setPlayer(playerRepository.findAll().stream().filter(Player::isComputer).findFirst().get());
         city.setX(x);
         city.setY(y);
         city.setType(cityTypeRepository.findOne(1));
@@ -174,7 +151,7 @@ public class CityController {
         city.updateTimestamp();
 
         cityRepository.save(city);
-        save(request, principal, city.getId(), name, type, capacity, resource, biome, player);
+        save(city.getId(), name, type, capacity, resource, biome, player);
     }
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.PUT)
@@ -248,7 +225,8 @@ public class CityController {
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(HttpServletRequest request, Principal principal, @PathVariable("city") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
+    @Secured("ROLE_ADMIN")
+    public void save(@PathVariable("city") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
         City city = cityRepository.findOne(id);
 
         if (city == null)
@@ -257,20 +235,30 @@ public class CityController {
         if (name != null)
             city.setName(name);
 
-        if (capacity != null && request.isUserInRole("ROLE_ADMIN"))
+        if (capacity != null)
             city.setCapacity(capacity);
 
-        if (resource != null && request.isUserInRole("ROLE_ADMIN"))
+        if (resource != null)
             city.setResource(resourceRepository.findOne(resource));
 
-        if (biome != null && request.isUserInRole("ROLE_ADMIN"))
+        if (biome != null)
             city.setBiome(biomeRepository.findOne(biome));
 
-        if (player != null && request.isUserInRole("ROLE_ADMIN"))
-            city.setPlayer(playerRepository.findOne(player));
+        if (player != null) {
+            Player newPlayer = playerRepository.findOne(player);
+            if(!city.getPlayer().isComputer())
+                playerLogic.updateFOW(city.getPlayer());
+            if(!newPlayer.isComputer() && !city.getPlayer().equals(newPlayer))
+                playerLogic.updateFOW(newPlayer);
 
-        if (type != null && city.getType().getId() != type && request.isUserInRole("ROLE_ADMIN"))
+            city.setPlayer(newPlayer);
+        }
+
+        if (type != null && city.getType().getId() != type) {
             city.setType(cityTypeRepository.findOne(type));
+            if(!city.getPlayer().isComputer())
+                playerLogic.updateFOW(city.getPlayer());
+        }
 
         city.updateTimestamp();
 

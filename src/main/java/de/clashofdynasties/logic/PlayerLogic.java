@@ -1,13 +1,12 @@
 package de.clashofdynasties.logic;
 
 import de.clashofdynasties.models.*;
-import de.clashofdynasties.repository.CaravanRepository;
-import de.clashofdynasties.repository.CityRepository;
-import de.clashofdynasties.repository.FormationRepository;
-import de.clashofdynasties.repository.PlayerRepository;
+import de.clashofdynasties.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,6 +23,12 @@ public class PlayerLogic {
 
     @Autowired
     private FormationRepository formationRepository;
+
+    @Autowired
+    private RoadRepository roadRepository;
+
+    @Autowired
+    private RelationRepository relationRepository;
 
     public void processStatistics(Player player) {
         Statistic stat = player.getStatistic();
@@ -79,5 +84,52 @@ public class PlayerLogic {
         }
 
         playerRepository.save(ranking);
+    }
+
+    @PostConstruct
+    public void init() {
+        List<Player> players = playerRepository.findAll();
+        players.removeIf(Player :: isComputer);
+
+        players.forEach(p -> updateFOW(p));
+    }
+
+    public void updateFOW(Player player) {
+        List<City> cities = cities = cityRepository.findAll();
+        cities.stream().filter(c -> c.getVisibility() == null).forEach(c -> c.setVisibility(new ArrayList<>()));
+        cities.forEach(c -> c.getVisibility().removeIf(p -> p.equals(player)));
+
+        for(City city : cities) {
+            if(city.getPlayer().equals(player))
+                setVisible(city, city.getType().getId(), cities, player);
+            else {
+                Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
+
+                if(relation != null && relation.getRelation() >= 2) {
+                    setVisible(city, city.getType().getId(), cities, player);
+                }
+            }
+        }
+
+        cityRepository.save(cities);
+    }
+
+    private void setVisible(City city, int level, List<City> cities, Player player) {
+        city.getVisibility().add(player);
+
+        for (Road r : roadRepository.findByCity(city.getId())) {
+            City other;
+
+            if(r.getPoint1().equals(city))
+                other = cities.get(cities.indexOf(r.getPoint2()));
+            else
+                other = cities.get(cities.indexOf(r.getPoint1()));
+
+            if(!other.getVisibility().contains(player)) {
+                other.getVisibility().add(player);
+                if(level > 1)
+                    setVisible(other, level - 1, cities, player);
+            }
+        }
     }
 }

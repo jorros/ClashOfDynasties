@@ -65,12 +65,12 @@ public class City {
 
     private Map<Integer, Double> items;
 
-    @Transient
-    private boolean visible;
-
     private boolean sightUpdate;
 
     private long timestamp;
+
+    @DBRef
+    private List<Player> visibility;
 
     public City() {
         units = new ArrayList<>();
@@ -355,12 +355,12 @@ public class City {
         return defence;
     }
 
-    public boolean isVisible() {
-        return visible;
+    public List<Player> getVisibility() {
+        return visibility;
     }
 
-    public void setVisible(boolean visible) {
-        this.visible = visible;
+    public void setVisibility(List<Player> visibility) {
+        this.visibility = visibility;
     }
 
     public boolean isSightUpdate() {
@@ -371,7 +371,7 @@ public class City {
         this.sightUpdate = sightUpdate;
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp) {
+    public ObjectNode toJSON(boolean editor, long timestamp, Player player) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
@@ -379,9 +379,9 @@ public class City {
             node.put("x", getX());
             node.put("y", getY());
             node.put("type", getType().getId());
-            node.put("visible", isVisible());
+            node.put("visible", visibility.contains(player));
 
-            if(isVisible() || editor) {
+            if(visibility.contains(player) || editor) {
                 node.put("diplomacy", getDiplomacy());
                 node.put("name", getName());
                 node.put("nn", false);
