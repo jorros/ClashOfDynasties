@@ -1,5 +1,6 @@
 package de.clashofdynasties.game;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
@@ -79,9 +80,14 @@ public class FormationController {
         City city = cityRepository.findOne(target);
 
         Route route = routing.calculateRoute(formation, city, player);
-        route.setTime(routing.calculateTime(formation, route));
 
-        return route.toJSON();
+        if(route != null) {
+            route.setTime(routing.calculateTime(formation, route));
+
+            return route.toJSON();
+        }
+        else
+            return JsonNodeFactory.instance.objectNode();
     }
 
     @RequestMapping(value = "/{formation}/move", method = RequestMethod.GET)

@@ -239,7 +239,7 @@ function cityEntity() {
                 else if (!Editor && isCaravanSelected && Selected._cid != this._cid) {
                     tempRoute = "";
                     $.getJSON("game/caravans/route", { "point1": Selected._cid, "point2": this._cid }, function (data) {
-                        if (data != undefined) {
+                        if (data != undefined && !$.isEmptyObject(data)) {
                             isCalculatedRoute = true;
                             tempRoute = data.roads;
                             tempTime = data.time;

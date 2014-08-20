@@ -66,7 +66,7 @@ public class RoutingService {
                             return isBorder && !isCaravan;
 
                         case 1:
-                            return false;
+                            return (other.isComputer() && isBorder && !isCaravan);
 
                         case 2:
                             return isCaravan;
@@ -76,7 +76,7 @@ public class RoutingService {
                     }
                 }
                 else
-                    return false;
+                    return (other.isComputer() && isBorder && !isCaravan);
             }
 
             return false;

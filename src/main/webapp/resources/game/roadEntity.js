@@ -43,19 +43,21 @@ function roadEntity() {
         },
 
         temp: function (formation, city) {
-            this.x1 = Formations[formation].x;
-            this.y1 = Formations[formation].y;
-            this.x2 = Cities[city].x;
-            this.y2 = Cities[city].y;
+            if(city != undefined) {
+                this.x1 = Formations[formation].x;
+                this.y1 = Formations[formation].y;
+                this.x2 = Cities[city].x;
+                this.y2 = Cities[city].y;
 
-            this.x = Math.min(this.x1, this.x2);
-            this.y = Math.min(this.y1, this.y2);
-            this.w = Math.max(this.x1, this.x2) - Math.min(this.x1, this.x2);
-            this.h = Math.max(this.y1, this.y2) - Math.min(this.y1, this.y2);
-            this.z = 10;
+                this.x = Math.min(this.x1, this.x2);
+                this.y = Math.min(this.y1, this.y2);
+                this.w = Math.max(this.x1, this.x2) - Math.min(this.x1, this.x2);
+                this.h = Math.max(this.y1, this.y2) - Math.min(this.y1, this.y2);
+                this.z = 10;
 
-            this.marked = true;
-            this.ready = true;
+                this.marked = true;
+                this.ready = true;
+            }
 
             return this;
         },
