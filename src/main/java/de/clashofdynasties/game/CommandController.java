@@ -1,6 +1,9 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.models.*;
+import de.clashofdynasties.models.Caravan;
+import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Formation;
+import de.clashofdynasties.models.Player;
 import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.RoutingService;
 import org.bson.types.ObjectId;

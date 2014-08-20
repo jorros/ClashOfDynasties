@@ -1,6 +1,8 @@
 package de.clashofdynasties.jsp;
 
-import de.clashofdynasties.models.*;
+import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Item;
+import de.clashofdynasties.models.Player;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
