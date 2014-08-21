@@ -75,7 +75,7 @@ function closeControl() {
 }
 
 function updateTimestamp() {
-    $.get("/game/menus/timestamp", function (data) {
+    return $.get("/game/menus/timestamp", function (data) {
         lastUpdate = data;
     });
 }
@@ -89,6 +89,34 @@ function sendDelete (url, data, callback) {
         if (callback != undefined)
             callback(data);
     }});
+}
+
+function loadGame(callback) {
+    $.when(loadTop(true), updateCities(true), updateFormations(true), updateCaravans(true), updateTimestamp(true)).done(function() {
+        if(callback != undefined) {
+            callback();
+        }
+    });
+}
+
+function updateGame() {
+    loadTop();
+    updateCities();
+    updateFormations();
+    updateCaravans();
+    updateTimestamp();
+
+    if(currentMenuRefresh && currentMenu != undefined && !stopMenuUpdate)
+        openMenu(currentMenu);
+
+    if(currentCommand != undefined)
+        openCommand(currentCommand);
+}
+
+function forceUpdate() {
+    window.clearInterval(timeoutID);
+    updateGame();
+    timeoutID = window.setInterval(updateGame, 5000);
 }
 
 (function ($) {

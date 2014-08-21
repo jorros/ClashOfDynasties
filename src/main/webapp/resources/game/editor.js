@@ -73,8 +73,6 @@ window.onload = function () {
             })
 
         // Initialisiere
-        cityEntity();
-        roadEntity();
         updateCities();
 
         $("#cr-stage").on("mousewheel", function(event) {

@@ -1,8 +1,8 @@
 var Cities = {};
 var CityEntities = {};
 
-function updateCities() {
-    $.getJSON("/game/cities", { timestamp: lastUpdate, editor: Editor }, function (data) {
+function updateCities(loadOnly) {
+    return $.getJSON("/game/cities", { timestamp: lastUpdate, editor: Editor }, function (data) {
         var tempCities = {};
 
         $.each(data, function (id, city) {
@@ -14,16 +14,21 @@ function updateCities() {
 
         Cities = tempCities;
 
-        $.each(data, function (id, city) {
-            if (CityEntities[id] == undefined)
-                CityEntities[id] = Crafty.e("City").city(id);
-        });
-
-        $.each(CityEntities, function (id, entity) {
-            entity.update();
-        });
-
-        if(Editor || $.isEmptyObject(Roads))
-            updateRoads();
+        if(loadOnly == undefined || !loadOnly)
+            updateCityEntities();
     });
+}
+
+function updateCityEntities() {
+    $.each(Cities, function (id, city) {
+        if (CityEntities[id] == undefined)
+            CityEntities[id] = Crafty.e("City").city(id);
+    });
+
+    $.each(CityEntities, function (id, entity) {
+        entity.update();
+    });
+
+    if(Editor || $.isEmptyObject(Roads))
+        updateRoads();
 }

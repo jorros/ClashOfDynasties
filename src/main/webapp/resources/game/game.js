@@ -3,6 +3,7 @@ var Selected = null;
 var isFormationSelected = false;
 var isCaravanSelected = false;
 var isCalculatedRoute = false;
+var timeoutID;
 
 var tempRoute = null;
 var tempRouteEntity = null;
@@ -10,20 +11,6 @@ var tempTime = 0;
 var routeShown = false;
 var lastUpdate = 0;
 var stopMenuUpdate = false;
-
-function updateGame() {
-    loadTop();
-    updateCities();
-    updateFormations();
-    updateCaravans();
-    updateTimestamp();
-
-    if(currentMenuRefresh && currentMenu != undefined && !stopMenuUpdate)
-        openMenu(currentMenu);
-
-    if(currentCommand != undefined)
-        openCommand(currentCommand);
-}
 
 window.onload = function () {
     Crafty.init();
@@ -36,7 +23,9 @@ window.onload = function () {
         var progress = Crafty.e("2D, DOM, Color").color("#FFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
 
         Crafty.load(Assets, function () {
-                Crafty.scene("main");
+                loadGame(function() {
+                    Crafty.scene("main");
+                });
             },
 
             function (e) {
@@ -103,12 +92,6 @@ window.onload = function () {
                 }
             })
 
-        // Initialisiere
-        cityEntity();
-        roadEntity();
-        formationEntity();
-        caravanEntity();
-
         $(document).powerTip({smartPlacement: true, followMouse: true, manual: true});
 
         $("#cr-stage").on("mousewheel", function(event) {
@@ -121,13 +104,12 @@ window.onload = function () {
                 Crafty.viewport.scale(0.5);
         });
 
-        // Update Callback
-        var updateCallback = function () {
-            updateGame();
+        updateCityEntities();
+        updateCaravanEntities();
+        updateFormationEntities();
 
-            window.setTimeout(updateCallback, 5000);
-        }
-        updateCallback();
+        // Update Callback
+        timeoutID = window.setInterval(updateGame, 5000);
 
         $.getJSON("/game/menus/scroll", function(data) {
             Crafty.viewport.x = data.x;

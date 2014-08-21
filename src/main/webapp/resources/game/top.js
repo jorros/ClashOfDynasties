@@ -1,5 +1,5 @@
 function loadTop() {
-    $.getJSON("/game/menus/top", { timestamp: lastUpdate, editor: Editor }, function (data) {
+    return $.getJSON("/game/menus/top", { timestamp: lastUpdate, editor: Editor }, function (data) {
         $("#globalCoins").text(data.coins);
         $("#globalBalance").text(data.balance);
 
