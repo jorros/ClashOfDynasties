@@ -1,10 +1,13 @@
 package de.clashofdynasties.service;
 
 import de.clashofdynasties.logic.CityLogic;
+import de.clashofdynasties.logic.FormationLogic;
 import de.clashofdynasties.logic.PlayerLogic;
 import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Formation;
 import de.clashofdynasties.models.Player;
 import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.FormationRepository;
 import de.clashofdynasties.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,6 +28,12 @@ public class LogicService {
 
     @Autowired
     private PlayerRepository playerRepository;
+
+    @Autowired
+    private FormationRepository formationRepository;
+
+    @Autowired
+    private FormationLogic formationLogic;
 
     private long tick = 599;
 
@@ -71,7 +80,13 @@ public class LogicService {
     }
 
     private void processFormations() {
+        List<Formation> formations = formationRepository.findAll();
 
+        for(Formation formation : formations) {
+            formationLogic.processMovement(formation);
+
+            formationRepository.save(formation);
+        }
     }
 
     private void processCaravans() {
