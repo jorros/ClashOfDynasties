@@ -15,8 +15,8 @@ public class Formation {
     @Id
     private ObjectId id;
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     @DBRef
     private Player player;
@@ -53,19 +53,19 @@ public class Formation {
         this.id = id;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
@@ -175,14 +175,14 @@ public class Formation {
         if (!isDeployed()) {
             City to = route.getNext();
 
-            int vecX = to.getX() - this.getX();
-            int vecY = to.getY() - this.getY();
+            double vecX = to.getX() - this.getX();
+            double vecY = to.getY() - this.getY();
             double distance = Math.sqrt(Math.pow(to.getX() - getX(), 2) + Math.pow(to.getY() - getY(), 2));
 
             double multiplier = pixel / distance;
 
-            setX(new Double(getX() + vecX * multiplier).intValue());
-            setY(new Double(getY() + vecY * multiplier).intValue());
+            setX(getX() + vecX * multiplier);
+            setY(getY() + vecY * multiplier);
         }
     }
 
@@ -198,8 +198,8 @@ public class Formation {
         ObjectNode node = factory.objectNode();
 
         if (getTimestamp() >= timestamp) {
-            node.put("x", getX());
-            node.put("y", getY());
+            node.put("x", Math.round(getX()));
+            node.put("y", Math.round(getY()));
             node.put("deployed", isDeployed());
             node.put("diplomacy", getDiplomacy());
             node.put("name", getName());

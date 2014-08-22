@@ -6,16 +6,14 @@ import de.clashofdynasties.repository.RoadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 @Service
 public class RoutingService {
     private PriorityQueue<Node> openList;
     private LinkedList<Node> closedList;
     private Node goal;
+    private boolean isFormation;
 
     @Autowired
     private RoadRepository roadRepository;
@@ -40,7 +38,7 @@ public class RoutingService {
             if (object instanceof City)
                 return ((City) object).getX();
             else if (object instanceof Formation)
-                return ((Formation) object).getX();
+                return (int)Math.round(((Formation) object).getX());
             else
                 return 0;
         }
@@ -49,7 +47,7 @@ public class RoutingService {
             if (object instanceof City)
                 return ((City) object).getY();
             else if (object instanceof Formation)
-                return ((Formation) object).getY();
+                return (int)Math.round(((Formation) object).getY());
             else
                 return 0;
         }
@@ -57,6 +55,9 @@ public class RoutingService {
         public boolean isNegotiable(Player player, boolean isBorder, boolean isCaravan) {
             if(object instanceof City) {
                 Player other = ((City)object).getPlayer();
+
+                if(player.equals(other))
+                    return true;
 
                 Relation relation = relationRepository.findByPlayers(player.getId(), other.getId());
 
@@ -155,7 +156,7 @@ public class RoutingService {
         return Math.sqrt(Math.pow(a.getX() - b.getX(), 2) + Math.pow(a.getY() - b.getY(), 2)) * factor;
     }
 
-    private void expandNode(Node current, Player player, boolean isCaravan) {
+    private void expandNode(Node current, Player player, boolean isCaravan, boolean isCurrentCity) {
         List<Node> neighbours = current.getNeighbours();
         for (Node n : neighbours) {
             if (closedList.contains(n))
@@ -168,7 +169,7 @@ public class RoutingService {
 
             boolean isBorder = player.equals(current.getPlayer());
 
-            if(!n.isNegotiable(player, isBorder, isCaravan))
+            if(!n.isNegotiable(player, isBorder, isCaravan) && !isCurrentCity)
                 continue;
 
             n.parent = current;
@@ -211,6 +212,10 @@ public class RoutingService {
                 break;
         }
 
+        Collections.reverse(roads);
+        if(isFormation && roads.size() > 0)
+            roads.remove(0);
+
         route.setTarget((City) goal.getObject());
         route.setRoads(roads);
 
@@ -221,8 +226,14 @@ public class RoutingService {
         openList = new PriorityQueue<Node>();
         closedList = new LinkedList<Node>();
         goal = null;
+        isFormation = true;
 
-        Node from = new Node(formation);
+        Node from;
+        if(formation.isDeployed())
+            from = new Node(formation.getLastCity());
+        else
+            from = new Node(formation);
+
         goal = new Node(city);
 
         openList.offer(from);
@@ -236,10 +247,10 @@ public class RoutingService {
                     return createRoute(currentNode);
 
                 closedList.add(currentNode);
-                expandNode(currentNode, player, false);
+                expandNode(currentNode, player, false, formation.getLastCity().equals(currC));
             } else if (currentNode.getObject() instanceof Formation) {
                 closedList.add(currentNode);
-                expandNode(currentNode, player, false);
+                expandNode(currentNode, player, false, false);
             }
         }
 
@@ -250,6 +261,7 @@ public class RoutingService {
         openList = new PriorityQueue<Node>();
         closedList = new LinkedList<Node>();
         goal = null;
+        isFormation = false;
 
         Node from = new Node(start);
         goal = new Node(end);
@@ -265,7 +277,7 @@ public class RoutingService {
                     return createRoute(currentNode);
 
                 closedList.add(currentNode);
-                expandNode(currentNode, player, true);
+                expandNode(currentNode, player, true, false);
             }
         }
 
