@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${formation.deployed && player.id == formation.player.id && formation.lastCity.player.id == player.id }">
-<button onclick="openMenu('formation?formation=${formation.id}, false')"><img src="assets/setFormation.png" /></button>
+<button onclick="openMenu('formation?formation=${formation.id}', false)"><img src="assets/setFormation.png" /></button>
 <button onclick="if(window.confirm('Bist du dir sicher?')) { $.delete('game/formations/${formation.id}'); deselect(); }"><img src="assets/removeCaravan.png" /></button>
 </c:if>
 <c:if test="${!formation.deployed || player.id != formation.player.id || formation.lastCity.player.id != player.id }">
