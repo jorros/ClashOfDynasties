@@ -36,8 +36,8 @@ public class FormationLogic {
             } else {
                 double multiplier = formation.getSpeed() / distance;
 
-                formation.setX(formation.getX() + vecX * multiplier);
-                formation.setY(formation.getY() + vecY * multiplier);
+                formation.setX(formation.getX() + (vecX * multiplier * formation.getCurrentRoad().getWeight()));
+                formation.setY(formation.getY() + (vecY * multiplier * formation.getCurrentRoad().getWeight()));
             }
 
             formation.updateTimestamp();
