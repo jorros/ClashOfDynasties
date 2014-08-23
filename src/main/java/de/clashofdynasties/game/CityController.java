@@ -107,6 +107,7 @@ public class CityController {
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
     public void remove(@PathVariable("city") ObjectId id) {
+        roadRepository.delete(roadRepository.findByCity(id));
         cityRepository.delete(id);
     }
 
