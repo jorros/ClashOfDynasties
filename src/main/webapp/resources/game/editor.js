@@ -2,13 +2,9 @@ var Editor = true;
 var SelectionMode = 0;
 var Selected = null;
 var SelectedWay = null;
+var timeoutID;
 
 var lastUpdate = 0;
-
-function updateGame() {
-    updateCities();
-    updateTimestamp();
-}
 
 window.onload = function () {
     Crafty.init();
@@ -23,7 +19,9 @@ window.onload = function () {
         }).text("Laden (" + 0 + "%)").textColor("#FFF", 1);
 
         Crafty.load(Assets, function () {
-                Crafty.scene("main");
+                loadGame(function() {
+                    Crafty.scene("main");
+                });
             },
 
             function (e) {
@@ -67,13 +65,14 @@ window.onload = function () {
                     closeMenu();
 
                     if (SelectionMode == 1) {
-                        $.post("/game/cities", { x: e.realX + 30, y: e.realY + 30});
+                        $.post("/game/cities", { x: e.realX + 30, y: e.realY + 30}, function() {
+                            forceUpdate();
+                        });
                     }
+                } else {
+                    $.put("/game/menus/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
                 }
             })
-
-        // Initialisiere
-        updateCities();
 
         $("#cr-stage").on("mousewheel", function(event) {
             var calcScale = Crafty.viewport._scale + (event.deltaY / 10);
@@ -85,13 +84,14 @@ window.onload = function () {
                 Crafty.viewport.scale(0.5);
         });
 
-        // Update Callback
-        var updateCallback = function () {
-            updateGame();
+        updateCityEntities();
 
-            window.setTimeout(updateCallback, 5000);
-        }
-        window.setTimeout(updateCallback, 5000);
+        timeoutID = window.setInterval(updateGame, 5000);
+
+        $.getJSON("/game/menus/scroll", function(data) {
+            Crafty.viewport.x = data.x;
+            Crafty.viewport.y = data.y;
+        });
     });
 
     Crafty.scene("loading");

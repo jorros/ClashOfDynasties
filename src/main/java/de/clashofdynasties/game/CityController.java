@@ -115,7 +115,7 @@ public class CityController {
     @Secured("ROLE_ADMIN")
     public void create(@RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
         City city = new City();
-        city.setName("Neu Stadt");
+        city.setName("Neue Stadt");
         city.setCapacity(0);
         city.setHealth(100);
         city.setBiome(biomeRepository.findOne(1));

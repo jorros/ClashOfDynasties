@@ -92,25 +92,38 @@ function sendDelete (url, data, callback) {
 }
 
 function loadGame(callback) {
-    $.when(loadTop(true), updateCities(true), updateFormations(true), updateCaravans(true), updateTimestamp(true)).done(function() {
-        if(callback != undefined) {
-            callback();
-        }
-    });
+    if(!Editor) {
+        $.when(loadTop(true), updateCities(true), updateFormations(true), updateCaravans(true), updateTimestamp(true)).done(function () {
+            if (callback != undefined) {
+                callback();
+            }
+        });
+    } else {
+        $.when(updateCities(true), updateTimestamp(true)).done(function () {
+            if (callback != undefined) {
+                callback();
+            }
+        });
+    }
 }
 
 function updateGame() {
-    loadTop();
-    updateCities();
-    updateFormations();
-    updateCaravans();
-    updateTimestamp();
+    if(!Editor) {
+        loadTop();
+        updateCities();
+        updateFormations();
+        updateCaravans();
+        updateTimestamp();
 
-    if(currentMenuRefresh && currentMenu != undefined && !stopMenuUpdate)
-        openMenu(currentMenu);
+        if (currentMenuRefresh && currentMenu != undefined && !stopMenuUpdate)
+            openMenu(currentMenu);
 
-    if(currentCommand != undefined)
-        openCommand(currentCommand);
+        if (currentCommand != undefined)
+            openCommand(currentCommand);
+    } else {
+        updateCities();
+        updateTimestamp();
+    }
 }
 
 function forceUpdate() {

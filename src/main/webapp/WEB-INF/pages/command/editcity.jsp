@@ -33,6 +33,6 @@
         <td><select id="player"><c:forEach items="${players}" var="player"><option <c:if test="${player == city.player}">selected</c:if> value="${player.id}">${player.name}</option></c:forEach></select></td>
     </tr>
     <tr>
-        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val(), biome: $('#biome').val(), player: $('#player').val() });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}')">Entfernen</button></td>
+        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val(), biome: $('#biome').val(), player: $('#player').val() }, function() { forceUpdate(); });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}', function() { forceUpdate(); })">Entfernen</button></td>
     </tr>
 </table>

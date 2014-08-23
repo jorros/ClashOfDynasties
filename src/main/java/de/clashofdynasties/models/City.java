@@ -79,6 +79,7 @@ public class City {
         requiredItemTypes = new ArrayList<>();
         stopConsumption = new ArrayList<>();
         formations = new ArrayList<>();
+        visibility = new ArrayList<>();
     }
 
     public ObjectId getId() {

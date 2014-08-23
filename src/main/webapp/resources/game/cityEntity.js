@@ -62,6 +62,7 @@ Crafty.c("City", {
             $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'editcity?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
             $(this._infoEntity._element).append('<div style="float:right; height:35px; width:40px;"><img id="' + this._cid + '_resource" src="assets/resources/' + Cities[this._cid].resource + '.png" style="margin-right:7px; margin-top:3px;" /></div>');
             $(this._infoEntity._element).append('<span id="' + this._cid + '_capacity" style="float:left; margin-left:10px; font-size:22px">' + Cities[this._cid].capacity + '</span>');
+            this._formationsInfoEntity.css("display", "none");
         }
         else {
             $(this._infoEntity._element).html('<span id="' + this._cid + '_name" onclick="openCommand(\'city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\')" style="cursor:pointer; line-height: 18px">' + Cities[this._cid].name + '</span>');
@@ -137,15 +138,21 @@ Crafty.c("City", {
                 $(this._formationsInfoEntity._element).hide();
         }
 
-        var test = $("#" + this._cid + "_name").width() + 50 + $("#" + this._cid + "_defence").width() + $("#" + this._cid + "_people").width();
+        var infoWidth = 0;
 
-        if($("#" + this._cid + "_build").is(":visible"))
-            test += $("#" + this._cid + "_build").width();
+        if(Editor) {
+            infoWidth = $("#" + this._cid + "_name").width() + 50 + $("#" + this._cid + "_capacity").width() + $("#" + this._cid + "_resource").width();
+        } else {
+            infoWidth = $("#" + this._cid + "_name").width() + 50 + $("#" + this._cid + "_defence").width() + $("#" + this._cid + "_people").width();
 
-        if($("#" + this._cid + "_satisfaction").is(":visible"))
-            test += $("#" + this._cid + "_satisfaction").width();
+            if ($("#" + this._cid + "_build").is(":visible"))
+                infoWidth += $("#" + this._cid + "_build").width();
 
-        this._infoEntity.w = test;
+            if ($("#" + this._cid + "_satisfaction").is(":visible"))
+                infoWidth += $("#" + this._cid + "_satisfaction").width();
+        }
+
+        this._infoEntity.w = infoWidth;
         this._infoEntity.x = Cities[this._cid].x - this._infoEntity._w / 2;
     },
 
