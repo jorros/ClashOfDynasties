@@ -1,11 +1,14 @@
 package de.clashofdynasties.service;
 
+import de.clashofdynasties.logic.CaravanLogic;
 import de.clashofdynasties.logic.CityLogic;
 import de.clashofdynasties.logic.FormationLogic;
 import de.clashofdynasties.logic.PlayerLogic;
+import de.clashofdynasties.models.Caravan;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
 import de.clashofdynasties.models.Player;
+import de.clashofdynasties.repository.CaravanRepository;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.FormationRepository;
 import de.clashofdynasties.repository.PlayerRepository;
@@ -34,6 +37,12 @@ public class LogicService {
 
     @Autowired
     private FormationLogic formationLogic;
+
+    @Autowired
+    private CaravanRepository caravanRepository;
+
+    @Autowired
+    private CaravanLogic caravanLogic;
 
     private long tick = 599;
 
@@ -90,7 +99,13 @@ public class LogicService {
     }
 
     private void processCaravans() {
+        List<Caravan> caravans = caravanRepository.findAll();
 
+        for(Caravan caravan : caravans) {
+            caravanLogic.processMovement(caravan);
+
+            caravanRepository.save(caravan);
+        }
     }
 
     private void processWar() {

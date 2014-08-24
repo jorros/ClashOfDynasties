@@ -223,6 +223,7 @@ public class MenuController {
         }
 
         map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("player", player);
 
         return "menu/caravan";
     }

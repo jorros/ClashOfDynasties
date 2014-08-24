@@ -272,6 +272,10 @@ public class City {
         return getItems().get(id);
     }
 
+    public void setStoredItem(int id, double amount) {
+        getItems().put(id, amount);
+    }
+
     public List<Item> getStopConsumption() {
         return stopConsumption;
     }

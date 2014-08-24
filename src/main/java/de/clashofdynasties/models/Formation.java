@@ -40,9 +40,6 @@ public class Formation {
     @Transient
     private int diplomacy;
 
-    @DBRef
-    private Road currentRoad;
-
     private long timestamp;
 
     public ObjectId getId() {

@@ -4,12 +4,12 @@ Crafty.c("Caravan", {
 
     _buildInfo: function () {
         this._textEntity = Crafty.e("2D, DOM, Text").attr({
-            x: this._x,
-            y: this._y - 40,
+            x: this._x - 80,
+            y: this._y - 30,
             w: 220,
             h: 35,
             z: 11
-        }).textFont({ size: "24px", family: "Philosopher-Regular" }).unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
+        }).textFont({ size: "24px", family: "Philosopher-Regular" }).unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000", "textAlign": "center"});
 
         this.attach(this._textEntity);
     },
@@ -84,6 +84,8 @@ Crafty.c("Caravan", {
         else {
             this.x = Math.round(Caravans[this._cid].x - this._w / 2);
             this.y = Math.round(Caravans[this._cid].y - this._h / 2);
+
+            this.image("assets/Caravan" + Caravans[this._cid].direction + ".png");
 
             this._updateDiplomacy();
             this._updateInfo();

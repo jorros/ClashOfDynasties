@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="cod" uri="/WEB-INF/clashofdynasties.tld" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <h1>${caravan.name}</h1>
 <div id="content" style="overflow:hidden;">
@@ -13,9 +15,8 @@
                 <hr>
                 <div style="height:250px; overflow-y:auto; clear:both;">
                     <c:forEach items="${items}" var="item">
-                    <img src="assets/items/${item.id}.png" style="float:left; margin-right:5px;" />
-                    <span style="color:#FFF; font-weight:bold;"><c:out value="${point1.items[item]}" default="0" />t ${item.name} (${item.type.name})</span><br><span class="green">+4</span><c:if test="${point1.requiredItemTypes.contains(item.type)}"> (<span class="green">10</span>/<span class="red">6</span>)</c:if><br>
-                    <a style="font-weight:bold; cursor:pointer;" onclick="selectItem(1, ${item.id}, '${item.type.name}', '${item.name}')">Auswählen</a>
+                        <cod:CaravanItem player="${player}" item="${item}" city="${point1}"/>
+                        <a style="font-weight:bold; cursor:pointer;" onclick="selectItem(1, ${item.id}, '${item.type.name}', '${item.name}')">Auswählen</a>
                     <br><br>
                     </c:forEach>
                 </div>
@@ -32,8 +33,7 @@
                 <hr>
                 <div style="height:250px; overflow-y:auto; clear:both;">
                     <c:forEach items="${items}" var="item">
-                        <img src="assets/items/${item.id}.png" style="float:left; margin-right:5px;" />
-                        <span style="color:#FFF; font-weight:bold;"><c:out value="${point2.items[item]}" default="0" />t ${item.name} (${item.type.name})</span><br><span class="green">+4</span><c:if test="${point2.requiredItemTypes.contains(item.type)}"> (<span class="green">10</span>/<span class="red">6</span>)</c:if><br>
+                        <cod:CaravanItem player="${player}" item="${item}" city="${point2}"/>
                         <a style="font-weight:bold; cursor:pointer;" onclick="selectItem(2, ${item.id}, '${item.type.name}', '${item.name}')">Auswählen</a>
                         <br><br>
                     </c:forEach>
@@ -47,12 +47,12 @@
             <div style="height:310px; overflow-y:auto; overflow-x:hidden;">
                 <c:if test="${caravan.point1StoreItem != null && caravan.point1Store > 0}">
                 <img src="assets/items/<c:out value="${caravan.point1StoreItem.id}" default="0" />.png" style="float:left; margin-right:5px;" />
-                <span style="color:#FFF; font-weight:bold;"><c:out value="${caravan.point1Store}" default="0" />t ${caravan.point1StoreItem.name} (${caravan.point1StoreItem.type.name})</span><br><span>Wird nach ${point2.name} transportiert</span>
+                <span style="color:#FFF; font-weight:bold;"><fmt:formatNumber value="${caravan.point1Store}" maxFractionDigits="0" />t ${caravan.point1StoreItem.name} (${caravan.point1StoreItem.type.name})</span><br><span>Wird nach ${point2.name} transportiert</span>
                 <br><br><br>
                 </c:if>
                 <c:if test="${caravan.point2StoreItem != null && caravan.point2Store > 0}">
                     <img src="assets/items/<c:out value="${caravan.point2StoreItem.id}" default="0" />.png" style="float:left; margin-right:5px;" />
-                    <span style="color:#FFF; font-weight:bold;"><c:out value="${caravan.point2Store}" default="0" />t ${caravan.point2StoreItem.name} (${caravan.point2StoreItem.type.name})</span><br><span>Wird nach ${point1.name} transportiert</span>
+                    <span style="color:#FFF; font-weight:bold;"><fmt:formatNumber value="${caravan.point2Store}" maxFractionDigits="0" />t ${caravan.point2StoreItem.name} (${caravan.point2StoreItem.type.name})</span><br><span>Wird nach ${point1.name} transportiert</span>
                     <br><br><br>
                 </c:if>
             </div>
@@ -64,7 +64,7 @@
     <div style="height:60px;">
         <label for="caravan_name">Name: </label>
         <input id="caravan_name" style="width:300px;" type="text" value="${caravan.name}" />
-        <button onclick="save()" style="float:right;"><c:if test="${caravan.id == ''}">Erstellen</c:if><c:if test="${caravan.id != ''}">Ändern</c:if></button>
+        <button onclick="save()" style="float:right;"><c:choose><c:when test="${empty caravan.id}">Erstellen</c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
         <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
     </div>
 </div>
@@ -81,20 +81,22 @@
             point1Load: point1Load,
             point2Item: point2Item,
             point2Load: point2Load,
-            point1: ${point1.id},
-            point2: ${point2.id}
+            point1: "${point1.id}",
+            point2: "${point2.id}"
         };
-        <c:if test="${caravan.id > 0}">
-        $.put("/game/caravans/${caravan.id}", data, function() {
-            closeMenu();
-        });
-        </c:if>
-        <c:if test="${caravan.id == 0}">
-        $.post("/game/caravans/", data, function() {
-            closeMenu();
-            updateGame();
-        });
-        </c:if>
+        <c:choose>
+            <c:when test="${not empty caravan.id}">
+            $.put("/game/caravans/${caravan.id}", data, function() {
+                closeMenu();
+            });
+            </c:when>
+            <c:otherwise>
+            $.post("/game/caravans/", data, function() {
+                closeMenu();
+                updateGame();
+            });
+            </c:otherwise>
+        </c:choose>
     }
 
     function selectItem(point, id, type, name) {

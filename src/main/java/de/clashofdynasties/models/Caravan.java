@@ -23,8 +23,8 @@ public class Caravan {
 
     private Route route;
 
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
     @Transient
     private int diplomacy;
@@ -38,7 +38,7 @@ public class Caravan {
 
     @DBRef
     Item point1StoreItem;
-    private int point1Store;
+    private double point1Store;
 
     @DBRef
     private Item point2Item;
@@ -46,11 +46,13 @@ public class Caravan {
 
     @DBRef
     Item point2StoreItem;
-    private int point2Store;
+    private double point2Store;
+
+    private int direction;
 
     private boolean terminate;
 
-    private boolean started;
+    private long timestamp;
 
     public ObjectId getId() {
         return id;
@@ -84,19 +86,19 @@ public class Caravan {
         this.route = route;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
@@ -116,11 +118,11 @@ public class Caravan {
         this.point1Item = point1Item;
     }
 
-    public int getPoint1Store() {
+    public double getPoint1Store() {
         return point1Store;
     }
 
-    public void setPoint1Store(int point1Store) {
+    public void setPoint1Store(double point1Store) {
         this.point1Store = point1Store;
     }
 
@@ -140,11 +142,11 @@ public class Caravan {
         this.point2Item = point2Item;
     }
 
-    public int getPoint2Store() {
+    public double getPoint2Store() {
         return point2Store;
     }
 
-    public void setPoint2Store(int point2Store) {
+    public void setPoint2Store(double point2Store) {
         this.point2Store = point2Store;
     }
 
@@ -172,6 +174,14 @@ public class Caravan {
         this.diplomacy = diplomacy;
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
     public boolean isTerminate() {
         return terminate;
     }
@@ -196,19 +206,23 @@ public class Caravan {
         this.point2StoreItem = point2StoreItem;
     }
 
-    public boolean isStarted() {
-        return started;
+    public long getTimestamp() {
+        return timestamp;
     }
 
-    public void setStarted(boolean started) {
-        this.started = started;
+    public void updateTimestamp() {
+        this.timestamp = System.currentTimeMillis();
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public void move(int pixel) {
         City to = route.getNext();
 
-        int vecX = to.getX() - this.getX();
-        int vecY = to.getY() - this.getY();
+        double vecX = to.getX() - this.getX();
+        double vecY = to.getY() - this.getY();
         double distance = Math.sqrt(Math.pow(to.getX() - getX(), 2) + Math.pow(to.getY() - getY(), 2));
 
         double multiplier = pixel / distance;
@@ -224,16 +238,19 @@ public class Caravan {
             return false;
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp) {
+    public ObjectNode toJSON(boolean editor, long timestamp, Player player) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        if(started) {
-            node.put("x", x);
-            node.put("y", y);
+        if(!editor && getPoint1().getVisibility().contains(player) && getPoint2().getVisibility().contains(player)) {
+            node.put("x", Math.round(getX()));
+            node.put("y", Math.round(getY()));
             node.put("diplomacy", getDiplomacy());
             node.put("name", getName());
-            node.put("route", getRoute().toJSON());
+            node.put("direction", getRoute().getNext().getX() - getX() < 0 ? "2" : "");
+
+            if (getTimestamp() >= timestamp)
+                node.put("route", getRoute().toJSON());
         }
 
         return node;
