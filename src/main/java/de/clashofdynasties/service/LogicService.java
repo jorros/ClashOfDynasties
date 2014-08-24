@@ -104,7 +104,10 @@ public class LogicService {
         for(Caravan caravan : caravans) {
             caravanLogic.processMovement(caravan);
 
-            caravanRepository.save(caravan);
+            if(caravan.isTerminate())
+                caravanRepository.delete(caravan);
+            else
+                caravanRepository.save(caravan);
         }
     }
 

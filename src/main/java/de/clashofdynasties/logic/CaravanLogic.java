@@ -48,6 +48,11 @@ public class CaravanLogic {
                     caravan.setPoint1Store(0);
                 }
 
+                if(caravan.isTerminate()) {
+                    cityRepository.save(city);
+                    return;
+                }
+
                 // Einladen
                 if(caravan.getPoint1Item() != null && Math.floor(city.getStoredItem(caravan.getPoint1Item().getId())) > 0) {
                     caravan.setPoint1StoreItem(caravan.getPoint1Item());
@@ -93,6 +98,11 @@ public class CaravanLogic {
                     city.setStoredItem(caravan.getPoint2StoreItem().getId(), oldLoad);
                     caravan.setPoint2StoreItem(null);
                     caravan.setPoint2Store(0);
+                }
+
+                if(caravan.isTerminate()) {
+                    cityRepository.save(city);
+                    return;
                 }
 
                 // Einladen
