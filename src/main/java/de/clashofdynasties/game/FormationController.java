@@ -102,10 +102,12 @@ public class FormationController {
             if (route != null) {
                 if (formation.isDeployed()) {
                     formation.setRoute(route);
-                    formation.setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
+                    route.setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
                     formation.move(70);
-                } else
+                } else {
+                    route.setCurrentRoad(formation.getRoute().getCurrentRoad());
                     formation.setRoute(route);
+                }
 
                 formation.updateTimestamp();
                 formationRepository.save(formation);

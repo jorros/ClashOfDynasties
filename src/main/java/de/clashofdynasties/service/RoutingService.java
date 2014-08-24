@@ -296,7 +296,7 @@ public class RoutingService {
             subtract = 140;
             currentRoad = roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId());
         } else
-            currentRoad = formation.getCurrentRoad();
+            currentRoad = route.getCurrentRoad();
 
         double length = Math.sqrt(Math.pow(formation.getX() - route.getNext().getX(), 2) + Math.pow(formation.getY() - route.getNext().getY(), 2));
         time += new Double((length - subtract) / (formation.getSpeed() * currentRoad.getWeight())).intValue();

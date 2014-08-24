@@ -22,13 +22,12 @@ public class FormationLogic {
                     formation.setX(next.getX());
                     formation.setY(next.getY());
                     formation.getRoute().setNext(to);
-                    formation.setCurrentRoad(formation.getRoute().getRoads().get(0));
+                    formation.getRoute().setCurrentRoad(formation.getRoute().getRoads().get(0));
                     formation.getRoute().getRoads().remove(0);
                     formation.move(70);
                 } else {
                     // Ziel erreicht
                     formation.setLastCity(next);
-                    formation.setCurrentRoad(null);
                     formation.setRoute(null);
                     formation.setX(next.getX());
                     formation.setY(next.getY());
@@ -36,8 +35,8 @@ public class FormationLogic {
             } else {
                 double multiplier = formation.getSpeed() / distance;
 
-                formation.setX(formation.getX() + (vecX * multiplier * formation.getCurrentRoad().getWeight()));
-                formation.setY(formation.getY() + (vecY * multiplier * formation.getCurrentRoad().getWeight()));
+                formation.setX(formation.getX() + (vecX * multiplier * formation.getRoute().getCurrentRoad().getWeight()));
+                formation.setY(formation.getY() + (vecY * multiplier * formation.getRoute().getCurrentRoad().getWeight()));
             }
 
             formation.updateTimestamp();

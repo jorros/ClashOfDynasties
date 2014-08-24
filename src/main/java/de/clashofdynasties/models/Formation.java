@@ -151,14 +151,6 @@ public class Formation {
         return speed;
     }
 
-    public Road getCurrentRoad() {
-        return currentRoad;
-    }
-
-    public void setCurrentRoad(Road currentRoad) {
-        this.currentRoad = currentRoad;
-    }
-
     public long getTimestamp() {
         return timestamp;
     }
