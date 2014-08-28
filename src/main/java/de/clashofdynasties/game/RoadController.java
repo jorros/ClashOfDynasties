@@ -1,8 +1,10 @@
 package de.clashofdynasties.game;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.models.Player;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.PlayerRepository;
 import de.clashofdynasties.repository.RoadRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,15 +27,19 @@ public class RoadController {
     @Autowired
     private CityRepository cityRepository;
 
+    @Autowired
+    private PlayerRepository playerRepository;
+
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, ObjectNode> getRoads() {
+    Map<String, ObjectNode> getRoads(Principal principal) {
         List<Road> roads = roadRepository.findAll();
         HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
+        Player player = playerRepository.findByName(principal.getName());
 
         if(roads != null && !roads.isEmpty())
-            roads.forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
+            roads.stream().filter(r -> r.isVisible(player)).forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
 
         return data;
     }

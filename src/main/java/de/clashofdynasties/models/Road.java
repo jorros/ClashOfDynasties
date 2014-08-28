@@ -56,6 +56,10 @@ public class Road {
         return Math.sqrt(Math.pow(point1.getX() - point2.getX(), 2) + Math.pow(point1.getY() - point2.getY(), 2));
     }
 
+    public boolean isVisible(Player player) {
+        return getPoint1().getVisibility().contains(player) && getPoint2().getVisibility().contains(player);
+    }
+
     public boolean equals(Object other) {
         if (other instanceof Road && ((Road) other).getId().equals(this.id))
             return true;
