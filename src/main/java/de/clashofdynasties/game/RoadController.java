@@ -33,13 +33,13 @@ public class RoadController {
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, ObjectNode> getRoads(Principal principal) {
+    Map<String, ObjectNode> getRoads(Principal principal, @RequestParam boolean editor) {
         List<Road> roads = roadRepository.findAll();
         HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
         Player player = playerRepository.findByName(principal.getName());
 
         if(roads != null && !roads.isEmpty())
-            roads.stream().filter(r -> r.isVisible(player)).forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
+            roads.stream().filter(r -> r.isVisible(player) || editor).forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
 
         return data;
     }
