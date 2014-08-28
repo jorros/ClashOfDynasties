@@ -8,8 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -74,31 +75,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="caravan.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5" vertical-offset="612" max-vertical-offset="2567">
-              <caret line="49" column="126" selection-start-line="49" selection-start-column="126" selection-end-line="49" selection-end-column="126" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FormationLogic.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1088">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
               <caret line="61" column="5" selection-start-line="51" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogicService.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="FormationController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2958">
+              <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogicService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="2142">
-              <caret line="61" column="53" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.55070204" vertical-offset="922" max-vertical-offset="2159">
+              <caret line="82" column="46" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -117,18 +118,28 @@
       <file leaf-file-name="CaravanController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2822">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2839">
+              <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Caravan.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Caravan.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65522623" vertical-offset="2232" max-vertical-offset="3026">
-              <caret line="244" column="43" selection-start-line="244" selection-start-column="43" selection-end-line="244" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2283" max-vertical-offset="3060">
+              <caret line="236" column="124" selection-start-line="236" selection-start-column="124" selection-end-line="236" selection-end-column="124" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Formation.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1739" max-vertical-offset="2805">
+              <caret line="188" column="128" selection-start-line="186" selection-start-column="12" selection-end-line="188" selection-end-column="128" />
               <folding />
             </state>
           </provider>
@@ -199,14 +210,11 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/caravans.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/clashofdynasties.tld" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/caravanEntity.js" />
@@ -215,9 +223,12 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
       </list>
     </option>
   </component>
@@ -1204,7 +1215,7 @@
       <workItem from="1408875470665" duration="16228000" />
       <workItem from="1408910733977" duration="679000" />
       <workItem from="1409218133767" duration="2711000" />
-      <workItem from="1409228552845" duration="791000" />
+      <workItem from="1409228552845" duration="1174000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1598,11 +1609,15 @@
       <created>1409219201157</created>
       <updated>1409219201157</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="Gebäude/Einheit Heilungsprozess implementiert">
+      <created>1409229360906</created>
+      <updated>1409229360906</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="794024000" />
+    <option name="totallyTimeSpent" value="794407000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1681,7 +1696,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Routing bezieht Diplomatiestatus ein" />
     <MESSAGE value="Cityheadlinebreite wird dynamisch festgelegt" />
     <MESSAGE value="Sicht hinzugefügt" />
     <MESSAGE value="Logikbasis implementiert" />
@@ -1706,7 +1720,8 @@
     <MESSAGE value="Karawanenlogik implementiert" />
     <MESSAGE value="Karawanen können jetzt entfernt werden" />
     <MESSAGE value="Diplomatielogik implementiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diplomatielogik implementiert" />
+    <MESSAGE value="Gebäude/Einheit Heilungsprozess implementiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gebäude/Einheit Heilungsprozess implementiert" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1818,6 +1833,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38511327" vertical-offset="0" max-vertical-offset="833">
           <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1864,26 +1880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.2391305" vertical-offset="2166" max-vertical-offset="5423">
-          <caret line="298" column="31" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1088">
           <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7099841" vertical-offset="1116" max-vertical-offset="2941">
-          <caret line="107" column="78" selection-start-line="107" selection-start-column="78" selection-end-line="107" selection-end-column="78" />
           <folding />
         </state>
       </provider>
@@ -1928,14 +1928,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="1445">
           <caret line="29" column="74" selection-start-line="29" selection-start-column="74" selection-end-line="29" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1311" max-vertical-offset="2635">
-          <caret line="40" column="26" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2035,22 +2027,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="424" max-vertical-offset="1088">
-          <caret line="61" column="5" selection-start-line="51" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="2142">
-          <caret line="61" column="53" selection-start-line="61" selection-start-column="53" selection-end-line="61" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="5644">
@@ -2087,18 +2063,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2822">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1739" max-vertical-offset="2805">
+          <caret line="188" column="128" selection-start-line="186" selection-start-column="12" selection-end-line="188" selection-end-column="128" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65522623" vertical-offset="2232" max-vertical-offset="3026">
-          <caret line="244" column="43" selection-start-line="244" selection-start-column="43" selection-end-line="244" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2283" max-vertical-offset="3060">
+          <caret line="236" column="124" selection-start-line="236" selection-start-column="124" selection-end-line="236" selection-end-column="124" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2839">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="424" max-vertical-offset="1088">
+          <caret line="61" column="5" selection-start-line="51" selection-start-column="4" selection-end-line="61" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="6.645866" vertical-offset="636" max-vertical-offset="5423">
+          <caret line="298" column="31" selection-start-line="298" selection-start-column="31" selection-end-line="298" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2958">
+          <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.55070204" vertical-offset="922" max-vertical-offset="2159">
+          <caret line="82" column="46" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
           <folding />
         </state>
       </provider>

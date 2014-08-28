@@ -231,6 +231,12 @@ public class Caravan {
         setY(new Double(getY() + vecY * multiplier).intValue());
     }
 
+    public boolean isVisible(Player player) {
+        Road current = getRoute().getCurrentRoad();
+
+        return current.getPoint1().getVisibility().contains(player) && current.getPoint2().getVisibility().contains(player);
+    }
+
     public boolean equals(Object other) {
         if (other instanceof Caravan && ((Caravan) other).getId().equals(this.id))
             return true;
@@ -238,20 +244,18 @@ public class Caravan {
             return false;
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp, Player player) {
+    public ObjectNode toJSON(long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        if(!editor && getPoint1().getVisibility().contains(player) && getPoint2().getVisibility().contains(player)) {
-            node.put("x", Math.round(getX()));
-            node.put("y", Math.round(getY()));
-            node.put("diplomacy", getDiplomacy());
-            node.put("name", getName());
-            node.put("direction", getRoute().getNext().getX() - getX() < 0 ? "2" : "");
+        node.put("x", Math.round(getX()));
+        node.put("y", Math.round(getY()));
+        node.put("diplomacy", getDiplomacy());
+        node.put("name", getName());
+        node.put("direction", getRoute().getNext().getX() - getX() < 0 ? "2" : "");
 
-            if (getTimestamp() >= timestamp)
-                node.put("route", getRoute().toJSON());
-        }
+        if (getTimestamp() >= timestamp)
+            node.put("route", getRoute().toJSON());
 
         return node;
     }

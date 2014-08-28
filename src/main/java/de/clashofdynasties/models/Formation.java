@@ -182,7 +182,17 @@ public class Formation {
             return false;
     }
 
-    public ObjectNode toJSON(boolean editor, long timestamp) {
+    public boolean isVisible(Player player) {
+        if(getRoute() != null) {
+            Road current = getRoute().getCurrentRoad();
+
+            return current.getPoint1().getVisibility().contains(player) && current.getPoint2().getVisibility().contains(player);
+        }
+        else
+            return getLastCity().getVisibility().contains(player);
+    }
+
+    public ObjectNode toJSON(long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 

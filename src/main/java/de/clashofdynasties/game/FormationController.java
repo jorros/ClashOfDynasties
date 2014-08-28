@@ -65,7 +65,8 @@ public class FormationController {
                 formation.setDiplomacy(4);
             }
 
-            data.put(formation.getId().toHexString(), formation.toJSON(editor, timestamp));
+            if(!editor && formation.isVisible(player))
+                data.put(formation.getId().toHexString(), formation.toJSON(timestamp));
         }
 
         return data;

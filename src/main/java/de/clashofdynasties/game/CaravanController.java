@@ -57,7 +57,8 @@ public class CaravanController {
                 caravan.setDiplomacy(4);
             }
 
-            data.put(caravan.getId().toHexString(), caravan.toJSON(editor, timestamp, player));
+            if(!editor && caravan.isVisible(player))
+                data.put(caravan.getId().toHexString(), caravan.toJSON(timestamp));
         }
 
         return data;

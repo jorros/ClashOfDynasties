@@ -78,8 +78,9 @@ public class LogicService {
         tick++;
 
         if(tick == 600) {
-        for(Player player : players) {
+            for(Player player : players) {
                 playerLogic.processStatistics(player);
+                playerLogic.updateFOW(player);
                 playerRepository.save(player);
             }
             tick = 0;
