@@ -276,6 +276,7 @@ public class MenuController {
         List<Player> players = playerRepository.findAll();
         players.removeIf(p -> p.equals(player));
         players.removeIf(Player::isComputer);
+        players.removeIf(p -> !p.isActivated());
 
         HashMap<ObjectId, Integer> relations = new HashMap<>();
         for(Player p : players) {

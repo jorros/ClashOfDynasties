@@ -33,7 +33,7 @@ public class PlayerLogic {
     public void processStatistics(Player player) {
         Statistic stat = player.getStatistic();
 
-        if(stat == null && !player.isComputer()) {
+        if(stat == null && !player.isComputer() && player.isActivated()) {
             stat = new Statistic();
         }
 
