@@ -157,7 +157,7 @@ public class CityController {
 
     @RequestMapping(value = "/{city}/build", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void build(Principal principal, @PathVariable("city") ObjectId id, @RequestParam int type, @RequestParam int blueprint) {
+    public void build(Principal principal, @PathVariable("city") ObjectId id, @RequestParam int type, @RequestParam int blueprint, @RequestParam int count) {
         Player player = playerRepository.findByName(principal.getName());
         City city = cityRepository.findOne(id);
 
@@ -173,16 +173,24 @@ public class CityController {
 
             if(type == 0) {
                 BuildingBlueprint blp = buildingBlueprintRepository.findOne(blueprint);
+                count = 1;
 
                 if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity())
                     construction.setBlueprint(blp);
             }
             else if(type == 1) {
-                if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 15).count() > 0)
+                if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 15).count() > 0) {
                     construction.setBlueprint(unitBlueprintRepository.findOne(blueprint));
+                }
             }
 
-            if(construction.getBlueprint() != null && player.getCoins() >= construction.getBlueprint().getPrice()) {
+            if(player.getCoins() < construction.getBlueprint().getPrice() * count && count > 1)
+                count = (int)Math.floor(player.getCoins() / construction.getBlueprint().getPrice());
+            else if(player.getCoins() < construction.getBlueprint().getPrice() * count)
+                count = 0;
+
+            if(construction.getBlueprint() != null && count > 0) {
+                construction.setCount(count);
                 city.setBuildingConstruction(construction);
                 cityRepository.save(city);
                 player.addCoins(-construction.getBlueprint().getPrice());
@@ -198,7 +206,7 @@ public class CityController {
         City city = cityRepository.findOne(id);
 
         if(city.getPlayer().equals(player) && city.getBuildingConstruction() != null) {
-            double neededProduction = city.getBuildingConstruction().getBlueprint().getRequiredProduction();
+            double neededProduction = city.getBuildingConstruction().getRequiredProduction();
             double currentProduction = city.getBuildingConstruction().getProduction();
 
             player.addCoins(Math.floor(city.getBuildingConstruction().getBlueprint().getPrice() * (1 - currentProduction / neededProduction)));

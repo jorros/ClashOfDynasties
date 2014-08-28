@@ -8,6 +8,8 @@ public class BuildingConstruction {
 
     private double production;
 
+    private int count;
+
     public IBlueprint getBlueprint() {
         return blueprint;
     }
@@ -26,5 +28,17 @@ public class BuildingConstruction {
 
     public void addProduction(double production) {
         this.production += production;
+    }
+
+    public double getRequiredProduction() {
+        return blueprint.getRequiredProduction() * count;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

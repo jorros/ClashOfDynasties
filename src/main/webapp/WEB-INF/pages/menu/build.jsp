@@ -12,7 +12,7 @@
                 <c:if test="${city.buildingConstruction == null}">Kein Bauvorhaben</c:if>
                 <c:if test="${city.buildingConstruction != null}">
                 <img style="float:left; margin-right:5px;" src="assets/buildings/${city.buildingConstruction.blueprint.id}.png" />
-                <span style="color:#FFF; font-weight:bold;">${city.buildingConstruction.blueprint.name}</span><br><span style="color:#FFF">noch ${productionTime}(${productionPercent}%)<br><a style="font-weight:bold; cursor:pointer;" onclick="stopBuild();">Abbrechen?</a></span>
+                <span style="color:#FFF; font-weight:bold;"><c:if test="${city.buildingConstruction.count > 1}">${city.buildingConstruction.count}x </c:if>${city.buildingConstruction.blueprint.name}</span><br><span style="color:#FFF">noch ${productionTime}(${productionPercent}%)<br><a style="font-weight:bold; cursor:pointer;" onclick="stopBuild();">Abbrechen?</a></span>
                 </c:if>
             </div>
         </div>
@@ -101,7 +101,7 @@
 
                 <br>
 
-                <button id="unit-1" onclick="build(1, 1);" onclick=""><img style="width:32px;height:32px;" src="assets/units/1.png" /></button>
+                <button id="unit-1" onclick="build(1, 1);"><img style="width:32px;height:32px;" src="assets/units/1.png" /></button>
                 <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(1)}" default="0" /></span><button <c:if test="${city.countUnits(1) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
 
                 <button id="unit-5" onclick="build(1, 5);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/5.png" /></button>
@@ -139,12 +139,29 @@
         });
     </c:forEach>
     <c:forEach items="${unitBlueprints}" var="unit">
-    $("#unit-${unit.id}").tooltip({
-        content: "<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${unit.name}</span><br><br>Kosten: ${unit.price}<br>${unit.description}<br><br><span>Benötigt: </span><span class='<c:if test="${city.countBuildings(7) == 0}">red</c:if><c:if test="${city.countBuildings(7) > 0}">green</c:if>'>Militäranlage</span>", show: { effect: "fade", duration: 400 }, items: "button" });
+    $("#unit-${unit.id}").tooltipster({
+        theme: 'tooltipster-light',
+        functionReady: function () {
+            stopMenuUpdate = true;
+        },
+        functionAfter: function () {
+            stopMenuUpdate = false;
+        },
+        content: $("<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${unit.name}</span><br><br>Kosten: ${unit.price}<br>${unit.description}<br><br><span>Benötigt: </span><span class='<c:if test="${city.countBuildings(7) == 0}">red</c:if><c:if test="${city.countBuildings(7) > 0}">green</c:if>'>Militäranlage</span>")
+    });
     </c:forEach>
 
     function build(type, blueprint) {
-        $.put("/game/cities/${city.id}/build", { type: type, blueprint: blueprint }, function() {
+        var count = 1;
+
+        if(type == 1) {
+            count = prompt("Wieviele Einheiten wilst du ausbilden?", 1);
+
+            if(count == null)
+                count = 1;
+        }
+
+        $.put("/game/cities/${city.id}/build", { type: type, blueprint: blueprint, count: count }, function() {
             openMenu("build?city=${city.id}");
             loadTop();
         });

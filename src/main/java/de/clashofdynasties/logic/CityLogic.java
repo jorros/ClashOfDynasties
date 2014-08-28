@@ -216,7 +216,7 @@ public class CityLogic {
 
                 city.setBuildingConstruction(construction);
 
-                if (construction.getProduction() >= construction.getBlueprint().getRequiredProduction()) {
+                if (construction.getProduction() >= construction.getRequiredProduction()) {
                     if (construction.getBlueprint() instanceof BuildingBlueprint) {
                         Building building = new Building();
                         building.setBlueprint((BuildingBlueprint) construction.getBlueprint());
@@ -227,14 +227,19 @@ public class CityLogic {
 
                         eventRepository.save(new Event("ProductionReady", "Neues Gebäude errichtet", "In " + city.getName() + " wurde das Gebäude " + building.getBlueprint().getName() + " errichtet!", city, city.getPlayer()));
                     } else if (construction.getBlueprint() instanceof UnitBlueprint) {
-                        Unit unit = new Unit();
-                        unit.setBlueprint((UnitBlueprint) construction.getBlueprint());
-                        unit.setHealth(100);
-                        unitRepository.save(unit);
+                        for(int i = 0; i < construction.getCount(); i++) {
+                            Unit unit = new Unit();
+                            unit.setBlueprint((UnitBlueprint) construction.getBlueprint());
+                            unit.setHealth(100);
+                            unitRepository.save(unit);
 
-                        city.getUnits().add(unit);
+                            city.getUnits().add(unit);
+                        }
 
-                        eventRepository.save(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + unit.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
+                        if(construction.getCount() > 1)
+                            eventRepository.save(new Event("ProductionReady", "Neue Einheiten ausgebildet", "In " + city.getName() + " wurden " + construction.getCount() + " Einheiten " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
+                        else
+                            eventRepository.save(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
                     }
 
                     city.setBuildingConstruction(null);

@@ -7,8 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -92,6 +95,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3560" max-vertical-offset="4760">
+              <caret line="241" column="61" selection-start-line="241" selection-start-column="61" selection-end-line="241" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="LogicService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -102,71 +115,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RoadController.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java">
+      <file leaf-file-name="CityController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37129486" vertical-offset="153" max-vertical-offset="1343">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3050" max-vertical-offset="4522">
+              <caret line="208" column="69" selection-start-line="208" selection-start-column="69" selection-end-line="208" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Road.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java">
+      <file leaf-file-name="build.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="1088">
-              <caret line="58" column="28" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.36710963" vertical-offset="1530" max-vertical-offset="3094">
+              <caret line="103" column="83" selection-start-line="103" selection-start-column="83" selection-end-line="103" selection-end-column="83" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+      <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4047" max-vertical-offset="4675">
-              <caret line="268" column="65" selection-start-line="268" selection-start-column="65" selection-end-line="268" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CaravanController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2839">
-              <caret line="44" column="59" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Caravan.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2283" max-vertical-offset="3060">
-              <caret line="236" column="124" selection-start-line="236" selection-start-column="124" selection-end-line="236" selection-end-column="124" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Formation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1739" max-vertical-offset="2805">
-              <caret line="188" column="128" selection-start-line="186" selection-start-column="12" selection-end-line="188" selection-end-column="128" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="City.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3570" max-vertical-offset="5576">
-              <caret line="243" column="57" selection-start-line="243" selection-start-column="19" selection-end-line="243" selection-end-column="57" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2251" max-vertical-offset="5865">
+              <caret line="163" column="69" selection-start-line="163" selection-start-column="69" selection-end-line="163" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -185,7 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/ItemType.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Event.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/storeItem.tld" />
@@ -193,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/BuildItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-context.xml" />
@@ -211,14 +182,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/editcity.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/caravans.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/clashofdynasties.tld" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
@@ -226,9 +195,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
@@ -236,6 +203,12 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       </list>
     </option>
   </component>
@@ -1222,7 +1195,7 @@
       <workItem from="1408875470665" duration="16228000" />
       <workItem from="1408910733977" duration="679000" />
       <workItem from="1409218133767" duration="2711000" />
-      <workItem from="1409228552845" duration="1493000" />
+      <workItem from="1409228552845" duration="4192000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1624,11 +1597,19 @@
       <created>1409229771946</created>
       <updated>1409229771946</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Straßen zu nicht sichtbaren Städten werden ausgeblendet">
+      <created>1409230063940</created>
+      <updated>1409230063940</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Nach Handelskommenauflösung aktualisiere FOW Map">
+      <created>1409230193751</created>
+      <updated>1409230193751</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="794726000" />
+    <option name="totallyTimeSpent" value="797425000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1655,37 +1636,37 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27597404" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27272728" sideWeight="0.46588486" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25189188" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17377399" sideWeight="0.58220214" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.56396586" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25865802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27597404" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25189188" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.29697624" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25865802" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1707,8 +1688,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Sicht hinzugefügt" />
-    <MESSAGE value="Logikbasis implementiert" />
     <MESSAGE value="Stadtlogik implementiert" />
     <MESSAGE value="Menüs Autoupdate" />
     <MESSAGE value="Logik aufsplitten" />
@@ -1732,7 +1711,9 @@
     <MESSAGE value="Diplomatielogik implementiert" />
     <MESSAGE value="Gebäude/Einheit Heilungsprozess implementiert" />
     <MESSAGE value="Karawanen und Formationen werden nun im Editor und für nicht sichtbare ausgeblendet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Karawanen und Formationen werden nun im Editor und für nicht sichtbare ausgeblendet" />
+    <MESSAGE value="Straßen zu nicht sichtbaren Städten werden ausgeblendet" />
+    <MESSAGE value="Nach Handelskommenauflösung aktualisiere FOW Map" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nach Handelskommenauflösung aktualisiere FOW Map" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1744,20 +1725,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="1343">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5244755" vertical-offset="1845" max-vertical-offset="2805">
-          <caret line="135" column="30" selection-start-line="135" selection-start-column="16" selection-end-line="135" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3065268" vertical-offset="43" max-vertical-offset="1207">
@@ -1953,22 +1920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0" vertical-offset="225" max-vertical-offset="2261">
-          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.8019017" vertical-offset="4656" max-vertical-offset="5865">
-          <caret line="225" column="43" selection-start-line="225" selection-start-column="43" selection-end-line="225" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1870">
@@ -1985,13 +1936,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43312103" vertical-offset="136" max-vertical-offset="799">
-          <caret line="24" column="85" selection-start-line="24" selection-start-column="85" selection-end-line="24" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6599064" vertical-offset="155" max-vertical-offset="2550">
@@ -2004,14 +1948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.5" vertical-offset="612" max-vertical-offset="2567">
           <caret line="49" column="126" selection-start-line="49" selection-start-column="126" selection-end-line="49" selection-end-column="126" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2459" max-vertical-offset="4386">
-          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2048,14 +1984,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4555383" vertical-offset="138" max-vertical-offset="1496">
           <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4047" max-vertical-offset="4675">
-          <caret line="268" column="65" selection-start-line="268" selection-start-column="65" selection-end-line="268" selection-end-column="65" />
           <folding />
         </state>
       </provider>
@@ -2100,10 +2028,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="2159">
-          <caret line="82" column="46" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2839">
+          <caret line="44" column="59" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.43057722" vertical-offset="1398" max-vertical-offset="2261">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -2116,11 +2052,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="2839">
-          <caret line="44" column="59" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="59" />
-          <folding />
+        <state vertical-scroll-proportion="0.83917195" vertical-offset="136" max-vertical-offset="901">
+          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2128,6 +2066,57 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37129486" vertical-offset="153" max-vertical-offset="1343">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="2159">
+          <caret line="82" column="46" selection-start-line="82" selection-start-column="46" selection-end-line="82" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6099844" vertical-offset="0" max-vertical-offset="641">
+          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding>
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#773#774#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3050" max-vertical-offset="4522">
+          <caret line="208" column="69" selection-start-line="208" selection-start-column="69" selection-end-line="208" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2251" max-vertical-offset="5865">
+          <caret line="163" column="69" selection-start-line="163" selection-start-column="69" selection-end-line="163" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3560" max-vertical-offset="4760">
+          <caret line="241" column="61" selection-start-line="241" selection-start-column="61" selection-end-line="241" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36710963" vertical-offset="1530" max-vertical-offset="3094">
+          <caret line="103" column="83" selection-start-line="103" selection-start-column="83" selection-end-line="103" selection-end-column="83" />
           <folding />
         </state>
       </provider>

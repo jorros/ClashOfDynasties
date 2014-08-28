@@ -161,7 +161,7 @@ public class MenuController {
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
         if(city.getBuildingConstruction() != null) {
-            double neededProduction = city.getBuildingConstruction().getBlueprint().getRequiredProduction();
+            double neededProduction = city.getBuildingConstruction().getRequiredProduction();
             double currentProduction = city.getBuildingConstruction().getProduction();
             long delta = Math.round(neededProduction - currentProduction);
 
