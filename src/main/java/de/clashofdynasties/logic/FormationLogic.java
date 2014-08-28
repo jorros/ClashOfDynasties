@@ -2,10 +2,16 @@ package de.clashofdynasties.logic;
 
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
+import de.clashofdynasties.models.Unit;
+import de.clashofdynasties.repository.UnitRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FormationLogic {
+    @Autowired
+    private UnitRepository unitRepository;
+
     public void processMovement(Formation formation) {
         if(formation.getRoute() != null) {
             City next = formation.getRoute().getNext();
@@ -40,6 +46,18 @@ public class FormationLogic {
             }
 
             formation.updateTimestamp();
+        }
+    }
+
+    public void processHealing(Formation formation) {
+        if(formation.isDeployed() && formation.getLastCity().getReport() == null) {
+            for (Unit unit : formation.getUnits()) {
+                if(Math.random() < 0.01 && unit.getHealth() < 100) {
+                    unit.setHealth(unit.getHealth() + 1);
+                }
+
+                unitRepository.save(unit);
+            }
         }
     }
 }

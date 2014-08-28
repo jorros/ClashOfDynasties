@@ -253,4 +253,24 @@ public class CityLogic {
                 city.setType(cityTypeRepository.findOne(3));
         }
     }
+
+    public void processHealing(City city) {
+        if(city.getReport() == null) {
+            for (Unit unit : city.getUnits()) {
+                if(Math.random() < 0.01 && unit.getHealth() < 100) {
+                    unit.setHealth(unit.getHealth() + 1);
+                }
+
+                unitRepository.save(unit);
+            }
+
+            for(Building building : city.getBuildings()) {
+                if(Math.random() < 0.01 && building.getHealth() < 100) {
+                    building.setHealth(building.getHealth() + 1);
+                }
+
+                buildingRepository.save(building);
+            }
+        }
+    }
 }

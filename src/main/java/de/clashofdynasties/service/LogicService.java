@@ -67,6 +67,7 @@ public class LogicService {
             cityLogic.processCoins(city);
             cityLogic.processConstruction(city);
             cityLogic.processType(city);
+            cityLogic.processHealing(city);
 
             cityRepository.save(city);
         }
@@ -91,6 +92,7 @@ public class LogicService {
 
         for(Formation formation : formations) {
             formationLogic.processMovement(formation);
+            formationLogic.processHealing(formation);
 
             formationRepository.save(formation);
         }
