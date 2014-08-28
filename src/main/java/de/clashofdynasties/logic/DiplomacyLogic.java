@@ -16,6 +16,9 @@ public class DiplomacyLogic {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private PlayerLogic playerLogic;
+
     public void processTimer(Relation relation) {
         if(relation.getTicksLeft() != null) {
             relation.setTicksLeft(relation.getTicksLeft() - 1);
@@ -32,6 +35,9 @@ public class DiplomacyLogic {
                 else if(relation.getRelation() == 2) {
                     eventRepository.save(new Event("DiplomaticTrade", "Handelsvertrag aufgelöst", "Das Handelsabkommen mit " + pl2.getName() + " ist nicht mehr gültig!.", "diplomacy?pid=" + pl2.getId(), pl1));
                     eventRepository.save(new Event("DiplomaticTrade", "Handelsvertrag aufgelöst", "Das Handelsabkommen mit " + pl1.getName() + " ist nicht mehr gültig!.", "diplomacy?pid=" + pl1.getId(), pl2));
+
+                    playerLogic.updateFOW(pl1);
+                    playerLogic.updateFOW(pl2);
                 }
 
                 relation.setRelation(relation.getRelation() - 1);
