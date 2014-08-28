@@ -1,17 +1,8 @@
 package de.clashofdynasties.service;
 
-import de.clashofdynasties.logic.CaravanLogic;
-import de.clashofdynasties.logic.CityLogic;
-import de.clashofdynasties.logic.FormationLogic;
-import de.clashofdynasties.logic.PlayerLogic;
-import de.clashofdynasties.models.Caravan;
-import de.clashofdynasties.models.City;
-import de.clashofdynasties.models.Formation;
-import de.clashofdynasties.models.Player;
-import de.clashofdynasties.repository.CaravanRepository;
-import de.clashofdynasties.repository.CityRepository;
-import de.clashofdynasties.repository.FormationRepository;
-import de.clashofdynasties.repository.PlayerRepository;
+import de.clashofdynasties.logic.*;
+import de.clashofdynasties.models.*;
+import de.clashofdynasties.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -44,6 +35,12 @@ public class LogicService {
     @Autowired
     private CaravanLogic caravanLogic;
 
+    @Autowired
+    private DiplomacyLogic diplomacyLogic;
+
+    @Autowired
+    private RelationRepository relationRepository;
+
     private long tick = 599;
 
     @Scheduled(fixedDelay = 1000)
@@ -54,6 +51,7 @@ public class LogicService {
             processFormations();
             processCaravans();
             processWar();
+            processDiplomacy();
         }
         catch(Exception ex) {
             ex.printStackTrace();
@@ -108,6 +106,16 @@ public class LogicService {
                 caravanRepository.delete(caravan);
             else
                 caravanRepository.save(caravan);
+        }
+    }
+
+    private void processDiplomacy() {
+        List<Relation> relations = relationRepository.findAll();
+
+        for(Relation relation : relations) {
+            diplomacyLogic.processTimer(relation);
+
+            relationRepository.save(relation);
         }
     }
 
