@@ -219,7 +219,7 @@
             count = prompt("Wieviele Einheiten wilst du ausbilden?", 1);
 
             if(count == null)
-                count = 1;
+                return;
         }
 
         $.put("/game/cities/${city.id}/build", { type: type, blueprint: blueprint, count: count }, function() {
