@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="cod" uri="/WEB-INF/clashofdynasties.tld" %>
 
 <h1>Bauen (${city.name})</h1>
 <c:if test="${player == city.player}">
@@ -11,7 +12,7 @@
             <div>
                 <c:if test="${city.buildingConstruction == null}">Kein Bauvorhaben</c:if>
                 <c:if test="${city.buildingConstruction != null}">
-                <img style="float:left; margin-right:5px;" src="assets/buildings/${city.buildingConstruction.blueprint.id}.png" />
+                <img style="float:left; margin-right:5px;" src="assets/${city.buildingConstruction.blueprint.getClass().name == "de.clashofdynasties.models.BuildingBlueprint" ? "buildings" : "units"}/${city.buildingConstruction.blueprint.id}.png" />
                 <span style="color:#FFF; font-weight:bold;"><c:if test="${city.buildingConstruction.count > 1}">${city.buildingConstruction.count}x </c:if>${city.buildingConstruction.blueprint.name}</span><br><span style="color:#FFF">noch ${productionTime}(${productionPercent}%)<br><a style="font-weight:bold; cursor:pointer;" onclick="stopBuild();">Abbrechen?</a></span>
                 </c:if>
             </div>
@@ -19,36 +20,52 @@
         <div class="section" style="width:285px; clear:left;">
             <h4>Öffentlich</h4>
             <div>
-                <button id="building-1" onclick="build(0, 1);"><img style="width:32px;height:32px;" src="assets/buildings/1.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(1)}" default="0" /></span><button <c:if test="${city.countBuildings(1) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                <c:choose>
+                    <c:when test="${city.player.nation.id == 1}">
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[0]}"/>
 
-                <button id="building-5" onclick="build(0, 5);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/5.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(5)}" default="0" /></span><button <c:if test="${city.countBuildings(5) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[4]}"/>
 
-                <button id="building-12" onclick="build(0, 12);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/12.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(12)}" default="0" /></span><button <c:if test="${city.countBuildings(12) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[11]}"/>
 
-                <br>
+                        <br>
 
-                <button id="building-4" onclick="build(0, 4);"><img style="width:32px;height:32px;" src="assets/buildings/4.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(4)}" default="0" /></span><button <c:if test="${city.countBuildings(4) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
 
-                <button id="building-2" onclick="build(0, 2);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/2.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(2)}" default="0" /></span><button <c:if test="${city.countBuildings(2) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[1]}"/>
 
-                <button id="building-10" onclick="build(0, 10);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/10.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(10)}" default="0" /></span><button <c:if test="${city.countBuildings(10) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[9]}"/>
 
-                <br>
+                        <br>
 
-                <button id="building-6" onclick="build(0, 6);"><img style="width:32px;height:32px;" src="assets/buildings/6.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(6)}" default="0" /></span><button <c:if test="${city.countBuildings(6) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[5]}"/>
 
-                <button id="building-11" onclick="build(0, 11);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/11.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(11)}" default="0" /></span><button <c:if test="${city.countBuildings(11) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[10]}"/>
 
-                <button id="building-13" onclick="build(0, 13);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/13.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(13)}" default="0" /></span><button <c:if test="${city.countBuildings(13) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[12]}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[0]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[4]}"/>
+
+                        <br>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[2]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[9]}"/>
+
+                        <br>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[5]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[10]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[13]}"/>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
@@ -56,33 +73,50 @@
         <div class="section" style="width:285px; float:left">
             <h4>Wirtschaft</h4>
             <div>
-                <button id="building-17" onclick="build(0, 17);" onclick=""><img style="width:32px;height:32px;" src="assets/buildings/17.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(17)}" default="0" /></span><button <c:if test="${city.countBuildings(17) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                <c:choose>
+                    <c:when test="${city.player.nation.id == 1}">
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[16]}"/>
 
-                <button id="building-18" onclick="build(0, 18);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/18.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(18)}" default="0" /></span><button <c:if test="${city.countBuildings(18) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[17]}"/>
 
-                <br>
+                        <br>
 
-                <button id="building-19" onclick="build(0, 19);" onclick=""><img style="width:32px;height:32px;" src="assets/buildings/19.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(19)}" default="0" /></span><button <c:if test="${city.countBuildings(19) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[18]}"/>
 
-                <button id="building-20" onclick="build(0, 20);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/20.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(20)}" default="0" /></span><button <c:if test="${city.countBuildings(20) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[19]}"/>
 
-                <button id="building-23" onclick="build(0, 23);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/23.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(23)}" default="0" /></span><button <c:if test="${city.countBuildings(23) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[22]}"/>
 
-                <br>
+                        <br>
 
-                <button id="building-24" onclick="build(0, 24);" onclick=""><img style="width:32px;height:32px;" src="assets/buildings/24.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(24)}" default="0" /></span><button <c:if test="${city.countBuildings(24) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[23]}"/>
 
-                <button id="building-26" onclick="build(0, 26);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/26.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(26)}" default="0" /></span><button <c:if test="${city.countBuildings(26) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[25]}"/>
 
-                <button id="building-27" onclick="build(0, 27);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/27.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(27)}" default="0" /></span><button <c:if test="${city.countBuildings(27) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[26]}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[16]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[17]}"/>
+
+                        <br>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[18]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[20]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[15]}"/>
+
+                        <br>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[23]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[24]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[21]}"/>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
@@ -90,33 +124,48 @@
         <div class="section" style="width:285px; float:left">
             <h4>Militär</h4>
             <div>
-                <button id="building-7" onclick="build(0, 7);" onclick=""><img style="width:32px;height:32px;" src="assets/buildings/7.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(7)}" default="0" /></span><button <c:if test="${city.countBuildings(7) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                <c:choose>
+                    <c:when test="${city.player.nation.id == 1}">
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[6]}"/>
 
-                <button id="building-8" onclick="build(0, 8);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/8.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(8)}" default="0" /></span><button <c:if test="${city.countBuildings(8) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[7]}"/>
 
-                <button id="building-9" onclick="build(0, 9);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/buildings/9.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countBuildings(9)}" default="0" /></span><button <c:if test="${city.countBuildings(9) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[8]}"/>
 
-                <br>
+                        <br>
 
-                <button id="unit-1" onclick="build(1, 1);"><img style="width:32px;height:32px;" src="assets/units/1.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(1)}" default="0" /></span><button <c:if test="${city.countUnits(1) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[0]}"/>
 
-                <button id="unit-5" onclick="build(1, 5);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/5.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(5)}" default="0" /></span><button <c:if test="${city.countUnits(5) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[1]}"/>
 
-                <button id="unit-6" onclick="build(1, 6);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/6.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(6)}" default="0" /></span><button <c:if test="${city.countUnits(6) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[2]}"/>
 
-                <br>
+                        <br>
 
-                <button id="unit-7" onclick="build(1, 7);"><img style="width:32px;height:32px;" src="assets/units/7.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(7)}" default="0" /></span><button <c:if test="${city.countUnits(7) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[3]}"/>
 
-                <button id="unit-8" onclick="build(1, 8);" style="margin-left:10px;"><img style="width:32px;height:32px;" src="assets/units/8.png" /></button>
-                <span style="color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;"><c:out value="${city.countUnits(8)}" default="0" /></span><button <c:if test="${city.countUnits(8) == 0}">disabled</c:if> style="margin-left:0px; vertical-align:25px" class="remove"></button>
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[4]}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[14]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[8]}"/>
+
+                        <br>
+
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[5]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[7]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[8]}"/>
+
+                        <br>
+
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[6]}"/>
+
+                        <cod:BuildItem city="${city}" blueprint="${unitBlueprints[4]}"/>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>
@@ -127,19 +176,25 @@
 
 <script>
     <c:forEach items="${buildingBlueprints}" var="building">
-        $("#building-${building.id}").tooltipster({
-            theme: 'tooltipster-light',
-            functionReady: function() {
-                stopMenuUpdate = true;
-            },
-            functionAfter: function() {
-                stopMenuUpdate = false;
-            },
-            content: $('<span style="font-family:"Philosopher-Bold"; font-size:18px;">${building.name}</span><br><br>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span class="<c:if test="${building.requiredBiomes.contains(city.biome)}">green</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>">Benötigt: <c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span class="<c:if test="${city.resource == building.requiredResource}">green</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>">Benötigt: </span><img style="vertical-align:bottom;" src="assets/resources/${building.requiredResource.id}.png" /> <span>${building.requiredResource.name}</span></c:if>')
-        });
+    $(".build[data-blueprint='${building.id}'][data-type='0']").tooltipster({
+        theme: 'tooltipster-light',
+        functionReady: function() {
+            stopMenuUpdate = true;
+        },
+        functionAfter: function() {
+            stopMenuUpdate = false;
+        },
+        content: $('<span style="font-family:"Philosopher-Bold"; font-size:18px;">${building.name}</span><br><br>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span class="<c:if test="${building.requiredBiomes.contains(city.biome)}">green</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>">Benötigt: <c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span class="<c:if test="${city.resource == building.requiredResource}">green</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>">Benötigt: </span><img style="vertical-align:bottom;" src="assets/resources/${building.requiredResource.id}.png" /> <span>${building.requiredResource.name}</span></c:if>')
+    }).click(function() {
+        build(0, ${building.id});
+    });
+
+    $(".remove[data-blueprint='${building.id}'][data-type='0']").click(function() {
+        remove(0, ${building.id});
+    });
     </c:forEach>
     <c:forEach items="${unitBlueprints}" var="unit">
-    $("#unit-${unit.id}").tooltipster({
+    $(".build[data-blueprint='${unit.id}'][data-type='1']").tooltipster({
         theme: 'tooltipster-light',
         functionReady: function () {
             stopMenuUpdate = true;
@@ -148,6 +203,12 @@
             stopMenuUpdate = false;
         },
         content: $("<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${unit.name}</span><br><br>Kosten: ${unit.price}<br>${unit.description}<br><br><span>Benötigt: </span><span class='<c:if test="${city.countBuildings(7) == 0}">red</c:if><c:if test="${city.countBuildings(7) > 0}">green</c:if>'>Militäranlage</span>")
+    }).click(function() {
+        build(1, ${unit.id});
+    });
+
+    $(".remove[data-blueprint='${unit.id}'][data-type='1']").click(function() {
+        remove(1, ${unit.id});
     });
     </c:forEach>
 
@@ -165,6 +226,10 @@
             openMenu("build?city=${city.id}");
             loadTop();
         });
+    }
+
+    function remove(type, blueprint) {
+
     }
 
     function stopBuild() {

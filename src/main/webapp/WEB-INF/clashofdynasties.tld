@@ -59,9 +59,9 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
-            <name>building</name>
+            <name>blueprint</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.Building</type>
+            <type>de.clashofdynasties.models.IBlueprint</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>

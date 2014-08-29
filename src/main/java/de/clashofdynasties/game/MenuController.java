@@ -156,8 +156,8 @@ public class MenuController {
         City city = cityRepository.findOne(id);
 
         map.addAttribute("city", city);
-        map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll());
-        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll());
+        map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
         if(city.getBuildingConstruction() != null) {

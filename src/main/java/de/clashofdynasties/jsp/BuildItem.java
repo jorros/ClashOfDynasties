@@ -1,7 +1,6 @@
 package de.clashofdynasties.jsp;
 
-import de.clashofdynasties.models.Building;
-import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.*;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -10,17 +9,41 @@ import java.io.IOException;
 
 public class BuildItem extends SimpleTagSupport {
     private City city;
-    private Building building;
+    private IBlueprint blueprint;
 
     public void setCity(City city) {
         this.city = city;
     }
 
-    public void setBuilding(Building building) {
-        this.building = building;
+    public void setBlueprint(IBlueprint blueprint) {
+        this.blueprint = blueprint;
     }
 
     public void doTag() throws JspException, IOException {
         JspWriter out = getJspContext().getOut();
+
+        if(blueprint instanceof UnitBlueprint) {
+            UnitBlueprint unit = (UnitBlueprint)blueprint;
+
+            out.println("<button data-blueprint=\"" + unit.getId() + "\" data-type=\"1\" class=\"build\" style=\"margin-left:10px;\"><img style=\"width:32px;height:32px;\" src=\"assets/units/" + unit.getId() + ".png\" /></button>");
+
+            out.print("<span style=\"color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;\">");
+            int count = city.countUnits(unit.getId());
+            out.print(count);
+            out.print("</span>");
+
+            out.print("<button data-blueprint=\"" + unit.getId() + "\" data-type=\"1\" " + (count == 0 ? "disabled" : "") + " style=\"margin-left:0px; vertical-align:25px\" class=\"remove\"></button>");
+        } else {
+            BuildingBlueprint building = (BuildingBlueprint)blueprint;
+
+            out.println("<button data-blueprint=\"" + building.getId() + "\" data-type=\"0\" class=\"build\" style=\"margin-left:10px;\"><img style=\"width:32px;height:32px;\" src=\"assets/buildings/" + building.getId() + ".png\" /></button>");
+
+            out.print("<span style=\"color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;\">");
+            int count = city.countBuildings(building.getId());
+            out.print(count);
+            out.print("</span>");
+
+            out.print("<button data-blueprint=\"" + building.getId() + "\" data-type=\"0\" " + (count == 0 ? "disabled" : "") + " style=\"margin-left:0px; vertical-align:25px\" class=\"remove\"></button>");
+        }
     }
 }
