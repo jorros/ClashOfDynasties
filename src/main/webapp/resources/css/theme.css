@@ -178,7 +178,7 @@ button:active {
 button:focus {
     outline: 0;
 }
-button:disabled {
+button:disabled, .disabled {
     background: url(/images/buttondisabled.png) repeat-x;
 }
 
