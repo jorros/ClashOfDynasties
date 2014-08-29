@@ -30,6 +30,8 @@ public class BuildingBlueprint implements IBlueprint {
 
     private int defencePoints;
 
+    private int maxCount;
+
     @DBRef
     private Item produceItem;
 
@@ -68,6 +70,14 @@ public class BuildingBlueprint implements IBlueprint {
 
     public void setNation(Nation nation) {
         this.nation = nation;
+    }
+
+    public int getMaxCount() {
+        return maxCount;
+    }
+
+    public void setMaxCount(int maxCount) {
+        this.maxCount = maxCount;
     }
 
     public Resource getRequiredResource() {

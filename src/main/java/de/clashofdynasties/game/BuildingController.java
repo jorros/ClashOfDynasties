@@ -21,7 +21,7 @@ public class BuildingController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double pps, @RequestParam(required = false) Integer defence, @RequestParam(required = false) Integer item) {
+    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer maxcount, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double pps, @RequestParam(required = false) Integer defence, @RequestParam(required = false) Integer item) {
         BuildingBlueprint blueprint = buildingBlueprintRepository.findOne(id);
 
         if (description != null)
@@ -29,6 +29,9 @@ public class BuildingController {
 
         if (production != null)
             blueprint.setRequiredProduction(production);
+
+        if(maxcount != null)
+            blueprint.setMaxCount(maxcount);
 
         if (price != null)
             blueprint.setPrice(price);

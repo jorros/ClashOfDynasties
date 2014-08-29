@@ -175,7 +175,7 @@ public class CityController {
                 BuildingBlueprint blp = buildingBlueprintRepository.findOne(blueprint);
                 count = 1;
 
-                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity())
+                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (blp.getMaxCount() == 0 || blp.getMaxCount() > city.countBuildings(blp.getId())))
                     construction.setBlueprint(blp);
             }
             else if(type == 1) {
@@ -184,17 +184,19 @@ public class CityController {
                 }
             }
 
-            if(player.getCoins() < construction.getBlueprint().getPrice() * count && count > 1)
-                count = (int)Math.floor(player.getCoins() / construction.getBlueprint().getPrice());
-            else if(player.getCoins() < construction.getBlueprint().getPrice() * count)
-                count = 0;
+            if(construction.getBlueprint() != null) {
+                if (player.getCoins() < construction.getBlueprint().getPrice() * count && count > 1)
+                    count = (int) Math.floor(player.getCoins() / construction.getBlueprint().getPrice());
+                else if (player.getCoins() < construction.getBlueprint().getPrice() * count)
+                    count = 0;
 
-            if(construction.getBlueprint() != null && count > 0) {
-                construction.setCount(count);
-                city.setBuildingConstruction(construction);
-                cityRepository.save(city);
-                player.addCoins(-construction.getBlueprint().getPrice());
-                playerRepository.save(player);
+                if (count > 0) {
+                    construction.setCount(count);
+                    city.setBuildingConstruction(construction);
+                    cityRepository.save(city);
+                    player.addCoins(-construction.getBlueprint().getPrice());
+                    playerRepository.save(player);
+                }
             }
         }
     }
