@@ -1,5 +1,6 @@
 package de.clashofdynasties.service;
 
+import com.mongodb.Mongo;
 import de.clashofdynasties.logic.*;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 @Service
