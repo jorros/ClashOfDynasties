@@ -1,5 +1,6 @@
 package de.clashofdynasties.game;
 
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.Caravan;
 import de.clashofdynasties.models.City;
@@ -34,10 +35,10 @@ public class CaravanController {
     private CityRepository cityRepository;
 
     @Autowired
-    private RoutingService routingService;
+    private RoadRepository roadRepository;
 
     @Autowired
-    private RoadRepository roadRepository;
+    private RelationRepository relationRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public
@@ -73,17 +74,14 @@ public class CaravanController {
         City city2 = cityRepository.findOne(point2);
 
         if (city1 != null && city2 != null) {
-            Route route = routingService.calculateRoute(city1, city2, player);
+            RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
-            if(route != null)
-                route.setTime(routingService.calculateTime(route));
-            else
-                return null;
-
-            return route.toJSON();
+            if(routing.calculateRoute(city1, city2, player)) {
+                return routing.getRoute().toJSON();
+            }
         }
 
-        return null;
+        return JsonNodeFactory.instance.objectNode();
     }
 
     @RequestMapping(value = "/{caravan}", method = RequestMethod.DELETE)
@@ -106,17 +104,17 @@ public class CaravanController {
         City city2 = cityRepository.findOne(point2);
 
         if (city1 != null && city2 != null) {
-            Route route = routingService.calculateRoute(city1, city2, player);
+            RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
-            if (route != null && city1.getPlayer().equals(player) && city2.getPlayer().equals(player)) {
+            if (routing.calculateRoute(city1, city2, player) && city1.getPlayer().equals(player) && city2.getPlayer().equals(player)) {
                 Caravan caravan = new Caravan();
                 caravan.setPoint1(city1);
                 caravan.setPoint2(city2);
-                caravan.setRoute(route);
+                caravan.setRoute(routing.getRoute());
                 caravan.setX(city1.getX());
                 caravan.setY(city1.getY());
 
-                route.setCurrentRoad(roadRepository.findByCities(city1.getId(), route.getNext().getId()));
+                caravan.getRoute().setCurrentRoad(roadRepository.findByCities(city1.getId(), caravan.getRoute().getNext().getId()));
 
                 caravan.setPoint1Item(itemRepository.findOne(point1Item));
                 caravan.setPoint1Load(point1Load);

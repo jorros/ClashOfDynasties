@@ -36,13 +36,14 @@ public class FormationController {
     RoadRepository roadRepository;
 
     @Autowired
-    RoutingService routing;
+    private RelationRepository relationRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public
     @ResponseBody
     Map<String, ObjectNode> getFormations(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
         Player player = playerRepository.findByName(principal.getName());
+        RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
         List<Formation> formations = formationRepository.findAll();
         HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
@@ -51,7 +52,8 @@ public class FormationController {
             // Deploy Status ermitteln
             if (formation.getRoute() != null) {
                 formation.setDeployed(false);
-                formation.getRoute().setTime(routing.calculateTime(formation, formation.getRoute()));
+                routing.setRoute(formation.getRoute());
+                formation.getRoute().setTime(routing.calculateTime());
             } else {
                 formation.setDeployed(true);
             }
@@ -80,13 +82,10 @@ public class FormationController {
         Formation formation = formationRepository.findOne(id);
         City city = cityRepository.findOne(target);
 
-        Route route = routing.calculateRoute(formation, city, player);
+        RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
-        if(route != null) {
-            route.setTime(routing.calculateTime(formation, route));
-
-            return route.toJSON();
-        }
+        if(routing.calculateRoute(formation, city, player))
+            return routing.getRoute().toJSON();
         else
             return JsonNodeFactory.instance.objectNode();
     }
@@ -97,17 +96,16 @@ public class FormationController {
         Formation formation = formationRepository.findOne(formationId);
         City city = cityRepository.findOne(target);
         Player player = playerRepository.findByName(principal.getName());
+        RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
         if (player.equals(formation.getPlayer())) {
-            Route route = routing.calculateRoute(formation, city, player);
-            if (route != null) {
+            if (routing.calculateRoute(formation, city, player)) {
                 if (formation.isDeployed()) {
-                    formation.setRoute(route);
-                    route.setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId()));
+                    formation.setRoute(routing.getRoute());
+                    formation.getRoute().setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), formation.getRoute().getNext().getId()));
                     formation.move(70);
                 } else {
-                    route.setCurrentRoad(formation.getRoute().getCurrentRoad());
-                    formation.setRoute(route);
+                    formation.setRoute(routing.getRoute());
                 }
 
                 formation.updateTimestamp();

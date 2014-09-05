@@ -20,7 +20,7 @@ import java.security.Principal;
 @RequestMapping("/game/commands")
 public class CommandController {
     @Autowired
-    FormationRepository formationRepository;
+    private FormationRepository formationRepository;
 
     @Autowired
     PlayerRepository playerRepository;
@@ -41,19 +41,22 @@ public class CommandController {
     BiomeRepository biomeRepository;
 
     @Autowired
-    RoutingService routing;
+    RelationRepository relationRepository;
 
     @Autowired
-    RelationRepository relationRepository;
+    private RoadRepository roadRepository;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") ObjectId id) {
         Formation formation = formationRepository.findOne(id);
+        RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
         String time = "";
 
         if (!formation.isDeployed()) {
-            int seconds = routing.calculateTime(formation, formation.getRoute());
+
+            routing.setRoute(formation.getRoute());
+            int seconds = routing.calculateTime();
             int hr = (int) (seconds / 3600);
             int rem = (int) (seconds % 3600);
             int mn = rem / 60;
@@ -75,10 +78,12 @@ public class CommandController {
     @RequestMapping(value = "/caravan", method = RequestMethod.GET)
     public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") ObjectId id) {
         Caravan caravan = caravanRepository.findOne(id);
+        RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
         String time = "";
 
-        int seconds = routing.calculateTime(caravan.getRoute());
+        routing.setRoute(caravan.getRoute());
+        int seconds = routing.calculateTime();
         int hr = (int) (seconds / 3600);
         int rem = (int) (seconds % 3600);
         int mn = rem / 60;
