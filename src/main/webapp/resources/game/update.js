@@ -103,6 +103,13 @@ function updateGameEntities() {
 
     $.each(CityEntities, function (id, entity) {
         entity.update();
+
+        if((tempScrollX == -1 || tempScrollY == -1) && Cities[entity._cid].diplomacy == 4) {
+            Crafty.viewport.centerOn(entity, 500);
+            tempScrollX = Crafty.viewport.x;
+            tempScrollY = Crafty.viewport.y;
+            $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
+        }
     });
 
     $.each(Roads, function (id, road) {

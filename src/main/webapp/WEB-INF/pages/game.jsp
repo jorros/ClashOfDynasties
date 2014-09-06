@@ -38,7 +38,7 @@
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Cities.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCities">0</span></div>
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Formations.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalFormations">0</span></div>
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Camels.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCaravans">0</span></div>
-        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Ranking.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalRanking">0</span></div>
+        <div style="width:150px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Ranking.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalRanking">0</span></div>
     </div>
     <div id="header">
         <div id="menu1" class="menu menu-orange"><a>ranking</a></div>

@@ -63,6 +63,7 @@ public class PlayerController {
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void remove(@PathVariable("player") ObjectId playerId) {
+        reset(playerId);
         playerRepository.delete(playerId);
     }
 
@@ -74,6 +75,8 @@ public class PlayerController {
         player.setActivated(false);
         player.setCoins(100);
         player.setName("Neuer Spieler");
+        player.setLastScrollX(-1);
+        player.setLastScrollY(-1);
 
         playerRepository.save(player);
     }

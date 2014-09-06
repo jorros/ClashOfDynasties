@@ -203,6 +203,7 @@ public class CityController {
     @Secured("ROLE_ADMIN")
     public void save(@PathVariable("city") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
         City city = cityRepository.findOne(id);
+        Player newPlayer = null;
 
         if (city == null)
             return;
@@ -220,11 +221,7 @@ public class CityController {
             city.setBiome(biomeRepository.findOne(biome));
 
         if (player != null) {
-            Player newPlayer = playerRepository.findOne(player);
-            if(!city.getPlayer().isComputer())
-                playerLogic.updateFOW(city.getPlayer());
-            if(!newPlayer.isComputer() && !city.getPlayer().equals(newPlayer))
-                playerLogic.updateFOW(newPlayer);
+            newPlayer = playerRepository.findOne(player);
 
             city.setPlayer(newPlayer);
         }
@@ -238,5 +235,13 @@ public class CityController {
         city.updateTimestamp();
 
         cityRepository.save(city);
+
+        if(newPlayer != null) {
+            if(!city.getPlayer().isComputer())
+                playerLogic.updateFOW(city.getPlayer());
+
+            if(!newPlayer.isComputer() && !city.getPlayer().equals(newPlayer))
+                playerLogic.updateFOW(newPlayer);
+        }
     }
 }
