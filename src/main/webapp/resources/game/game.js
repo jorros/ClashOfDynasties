@@ -9,7 +9,6 @@ var tempRoute = null;
 var tempRouteEntity = null;
 var tempTime = 0;
 var routeShown = false;
-var lastUpdate = 0;
 var stopMenuUpdate = false;
 
 window.onload = function () {
@@ -88,7 +87,7 @@ window.onload = function () {
                     else
                         deselect();
                 } else {
-                    $.put("/game/menus/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
+                    $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
                 }
             })
 
@@ -104,17 +103,10 @@ window.onload = function () {
                 Crafty.viewport.scale(0.5);
         });
 
-        updateCityEntities();
-        updateCaravanEntities();
-        updateFormationEntities();
+        updateGameEntities();
 
         // Update Callback
         timeoutID = window.setInterval(updateGame, 5000);
-
-        $.getJSON("/game/menus/scroll", function(data) {
-            Crafty.viewport.x = data.x;
-            Crafty.viewport.y = data.y;
-        });
     });
 
     Crafty.scene("loading");

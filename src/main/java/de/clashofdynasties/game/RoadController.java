@@ -1,7 +1,5 @@
 package de.clashofdynasties.game;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.clashofdynasties.models.Player;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.PlayerRepository;
@@ -13,11 +11,6 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 @Controller
 @RequestMapping("/game/roads")
 public class RoadController {
@@ -26,23 +19,6 @@ public class RoadController {
 
     @Autowired
     private CityRepository cityRepository;
-
-    @Autowired
-    private PlayerRepository playerRepository;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, ObjectNode> getRoads(Principal principal, @RequestParam boolean editor) {
-        List<Road> roads = roadRepository.findAll();
-        HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
-        Player player = playerRepository.findByName(principal.getName());
-
-        if(roads != null && !roads.isEmpty())
-            roads.stream().filter(r -> r.isVisible(player) || editor).forEach(road -> data.put(road.getId().toHexString(), road.toJSON()));
-
-        return data;
-    }
 
     @RequestMapping(value = "/getByPoints", method = RequestMethod.GET)
     @ResponseBody
@@ -85,6 +61,8 @@ public class RoadController {
 
         if (weight != null)
             road.setWeight(weight);
+
+        road.updateTimestamp();
 
         roadRepository.save(road);
     }

@@ -53,77 +53,6 @@ public class MenuController {
     @Autowired
     EventRepository eventRepository;
 
-    @RequestMapping(value = "/top", method = RequestMethod.GET)
-    @ResponseBody
-    public ObjectNode getTop(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
-        ObjectNode node = JsonNodeFactory.instance.objectNode();
-
-        if(!editor) {
-            Player player = playerRepository.findByName(principal.getName());
-            List<City> cities = cityRepository.findByPlayer(player);
-            List<Formation> formations = formationRepository.findByPlayer(player);
-            List<Caravan> caravans = caravanRepository.findByPlayer(player);
-
-            int people = 0;
-            int balance = 0;
-            ArrayNode events = JsonNodeFactory.instance.arrayNode();
-
-            for (City city : cities) {
-                people += city.getPopulation();
-                balance += city.getIncome() - city.getOutcome();
-            }
-
-            List<Event> eventList = eventRepository.findByPlayer(player);
-            if(eventList != null && eventList.size() > 0) {
-                eventList.stream().filter(e -> e.toJSON(timestamp) != null).forEach(e -> events.add(e.toJSON(timestamp)));
-            }
-
-            node.put("coins", player.getCoins());
-            node.put("people", people);
-            node.put("balance", balance);
-            node.put("cityNum", cities.size());
-            node.put("formationNum", formations.size());
-            node.put("caravanNum", caravans.size());
-            node.put("ranking", player.getStatistic() == null ? "Unplatziert" : Integer.valueOf(player.getStatistic().getRank()).toString());
-            node.put("events", events);
-        }
-
-        return node;
-    }
-
-    @RequestMapping(value = "/event", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.OK)
-    public void removeEvent(Principal principal, @RequestParam ObjectId id) {
-        Player player = playerRepository.findByName(principal.getName());
-        Event event = eventRepository.findOne(id);
-
-        if(event != null && event.getPlayer().equals(player)) {
-            eventRepository.delete(event);
-        }
-    }
-
-    @RequestMapping(value = "/scroll", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.OK)
-    public void updateScrollPosition(Principal principal, @RequestParam int x, @RequestParam int y) {
-        Player player = playerRepository.findByName(principal.getName());
-
-        player.setLastScrollX(x);
-        player.setLastScrollY(y);
-
-        playerRepository.save(player);
-    }
-
-    @RequestMapping(value = "/scroll", method = RequestMethod.GET)
-    public @ResponseBody ObjectNode getScrollPosition(Principal principal) {
-        ObjectNode node = JsonNodeFactory.instance.objectNode();
-        Player player = playerRepository.findByName(principal.getName());
-
-        node.put("x", player.getLastScrollX());
-        node.put("y", player.getLastScrollY());
-
-        return node;
-    }
-
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) ObjectId id, @RequestParam(value = "city", required = false) ObjectId cityID) {
         Player player = playerRepository.findByName(principal.getName());
@@ -353,12 +282,5 @@ public class MenuController {
         map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
 
         return "menu/editunits";
-    }
-
-    @RequestMapping(value = "/timestamp", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    long getTimestamp() {
-        return System.currentTimeMillis();
     }
 }

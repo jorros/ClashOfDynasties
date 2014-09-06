@@ -4,8 +4,6 @@ var Selected = null;
 var SelectedWay = null;
 var timeoutID;
 
-var lastUpdate = 0;
-
 window.onload = function () {
     Crafty.init();
     Crafty.canvas.init();
@@ -70,7 +68,7 @@ window.onload = function () {
                         });
                     }
                 } else {
-                    $.put("/game/menus/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
+                    $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
                 }
             })
 
@@ -84,14 +82,9 @@ window.onload = function () {
                 Crafty.viewport.scale(0.5);
         });
 
-        updateCityEntities();
+        updateGameEntities();
 
         timeoutID = window.setInterval(updateGame, 5000);
-
-        $.getJSON("/game/menus/scroll", function(data) {
-            Crafty.viewport.x = data.x;
-            Crafty.viewport.y = data.y;
-        });
     });
 
     Crafty.scene("loading");

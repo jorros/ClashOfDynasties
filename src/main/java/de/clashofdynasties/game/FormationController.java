@@ -38,42 +38,6 @@ public class FormationController {
     @Autowired
     private RelationRepository relationRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, ObjectNode> getFormations(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
-        Player player = playerRepository.findByName(principal.getName());
-        RoutingService routing = new RoutingService(roadRepository, relationRepository);
-
-        List<Formation> formations = formationRepository.findAll();
-        HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
-
-        for (Formation formation : formations) {
-            // Deploy Status ermitteln
-            if (formation.getRoute() != null) {
-                formation.setDeployed(false);
-                routing.setRoute(formation.getRoute());
-                formation.getRoute().setTime(routing.calculateTime());
-            } else {
-                formation.setDeployed(true);
-            }
-
-            // Diplomatie ermitteln
-            if (player.equals(formation.getPlayer()))
-                formation.setDiplomacy(1);
-
-            // Wenn Spieler neutral
-            if (formation.getPlayer().isComputer()) {
-                formation.setDiplomacy(4);
-            }
-
-            if(!editor && formation.isVisible(player))
-                data.put(formation.getId().toHexString(), formation.toJSON(timestamp));
-        }
-
-        return data;
-    }
-
     @RequestMapping(value = "/{formation}/route", method = RequestMethod.GET)
     public
     @ResponseBody

@@ -20,6 +20,8 @@ public class Road {
 
     private float weight;
 
+    private long timestamp;
+
     public ObjectId getId() {
         return id;
     }
@@ -52,6 +54,18 @@ public class Road {
         this.weight = weight;
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void updateTimestamp() {
+        this.timestamp = System.currentTimeMillis();
+    }
+
     public double getLength() {
         return Math.sqrt(Math.pow(point1.getX() - point2.getX(), 2) + Math.pow(point1.getY() - point2.getY(), 2));
     }
@@ -67,12 +81,16 @@ public class Road {
             return false;
     }
 
-    public ObjectNode toJSON() {
+    public ObjectNode toJSON(long timestamp) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
-        node.put("point1", getPoint1().getId().toHexString());
-        node.put("point2", getPoint2().getId().toHexString());
+        if (getTimestamp() >= timestamp) {
+            node.put("point1", getPoint1().getId().toHexString());
+            node.put("point2", getPoint2().getId().toHexString());
+            node.put("nn", false);
+        } else
+            node.put("nn", true);
 
         return node;
     }

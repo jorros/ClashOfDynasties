@@ -1,7 +1,5 @@
 package de.clashofdynasties.game;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import de.clashofdynasties.logic.CityLogic;
 import de.clashofdynasties.logic.PlayerLogic;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
@@ -13,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/game/cities")
@@ -34,16 +29,7 @@ public class CityController {
     private PlayerRepository playerRepository;
 
     @Autowired
-    private NationRepository nationRepository;
-
-    @Autowired
     private ItemRepository itemRepository;
-
-    @Autowired
-    private FormationRepository formationRepository;
-
-    @Autowired
-    private UnitRepository unitRepository;
 
     @Autowired
     private ItemTypeRepository itemTypeRepository;
@@ -58,50 +44,10 @@ public class CityController {
     private BiomeRepository biomeRepository;
 
     @Autowired
-    private RelationRepository relationRepository;
-
-    @Autowired
     private RoadRepository roadRepository;
 
     @Autowired
     private PlayerLogic playerLogic;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, ObjectNode> getCities(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
-        Player player = playerRepository.findByName(principal.getName());
-
-        List<City> cities = cityRepository.findAll();
-        List<Formation> formations = formationRepository.findAll();
-        HashMap<String, ObjectNode> data = new HashMap<>();
-
-        for (City city : cities) {
-            for (Formation formation : formations) {
-                if (formation.getRoute() == null && formation.getLastCity().equals(city)) {
-                    if (city.getFormations() == null)
-                        city.setFormations(new ArrayList<>());
-
-                    city.getFormations().add(formation);
-                }
-            }
-
-            // Diplomatie
-            if(city.getPlayer().equals(player))
-                city.setDiplomacy(4);
-            else {
-                Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
-                if(relation == null)
-                    city.setDiplomacy(1);
-                else
-                    city.setDiplomacy(relation.getRelation());
-            }
-
-            data.put(city.getId().toHexString(), city.toJSON(editor, timestamp, player));
-        }
-
-        return data;
-    }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)

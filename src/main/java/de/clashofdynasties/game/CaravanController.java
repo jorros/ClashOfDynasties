@@ -40,31 +40,6 @@ public class CaravanController {
     @Autowired
     private RelationRepository relationRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, ObjectNode> getCaravans(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
-        Player player = playerRepository.findByName(principal.getName());
-
-        List<Caravan> caravans = caravanRepository.findAll();
-        HashMap<String, ObjectNode> data = new HashMap<String, ObjectNode>();
-
-        for (Caravan caravan : caravans) {
-            if (player.equals(caravan.getPlayer()))
-                caravan.setDiplomacy(1);
-
-            // Wenn Spieler neutral
-            if (caravan.getPlayer().isComputer()) {
-                caravan.setDiplomacy(4);
-            }
-
-            if(!editor && caravan.isVisible(player))
-                data.put(caravan.getId().toHexString(), caravan.toJSON(timestamp));
-        }
-
-        return data;
-    }
-
     @RequestMapping(value = "/route", method = RequestMethod.GET)
     public
     @ResponseBody

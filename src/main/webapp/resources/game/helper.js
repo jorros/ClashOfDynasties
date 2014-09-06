@@ -74,12 +74,6 @@ function closeControl() {
     currentCommand = undefined;
 }
 
-function updateTimestamp() {
-    return $.get("/game/menus/timestamp", function (data) {
-        lastUpdate = data;
-    });
-}
-
 function sendDelete (url, data, callback) {
     var c = url;
 
@@ -92,37 +86,24 @@ function sendDelete (url, data, callback) {
 }
 
 function loadGame(callback) {
-    if(!Editor) {
-        $.when(loadTop(true), updateCities(true), updateFormations(true), updateCaravans(true), updateTimestamp(true)).done(function () {
-            if (callback != undefined) {
-                callback();
-            }
-        });
-    } else {
-        $.when(updateCities(true), updateTimestamp(true)).done(function () {
-            if (callback != undefined) {
-                callback();
-            }
-        });
-    }
+    $.when(updateGameContent()).done(function () {
+        if (callback != undefined) {
+            callback();
+        }
+    });
 }
 
 function updateGame() {
-    if(!Editor) {
-        loadTop();
-        updateCities();
-        updateFormations();
-        updateCaravans();
-        updateTimestamp();
+    $.when(updateGameContent()).done(function() {
+        updateGameEntities();
+    });
 
+    if(!Editor) {
         if (currentMenuRefresh && currentMenu != undefined && !stopMenuUpdate)
             openMenu(currentMenu);
 
         if (currentCommand != undefined)
             openCommand(currentCommand);
-    } else {
-        updateCities();
-        updateTimestamp();
     }
 }
 

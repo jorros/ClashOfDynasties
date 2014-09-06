@@ -21,15 +21,11 @@
     <script type="text/javascript" src="/src/assets.js"></script>
     <script type="text/javascript" src="/src/helper.js"></script>
     <script type="text/javascript" src="/src/menus.js"></script>
-    <script type="text/javascript" src="/src/top.js"></script>
-    <script type="text/javascript" src="/src/cities.js"></script>
+    <script type="text/javascript" src="/src/update.js"></script>
     <script type="text/javascript" src="/src/cityEntity.js"></script>
     <script type="text/javascript" src="/src/roadEntity.js"></script>
     <script type="text/javascript" src="/src/formationEntity.js"></script>
-    <script type="text/javascript" src="/src/formations.js"></script>
     <script type="text/javascript" src="/src/caravanEntity.js"></script>
-    <script type="text/javascript" src="/src/caravans.js"></script>
-    <script type="text/javascript" src="/src/roads.js"></script>
     <script type="text/javascript" src="/src/game.js"></script>
 </head>
 <body>
