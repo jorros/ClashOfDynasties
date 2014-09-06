@@ -45,20 +45,6 @@ public class PlayerController {
     @Autowired
     private PlayerLogic playerLogic;
 
-    @RequestMapping(value = "/{player}/units", method = RequestMethod.DELETE)
-    @Secured("ROLE_ADMIN")
-    @ResponseStatus(HttpStatus.OK)
-    public void removeUnits(@PathVariable("player") ObjectId playerId) {
-        Player player = playerRepository.findOne(playerId);
-
-        List<Formation> formations = formationRepository.findByPlayer(player);
-
-        formations.forEach(f -> unitRepository.delete(f.getUnits()));
-
-        formationRepository.delete(formations);
-        caravanRepository.delete(caravanRepository.findByPlayer(player));
-    }
-
     @RequestMapping(value = "/{player}", method = RequestMethod.DELETE)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
@@ -205,7 +191,7 @@ public class PlayerController {
         }
     }
 
-    @RequestMapping(value = "/{player}/reset", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{player}/reset", method = RequestMethod.DELETE)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void reset(@PathVariable("player") ObjectId playerId) {
@@ -216,8 +202,8 @@ public class PlayerController {
         List<Formation> formations = formationRepository.findByPlayer(player);
         List<Caravan> caravans = caravanRepository.findByPlayer(player);
 
-        caravans.forEach(caravanRepository::delete);
-        formations.forEach(formationRepository::delete);
+        caravanRepository.delete(caravans);
+        formationRepository.delete(formations);
 
         for(City city : cities) {
             city.setBuildings(new ArrayList<>());

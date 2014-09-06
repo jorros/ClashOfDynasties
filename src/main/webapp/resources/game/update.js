@@ -105,7 +105,7 @@ function updateGameEntities() {
         entity.update();
 
         if((tempScrollX == -1 || tempScrollY == -1) && Cities[entity._cid].diplomacy == 4) {
-            Crafty.viewport.centerOn(entity, 500);
+            Crafty.viewport.centerOn(entity, 1500);
             tempScrollX = Crafty.viewport.x;
             tempScrollY = Crafty.viewport.y;
             $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });

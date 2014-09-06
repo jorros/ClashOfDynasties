@@ -13,7 +13,7 @@
             <tr>
                 <td style="font-weight: bold;"><c:out value="${player.name}" /> :</td>
                 <td>${player.email}</td>
-                <td><button id="${player.id}_delete">Löschen</button><c:if test="${player.activated}"><button id="${player.id}_deleteUnits">Einheiten löschen</button><button id="${player.id}_reset">Reset</button></c:if><c:if test="${!player.activated}"><button id="${player.id}_link">Link</button></c:if></td>
+                <td><button id="${player.id}_delete">Löschen</button><c:if test="${player.activated}"><button id="${player.id}_reset">Spieler Reset</button></c:if><c:if test="${!player.activated}"><button id="${player.id}_link">Link</button></c:if></td>
             </tr>
             </c:if>
         </c:forEach>
@@ -26,14 +26,9 @@
                     $.delete("/game/players/${player.id}");
                 }
             });
-            $("#${player.id}_deleteUnits").click(function() {
-                if(window.confirm("Einheiten wirklich löschen?")) {
-                    $.delete("/game/players/${player.id}/units");
-                }
-            });
             $("#${player.id}_reset").click(function() {
                 if(window.confirm("Spieler wirklich resetten?")) {
-                    $.put("/game/players/${player.id}/reset");
+                    $.delete("/game/players/${player.id}/reset");
                 }
             });
             $("#${player.id}_link").click(function() {
