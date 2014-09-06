@@ -13,8 +13,8 @@
         <c:forEach items="${unitBlueprints}" var="bp">
         <tr>
             <td style="font-weight: bold;"><c:out value="${bp.name}" /> :</td>
-            <td><textarea id="${bp.id}_desc" style="width:300px; height:60px;">${bp.description}</textarea></td>
-            <td><input id="${bp.id}_speed" style="width:50px; height:10px;" type="text" value="${bp.speed}" /></td>
+            <td><textarea id="${bp.id}_desc" style="width:300px; height:70px;">${bp.description}</textarea></td>
+            <td><input id="${bp.id}_speed" style="width:60px; height:10px;" type="text" value="${bp.speed}" /></td>
             <td><input id="${bp.id}_price" style="width:50px; height:10px;" type="text" value="${bp.price}" /></td>
             <td><input id="${bp.id}_production" style="width:80px; height:10px;" type="text" value="${bp.requiredProduction}" /></td>
         </tr>

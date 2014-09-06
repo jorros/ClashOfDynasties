@@ -5,7 +5,7 @@
     <table style="text-align:center; width:100%;">
         <tr>
             <th></th>
-            <th>Kapazität (rel)</th>
+            <th>Kapazität (relativ)</th>
             <th>Grund V.Pkt.</th>
             <th>Grund Konsumrate</th>
             <th>Luxus1 Konsumrate</th>
@@ -17,13 +17,13 @@
         <c:forEach items="${cityTypes}" var="ct">
             <tr>
                 <td style="font-weight: bold;"><c:out value="${ct.name}" /> :</td>
-                <td><input id="${ct.id}_capacityRel" style="width:30px; height:10px;" type="text" value="${ct.capacity}" /></td>
-                <td><input id="${ct.id}_defence" style="width:30px; height:10px;" type="text" value="${ct.defence}" /></td>
-                <td><input id="${ct.id}_consumeBasic" style="width:30px; height:10px;" type="text" value="${ct.consumeBasic}" /></td>
-                <td><input id="${ct.id}_consumeLuxury1" style="width:30px; height:10px;" type="text" value="${ct.consumeLuxury1}" /></td>
-                <td><input id="${ct.id}_consumeLuxury2" style="width:30px; height:10px;" type="text" value="${ct.consumeLuxury2}" /></td>
-                <td><input id="${ct.id}_consumeLuxury3" style="width:30px; height:10px;" type="text" value="${ct.consumeLuxury3}" /></td>
-                <td><input id="${ct.id}_productionRate" style="width:30px; height:10px;" type="text" value="${ct.productionRate}" /></td>
+                <td><input id="${ct.id}_capacityRel" style="width:40px; height:10px;" type="text" value="${ct.capacity}" /></td>
+                <td><input id="${ct.id}_defence" style="width:40px; height:10px;" type="text" value="${ct.defence}" /></td>
+                <td><input id="${ct.id}_consumeBasic" style="width:70px; height:10px;" type="text" value="${ct.consumeBasic}" /></td>
+                <td><input id="${ct.id}_consumeLuxury1" style="width:70px; height:10px;" type="text" value="${ct.consumeLuxury1}" /></td>
+                <td><input id="${ct.id}_consumeLuxury2" style="width:70px; height:10px;" type="text" value="${ct.consumeLuxury2}" /></td>
+                <td><input id="${ct.id}_consumeLuxury3" style="width:70px; height:10px;" type="text" value="${ct.consumeLuxury3}" /></td>
+                <td><input id="${ct.id}_productionRate" style="width:60px; height:10px;" type="text" value="${ct.productionRate}" /></td>
                 <td><input id="${ct.id}_taxes" style="width:60px; height:10px;" type="text" value="${ct.taxes}" /></td>
             </tr>
         </c:forEach>

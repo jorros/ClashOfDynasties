@@ -22,9 +22,9 @@
             <td><input id="${bp.id}_price" style="width:30px; height:10px;" type="text" value="${bp.price}" /></td>
             <td><input id="${bp.id}_defence" style="width:30px; height:10px;" type="text" value="${bp.defencePoints}" /></td>
             <td><input id="${bp.id}_production" style="width:60px; height:10px;" type="text" value="${bp.requiredProduction}" /></td>
-            <td><input id="${bp.id}_maxcount" style="width:60px; height:10px;" type="text" value="${bp.maxCount}" /></td>
+            <td><input id="${bp.id}_maxcount" style="width:30px; height:10px;" type="text" value="${bp.maxCount}" /></td>
             <td><select id="${bp.id}_item"><option <c:if test="${bp.produceItem == null}">selected</c:if> value="0">Kein</option><c:forEach items="${items}" var="item"><option <c:if test="${item == bp.produceItem}">selected</c:if> value="${item.id}">${item.name}</option></c:forEach></select></td>
-            <td><input id="${bp.id}_pps" style="width:30px; height:10px;" type="text" value="${bp.producePerStep}" /></td>
+            <td><input id="${bp.id}_pps" style="width:60px; height:10px;" type="text" value="${bp.producePerStep}" /></td>
         </tr>
         </c:forEach>
     </table>

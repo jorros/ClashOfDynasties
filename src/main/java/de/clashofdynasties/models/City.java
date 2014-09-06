@@ -295,10 +295,7 @@ public class City {
     }
 
     public boolean equals(Object other) {
-        if (other instanceof City && ((City) other).getId().equals(this.id))
-            return true;
-        else
-            return false;
+        return (other instanceof City && ((City) other).getId().equals(this.id));
     }
 
     public int countBuildings(int blueprint) {
