@@ -1,5 +1,6 @@
 package de.clashofdynasties.game;
 
+import de.clashofdynasties.logic.PlayerLogic;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import org.bson.types.ObjectId;
@@ -13,31 +14,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
 @RequestMapping("/game/players")
 public class PlayerController {
     @Autowired
-    FormationRepository formationRepository;
+    private FormationRepository formationRepository;
 
     @Autowired
-    PlayerRepository playerRepository;
+    private PlayerRepository playerRepository;
 
     @Autowired
-    CityRepository cityRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    UnitRepository unitRepository;
+    private UnitRepository unitRepository;
 
     @Autowired
-    CaravanRepository caravanRepository;
+    private CaravanRepository caravanRepository;
 
     @Autowired
-    RelationRepository relationRepository;
+    private RelationRepository relationRepository;
 
     @Autowired
-    EventRepository eventRepository;
+    private EventRepository eventRepository;
+
+    @Autowired
+    private PlayerLogic playerLogic;
 
     @RequestMapping(value = "/{player}/units", method = RequestMethod.DELETE)
     @Secured("ROLE_ADMIN")
@@ -196,9 +202,36 @@ public class PlayerController {
         }
     }
 
-    @RequestMapping(value = "/reset/{player}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{player}/reset", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void reset(@PathVariable("player") ObjectId playerId) {
+        Player player = playerRepository.findOne(playerId);
+
+        List<Player> players = playerRepository.findAll();
+        List<City> cities = cityRepository.findByPlayer(player);
+        List<Formation> formations = formationRepository.findByPlayer(player);
+        List<Caravan> caravans = caravanRepository.findByPlayer(player);
+
+        caravans.forEach(caravanRepository::delete);
+        formations.forEach(formationRepository::delete);
+
+        for(City city : cities) {
+            city.setBuildings(new ArrayList<>());
+            city.setItems(new HashMap<>());
+            city.setHealth(100);
+            city.setPlayer(players.stream().filter(Player::isComputer).findFirst().get());
+            city.setPopulation(5);
+            city.setSatisfaction(100);
+            city.setUnits(new ArrayList<>());
+            city.updateTimestamp();
+            city.setSightUpdate(true);
+            cityRepository.save(city);
+        }
+
+        players.forEach(playerLogic::updateFOW);
+
+        player.setCoins(100);
+        playerRepository.save(player);
     }
 }

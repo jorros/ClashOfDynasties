@@ -33,7 +33,7 @@
             });
             $("#${player.id}_reset").click(function() {
                 if(window.confirm("Spieler wirklich resetten?")) {
-                    $.put("/game/reset/${player.id}");
+                    $.put("/game/players/${player.id}/reset");
                 }
             });
             $("#${player.id}_link").click(function() {
