@@ -2,6 +2,9 @@ var currentMenu = undefined;
 var currentMenuRefresh = true;
 var isRefreshing = false;
 
+var tempScrollX = 0;
+var tempScrollY = 0;
+
 function openMenu(menu, refresh) {
     if (menu != undefined) {
         if(refresh != undefined)
@@ -86,7 +89,10 @@ function sendDelete (url, data, callback) {
 }
 
 function loadGame(callback) {
-    $.when(updateGameContent()).done(function () {
+    $.when(updateGameContent(), $.getJSON("/game/core/scroll", function(data) {
+        tempScrollX = data.x;
+        tempScrollY = data.y;
+    })).done(function () {
         if (callback != undefined) {
             callback();
         }

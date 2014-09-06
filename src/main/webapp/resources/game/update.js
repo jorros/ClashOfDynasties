@@ -68,9 +68,6 @@ function updateGameContent() {
         $("#globalCaravans").text(data.top.caravanNum);
         $("#globalRanking").text(data.top.ranking);
 
-        Crafty.viewport.x = data.scroll.x;
-        Crafty.viewport.y = data.scroll.y;
-
         $.each(data.events, function(index, event) {
             $('<button class="event"><img src="assets/events/' + event.type + '.png" /></button>').appendTo("#events").mousedown(function(e) {
                 if(e.which === 1) {

@@ -61,7 +61,6 @@ public class GameController {
         HashMap<String, ObjectNode> cityJSON = new HashMap<>();
         HashMap<String, Object> topMap = new HashMap<>();
         List<Object> eventList = new ArrayList<>();
-        ObjectNode scrollMap = JsonNodeFactory.instance.objectNode();
 
         int people = 0;
         int balance = 0;
@@ -161,9 +160,6 @@ public class GameController {
             events.stream().filter(e -> e.toJSON(timestamp) != null).forEach(e -> eventList.add(e.toJSON(timestamp)));
         }
 
-        scrollMap.put("x", player.getLastScrollX());
-        scrollMap.put("y", player.getLastScrollY());
-
         data.put("cities", cityJSON);
         data.put("roads", roadMap);
         data.put("formations", formationMap);
@@ -171,7 +167,6 @@ public class GameController {
         data.put("timestamp", System.currentTimeMillis());
         data.put("top", topMap);
         data.put("events", eventList);
-        data.put("scroll", scrollMap);
 
         return data;
     }
@@ -196,5 +191,16 @@ public class GameController {
         player.setLastScrollY(y);
 
         playerRepository.save(player);
+    }
+
+    @RequestMapping(value = "/scroll", method = RequestMethod.GET)
+    public @ResponseBody ObjectNode getScrollPosition(Principal principal) {
+        ObjectNode node = JsonNodeFactory.instance.objectNode();
+        Player player = playerRepository.findByName(principal.getName());
+
+        node.put("x", player.getLastScrollX());
+        node.put("y", player.getLastScrollY());
+
+        return node;
     }
 }

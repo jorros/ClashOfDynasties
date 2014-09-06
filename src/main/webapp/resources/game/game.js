@@ -103,6 +103,9 @@ window.onload = function () {
                 Crafty.viewport.scale(0.5);
         });
 
+        Crafty.viewport.x = tempScrollX;
+        Crafty.viewport.y = tempScrollY;
+
         updateGameEntities();
 
         // Update Callback
