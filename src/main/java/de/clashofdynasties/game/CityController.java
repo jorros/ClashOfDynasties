@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -178,6 +180,22 @@ public class CityController {
 
             cityRepository.save(city);
         }
+    }
+
+    @RequestMapping(value = "/{city}/reset", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
+    public void reset(@PathVariable("city") ObjectId id) {
+        City city = cityRepository.findOne(id);
+        city.setBuildings(new ArrayList<>());
+        city.setItems(new HashMap<>());
+        city.setUnits(new ArrayList<>());
+        city.setHealth(100);
+        city.setPopulation(5);
+        city.updateTimestamp();
+        city.setType(cityTypeRepository.findOne(1));
+
+        cityRepository.save(city);
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
