@@ -234,6 +234,8 @@ public class PlayerController {
 
         players.forEach(playerLogic::updateFOW);
 
+        player.setLastScrollX(-1);
+        player.setLastScrollY(-1);
         player.setCoins(100);
         playerRepository.save(player);
     }
