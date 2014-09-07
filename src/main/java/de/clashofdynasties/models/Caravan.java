@@ -163,7 +163,7 @@ public class Caravan {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.substring(0, 14);
     }
 
     public int getDiplomacy() {

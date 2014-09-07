@@ -86,7 +86,7 @@ public class Formation {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.substring(0, 14);
     }
 
     public Player getPlayer() {
