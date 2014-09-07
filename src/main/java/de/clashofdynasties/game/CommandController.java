@@ -56,6 +56,7 @@ public class CommandController {
         if (!formation.isDeployed()) {
 
             routing.setRoute(formation.getRoute());
+            routing.setFormation(formation);
             int seconds = routing.calculateTime();
             int hr = (int) (seconds / 3600);
             int rem = (int) (seconds % 3600);

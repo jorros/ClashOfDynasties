@@ -275,6 +275,11 @@ public class RoutingService {
         return false;
     }
 
+    public void setFormation(Formation formation) {
+        this.formation = formation;
+        this.isFormation = true;
+    }
+
     public boolean calculateRoute(City start, City end, Player player) {
         openList = new PriorityQueue<Node>();
         closedList = new LinkedList<Node>();
