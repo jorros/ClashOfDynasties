@@ -105,8 +105,11 @@ public class PlayerLogic {
             else {
                 Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
 
-                if(relation != null && relation.getRelation() >= 2) {
-                    setVisible(city, city.getType().getId(), cities, player);
+                if(relation != null) {
+                    if(relation.getRelation() == 3)
+                        setVisible(city, city.getType().getId(), cities, player);
+                    else if(relation.getRelation() == 2)
+                        city.getVisibility().add(player);
                 }
             }
         }
