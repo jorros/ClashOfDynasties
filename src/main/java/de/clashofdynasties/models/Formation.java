@@ -37,9 +37,6 @@ public class Formation {
     @Transient
     private boolean deployed;
 
-    @Transient
-    private int diplomacy;
-
     private long timestamp;
 
     public ObjectId getId() {
@@ -129,14 +126,6 @@ public class Formation {
         this.deployed = deployed;
     }
 
-    public int getDiplomacy() {
-        return diplomacy;
-    }
-
-    public void setDiplomacy(int diplomacy) {
-        this.diplomacy = diplomacy;
-    }
-
     public double getSpeed() {
         double speed = Double.MAX_VALUE;
 
@@ -200,7 +189,7 @@ public class Formation {
             node.put("x", Math.round(getX()));
             node.put("y", Math.round(getY()));
             node.put("deployed", isDeployed());
-            node.put("diplomacy", getDiplomacy());
+            node.put("color", getPlayer().getColor());
             node.put("name", getName());
 
             if (getRoute() != null)

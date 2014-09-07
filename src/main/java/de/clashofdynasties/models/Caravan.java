@@ -26,9 +26,6 @@ public class Caravan {
     private double x;
     private double y;
 
-    @Transient
-    private int diplomacy;
-
     @DBRef
     private Player player;
 
@@ -166,14 +163,6 @@ public class Caravan {
         this.name = name.substring(0, 14);
     }
 
-    public int getDiplomacy() {
-        return diplomacy;
-    }
-
-    public void setDiplomacy(int diplomacy) {
-        this.diplomacy = diplomacy;
-    }
-
     public int getDirection() {
         return direction;
     }
@@ -250,12 +239,13 @@ public class Caravan {
 
         node.put("x", Math.round(getX()));
         node.put("y", Math.round(getY()));
-        node.put("diplomacy", getDiplomacy());
         node.put("name", getName());
         node.put("direction", getRoute().getNext().getX() - getX() < 0 ? "2" : "");
 
-        if (getTimestamp() >= timestamp)
+        if (getTimestamp() >= timestamp) {
             node.put("route", getRoute().toJSON());
+            node.put("color", getPlayer().getColor());
+        }
 
         return node;
     }

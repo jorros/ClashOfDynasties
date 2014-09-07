@@ -71,17 +71,9 @@ public class GameController {
         for (City city : cities) {
             // Diplomatie
             if(city.getPlayer().equals(player)) {
-                city.setDiplomacy(4);
                 people += city.getPopulation();
                 balance += city.getIncome() - city.getOutcome();
                 numCities++;
-            }
-            else {
-                Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
-                if(relation == null)
-                    city.setDiplomacy(1);
-                else
-                    city.setDiplomacy(relation.getRelation());
             }
 
             cityMap.put(city.getId().toHexString(), city);
@@ -113,15 +105,8 @@ public class GameController {
                     }
                 }
 
-                // Diplomatie ermitteln
                 if (player.equals(formation.getPlayer())) {
-                    formation.setDiplomacy(1);
                     numFormations++;
-                }
-
-                // Wenn Spieler neutral
-                if (formation.getPlayer().isComputer()) {
-                    formation.setDiplomacy(4);
                 }
 
                 formationMap.put(formation.getId().toHexString(), formation.toJSON(timestamp));
@@ -131,13 +116,7 @@ public class GameController {
         for (Caravan caravan : caravans) {
             if(!editor && caravan.isVisible(player)) {
                 if (player.equals(caravan.getPlayer())) {
-                    caravan.setDiplomacy(1);
                     numCaravans++;
-                }
-
-                // Wenn Spieler neutral
-                if (caravan.getPlayer().isComputer()) {
-                    caravan.setDiplomacy(4);
                 }
 
                 caravanMap.put(caravan.getId().toHexString(), caravan.toJSON(timestamp));

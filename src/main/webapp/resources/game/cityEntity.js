@@ -125,7 +125,7 @@ Crafty.c("City", {
             else
                 $("#" + this._cid + "_satisfaction").hide();
 
-            if (Cities[this._cid].diplomacy == 4)
+            if (Cities[this._cid].build)
                 $("#" + this._cid + "_build").show();
             else
                 $("#" + this._cid + "_build").hide();
@@ -152,6 +152,8 @@ Crafty.c("City", {
                 infoWidth += $("#" + this._cid + "_satisfaction").width();
         }
 
+        this._infoEntity.css("background-color", getColor(Cities[this._cid].color));
+
         this._infoEntity.w = infoWidth;
         this._infoEntity.x = Cities[this._cid].x - this._infoEntity._w / 2;
     },
@@ -167,19 +169,6 @@ Crafty.c("City", {
 
             this._type = Cities[this._cid].type;
         }
-    },
-
-    _updateDiplomacy: function () {
-        if (Cities[this._cid].diplomacy == 4) // Selbst
-            this._infoEntity.css("background-color", "#4096EE");
-        else if (Cities[this._cid].diplomacy == 3) // Verbündet
-            this._infoEntity.css("background-color", "#356AA0");
-        else if (Cities[this._cid].diplomacy == 2) // Handelspartner
-            this._infoEntity.css("background-color", "#356AA0");
-        else if (Cities[this._cid].diplomacy == 0) // Verfeindet
-            this._infoEntity.css("background-color", "#D01F3C");
-        else if (Cities[this._cid].diplomacy == 1) // Neutral
-            this._infoEntity.css("background-color", "#EEEEEE");
     },
 
     select: function () {
@@ -312,7 +301,6 @@ Crafty.c("City", {
                 if(this._infoEntity == undefined)
                     this._buildInfo();
 
-                this._updateDiplomacy();
                 this._updateInfo();
 
                 this.alpha = 1.0;

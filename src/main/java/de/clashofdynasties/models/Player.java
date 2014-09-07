@@ -27,6 +27,8 @@ public class Player {
     private boolean computer;
     private boolean activated;
 
+    private int color;
+
     private Statistic statistic;
 
     public ObjectId getId() {
@@ -43,6 +45,14 @@ public class Player {
 
     public void setCoins(double coins) {
         this.coins = coins;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public String getName() {

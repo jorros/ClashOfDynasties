@@ -113,6 +113,67 @@ function updateGame() {
     }
 }
 
+function getColor(colorID) {
+    switch(colorID) {
+        case 0:
+            return "#EEEEEE";
+
+        case 1:
+            return "#4096EE";
+
+        case 2:
+            return "#D01F3C";
+
+        case 3:
+            return "#F5B800";
+
+        case 4:
+            return "#CCFF33";
+
+        case 5:
+            return "#33FF66";
+
+        case 6:
+            return "#FF794D";
+
+        case 7:
+            return "#FF4D79";
+
+        case 8:
+            return "#B88A00";
+
+        case 9:
+            return "#FE6F71";
+
+        case 10:
+            return "#CCCCCC";
+
+        case 11:
+            return "#E45EA7";
+
+        case 12:
+            return "#7DB2AB";
+
+        case 13:
+            return "#D8FBE2";
+
+        case 14:
+            return "#E8F5BB";
+
+        case 15:
+            return "#6CDFEA";
+
+        case 16:
+            return "#84C9FF";
+
+        case 17:
+            return "#7FAF1B";
+
+        case 18:
+            return "#D9FFA9";
+    }
+}
+
 function forceUpdate() {
     window.clearInterval(timeoutID);
     updateGame();

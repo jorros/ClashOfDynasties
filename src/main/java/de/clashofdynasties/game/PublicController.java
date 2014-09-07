@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class PublicController {
@@ -63,6 +66,19 @@ public class PublicController {
         Player player = playerRepository.findOne(key);
 
         player.setNation(nationRepository.findOne(nation));
+        playerRepository.save(player);
+
+        return "redirect:/register?key=" + key;
+    }
+
+    @RequestMapping(value = "/step3", method = RequestMethod.GET)
+    public String registerStep3(ModelMap map, @RequestParam ObjectId key, @RequestParam int color) {
+        Player player = playerRepository.findOne(key);
+
+        if(playerRepository.findAll().stream().filter(p -> p.getColor() == color).count() > 0)
+            return "redirect:/register?key=" + key + "&error=true";
+
+        player.setColor(color);
         player.setActivated(true);
         playerRepository.save(player);
 
@@ -74,17 +90,26 @@ public class PublicController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String register(ModelMap map, @RequestParam(required = false) ObjectId key) {
+    public String register(ModelMap map, @RequestParam(required = false) ObjectId key, @RequestParam(required = false) Boolean error) {
         if(key != null) {
             Player player = playerRepository.findOne(key);
 
             if(player != null && !player.isActivated()) {
                 map.addAttribute("key", key);
 
+                if(error != null)
+                    map.addAttribute("error", error);
+
                 if(player.getEmail() == null)
                     return "register";
-                else
+                else if(player.getNation() == null)
                     return "choosenation";
+                else {
+                    List<Integer> notAvailableColors = playerRepository.findAll().stream().map(Player::getColor).distinct().collect(Collectors.toList());
+                    map.addAttribute("notAvailableColors", notAvailableColors);
+
+                    return "choosecolor";
+                }
             }
         }
 

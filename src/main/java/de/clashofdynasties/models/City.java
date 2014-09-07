@@ -43,9 +43,6 @@ public class City {
     @Transient
     private List<Formation> formations;
 
-    @Transient
-    private int diplomacy;
-
     private int capacity;
     private String name;
 
@@ -254,14 +251,6 @@ public class City {
         this.formations = formations;
     }
 
-    public int getDiplomacy() {
-        return diplomacy;
-    }
-
-    public void setDiplomacy(int diplomacy) {
-        this.diplomacy = diplomacy;
-    }
-
     public double getStoredItem(int id) {
         if (getItems() == null)
             return 0;
@@ -384,9 +373,12 @@ public class City {
             node.put("visible", visibility.contains(player));
 
             if(visibility.contains(player) || editor) {
-                node.put("diplomacy", getDiplomacy());
                 node.put("name", getName());
                 node.put("nn", false);
+                node.put("color", getPlayer().getColor());
+
+                if(!editor)
+                    node.put("build", player.equals(getPlayer()) && getType().getId() <= 3);
 
                 if (editor) {
                     node.put("resource", getResource().getId());

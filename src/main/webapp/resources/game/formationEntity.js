@@ -16,17 +16,7 @@ Crafty.c("Formation", {
 
     _updateInfo: function () {
         this._textEntity.text(Formations[this._fid].name);
-    },
-
-    _updateDiplomacy: function () {
-        if (Formations[this._fid].diplomacy == 1) // Selbst
-            this._textEntity.css("color", "#4096EE");
-        else if (Formations[this._fid].diplomacy == 2) // Verbündet
-            this._textEntity.css("color", "#356AA0");
-        else if (Formations[this._fid].diplomacy == 3) // Verfeindet
-            this._textEntity.css("color", "#D01F3C");
-        else if (Formations[this._fid].diplomacy == 4) // Neutral
-            this._textEntity.css("color", "#EEEEEE");
+        this._textEntity.css("color", getColor(Formations[this._fid].color));
     },
 
     showRoute: function (to) {
@@ -128,7 +118,6 @@ Crafty.c("Formation", {
                 this._textEntity.visible = true;
             }
 
-            this._updateDiplomacy();
             this._updateInfo();
         }
 

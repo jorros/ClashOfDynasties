@@ -16,17 +16,7 @@ Crafty.c("Caravan", {
 
     _updateInfo: function () {
         this._textEntity.text(Caravans[this._cid].name);
-    },
-
-    _updateDiplomacy: function () {
-        if (Caravans[this._cid].diplomacy == 1) // Selbst
-            this._textEntity.css("color", "#4096EE");
-        else if (Caravans[this._cid].diplomacy == 2) // Verbündet
-            this._textEntity.css("color", "#356AA0");
-        else if (Caravans[this._cid].diplomacy == 3) // Verfeindet
-            this._textEntity.css("color", "#D01F3C");
-        else if (Caravans[this._cid].diplomacy == 4) // Neutral
-            this._textEntity.css("color", "#EEEEEE");
+        this._textEntity.css("color", getColor(Caravans[this._cid].color));
     },
 
     showRoute: function () {
@@ -87,7 +77,6 @@ Crafty.c("Caravan", {
 
             this.image("assets/Caravan" + Caravans[this._cid].direction + ".png");
 
-            this._updateDiplomacy();
             this._updateInfo();
         }
 
