@@ -160,7 +160,10 @@ public class Caravan {
     }
 
     public void setName(String name) {
-        this.name = name.substring(0, 14);
+        if(name.length() > 14)
+            name = name.substring(0, 14);
+
+        this.name = name;
     }
 
     public int getDirection() {

@@ -57,6 +57,7 @@ var Assets = ["assets/buildings/1.png",
     "assets/satisfaction/Satisfied.png",
     "assets/satisfaction/Unhappy.png",
 
+    "assets/units/0.png",
     "assets/units/1.png",
     "assets/units/2.png",
     "assets/units/3.png",
