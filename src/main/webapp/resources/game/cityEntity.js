@@ -10,7 +10,7 @@ Crafty.c("City", {
         var id = $trigger.find("span").attr("id").slice(0, -11);
 
         $.each(Cities[id].formations, function (key, val) {
-            items[val.id] = { name: val.name, icon: "edit" };
+            items[val.id] = { name: val.name, className: "formationSelectItem" };
         });
 
         return {

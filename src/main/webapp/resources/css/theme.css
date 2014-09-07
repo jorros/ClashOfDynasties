@@ -127,6 +127,12 @@ body {
     color: #eee;
 }
 
+.formationSelectItem {
+    font-size: 16px;
+    height: 22px;
+    color: #000;
+}
+
 /* Input Styles */
 label {
     font-size: 18px;
