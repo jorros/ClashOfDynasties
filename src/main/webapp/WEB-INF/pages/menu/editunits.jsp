@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <h1>Einheiten</h1>
 <div id="content">
     <table style="text-align:center; width:100%;">
@@ -14,7 +16,7 @@
         <tr>
             <td style="font-weight: bold;"><c:out value="${bp.name}" /> :</td>
             <td><textarea id="${bp.id}_desc" style="width:300px; height:70px;">${bp.description}</textarea></td>
-            <td><input id="${bp.id}_speed" style="width:60px; height:10px;" type="text" value="${bp.speed}" /></td>
+            <td><input id="${bp.id}_speed" style="width:60px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${bp.speed}"/>" /></td>
             <td><input id="${bp.id}_price" style="width:50px; height:10px;" type="text" value="${bp.price}" /></td>
             <td><input id="${bp.id}_production" style="width:80px; height:10px;" type="text" value="${bp.requiredProduction}" /></td>
         </tr>
