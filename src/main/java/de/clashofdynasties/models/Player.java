@@ -135,6 +135,12 @@ public class Player {
         this.statistic = statistic;
     }
 
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other instanceof Player && ((Player) other).getId().equals(this.id))
             return true;

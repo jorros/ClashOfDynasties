@@ -44,6 +44,7 @@ public class LogicService {
     private RelationRepository relationRepository;
 
     private long tick = 599;
+    private long tickWar = 29;
 
     @Scheduled(fixedDelay = 1000)
     public void Worker() {
@@ -52,7 +53,6 @@ public class LogicService {
             processPlayer();
             processFormations();
             processCaravans();
-            processWar();
             processDiplomacy();
         }
         catch(Exception ex) {
@@ -62,8 +62,13 @@ public class LogicService {
 
     private void processCities() {
         List<City> cities = cityRepository.findAll();
+        tickWar++;
 
         for(City city : cities) {
+            if(tick == 30) {
+                cityLogic.processWar(city);
+                tick = 0;
+            }
             cityLogic.processPopulation(city);
             cityLogic.processProduction(city);
             cityLogic.processCoins(city);
@@ -122,9 +127,5 @@ public class LogicService {
 
             relationRepository.save(relation);
         }
-    }
-
-    private void processWar() {
-
     }
 }

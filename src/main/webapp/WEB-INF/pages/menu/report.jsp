@@ -19,6 +19,12 @@
             <h4>Zusammenstellung</h4>
             <div style="height:320px; overflow-y:auto; overflow-x:hidden;">
                 <ul id="formation_city" class="sortable">
+                    <li id="unit_city"><img src="/game/units/0/icon?health=${city.health}" /></li>
+                    <c:forEach items="${city.buildings}" var="building">
+                        <c:if test="${building.blueprint.defencePoints > 0}">
+                            <li id="unit_${building.id}"><img src="/game/buildings/${building.blueprint.id}/icon?health=${building.health}" /></li>
+                        </c:if>
+                    </c:forEach>
                     <c:forEach items="${city.units}" var="unit">
                         <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
                     </c:forEach>
@@ -48,20 +54,20 @@
                 <table style="width:100%;">
                     <tr>
                         <td style="width:50%;">
-                            <c:forEach items="${city.report.parties}" var="party">
-                                <c:if test="${party.player == player}">
-                                    <span class="blue">${party.player.name} (${party.player.nation.name})</span><br>
-                                </c:if>
-                                <c:if test="${party.player != player && party.player.clan != null && party.player.clan == player.clan}">
-                                    <span class="green">${party.player.name} (${party.player.nation.name})</span><br>
-                                </c:if>
+                            <c:forEach items="${alliedForces}" var="ally">
+                                <c:choose>
+                                    <c:when test="${ally == player}">
+                                        <span class="blue">${ally.name} (${ally.nation.name})</span><br>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="green">${ally.name} (${ally.nation.name})</span><br>
+                                    </c:otherwise>
+                                </c:choose>
                             </c:forEach>
                         </td>
                         <td>
-                            <c:forEach items="${city.report.parties}" var="party">
-                                <c:if test="${(party.player != player && party.player.clan != null && party.player.clan != player.clan) || (party.player.clan == null && party.player != player)}">
-                                    <span class="red">${party.player.name} (${party.player.nation.name})</span><br>
-                                </c:if>
+                            <c:forEach items="${hostileForces}" var="enemy">
+                                <span class="red">${enemy.name} (${enemy.nation.name})</span><br>
                             </c:forEach>
                         </td>
                     </tr>

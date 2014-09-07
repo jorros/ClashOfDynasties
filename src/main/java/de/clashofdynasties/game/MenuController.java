@@ -166,10 +166,33 @@ public class MenuController {
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String showReport(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
         City city = cityRepository.findOne(id);
+        Player player = playerRepository.findByName(principal.getName());
+
+        ArrayList<Player> alliedForces = new ArrayList<>();
+        ArrayList<Player> hostileForces = new ArrayList<>();
 
         map.addAttribute("city", city);
         map.addAttribute("formations", formationRepository.findByCity(id));
-        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("player", player);
+        map.addAttribute("alliedForces", alliedForces);
+        map.addAttribute("hostileForces", hostileForces);
+
+        for(Party party : city.getReport().getParties()) {
+            if(party.getPlayer().equals(player))
+                alliedForces.add(party.getPlayer());
+            else {
+                Relation relation = relationRepository.findByPlayers(party.getPlayer().getId(), player.getId());
+
+                if (relation == null)
+                    hostileForces.add(party.getPlayer());
+                else {
+                    if (relation.getRelation() <= 1)
+                        hostileForces.add(party.getPlayer());
+                    else
+                        alliedForces.add(party.getPlayer());
+                }
+            }
+        }
 
         return "menu/report";
     }

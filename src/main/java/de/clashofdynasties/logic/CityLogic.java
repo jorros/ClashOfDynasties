@@ -5,6 +5,7 @@ import de.clashofdynasties.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,6 +32,12 @@ public class CityLogic {
 
     @Autowired
     private CityTypeRepository cityTypeRepository;
+
+    @Autowired
+    private FormationRepository formationRepository;
+
+    @Autowired
+    private RelationRepository relationRepository;
 
     private double getSatisfactionModifier(int itemType, int cityType) {
         switch(cityType) {
@@ -275,6 +282,51 @@ public class CityLogic {
                 }
 
                 buildingRepository.save(building);
+            }
+        }
+    }
+
+    public void processWar(City city) {
+        List<Formation> formations = formationRepository.findByCity(city.getId());
+
+        if(!formations.isEmpty()) {
+            boolean isWar = false;
+            for(Formation formation : formations) {
+                Relation relation = relationRepository.findByPlayers(city.getPlayer().getId(), formation.getPlayer().getId());
+
+                if((relation != null && relation.getRelation() == 0) || city.getPlayer().isComputer()) {
+                    isWar = true;
+                    break;
+                }
+            }
+
+            if(city.getReport() == null && isWar) {
+                city.setReport(new Report());
+            } else if(!isWar)
+                city.setReport(null);
+        }
+
+        if(city.getReport() != null) {
+            if(city.getReport().getParties() == null)
+                city.getReport().setParties(new ArrayList<>());
+
+            Report report = city.getReport();
+
+            List<Player> players = formations.stream().map(f -> f.getPlayer()).distinct().collect(Collectors.toList());
+
+            if(!players.contains(city.getPlayer()))
+                players.add(city.getPlayer());
+
+            report.getParties().forEach(p -> p.setLost(true));
+            for(Player player : players) {
+                if(report.getParties().stream().filter(p -> p.getPlayer().equals(player)).count() == 0) {
+                    Party party = new Party();
+                    party.setPlayer(player);
+                    party.setLost(false);
+                    report.getParties().add(party);
+                } else {
+                    report.getParties().stream().filter(p -> p.getPlayer().equals(player)).findFirst().get().setLost(false);
+                }
             }
         }
     }
