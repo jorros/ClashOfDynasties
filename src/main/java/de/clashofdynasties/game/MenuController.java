@@ -61,7 +61,7 @@ public class MenuController {
         if (id != null) {
             Formation formation = formationRepository.findOne(id);
 
-            if (!formation.getPlayer().equals(player) || !formation.isDeployed()) {
+            if (!formation.getPlayer().equals(player) || !formation.isDeployed() || !formation.getLastCity().getPlayer().equals(formation.getPlayer())) {
                 map.addAttribute("name", formation.getName());
                 map.addAttribute("units", formation.getUnits());
 
