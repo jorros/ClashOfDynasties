@@ -188,6 +188,9 @@ public class PlayerController {
                 eventRepository.save(event);
                 updateCityTimestamps(player);
                 updateCityTimestamps(other);
+
+                playerLogic.updateFOW(player);
+                playerLogic.updateFOW(other);
             }
         }
     }
