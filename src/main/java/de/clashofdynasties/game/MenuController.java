@@ -59,11 +59,17 @@ public class MenuController {
 
         if (id != null) {
             Formation formation = formationRepository.findOne(id);
-            map.addAttribute("formation", formation);
-            map.addAttribute("city", formation.getLastCity());
 
-            if (!formation.getPlayer().equals(player) || !formation.isDeployed())
+            if (!formation.getPlayer().equals(player) || !formation.isDeployed()) {
+                map.addAttribute("name", formation.getName());
+                map.addAttribute("units", formation.getUnits());
+
                 return "menu/infoFormation";
+            }
+            else {
+                map.addAttribute("formation", formation);
+                map.addAttribute("city", formation.getLastCity());
+            }
         } else if (cityID != null) {
             City city = cityRepository.findOne(cityID);
 
@@ -78,6 +84,17 @@ public class MenuController {
         }
 
         return "menu/setupFormation";
+    }
+
+    @RequestMapping(value = "/units", method = RequestMethod.GET)
+    public String showCityUnits(ModelMap map, Principal principal, @RequestParam(value = "city") ObjectId cityID) {
+        Player player = playerRepository.findByName(principal.getName());
+        City city = cityRepository.findOne(cityID);
+
+        map.addAttribute("name", city.getName());
+        map.addAttribute("units", city.getUnits());
+
+        return "menu/infoFormation";
     }
 
     @RequestMapping(value = "/build", method = RequestMethod.GET)

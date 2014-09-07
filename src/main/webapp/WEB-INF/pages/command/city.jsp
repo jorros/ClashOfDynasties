@@ -3,9 +3,10 @@
 
 <c:if test="${player == city.player}">
 <button><img src="assets/setCaravan.png" onclick="isCaravanSelected=true; $('#caravanText').show();" /></button>
-<button onclick="openMenu('formation?city=${city.id}', false)"><img src="assets/setFormation.png" /></button>
+<button <c:if test="${empty city.units}">disabled</c:if> onclick="openMenu('formation?city=${city.id}', false)"><img src="assets/setFormation.png" /></button>
 </c:if>
 <button onclick="openMenu('store?city=${city.id}')"><img src="assets/showItems.png" /></button>
+<button onclick="openMenu('units?city=${city.id}')"><img src="assets/infoFormation.png" /></button>
 <c:if test="${city.report != null}">
     <button onclick="openMenu('report?city=${city.id}', false)"><img src="assets/report.png" /></button>
 </c:if>
