@@ -7,11 +7,21 @@
 </style>
 <h1>Zusammenstellung (${name})</h1>
 <div id="content" style="overflow:hidden;">
-    <div style="height:300px; overflow-y:auto; overflow-x:hidden;">
-        <ul id="formation_list" class="sortable">
+    <div style="height:340px; overflow-y:auto; overflow-x:hidden;">
+        <ul id="formation_list" class="sortable" style="width:100%;">
             <c:forEach items="${units}" var="unit">
                 <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
             </c:forEach>
         </ul>
+    </div>
+    <div class="formationHelp" style="margin-top:4px;">
+        <table>
+            <c:forEach items="${unitsTotal}" var="unit">
+                <tr>
+                    <td>${unit.value}x</td>
+                    <td>${unit.key} <c:if test="${unitsInjured[unit.key] > 0}"><span class="red">(${unitsInjured[unit.key]} verletzt)</span></c:if></td>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </div>

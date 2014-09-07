@@ -121,6 +121,12 @@ body {
     color: #fff;
 }
 
+.formationHelp {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    color: #eee;
+}
+
 /* Input Styles */
 label {
     font-size: 18px;

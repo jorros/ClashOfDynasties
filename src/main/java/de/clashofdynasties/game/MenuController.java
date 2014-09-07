@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/game/menus")
@@ -64,6 +65,19 @@ public class MenuController {
                 map.addAttribute("name", formation.getName());
                 map.addAttribute("units", formation.getUnits());
 
+                HashMap<String, Long> unitsTotal = new HashMap<>();
+                HashMap<String, Long> unitsInjured = new HashMap<>();
+
+                List<Integer> classes = formation.getUnits().stream().map(u -> u.getBlueprint().getId()).distinct().collect(Collectors.toList());
+
+                for(int i : classes) {
+                    unitsTotal.put(unitBlueprintRepository.findOne(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
+                    unitsInjured.put(unitBlueprintRepository.findOne(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
+                }
+
+                map.addAttribute("unitsTotal", unitsTotal);
+                map.addAttribute("unitsInjured", unitsInjured);
+
                 return "menu/infoFormation";
             }
             else {
@@ -93,6 +107,19 @@ public class MenuController {
 
         map.addAttribute("name", city.getName());
         map.addAttribute("units", city.getUnits());
+
+        HashMap<String, Long> unitsTotal = new HashMap<>();
+        HashMap<String, Long> unitsInjured = new HashMap<>();
+
+        List<Integer> classes = city.getUnits().stream().map(u -> u.getBlueprint().getId()).distinct().collect(Collectors.toList());
+
+        for(int i : classes) {
+            unitsTotal.put(unitBlueprintRepository.findOne(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
+            unitsInjured.put(unitBlueprintRepository.findOne(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
+        }
+
+        map.addAttribute("unitsTotal", unitsTotal);
+        map.addAttribute("unitsInjured", unitsInjured);
 
         return "menu/infoFormation";
     }
