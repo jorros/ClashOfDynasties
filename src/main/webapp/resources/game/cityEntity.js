@@ -194,16 +194,18 @@ Crafty.c("City", {
                     var _temp2 = this._cid;
 
                     $.get("/game/roads/getByPoints", { point1: _temp1, point2: _temp2 }, function (roadId) {
-                        if (roadId > 0) {
+                        if (roadId != "") {
                             $.delete("/game/roads/" + roadId, function () {
-                                updateRoads();
+                                forceUpdate();
                             });
                         }
                         else {
                             var weight = window.prompt("Wegbelastung festlegen (0-1)", "1");
-                            $.post("/game/roads", { point1: _temp1, point2: _temp2, "weight": weight }, function () {
-                                updateRoads();
-                            });
+                            if (weight != null) {
+                                $.post("/game/roads", { point1: _temp1, point2: _temp2, "weight": weight }, function () {
+                                    forceUpdate();
+                                });
+                            }
                         }
                     });
                     SelectedWay = null;
