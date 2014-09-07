@@ -57,10 +57,11 @@ public class PlayerController {
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void create() {
+        int num = playerRepository.findAll().size() - 1;
         Player player = new Player();
         player.setActivated(false);
         player.setCoins(100);
-        player.setName("Neuer Spieler");
+        player.setName("Neuer Spieler #" + num);
         player.setLastScrollX(-1);
         player.setLastScrollY(-1);
 
