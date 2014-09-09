@@ -184,7 +184,7 @@ public class Formation {
             return getLastCity().getVisibility().contains(player);
     }
 
-    public ObjectNode toJSON(long timestamp) {
+    public ObjectNode toJSON(long timestamp, Player player) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
 
@@ -194,6 +194,7 @@ public class Formation {
             node.put("deployed", isDeployed());
             node.put("color", getPlayer().getColor());
             node.put("name", getName());
+            node.put("mvbl", player.equals(getPlayer()));
 
             if (getRoute() != null)
                 node.put("route", getRoute().toJSON());

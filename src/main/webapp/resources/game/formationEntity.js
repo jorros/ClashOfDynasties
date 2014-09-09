@@ -66,7 +66,7 @@ Crafty.c("Formation", {
         deselect();
         Selected = this;
 
-        if (Formations[this._fid].diplomacy == 1)
+        if (Formations[this._fid].mvbl)
             isFormationSelected = true;
 
         if (Formations[this._fid].route != undefined)

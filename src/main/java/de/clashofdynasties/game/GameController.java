@@ -109,7 +109,7 @@ public class GameController {
                     numFormations++;
                 }
 
-                formationMap.put(formation.getId().toHexString(), formation.toJSON(timestamp));
+                formationMap.put(formation.getId().toHexString(), formation.toJSON(timestamp, player));
             }
         }
 
