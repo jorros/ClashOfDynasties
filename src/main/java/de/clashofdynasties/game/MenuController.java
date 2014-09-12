@@ -143,8 +143,8 @@ public class MenuController {
             delta /= city.getProductionRate();
 
             int day = (int) TimeUnit.SECONDS.toDays(delta);
-            long hours = TimeUnit.SECONDS.toHours(delta) - (day * 24);
-            long minute = TimeUnit.SECONDS.toMinutes(delta) - (hours * 60);
+            long hours = TimeUnit.SECONDS.toHours(delta) - TimeUnit.DAYS.toHours(day);
+            long minute = TimeUnit.SECONDS.toMinutes(delta) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(delta));
 
             String timeDescription = "";
             if(day > 0)
@@ -153,7 +153,8 @@ public class MenuController {
                 timeDescription += hours + "h ";
             if(minute > 0)
                 timeDescription += minute + "min ";
-            else
+
+            if(day == 0 && hours == 0 && minute == 0)
                 timeDescription = "unter 1min ";
 
             map.addAttribute("productionTime", timeDescription);
