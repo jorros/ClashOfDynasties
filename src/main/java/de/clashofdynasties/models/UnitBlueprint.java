@@ -4,6 +4,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Document
@@ -15,6 +17,8 @@ public class UnitBlueprint implements IBlueprint {
     private int price;
     private int requiredProduction;
     private double speed;
+    private int type;
+    private int strength;
 
     @DBRef
     private Nation nation;
@@ -84,6 +88,22 @@ public class UnitBlueprint implements IBlueprint {
 
     public void setSpeed(double speed) {
         this.speed = speed;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
     public boolean equals(Object other) {

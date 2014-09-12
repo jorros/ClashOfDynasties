@@ -65,9 +65,8 @@ public class LogicService {
         tickWar++;
 
         for(City city : cities) {
-            if(tick == 30) {
+            if(tickWar == 30) {
                 cityLogic.processWar(city);
-                tick = 0;
             }
             cityLogic.processPopulation(city);
             cityLogic.processProduction(city);
@@ -77,6 +76,10 @@ public class LogicService {
             cityLogic.processHealing(city);
 
             cityRepository.save(city);
+        }
+
+        if(tickWar == 30) {
+            tickWar = 0;
         }
     }
 

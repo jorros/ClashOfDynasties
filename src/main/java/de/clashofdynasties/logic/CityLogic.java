@@ -2,6 +2,8 @@ package de.clashofdynasties.logic;
 
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
+import org.apache.commons.math3.distribution.EnumeratedDistribution;
+import org.apache.commons.math3.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -283,7 +285,62 @@ public class CityLogic {
 
                 buildingRepository.save(building);
             }
+
+            if(city.getHealth() < 100) {
+                if(Math.random() < 0.01) {
+                    city.setHealth(city.getHealth() + 1);
+                }
+            }
         }
+    }
+
+    private boolean isCounter(UnitBlueprint first, UnitBlueprint second) {
+        if(first.getType() == 1 && second.getType() == 3 || first.getType() == 3 && second.getType() == 1)
+            return true;
+
+        if(first.getType() == 2 && second.getType() == 1 || first.getType() == 1 && second.getType() == 2)
+            return true;
+
+        if(first.getType() == 3 && second.getType() == 2 || first.getType() == 2 && second.getType() == 3)
+            return true;
+
+        return false;
+    }
+
+    private List<Pair<Unit, Double>> getUnitProbabilities(List<Unit> units, Unit from) {
+        ArrayList<Pair<Unit, Double>> probabilites = new ArrayList<>();
+
+        for(Unit unit : units) {
+            double probability = 0.1;
+
+            if(isCounter(unit.getBlueprint(), from.getBlueprint()))
+                probability += 0.2;
+
+            if(unit.getHealth() < 100)
+                probability += 0.3;
+
+            probabilites.add(new Pair<>(unit, probability));
+        }
+
+        return probabilites;
+    }
+
+    private List<Pair<Building, Double>> getBuildingProbabilities(List<Building> buildings) {
+        ArrayList<Pair<Building, Double>> probabilites = new ArrayList<>();
+
+        for(Building building : buildings) {
+            double probability = 0.1;
+
+            if(building.getHealth() < 100)
+                probability += 0.3;
+
+            if(building.getBlueprint().getDefencePoints() > 0)
+                probability += 0.3;
+
+            probabilites.add(new Pair<>(building, probability));
+        }
+
+        return probabilites;
     }
 
     public void processWar(City city) {
@@ -328,6 +385,92 @@ public class CityLogic {
                     report.getParties().stream().filter(p -> p.getPlayer().equals(player)).findFirst().get().setLost(false);
                 }
             }
+
+            for(Player player : players) {
+                List<Formation> playerFormations = formations.stream().filter(f -> f.getPlayer().equals(player)).collect(Collectors.toList());
+                List<Formation> enemyFormations = new ArrayList<>();
+                List<Unit> enemyUnits = new ArrayList<>();
+                List<Building> enemyBuildings = city.getBuildings();
+
+                for(Formation formation : formations) {
+                    if(!formation.getPlayer().equals(player)) {
+                        Relation relation = relationRepository.findByPlayers(player.getId(), formation.getPlayer().getId());
+
+                        if(relation == null || relation.getRelation() <= 2) {
+                            enemyFormations.add(formation);
+
+                            if(formation.getUnits() != null)
+                                enemyUnits.addAll(formation.getUnits());
+                        }
+                    }
+                }
+
+                if(enemyUnits.size() > 0 || !city.getPlayer().equals(player)) {
+                    for (Formation formation : playerFormations) {
+                        for (Unit unit : formation.getUnits()) {
+                            if(enemyUnits.size() > 0) {
+                                Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(enemyUnits, unit)).sample();
+
+                                int newHealth = selected.getHealth();
+
+                                int counter = isCounter(selected.getBlueprint(), unit.getBlueprint()) ? unit.getBlueprint().getStrength() : 0;
+
+                                newHealth -= unit.getBlueprint().getStrength() + counter;
+
+                                selected.setHealth(newHealth);
+                            } else if(enemyBuildings.stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).count() > 0) {
+                                Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings)).sample();
+
+                                int newHealth = selected.getHealth();
+
+                                if(unit.getBlueprint().getType() == 4)
+                                    newHealth -= unit.getBlueprint().getStrength();
+                                else
+                                    newHealth -= unit.getBlueprint().getStrength() / 2;
+                            } else {
+                                if(unit.getBlueprint().getType() == 4)
+                                    city.setHealth(city.getHealth() - unit.getBlueprint().getStrength());
+                                else
+                                    city.setHealth(city.getHealth() - unit.getBlueprint().getStrength() / 2);
+                            }
+                        }
+                    }
+                }
+            }
+
+            for(Formation formation : formations) {
+                Party party = report.getParties().stream().filter(p -> p.getPlayer().equals(formation.getPlayer())).findFirst().get();
+
+                for(Unit unit : formation.getUnits()) {
+                    if(unit.getHealth() <= 0) {
+                        formation.getUnits().remove(unit);
+                        party.setLosses(party.getLosses() + 1);
+                        unitRepository.delete(unit);
+                    }
+                }
+
+                unitRepository.save(formation.getUnits());
+            }
+
+            for(Building building : city.getBuildings()) {
+                if(building.getHealth() <= 0) {
+                    city.getBuildings().remove(building);
+                    buildingRepository.delete(building);
+                }
+
+                buildingRepository.save(city.getBuildings());
+            }
+
+            if(city.getHealth() <= 0) {
+                if(formations.size() == 0 || formations.stream().map(f -> f.getPlayer()).distinct().count() > 1)
+                    city.setPlayer(playerRepository.findByName("Freies Volk"));
+                else {
+                    city.setPlayer(formations.get(0).getPlayer());
+                    city.setReport(null);
+                }
+            }
+
+            formationRepository.save(formations);
         }
     }
 }

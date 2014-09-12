@@ -10,7 +10,6 @@ public class CityType {
 
     private String name;
     private double capacity;
-    private int defence;
     private double consumeBasic;
     private double consumeLuxury1;
     private double consumeLuxury2;
@@ -40,14 +39,6 @@ public class CityType {
 
     public void setCapacity(double capacity) {
         this.capacity = capacity;
-    }
-
-    public int getDefence() {
-        return defence;
-    }
-
-    public void setDefence(int defence) {
-        this.defence = defence;
     }
 
     public double getConsumeBasic() {

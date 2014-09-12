@@ -17,14 +17,11 @@ public class CityTypeController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@PathVariable int id, @RequestParam(required = false) Double capacity, @RequestParam(required = false) Integer defence, @RequestParam(required = false) Double consumeBasic, @RequestParam(required = false) Double consumeLuxury1, @RequestParam(required = false) Double consumeLuxury2, @RequestParam(required = false) Double consumeLuxury3,  @RequestParam(required = false) Double taxes, @RequestParam(required = false) Double productionRate) {
+    public void save(@PathVariable int id, @RequestParam(required = false) Double capacity, @RequestParam(required = false) Double consumeBasic, @RequestParam(required = false) Double consumeLuxury1, @RequestParam(required = false) Double consumeLuxury2, @RequestParam(required = false) Double consumeLuxury3,  @RequestParam(required = false) Double taxes, @RequestParam(required = false) Double productionRate) {
         CityType cityType = cityTypeRepository.findOne(id);
 
         if(capacity != null)
             cityType.setCapacity(capacity);
-
-        if(defence != null)
-            cityType.setDefence(defence);
 
         if(consumeBasic != null)
             cityType.setConsumeBasic(consumeBasic);

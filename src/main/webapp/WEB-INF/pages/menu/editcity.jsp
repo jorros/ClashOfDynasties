@@ -8,7 +8,6 @@
         <tr>
             <th></th>
             <th>Kapazität (relativ)</th>
-            <th>Grund V.Pkt.</th>
             <th>Grund Konsumrate</th>
             <th>Luxus1 Konsumrate</th>
             <th>Luxus2 Konsumrate</th>
@@ -20,7 +19,6 @@
             <tr>
                 <td style="font-weight: bold;"><c:out value="${ct.name}" /> :</td>
                 <td><input id="${ct.id}_capacityRel" style="width:40px; height:10px;" type="text" value="${ct.capacity}" /></td>
-                <td><input id="${ct.id}_defence" style="width:40px; height:10px;" type="text" value="${ct.defence}" /></td>
                 <td><input id="${ct.id}_consumeBasic" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeBasic}"/>" /></td>
                 <td><input id="${ct.id}_consumeLuxury1" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeLuxury1}"/>" /></td>
                 <td><input id="${ct.id}_consumeLuxury2" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeLuxury2}"/>" /></td>
@@ -34,9 +32,6 @@
         <c:forEach items="${cityTypes}" var="ct">
         $("#${ct.id}_capacityRel").change(function() {
             $.put("/game/citytypes/${ct.id}", { "capacity": $(this).val() });
-        });
-        $("#${ct.id}_defence").change(function() {
-            $.put("/game/citytypes/${ct.id}", { "defence": $(this).val() });
         });
         $("#${ct.id}_consumeBasic").change(function() {
             $.put("/game/citytypes/${ct.id}", { "consumeBasic": $(this).val() });

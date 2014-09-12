@@ -338,7 +338,7 @@ public class City {
     }
 
     public int getDefencePoints() {
-        int defence = getType().getDefence();
+        int defence = 0;
 
         if(getBuildings() != null)
             defence += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();

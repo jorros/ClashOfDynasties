@@ -30,6 +30,9 @@ public class PlayerLogic {
     @Autowired
     private RelationRepository relationRepository;
 
+    @Autowired
+    private UnitBlueprintRepository unitBlueprintRepository;
+
     public void processStatistics(Player player) {
         Statistic stat = player.getStatistic();
 
@@ -92,6 +95,52 @@ public class PlayerLogic {
         players.removeIf(Player :: isComputer);
 
         players.forEach(p -> updateFOW(p));
+
+        List<UnitBlueprint> blueprints = unitBlueprintRepository.findAll();
+
+        if(blueprints.stream().filter(b -> b.getType() == 0).count() > 0) {
+            for(UnitBlueprint blp : blueprints) {
+                switch(blp.getId()) {
+                    case 1:
+                        blp.setType(1);
+                        break;
+
+                    case 2:
+                        blp.setType(2);
+                        break;
+
+                    case 3:
+                        blp.setType(3);
+                        break;
+
+                    case 4:
+                        blp.setType(1);
+                        break;
+
+                    case 5:
+                        blp.setType(4);
+                        break;
+
+                    case 6:
+                        blp.setType(1);
+                        break;
+
+                    case 7:
+                        blp.setType(1);
+                        break;
+
+                    case 8:
+                        blp.setType(2);
+                        break;
+
+                    case 9:
+                        blp.setType(3);
+                        break;
+                }
+            }
+
+            unitBlueprintRepository.save(blueprints);
+        }
     }
 
     public void updateFOW(Player player) {

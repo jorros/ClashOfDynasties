@@ -28,7 +28,7 @@ public class UnitController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double speed) {
+    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer strength, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double speed) {
         UnitBlueprint blueprint = unitBlueprintRepository.findOne(id);
 
         if (description != null)
@@ -36,6 +36,9 @@ public class UnitController {
 
         if (production != null)
             blueprint.setRequiredProduction(production);
+
+        if(strength != null)
+            blueprint.setStrength(strength);
 
         if (price != null)
             blueprint.setPrice(price);
