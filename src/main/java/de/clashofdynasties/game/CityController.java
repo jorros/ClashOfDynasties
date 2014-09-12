@@ -228,8 +228,10 @@ public class CityController {
 
         if (type != null && city.getType().getId() != type) {
             city.setType(cityTypeRepository.findOne(type));
-            if(!city.getPlayer().isComputer())
-                playerLogic.updateFOW(city.getPlayer());
+            if(!city.getPlayer().isComputer()) {
+                city.getPlayer().setSightUpdate(true);
+                playerRepository.save(city.getPlayer());
+            }
         }
 
         city.updateTimestamp();
@@ -237,11 +239,15 @@ public class CityController {
         cityRepository.save(city);
 
         if(newPlayer != null) {
-            if(!city.getPlayer().isComputer())
-                playerLogic.updateFOW(city.getPlayer());
+            if(!city.getPlayer().isComputer()) {
+                city.getPlayer().setSightUpdate(true);
+                playerRepository.save(city.getPlayer());
+            }
 
-            if(!newPlayer.isComputer() && !city.getPlayer().equals(newPlayer))
-                playerLogic.updateFOW(newPlayer);
+            if(!newPlayer.isComputer() && !city.getPlayer().equals(newPlayer)) {
+                newPlayer.setSightUpdate(true);
+                playerRepository.save(newPlayer);
+            }
         }
     }
 }

@@ -62,8 +62,6 @@ public class City {
 
     private Map<Integer, Double> items;
 
-    private boolean sightUpdate;
-
     private long timestamp;
 
     @DBRef
@@ -352,14 +350,6 @@ public class City {
 
     public void setVisibility(List<Player> visibility) {
         this.visibility = visibility;
-    }
-
-    public boolean isSightUpdate() {
-        return sightUpdate;
-    }
-
-    public void setSightUpdate(boolean sightUpdate) {
-        this.sightUpdate = sightUpdate;
     }
 
     public ObjectNode toJSON(boolean editor, long timestamp, Player player) {

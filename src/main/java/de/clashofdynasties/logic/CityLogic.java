@@ -466,14 +466,16 @@ public class CityLogic {
 
             if(city.getHealth() <= 0) {
                 if(!city.getPlayer().isComputer()) {
-                    playerLogic.updateFOW(city.getPlayer());
+                    city.getPlayer().setSightUpdate(true);
+                    playerRepository.save(city.getPlayer());
                 }
                 if(formations.size() == 0 || formations.stream().map(f -> f.getPlayer()).distinct().count() > 1)
                     city.setPlayer(playerRepository.findByName("Freies Volk"));
                 else {
                     city.setPlayer(formations.get(0).getPlayer());
                     city.setReport(null);
-                    playerLogic.updateFOW(city.getPlayer());
+                    city.getPlayer().setSightUpdate(true);
+                    playerRepository.save(city.getPlayer());
                 }
             }
 

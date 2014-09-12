@@ -87,14 +87,18 @@ public class LogicService {
         List<Player> players = playerRepository.findAll();
         tick++;
 
-        if(tick == 600) {
-            for(Player player : players) {
+        for(Player player : players) {
+            if(tick == 600) {
                 playerLogic.processStatistics(player);
                 playerLogic.updateFOW(player);
                 playerRepository.save(player);
-            }
-            tick = 0;
+            } else if(player.isSightUpdate())
+                playerLogic.updateFOW(player);
+        }
+
+        if(tick == 600) {
             playerLogic.processRanking();
+            tick = 0;
         }
     }
 

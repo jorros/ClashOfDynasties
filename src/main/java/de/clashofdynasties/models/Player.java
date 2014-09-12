@@ -31,6 +31,8 @@ public class Player {
 
     private Statistic statistic;
 
+    private boolean sightUpdate;
+
     public ObjectId getId() {
         return id;
     }
@@ -133,6 +135,14 @@ public class Player {
 
     public void setStatistic(Statistic statistic) {
         this.statistic = statistic;
+    }
+
+    public boolean isSightUpdate() {
+        return sightUpdate;
+    }
+
+    public void setSightUpdate(boolean sightUpdate) {
+        this.sightUpdate = sightUpdate;
     }
 
     @Override

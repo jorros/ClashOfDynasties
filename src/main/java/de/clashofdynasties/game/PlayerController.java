@@ -189,8 +189,11 @@ public class PlayerController {
                 updateCityTimestamps(player);
                 updateCityTimestamps(other);
 
-                playerLogic.updateFOW(player);
-                playerLogic.updateFOW(other);
+                player.setSightUpdate(true);
+                other.setSightUpdate(true);
+
+                playerRepository.save(player);
+                playerRepository.save(other);
             }
         }
     }
@@ -218,11 +221,10 @@ public class PlayerController {
             city.setSatisfaction(100);
             city.setUnits(new ArrayList<>());
             city.updateTimestamp();
-            city.setSightUpdate(true);
             cityRepository.save(city);
         }
 
-        players.forEach(playerLogic::updateFOW);
+        players.forEach(p -> p.setSightUpdate(true));
 
         player.setLastScrollX(-1);
         player.setLastScrollY(-1);
