@@ -7,20 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_3.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/CityType.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/CityType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityTypeController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityTypeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clash of Dynasties.iml" afterPath="$PROJECT_DIR$/Clash of Dynasties.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Clash_of_Dynasties_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Clash_of_Dynasties_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editcity.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editcity.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editunits.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editunits.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -137,8 +124,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6761905" vertical-offset="7360" max-vertical-offset="8024">
-              <caret line="468" column="41" selection-start-line="468" selection-start-column="41" selection-end-line="468" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.64920634" vertical-offset="7496" max-vertical-offset="8143">
+              <caret line="475" column="60" selection-start-line="475" selection-start-column="60" selection-end-line="475" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -1407,7 +1394,7 @@
       <workItem from="1410251318323" duration="3852000" />
       <workItem from="1410334984450" duration="2839000" />
       <workItem from="1410440870095" duration="4244000" />
-      <workItem from="1410516003069" duration="4287000" />
+      <workItem from="1410516003069" duration="4786000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1945,11 +1932,15 @@
       <created>1410252154255</created>
       <updated>1410252154255</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="Kriegsalgorithmus implementiert">
+      <created>1410520970280</created>
+      <updated>1410520970280</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="895793000" />
+    <option name="totallyTimeSpent" value="896292000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2030,7 +2021,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Nicht baubare Inhalte werden markiert" />
     <MESSAGE value="Maven Update" />
     <MESSAGE value="Memory Leak Fix" />
     <MESSAGE value="GameController hinzugefügt" />
@@ -2055,7 +2045,8 @@
     <MESSAGE value="Kriegslogik Basis implementiert" />
     <MESSAGE value="14 Zeichen Namensfix" />
     <MESSAGE value="Formationen können nicht bewegt werden gefixt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Formationen können nicht bewegt werden gefixt" />
+    <MESSAGE value="Kriegsalgorithmus implementiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kriegsalgorithmus implementiert" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2435,8 +2426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6761905" vertical-offset="7360" max-vertical-offset="8024">
-          <caret line="468" column="41" selection-start-line="468" selection-start-column="41" selection-end-line="468" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.64920634" vertical-offset="7496" max-vertical-offset="8143">
+          <caret line="475" column="60" selection-start-line="475" selection-start-column="60" selection-end-line="475" selection-end-column="60" />
           <folding />
         </state>
       </provider>
