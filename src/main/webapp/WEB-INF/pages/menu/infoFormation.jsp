@@ -24,4 +24,7 @@
             </c:forEach>
         </table>
     </div>
+    <div>
+        <button onclick="closeMenu()" style="position:absolute; right:25px; bottom: 120px;">Schlie&szlig;en</button>
+    </div>
 </div>
