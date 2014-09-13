@@ -149,6 +149,10 @@ public class PlayerLogic {
         cities.forEach(c -> c.getVisibility().removeIf(p -> p.equals(player)));
 
         for(City city : cities) {
+            List<Road> roads = roadRepository.findByCity(city.getId());
+            roads.forEach(Road::updateTimestamp);
+            roadRepository.save(roads);
+
             if(city.getPlayer().equals(player))
                 setVisible(city, city.getType().getId(), cities, player);
             else {
