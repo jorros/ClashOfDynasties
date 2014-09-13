@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Component
@@ -273,20 +274,19 @@ public class CityLogic {
 
     public void processHealing(City city) {
         if(city.getReport() == null) {
-            for (Unit unit : city.getUnits()) {
-                if(Math.random() < 0.01 && unit.getHealth() < 100) {
+            List<Unit> units = city.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
+            List<Building> buildings = city.getBuildings().stream().filter(b -> b.getHealth() < 100).collect(Collectors.toList());
+
+            for (Unit unit : units) {
+                if(Math.random() < 0.01) {
                     unit.setHealth(unit.getHealth() + 1);
                 }
-
-                unitRepository.save(unit);
             }
 
-            for(Building building : city.getBuildings()) {
-                if(Math.random() < 0.01 && building.getHealth() < 100) {
+            for(Building building : buildings) {
+                if(Math.random() < 0.01) {
                     building.setHealth(building.getHealth() + 1);
                 }
-
-                buildingRepository.save(building);
             }
 
             if(city.getHealth() < 100) {
@@ -294,6 +294,9 @@ public class CityLogic {
                     city.setHealth(city.getHealth() + 1);
                 }
             }
+
+            unitRepository.save(units);
+            buildingRepository.save(buildings);
         }
     }
 

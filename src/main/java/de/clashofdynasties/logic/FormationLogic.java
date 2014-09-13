@@ -7,6 +7,9 @@ import de.clashofdynasties.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class FormationLogic {
     @Autowired
@@ -51,13 +54,15 @@ public class FormationLogic {
 
     public void processHealing(Formation formation) {
         if(formation.isDeployed() && formation.getLastCity().getReport() == null) {
-            for (Unit unit : formation.getUnits()) {
-                if(Math.random() < 0.01 && unit.getHealth() < 100) {
+            List<Unit> units = formation.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
+
+            for (Unit unit : units) {
+                if(Math.random() < 0.01) {
                     unit.setHealth(unit.getHealth() + 1);
                 }
-
-                unitRepository.save(unit);
             }
+
+            unitRepository.save(units);
         }
     }
 }
