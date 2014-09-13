@@ -92,8 +92,11 @@ public class LogicService {
                 playerLogic.processStatistics(player);
                 playerLogic.updateFOW(player);
                 playerRepository.save(player);
-            } else if(player.isSightUpdate())
+            } else if(player.isSightUpdate()) {
                 playerLogic.updateFOW(player);
+                player.setSightUpdate(false);
+                playerRepository.save(player);
+            }
         }
 
         if(tick == 600) {
