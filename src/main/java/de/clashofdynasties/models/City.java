@@ -178,6 +178,10 @@ public class City {
         this.requiredItemTypes.add(requiredItemType.getId());
     }
 
+    public void clearRequiredItemTypes() {
+        this.requiredItemTypes.clear();
+    }
+
     public Map<Integer, Double> getItems() {
         return items;
     }

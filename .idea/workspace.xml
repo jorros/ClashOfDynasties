@@ -6,63 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Healing Logic">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/Repository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BiomeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BiomeRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/BuildItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/BuildItem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Building.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingBlueprintRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingBlueprintRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingConstruction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/BuildingController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/BuildingController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/BuildingRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CaravanRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CaravanRepository.java" />
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityTypeController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityTypeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityTypeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/CityTypeRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Event.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Event.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/EventRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/EventRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/FormationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/FormationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Item.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ItemRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ItemRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ItemTypeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ItemTypeRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/NationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/NationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Party.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Party.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/PlayerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/PlayerRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Relation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Relation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RelationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RelationRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Report.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Report.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ResourceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ResourceRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitBlueprintRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitBlueprintRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-context.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-context.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -126,10 +72,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LogicService.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LogicService.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0622084" vertical-offset="2748" max-vertical-offset="14025">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2748" max-vertical-offset="14025">
               <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -154,28 +100,28 @@
       <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1040" max-vertical-offset="1785">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
               <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+      <file leaf-file-name="PlayerController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="3910">
-              <caret line="123" column="288" selection-start-line="123" selection-start-column="288" selection-end-line="123" selection-end-column="288" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="3655">
+              <caret line="118" column="52" selection-start-line="118" selection-start-column="52" selection-end-line="118" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+      <file leaf-file-name="CityController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6262" max-vertical-offset="8007">
-              <caret line="398" column="0" selection-start-line="398" selection-start-column="0" selection-end-line="398" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6968254" vertical-offset="2621" max-vertical-offset="4029">
+              <caret line="193" column="42" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -184,15 +130,17 @@
       <file leaf-file-name="City.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3403" max-vertical-offset="5423">
-              <caret line="305" column="25" selection-start-line="305" selection-start-column="25" selection-end-line="305" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1975" max-vertical-offset="5491">
+              <caret line="181" column="39" selection-start-line="181" selection-start-column="39" selection-end-line="181" selection-end-column="39" />
               <folding>
-                <element signature="e#7055#7056#0" expanded="true" />
-                <element signature="e#7111#7112#0" expanded="true" />
-                <element signature="e#7313#7314#0" expanded="true" />
-                <element signature="e#7365#7366#0" expanded="true" />
-                <element signature="e#8486#8487#0" expanded="true" />
-                <element signature="e#8544#8545#0" expanded="true" />
+                <element signature="e#4019#4020#0" expanded="true" />
+                <element signature="e#4065#4066#0" expanded="true" />
+                <element signature="e#7145#7146#0" expanded="true" />
+                <element signature="e#7201#7202#0" expanded="true" />
+                <element signature="e#7403#7404#0" expanded="true" />
+                <element signature="e#7455#7456#0" expanded="true" />
+                <element signature="e#8576#8577#0" expanded="true" />
+                <element signature="e#8634#8635#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -282,7 +230,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/ItemTypeRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/Repository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
@@ -291,8 +238,9 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Road.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
       </list>
     </option>
   </component>
@@ -1399,7 +1347,7 @@
       <workItem from="1410635057161" duration="6385000" />
       <workItem from="1410690748443" duration="7799000" />
       <workItem from="1410711608097" duration="13464000" />
-      <workItem from="1410861153880" duration="12466000" />
+      <workItem from="1410861153880" duration="13824000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1969,11 +1917,15 @@
       <created>1410623840069</created>
       <updated>1410623840069</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <task id="LOCAL-00143" summary="Code Optimierung: Datenbank wird nicht mehr ständig aufgerufen">
+      <created>1410878635324</created>
+      <updated>1410878635324</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="944874000" />
+    <option name="totallyTimeSpent" value="946232000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2054,7 +2006,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Stadt wird für Neulinge zu Beginn zentriert" />
     <MESSAGE value="Zentriere Stadt auch bei Reset" />
     <MESSAGE value="Spieler Reset gefixt" />
     <MESSAGE value="Formations- und Karawanennamen beschränkt auf 14 Zeichen" />
@@ -2079,7 +2030,8 @@
     <MESSAGE value="Zusammenstellung: Schließen Button hinzugefügt" />
     <MESSAGE value="FOWUpdate: Status aktualisieren" />
     <MESSAGE value="Healing Logic optimiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Healing Logic optimiert" />
+    <MESSAGE value="Code Optimierung: Datenbank wird nicht mehr ständig aufgerufen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code Optimierung: Datenbank wird nicht mehr ständig aufgerufen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2321,14 +2273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3010" max-vertical-offset="3655">
-          <caret line="214" column="30" selection-start-line="214" selection-start-column="30" selection-end-line="214" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Biome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04407295" vertical-offset="56" max-vertical-offset="714">
@@ -2434,14 +2378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6262" max-vertical-offset="8007">
@@ -2493,36 +2429,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1652" max-vertical-offset="3910">
-          <caret line="123" column="288" selection-start-line="123" selection-start-column="288" selection-end-line="123" selection-end-column="288" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3403" max-vertical-offset="5423">
-          <caret line="305" column="25" selection-start-line="305" selection-start-column="25" selection-end-line="305" selection-end-column="25" />
-          <folding>
-            <element signature="e#7055#7056#0" expanded="true" />
-            <element signature="e#7111#7112#0" expanded="true" />
-            <element signature="e#7313#7314#0" expanded="true" />
-            <element signature="e#7365#7366#0" expanded="true" />
-            <element signature="e#8486#8487#0" expanded="true" />
-            <element signature="e#8544#8545#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0622084" vertical-offset="2748" max-vertical-offset="14025">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2748" max-vertical-offset="14025">
           <caret line="166" column="46" selection-start-line="166" selection-start-column="46" selection-end-line="166" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1975" max-vertical-offset="5491">
+          <caret line="181" column="39" selection-start-line="181" selection-start-column="39" selection-end-line="181" selection-end-column="39" />
+          <folding>
+            <element signature="e#4019#4020#0" expanded="true" />
+            <element signature="e#4065#4066#0" expanded="true" />
+            <element signature="e#7145#7146#0" expanded="true" />
+            <element signature="e#7201#7202#0" expanded="true" />
+            <element signature="e#7403#7404#0" expanded="true" />
+            <element signature="e#7455#7456#0" expanded="true" />
+            <element signature="e#8576#8577#0" expanded="true" />
+            <element signature="e#8634#8635#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="460" max-vertical-offset="3655">
+          <caret line="118" column="52" selection-start-line="118" selection-start-column="52" selection-end-line="118" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6968254" vertical-offset="2621" max-vertical-offset="4029">
+          <caret line="193" column="42" selection-start-line="193" selection-start-column="42" selection-end-line="193" selection-end-column="42" />
+          <folding />
         </state>
       </provider>
     </entry>

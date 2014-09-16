@@ -60,22 +60,7 @@ public class CityController {
         cityRepository.remove(city);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.OK)
-    @Secured("ROLE_ADMIN")
-    public void create(@RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
-        City city = new City();
-        city.setName("Neue Stadt");
-        city.setCapacity(0);
-        city.setHealth(100);
-        city.setBiome(biomeRepository.findById(1));
-        city.setPlayer(playerRepository.findComputer());
-        city.setX(x);
-        city.setY(y);
-        city.setType(cityTypeRepository.findById(1));
-        city.setResource(resourceRepository.findById(1));
-        city.setPopulation(5);
-
+    private void generateRandomRequiredItems(City city) {
         city.addRequiredItemType(itemTypeRepository.findById(1));
         city.addRequiredItemType(itemTypeRepository.findById(2));
 
@@ -93,6 +78,25 @@ public class CityController {
             city.addRequiredItemType(itemTypeRepository.findById(3));
         else
             city.addRequiredItemType(itemTypeRepository.findById(5));
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
+    public void create(@RequestParam int x, @RequestParam int y, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
+        City city = new City();
+        city.setName("Neue Stadt");
+        city.setCapacity(0);
+        city.setHealth(100);
+        city.setBiome(biomeRepository.findById(1));
+        city.setPlayer(playerRepository.findComputer());
+        city.setX(x);
+        city.setY(y);
+        city.setType(cityTypeRepository.findById(1));
+        city.setResource(resourceRepository.findById(1));
+        city.setPopulation(5);
+
+        generateRandomRequiredItems(city);
 
         city.updateTimestamp();
 
@@ -185,6 +189,9 @@ public class CityController {
         city.setPopulation(5);
         city.updateTimestamp();
         city.setType(cityTypeRepository.findById(1));
+
+        city.clearRequiredItemTypes();
+        generateRandomRequiredItems(city);
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
