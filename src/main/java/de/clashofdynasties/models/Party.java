@@ -1,19 +1,19 @@
 package de.clashofdynasties.models;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import de.clashofdynasties.repository.PlayerRepository;
+import org.bson.types.ObjectId;
 
 public class Party {
-    @DBRef
-    private Player player;
+    private ObjectId player;
     private int losses;
     private boolean lost;
 
     public Player getPlayer() {
-        return player;
+        return PlayerRepository.get().findById(player);
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.player = player.getId();
     }
 
     public int getLosses() {

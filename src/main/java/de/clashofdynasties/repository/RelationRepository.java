@@ -1,11 +1,35 @@
 package de.clashofdynasties.repository;
 
+import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Player;
 import de.clashofdynasties.models.Relation;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+import org.springframework.stereotype.Component;
 
-public interface RelationRepository extends MongoRepository<Relation, ObjectId> {
-    @Query("{ $or: [ {player1.$id: ?0, player2.$id: ?1}, {player1.$id: ?1, player2.$id: ?0} ]}")
-    Relation findByPlayers(ObjectId player1, ObjectId player2);
+import javax.annotation.PostConstruct;
+import java.util.stream.Collectors;
+
+@Component
+public class RelationRepository extends Repository<Relation> {
+    private static RelationRepository instance;
+
+    @PostConstruct
+    public void initialize() {
+        load(Relation.class);
+        instance = this;
+    }
+
+    public static RelationRepository get() {
+        return instance;
+    }
+
+    public Relation findById(ObjectId id) {
+        return items.parallelStream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public Relation findByPlayers(Player player1, Player player2) {
+        return items.stream().filter(r -> r.getPlayer1().equals(player1) && r.getPlayer2().equals(player2) || r.getPlayer2().equals(player1) && r.getPlayer1().equals(player2)).findFirst().orElse(null);
+    }
 }

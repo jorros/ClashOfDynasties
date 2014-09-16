@@ -2,13 +2,17 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.PlayerRepository;
+import de.clashofdynasties.repository.UnitRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Document
 public class Formation {
@@ -18,21 +22,23 @@ public class Formation {
     private double x;
     private double y;
 
-    @DBRef
-    private Player player;
+    private ObjectId player;
 
-    @DBRef
-    private City lastCity;
+    private ObjectId lastCity;
 
     @Transient
     private int health;
 
     private String name;
 
-    @DBRef
-    private List<Unit> units;
+    private List<ObjectId> units;
 
     private Route route;
+
+    public Formation() {
+        this.id = new ObjectId();
+        this.units = new ArrayList<>();
+    }
 
     @Transient
     private boolean deployed;
@@ -70,7 +76,7 @@ public class Formation {
         int maxHealth = 0;
         int health = 0;
 
-        for (Unit unit : units) {
+        for (Unit unit : getUnits()) {
             maxHealth += 100;
             health += unit.getHealth();
         }
@@ -90,27 +96,31 @@ public class Formation {
     }
 
     public Player getPlayer() {
-        return player;
+        return PlayerRepository.get().findById(player);
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.player = player.getId();
     }
 
     public City getLastCity() {
-        return lastCity;
+        return CityRepository.get().findById(lastCity);
     }
 
     public void setLastCity(City lastCity) {
-        this.lastCity = lastCity;
+        this.lastCity = lastCity.getId();
     }
 
     public List<Unit> getUnits() {
-        return units;
+        return units.parallelStream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
     }
 
-    public void setUnits(List<Unit> units) {
-        this.units = units;
+    public void addUnit(Unit unit) {
+        units.add(unit.getId());
+    }
+
+    public void removeUnit(Unit unit) {
+        units.remove(unit.getId());
     }
 
     public Route getRoute() {
@@ -132,7 +142,7 @@ public class Formation {
     public double getSpeed() {
         double speed = Double.MAX_VALUE;
 
-        for (Unit unit : units) {
+        for (Unit unit : getUnits()) {
             if (unit.getSpeed() < speed)
                 speed = unit.getSpeed();
         }
@@ -142,10 +152,6 @@ public class Formation {
 
     public long getTimestamp() {
         return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
     }
 
     public void updateTimestamp() {
@@ -178,10 +184,10 @@ public class Formation {
         if(getRoute() != null) {
             Road current = getRoute().getCurrentRoad();
 
-            return current.getPoint1().getVisibility().contains(player) && current.getPoint2().getVisibility().contains(player);
+            return current.getPoint1().isVisible(player) && current.getPoint2().isVisible(player);
         }
         else
-            return getLastCity().getVisibility().contains(player);
+            return getLastCity().isVisible(player);
     }
 
     public ObjectNode toJSON(long timestamp, Player player) {

@@ -29,7 +29,7 @@ public class UnitController {
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer strength, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double speed) {
-        UnitBlueprint blueprint = unitBlueprintRepository.findOne(id);
+        UnitBlueprint blueprint = unitBlueprintRepository.findById(id);
 
         if (description != null)
             blueprint.setDescription(description);
@@ -45,8 +45,6 @@ public class UnitController {
 
         if (speed != null)
             blueprint.setSpeed(speed);
-
-        unitBlueprintRepository.save(blueprint);
     }
 
     @RequestMapping(value = "/{unit}/icon", headers = "Accept=image/png", method = RequestMethod.GET)

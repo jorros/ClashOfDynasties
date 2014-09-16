@@ -208,9 +208,8 @@ public class CityLogic {
     }
 
     public void processCoins(City city) {
-        Player player = playerRepository.findOne(city.getPlayer().getId());
+        Player player = playerRepository.findById(city.getPlayer().getId());
         player.addCoins(city.calculateCoins() - city.calculateMaintenance());
-        playerRepository.save(player);
     }
 
     public void processConstruction(City city) {
@@ -234,25 +233,25 @@ public class CityLogic {
                         Building building = new Building();
                         building.setBlueprint((BuildingBlueprint) construction.getBlueprint());
                         building.setHealth(100);
-                        buildingRepository.save(building);
+                        buildingRepository.add(building);
 
-                        city.getBuildings().add(building);
+                        city.addBuilding(building);
 
-                        eventRepository.save(new Event("ProductionReady", "Neues Gebäude errichtet", "In " + city.getName() + " wurde das Gebäude " + building.getBlueprint().getName() + " errichtet!", city, city.getPlayer()));
+                        eventRepository.add(new Event("ProductionReady", "Neues Gebäude errichtet", "In " + city.getName() + " wurde das Gebäude " + building.getBlueprint().getName() + " errichtet!", city, city.getPlayer()));
                     } else if (construction.getBlueprint() instanceof UnitBlueprint) {
                         for(int i = 0; i < construction.getCount(); i++) {
                             Unit unit = new Unit();
                             unit.setBlueprint((UnitBlueprint) construction.getBlueprint());
                             unit.setHealth(100);
-                            unitRepository.save(unit);
+                            unitRepository.add(unit);
 
-                            city.getUnits().add(unit);
+                            city.addUnit(unit);
                         }
 
                         if(construction.getCount() > 1)
-                            eventRepository.save(new Event("ProductionReady", "Neue Einheiten ausgebildet", "In " + city.getName() + " wurden " + construction.getCount() + " Einheiten " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
+                            eventRepository.add(new Event("ProductionReady", "Neue Einheiten ausgebildet", "In " + city.getName() + " wurden " + construction.getCount() + " Einheiten " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
                         else
-                            eventRepository.save(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
+                            eventRepository.add(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
                     }
 
                     city.setBuildingConstruction(null);
@@ -264,11 +263,11 @@ public class CityLogic {
     public void processType(City city) {
         if(city.getType().getId() != 4) {
             if(city.getPopulation() < 50)
-                city.setType(cityTypeRepository.findOne(1));
+                city.setType(cityTypeRepository.findById(1));
             else if(city.getPopulation() < 200)
-                city.setType(cityTypeRepository.findOne(2));
+                city.setType(cityTypeRepository.findById(2));
             else
-                city.setType(cityTypeRepository.findOne(3));
+                city.setType(cityTypeRepository.findById(3));
         }
     }
 
@@ -294,9 +293,6 @@ public class CityLogic {
                     city.setHealth(city.getHealth() + 1);
                 }
             }
-
-            unitRepository.save(units);
-            buildingRepository.save(buildings);
         }
     }
 
@@ -350,12 +346,12 @@ public class CityLogic {
     }
 
     public void processWar(City city) {
-        List<Formation> formations = formationRepository.findByCity(city.getId());
+        List<Formation> formations = formationRepository.findByCity(city);
 
         if(!formations.isEmpty()) {
             boolean isWar = false;
             for(Formation formation : formations) {
-                Relation relation = relationRepository.findByPlayers(city.getPlayer().getId(), formation.getPlayer().getId());
+                Relation relation = relationRepository.findByPlayers(city.getPlayer(), formation.getPlayer());
 
                 if((relation != null && relation.getRelation() == 0) || city.getPlayer().isComputer()) {
                     isWar = true;
@@ -400,7 +396,7 @@ public class CityLogic {
 
                 for(Formation formation : formations) {
                     if(!formation.getPlayer().equals(player)) {
-                        Relation relation = relationRepository.findByPlayers(player.getId(), formation.getPlayer().getId());
+                        Relation relation = relationRepository.findByPlayers(player, formation.getPlayer());
 
                         if(relation == null || relation.getRelation() <= 2) {
                             enemyFormations.add(formation);
@@ -449,28 +445,23 @@ public class CityLogic {
 
                 for(Unit unit : formation.getUnits()) {
                     if(unit.getHealth() <= 0) {
-                        formation.getUnits().remove(unit);
+                        formation.removeUnit(unit);
                         party.setLosses(party.getLosses() + 1);
-                        unitRepository.delete(unit);
+                        unitRepository.remove(unit);
                     }
                 }
-
-                unitRepository.save(formation.getUnits());
             }
 
             for(Building building : city.getBuildings()) {
                 if(building.getHealth() <= 0) {
-                    city.getBuildings().remove(building);
-                    buildingRepository.delete(building);
+                    city.removeBuilding(building);
+                    buildingRepository.remove(building);
                 }
-
-                buildingRepository.save(city.getBuildings());
             }
 
             if(city.getHealth() <= 0) {
                 if(!city.getPlayer().isComputer()) {
                     city.getPlayer().setSightUpdate(true);
-                    playerRepository.save(city.getPlayer());
                 }
                 if(formations.size() == 0 || formations.stream().map(f -> f.getPlayer()).distinct().count() > 1)
                     city.setPlayer(playerRepository.findByName("Freies Volk"));
@@ -478,11 +469,8 @@ public class CityLogic {
                     city.setPlayer(formations.get(0).getPlayer());
                     city.setReport(null);
                     city.getPlayer().setSightUpdate(true);
-                    playerRepository.save(city.getPlayer());
                 }
             }
-
-            formationRepository.save(formations);
         }
     }
 }

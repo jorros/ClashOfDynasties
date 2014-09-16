@@ -3,16 +3,17 @@ package de.clashofdynasties.models;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.repository.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Document
 public class City {
@@ -22,21 +23,17 @@ public class City {
     private int x;
     private int y;
 
-    @DBRef
-    private Player player;
+    private ObjectId player;
 
     private int population;
     private double satisfaction;
     private int health;
 
-    @DBRef
-    private Resource resource;
+    private int resource;
 
-    @DBRef
-    private Biome biome;
+    private int biome;
 
-    @DBRef
-    private CityType type;
+    private int type;
 
     private Report report;
 
@@ -46,26 +43,21 @@ public class City {
     private int capacity;
     private String name;
 
-    @DBRef
-    private List<ItemType> requiredItemTypes;
+    private List<Integer> requiredItemTypes;
 
-    @DBRef
-    private List<Item> stopConsumption;
+    private List<Integer> stopConsumption;
 
-    @DBRef
-    private List<Building> buildings;
+    private List<ObjectId> buildings;
 
     private BuildingConstruction buildingConstruction;
 
-    @DBRef
-    private List<Unit> units;
+    private List<ObjectId> units;
 
     private Map<Integer, Double> items;
 
     private long timestamp;
 
-    @DBRef
-    private List<Player> visibility;
+    private List<ObjectId> visibility;
 
     public City() {
         units = new ArrayList<>();
@@ -75,6 +67,7 @@ public class City {
         stopConsumption = new ArrayList<>();
         formations = new ArrayList<>();
         visibility = new ArrayList<>();
+        id = new ObjectId();
     }
 
     public ObjectId getId() {
@@ -102,11 +95,11 @@ public class City {
     }
 
     public Player getPlayer() {
-        return player;
+        return PlayerRepository.get().findById(player);
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.player = player.getId();
         updateTimestamp();
     }
 
@@ -142,25 +135,25 @@ public class City {
     }
 
     public Resource getResource() {
-        return resource;
+        return ResourceRepository.get().findById(resource);
     }
 
     public void setResource(Resource resource) {
-        this.resource = resource;
+        this.resource = resource.getId();
         updateTimestamp();
     }
 
     public Biome getBiome() {
-        return biome;
+        return BiomeRepository.get().findById(biome);
     }
 
     public void setBiome(Biome biome) {
-        this.biome = biome;
+        this.biome = biome.getId();
         updateTimestamp();
     }
 
     public int getCapacity() {
-        return (int)Math.ceil(capacity * type.getCapacity());
+        return (int)Math.ceil(capacity * getType().getCapacity());
     }
 
     public void setCapacity(int capacity) {
@@ -178,11 +171,11 @@ public class City {
     }
 
     public List<ItemType> getRequiredItemTypes() {
-        return requiredItemTypes;
+        return requiredItemTypes.stream().map(r -> ItemTypeRepository.get().findById(r)).collect(Collectors.toList());
     }
 
-    public void setRequiredItemTypes(List<ItemType> requiredItemTypes) {
-        this.requiredItemTypes = requiredItemTypes;
+    public void addRequiredItemType(ItemType requiredItemType) {
+        this.requiredItemTypes.add(requiredItemType.getId());
     }
 
     public Map<Integer, Double> getItems() {
@@ -194,27 +187,43 @@ public class City {
     }
 
     public List<Building> getBuildings() {
-        return buildings;
+        return buildings.stream().map(b -> BuildingRepository.get().findById(b)).collect(Collectors.toList());
     }
 
-    public void setBuildings(List<Building> buildings) {
-        this.buildings = buildings;
+    public void clearBuildings() {
+        buildings.clear();
+    }
+
+    public void addBuilding(Building building) {
+        this.buildings.add(building.getId());
+    }
+
+    public void removeBuilding(Building building) {
+        this.buildings.remove(building.getId());
     }
 
     public CityType getType() {
-        return type;
+        return CityTypeRepository.get().findById(type);
     }
 
     public void setType(CityType type) {
-        this.type = type;
+        this.type = type.getId();
     }
 
     public List<Unit> getUnits() {
-        return units;
+        return units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
     }
 
-    public void setUnits(List<Unit> units) {
-        this.units = units;
+    public void clearUnits() {
+        units.clear();
+    }
+
+    public void addUnit(Unit unit) {
+        units.add(unit.getId());
+    }
+
+    public void removeUnit(Unit unit) {
+        units.remove(unit.getId());
     }
 
     public Report getReport() {
@@ -236,9 +245,9 @@ public class City {
 
     public double getProductionRate() {
         if(population > 0)
-            return population * type.getProductionRate();
+            return population * getType().getProductionRate();
         else
-            return type.getProductionRate();
+            return getType().getProductionRate();
     }
 
     public List<Formation> getFormations() {
@@ -264,49 +273,37 @@ public class City {
     }
 
     public List<Item> getStopConsumption() {
-        return stopConsumption;
-    }
-
-    public void setStopConsumption(List<Item> stopConsumption) {
-        this.stopConsumption = stopConsumption;
+        return stopConsumption.stream().map(i -> ItemRepository.get().findById(i)).collect(Collectors.toList());
     }
 
     public void toggleConsumption(Item item) {
         if(getStopConsumption() == null)
-            setStopConsumption(new ArrayList<>());
+            stopConsumption = new ArrayList<>();
 
         if(getStopConsumption().contains(item))
-            getStopConsumption().remove(item);
+            stopConsumption.remove((Integer)item.getId());
         else
-            getStopConsumption().add(item);
+            stopConsumption.add(item.getId());
     }
 
     public boolean equals(Object other) {
         return (other instanceof City && ((City) other).getId().equals(this.id));
     }
 
-    public int countBuildings(int blueprint) {
-        int counter = 0;
-        if (buildings != null) {
-            for (Building building : buildings) {
-                if (building.getBlueprint().getId() == blueprint)
-                    counter++;
-            }
-        }
-
-        return counter;
+    public long countBuildings(long blueprint) {
+        return getBuildings().stream().filter(b -> b.getBlueprint().getId() == blueprint).count();
     }
 
-    public int countUnits(int blueprint) {
-        int counter = 0;
-        if (units != null) {
-            for (Unit unit : units) {
-                if (unit.getBlueprint().getId() == blueprint)
-                    counter++;
-            }
-        }
+    public long countBuildings(BuildingBlueprint blueprint) {
+        return countBuildings(blueprint.getId());
+    }
 
-        return counter;
+    public long countUnits(long blueprint) {
+        return getUnits().stream().filter(b -> b.getBlueprint().getId() == blueprint).count();
+    }
+
+    public long countUnits(UnitBlueprint blueprint) {
+        return countUnits(blueprint.getId());
     }
 
     public double calculateCoins() {
@@ -345,11 +342,19 @@ public class City {
     }
 
     public List<Player> getVisibility() {
-        return visibility;
+        return visibility.stream().map(p -> PlayerRepository.get().findById(p)).collect(Collectors.toList());
     }
 
-    public void setVisibility(List<Player> visibility) {
-        this.visibility = visibility;
+    public boolean isVisible(Player player) {
+        return visibility.contains(player.getId());
+    }
+
+    public void removeVisibility(Player player) {
+        visibility.remove(player.getId());
+    }
+
+    public void addVisibility(Player player) {
+        visibility.add(player.getId());
     }
 
     public ObjectNode toJSON(boolean editor, long timestamp, Player player) {
@@ -360,9 +365,9 @@ public class City {
             node.put("x", getX());
             node.put("y", getY());
             node.put("type", getType().getId());
-            node.put("visible", visibility.contains(player));
+            node.put("visible", isVisible(player));
 
-            if(visibility.contains(player) || editor) {
+            if(isVisible(player) || editor) {
                 node.put("name", getName());
                 node.put("nn", false);
                 node.put("color", getPlayer().getColor());

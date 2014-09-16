@@ -16,10 +16,8 @@ import java.util.ArrayList;
 
 @Service
 public class LoginService implements UserDetailsService {
-    private MongoTemplate mongoTemplate;
-
     @Autowired
-    PlayerRepository playerRepository;
+    private PlayerRepository playerRepository;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Player player = getUserDetail(username);
@@ -35,11 +33,6 @@ public class LoginService implements UserDetailsService {
 
         User userDetail = new User(player.getName(), player.getPassword(), true, true, true, true, authorities);
         return userDetail;
-    }
-
-    @Autowired
-    public void setMongoTemplate(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
     }
 
     public Player getUserDetail(String username) {

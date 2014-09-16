@@ -1,7 +1,7 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.ItemTypeRepository;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -11,8 +11,7 @@ public class Item {
 
     private String name;
 
-    @DBRef
-    private ItemType type;
+    private int type;
 
     public int getId() {
         return id;
@@ -31,11 +30,11 @@ public class Item {
     }
 
     public ItemType getType() {
-        return type;
+        return ItemTypeRepository.get().findById(type);
     }
 
     public void setType(ItemType type) {
-        this.type = type;
+        this.type = type.getId();
     }
 
     public boolean equals(Object other) {

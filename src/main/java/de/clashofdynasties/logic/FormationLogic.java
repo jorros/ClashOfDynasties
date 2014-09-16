@@ -61,8 +61,6 @@ public class FormationLogic {
                     unit.setHealth(unit.getHealth() + 1);
                 }
             }
-
-            unitRepository.save(units);
         }
     }
 }

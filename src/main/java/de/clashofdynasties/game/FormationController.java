@@ -43,8 +43,8 @@ public class FormationController {
     @ResponseBody
     ObjectNode calculateRoute(Principal principal, @PathVariable("formation") ObjectId id, @RequestParam ObjectId target) {
         Player player = playerRepository.findByName(principal.getName());
-        Formation formation = formationRepository.findOne(id);
-        City city = cityRepository.findOne(target);
+        Formation formation = formationRepository.findById(id);
+        City city = cityRepository.findById(target);
 
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
@@ -57,8 +57,8 @@ public class FormationController {
     @RequestMapping(value = "/{formation}/move", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public void move(Principal principal, @PathVariable("formation") ObjectId formationId, @RequestParam ObjectId target) {
-        Formation formation = formationRepository.findOne(formationId);
-        City city = cityRepository.findOne(target);
+        Formation formation = formationRepository.findById(formationId);
+        City city = cityRepository.findById(target);
         Player player = playerRepository.findByName(principal.getName());
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
@@ -66,14 +66,13 @@ public class FormationController {
             if (routing.calculateRoute(formation, city, player)) {
                 if (formation.isDeployed()) {
                     formation.setRoute(routing.getRoute());
-                    formation.getRoute().setCurrentRoad(roadRepository.findByCities(formation.getLastCity().getId(), formation.getRoute().getNext().getId()));
+                    formation.getRoute().setCurrentRoad(roadRepository.findByCities(formation.getLastCity(), formation.getRoute().getNext()));
                     formation.move(70);
                 } else {
                     formation.setRoute(routing.getRoute());
                 }
 
                 formation.updateTimestamp();
-                formationRepository.save(formation);
             }
         }
     }
@@ -82,62 +81,63 @@ public class FormationController {
     @ResponseStatus(HttpStatus.OK)
     public void remove(Principal principal, @PathVariable("formation") ObjectId formationId) {
         Player player = playerRepository.findByName(principal.getName());
-        Formation formation = formationRepository.findOne(formationId);
+        Formation formation = formationRepository.findById(formationId);
 
         if (formation.getPlayer().equals(player) && formation.isDeployed() && formation.getLastCity().getPlayer().equals(formation.getPlayer())) {
             City city = formation.getLastCity();
 
-            formation.getUnits().forEach(u -> city.getUnits().add(u));
+            formation.getUnits().forEach(u -> city.addUnit(u));
 
-            cityRepository.save(city);
-            formationRepository.delete(formation);
+            formationRepository.remove(formation);
         }
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam("units[]") List<ObjectId> unitsId) {
-        save(principal, null, name, cityId, unitsId);
+        City city = cityRepository.findById(cityId);
+        Player player = playerRepository.findByName(principal.getName());
+
+        Formation formation = new Formation();
+        formation.setLastCity(city);
+        formation.setPlayer(player);
+        formation.setX(city.getX());
+        formation.setY(city.getY());
+
+        formationRepository.add(formation);
+
+        save(principal, formation.getId(), name, cityId, unitsId);
     }
 
     @RequestMapping(value = "/{formation}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void save(Principal principal, @PathVariable("formation") ObjectId formationId, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam("units[]") List<ObjectId> unitsId) {
-        // Formation, City und Player vorbereiten
-        City city = cityRepository.findOne(cityId);
+        City city = cityRepository.findById(cityId);
         Player player = playerRepository.findByName(principal.getName());
 
-        // Formation nur fetchen, wenn City dem Spieler gehört
         if (player.equals(city.getPlayer())) {
             Formation formation;
-            if (formationId != null)
-                formation = formationRepository.findOne(formationId);
-            else {
-                formation = new Formation();
-                formation.setUnits(new ArrayList<Unit>());
-                formation.setLastCity(city);
-                formation.setRoute(null);
-                formation.setPlayer(player);
-                formation.setX(city.getX());
-                formation.setY(city.getY());
-            }
+            formation = formationRepository.findById(formationId);
 
             if (player.equals(formation.getPlayer())) {
                 if (formation.getRoute() == null) {
-                    List<Unit> units = new ArrayList<Unit>();
-                    for (ObjectId unitId : unitsId) {
-                        Unit unit = unitRepository.findOne(unitId);
-                        if (city.getUnits().contains(unit)) {
-                            city.getUnits().remove(unit);
-                            formation.getUnits().add(unit);
+                    for (Unit unit : formation.getUnits()) {
+                        if (!unitsId.contains(unit.getId())) {
+                            formation.removeUnit(unit);
+                            city.addUnit(unit);
                         }
+                    }
+                    for (ObjectId unitId : unitsId) {
+                        Unit unit = unitRepository.findById(unitId);
+
+                        if (city.getUnits().contains(unit))
+                            city.removeUnit(unit);
+
+                        formation.addUnit(unit);
                     }
 
                     formation.setName(name);
                     formation.updateTimestamp();
-
-                    cityRepository.save(city);
-                    formationRepository.save(formation);
                 }
             }
         }

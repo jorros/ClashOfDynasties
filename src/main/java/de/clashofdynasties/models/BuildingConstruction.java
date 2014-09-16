@@ -1,21 +1,32 @@
 package de.clashofdynasties.models;
 
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import de.clashofdynasties.repository.BuildingBlueprintRepository;
+import de.clashofdynasties.repository.UnitBlueprintRepository;
 
 public class BuildingConstruction {
-    @DBRef
-    private IBlueprint blueprint;
+    private int unitBlueprint;
+    private int buildingBlueprint;
 
     private double production;
 
     private int count;
 
     public IBlueprint getBlueprint() {
-        return blueprint;
+        if(unitBlueprint > 0)
+            return UnitBlueprintRepository.get().findById(unitBlueprint);
+        else
+            return BuildingBlueprintRepository.get().findById(buildingBlueprint);
     }
 
     public void setBlueprint(IBlueprint blueprint) {
-        this.blueprint = blueprint;
+        if(blueprint instanceof UnitBlueprint) {
+            unitBlueprint = ((UnitBlueprint) blueprint).getId();
+            buildingBlueprint = 0;
+        }
+        else {
+            buildingBlueprint = ((BuildingBlueprint) blueprint).getId();
+            unitBlueprint = 0;
+        }
     }
 
     public double getProduction() {
@@ -31,7 +42,7 @@ public class BuildingConstruction {
     }
 
     public double getRequiredProduction() {
-        return blueprint.getRequiredProduction() * count;
+        return getBlueprint().getRequiredProduction() * count;
     }
 
     public int getCount() {

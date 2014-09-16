@@ -1,11 +1,16 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.BiomeRepository;
+import de.clashofdynasties.repository.ItemRepository;
+import de.clashofdynasties.repository.NationRepository;
+import de.clashofdynasties.repository.ResourceRepository;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Document
 public class BuildingBlueprint implements IBlueprint {
@@ -16,29 +21,27 @@ public class BuildingBlueprint implements IBlueprint {
 
     private int requiredProduction;
 
-    @DBRef
-    private Nation nation;
+    private int nation;
 
-    @DBRef
-    private Resource requiredResource;
+    private int requiredResource;
 
     private String name;
 
     private String description;
 
-    private Map<String, Float> effects;
-
     private int defencePoints;
 
     private int maxCount;
 
-    @DBRef
-    private Item produceItem;
+    private int produceItem;
 
     private double producePerStep;
 
-    @DBRef
-    private List<Biome> requiredBiomes;
+    private List<Integer> requiredBiomes;
+
+    public BuildingBlueprint() {
+        requiredBiomes = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
@@ -65,11 +68,11 @@ public class BuildingBlueprint implements IBlueprint {
     }
 
     public Nation getNation() {
-        return nation;
+        return NationRepository.get().findById(nation);
     }
 
     public void setNation(Nation nation) {
-        this.nation = nation;
+        this.nation = nation.getId();
     }
 
     public int getMaxCount() {
@@ -81,11 +84,11 @@ public class BuildingBlueprint implements IBlueprint {
     }
 
     public Resource getRequiredResource() {
-        return requiredResource;
+        return ResourceRepository.get().findById(requiredResource);
     }
 
     public void setRequiredResource(Resource requiredResource) {
-        this.requiredResource = requiredResource;
+        this.requiredResource = requiredResource.getId();
     }
 
     public String getName() {
@@ -104,20 +107,12 @@ public class BuildingBlueprint implements IBlueprint {
         this.description = description;
     }
 
-    public Map<String, Float> getEffects() {
-        return effects;
-    }
-
-    public void setEffects(Map<String, Float> effects) {
-        this.effects = effects;
-    }
-
     public Item getProduceItem() {
-        return produceItem;
+        return ItemRepository.get().findById(produceItem);
     }
 
     public void setProduceItem(Item produceItem) {
-        this.produceItem = produceItem;
+        this.produceItem = produceItem.getId();
     }
 
     public double getProducePerStep() {
@@ -137,11 +132,11 @@ public class BuildingBlueprint implements IBlueprint {
     }
 
     public List<Biome> getRequiredBiomes() {
-        return requiredBiomes;
+        return requiredBiomes.stream().map(b -> BiomeRepository.get().findById(b)).collect(Collectors.toList());
     }
 
-    public void setRequiredBiomes(List<Biome> requiredBiomes) {
-        this.requiredBiomes = requiredBiomes;
+    public void addRequiredBiome(Biome biome) {
+        requiredBiomes.add(biome.getId());
     }
 
     public boolean equals(Object other) {

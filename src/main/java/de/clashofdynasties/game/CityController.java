@@ -55,8 +55,9 @@ public class CityController {
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
     public void remove(@PathVariable("city") ObjectId id) {
-        roadRepository.delete(roadRepository.findByCity(id));
-        cityRepository.delete(id);
+        City city = cityRepository.findById(id);
+        roadRepository.remove(roadRepository.findByCity(city));
+        cityRepository.remove(city);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -67,39 +68,36 @@ public class CityController {
         city.setName("Neue Stadt");
         city.setCapacity(0);
         city.setHealth(100);
-        city.setBiome(biomeRepository.findOne(1));
-        city.setPlayer(playerRepository.findAll().stream().filter(Player::isComputer).findFirst().get());
+        city.setBiome(biomeRepository.findById(1));
+        city.setPlayer(playerRepository.findComputer());
         city.setX(x);
         city.setY(y);
-        city.setType(cityTypeRepository.findOne(1));
-        city.setResource(resourceRepository.findOne(1));
+        city.setType(cityTypeRepository.findById(1));
+        city.setResource(resourceRepository.findById(1));
         city.setPopulation(5);
 
-        List<ItemType> types = city.getRequiredItemTypes();
-
-        types.add(itemTypeRepository.findOne(1));
-        types.add(itemTypeRepository.findOne(2));
+        city.addRequiredItemType(itemTypeRepository.findById(1));
+        city.addRequiredItemType(itemTypeRepository.findById(2));
 
         int i;
         i = (int) (Math.random() * 3 + 1);
         if (i == 1)
-            types.add(itemTypeRepository.findOne(4));
+            city.addRequiredItemType(itemTypeRepository.findById(4));
         else if (i == 2)
-            types.add(itemTypeRepository.findOne(6));
+            city.addRequiredItemType(itemTypeRepository.findById(6));
         else
-            types.add(itemTypeRepository.findOne(7));
+            city.addRequiredItemType(itemTypeRepository.findById(7));
 
         i = (int) (Math.random() * 2 + 1);
         if (i == 1)
-            types.add(itemTypeRepository.findOne(3));
+            city.addRequiredItemType(itemTypeRepository.findById(3));
         else
-            types.add(itemTypeRepository.findOne(5));
-
-        city.setRequiredItemTypes(types);
+            city.addRequiredItemType(itemTypeRepository.findById(5));
 
         city.updateTimestamp();
 
-        cityRepository.save(city);
+        cityRepository.add(city);
+
         save(city.getId(), name, type, capacity, resource, biome, player);
     }
 
@@ -107,7 +105,7 @@ public class CityController {
     @ResponseStatus(HttpStatus.OK)
     public void build(Principal principal, @PathVariable("city") ObjectId id, @RequestParam int type, @RequestParam int blueprint, @RequestParam int count) {
         Player player = playerRepository.findByName(principal.getName());
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
 
         if(city.getPlayer().equals(player)) {
             BuildingConstruction construction = new BuildingConstruction();
@@ -116,19 +114,19 @@ public class CityController {
             if(city.getBuildingConstruction() != null) {
                 stopBuild(principal, id);
                 player = playerRepository.findByName(principal.getName());
-                city = cityRepository.findOne(id);
+                city = cityRepository.findById(id);
             }
 
             if(type == 0) {
-                BuildingBlueprint blp = buildingBlueprintRepository.findOne(blueprint);
+                BuildingBlueprint blp = buildingBlueprintRepository.findById(blueprint);
                 count = 1;
 
-                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (blp.getMaxCount() == 0 || blp.getMaxCount() > city.countBuildings(blp.getId())))
+                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (blp.getMaxCount() == 0 || blp.getMaxCount() > city.countBuildings(blp)))
                     construction.setBlueprint(blp);
             }
             else if(type == 1) {
                 if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 15).count() > 0) {
-                    construction.setBlueprint(unitBlueprintRepository.findOne(blueprint));
+                    construction.setBlueprint(unitBlueprintRepository.findById(blueprint));
                 }
             }
 
@@ -141,9 +139,7 @@ public class CityController {
                 if (count > 0) {
                     construction.setCount(count);
                     city.setBuildingConstruction(construction);
-                    cityRepository.save(city);
                     player.addCoins(-construction.getBlueprint().getPrice());
-                    playerRepository.save(player);
                 }
             }
         }
@@ -153,7 +149,7 @@ public class CityController {
     @ResponseStatus(HttpStatus.OK)
     public void stopBuild(Principal principal, @PathVariable("city") ObjectId id) {
         Player player = playerRepository.findByName(principal.getName());
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
 
         if(city.getPlayer().equals(player) && city.getBuildingConstruction() != null) {
             double neededProduction = city.getBuildingConstruction().getRequiredProduction();
@@ -162,23 +158,18 @@ public class CityController {
             player.addCoins(Math.floor(city.getBuildingConstruction().getBlueprint().getPrice() * (1 - currentProduction / neededProduction)));
 
             city.setBuildingConstruction(null);
-
-            cityRepository.save(city);
-            playerRepository.save(player);
         }
     }
 
     @RequestMapping(value = "/{city}/consumption", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void toggleConsumption(Principal principal, @PathVariable("city") ObjectId id, @RequestParam("item") int itemId) {
-        City city = cityRepository.findOne(id);
-        Item item = itemRepository.findOne(itemId);
+        City city = cityRepository.findById(id);
+        Item item = itemRepository.findById(itemId);
         Player player = playerRepository.findByName(principal.getName());
 
         if(city.getPlayer().equals(player)) {
             city.toggleConsumption(item);
-
-            cityRepository.save(city);
         }
     }
 
@@ -186,23 +177,21 @@ public class CityController {
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
     public void reset(@PathVariable("city") ObjectId id) {
-        City city = cityRepository.findOne(id);
-        city.setBuildings(new ArrayList<>());
-        city.setItems(new HashMap<>());
-        city.setUnits(new ArrayList<>());
+        City city = cityRepository.findById(id);
+        city.clearBuildings();
+        city.getItems().clear();
+        city.clearUnits();
         city.setHealth(100);
         city.setPopulation(5);
         city.updateTimestamp();
-        city.setType(cityTypeRepository.findOne(1));
-
-        cityRepository.save(city);
+        city.setType(cityTypeRepository.findById(1));
     }
 
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
     public void save(@PathVariable("city") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer type, @RequestParam(required = false) Integer capacity, @RequestParam(required = false) Integer resource, @RequestParam(required = false) Integer biome, @RequestParam(required = false) ObjectId player) {
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
         Player newPlayer = null;
 
         if (city == null)
@@ -215,38 +204,33 @@ public class CityController {
             city.setCapacity(capacity);
 
         if (resource != null)
-            city.setResource(resourceRepository.findOne(resource));
+            city.setResource(resourceRepository.findById(resource));
 
         if (biome != null)
-            city.setBiome(biomeRepository.findOne(biome));
+            city.setBiome(biomeRepository.findById(biome));
 
         if (player != null) {
-            newPlayer = playerRepository.findOne(player);
+            newPlayer = playerRepository.findById(player);
 
             city.setPlayer(newPlayer);
         }
 
         if (type != null && city.getType().getId() != type) {
-            city.setType(cityTypeRepository.findOne(type));
+            city.setType(cityTypeRepository.findById(type));
             if(!city.getPlayer().isComputer()) {
                 city.getPlayer().setSightUpdate(true);
-                playerRepository.save(city.getPlayer());
             }
         }
 
         city.updateTimestamp();
 
-        cityRepository.save(city);
-
         if(newPlayer != null) {
             if(!city.getPlayer().isComputer()) {
                 city.getPlayer().setSightUpdate(true);
-                playerRepository.save(city.getPlayer());
             }
 
             if(!newPlayer.isComputer() && !city.getPlayer().equals(newPlayer)) {
                 newPlayer.setSightUpdate(true);
-                playerRepository.save(newPlayer);
             }
         }
     }

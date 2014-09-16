@@ -48,7 +48,7 @@ public class CommandController {
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") ObjectId id) {
-        Formation formation = formationRepository.findOne(id);
+        Formation formation = formationRepository.findById(id);
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
         String time = "";
@@ -78,7 +78,7 @@ public class CommandController {
 
     @RequestMapping(value = "/caravan", method = RequestMethod.GET)
     public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") ObjectId id) {
-        Caravan caravan = caravanRepository.findOne(id);
+        Caravan caravan = caravanRepository.findById(id);
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
         String time = "";
@@ -104,7 +104,7 @@ public class CommandController {
 
     @RequestMapping(value = "/city", method = RequestMethod.GET)
     public String showCity(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
         Player player = playerRepository.findByName(principal.getName());
 
         int maxSlots = Math.round((int)(city.getCapacity() * city.getType().getCapacity()));
@@ -138,14 +138,14 @@ public class CommandController {
 
     @RequestMapping(value = "/editcity", method = RequestMethod.GET)
     public String showEditCity(ModelMap map, @RequestParam("city") ObjectId id) {
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
 
         map.addAttribute("city", city);
 
-        map.addAttribute("types", cityTypeRepository.findAll());
-        map.addAttribute("resources", resourceRepository.findAll());
-        map.addAttribute("biomes", biomeRepository.findAll());
-        map.addAttribute("players", playerRepository.findAll());
+        map.addAttribute("types", cityTypeRepository.getList());
+        map.addAttribute("resources", resourceRepository.getList());
+        map.addAttribute("biomes", biomeRepository.getList());
+        map.addAttribute("players", playerRepository.getList());
 
         return "command/editcity";
     }

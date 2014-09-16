@@ -1,9 +1,9 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.NationRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -17,8 +17,7 @@ public class Player {
     private String password;
     private double coins;
 
-    @DBRef
-    private Nation nation;
+    private int nation;
     private String email;
 
     private int lastScrollX;
@@ -32,6 +31,10 @@ public class Player {
     private Statistic statistic;
 
     private boolean sightUpdate;
+
+    public Player() {
+        this.id = new ObjectId();
+    }
 
     public ObjectId getId() {
         return id;
@@ -82,11 +85,11 @@ public class Player {
     }
 
     public Nation getNation() {
-        return nation;
+        return NationRepository.get().findById(nation);
     }
 
     public void setNation(Nation nation) {
-        this.nation = nation;
+        this.nation = nation.getId();
     }
 
     public double getRawCoins() {

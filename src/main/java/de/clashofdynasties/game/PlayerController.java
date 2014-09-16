@@ -50,14 +50,14 @@ public class PlayerController {
     @ResponseStatus(HttpStatus.OK)
     public void remove(@PathVariable("player") ObjectId playerId) {
         reset(playerId);
-        playerRepository.delete(playerId);
+        playerRepository.remove(playerRepository.findById(playerId));
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void create() {
-        int num = playerRepository.findAll().size() - 1;
+        int num = playerRepository.getList().size() - 1;
         Player player = new Player();
         player.setActivated(false);
         player.setCoins(100);
@@ -65,15 +65,13 @@ public class PlayerController {
         player.setLastScrollX(-1);
         player.setLastScrollY(-1);
 
-        playerRepository.save(player);
+        playerRepository.add(player);
     }
 
     private void updateCityTimestamps(Player player) {
         List<City> cities = cityRepository.findByPlayer(player);
 
-        cities.forEach(c -> c.updateTimestamp());
-
-        cityRepository.save(cities);
+        cities.forEach(City::updateTimestamp);
     }
 
     @RequestMapping(value = "/relation", method = RequestMethod.PUT)
@@ -81,9 +79,9 @@ public class PlayerController {
     public void setRelation(Principal principal, String pid, int pendingRelation, boolean accept) {
         Player player = playerRepository.findByName(principal.getName());
         ObjectId otherId = new ObjectId(pid);
-        Player other = playerRepository.findOne(otherId);
+        Player other = playerRepository.findById(otherId);
 
-        Relation relation = relationRepository.findByPlayers(player.getId(), otherId);
+        Relation relation = relationRepository.findByPlayers(player, other);
         Event event = null;
 
         if(relation.getTicksLeft() == null) {
@@ -182,18 +180,13 @@ public class PlayerController {
                     break;
             }
 
-            relationRepository.save(relation);
-
             if(event != null) {
-                eventRepository.save(event);
+                eventRepository.add(event);
                 updateCityTimestamps(player);
                 updateCityTimestamps(other);
 
                 player.setSightUpdate(true);
                 other.setSightUpdate(true);
-
-                playerRepository.save(player);
-                playerRepository.save(other);
             }
         }
     }
@@ -202,26 +195,25 @@ public class PlayerController {
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void reset(@PathVariable("player") ObjectId playerId) {
-        Player player = playerRepository.findOne(playerId);
+        Player player = playerRepository.findById(playerId);
 
-        List<Player> players = playerRepository.findAll();
+        List<Player> players = playerRepository.getList();
         List<City> cities = cityRepository.findByPlayer(player);
         List<Formation> formations = formationRepository.findByPlayer(player);
         List<Caravan> caravans = caravanRepository.findByPlayer(player);
 
-        caravanRepository.delete(caravans);
-        formationRepository.delete(formations);
+        caravanRepository.remove(caravans);
+        formationRepository.remove(formations);
 
         for(City city : cities) {
-            city.setBuildings(new ArrayList<>());
+            city.clearBuildings();
             city.setItems(new HashMap<>());
             city.setHealth(100);
             city.setPlayer(players.stream().filter(Player::isComputer).findFirst().get());
             city.setPopulation(5);
             city.setSatisfaction(100);
-            city.setUnits(new ArrayList<>());
+            city.clearUnits();
             city.updateTimestamp();
-            cityRepository.save(city);
         }
 
         players.forEach(p -> p.setSightUpdate(true));
@@ -229,6 +221,5 @@ public class PlayerController {
         player.setLastScrollX(-1);
         player.setLastScrollY(-1);
         player.setCoins(100);
-        playerRepository.save(player);
     }
 }

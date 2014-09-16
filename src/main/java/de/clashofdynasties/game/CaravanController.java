@@ -45,8 +45,8 @@ public class CaravanController {
     @ResponseBody
     ObjectNode calculateRoute(Principal principal, @RequestParam ObjectId point1, @RequestParam ObjectId point2) {
         Player player = playerRepository.findByName(principal.getName());
-        City city1 = cityRepository.findOne(point1);
-        City city2 = cityRepository.findOne(point2);
+        City city1 = cityRepository.findById(point1);
+        City city2 = cityRepository.findById(point2);
 
         if (city1 != null && city2 != null) {
             RoutingService routing = new RoutingService(roadRepository, relationRepository);
@@ -63,11 +63,10 @@ public class CaravanController {
     @ResponseStatus(HttpStatus.OK)
     public void remove(Principal principal, @PathVariable("caravan") ObjectId caravanId) {
         Player player = playerRepository.findByName(principal.getName());
-        Caravan caravan = caravanRepository.findOne(caravanId);
+        Caravan caravan = caravanRepository.findById(caravanId);
 
         if (caravan.getPlayer().equals(player)) {
             caravan.setTerminate(!caravan.isTerminate());
-            caravanRepository.save(caravan);
         }
     }
 
@@ -75,8 +74,8 @@ public class CaravanController {
     @ResponseStatus(HttpStatus.OK)
     public void create(Principal principal, @RequestParam String name, @RequestParam ObjectId point1, @RequestParam Integer point1Item, @RequestParam Integer point1Load, @RequestParam ObjectId point2, @RequestParam Integer point2Item, @RequestParam Integer point2Load) {
         Player player = playerRepository.findByName(principal.getName());
-        City city1 = cityRepository.findOne(point1);
-        City city2 = cityRepository.findOne(point2);
+        City city1 = cityRepository.findById(point1);
+        City city2 = cityRepository.findById(point2);
 
         if (city1 != null && city2 != null) {
             RoutingService routing = new RoutingService(roadRepository, relationRepository);
@@ -89,12 +88,12 @@ public class CaravanController {
                 caravan.setX(city1.getX());
                 caravan.setY(city1.getY());
 
-                caravan.getRoute().setCurrentRoad(roadRepository.findByCities(city1.getId(), caravan.getRoute().getNext().getId()));
+                caravan.getRoute().setCurrentRoad(roadRepository.findByCities(city1, caravan.getRoute().getNext()));
 
-                caravan.setPoint1Item(itemRepository.findOne(point1Item));
+                caravan.setPoint1Item(itemRepository.findById(point1Item));
                 caravan.setPoint1Load(point1Load);
 
-                caravan.setPoint2Item(itemRepository.findOne(point2Item));
+                caravan.setPoint2Item(itemRepository.findById(point2Item));
                 caravan.setPoint2Load(point2Load);
 
                 caravan.setName(name);
@@ -106,10 +105,9 @@ public class CaravanController {
                     city1.setItems(new HashMap<>());
 
                 city1.getItems().put(point1Item, city1.getStoredItem(point1Item) - amount);
-                cityRepository.save(city1);
 
                 caravan.setPoint1Store(new Double(amount).intValue());
-                caravan.setPoint1StoreItem(itemRepository.findOne(point1Item));
+                caravan.setPoint1StoreItem(itemRepository.findById(point1Item));
 
                 caravan.move(70);
 
@@ -117,7 +115,7 @@ public class CaravanController {
 
                 caravan.setDirection(2);
 
-                caravanRepository.save(caravan);
+                caravanRepository.add(caravan);
             }
         }
     }
@@ -126,25 +124,23 @@ public class CaravanController {
     @ResponseStatus(HttpStatus.OK)
     public void save(Principal principal, @PathVariable("caravan") ObjectId id, @RequestParam(required = false) String name, @RequestParam(required = false) Integer point1Item, @RequestParam(required = false) Integer point1Load, @RequestParam(required = false) Integer point2Item, @RequestParam(required = false) Integer point2Load) {
         Player player = playerRepository.findByName(principal.getName());
-        Caravan caravan = caravanRepository.findOne(id);
+        Caravan caravan = caravanRepository.findById(id);
 
         if (caravan.getPlayer().equals(player)) {
             if (name != null)
                 caravan.setName(name);
 
             if (point1Item != null)
-                caravan.setPoint1Item(itemRepository.findOne(point1Item));
+                caravan.setPoint1Item(itemRepository.findById(point1Item));
 
             if (point1Load != null)
                 caravan.setPoint1Load(point1Load);
 
             if (point2Item != null)
-                caravan.setPoint2Item(itemRepository.findOne(point2Item));
+                caravan.setPoint2Item(itemRepository.findById(point2Item));
 
             if (point2Load != null)
                 caravan.setPoint2Load(point2Load);
-
-            caravanRepository.save(caravan);
         }
     }
 }

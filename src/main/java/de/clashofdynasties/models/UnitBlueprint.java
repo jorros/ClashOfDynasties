@@ -1,11 +1,9 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.NationRepository;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 @Document
@@ -20,11 +18,9 @@ public class UnitBlueprint implements IBlueprint {
     private int type;
     private int strength;
 
-    @DBRef
-    private Nation nation;
+    private int nation;
 
     private String description;
-    private Map<String, Double> effects;
 
     public int getId() {
         return id;
@@ -51,11 +47,11 @@ public class UnitBlueprint implements IBlueprint {
     }
 
     public Nation getNation() {
-        return nation;
+        return NationRepository.get().findById(nation);
     }
 
     public void setNation(Nation nation) {
-        this.nation = nation;
+        this.nation = nation.getId();
     }
 
     public String getDescription() {
@@ -64,14 +60,6 @@ public class UnitBlueprint implements IBlueprint {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Map<String, Double> getEffects() {
-        return effects;
-    }
-
-    public void setEffects(Map<String, Double> effects) {
-        this.effects = effects;
     }
 
     public int getRequiredProduction() {

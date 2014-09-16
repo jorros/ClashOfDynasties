@@ -1,8 +1,8 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.UnitBlueprintRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -10,17 +10,20 @@ public class Unit {
     @Id
     private ObjectId id;
 
-    @DBRef
-    private UnitBlueprint blueprint;
+    private int blueprint;
 
     private int health;
 
+    public Unit() {
+        this.id = new ObjectId();
+    }
+
     public UnitBlueprint getBlueprint() {
-        return blueprint;
+        return UnitBlueprintRepository.get().findById(blueprint);
     }
 
     public void setBlueprint(UnitBlueprint blueprint) {
-        this.blueprint = blueprint;
+        this.blueprint = blueprint.getId();
     }
 
     public int getHealth() {
@@ -40,7 +43,7 @@ public class Unit {
     }
 
     public double getSpeed() {
-        double speed = blueprint.getSpeed();
+        double speed = getBlueprint().getSpeed();
 
         return speed / 2 + (speed / 2) * (health / 100);
     }

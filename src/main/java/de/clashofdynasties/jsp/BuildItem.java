@@ -30,7 +30,7 @@ public class BuildItem extends SimpleTagSupport {
             out.println("<button data-blueprint=\"" + unit.getId() + "\" data-type=\"1\" class=\"build " + (allowed ? "" : "disabled") + "\" style=\"margin-left:10px;\"><img style=\"width:32px;height:32px;\" src=\"assets/units/" + unit.getId() + ".png\" /></button>");
 
             out.print("<span style=\"color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;\">");
-            int count = city.countUnits(unit.getId());
+            long count = city.countUnits(unit);
             out.print(count);
             out.print("</span>");
 
@@ -38,12 +38,12 @@ public class BuildItem extends SimpleTagSupport {
         } else {
             BuildingBlueprint building = (BuildingBlueprint)blueprint;
 
-            boolean allowed = building.getRequiredBiomes().contains(city.getBiome()) && (building.getRequiredResource() == null || building.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (building.getMaxCount() == 0 || building.getMaxCount() > city.countBuildings(building.getId()));
+            boolean allowed = building.getRequiredBiomes().contains(city.getBiome()) && (building.getRequiredResource() == null || building.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (building.getMaxCount() == 0 || building.getMaxCount() > city.countBuildings(building));
 
             out.println("<button data-blueprint=\"" + building.getId() + "\" data-type=\"0\" class=\"build " + (allowed ? "" : "disabled") + "\" style=\"margin-left:10px;\"><img style=\"width:32px;height:32px;\" src=\"assets/buildings/" + building.getId() + ".png\" /></button>");
 
             out.print("<span style=\"color:#FFF; margin-left:-31px; vertical-align:-25px; text-align:center;\">");
-            int count = city.countBuildings(building.getId());
+            long count = city.countBuildings(building);
             out.print(count);
             out.print("</span>");
 

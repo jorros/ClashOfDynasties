@@ -1,5 +1,6 @@
 package de.clashofdynasties.game;
 
+import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.PlayerRepository;
@@ -23,7 +24,10 @@ public class RoadController {
     @RequestMapping(value = "/getByPoints", method = RequestMethod.GET)
     @ResponseBody
     public String getIdByPoints(@RequestParam ObjectId point1, @RequestParam ObjectId point2) {
-        Road road = roadRepository.findByCities(point1, point2);
+        City c1 = cityRepository.findById(point1);
+        City c2 = cityRepository.findById(point2);
+
+        Road road = roadRepository.findByCities(c1, c2);
 
         if (road == null)
             return "";
@@ -35,7 +39,7 @@ public class RoadController {
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
     public void remove(@PathVariable("road") ObjectId id) {
-        roadRepository.delete(id);
+        roadRepository.remove(roadRepository.findById(id));
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -43,7 +47,7 @@ public class RoadController {
     @Secured("ROLE_ADMIN")
     public void create(@RequestParam ObjectId point1, @RequestParam ObjectId point2, @RequestParam float weight) {
         Road road = new Road();
-        roadRepository.save(road);
+        roadRepository.add(road);
         save(road.getId(), point1, point2, weight);
     }
 
@@ -51,19 +55,17 @@ public class RoadController {
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
     public void save(@PathVariable("road") ObjectId id, @RequestParam(required = false) ObjectId point1, @RequestParam(required = false) ObjectId point2, @RequestParam(required = false) Float weight) {
-        Road road = roadRepository.findOne(id);
+        Road road = roadRepository.findById(id);
 
         if (point1 != null)
-            road.setPoint1(cityRepository.findOne(point1));
+            road.setPoint1(cityRepository.findById(point1));
 
         if (point2 != null)
-            road.setPoint2(cityRepository.findOne(point2));
+            road.setPoint2(cityRepository.findById(point2));
 
         if (weight != null)
             road.setWeight(weight);
 
         road.updateTimestamp();
-
-        roadRepository.save(road);
     }
 }

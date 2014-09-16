@@ -50,37 +50,34 @@ public class PublicController {
 
     @RequestMapping(value = "/step1", method = RequestMethod.POST)
     public String registerStep1(ModelMap map, @RequestParam ObjectId key, @RequestParam String name, @RequestParam String password, @RequestParam String email) {
-        Player player = playerRepository.findOne(key);
+        Player player = playerRepository.findById(key);
         Md5PasswordEncoder encoder = new Md5PasswordEncoder();
 
         player.setName(name);
         player.setPassword(encoder.encodePassword(password, null));
         player.setEmail(email);
-        playerRepository.save(player);
 
         return "redirect:/register?key=" + key;
     }
 
     @RequestMapping(value = "/step2", method = RequestMethod.GET)
     public String registerStep2(ModelMap map, @RequestParam ObjectId key, @RequestParam int nation) {
-        Player player = playerRepository.findOne(key);
+        Player player = playerRepository.findById(key);
 
-        player.setNation(nationRepository.findOne(nation));
-        playerRepository.save(player);
+        player.setNation(nationRepository.findById(nation));
 
         return "redirect:/register?key=" + key;
     }
 
     @RequestMapping(value = "/step3", method = RequestMethod.GET)
     public String registerStep3(ModelMap map, @RequestParam ObjectId key, @RequestParam int color) {
-        Player player = playerRepository.findOne(key);
+        Player player = playerRepository.findById(key);
 
-        if(playerRepository.findAll().stream().filter(p -> p.getColor() == color).count() > 0)
+        if(playerRepository.getList().stream().filter(p -> p.getColor() == color).count() > 0)
             return "redirect:/register?key=" + key + "&error=true";
 
         player.setColor(color);
         player.setActivated(true);
-        playerRepository.save(player);
 
         UserDetails userDetails = loginService.loadUserByUsername(player.getName());
         Authentication auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
@@ -92,7 +89,7 @@ public class PublicController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register(ModelMap map, @RequestParam(required = false) ObjectId key, @RequestParam(required = false) Boolean error) {
         if(key != null) {
-            Player player = playerRepository.findOne(key);
+            Player player = playerRepository.findById(key);
 
             if(player != null && !player.isActivated()) {
                 map.addAttribute("key", key);
@@ -105,7 +102,7 @@ public class PublicController {
                 else if(player.getNation() == null)
                     return "choosenation";
                 else {
-                    List<Integer> notAvailableColors = playerRepository.findAll().stream().map(Player::getColor).distinct().collect(Collectors.toList());
+                    List<Integer> notAvailableColors = playerRepository.getList().stream().map(Player::getColor).distinct().collect(Collectors.toList());
                     map.addAttribute("notAvailableColors", notAvailableColors);
 
                     return "choosecolor";

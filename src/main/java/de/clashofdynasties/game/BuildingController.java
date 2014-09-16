@@ -33,7 +33,7 @@ public class BuildingController {
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer maxcount, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double pps, @RequestParam(required = false) Integer defence, @RequestParam(required = false) Integer item) {
-        BuildingBlueprint blueprint = buildingBlueprintRepository.findOne(id);
+        BuildingBlueprint blueprint = buildingBlueprintRepository.findById(id);
 
         if (description != null)
             blueprint.setDescription(description);
@@ -55,12 +55,10 @@ public class BuildingController {
 
         if(item != null) {
             if(item > 0)
-                blueprint.setProduceItem(itemRepository.findOne(item));
+                blueprint.setProduceItem(itemRepository.findById(item));
             else
                 blueprint.setProduceItem(null);
         }
-
-        buildingBlueprintRepository.save(blueprint);
     }
 
     @RequestMapping(value = "/{building}/icon", headers = "Accept=image/png", method = RequestMethod.GET)

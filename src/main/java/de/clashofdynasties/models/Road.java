@@ -2,9 +2,9 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.repository.CityRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -12,15 +12,17 @@ public class Road {
     @Id
     private ObjectId id;
 
-    @DBRef
-    private City point1;
+    private ObjectId point1;
 
-    @DBRef
-    private City point2;
+    private ObjectId point2;
 
     private float weight;
 
     private long timestamp;
+
+    public Road() {
+        this.id = new ObjectId();
+    }
 
     public ObjectId getId() {
         return id;
@@ -31,19 +33,19 @@ public class Road {
     }
 
     public City getPoint1() {
-        return point1;
+        return CityRepository.get().findById(point1);
     }
 
     public void setPoint1(City point1) {
-        this.point1 = point1;
+        this.point1 = point1.getId();
     }
 
     public City getPoint2() {
-        return point2;
+        return CityRepository.get().findById(point2);
     }
 
     public void setPoint2(City point2) {
-        this.point2 = point2;
+        this.point2 = point2.getId();
     }
 
     public float getWeight() {
@@ -67,11 +69,11 @@ public class Road {
     }
 
     public double getLength() {
-        return Math.sqrt(Math.pow(point1.getX() - point2.getX(), 2) + Math.pow(point1.getY() - point2.getY(), 2));
+        return Math.sqrt(Math.pow(getPoint1().getX() - getPoint2().getX(), 2) + Math.pow(getPoint1().getY() - getPoint2().getY(), 2));
     }
 
     public boolean isVisible(Player player) {
-        return getPoint1().getVisibility().contains(player) && getPoint2().getVisibility().contains(player);
+        return getPoint1().isVisible(player) && getPoint2().isVisible(player);
     }
 
     public boolean equals(Object other) {

@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class PlayerLogic {
@@ -78,102 +79,41 @@ public class PlayerLogic {
     }
 
     public void processRanking() {
-        List<Player> ranking = playerRepository.findAll();
-        ranking.removeIf(p -> p.getStatistic() == null);
+        List<Player> ranking = playerRepository.getList().stream().filter(p -> p.getStatistic() != null).collect(Collectors.toList());
         Collections.sort(ranking, (Player p1, Player p2) -> Integer.compare(p2.getStatistic().getTotal(), p1.getStatistic().getTotal()));
 
         for(int i = 1; i <= ranking.size(); i++) {
             ranking.get(i - 1).getStatistic().setRank(i);
         }
-
-        playerRepository.save(ranking);
-    }
-
-    @PostConstruct
-    public void init() {
-        List<Player> players = playerRepository.findAll();
-        players.removeIf(Player :: isComputer);
-
-        players.forEach(p -> updateFOW(p));
-
-        List<UnitBlueprint> blueprints = unitBlueprintRepository.findAll();
-
-        if(blueprints.stream().filter(b -> b.getType() == 0).count() > 0) {
-            for(UnitBlueprint blp : blueprints) {
-                switch(blp.getId()) {
-                    case 1:
-                        blp.setType(1);
-                        break;
-
-                    case 2:
-                        blp.setType(2);
-                        break;
-
-                    case 3:
-                        blp.setType(3);
-                        break;
-
-                    case 4:
-                        blp.setType(1);
-                        break;
-
-                    case 5:
-                        blp.setType(4);
-                        break;
-
-                    case 6:
-                        blp.setType(1);
-                        break;
-
-                    case 7:
-                        blp.setType(1);
-                        break;
-
-                    case 8:
-                        blp.setType(2);
-                        break;
-
-                    case 9:
-                        blp.setType(3);
-                        break;
-                }
-            }
-
-            unitBlueprintRepository.save(blueprints);
-        }
     }
 
     public void updateFOW(Player player) {
-        List<City> cities = cities = cityRepository.findAll();
-        cities.stream().filter(c -> c.getVisibility() == null).forEach(c -> c.setVisibility(new ArrayList<>()));
-        cities.forEach(c -> c.getVisibility().removeIf(p -> p.equals(player)));
+        List<City> cities = cityRepository.getList();
+        cities.forEach(c -> c.removeVisibility(player));
 
         for(City city : cities) {
-            List<Road> roads = roadRepository.findByCity(city.getId());
+            List<Road> roads = roadRepository.findByCity(city);
             roads.forEach(Road::updateTimestamp);
-            roadRepository.save(roads);
 
             if(city.getPlayer().equals(player))
                 setVisible(city, city.getType().getId(), cities, player);
             else {
-                Relation relation = relationRepository.findByPlayers(player.getId(), city.getPlayer().getId());
+                Relation relation = relationRepository.findByPlayers(player, city.getPlayer());
 
                 if(relation != null) {
                     if(relation.getRelation() == 3)
                         setVisible(city, city.getType().getId(), cities, player);
                     else if(relation.getRelation() == 2)
-                        city.getVisibility().add(player);
+                        city.addVisibility(player);
                 }
             }
         }
-
-        cityRepository.save(cities);
     }
 
     private void setVisible(City city, int level, List<City> cities, Player player) {
-        city.getVisibility().add(player);
+        city.addVisibility(player);
 
-        for (Road r : roadRepository.findByCity(city.getId())) {
+        for (Road r : roadRepository.findByCity(city)) {
             City other;
 
             if(r.getPoint1().equals(city))
@@ -181,8 +121,8 @@ public class PlayerLogic {
             else
                 other = cities.get(cities.indexOf(r.getPoint1()));
 
-            if(!other.getVisibility().contains(player)) {
-                other.getVisibility().add(player);
+            if(!other.isVisible(player)) {
+                other.addVisibility(player);
                 if(level > 1)
                     setVisible(other, level - 1, cities, player);
             }

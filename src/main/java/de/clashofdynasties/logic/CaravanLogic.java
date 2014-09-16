@@ -3,6 +3,7 @@ package de.clashofdynasties.logic;
 import de.clashofdynasties.models.Caravan;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Road;
+import de.clashofdynasties.repository.CaravanRepository;
 import de.clashofdynasties.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Component;
 public class CaravanLogic {
     @Autowired
     private CityRepository cityRepository;
+
+    @Autowired
+    private CaravanRepository caravanRepository;
 
     public void processMovement(Caravan caravan) {
         City next = caravan.getRoute().getNext();
@@ -21,7 +25,7 @@ public class CaravanLogic {
 
         if(distance <= 70) {
             if(next.equals(caravan.getPoint1())) {
-                City city = cityRepository.findOne(caravan.getPoint1().getId());
+                City city = caravan.getPoint1();
 
                 if(caravan.getPoint2StoreItem() != null) {
                     double excess = city.getStoredItem(caravan.getPoint2StoreItem().getId()) + caravan.getPoint2Store() - 100;
@@ -49,7 +53,7 @@ public class CaravanLogic {
                 }
 
                 if(caravan.isTerminate()) {
-                    cityRepository.save(city);
+                    caravanRepository.remove(caravan);
                     return;
                 }
 
@@ -66,14 +70,12 @@ public class CaravanLogic {
                     caravan.setPoint1Store(amount);
                 }
 
-                cityRepository.save(city);
-
                 Road nextRoad = caravan.getRoute().getRoads().get(0);
                 caravan.getRoute().setCurrentRoad(nextRoad);
                 caravan.getRoute().setNext(nextRoad.getPoint1().equals(caravan.getPoint1()) ? nextRoad.getPoint2() : nextRoad.getPoint1());
                 caravan.setDirection(2);
             } else if(next.equals(caravan.getPoint2())) {
-                City city = cityRepository.findOne(caravan.getPoint2().getId());
+                City city = caravan.getPoint2();
 
                 if(caravan.getPoint1StoreItem() != null) {
                     double excess = city.getStoredItem(caravan.getPoint1StoreItem().getId()) + caravan.getPoint1Store() - 100;
@@ -101,7 +103,7 @@ public class CaravanLogic {
                 }
 
                 if(caravan.isTerminate()) {
-                    cityRepository.save(city);
+                    caravanRepository.remove(caravan);
                     return;
                 }
 
@@ -117,8 +119,6 @@ public class CaravanLogic {
                     city.setStoredItem(caravan.getPoint2Item().getId(), city.getStoredItem(caravan.getPoint2Item().getId()) - amount);
                     caravan.setPoint2Store(amount);
                 }
-
-                cityRepository.save(city);
 
                 Road nextRoad = caravan.getRoute().getRoads().get(caravan.getRoute().getRoads().size() - 1);
                 caravan.getRoute().setCurrentRoad(nextRoad);

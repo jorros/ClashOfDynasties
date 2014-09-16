@@ -59,7 +59,7 @@ public class MenuController {
         Player player = playerRepository.findByName(principal.getName());
 
         if (id != null) {
-            Formation formation = formationRepository.findOne(id);
+            Formation formation = formationRepository.findById(id);
 
             if (!formation.getPlayer().equals(player) || !formation.isDeployed() || !formation.getLastCity().getPlayer().equals(formation.getPlayer())) {
                 map.addAttribute("name", formation.getName());
@@ -71,8 +71,8 @@ public class MenuController {
                 List<Integer> classes = formation.getUnits().stream().map(u -> u.getBlueprint().getId()).distinct().collect(Collectors.toList());
 
                 for(int i : classes) {
-                    unitsTotal.put(unitBlueprintRepository.findOne(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
-                    unitsInjured.put(unitBlueprintRepository.findOne(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
+                    unitsTotal.put(unitBlueprintRepository.findById(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
+                    unitsInjured.put(unitBlueprintRepository.findById(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
                 }
 
                 map.addAttribute("unitsTotal", unitsTotal);
@@ -85,7 +85,7 @@ public class MenuController {
                 map.addAttribute("city", formation.getLastCity());
             }
         } else if (cityID != null) {
-            City city = cityRepository.findOne(cityID);
+            City city = cityRepository.findById(cityID);
 
             if (!city.getPlayer().equals(player))
                 return null;
@@ -103,7 +103,7 @@ public class MenuController {
     @RequestMapping(value = "/units", method = RequestMethod.GET)
     public String showCityUnits(ModelMap map, Principal principal, @RequestParam(value = "city") ObjectId cityID) {
         Player player = playerRepository.findByName(principal.getName());
-        City city = cityRepository.findOne(cityID);
+        City city = cityRepository.findById(cityID);
 
         map.addAttribute("name", city.getName());
         map.addAttribute("units", city.getUnits());
@@ -114,8 +114,8 @@ public class MenuController {
         List<Integer> classes = city.getUnits().stream().map(u -> u.getBlueprint().getId()).distinct().collect(Collectors.toList());
 
         for(int i : classes) {
-            unitsTotal.put(unitBlueprintRepository.findOne(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
-            unitsInjured.put(unitBlueprintRepository.findOne(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
+            unitsTotal.put(unitBlueprintRepository.findById(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
+            unitsInjured.put(unitBlueprintRepository.findById(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
         }
 
         map.addAttribute("unitsTotal", unitsTotal);
@@ -126,11 +126,16 @@ public class MenuController {
 
     @RequestMapping(value = "/build", method = RequestMethod.GET)
     public String showBuild(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
+        List<BuildingBlueprint> buildingBlueprints = buildingBlueprintRepository.getList();
+        List<UnitBlueprint> unitBlueprints = unitBlueprintRepository.getList();
+
+        Collections.sort(buildingBlueprints, (BuildingBlueprint b1, BuildingBlueprint b2) -> ((Integer)b1.getId()).compareTo(b2.getId()));
+        Collections.sort(unitBlueprints, (UnitBlueprint b1, UnitBlueprint b2) -> ((Integer)b1.getId()).compareTo(b2.getId()));
 
         map.addAttribute("city", city);
-        map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
-        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("buildingBlueprints", buildingBlueprints);
+        map.addAttribute("unitBlueprints", unitBlueprints);
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
 
         if(city.getBuildingConstruction() != null) {
@@ -166,14 +171,14 @@ public class MenuController {
 
     @RequestMapping(value = "/report", method = RequestMethod.GET)
     public String showReport(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
-        City city = cityRepository.findOne(id);
+        City city = cityRepository.findById(id);
         Player player = playerRepository.findByName(principal.getName());
 
         ArrayList<Player> alliedForces = new ArrayList<>();
         ArrayList<Player> hostileForces = new ArrayList<>();
 
         map.addAttribute("city", city);
-        map.addAttribute("formations", formationRepository.findByCity(id));
+        map.addAttribute("formations", formationRepository.findByCity(city));
         map.addAttribute("player", player);
         map.addAttribute("alliedForces", alliedForces);
         map.addAttribute("hostileForces", hostileForces);
@@ -182,7 +187,7 @@ public class MenuController {
             if(party.getPlayer().equals(player))
                 alliedForces.add(party.getPlayer());
             else {
-                Relation relation = relationRepository.findByPlayers(party.getPlayer().getId(), player.getId());
+                Relation relation = relationRepository.findByPlayers(party.getPlayer(), player);
 
                 if (relation == null)
                     hostileForces.add(party.getPlayer());
@@ -201,9 +206,12 @@ public class MenuController {
     @RequestMapping(value = "/caravan", method = RequestMethod.GET)
     public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId point1, @RequestParam(required = false) ObjectId point2, @RequestParam(value = "caravan", required = false) ObjectId id) {
         Player player = playerRepository.findByName(principal.getName());
+        List<Item> items = itemRepository.getList();
+
+        Collections.sort(items, (Item i1, Item i2) -> ((Integer)i1.getId()).compareTo(i2.getId()));
 
         if (id != null) {
-            Caravan caravan = caravanRepository.findOne(id);
+            Caravan caravan = caravanRepository.findById(id);
 
             if (caravan.getPlayer().equals(player)) {
                 map.addAttribute("caravan", caravan);
@@ -215,11 +223,11 @@ public class MenuController {
             caravan.setName("Neue Karawane");
 
             map.addAttribute("caravan", caravan);
-            map.addAttribute("point1", cityRepository.findOne(point1));
-            map.addAttribute("point2", cityRepository.findOne(point2));
+            map.addAttribute("point1", cityRepository.findById(point1));
+            map.addAttribute("point2", cityRepository.findById(point2));
         }
 
-        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        map.addAttribute("items", items);
         map.addAttribute("player", player);
 
         return "menu/caravan";
@@ -227,8 +235,10 @@ public class MenuController {
 
     @RequestMapping(value = "/store", method = RequestMethod.GET)
     public String showStore(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
-        City city = cityRepository.findOne(id);
-        List<Item> items = itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id"));
+        City city = cityRepository.findById(id);
+        List<Item> items = itemRepository.getList();
+
+        Collections.sort(items, (Item i1, Item i2) -> ((Integer)i1.getId()).compareTo(i2.getId()));
 
         map.addAttribute("city", city);
         map.addAttribute("items", items);
@@ -240,8 +250,8 @@ public class MenuController {
     @RequestMapping(value = "/ranking", method = RequestMethod.GET)
     public String showRanking(ModelMap map, Principal principal) {
         Player player = playerRepository.findByName(principal.getName());
-        List<Player> players = playerRepository.findAll();
-        players.removeIf(p -> p.getStatistic() == null);
+        List<Player> players = playerRepository.getList().stream().filter(p -> p.getStatistic() != null).collect(Collectors.toList());
+
         Collections.sort(players, (Player p1, Player p2) -> Integer.compare(p1.getStatistic().getRank(), p2.getStatistic().getRank()));
 
         Player maxDemography = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getDemography(), p2.getStatistic().getDemography())).get();
@@ -270,14 +280,11 @@ public class MenuController {
     @RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
     public String showDiplomacy(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId pid) {
         Player player = playerRepository.findByName(principal.getName());
-        List<Player> players = playerRepository.findAll();
-        players.removeIf(p -> p.equals(player));
-        players.removeIf(Player::isComputer);
-        players.removeIf(p -> !p.isActivated());
+        List<Player> players = playerRepository.getList().stream().filter(p -> !p.equals(player)).filter(p -> !p.isComputer()).filter(Player::isActivated).collect(Collectors.toList());
 
         HashMap<ObjectId, Integer> relations = new HashMap<>();
         for(Player p : players) {
-            Relation relation = relationRepository.findByPlayers(player.getId(), p.getId());
+            Relation relation = relationRepository.findByPlayers(player, p);
 
             if(relation == null)
                 relations.put(p.getId(), 1);
@@ -290,22 +297,15 @@ public class MenuController {
         map.addAttribute("relations", relations);
 
         if(pid != null && playerRepository.exists(pid)) {
-            Player other = playerRepository.findOne(pid);
-            Relation relation = relationRepository.findByPlayers(player.getId(), other.getId());
+            Player other = playerRepository.findById(pid);
+            Relation relation = relationRepository.findByPlayers(player, other);
 
             if(relation == null) {
                 relation = new Relation();
-                relation.setCaravans(new ArrayList<>());
-                relation.setPendingCaravans(new ArrayList<>());
                 relation.setPlayer1(player);
-                relation.setPlayer2(playerRepository.findOne(pid));
+                relation.setPlayer2(playerRepository.findById(pid));
                 relation.setRelation(1);
-                relationRepository.save(relation);
-
-                relation = relationRepository.findByPlayers(player.getId(), other.getId());
-
-                if(relation == null)
-                    relation = relationRepository.findByPlayers(player.getId(), other.getId());
+                relationRepository.add(relation);
             }
 
             map.addAttribute("relation", relation);
@@ -325,29 +325,42 @@ public class MenuController {
 
     @RequestMapping(value = "/editcity", method = RequestMethod.GET)
     public String showEditCity(ModelMap map) {
-        map.addAttribute("cityTypes", cityTypeRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        List<CityType> cityTypes = cityTypeRepository.getList();
+        Collections.sort(cityTypes, (CityType c1, CityType c2) -> ((Integer)c1.getId()).compareTo(c2.getId()));
+
+        map.addAttribute("cityTypes", cityTypes);
 
         return "menu/editcity";
     }
 
     @RequestMapping(value = "/editbuildings", method = RequestMethod.GET)
     public String showEditBuildings(ModelMap map) {
-        map.addAttribute("buildingBlueprints", buildingBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
-        map.addAttribute("items", itemRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        List<Item> items = itemRepository.getList();
+        List<BuildingBlueprint> buildingBlueprints = buildingBlueprintRepository.getList();
+
+        Collections.sort(items, (Item i1, Item i2) -> ((Integer)i1.getId()).compareTo(i2.getId()));
+        Collections.sort(buildingBlueprints, (BuildingBlueprint b1, BuildingBlueprint b2) -> ((Integer)b1.getId()).compareTo(b2.getId()));
+
+        map.addAttribute("buildingBlueprints", buildingBlueprints);
+        map.addAttribute("items", items);
 
         return "menu/editbuildings";
     }
 
     @RequestMapping(value = "/editplayers", method = RequestMethod.GET)
     public String showEditPlayers(ModelMap map) {
-        map.addAttribute("players", playerRepository.findAll());
+        map.addAttribute("players", playerRepository.getList());
 
         return "menu/editplayers";
     }
 
     @RequestMapping(value = "/editunits", method = RequestMethod.GET)
     public String showEditUnits(ModelMap map) {
-        map.addAttribute("unitBlueprints", unitBlueprintRepository.findAll(new Sort(Sort.Direction.ASC, "_id")));
+        List<UnitBlueprint> unitBlueprints = unitBlueprintRepository.getList();
+
+        Collections.sort(unitBlueprints, (UnitBlueprint b1, UnitBlueprint b2) -> ((Integer)b1.getId()).compareTo(b2.getId()));
+
+        map.addAttribute("unitBlueprints", unitBlueprints);
 
         return "menu/editunits";
     }

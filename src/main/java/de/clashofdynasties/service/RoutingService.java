@@ -64,7 +64,7 @@ public class RoutingService {
                 if(player.equals(other))
                     return true;
 
-                Relation relation = relationRepository.findByPlayers(player.getId(), other.getId());
+                Relation relation = relationRepository.findByPlayers(player, other);
 
                 if(relation != null) {
                     switch(relation.getRelation()) {
@@ -122,7 +122,7 @@ public class RoutingService {
             if (object instanceof City) {
                 City n = (City) object;
 
-                for (Road r : roadRepository.findByCity(n.getId())) {
+                for (Road r : roadRepository.findByCity(n)) {
                     if (!r.getPoint1().equals(n))
                         neighbours.add(new Node(r.getPoint1()));
                     else
@@ -132,7 +132,7 @@ public class RoutingService {
                 Formation n = (Formation) object;
 
                 if (n.isDeployed()) {
-                    List<Road> roads = roadRepository.findByCity(n.getLastCity().getId());
+                    List<Road> roads = roadRepository.findByCity(n.getLastCity());
                     for (Road r : roads) {
                         if (!r.getPoint1().equals(n.getLastCity()))
                             neighbours.add(new Node(r.getPoint1()));
@@ -153,7 +153,7 @@ public class RoutingService {
     private double caluclateG(Node a, Node b) {
         double factor = 2.0;
         if (a.getObject() instanceof City && b.getObject() instanceof City) {
-            Road road = roadRepository.findByCities(((City) a.getObject()).getId(), ((City) b.getObject()).getId());
+            Road road = roadRepository.findByCities(((City) a.getObject()), ((City) b.getObject()));
             if (road != null)
                 factor -= road.getWeight();
         } else
@@ -207,14 +207,14 @@ public class RoutingService {
                     City p1 = (City) lastNode.getObject();
                     City p2 = (City) lastNode.parent.getObject();
 
-                    roads.add(roadRepository.findByCities(p1.getId(), p2.getId()));
+                    roads.add(roadRepository.findByCities(p1, p2));
                 } else if (lastNode.parent != null && (lastNode.parent.getObject() instanceof Formation || lastNode.parent.parent == null)) {
                     // Wenn parent Formation ist, currentNode als nächste Stadt setzen
                     if (lastNode.parent.getObject() instanceof City) {
                         City p1 = (City) lastNode.getObject();
                         City p2 = (City) lastNode.parent.getObject();
 
-                        roads.add(roadRepository.findByCities(p1.getId(), p2.getId()));
+                        roads.add(roadRepository.findByCities(p1, p2));
                     }
                     route.setNext((City) lastNode.getObject());
                 } else if (lastNode.parent == null)
@@ -321,7 +321,7 @@ public class RoutingService {
             int subtract = 70;
             if (formation.isDeployed()) {
                 subtract = 140;
-                currentRoad = roadRepository.findByCities(formation.getLastCity().getId(), route.getNext().getId());
+                currentRoad = roadRepository.findByCities(formation.getLastCity(), route.getNext());
             } else
                 currentRoad = route.getCurrentRoad();
 

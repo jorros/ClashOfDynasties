@@ -3,49 +3,53 @@ package de.clashofdynasties.models;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.RoadRepository;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Route {
-    @DBRef
-    private City next;
+    private ObjectId next;
 
-    @DBRef
-    private List<Road> roads;
+    private List<ObjectId> roads;
 
-    @DBRef
-    private City target;
+    private ObjectId target;
 
-    @DBRef
-    private Road currentRoad;
+    private ObjectId currentRoad;
 
     @Transient
     private int time;
 
+    public Route() {
+        roads = new ArrayList<>();
+    }
+
     public City getNext() {
-        return next;
+        return CityRepository.get().findById(next);
     }
 
     public void setNext(City next) {
-        this.next = next;
+        this.next = next.getId();
     }
 
     public List<Road> getRoads() {
-        return roads;
+        return roads.stream().map(r -> RoadRepository.get().findById(r)).collect(Collectors.toList());
     }
 
     public void setRoads(List<Road> roads) {
-        this.roads = roads;
+        this.roads = roads.stream().map(r -> r.getId()).collect(Collectors.toList());
     }
 
     public Road getCurrentRoad() {
-        return currentRoad;
+        return RoadRepository.get().findById(currentRoad);
     }
 
     public void setCurrentRoad(Road currentRoad) {
-        this.currentRoad = currentRoad;
+        this.currentRoad = currentRoad.getId();
     }
 
     public int getTime() {
@@ -57,11 +61,11 @@ public class Route {
     }
 
     public City getTarget() {
-        return target;
+        return CityRepository.get().findById(target);
     }
 
     public void setTarget(City target) {
-        this.target = target;
+        this.target = target.getId();
     }
 
     public ObjectNode toJSON() {

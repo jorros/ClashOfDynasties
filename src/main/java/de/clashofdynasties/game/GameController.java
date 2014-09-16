@@ -47,10 +47,10 @@ public class GameController {
         Player player = playerRepository.findByName(principal.getName());
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
-        List<City> cities = cityRepository.findAll();
-        List<Road> roads = roadRepository.findAll();
-        List<Formation> formations = formationRepository.findAll();
-        List<Caravan> caravans = caravanRepository.findAll();
+        List<City> cities = cityRepository.getList();
+        List<Road> roads = roadRepository.getList();
+        List<Formation> formations = formationRepository.getList();
+        List<Caravan> caravans = caravanRepository.getList();
         List<Event> events = eventRepository.findByPlayer(player);
 
         HashMap<String, Object> data = new HashMap<>();
@@ -154,10 +154,10 @@ public class GameController {
     @ResponseStatus(HttpStatus.OK)
     public void removeEvent(Principal principal, @RequestParam ObjectId id) {
         Player player = playerRepository.findByName(principal.getName());
-        Event event = eventRepository.findOne(id);
+        Event event = eventRepository.findById(id);
 
         if(event != null && event.getPlayer().equals(player)) {
-            eventRepository.delete(event);
+            eventRepository.remove(event);
         }
     }
 
@@ -168,8 +168,6 @@ public class GameController {
 
         player.setLastScrollX(x);
         player.setLastScrollY(y);
-
-        playerRepository.save(player);
     }
 
     @RequestMapping(value = "/scroll", method = RequestMethod.GET)

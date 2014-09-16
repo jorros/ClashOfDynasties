@@ -1,36 +1,41 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.CaravanRepository;
+import de.clashofdynasties.repository.PlayerRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Document
 public class Relation {
     @Id
     private ObjectId id;
 
-    @DBRef(lazy = true)
-    private Player player1;
+    private ObjectId player1;
 
-    @DBRef(lazy = true)
-    private Player player2;
+    private ObjectId player2;
 
     private int relation;
 
-    private Player pendingRelationPlayer;
+    private ObjectId pendingRelationPlayer;
 
-    @DBRef
-    private List<Caravan> caravans;
+    private List<ObjectId> caravans;
 
-    @DBRef
-    private List<Caravan> pendingCaravans;
+    private List<ObjectId> pendingCaravans;
 
     private Integer pendingRelation;
 
     private Integer ticksLeft;
+
+    public Relation() {
+        this.id = new ObjectId();
+        caravans = new ArrayList<>();
+        pendingCaravans = new ArrayList<>();
+    }
 
     public ObjectId getId() {
         return id;
@@ -41,19 +46,19 @@ public class Relation {
     }
 
     public Player getPlayer1() {
-        return player1;
+        return PlayerRepository.get().findById(player1);
     }
 
     public void setPlayer1(Player player1) {
-        this.player1 = player1;
+        this.player1 = player1.getId();
     }
 
     public Player getPlayer2() {
-        return player2;
+        return PlayerRepository.get().findById(player2);
     }
 
     public void setPlayer2(Player player2) {
-        this.player2 = player2;
+        this.player2 = player2.getId();
     }
 
     public int getRelation() {
@@ -65,19 +70,27 @@ public class Relation {
     }
 
     public List<Caravan> getCaravans() {
-        return caravans;
+        return caravans.stream().map(c -> CaravanRepository.get().findById(c)).collect(Collectors.toList());
     }
 
-    public void setCaravans(List<Caravan> caravans) {
-        this.caravans = caravans;
+    public void addCaravan(Caravan caravan) {
+        caravans.add(caravan.getId());
+    }
+
+    public void removeCaravan(Caravan caravan) {
+        caravans.remove(caravan.getId());
     }
 
     public List<Caravan> getPendingCaravans() {
-        return pendingCaravans;
+        return pendingCaravans.stream().map(c -> CaravanRepository.get().findById(c)).collect(Collectors.toList());
     }
 
-    public void setPendingCaravans(List<Caravan> pendingCaravans) {
-        this.pendingCaravans = pendingCaravans;
+    public void addPendingCaravan(Caravan caravan) {
+        pendingCaravans.add(caravan.getId());
+    }
+
+    public void removePendingCaravan(Caravan caravan) {
+        pendingCaravans.remove(caravan.getId());
     }
 
     public Integer getPendingRelation() {
@@ -89,11 +102,11 @@ public class Relation {
     }
 
     public Player getPendingRelationPlayer() {
-        return pendingRelationPlayer;
+        return PlayerRepository.get().findById(pendingRelationPlayer);
     }
 
     public void setPendingRelationPlayer(Player pendingRelationPlayer) {
-        this.pendingRelationPlayer = pendingRelationPlayer;
+        this.pendingRelationPlayer = pendingRelationPlayer.getId();
     }
 
     public Integer getTicksLeft() {

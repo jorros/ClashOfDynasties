@@ -2,10 +2,11 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.ItemRepository;
+import de.clashofdynasties.repository.PlayerRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -15,34 +16,27 @@ public class Caravan {
 
     private String name;
 
-    @DBRef
-    private City point1;
+    private ObjectId point1;
 
-    @DBRef
-    private City point2;
+    private ObjectId point2;
 
     private Route route;
 
     private double x;
     private double y;
 
-    @DBRef
-    private Player player;
+    private ObjectId player;
 
-    @DBRef
-    private Item point1Item;
+    private int point1Item;
     private int point1Load;
 
-    @DBRef
-    Item point1StoreItem;
+    private int point1StoreItem;
     private double point1Store;
 
-    @DBRef
-    private Item point2Item;
+    private int point2Item;
     private int point2Load;
 
-    @DBRef
-    Item point2StoreItem;
+    private int point2StoreItem;
     private double point2Store;
 
     private int direction;
@@ -50,6 +44,10 @@ public class Caravan {
     private boolean terminate;
 
     private long timestamp;
+
+    public Caravan() {
+        id = new ObjectId();
+    }
 
     public ObjectId getId() {
         return id;
@@ -60,19 +58,19 @@ public class Caravan {
     }
 
     public City getPoint1() {
-        return point1;
+        return CityRepository.get().findById(point1);
     }
 
     public void setPoint1(City point1) {
-        this.point1 = point1;
+        this.point1 = point1.getId();
     }
 
     public City getPoint2() {
-        return point2;
+        return CityRepository.get().findById(point2);
     }
 
     public void setPoint2(City point2) {
-        this.point2 = point2;
+        this.point2 = point2.getId();
     }
 
     public Route getRoute() {
@@ -100,19 +98,19 @@ public class Caravan {
     }
 
     public Player getPlayer() {
-        return player;
+        return PlayerRepository.get().findById(player);
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.player = player.getId();
     }
 
     public Item getPoint1Item() {
-        return point1Item;
+        return ItemRepository.get().findById(point1Item);
     }
 
     public void setPoint1Item(Item point1Item) {
-        this.point1Item = point1Item;
+        this.point1Item = point1Item.getId();
     }
 
     public double getPoint1Store() {
@@ -132,11 +130,11 @@ public class Caravan {
     }
 
     public Item getPoint2Item() {
-        return point2Item;
+        return ItemRepository.get().findById(point2Item);
     }
 
     public void setPoint2Item(Item point2Item) {
-        this.point2Item = point2Item;
+        this.point2Item = point2Item.getId();
     }
 
     public double getPoint2Store() {
@@ -183,19 +181,19 @@ public class Caravan {
     }
 
     public Item getPoint1StoreItem() {
-        return point1StoreItem;
+        return ItemRepository.get().findById(point1StoreItem);
     }
 
     public void setPoint1StoreItem(Item point1StoreItem) {
-        this.point1StoreItem = point1StoreItem;
+        this.point1StoreItem = point1StoreItem.getId();
     }
 
     public Item getPoint2StoreItem() {
-        return point2StoreItem;
+        return ItemRepository.get().findById(point2StoreItem);
     }
 
     public void setPoint2StoreItem(Item point2StoreItem) {
-        this.point2StoreItem = point2StoreItem;
+        this.point2StoreItem = point2StoreItem.getId();
     }
 
     public long getTimestamp() {
@@ -204,10 +202,6 @@ public class Caravan {
 
     public void updateTimestamp() {
         this.timestamp = System.currentTimeMillis();
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
     }
 
     public void move(int pixel) {
@@ -226,7 +220,7 @@ public class Caravan {
     public boolean isVisible(Player player) {
         Road current = getRoute().getCurrentRoad();
 
-        return current.getPoint1().getVisibility().contains(player) && current.getPoint2().getVisibility().contains(player);
+        return current.getPoint1().isVisible(player) && current.getPoint2().isVisible(player);
     }
 
     public boolean equals(Object other) {

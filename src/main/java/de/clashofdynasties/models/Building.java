@@ -1,8 +1,8 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.BuildingBlueprintRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -10,17 +10,20 @@ public class Building {
     @Id
     private ObjectId id;
 
-    @DBRef
-    private BuildingBlueprint blueprint;
+    private int blueprint;
 
     private int health;
 
+    public Building() {
+        id = new ObjectId();
+    }
+
     public BuildingBlueprint getBlueprint() {
-        return blueprint;
+        return BuildingBlueprintRepository.get().findById(blueprint);
     }
 
     public void setBlueprint(BuildingBlueprint blueprint) {
-        this.blueprint = blueprint;
+        this.blueprint = blueprint.getId();
     }
 
     public int getHealth() {

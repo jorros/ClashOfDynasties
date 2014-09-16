@@ -2,9 +2,10 @@ package de.clashofdynasties.models;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.PlayerRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -12,11 +13,9 @@ public class Event {
     @Id
     ObjectId id;
 
-    @DBRef(lazy = true)
-    private City city;
+    private ObjectId city;
 
-    @DBRef
-    private Player player;
+    private ObjectId player;
 
     private String action;
     private String type;
@@ -25,7 +24,7 @@ public class Event {
     private long timestamp;
 
     public Event() {
-
+        this.id = new ObjectId();
     }
 
     public Event(String type, String title, String description, String action, Player player) {
@@ -33,7 +32,8 @@ public class Event {
         this.type = type;
         this.title = title;
         this.description = description;
-        this.player = player;
+        this.player = player.getId();
+        this.id = new ObjectId();
 
         updateTimestamp();
     }
@@ -42,8 +42,9 @@ public class Event {
         this.type = type;
         this.title = title;
         this.description = description;
-        this.city = city;
-        this.player = player;
+        this.city = city.getId();
+        this.player = player.getId();
+        this.id = new ObjectId();
 
         updateTimestamp();
     }
@@ -57,13 +58,11 @@ public class Event {
     }
 
     public City getCity() {
-        return city;
+        return CityRepository.get().findById(city);
     }
 
-
-
     public void setCity(City city) {
-        this.city = city;
+        this.city = city.getId();
     }
 
     public String getType() {
@@ -111,11 +110,11 @@ public class Event {
     }
 
     public Player getPlayer() {
-        return player;
+        return PlayerRepository.get().findById(player);
     }
 
     public void setPlayer(Player player) {
-        this.player = player;
+        this.player = player.getId();
     }
 
     public ObjectNode toJSON(long timestamp) {
@@ -123,7 +122,7 @@ public class Event {
             JsonNodeFactory factory = JsonNodeFactory.instance;
             ObjectNode node = factory.objectNode();
 
-            if(city != null && city.getId() != null)
+            if(city != null && getCity().getId() != null)
                 node.put("city", getCity().getId().toHexString());
 
             if(action != null)

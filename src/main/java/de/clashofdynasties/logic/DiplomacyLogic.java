@@ -25,21 +25,19 @@ public class DiplomacyLogic {
 
             if(relation.getTicksLeft() <= 0) {
                 relation.setTicksLeft(null);
-                Player pl1 = playerRepository.findOne(relation.getPlayer1().getId());
-                Player pl2 = playerRepository.findOne(relation.getPlayer2().getId());
+                Player pl1 = relation.getPlayer1();
+                Player pl2 = relation.getPlayer2();
 
                 if(relation.getRelation() == 3) {
-                    eventRepository.save(new Event("DiplomaticAlliance", "Allianz aufgelöst", "Die Allianz mit " + pl2.getName() + " wurde endgültig aufgelöst! Ihr seid ab sofort nur noch Handelspartner.", "diplomacy?pid=" + pl2.getId(), pl1));
-                    eventRepository.save(new Event("DiplomaticAlliance", "Allianz aufgelöst", "Die Allianz mit " + pl1.getName() + " wurde endgültig aufgelöst! Ihr seid ab sofort nur noch Handelspartner.", "diplomacy?pid=" + pl1.getId(), pl2));
+                    eventRepository.add(new Event("DiplomaticAlliance", "Allianz aufgelöst", "Die Allianz mit " + pl2.getName() + " wurde endgültig aufgelöst! Ihr seid ab sofort nur noch Handelspartner.", "diplomacy?pid=" + pl2.getId(), pl1));
+                    eventRepository.add(new Event("DiplomaticAlliance", "Allianz aufgelöst", "Die Allianz mit " + pl1.getName() + " wurde endgültig aufgelöst! Ihr seid ab sofort nur noch Handelspartner.", "diplomacy?pid=" + pl1.getId(), pl2));
                 }
                 else if(relation.getRelation() == 2) {
-                    eventRepository.save(new Event("DiplomaticTrade", "Handelsvertrag aufgelöst", "Das Handelsabkommen mit " + pl2.getName() + " ist nicht mehr gültig!.", "diplomacy?pid=" + pl2.getId(), pl1));
-                    eventRepository.save(new Event("DiplomaticTrade", "Handelsvertrag aufgelöst", "Das Handelsabkommen mit " + pl1.getName() + " ist nicht mehr gültig!.", "diplomacy?pid=" + pl1.getId(), pl2));
+                    eventRepository.add(new Event("DiplomaticTrade", "Handelsvertrag aufgelöst", "Das Handelsabkommen mit " + pl2.getName() + " ist nicht mehr gültig!.", "diplomacy?pid=" + pl2.getId(), pl1));
+                    eventRepository.add(new Event("DiplomaticTrade", "Handelsvertrag aufgelöst", "Das Handelsabkommen mit " + pl1.getName() + " ist nicht mehr gültig!.", "diplomacy?pid=" + pl1.getId(), pl2));
 
                     pl1.setSightUpdate(true);
                     pl2.setSightUpdate(true);
-                    playerRepository.save(pl1);
-                    playerRepository.save(pl2);
                 }
 
                 relation.setRelation(relation.getRelation() - 1);

@@ -18,7 +18,7 @@ public class CityTypeController {
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
     public void save(@PathVariable int id, @RequestParam(required = false) Double capacity, @RequestParam(required = false) Double consumeBasic, @RequestParam(required = false) Double consumeLuxury1, @RequestParam(required = false) Double consumeLuxury2, @RequestParam(required = false) Double consumeLuxury3,  @RequestParam(required = false) Double taxes, @RequestParam(required = false) Double productionRate) {
-        CityType cityType = cityTypeRepository.findOne(id);
+        CityType cityType = cityTypeRepository.findById(id);
 
         if(capacity != null)
             cityType.setCapacity(capacity);
@@ -40,7 +40,5 @@ public class CityTypeController {
 
         if(productionRate != null)
             cityType.setProductionRate(productionRate);
-
-        cityTypeRepository.save(cityType);
     }
 }
