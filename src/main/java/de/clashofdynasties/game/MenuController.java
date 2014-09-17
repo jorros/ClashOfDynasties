@@ -25,34 +25,34 @@ import java.util.stream.Collectors;
 @RequestMapping("/game/menus")
 public class MenuController {
     @Autowired
-    PlayerRepository playerRepository;
+    private PlayerRepository playerRepository;
 
     @Autowired
-    CityRepository cityRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    FormationRepository formationRepository;
+    private FormationRepository formationRepository;
 
     @Autowired
-    UnitBlueprintRepository unitBlueprintRepository;
+    private UnitBlueprintRepository unitBlueprintRepository;
 
     @Autowired
-    BuildingBlueprintRepository buildingBlueprintRepository;
+    private BuildingBlueprintRepository buildingBlueprintRepository;
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     @Autowired
-    CaravanRepository caravanRepository;
+    private CaravanRepository caravanRepository;
 
     @Autowired
-    CityTypeRepository cityTypeRepository;
+    private CityTypeRepository cityTypeRepository;
 
     @Autowired
-    RelationRepository relationRepository;
+    private RelationRepository relationRepository;
 
     @Autowired
-    EventRepository eventRepository;
+    private EventRepository eventRepository;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) ObjectId id, @RequestParam(value = "city", required = false) ObjectId cityID) {
@@ -83,6 +83,7 @@ public class MenuController {
             else {
                 map.addAttribute("formation", formation);
                 map.addAttribute("city", formation.getLastCity());
+                map.addAttribute("create", false);
             }
         } else if (cityID != null) {
             City city = cityRepository.findById(cityID);
@@ -95,6 +96,7 @@ public class MenuController {
 
             map.addAttribute("formation", formation);
             map.addAttribute("city", city);
+            map.addAttribute("create", true);
         }
 
         return "menu/setupFormation";
@@ -217,6 +219,7 @@ public class MenuController {
                 map.addAttribute("caravan", caravan);
                 map.addAttribute("point1", caravan.getPoint1());
                 map.addAttribute("point2", caravan.getPoint2());
+                map.addAttribute("create", false);
             }
         } else {
             Caravan caravan = new Caravan();
@@ -225,6 +228,7 @@ public class MenuController {
             map.addAttribute("caravan", caravan);
             map.addAttribute("point1", cityRepository.findById(point1));
             map.addAttribute("point2", cityRepository.findById(point2));
+            map.addAttribute("create", true);
         }
 
         map.addAttribute("items", items);

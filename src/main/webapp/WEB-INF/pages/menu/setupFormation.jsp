@@ -14,16 +14,18 @@
             assigned.push($(obj).attr("id").slice(5));
         });
 
-        <c:if test="${formation.id != null}">
-        $.put("/game/formations/${formation.id}", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
-            updateGame();
-        });
-        </c:if>
-        <c:if test="${formation.id == null}">
-        $.post("/game/formations/", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
-            updateGame();
-        });
-        </c:if>
+        <c:choose>
+            <c:when test="${!create}">
+            $.put("/game/formations/${formation.id}", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
+                updateGame();
+            });
+            </c:when>
+            <c:otherwise>
+            $.post("/game/formations/", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
+                updateGame();
+            });
+            </c:otherwise>
+        </c:choose>
         closeMenu();
     }
 </script>
@@ -61,7 +63,7 @@
     <div style="height:60px;">
         <label for="formation_name">Name: </label>
         <input id="formation_name" maxlength="14" style="width:300px;" type="text" value="${formation.name}" />
-        <button onclick="save()" style="float:right;"><c:if test="${formation.id == null}">Erstellen</c:if><c:if test="${formation.id != null}">Ändern</c:if></button>
+        <button onclick="save()" style="float:right;"><c:choose><c:when test="${create}">Erstellen</c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
         <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
     </div>
 </div>

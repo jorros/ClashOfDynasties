@@ -64,7 +64,7 @@
     <div style="height:60px;">
         <label for="caravan_name">Name: </label>
         <input id="caravan_name" maxlength="14" style="width:300px;" type="text" value="${caravan.name}" />
-        <button onclick="save()" style="float:right;"><c:choose><c:when test="${empty caravan.id}">Erstellen</c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
+        <button onclick="save()" style="float:right;"><c:choose><c:when test="${create}">Erstellen</c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
         <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
     </div>
 </div>
@@ -85,7 +85,7 @@
             point2: "${point2.id}"
         };
         <c:choose>
-            <c:when test="${not empty caravan.id}">
+            <c:when test="${!create}">
             $.put("/game/caravans/${caravan.id}", data, function() {
                 closeMenu();
             });

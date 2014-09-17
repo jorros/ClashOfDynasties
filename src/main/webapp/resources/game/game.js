@@ -13,7 +13,7 @@ var stopMenuUpdate = false;
 
 window.onload = function () {
     Crafty.init();
-    Crafty.canvas.init();
+    Crafty.canvas.init(5100, 3600);
 
     console.log("Crafty " + Crafty.getVersion());
 
