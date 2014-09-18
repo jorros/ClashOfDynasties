@@ -20,17 +20,21 @@
         <td colspan="2">Leben: ${formation.getHealth()}</td>
     </tr>
     <tr>
-        <c:if test="${formation.isDeployed()}">
-            <td colspan="2">Stationiert in ${formation.lastCity.name}</td>
-        </c:if>
-        <c:if test="${!formation.isDeployed()}">
-            <c:if test="${!formation.route.roads.isEmpty()}">
-                <td colspan="2">Marschiert über ${formation.route.next.name} nach ${formation.route.target.name}</td>
-            </c:if>
-            <c:if test="${formation.route.roads.isEmpty()}">
-                <td colspan="2">Marschiert nach ${formation.route.next.name}</td>
-            </c:if>
-        </c:if>
+        <c:choose>
+            <c:when test="${formation.isDeployed()}">
+                <td colspan="2">Stationiert in ${formation.lastCity.name}</td>
+            </c:when>
+            <c:otherwise>
+                <c:choose>
+                    <c:when test="${!formation.route.roads.isEmpty()}">
+                        <td colspan="2">Marschiert über ${formation.route.next.name} nach ${formation.route.target.name}</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td colspan="2">Marschiert nach ${formation.route.next.name}</td>
+                    </c:otherwise>
+                </c:choose>
+            </c:otherwise>
+        </c:choose>
     </tr>
     <c:if test="${!formation.isDeployed()}">
         <tr>

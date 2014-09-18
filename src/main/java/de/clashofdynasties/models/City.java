@@ -37,9 +37,6 @@ public class City {
 
     private Report report;
 
-    @Transient
-    private List<Formation> formations;
-
     private int capacity;
     private String name;
 
@@ -65,7 +62,6 @@ public class City {
         buildings = new ArrayList<>();
         requiredItemTypes = new ArrayList<>();
         stopConsumption = new ArrayList<>();
-        formations = new ArrayList<>();
         visibility = new ArrayList<>();
         id = new ObjectId();
     }
@@ -255,11 +251,7 @@ public class City {
     }
 
     public List<Formation> getFormations() {
-        return formations;
-    }
-
-    public void setFormations(List<Formation> formations) {
-        this.formations = formations;
+        return FormationRepository.get().findByCity(this);
     }
 
     public double getStoredItem(int id) {

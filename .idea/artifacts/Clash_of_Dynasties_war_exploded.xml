@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" build-on-make="true" name="Clash of Dynasties:war exploded">
+  <artifact type="exploded-war" name="Clash of Dynasties:war exploded">
     <output-path>$PROJECT_DIR$/target/ClashOfDynasties</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Clash of Dynasties/web/Web" />

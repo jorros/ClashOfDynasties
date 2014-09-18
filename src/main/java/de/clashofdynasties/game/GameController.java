@@ -69,7 +69,6 @@ public class GameController {
         int numCaravans = 0;
 
         for (City city : cities) {
-            // Diplomatie
             if(city.getPlayer().equals(player)) {
                 people += city.getPopulation();
                 balance += city.getIncome() - city.getOutcome();
@@ -89,20 +88,8 @@ public class GameController {
             if(!editor && formation.isVisible(player)) {
                 // Deploy Status ermitteln
                 if (formation.getRoute() != null) {
-                    formation.setDeployed(false);
                     routing.setRoute(formation.getRoute());
                     formation.getRoute().setTime(routing.calculateTime());
-                } else {
-                    formation.setDeployed(true);
-
-                    if(cityMap.containsKey(formation.getLastCity().getId().toHexString())) {
-                        City city = cityMap.get(formation.getLastCity().getId().toHexString());
-
-                        if (city.getFormations() == null)
-                            city.setFormations(new ArrayList<>());
-
-                        city.getFormations().add(formation);
-                    }
                 }
 
                 if (player.equals(formation.getPlayer())) {

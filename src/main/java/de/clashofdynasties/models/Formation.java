@@ -40,9 +40,6 @@ public class Formation {
         this.units = new ArrayList<>();
     }
 
-    @Transient
-    private boolean deployed;
-
     private long timestamp;
 
     public ObjectId getId() {
@@ -133,10 +130,6 @@ public class Formation {
 
     public boolean isDeployed() {
         return (this.getRoute() == null);
-    }
-
-    public void setDeployed(boolean deployed) {
-        this.deployed = deployed;
     }
 
     public double getSpeed() {
