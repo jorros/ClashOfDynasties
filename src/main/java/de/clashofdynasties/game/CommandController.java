@@ -107,7 +107,7 @@ public class CommandController {
         City city = cityRepository.findById(id);
         Player player = playerRepository.findByName(principal.getName());
 
-        int maxSlots = Math.round((int)(city.getCapacity() * city.getType().getCapacity()));
+        int maxSlots = city.getCapacity();
         int freeSlots = maxSlots;
 
         if (city.getBuildings() != null)
