@@ -67,6 +67,9 @@ public class CommandController {
 
             if (mn > 0)
                 time += mn + " Minuten";
+
+            if(seconds < 60)
+                time = "Unter 1 Minute";
         }
 
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
