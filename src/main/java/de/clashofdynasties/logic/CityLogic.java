@@ -452,6 +452,8 @@ public class CityLogic {
                 }
             }
 
+            formations.stream().filter(f -> f.getUnits().size() == 0).forEach(formationRepository::remove);
+
             for(Building building : city.getBuildings()) {
                 if(building.getHealth() <= 0) {
                     city.removeBuilding(building);
