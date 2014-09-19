@@ -140,4 +140,6 @@ function updateGameEntities() {
     $.each(CaravanEntities, function (id, entity) {
         entity.update();
     });
+
+    Crafty.DrawManager.drawAll();
 }
