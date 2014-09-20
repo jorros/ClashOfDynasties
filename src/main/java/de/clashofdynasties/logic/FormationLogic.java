@@ -24,7 +24,7 @@ public class FormationLogic {
             double distance = Math.sqrt(Math.pow(next.getX() - formation.getX(), 2) + Math.pow(next.getY() - formation.getY(), 2));
 
             if(distance <= 70) {
-                if(formation.getRoute().getRoads().size() > 0) {
+                if(formation.getRoute().getRoads().size() > 0 && !formation.getRoute().getTarget().equals(next)) {
                     // Nächste Station ermitteln
                     City to = formation.getRoute().getRoads().get(0).getPoint1().equals(next) ? formation.getRoute().getRoads().get(0).getPoint2() : formation.getRoute().getRoads().get(0).getPoint1();
 
@@ -32,7 +32,7 @@ public class FormationLogic {
                     formation.setY(next.getY());
                     formation.getRoute().setNext(to);
                     formation.getRoute().setCurrentRoad(formation.getRoute().getRoads().get(0));
-                    formation.getRoute().getRoads().remove(0);
+                    formation.getRoute().removeRoad(0);
                     formation.move(70);
                 } else {
                     // Ziel erreicht

@@ -40,6 +40,10 @@ public class Route {
         return roads.stream().map(r -> RoadRepository.get().findById(r)).collect(Collectors.toList());
     }
 
+    public void removeRoad(int index) {
+        roads.remove(index);
+    }
+
     public void setRoads(List<Road> roads) {
         this.roads = roads.stream().map(r -> r.getId()).collect(Collectors.toList());
     }
