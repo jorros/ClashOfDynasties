@@ -184,6 +184,7 @@
         functionAfter: function() {
             stopMenuUpdate = false;
         },
+        maxWidth: 350,
         content: $('<span style="font-family:"Philosopher-Bold"; font-size:18px;">${building.name}</span><br><br>Kosten: ${building.price}<br>${building.description}<br><br><c:if test="${fn:length(building.requiredBiomes) < 5}"><span class="<c:if test="${building.requiredBiomes.contains(city.biome)}">green</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>">Benötigt: <c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br><span class="<c:if test="${city.resource == building.requiredResource}">green</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>">Benötigt: </span><img style="vertical-align:bottom;" src="assets/resources/${building.requiredResource.id}.png" /> <span>${building.requiredResource.name}</span></c:if>')
     }).click(function() {
         build(0, ${building.id});
@@ -202,6 +203,7 @@
         functionAfter: function () {
             stopMenuUpdate = false;
         },
+        maxWidth: 350,
         content: $("<span style=\"font-family:'Philosopher-Bold'; font-size:18px;\">${unit.name}</span><br><br>Kosten: ${unit.price}<br>${unit.description}<br><br><span>Benötigt: </span><span class='<c:if test="${city.countBuildings(7) == 0}">red</c:if><c:if test="${city.countBuildings(7) > 0}">green</c:if>'>Militäranlage</span>")
     }).click(function() {
         build(1, ${unit.id});
