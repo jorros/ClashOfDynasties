@@ -416,6 +416,8 @@ public class CityLogic {
                                     newHealth -= unit.getBlueprint().getStrength();
                                 else
                                     newHealth -= unit.getBlueprint().getStrength() / 2;
+
+                                selected.setHealth(newHealth);
                             } else {
                                 if(unit.getBlueprint().getType() == 4)
                                     city.setHealth(city.getHealth() - unit.getBlueprint().getStrength());
