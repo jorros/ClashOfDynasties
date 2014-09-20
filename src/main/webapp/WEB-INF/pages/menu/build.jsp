@@ -218,7 +218,7 @@
         var count = 1;
 
         if(type == 1) {
-            count = prompt("Wieviele Einheiten wilst du ausbilden?", 1);
+            count = prompt("Wieviele Einheiten willst du ausbilden?", 1);
 
             if(count == null)
                 return;
@@ -226,18 +226,30 @@
 
         $.put("/game/cities/${city.id}/build", { type: type, blueprint: blueprint, count: count }, function() {
             openMenu("build?city=${city.id}");
-            loadTop();
+            forceUpdate();
         });
     }
 
     function remove(type, blueprint) {
+        var count = 1;
 
+        if(type == 1) {
+            count = prompt("Wieviele Einheiten willst du entlassen?", 1);
+
+            if(count == null)
+                return;
+        }
+
+        $.put("/game/cities/${city.id}/destroy", { type: type, blueprint: blueprint, count: count }, function() {
+            openMenu("build?city=${city.id}");
+            forceUpdate();
+        });
     }
 
     function stopBuild() {
         $.delete("/game/cities/${city.id}/build", function() {
             openMenu("build?city=${city.id}");
-            loadTop();
+            forceUpdate();
         })
     }
 </script>

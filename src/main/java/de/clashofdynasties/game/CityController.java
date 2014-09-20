@@ -28,6 +28,9 @@ public class CityController {
     private UnitBlueprintRepository unitBlueprintRepository;
 
     @Autowired
+    private BuildingRepository buildingRepository;
+
+    @Autowired
     private PlayerRepository playerRepository;
 
     @Autowired
@@ -144,6 +147,26 @@ public class CityController {
                     construction.setCount(count);
                     city.setBuildingConstruction(construction);
                     player.addCoins(-construction.getBlueprint().getPrice());
+                }
+            }
+        }
+    }
+
+    @RequestMapping(value = "/{city}/destroy", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void destroy(Principal principal, @PathVariable("city") ObjectId id, @RequestParam int type, @RequestParam int blueprint, @RequestParam int count) {
+        Player player = playerRepository.findByName(principal.getName());
+        City city = cityRepository.findById(id);
+
+        if(city.getPlayer().equals(player)) {
+            if(type == 0) {
+                BuildingBlueprint buildingBlueprint = buildingBlueprintRepository.findById(blueprint);
+
+                if(city.getBuildings().stream().filter(b -> b.getBlueprint().equals(buildingBlueprint)).count() > 0) {
+                    Building building = city.getBuildings().stream().filter(b -> b.getBlueprint().equals(buildingBlueprint)).findFirst().get();
+                    city.removeBuilding(building);
+                    buildingRepository.remove(building);
+                    player.addCoins(buildingBlueprint.getPrice() * 0.5);
                 }
             }
         }

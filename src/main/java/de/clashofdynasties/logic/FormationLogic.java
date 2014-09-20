@@ -2,6 +2,7 @@ package de.clashofdynasties.logic;
 
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Formation;
+import de.clashofdynasties.models.Relation;
 import de.clashofdynasties.models.Unit;
 import de.clashofdynasties.repository.RelationRepository;
 import de.clashofdynasties.repository.UnitRepository;
@@ -31,8 +32,14 @@ public class FormationLogic {
 
             if(next.getPlayer().equals(formation.getPlayer()))
                 relation = 4;
-            else
-                relation = relationRepository.findByPlayers(next.getPlayer(), formation.getPlayer()).getRelation();
+            else {
+                Relation rel = relationRepository.findByPlayers(next.getPlayer(), formation.getPlayer());
+
+                if(rel == null)
+                    relation = 1;
+                else
+                    relation = rel.getRelation();
+            }
 
             if(distance <= 70) {
                 if(formation.getRoute().getRoads().size() > 0 && !formation.getRoute().getTarget().equals(next) && relation >= 3) {
