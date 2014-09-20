@@ -52,7 +52,7 @@ public class CityController {
     private RoadRepository roadRepository;
 
     @Autowired
-    private PlayerLogic playerLogic;
+    private UnitRepository unitRepository;
 
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
@@ -167,6 +167,24 @@ public class CityController {
                     city.removeBuilding(building);
                     buildingRepository.remove(building);
                     player.addCoins(buildingBlueprint.getPrice() * 0.5);
+                }
+            } else {
+                UnitBlueprint unitBlueprint = unitBlueprintRepository.findById(blueprint);
+
+                long num = city.getUnits().stream().filter(u -> u.getBlueprint().equals(unitBlueprint)).count();
+
+                if(num > 0) {
+                    if(count > num)
+                        count = (int)num;
+
+                    for(int i = 0; i < count; i++) {
+                        Unit unit = city.getUnits().stream().filter(u -> u.getBlueprint().equals(unitBlueprint)).findFirst().get();
+
+                        city.removeUnit(unit);
+                        unitRepository.remove(unit);
+
+                        player.addCoins(unitBlueprint.getPrice() * 0.5);
+                    }
                 }
             }
         }

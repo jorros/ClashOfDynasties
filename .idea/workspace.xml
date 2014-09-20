@@ -8,8 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -141,8 +139,8 @@
       <file leaf-file-name="CityController.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5862069" vertical-offset="2244" max-vertical-offset="4420">
-              <caret line="165" column="143" selection-start-line="165" selection-start-column="143" selection-end-line="165" selection-end-column="143" />
+            <state vertical-scroll-proportion="0.762069" vertical-offset="2482" max-vertical-offset="4726">
+              <caret line="185" column="70" selection-start-line="185" selection-start-column="70" selection-end-line="185" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -211,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
       </list>
     </option>
   </component>
@@ -1883,11 +1881,15 @@
       <created>1411214613926</created>
       <updated>1411214613926</updated>
     </task>
-    <option name="localTasksCounter" value="163" />
+    <task id="LOCAL-00163" summary="Gebäude Abreißen implementiert">
+      <created>1411217236862</created>
+      <updated>1411217236862</updated>
+    </task>
+    <option name="localTasksCounter" value="164" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="968315000" />
+    <option name="totallyTimeSpent" value="968535000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1968,7 +1970,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="FOW wird bei Eroberung/Verlust aktualisiert" />
     <MESSAGE value="FOW Update angepasst" />
     <MESSAGE value="Bauzeit String angepasst" />
     <MESSAGE value="Wege werden bei FOW Update dargestellt" />
@@ -1993,7 +1994,8 @@
     <MESSAGE value="Krieg: Maximal 500 Soldaten pro Seite dürfen kämpfen" />
     <MESSAGE value="Formationsbewegung: Nur bei verbündeten Städten weiterziehen" />
     <MESSAGE value="Produktionsrate: 10% der Bürger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Produktionsrate: 10% der Bürger" />
+    <MESSAGE value="Gebäude Abreißen implementiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gebäude Abreißen implementiert" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2384,8 +2386,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5862069" vertical-offset="2244" max-vertical-offset="4420">
-          <caret line="165" column="143" selection-start-line="165" selection-start-column="143" selection-end-line="165" selection-end-column="143" />
+        <state vertical-scroll-proportion="0.762069" vertical-offset="2482" max-vertical-offset="4726">
+          <caret line="185" column="70" selection-start-line="185" selection-start-column="70" selection-end-line="185" selection-end-column="70" />
           <folding />
         </state>
       </provider>
