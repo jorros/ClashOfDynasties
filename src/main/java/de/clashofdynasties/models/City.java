@@ -249,7 +249,7 @@ public class City {
 
     public double getProductionRate() {
         if(population > 0)
-            return population * getType().getProductionRate();
+            return population * 0.1 * getType().getProductionRate();
         else
             return getType().getProductionRate();
     }
