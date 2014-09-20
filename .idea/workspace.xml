@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -76,21 +76,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6568" max-vertical-offset="8381">
-              <caret line="411" column="64" selection-start-line="411" selection-start-column="64" selection-end-line="411" selection-end-column="64" />
+            <state vertical-scroll-proportion="0.4586207" vertical-offset="6449" max-vertical-offset="8483">
+              <caret line="407" column="32" selection-start-line="407" selection-start-column="32" selection-end-line="407" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="build.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.767148" vertical-offset="3060" max-vertical-offset="4233">
-              <caret line="205" column="21" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
+            <state vertical-scroll-proportion="-13.346154" vertical-offset="3376" max-vertical-offset="4233">
+              <caret line="219" column="20" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -99,7 +99,7 @@
       <file leaf-file-name="FormationLogic.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="431" max-vertical-offset="1088">
+            <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1088">
               <caret line="61" column="17" selection-start-line="59" selection-start-column="16" selection-end-line="61" selection-end-column="17" />
               <folding />
             </state>
@@ -244,8 +244,8 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       </list>
     </option>
   </component>
@@ -1926,11 +1926,15 @@
       <created>1411208226310</created>
       <updated>1411208226310</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="Bauen: Tooltip maxWidth gesetzt">
+      <created>1411209977582</created>
+      <updated>1411209977582</updated>
+    </task>
+    <option name="localTasksCounter" value="159" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="963143000" />
+    <option name="totallyTimeSpent" value="963678000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2011,7 +2015,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Kriegslogik Basis implementiert" />
     <MESSAGE value="14 Zeichen Namensfix" />
     <MESSAGE value="Formationen können nicht bewegt werden gefixt" />
     <MESSAGE value="Kriegsalgorithmus implementiert" />
@@ -2036,7 +2039,8 @@
     <MESSAGE value="Kriegsalgorithmus gefixt: Verteidigungsgebäude werden mitinvolviert" />
     <MESSAGE value="Kriegsalgorithmus gefixt: Verteidigungsgebäude fügen Schaden hinzu" />
     <MESSAGE value="Kriegsalgorithmus: Spezialkräfte implementiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kriegsalgorithmus: Spezialkräfte implementiert" />
+    <MESSAGE value="Bauen: Tooltip maxWidth gesetzt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bauen: Tooltip maxWidth gesetzt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2408,6 +2412,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.346154" vertical-offset="3376" max-vertical-offset="4233">
+          <caret line="219" column="20" selection-start-line="219" selection-start-column="20" selection-end-line="219" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="431" max-vertical-offset="1088">
@@ -2418,16 +2430,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6568" max-vertical-offset="8381">
-          <caret line="411" column="64" selection-start-line="411" selection-start-column="64" selection-end-line="411" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.767148" vertical-offset="3060" max-vertical-offset="4233">
-          <caret line="205" column="21" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.4586207" vertical-offset="6449" max-vertical-offset="8483">
+          <caret line="407" column="32" selection-start-line="407" selection-start-column="32" selection-end-line="407" selection-end-column="32" />
           <folding />
         </state>
       </provider>

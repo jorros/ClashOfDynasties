@@ -398,51 +398,57 @@ public class CityLogic {
                     }
                 }
 
+                int counter = 0;
+
                 if(enemyUnits.size() > 0 || !city.getPlayer().equals(player)) {
                     for (Formation formation : playerFormations) {
                         for (Unit unit : formation.getUnits()) {
-                            if(unit.getBlueprint().getId() == 4) {
-                                Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(formation.getUnits(), unit)).sample();
+                            if(counter < 500) {
+                                counter++;
 
-                                if(selected.getHealth() < 100) {
-                                    if(Math.random() < 0.01) {
-                                        unit.setHealth(unit.getHealth() + 20);
+                                if (unit.getBlueprint().getId() == 4) {
+                                    Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(formation.getUnits(), unit)).sample();
 
-                                        if(unit.getHealth() > 100)
-                                            unit.setHealth(100);
+                                    if (selected.getHealth() < 100) {
+                                        if (Math.random() < 0.01) {
+                                            unit.setHealth(unit.getHealth() + 20);
+
+                                            if (unit.getHealth() > 100)
+                                                unit.setHealth(100);
+                                        }
                                     }
-                                }
-                            } else {
-                                if (enemyUnits.size() > 0) {
-                                    Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(enemyUnits, unit)).sample();
-
-                                    int newHealth = selected.getHealth();
-
-                                    int counter = isCounter(selected.getBlueprint(), unit.getBlueprint()) ? unit.getBlueprint().getStrength() : 0;
-
-                                    newHealth -= unit.getBlueprint().getStrength() + counter;
-
-                                    selected.setHealth(newHealth);
-                                } else if (enemyBuildings.stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).count() > 0) {
-                                    Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings)).sample();
-
-                                    int newHealth = selected.getHealth();
-
-                                    if (unit.getBlueprint().getType() == 4)
-                                        newHealth -= unit.getBlueprint().getStrength();
-                                    else
-                                        newHealth -= unit.getBlueprint().getStrength() / 2;
-
-                                    selected.setHealth(newHealth);
                                 } else {
-                                    if (unit.getBlueprint().getType() == 4)
-                                        city.setHealth(city.getHealth() - unit.getBlueprint().getStrength());
-                                    else
-                                        city.setHealth(city.getHealth() - unit.getBlueprint().getStrength() / 2);
-                                }
+                                    if (enemyUnits.size() > 0) {
+                                        Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(enemyUnits, unit)).sample();
 
-                                if (unit.getBlueprint().getId() == 7) {
-                                    unit.setHealth(unit.getHealth() - unit.getBlueprint().getStrength() / 2);
+                                        int newHealth = selected.getHealth();
+
+                                        int counter = isCounter(selected.getBlueprint(), unit.getBlueprint()) ? unit.getBlueprint().getStrength() : 0;
+
+                                        newHealth -= unit.getBlueprint().getStrength() + counter;
+
+                                        selected.setHealth(newHealth);
+                                    } else if (enemyBuildings.stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).count() > 0) {
+                                        Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings)).sample();
+
+                                        int newHealth = selected.getHealth();
+
+                                        if (unit.getBlueprint().getType() == 4)
+                                            newHealth -= unit.getBlueprint().getStrength();
+                                        else
+                                            newHealth -= unit.getBlueprint().getStrength() / 2;
+
+                                        selected.setHealth(newHealth);
+                                    } else {
+                                        if (unit.getBlueprint().getType() == 4)
+                                            city.setHealth(city.getHealth() - unit.getBlueprint().getStrength());
+                                        else
+                                            city.setHealth(city.getHealth() - unit.getBlueprint().getStrength() / 2);
+                                    }
+
+                                    if (unit.getBlueprint().getId() == 7) {
+                                        unit.setHealth(unit.getHealth() - unit.getBlueprint().getStrength() / 2);
+                                    }
                                 }
                             }
                         }
