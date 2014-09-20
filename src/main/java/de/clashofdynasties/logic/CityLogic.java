@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -333,6 +334,7 @@ public class CityLogic {
     }
 
     public void processWar(City city) {
+        Random random = new Random();
         List<Formation> formations = formationRepository.findByCity(city);
 
         if(!formations.isEmpty()) {
@@ -377,9 +379,11 @@ public class CityLogic {
 
             for(Player player : players) {
                 List<Formation> playerFormations = formations.stream().filter(f -> f.getPlayer().equals(player)).collect(Collectors.toList());
+                List<Building> playerBuildings = city.getPlayer().equals(player) ? city.getBuildings() : new ArrayList<>();
                 List<Formation> enemyFormations = new ArrayList<>();
                 List<Unit> enemyUnits = new ArrayList<>();
-                List<Building> enemyBuildings = city.getBuildings();
+                Relation cityRelation = relationRepository.findByPlayers(player, city.getPlayer());
+                List<Building> enemyBuildings = (!city.getPlayer().equals(player) && cityRelation.getRelation() <= 1) ? city.getBuildings() : new ArrayList<>();
 
                 for(Formation formation : formations) {
                     if(!formation.getPlayer().equals(player)) {
@@ -424,6 +428,17 @@ public class CityLogic {
                                 else
                                     city.setHealth(city.getHealth() - unit.getBlueprint().getStrength() / 2);
                             }
+                        }
+                    }
+                    for(Building building : playerBuildings) {
+                        if(enemyUnits.size() > 0) {
+                            Unit selected = enemyUnits.get(random.nextInt(enemyUnits.size()));
+
+                            int newHealth = selected.getHealth();
+
+                            newHealth -= building.getBlueprint().getDefencePoints();
+
+                            selected.setHealth(newHealth);
                         }
                     }
                 }
