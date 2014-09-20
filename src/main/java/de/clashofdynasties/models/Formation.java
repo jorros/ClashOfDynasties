@@ -177,7 +177,7 @@ public class Formation {
         if(getRoute() != null) {
             Road current = getRoute().getCurrentRoad();
 
-            return current.getPoint1().isVisible(player) && current.getPoint2().isVisible(player);
+            return current.isVisible(player);
         }
         else
             return getLastCity().isVisible(player);
