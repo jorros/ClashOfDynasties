@@ -151,7 +151,7 @@ public class CityLogic {
                     generalSatisfaction = 1;
             }
 
-            maxSatisfaction = calculateSatisfaction(city.getType().getId(), baseSatisfaction, level1Satisfaction, level2Satisfaction, level3Satisfaction, generalSatisfaction);
+            maxSatisfaction = calculateSatisfaction(city.getType().getId(), baseSatisfaction, level1Satisfaction, level2Satisfaction, level3Satisfaction, generalSatisfaction) * 100;
 
             double computedSatisfaction;
             if (maxSatisfaction > city.getRawSatisfaction())

@@ -79,8 +79,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0706897" vertical-offset="2442" max-vertical-offset="8551">
-              <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.39726028" vertical-offset="2136" max-vertical-offset="8551">
+              <caret line="153" column="180" selection-start-line="153" selection-start-column="180" selection-end-line="153" selection-end-column="180" />
               <folding />
             </state>
           </provider>
@@ -1252,7 +1252,7 @@
       <workItem from="1411145243950" duration="135000" />
       <workItem from="1411148445537" duration="3778000" />
       <workItem from="1411203738378" duration="2631000" />
-      <workItem from="1411224299061" duration="946000" />
+      <workItem from="1411224299061" duration="1587000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -1914,11 +1914,15 @@
       <created>1411224545549</created>
       <updated>1411224545549</updated>
     </task>
-    <option name="localTasksCounter" value="166" />
+    <task id="LOCAL-00166" summary="Zufriedenheitsalgorithmus gefixt">
+      <created>1411225256537</created>
+      <updated>1411225256537</updated>
+    </task>
+    <option name="localTasksCounter" value="167" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="970372000" />
+    <option name="totallyTimeSpent" value="971013000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1962,9 +1966,9 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32792208" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24458875" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24458875" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1999,7 +2003,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Wege werden bei FOW Update dargestellt" />
     <MESSAGE value="Zusammenstellung: Schließen Button hinzugefügt" />
     <MESSAGE value="FOWUpdate: Status aktualisieren" />
     <MESSAGE value="Healing Logic optimiert" />
@@ -2024,7 +2027,8 @@
     <MESSAGE value="Gebäude Abreißen implementiert" />
     <MESSAGE value="Einheiten entlassen implementiert" />
     <MESSAGE value="Karawanen Erstellen gefixt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Karawanen Erstellen gefixt" />
+    <MESSAGE value="Zufriedenheitsalgorithmus gefixt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Zufriedenheitsalgorithmus gefixt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2405,8 +2409,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0706897" vertical-offset="2442" max-vertical-offset="8551">
-          <caret line="85" column="0" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.39726028" vertical-offset="2136" max-vertical-offset="8551">
+          <caret line="153" column="180" selection-start-line="153" selection-start-column="180" selection-end-line="153" selection-end-column="180" />
           <folding />
         </state>
       </provider>
