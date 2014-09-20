@@ -79,8 +79,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4586207" vertical-offset="6449" max-vertical-offset="8483">
-              <caret line="407" column="32" selection-start-line="407" selection-start-column="32" selection-end-line="407" selection-end-column="32" />
+            <state vertical-scroll-proportion="-0.18620689" vertical-offset="6806" max-vertical-offset="8483">
+              <caret line="406" column="42" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -1930,11 +1930,15 @@
       <created>1411209977582</created>
       <updated>1411209977582</updated>
     </task>
-    <option name="localTasksCounter" value="159" />
+    <task id="LOCAL-00159" summary="Krieg: Maximal 500 Soldaten pro Seite dürfen kämpfen">
+      <created>1411210505300</created>
+      <updated>1411210505300</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="963678000" />
+    <option name="totallyTimeSpent" value="963712000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2015,7 +2019,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="14 Zeichen Namensfix" />
     <MESSAGE value="Formationen können nicht bewegt werden gefixt" />
     <MESSAGE value="Kriegsalgorithmus implementiert" />
     <MESSAGE value="FOW wird bei Eroberung/Verlust aktualisiert" />
@@ -2040,7 +2043,8 @@
     <MESSAGE value="Kriegsalgorithmus gefixt: Verteidigungsgebäude fügen Schaden hinzu" />
     <MESSAGE value="Kriegsalgorithmus: Spezialkräfte implementiert" />
     <MESSAGE value="Bauen: Tooltip maxWidth gesetzt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bauen: Tooltip maxWidth gesetzt" />
+    <MESSAGE value="Krieg: Maximal 500 Soldaten pro Seite dürfen kämpfen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Krieg: Maximal 500 Soldaten pro Seite dürfen kämpfen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2430,8 +2434,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4586207" vertical-offset="6449" max-vertical-offset="8483">
-          <caret line="407" column="32" selection-start-line="407" selection-start-column="32" selection-end-line="407" selection-end-column="32" />
+        <state vertical-scroll-proportion="-0.18620689" vertical-offset="6806" max-vertical-offset="8483">
+          <caret line="406" column="42" selection-start-line="406" selection-start-column="42" selection-end-line="406" selection-end-column="42" />
           <folding />
         </state>
       </provider>

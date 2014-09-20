@@ -398,13 +398,13 @@ public class CityLogic {
                     }
                 }
 
-                int counter = 0;
+                int numAttacks = 0;
 
                 if(enemyUnits.size() > 0 || !city.getPlayer().equals(player)) {
                     for (Formation formation : playerFormations) {
                         for (Unit unit : formation.getUnits()) {
-                            if(counter < 500) {
-                                counter++;
+                            if(numAttacks < 500) {
+                                numAttacks++;
 
                                 if (unit.getBlueprint().getId() == 4) {
                                     Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(formation.getUnits(), unit)).sample();
