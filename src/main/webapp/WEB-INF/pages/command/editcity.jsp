@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td>Bauplätze:</td>
-        <td><input style="height:10px;" id="capacity" type="text" value="${city.capacity}" /></td>
+        <td><input style="height:10px;" id="capacity" type="text" value="${city.getRawCapacity()}" /></td>
     </tr>
     <tr>
         <td>Stadttyp:</td>

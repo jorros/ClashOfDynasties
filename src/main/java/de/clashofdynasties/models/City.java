@@ -152,6 +152,10 @@ public class City {
         return (int)Math.ceil(capacity * getType().getCapacity());
     }
 
+    public int getRawCapacity() {
+        return capacity;
+    }
+
     public void setCapacity(int capacity) {
         this.capacity = capacity;
         updateTimestamp();
@@ -373,7 +377,7 @@ public class City {
 
                 if (editor) {
                     node.put("resource", getResource().getId());
-                    node.put("capacity", getCapacity());
+                    node.put("capacity", getRawCapacity());
                 } else {
                     node.put("satisfaction", getSatisfaction());
                     node.put("population", getPopulation());
