@@ -19,7 +19,7 @@
         </div>
         <div class="section" style="width:285px; clear:left;">
             <h4>Öffentlich</h4>
-            <div>
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
                 <c:choose>
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[0]}"/>
@@ -28,15 +28,11 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[11]}"/>
 
-                        <br>
-
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[1]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[9]}"/>
-
-                        <br>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[5]}"/>
 
@@ -49,15 +45,11 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[4]}"/>
 
-                        <br>
-
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[2]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[9]}"/>
-
-                        <br>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[5]}"/>
 
@@ -72,22 +64,18 @@
     <div style="float:left;">
         <div class="section" style="width:285px; float:left">
             <h4>Wirtschaft</h4>
-            <div>
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
                 <c:choose>
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[16]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[17]}"/>
 
-                        <br>
-
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[18]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[19]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[22]}"/>
-
-                        <br>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[23]}"/>
 
@@ -100,15 +88,11 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[17]}"/>
 
-                        <br>
-
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[18]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[20]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[15]}"/>
-
-                        <br>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[23]}"/>
 
@@ -123,7 +107,7 @@
     <div style="float:left;">
         <div class="section" style="width:285px; float:left">
             <h4>Militär</h4>
-            <div>
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
                 <c:choose>
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[6]}"/>
@@ -132,15 +116,11 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[8]}"/>
 
-                        <br>
-
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[0]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[1]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[2]}"/>
-
-                        <br>
 
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[3]}"/>
 
@@ -151,15 +131,11 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[8]}"/>
 
-                        <br>
-
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[5]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[7]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[8]}"/>
-
-                        <br>
 
                         <cod:BuildItem city="${city}" blueprint="${unitBlueprints[6]}"/>
 
