@@ -85,6 +85,10 @@ public class CityLogic {
                 double satisfied = 1;
 
                 switch (itemType.getType()) {
+                    case 1:
+                        consumRate = cityType.getConsumeBasic();
+                        break;
+
                     case 2:
                         consumRate = cityType.getConsumeLuxury1();
                         break;
@@ -110,21 +114,21 @@ public class CityLogic {
                             amount /= city.getPopulation() * consumRate * satisfied;
                             satisfied -= amount;
                             amount = 0;
-                        }
+                        } else
+                            satisfied = 0;
 
                         store.put(item.getId(), amount);
                     }
                 }
 
                 if(itemType.getType() == 1)
-                    baseSatisfaction = satisfied;
+                    baseSatisfaction = 1 - satisfied;
                 if(itemType.getType() == 2)
-                    level1Satisfaction += satisfied;
+                    level1Satisfaction += 1 - satisfied;
                 else if(itemType.getType() == 3)
-                    level2Satisfaction += satisfied;
+                    level2Satisfaction += 1 - satisfied;
                 else if(itemType.getType() == 4)
-                    level3Satisfaction = satisfied;
-                break;
+                    level3Satisfaction = 1 - satisfied;
             }
 
             if (city.getBuildings().size() <= city.getCapacity()) {
