@@ -387,7 +387,14 @@ public class CityLogic {
                 List<Formation> enemyFormations = new ArrayList<>();
                 List<Unit> enemyUnits = new ArrayList<>();
                 Relation cityRelation = relationRepository.findByPlayers(player, city.getPlayer());
-                List<Building> enemyBuildings = (!city.getPlayer().equals(player) && cityRelation.getRelation() <= 1) ? city.getBuildings() : new ArrayList<>();
+                int rel;
+                if(cityRelation != null)
+                    rel = cityRelation.getRelation();
+                else
+                    rel = 1;
+
+
+                List<Building> enemyBuildings = (!city.getPlayer().equals(player) && rel <= 1) ? city.getBuildings() : new ArrayList<>();
 
                 for(Formation formation : formations) {
                     if(!formation.getPlayer().equals(player)) {
