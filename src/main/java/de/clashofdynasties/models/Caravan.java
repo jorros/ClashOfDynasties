@@ -110,7 +110,10 @@ public class Caravan {
     }
 
     public void setPoint1Item(Item point1Item) {
-        this.point1Item = point1Item.getId();
+        if(point1Item != null)
+            this.point1Item = point1Item.getId();
+        else
+            this.point1Item = 0;
     }
 
     public double getPoint1Store() {
@@ -134,7 +137,10 @@ public class Caravan {
     }
 
     public void setPoint2Item(Item point2Item) {
-        this.point2Item = point2Item.getId();
+        if(point2Item != null)
+            this.point2Item = point2Item.getId();
+        else
+            this.point2Item = 0;
     }
 
     public double getPoint2Store() {
@@ -185,7 +191,10 @@ public class Caravan {
     }
 
     public void setPoint1StoreItem(Item point1StoreItem) {
-        this.point1StoreItem = point1StoreItem.getId();
+        if(point1StoreItem != null)
+            this.point1StoreItem = point1StoreItem.getId();
+        else
+            this.point1StoreItem = 0;
     }
 
     public Item getPoint2StoreItem() {
@@ -193,7 +202,10 @@ public class Caravan {
     }
 
     public void setPoint2StoreItem(Item point2StoreItem) {
-        this.point2StoreItem = point2StoreItem.getId();
+        if(point2StoreItem != null)
+            this.point2StoreItem = point2StoreItem.getId();
+        else
+            this.point2StoreItem = 0;
     }
 
     public long getTimestamp() {
