@@ -319,11 +319,11 @@ public class LogicService {
             bread.setType(itemTypeRepository.findById(1));
             itemRepository.add(bread);
 
-            Item wine = new Item();
-            wine.setId(3);
-            wine.setName("Wein");
-            wine.setType(itemTypeRepository.findById(2));
-            itemRepository.add(wine);
+            Item beer = new Item();
+            beer.setId(3);
+            beer.setName("Bier");
+            beer.setType(itemTypeRepository.findById(2));
+            itemRepository.add(beer);
 
             Item fiery = new Item();
             fiery.setId(4);
@@ -380,6 +380,13 @@ public class LogicService {
             itemRepository.add(sweets);
 
             System.out.println("Setup: Item eingerichtet!");
+        } else {
+            if(itemRepository.findById(3).getName().equals("Wein")) {
+                System.out.println("Wein -> Bier Update");
+                Item beer = itemRepository.findById(3);
+                beer.setName("Bier");
+                itemRepository.save();
+            }
         }
 
         if(!mongoTemplate.collectionExists("resource")) {
@@ -440,13 +447,13 @@ public class LogicService {
             System.out.println("Setup: CityType eingerichtet!");
         }
 
-        if(!mongoTemplate.collectionExists("buildingBlueprint")) {
-            Biome desert = biomeRepository.findById(1);
-            Biome savannah = biomeRepository.findById(2);
-            Biome jungle = biomeRepository.findById(3);
-            Biome forest = biomeRepository.findById(4);
-            Biome steppe = biomeRepository.findById(5);
+        Biome desert = biomeRepository.findById(1);
+        Biome savannah = biomeRepository.findById(2);
+        Biome jungle = biomeRepository.findById(3);
+        Biome forest = biomeRepository.findById(4);
+        Biome steppe = biomeRepository.findById(5);
 
+        if(!mongoTemplate.collectionExists("buildingBlueprint")) {
             BuildingBlueprint house = new BuildingBlueprint();
             house.setId(1);
             house.setName("Wohnhaus");
@@ -639,23 +646,25 @@ public class LogicService {
             druckerei.addRequiredBiome(forest);
             buildingBlueprintRepository.add(druckerei);
 
-            BuildingBlueprint weingut = new BuildingBlueprint();
-            weingut.setId(20);
-            weingut.setName("Weingut");
-            weingut.setNation(nationRepository.findById(1));
-            weingut.addRequiredBiome(desert);
-            weingut.addRequiredBiome(savannah);
-            weingut.addRequiredBiome(jungle);
-            weingut.addRequiredBiome(forest);
-            weingut.addRequiredBiome(steppe);
-            weingut.setRequiredResource(resourceRepository.findById(2));
-            buildingBlueprintRepository.add(weingut);
+            BuildingBlueprint brauerei = new BuildingBlueprint();
+            brauerei.setId(20);
+            brauerei.setName("Brauerei");
+            brauerei.setNation(nationRepository.findById(1));
+            brauerei.addRequiredBiome(desert);
+            brauerei.addRequiredBiome(savannah);
+            brauerei.addRequiredBiome(jungle);
+            brauerei.addRequiredBiome(forest);
+            brauerei.addRequiredBiome(steppe);
+            buildingBlueprintRepository.add(brauerei);
 
             BuildingBlueprint fierybrennerei = new BuildingBlueprint();
             fierybrennerei.setId(21);
             fierybrennerei.setName("Fierybrennerei");
             fierybrennerei.setNation(nationRepository.findById(2));
+            fierybrennerei.addRequiredBiome(desert);
             fierybrennerei.addRequiredBiome(savannah);
+            fierybrennerei.addRequiredBiome(jungle);
+            fierybrennerei.addRequiredBiome(forest);
             fierybrennerei.addRequiredBiome(steppe);
             buildingBlueprintRepository.add(fierybrennerei);
 
@@ -729,6 +738,25 @@ public class LogicService {
             buildingBlueprintRepository.add(konfiserie);
 
             System.out.println("Setup: BuildingBlueprint eingerichtet!");
+        } else {
+            if(!buildingBlueprintRepository.findById(20).getName().equals("Brauerei")) {
+                BuildingBlueprint brauerei = new BuildingBlueprint();
+                brauerei.setId(20);
+                brauerei.setName("Brauerei");
+                brauerei.setNation(nationRepository.findById(1));
+                brauerei.addRequiredBiome(desert);
+                brauerei.addRequiredBiome(savannah);
+                brauerei.addRequiredBiome(jungle);
+                brauerei.addRequiredBiome(forest);
+                brauerei.addRequiredBiome(steppe);
+                buildingBlueprintRepository.remove(buildingBlueprintRepository.findById(20));
+                buildingBlueprintRepository.add(brauerei);
+
+                BuildingBlueprint fierybrennerei = buildingBlueprintRepository.findById(21);
+                fierybrennerei.addRequiredBiome(desert);
+                fierybrennerei.addRequiredBiome(jungle);
+                fierybrennerei.addRequiredBiome(forest);
+            }
         }
 
         if(!mongoTemplate.collectionExists("unitBlueprint")) {
