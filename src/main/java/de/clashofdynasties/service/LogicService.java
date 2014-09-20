@@ -380,13 +380,6 @@ public class LogicService {
             itemRepository.add(sweets);
 
             System.out.println("Setup: Item eingerichtet!");
-        } else {
-            if(itemRepository.findById(3).getName().equals("Wein")) {
-                System.out.println("Wein -> Bier Update");
-                Item beer = itemRepository.findById(3);
-                beer.setName("Bier");
-                itemRepository.save();
-            }
         }
 
         if(!mongoTemplate.collectionExists("resource")) {
@@ -738,25 +731,6 @@ public class LogicService {
             buildingBlueprintRepository.add(konfiserie);
 
             System.out.println("Setup: BuildingBlueprint eingerichtet!");
-        } else {
-            if(!buildingBlueprintRepository.findById(20).getName().equals("Brauerei")) {
-                BuildingBlueprint brauerei = new BuildingBlueprint();
-                brauerei.setId(20);
-                brauerei.setName("Brauerei");
-                brauerei.setNation(nationRepository.findById(1));
-                brauerei.addRequiredBiome(desert);
-                brauerei.addRequiredBiome(savannah);
-                brauerei.addRequiredBiome(jungle);
-                brauerei.addRequiredBiome(forest);
-                brauerei.addRequiredBiome(steppe);
-                buildingBlueprintRepository.remove(buildingBlueprintRepository.findById(20));
-                buildingBlueprintRepository.add(brauerei);
-
-                BuildingBlueprint fierybrennerei = buildingBlueprintRepository.findById(21);
-                fierybrennerei.addRequiredBiome(desert);
-                fierybrennerei.addRequiredBiome(jungle);
-                fierybrennerei.addRequiredBiome(forest);
-            }
         }
 
         if(!mongoTemplate.collectionExists("unitBlueprint")) {
