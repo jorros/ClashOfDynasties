@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/21.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/21.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -90,7 +90,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.82238805" vertical-offset="3410" max-vertical-offset="5423">
-              <caret line="316" column="8" selection-start-line="316" selection-start-column="8" selection-end-line="316" selection-end-column="8" />
+              <caret line="316" column="0" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
               <folding>
                 <element signature="e#4801#4802#0" expanded="true" />
                 <element signature="e#4841#4842#0" expanded="true" />
@@ -589,7 +589,7 @@
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="events" />
+              <option name="myItemId" value="buildings" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -824,11 +824,11 @@
       <recent name="de.clashofdynasties.jdbc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\buildings" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\resources" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\items" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\units" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\WEB-INF\pages" />
-      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\css" />
@@ -1321,7 +1321,7 @@
       <workItem from="1411203738378" duration="2631000" />
       <workItem from="1411224299061" duration="5869000" />
       <workItem from="1411289856062" duration="9081000" />
-      <workItem from="1411304255703" duration="3303000" />
+      <workItem from="1411304255703" duration="3619000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2031,11 +2031,15 @@
       <created>1411306607413</created>
       <updated>1411306607413</updated>
     </task>
-    <option name="localTasksCounter" value="178" />
+    <task id="LOCAL-00178" summary="Bei negativen freien Bauplätzen verdoppel Kosten">
+      <created>1411309089605</created>
+      <updated>1411309089605</updated>
+    </task>
+    <option name="localTasksCounter" value="179" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="987679000" />
+    <option name="totallyTimeSpent" value="987995000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2116,7 +2120,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Zufriedenheit optimiert" />
     <MESSAGE value="Editor zeigt Standardkapazität an" />
     <MESSAGE value="Formationsbewegung gefixt" />
     <MESSAGE value="Kriegsalgorithmus gefixt: Verteidigungsgebäude werden mitinvolviert" />
@@ -2141,7 +2144,8 @@
     <MESSAGE value="Events hinzugefügt" />
     <MESSAGE value="Ressource Rosen hinzugefügt" />
     <MESSAGE value="Zufriedenheit steigt schneller an" />
-    <option name="LAST_COMMIT_MESSAGE" value="Zufriedenheit steigt schneller an" />
+    <MESSAGE value="Bei negativen freien Bauplätzen verdoppel Kosten" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bei negativen freien Bauplätzen verdoppel Kosten" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2161,20 +2165,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/UnitBlueprint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
-          <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Unit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1518" max-vertical-offset="2176">
@@ -2537,10 +2527,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/21.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/22.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.82238805" vertical-offset="3410" max-vertical-offset="5423">
-          <caret line="316" column="8" selection-start-line="316" selection-start-column="8" selection-end-line="316" selection-end-column="8" />
+          <caret line="316" column="0" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
           <folding>
             <element signature="e#4801#4802#0" expanded="true" />
             <element signature="e#4841#4842#0" expanded="true" />
