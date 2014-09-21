@@ -7,10 +7,7 @@ import org.apache.commons.math3.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -337,6 +334,47 @@ public class CityLogic {
         return probabilites;
     }
 
+    private List<Pair<Unit, Double>> getAttackerProbabilities(List<Unit> playerUnits, List<Unit> enemyUnits) {
+        ArrayList<Pair<Unit, Double>> probabilites = new ArrayList<>();
+
+        long infantry = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 1).count();
+        long shooter = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 2).count();
+        long rider = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 3).count();
+        long siege = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 4).count();
+
+        for(Unit unit : playerUnits) {
+            double probability = 0.1;
+
+            switch(unit.getBlueprint().getType()) {
+                case 1:
+                    if(Math.max(infantry, Math.max(shooter, Math.max(rider, siege))) == rider)
+                        probability += 0.3;
+                    break;
+
+                case 2:
+                    if(Math.max(infantry, Math.max(shooter, Math.max(rider, siege))) == infantry)
+                        probability += 0.3;
+                    break;
+
+                case 3:
+                    if(Math.max(infantry, Math.max(shooter, Math.max(rider, siege))) == shooter)
+                        probability += 0.3;
+                    break;
+
+                case 4:
+                    if(infantry + shooter + rider + siege < 50)
+                        probability += 0.3;
+                    if(infantry + shooter + rider + siege == 0)
+                        probability += 0.9;
+                    break;
+            }
+
+            probabilites.add(new Pair<>(unit, probability));
+        }
+
+        return probabilites;
+    }
+
     public void processWar(City city) {
         Random random = new Random();
         List<Formation> formations = formationRepository.findByCity(city);
@@ -364,7 +402,7 @@ public class CityLogic {
 
             Report report = city.getReport();
 
-            List<Player> players = formations.stream().map(f -> f.getPlayer()).distinct().collect(Collectors.toList());
+            List<Player> players = formations.stream().map(Formation::getPlayer).distinct().collect(Collectors.toList());
 
             if(!players.contains(city.getPlayer()))
                 players.add(city.getPlayer());
@@ -382,9 +420,8 @@ public class CityLogic {
             }
 
             for(Player player : players) {
-                List<Formation> playerFormations = formations.stream().filter(f -> f.getPlayer().equals(player)).collect(Collectors.toList());
                 List<Building> playerBuildings = city.getPlayer().equals(player) ? city.getBuildings() : new ArrayList<>();
-                List<Formation> enemyFormations = new ArrayList<>();
+                List<Unit> playerUnits = new ArrayList<>();
                 List<Unit> enemyUnits = new ArrayList<>();
                 Relation cityRelation = relationRepository.findByPlayers(player, city.getPlayer());
                 int rel;
@@ -401,66 +438,60 @@ public class CityLogic {
                         Relation relation = relationRepository.findByPlayers(player, formation.getPlayer());
 
                         if(relation == null || relation.getRelation() <= 2) {
-                            enemyFormations.add(formation);
-
                             if(formation.getUnits() != null)
                                 enemyUnits.addAll(formation.getUnits());
                         }
+                    } else {
+                        playerUnits.addAll(formation.getUnits());
                     }
                 }
 
-                int numAttacks = 0;
-
                 if(enemyUnits.size() > 0 || !city.getPlayer().equals(player)) {
-                    for (Formation formation : playerFormations) {
-                        for (Unit unit : formation.getUnits()) {
-                            if(numAttacks < 500) {
-                                numAttacks++;
+                    List<Unit> attackers = Arrays.asList(((Unit[])new EnumeratedDistribution<>(getAttackerProbabilities(playerUnits, enemyUnits)).sample(50)));
 
-                                if (unit.getBlueprint().getId() == 4) {
-                                    Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(formation.getUnits(), unit)).sample();
+                    for (Unit unit : attackers) {
+                        if (unit.getBlueprint().getId() == 4) {
+                            Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(attackers, unit)).sample();
 
-                                    if (selected.getHealth() < 100) {
-                                        if (Math.random() < 0.01) {
-                                            unit.setHealth(unit.getHealth() + 20);
+                            if (selected.getHealth() < 100) {
+                                if (Math.random() < 0.01) {
+                                    unit.setHealth(unit.getHealth() + 40);
 
-                                            if (unit.getHealth() > 100)
-                                                unit.setHealth(100);
-                                        }
-                                    }
-                                } else {
-                                    if (enemyUnits.size() > 0) {
-                                        Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(enemyUnits, unit)).sample();
-
-                                        int newHealth = selected.getHealth();
-
-                                        int counter = isCounter(selected.getBlueprint(), unit.getBlueprint()) ? unit.getBlueprint().getStrength() : 0;
-
-                                        newHealth -= unit.getBlueprint().getStrength() + counter;
-
-                                        selected.setHealth(newHealth);
-                                    } else if (enemyBuildings.stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).count() > 0) {
-                                        Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings)).sample();
-
-                                        int newHealth = selected.getHealth();
-
-                                        if (unit.getBlueprint().getType() == 4)
-                                            newHealth -= unit.getBlueprint().getStrength();
-                                        else
-                                            newHealth -= unit.getBlueprint().getStrength() / 2;
-
-                                        selected.setHealth(newHealth);
-                                    } else {
-                                        if (unit.getBlueprint().getType() == 4)
-                                            city.setHealth(city.getHealth() - unit.getBlueprint().getStrength());
-                                        else
-                                            city.setHealth(city.getHealth() - unit.getBlueprint().getStrength() / 2);
-                                    }
-
-                                    if (unit.getBlueprint().getId() == 7) {
-                                        unit.setHealth(unit.getHealth() - unit.getBlueprint().getStrength() / 2);
-                                    }
+                                    if (unit.getHealth() > 100)
+                                        unit.setHealth(100);
                                 }
+                            }
+                        } else {
+                            if (enemyUnits.size() > 0) {
+                                Unit selected = new EnumeratedDistribution<>(getUnitProbabilities(enemyUnits, unit)).sample();
+
+                                int newHealth = selected.getHealth();
+
+                                int counter = isCounter(selected.getBlueprint(), unit.getBlueprint()) ? unit.getBlueprint().getStrength() : 0;
+
+                                newHealth -= unit.getBlueprint().getStrength() + counter;
+
+                                selected.setHealth(newHealth);
+                            } else if (enemyBuildings.stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).count() > 0) {
+                                Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings)).sample();
+
+                                int newHealth = selected.getHealth();
+
+                                if (unit.getBlueprint().getType() == 4)
+                                    newHealth -= unit.getBlueprint().getStrength();
+                                else
+                                    newHealth -= unit.getBlueprint().getStrength() / 2;
+
+                                selected.setHealth(newHealth);
+                            } else {
+                                if (unit.getBlueprint().getType() == 4)
+                                    city.setHealth(city.getHealth() - unit.getBlueprint().getStrength());
+                                else
+                                    city.setHealth(city.getHealth() - unit.getBlueprint().getStrength() / 2);
+                            }
+
+                            if (unit.getBlueprint().getId() == 7) {
+                                unit.setHealth(unit.getHealth() - unit.getBlueprint().getStrength() / 2);
                             }
                         }
                     }
@@ -503,7 +534,7 @@ public class CityLogic {
                 if(!city.getPlayer().isComputer()) {
                     city.getPlayer().setSightUpdate(true);
                 }
-                if(formations.size() == 0 || formations.stream().map(f -> f.getPlayer()).distinct().count() > 1)
+                if(formations.size() == 0 || formations.stream().map(Formation::getPlayer).distinct().count() > 1)
                     city.setPlayer(playerRepository.findByName("Freies Volk"));
                 else {
                     city.setPlayer(formations.get(0).getPlayer());
