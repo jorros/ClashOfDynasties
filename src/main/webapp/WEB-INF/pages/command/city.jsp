@@ -29,13 +29,17 @@
     <tr>
         <td></td>
     </tr>
+    <c:if test="${city.type.id != 4}">
     <tr>
         <td colspan="2"><span style="vertical-align: bottom;">Wertvolle Resource: </span><img style="vertical-align:bottom;" src="assets/resources/${city.resource.id}.png" /> ${city.resource.name}</td>
     </tr>
+    </c:if>
     <tr>
         <td colspan="2">Stadttyp: ${city.type.name} (${city.biome.name})</td>
     </tr>
+    <c:if test="${maxSlots > 0}">
     <tr>
         <td colspan="2"><c:if test="${ city.player == player }">Freie </c:if>Bauplätze: <c:if test="${ city.player == player }">${freeSlots} von </c:if>${maxSlots}</td>
     </tr>
+    </c:if>
 </table>

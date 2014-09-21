@@ -14,12 +14,6 @@
         <td colspan="2">Spieler: ${formation.player.name} (${formation.player.nation.name})</td>
     </tr>
     <tr>
-        <td colspan="2">Kampfstärke: 150</td>
-    </tr>
-    <tr>
-        <td colspan="2">Leben: ${formation.getHealth()}</td>
-    </tr>
-    <tr>
         <c:choose>
             <c:when test="${formation.isDeployed()}">
                 <td colspan="2">Stationiert in ${formation.lastCity.name}</td>

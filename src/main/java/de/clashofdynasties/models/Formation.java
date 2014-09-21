@@ -26,9 +26,6 @@ public class Formation implements MapNode {
 
     private ObjectId lastCity;
 
-    @Transient
-    private int health;
-
     private String name;
 
     private List<ObjectId> units;
@@ -64,21 +61,6 @@ public class Formation implements MapNode {
 
     public void setY(double y) {
         this.y = y;
-    }
-
-    public double getHealth() {
-        if (units == null || units.isEmpty())
-            return 100;
-
-        int maxHealth = 0;
-        int health = 0;
-
-        for (Unit unit : getUnits()) {
-            maxHealth += 100;
-            health += unit.getHealth();
-        }
-
-        return health / maxHealth * 100;
     }
 
     public String getName() {
