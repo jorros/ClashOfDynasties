@@ -66,6 +66,7 @@ public class FormationController {
             if (routing.calculateRoute(formation, city, player)) {
                 if (formation.isDeployed()) {
                     formation.setRoute(routing.getRoute());
+                    formation.getRoute().removeRoad(0);
                     formation.getRoute().setCurrentRoad(roadRepository.findByCities(formation.getLastCity(), formation.getRoute().getNext()));
                     formation.move(70);
                 } else {
