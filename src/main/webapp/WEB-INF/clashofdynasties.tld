@@ -65,4 +65,15 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+    <tag>
+        <name>Time</name>
+        <tag-class>de.clashofdynasties.jsp.Time</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>time</name>
+            <required>true</required>
+            <type>int</type>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
