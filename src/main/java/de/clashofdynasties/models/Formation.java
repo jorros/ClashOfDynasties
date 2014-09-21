@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Document
-public class Formation {
+public class Formation implements MapNode {
     @Id
     private ObjectId id;
 

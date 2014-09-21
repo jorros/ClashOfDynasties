@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Document
-public class City {
+public class City implements MapNode {
     @Id
     private ObjectId id;
 
@@ -74,7 +74,7 @@ public class City {
         this.id = id;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
@@ -82,7 +82,7 @@ public class City {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

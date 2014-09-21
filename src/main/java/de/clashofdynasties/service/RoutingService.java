@@ -3,8 +3,6 @@ package de.clashofdynasties.service;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.RelationRepository;
 import de.clashofdynasties.repository.RoadRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
 
@@ -27,39 +25,29 @@ public class RoutingService {
     }
 
     private class Node implements Comparable {
-        private Object object;
+        private MapNode object;
 
         public double f;
         public double g;
         public Node parent;
 
-        public Node(Object obj) {
+        public Node(MapNode obj) {
             object = obj;
             f = 0.0;
             g = 0.0;
         }
 
         public int getX() {
-            if (object instanceof City)
-                return ((City) object).getX();
-            else if (object instanceof Formation)
-                return (int)Math.round(((Formation) object).getX());
-            else
-                return 0;
+            return new Double(object.getX()).intValue();
         }
 
         public int getY() {
-            if (object instanceof City)
-                return ((City) object).getY();
-            else if (object instanceof Formation)
-                return (int)Math.round(((Formation) object).getY());
-            else
-                return 0;
+            return new Double(object.getY()).intValue();
         }
 
         public boolean isNegotiable(Player player, boolean isBorder, boolean isCaravan) {
             if(object instanceof City) {
-                Player other = ((City)object).getPlayer();
+                Player other = object.getPlayer();
 
                 if(player.equals(other))
                     return true;
@@ -89,12 +77,7 @@ public class RoutingService {
         }
 
         public Player getPlayer() {
-            if (object instanceof City)
-                return ((City) object).getPlayer();
-            else if (object instanceof Formation)
-                return ((Formation) object).getPlayer();
-            else
-                return null;
+            return object.getPlayer();
         }
 
         // Heuristik: geschätzter Restweg (Luftlinie)
@@ -102,11 +85,11 @@ public class RoutingService {
             return Math.sqrt(Math.pow(getX() - goal.getX(), 2) + Math.pow(getY() - goal.getY(), 2));
         }
 
-        public void setObject(Object obj) {
+        public void setObject(MapNode obj) {
             object = obj;
         }
 
-        public Object getObject() {
+        public MapNode getObject() {
             return object;
         }
 
@@ -116,8 +99,13 @@ public class RoutingService {
             return (int) (f - n.f);
         }
 
+        @Override
+        public boolean equals(Object o) {
+            return o instanceof Node && (((Node) o).getObject().equals(object));
+        }
+
         public List<Node> getNeighbours() {
-            List<Node> neighbours = new ArrayList<Node>();
+            List<Node> neighbours = new ArrayList<>();
 
             if (object instanceof City) {
                 City n = (City) object;
@@ -196,7 +184,7 @@ public class RoutingService {
 
     private Route createRoute() {
         Route route = new Route();
-        List<Road> roads = new ArrayList<Road>();
+        List<Road> roads = new ArrayList<>();
 
         Node lastNode = this.lastNode;
 
@@ -226,8 +214,8 @@ public class RoutingService {
         }
 
         Collections.reverse(roads);
-        if(isFormation && roads.size() > 0)
-            roads.remove(0);
+        //if(isFormation && roads.size() > 0)
+        //    roads.remove(0);
 
         route.setTarget((City) goal.getObject());
         route.setRoads(roads);
@@ -236,39 +224,57 @@ public class RoutingService {
     }
 
     public boolean calculateRoute(Formation formation, City city, Player player) {
-        openList = new PriorityQueue<Node>();
-        closedList = new LinkedList<Node>();
+        openList = new PriorityQueue<>();
+        closedList = new LinkedList<>();
         goal = null;
         isFormation = true;
         this.formation = formation;
 
-        Node from;
-        if(formation.isDeployed())
-            from = new Node(formation.getLastCity());
-        else
-            from = new Node(formation);
+        int rel;
 
-        goal = new Node(city);
+        if(city.getPlayer().equals(player))
+            rel = 4;
+        else {
+            Relation relation = relationRepository.findByPlayers(player, city.getPlayer());
+            if(relation != null)
+                rel = relation.getRelation();
+            else
+                rel = 1;
+        }
 
-        openList.offer(from);
+        if(rel >= 3 || rel == 0 || city.getPlayer().isComputer()) {
+            Node from;
+            if (formation.isDeployed())
+                from = new Node(formation.getLastCity());
+            else
+                from = new Node(formation);
 
-        while (!openList.isEmpty()) {
-            Node currentNode = openList.poll();
+            goal = new Node(city);
 
-            if (currentNode.getObject() instanceof City) {
-                City currC = (City) currentNode.getObject();
-                if (currC.equals(city)) {
-                    lastNode = currentNode;
-                    route = createRoute();
-                    route.setTime(calculateTime());
-                    return true;
+            openList.offer(from);
+
+            while (!openList.isEmpty()) {
+                Node currentNode = openList.poll();
+
+                if (currentNode.getObject() instanceof City) {
+                    City currC = (City) currentNode.getObject();
+                    String name = currC.getName();
+                    if (currC.equals(city)) {
+                        lastNode = currentNode;
+                        route = createRoute();
+                        if (formation.getRoute() != null)
+                            route.setCurrentRoad(formation.getRoute().getCurrentRoad());
+
+                        route.setTime(calculateTime());
+                        return true;
+                    }
+
+                    closedList.add(currentNode);
+                    expandNode(currentNode, player, false, formation.getLastCity().equals(currC));
+                } else if (currentNode.getObject() instanceof Formation) {
+                    closedList.add(currentNode);
+                    expandNode(currentNode, player, false, false);
                 }
-
-                closedList.add(currentNode);
-                expandNode(currentNode, player, false, formation.getLastCity().equals(currC));
-            } else if (currentNode.getObject() instanceof Formation) {
-                closedList.add(currentNode);
-                expandNode(currentNode, player, false, false);
             }
         }
 
@@ -281,30 +287,44 @@ public class RoutingService {
     }
 
     public boolean calculateRoute(City start, City end, Player player) {
-        openList = new PriorityQueue<Node>();
-        closedList = new LinkedList<Node>();
+        openList = new PriorityQueue<>();
+        closedList = new LinkedList<>();
         goal = null;
         isFormation = false;
 
-        Node from = new Node(start);
-        goal = new Node(end);
+        int rel;
 
-        openList.offer(from);
+        if(end.getPlayer().equals(player))
+            rel = 4;
+        else {
+            Relation relation = relationRepository.findByPlayers(player, end.getPlayer());
+            if(relation != null)
+                rel = relation.getRelation();
+            else
+                rel = 1;
+        }
 
-        while (!openList.isEmpty()) {
-            Node currentNode = openList.poll();
+        if(rel >= 2 && start.getPlayer().equals(player)) {
+            Node from = new Node(start);
+            goal = new Node(end);
 
-            if (currentNode.getObject() instanceof City) {
-                City currC = (City) currentNode.getObject();
-                if (currC.equals(end)) {
-                    lastNode = currentNode;
-                    route = createRoute();
-                    route.setTime(calculateTime());
-                    return true;
+            openList.offer(from);
+
+            while (!openList.isEmpty()) {
+                Node currentNode = openList.poll();
+
+                if (currentNode.getObject() instanceof City) {
+                    City currC = (City) currentNode.getObject();
+                    if (currC.equals(end)) {
+                        lastNode = currentNode;
+                        route = createRoute();
+                        route.setTime(calculateTime());
+                        return true;
+                    }
+
+                    closedList.add(currentNode);
+                    expandNode(currentNode, player, true, false);
                 }
-
-                closedList.add(currentNode);
-                expandNode(currentNode, player, true, false);
             }
         }
 
