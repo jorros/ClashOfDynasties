@@ -310,7 +310,13 @@ public class City implements MapNode {
         return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 360;
     }
 
-    public double calculateMaintenance() { return ((double)this.getBuildings().size() / 360); }
+    public double calculateMaintenance() {
+        double modifier = 1.0;
+        if(getBuildings().size() > getCapacity())
+            modifier = 2.0;
+
+        return ((double)this.getBuildings().size() / 360) * modifier;
+    }
 
     public int getIncome() {
         return (int) Math.ceil(this.calculateCoins() * 360);
