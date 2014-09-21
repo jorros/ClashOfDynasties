@@ -128,25 +128,27 @@ public class CityLogic {
                     level3Satisfaction = 1 - satisfied;
             }
 
-            if (city.getBuildings().size() <= city.getCapacity()) {
-                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 4).count() > 0)
+            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 4).count() > 0) {
+                if(city.getType().getId() == 1)
+                    generalSatisfaction = 1.0;
+                else
                     generalSatisfaction += (5.0 / 14);
-
-                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 6).count() > 0)
-                    generalSatisfaction += 4.0 / 14;
-
-                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 11).count() > 0)
-                    generalSatisfaction += 3.0 / 14;
-
-                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 13).count() > 0)
-                    generalSatisfaction += 2.0 / 14;
-
-                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 14).count() > 0)
-                    generalSatisfaction += 2.0 / 14;
-
-                if (generalSatisfaction > 1)
-                    generalSatisfaction = 1;
             }
+
+            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 6).count() > 0)
+                generalSatisfaction += 4.0 / 14;
+
+            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 11).count() > 0)
+                generalSatisfaction += 3.0 / 14;
+
+            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 13).count() > 0)
+                generalSatisfaction += 2.0 / 14;
+
+            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 14).count() > 0)
+                generalSatisfaction += 2.0 / 14;
+
+            if (generalSatisfaction > 1)
+                generalSatisfaction = 1;
 
             maxSatisfaction = calculateSatisfaction(city.getType().getId(), baseSatisfaction, level1Satisfaction, level2Satisfaction, level3Satisfaction, generalSatisfaction) * 100;
 
