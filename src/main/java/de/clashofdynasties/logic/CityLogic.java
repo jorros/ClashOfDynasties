@@ -154,7 +154,7 @@ public class CityLogic {
 
             double computedSatisfaction;
             if (maxSatisfaction > city.getRawSatisfaction())
-                computedSatisfaction = city.getRawSatisfaction() + 1.0 / 360;
+                computedSatisfaction = city.getRawSatisfaction() + 1.0 / 120;
             else if (maxSatisfaction < city.getRawSatisfaction())
                 computedSatisfaction = city.getRawSatisfaction() - 1.0 / 360;
             else
