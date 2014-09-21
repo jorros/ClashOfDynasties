@@ -71,8 +71,12 @@ function updateGameContent() {
         $.each(data.events, function(index, event) {
             $('<button class="event"><img src="assets/events/' + event.type + '.png" /></button>').appendTo("#events").mousedown(function(e) {
                 if(e.which === 1) {
-                    if(event.city != undefined)
-                        Crafty.viewport.centerOn(CityEntities[event.city], 100)
+                    if(event.city != undefined) {
+                        Crafty.viewport.centerOn(CityEntities[event.city], 100);
+                        isFormationSelected = false;
+                        isCaravanSelected = false;
+                        CityEntities[event.city].select();
+                    }
                     else if(event.action != undefined)
                         openMenu(event.action);
                 }
