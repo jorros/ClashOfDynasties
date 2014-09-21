@@ -388,10 +388,10 @@ public class LogicService {
             gold.setName("Goldvorkommen");
             resourceRepository.add(gold);
 
-            Resource grapes = new Resource();
-            grapes.setId(2);
-            grapes.setName("Weintrauben");
-            resourceRepository.add(grapes);
+            Resource roses = new Resource();
+            roses.setId(2);
+            roses.setName("Rosen");
+            resourceRepository.add(roses);
 
             Resource bees = new Resource();
             bees.setId(3);
@@ -414,6 +414,12 @@ public class LogicService {
             resourceRepository.add(sugar);
 
             System.out.println("Setup: Resource eingerichtet!");
+        } else {
+            Resource roses = resourceRepository.findById(2);
+            if(!roses.getName().equals("Rosen")) {
+                roses.setName("Rosen");
+                resourceRepository.save();
+            }
         }
 
         if(!mongoTemplate.collectionExists("cityType")) {
@@ -705,6 +711,7 @@ public class LogicService {
             parfumerie.addRequiredBiome(jungle);
             parfumerie.addRequiredBiome(forest);
             parfumerie.addRequiredBiome(steppe);
+            parfumerie.setProduceItem(itemRepository.findById(2));
             buildingBlueprintRepository.add(parfumerie);
 
             BuildingBlueprint duftmischerei = new BuildingBlueprint();
@@ -716,6 +723,7 @@ public class LogicService {
             duftmischerei.addRequiredBiome(jungle);
             duftmischerei.addRequiredBiome(forest);
             duftmischerei.addRequiredBiome(steppe);
+            duftmischerei.setProduceItem(itemRepository.findById(2));
             buildingBlueprintRepository.add(duftmischerei);
 
             BuildingBlueprint konfiserie = new BuildingBlueprint();
@@ -731,6 +739,15 @@ public class LogicService {
             buildingBlueprintRepository.add(konfiserie);
 
             System.out.println("Setup: BuildingBlueprint eingerichtet!");
+        } else {
+            BuildingBlueprint parfumerie = buildingBlueprintRepository.findById(25);
+            BuildingBlueprint duftmischerei = buildingBlueprintRepository.findById(26);
+
+            if(parfumerie.getRequiredResource() == null)
+                parfumerie.setRequiredResource(resourceRepository.findById(2));
+
+            if(duftmischerei.getRequiredResource() == null)
+                duftmischerei.setRequiredResource(resourceRepository.findById(2));
         }
 
         if(!mongoTemplate.collectionExists("unitBlueprint")) {

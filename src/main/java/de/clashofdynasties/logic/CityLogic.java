@@ -257,11 +257,11 @@ public class CityLogic {
                 city.setType(cityTypeRepository.findById(1));
                 eventRepository.add(new Event("CityUpgrade", city.getName() + " ist jetzt ein Dorf", "Deine Stadt hat zu wenig Bewohner und ist ab sofort ein Dorf. Sollte das Baulimit überschritten sein, dann verdoppeln sich die laufenden Kosten, bis genügend Gebäude abgerissen wurden.", city, city.getPlayer()));
             }
-            else if(city.getPopulation() < 200 && city.getType().getId() != 2) {
+            else if(city.getPopulation() >= 50 && city.getPopulation() < 200 && city.getType().getId() != 2) {
                 city.setType(cityTypeRepository.findById(2));
                 eventRepository.add(new Event("CityUpgrade", city.getName() + " ist jetzt eine Stadt", "Bei einer Bürgerzahl von 50 bis max 200 handelt es sich um eine Stadt. Sollte das Baulimit überschritten sein, dann verdoppeln sich die laufenden Kosten, bis genügend Gebäude abgerissen wurden.", city, city.getPlayer()));
             }
-            else if(city.getType().getId() != 3) {
+            else if(city.getPopulation() >= 200 && city.getType().getId() != 3) {
                 city.setType(cityTypeRepository.findById(3));
                 eventRepository.add(new Event("CityUpgrade", city.getName() + " ist jetzt eine Großstadt", "Deine Stadt hat über 200 Bürger und gilt somit als Großstadt. Großstadt ist die höchste Stadtstufe.", city, city.getPlayer()));
             }
