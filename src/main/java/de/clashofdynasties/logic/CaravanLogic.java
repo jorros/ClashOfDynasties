@@ -146,4 +146,8 @@ public class CaravanLogic {
             caravan.setY(caravan.getY() + (vecY * multiplier * caravan.getRoute().getCurrentRoad().getWeight()));
         }
     }
+
+    public void processMaintenance(Caravan caravan) {
+        caravan.getPlayer().addCoins(-1 / 360);
+    }
 }

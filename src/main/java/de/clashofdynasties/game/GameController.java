@@ -94,6 +94,7 @@ public class GameController {
 
                 if (player.equals(formation.getPlayer())) {
                     numFormations++;
+                    balance -= 2;
                 }
 
                 formationMap.put(formation.getId().toHexString(), formation.toJSON(timestamp, player));
@@ -104,6 +105,7 @@ public class GameController {
             if(!editor && caravan.isVisible(player)) {
                 if (player.equals(caravan.getPlayer())) {
                     numCaravans++;
+                    balance -= 1;
                 }
 
                 caravanMap.put(caravan.getId().toHexString(), caravan.toJSON(timestamp));

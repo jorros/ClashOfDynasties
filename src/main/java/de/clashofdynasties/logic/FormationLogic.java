@@ -70,6 +70,10 @@ public class FormationLogic {
         }
     }
 
+    public void processMaintenance(Formation formation) {
+        formation.getPlayer().addCoins(-2 / 360);
+    }
+
     public void processHealing(Formation formation) {
         if(formation.isDeployed() && formation.getLastCity().getReport() == null) {
             List<Unit> units = formation.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());

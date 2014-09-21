@@ -180,6 +180,7 @@ public class LogicService {
 
         for(Formation formation : formations) {
             formationLogic.processMovement(formation);
+            formationLogic.processMaintenance(formation);
             formationLogic.processHealing(formation);
         }
     }
@@ -189,6 +190,7 @@ public class LogicService {
 
         for(Caravan caravan : caravans) {
             caravanLogic.processMovement(caravan);
+            caravanLogic.processMaintenance(caravan);
         }
     }
 
