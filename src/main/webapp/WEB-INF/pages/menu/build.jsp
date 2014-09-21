@@ -5,21 +5,23 @@
 
 <h1>Bauen (${city.name})</h1>
 <c:if test="${player == city.player}">
-<div id="content">
+<div id="content" style="overflow:hidden;">
     <div style="float:left;">
         <div class="section" style="width:285px; margin-bottom:20px;">
             <h4>Aktuelle Produktion</h4>
             <div>
                 <c:if test="${city.buildingConstruction == null}">Kein Bauvorhaben</c:if>
                 <c:if test="${city.buildingConstruction != null}">
+                    <div>
                 <img style="float:left; margin-right:5px;" src="assets/${city.buildingConstruction.blueprint.getClass().name == "de.clashofdynasties.models.BuildingBlueprint" ? "buildings" : "units"}/${city.buildingConstruction.blueprint.id}.png" />
                 <span style="color:#FFF; font-weight:bold;"><c:if test="${city.buildingConstruction.count > 1}">${city.buildingConstruction.count}x </c:if>${city.buildingConstruction.blueprint.name}</span><br><span style="color:#FFF">noch ${productionTime}(${productionPercent}%)<br><a style="font-weight:bold; cursor:pointer;" onclick="stopBuild();">Abbrechen?</a></span>
+                    </div>
                 </c:if>
             </div>
         </div>
         <div class="section" style="width:285px; clear:left;">
             <h4>Öffentlich</h4>
-            <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap; display:-webkit-flex; -webkit-flex-direction:row; -webkit-flex-wrap:wrap;">
                 <c:choose>
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[0]}"/>
@@ -64,7 +66,7 @@
     <div style="float:left;">
         <div class="section" style="width:285px; float:left">
             <h4>Wirtschaft</h4>
-            <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap; display:-webkit-flex; -webkit-flex-direction:row; -webkit-flex-wrap:wrap;">
                 <c:choose>
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[16]}"/>
@@ -107,7 +109,7 @@
     <div style="float:left;">
         <div class="section" style="width:285px; float:left">
             <h4>Militär</h4>
-            <div style="display:flex; flex-direction:row; flex-wrap:wrap;">
+            <div style="display:flex; flex-direction:row; flex-wrap:wrap; display:-webkit-flex; -webkit-flex-direction:row; -webkit-flex-wrap:wrap;">
                 <c:choose>
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[6]}"/>
