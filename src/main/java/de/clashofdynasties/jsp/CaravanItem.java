@@ -34,7 +34,7 @@ public class CaravanItem extends SimpleTagSupport {
         out.print("<span style=\"color:#FFF; font-weight:bold;\">" + amount + "t " + item.getName() + " (" + item.getType().getName() + ")</span><br>");
 
         if(city.getPlayer().equals(player)) {
-            int production = (int)(Math.round(city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 360).sum()));
+            int production = (int)(Math.round(city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum()));
 
             int consumption = 0;
             double rate = 0;
@@ -58,7 +58,7 @@ public class CaravanItem extends SimpleTagSupport {
             }
 
             if((city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) && city.getRequiredItemTypes().contains(item.getType())) {
-                consumption = new Double(city.getPopulation() * rate * 360).intValue();
+                consumption = new Double(city.getPopulation() * rate * 3600).intValue();
             }
 
             if(production > 0 || amount > 0) {

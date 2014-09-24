@@ -307,7 +307,7 @@ public class City implements MapNode {
     }
 
     public double calculateCoins() {
-        return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 360;
+        return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 3600;
     }
 
     public double calculateMaintenance() {
@@ -315,15 +315,15 @@ public class City implements MapNode {
         if(getBuildings().size() > getCapacity())
             modifier = 2.0;
 
-        return ((double)this.getBuildings().size() / 360) * modifier;
+        return ((double)this.getBuildings().size() / 3600) * modifier;
     }
 
     public int getIncome() {
-        return (int) Math.ceil(this.calculateCoins() * 360);
+        return (int) Math.ceil(this.calculateCoins() * 3600);
     }
 
     public int getOutcome() {
-        return (int) Math.ceil(this.calculateMaintenance() * 360);
+        return (int) Math.ceil(this.calculateMaintenance() * 3600);
     }
 
     public long getTimestamp() {
