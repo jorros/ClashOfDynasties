@@ -349,12 +349,12 @@ public class RoutingService {
             time += new Double((length - subtract) / (formation.getSpeed() * currentRoad.getWeight())).intValue();
 
             for (Road road : roads) {
-                time += new Double((road.getLength() - 140) / (formation.getSpeed() * road.getWeight())).intValue();
+                time += new Double((road.getLength() - 140) * road.getWeight() / formation.getSpeed()).intValue();
             }
         }
         else {
             for (Road road : roads) {
-                time += new Double((road.getLength() - 140) / (0.1 * road.getWeight())).intValue();
+                time += new Double((road.getLength() - 140) * road.getWeight() / 0.1).intValue();
             }
         }
 
