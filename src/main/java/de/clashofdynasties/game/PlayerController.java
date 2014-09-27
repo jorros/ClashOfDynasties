@@ -202,8 +202,11 @@ public class PlayerController {
         List<Formation> formations = formationRepository.findByPlayer(player);
         List<Caravan> caravans = caravanRepository.findByPlayer(player);
 
-        caravanRepository.remove(caravans);
-        formationRepository.remove(formations);
+        if(caravans.size() > 0)
+            caravanRepository.remove(caravans);
+
+        if(formations.size() > 0)
+            formationRepository.remove(formations);
 
         for(City city : cities) {
             city.clearBuildings();
