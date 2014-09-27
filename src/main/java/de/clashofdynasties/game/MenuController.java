@@ -278,7 +278,12 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/demography", method = RequestMethod.GET)
-    public String showDemography(ModelMap map) {
+    public String showDemography(ModelMap map, Principal principal) {
+        Player player = playerRepository.findByName(principal.getName());
+        List<City> cities = cityRepository.findByPlayer(player);
+
+        map.addAttribute("cities", cities);
+
         return "menu/demography";
     }
 

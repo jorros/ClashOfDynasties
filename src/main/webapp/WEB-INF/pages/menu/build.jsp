@@ -85,7 +85,7 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[26]}"/>
 
-                        <c:if test="${city.countBuildings(buildingBlueprints[15]) >= 0}">
+                        <c:if test="${city.countBuildings(buildingBlueprints[15]) > 0}">
                             <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[15]}"/>
                         </c:if>
 

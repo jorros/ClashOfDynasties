@@ -5,12 +5,14 @@
 <div id="content">
     <table class="ranking">
         <thead>
-            <th>Platz</th>
-            <th>Spieler</th>
-            <th>Wirtschaft</th>
-            <th>Militär</th>
-            <th>Demografie</th>
-            <th>Gesamt</th>
+            <tr>
+                <th>Platz</th>
+                <th>Spieler</th>
+                <th>Wirtschaft</th>
+                <th>Militär</th>
+                <th>Demografie</th>
+                <th>Gesamt</th>
+            </tr>
         </thead>
         <tbody>
         <c:forEach items="${players}" var="rankedPlayer">

@@ -389,6 +389,8 @@ h4 {
     overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
+    display:-webkit-flex;
+    -webkit-flex-direction:column-reverse;
 }
 
 .event {

@@ -24,6 +24,9 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            display:-webkit-flex;
+            -webkit-flex-direction:row;
+            -webkit-flex-wrap:wrap;
         }
     </style>
 </head>

@@ -7,13 +7,13 @@ $(document).ready(function () {
             $(this).addClass("selected");
 
             if ($(this).attr("id") == "menu1")
-                openMenu("ranking");
+                openMenu("ranking", false);
             else if ($(this).attr("id") == "menu2")
-                openMenu("settings");
+                openMenu("settings", false);
             else if ($(this).attr("id") == "menu3")
-                openMenu("demography");
+                openMenu("demography", false);
             else if ($(this).attr("id") == "menu4")
-                openMenu("diplomacy");
+                openMenu("diplomacy", false);
             else if ($(this).attr("id") == "menu5")
                 window.location = "/logout";
         }
