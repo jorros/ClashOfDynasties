@@ -118,12 +118,6 @@ public class CityController {
             BuildingConstruction construction = new BuildingConstruction();
             construction.setProduction(0);
 
-            if(city.getBuildingConstruction() != null) {
-                stopBuild(principal, id);
-                player = playerRepository.findByName(principal.getName());
-                city = cityRepository.findById(id);
-            }
-
             if(type == 0) {
                 BuildingBlueprint blp = buildingBlueprintRepository.findById(blueprint);
                 count = 1;
@@ -137,7 +131,16 @@ public class CityController {
                 }
             }
 
+            if(construction.getBlueprint().getNation() != null && !construction.getBlueprint().getNation().equals(player.getNation()))
+                construction.setBlueprint(null);
+
             if(construction.getBlueprint() != null) {
+                if(city.getBuildingConstruction() != null) {
+                    stopBuild(principal, id);
+                    player = playerRepository.findByName(principal.getName());
+                    city = cityRepository.findById(id);
+                }
+
                 if (player.getCoins() < construction.getBlueprint().getPrice() * count && count > 1)
                     count = (int) Math.floor(player.getCoins() / construction.getBlueprint().getPrice());
                 else if (player.getCoins() < construction.getBlueprint().getPrice() * count)

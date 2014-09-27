@@ -558,9 +558,27 @@ public class CityLogic {
                     city.setPlayer(playerRepository.findByName("Freies Volk"));
                 else {
                     Player conqueror = formations.get(0).getPlayer();
+
                     city.setPlayer(conqueror);
                     city.setReport(null);
                     city.getPlayer().setSightUpdate(true);
+
+                    if(conqueror.getNation().getId() == 1) {
+                        List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 3 || b.getBlueprint().getId() == 14 || b.getBlueprint().getId() == 15).collect(Collectors.toList());
+
+                        for(Building building : buildings) {
+                            city.removeBuilding(building);
+                            buildingRepository.remove(building);
+                        }
+                    } else if(conqueror.getNation().getId() == 2) {
+                        List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 8 || b.getBlueprint().getId() == 12 || b.getBlueprint().getId() == 13).collect(Collectors.toList());
+
+                        for(Building building : buildings) {
+                            city.removeBuilding(building);
+                            buildingRepository.remove(building);
+                        }
+                    }
+
                     eventRepository.add(new Event("CityConquered", "Du hast " + city.getName() + " eingenommen.", "Die Stadt " + city.getName() + " wurde deinem Imperium einverleibt!", city, conqueror));
                 }
             }

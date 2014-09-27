@@ -84,6 +84,22 @@
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[25]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[26]}"/>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[15]) >= 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[15]}"/>
+                        </c:if>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[20]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[20]}"/>
+                        </c:if>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[21]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[21]}"/>
+                        </c:if>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[24]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[24]}"/>
+                        </c:if>
                     </c:when>
                     <c:otherwise>
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[16]}"/>
@@ -101,6 +117,22 @@
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[24]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[21]}"/>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[19]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[19]}"/>
+                        </c:if>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[22]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[22]}"/>
+                        </c:if>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[25]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[25]}"/>
+                        </c:if>
+
+                        <c:if test="${city.countBuildings(buildingBlueprints[26]) > 0}">
+                            <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[26]}"/>
+                        </c:if>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -163,7 +195,7 @@
             stopMenuUpdate = false;
         },
         maxWidth: 350,
-        content: $('<span style="font-family:\'Philosopher-Bold\'; font-size:18px;">${building.name}</span><br><br>${building.description}<br><br>Geschätzte Bauzeit: <cod:Time time="${building.requiredProduction / city.getProductionRate()}"/><br>Kosten: <span class="<c:choose><c:when test="${building.price > player.coins}">red</c:when><c:otherwise>greenPopup</c:otherwise></c:choose>">${building.price}</span><c:if test="${fn:length(building.requiredBiomes) < 5}"><br>Benötigt: <span class="<c:if test="${building.requiredBiomes.contains(city.biome)}">greenPopup</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>"><c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br>Benötigt: <img style="vertical-align:bottom;" src="assets/resources/${building.requiredResource.id}.png" /> <span class="<c:if test="${city.resource == building.requiredResource}">greenPopup</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>">${building.requiredResource.name}</span></c:if>')
+        content: $('<span style="font-family:\'Philosopher-Bold\'; font-size:18px;">${building.name}</span><br><br>${building.description}<br><br><c:choose><c:when test="${building.nation != null && city.player.nation != building.nation}"><span class="red">Keine Baupläne für fremdes Gebäude vorhanden!</span></c:when><c:otherwise>Geschätzte Bauzeit: <cod:Time time="${building.requiredProduction / city.getProductionRate()}"/><br>Kosten: <span class="<c:choose><c:when test="${building.price > player.coins}">red</c:when><c:otherwise>greenPopup</c:otherwise></c:choose>">${building.price}</span><c:if test="${fn:length(building.requiredBiomes) < 5}"><br>Benötigt: <span class="<c:if test="${building.requiredBiomes.contains(city.biome)}">greenPopup</c:if><c:if test="${!building.requiredBiomes.contains(city.biome)}">red</c:if>"><c:forEach items="${building.requiredBiomes}" var="biome" varStatus="status"><c:if test="${status.first == false && status.last == false}">, </c:if><c:if test="${status.last == true}"> oder </c:if><c:out value="${biome.name}" /></c:forEach></span></c:if><c:if test="${building.requiredResource != null}"><br>Benötigt: <img style="vertical-align:bottom;" src="assets/resources/${building.requiredResource.id}.png" /> <span class="<c:if test="${city.resource == building.requiredResource}">greenPopup</c:if><c:if test="${city.resource != building.requiredResource}">red</c:if>">${building.requiredResource.name}</span></c:if></c:otherwise></c:choose>')
     }).click(function() {
         build(0, ${building.id});
     });
