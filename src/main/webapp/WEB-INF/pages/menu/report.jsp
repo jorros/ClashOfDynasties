@@ -12,7 +12,7 @@
         <select id="formation_selector" style="width:400px; height:30px; margin-left:10px; margin-bottom:10px;">
             <option selected value="city">${city.name}</option>
             <c:forEach items="${formations}" var="formation">
-            <option value="${formation.id}">${formation.name} <c:if test="${formation.player == player}">(Eigene)</c:if><c:if test="${alliedForces.contains(formation.player)}">(Verbündet)</c:if><c:if test="${hostileForces.contains(formation.player)}">(Feindlich)</c:if></option>
+            <option value="${formation.id}">${formation.name} <c:if test="${formation.player == player}">(Eigene)</c:if><c:if test="${alliedForces.contains(formation.player) && formation.player != player}">(Verbündet)</c:if><c:if test="${hostileForces.contains(formation.player)}">(Feindlich)</c:if></option>
             </c:forEach>
         </select>
         <div class="section" style="width:400px; margin-bottom:20px;">

@@ -455,8 +455,15 @@ public class CityLogic {
                     }
                 }
 
-                if(enemyUnits.size() > 0 || !city.getPlayer().equals(player)) {
-                    List<Unit> attackers = Arrays.asList(((Unit[])new EnumeratedDistribution<>(getAttackerProbabilities(playerUnits, enemyUnits)).sample(50)));
+                if((enemyUnits.size() > 0 || !city.getPlayer().equals(player)) && playerUnits.size() > 0) {
+                    EnumeratedDistribution<Unit> attackDistribution = new EnumeratedDistribution<>(getAttackerProbabilities(playerUnits, enemyUnits));
+                    List<Unit> attackers = new ArrayList<>();
+                    int max = 50;
+                    if(playerUnits.size() < 50)
+                        max = playerUnits.size();
+                    for(int i = 0; i < max; i++) {
+                        attackers.add(attackDistribution.sample());
+                    }
 
                     for (Unit unit : attackers) {
                         if (unit.getBlueprint().getId() == 4) {
