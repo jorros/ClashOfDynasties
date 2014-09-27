@@ -146,7 +146,7 @@ public class CityController {
                 if (count > 0) {
                     construction.setCount(count);
                     city.setBuildingConstruction(construction);
-                    player.addCoins(-construction.getBlueprint().getPrice());
+                    player.addCoins(-construction.getBlueprint().getPrice() * count);
                 }
             }
         }
@@ -200,7 +200,7 @@ public class CityController {
             double neededProduction = city.getBuildingConstruction().getRequiredProduction();
             double currentProduction = city.getBuildingConstruction().getProduction();
 
-            player.addCoins(Math.floor(city.getBuildingConstruction().getBlueprint().getPrice() * (1 - currentProduction / neededProduction)));
+            player.addCoins(Math.floor(city.getBuildingConstruction().getBlueprint().getPrice() * city.getBuildingConstruction().getCount() * (1 - currentProduction / neededProduction)));
 
             city.setBuildingConstruction(null);
         }
