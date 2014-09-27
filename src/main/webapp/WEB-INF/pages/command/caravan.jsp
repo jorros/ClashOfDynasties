@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${player == caravan.player }">
-<button onclick="openMenu('caravan?caravan=${caravan.id}')"><img src="assets/setCaravan.png" /></button>
+<button onclick="openMenu('caravan?caravan=${caravan.id}', false)"><img src="assets/setCaravan.png" /></button>
 <button onclick="if(window.confirm('Bist du dir sicher?')) { $.delete('game/caravans/${caravan.id}'); deselect(); }"><img src="assets/removeCaravan.png" /></button>
 </c:if>
 <br><br>
