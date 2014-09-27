@@ -109,6 +109,7 @@ public class MenuController {
 
         map.addAttribute("name", city.getName());
         map.addAttribute("units", city.getUnits());
+        map.addAttribute("buildings", city.getBuildings().stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).collect(Collectors.toList()));
 
         HashMap<String, Long> unitsTotal = new HashMap<>();
         HashMap<String, Long> unitsInjured = new HashMap<>();

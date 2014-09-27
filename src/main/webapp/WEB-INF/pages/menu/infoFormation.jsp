@@ -9,6 +9,11 @@
 <div id="content" style="overflow:hidden;">
     <div style="height:340px; overflow-y:auto; overflow-x:hidden;">
         <ul id="formation_list" class="sortable" style="width:100%;">
+            <c:if test="${not empty buildings}">
+                <c:forEach items="${buildings}" var="building">
+                    <li id="building_${building.id}"><img src="/game/buildings/${building.blueprint.id}/icon?health=${building.health}" /></li>
+                </c:forEach>
+            </c:if>
             <c:forEach items="${units}" var="unit">
                 <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
             </c:forEach>
