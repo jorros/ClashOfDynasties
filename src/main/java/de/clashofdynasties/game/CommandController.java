@@ -119,7 +119,7 @@ public class CommandController {
         String smiley;
 
         if (city.getPopulation() > 0) {
-            if(city.getSatisfaction() > 80)
+            if(city.getSatisfaction() >= 80)
                 smiley = "Happy";
             else if (city.getSatisfaction() < 80 && city.getSatisfaction() >= 60)
                 smiley = "Satisfied";
