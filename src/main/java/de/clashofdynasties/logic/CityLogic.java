@@ -186,7 +186,7 @@ public class CityLogic {
 
         if(city.isPlague()) {
             if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
-                infectionChance = 0.0005;
+                infectionChance = 0.001;
             else
                 infectionChance = 0.0002;
 
@@ -195,7 +195,7 @@ public class CityLogic {
         }
 
         if(city.isFire()) {
-            if(Math.random() < 0.002) {
+            if(Math.random() < 0.0002) {
                 Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(city.getBuildings(), false)).sample();
 
                 selected.setHealth(selected.getHealth() - 30);
@@ -206,7 +206,7 @@ public class CityLogic {
             }
 
             if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
-                fireChance = 0.0005;
+                fireChance = 0.001;
             else
                 fireChance = 0.0002;
 
@@ -215,9 +215,9 @@ public class CityLogic {
         }
 
         if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
-            infectionChance = 0.00001;
+            infectionChance = 0.0000001;
         else
-            infectionChance = 0.00005;
+            infectionChance = 0.0000005;
 
         if(!city.isPlague() && Math.random() < infectionChance) {
             city.setPlague(true);
@@ -225,9 +225,9 @@ public class CityLogic {
         }
 
         if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
-            fireChance = 0.00001;
+            fireChance = 0.0000001;
         else
-            fireChance = 0.00005;
+            fireChance = 0.0000005;
 
         if(!city.isFire() && Math.random() < fireChance) {
             city.setFire(true);
