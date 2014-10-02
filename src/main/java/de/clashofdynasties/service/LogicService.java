@@ -137,6 +137,8 @@ public class LogicService {
             }
             cityLogic.processPopulation(city);
 
+            cityLogic.processEvents(city);
+
             cityLogic.processProduction(city);
 
             cityLogic.processCoins(city);

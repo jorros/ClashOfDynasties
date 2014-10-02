@@ -129,7 +129,7 @@ public class CaravanLogic {
                 if(caravan.getDirection() == 1)
                     nextRoad = caravan.getRoute().getRoads().get(caravan.getRoute().getRoads().indexOf(caravan.getRoute().getCurrentRoad()) - 1);
                 else
-                    nextRoad = caravan.getRoute().getRoads().get(caravan.getRoute().getRoads().indexOf(caravan.getRoute().getCurrentRoad()) - 1);
+                    nextRoad = caravan.getRoute().getRoads().get(caravan.getRoute().getRoads().indexOf(caravan.getRoute().getCurrentRoad()) + 1);
 
                 caravan.setX(next.getX());
                 caravan.setY(next.getY());

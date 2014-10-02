@@ -169,15 +169,70 @@ public class CityLogic {
 
             long maxPeople = (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 1).count() * 10) + 10;
 
-            if (city.getSatisfaction() >= 80 && Math.random() < 0.01 && city.getPopulation() < maxPeople) {
+            if (city.getSatisfaction() >= 80 && Math.random() < 0.01 && city.getPopulation() < maxPeople && !city.isPlague()) {
                 city.setPopulation(city.getPopulation() + 1);
-            } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation()) && city.getPopulation() > 0) {
+            } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation() || (city.isPlague() && Math.random() < 0.002)) && city.getPopulation() > 10) {
                 city.setPopulation(city.getPopulation() - 1);
             }
         }
 
         if(city.getPopulation() < 10)
             city.setPopulation(10);
+    }
+
+    public void processEvents(City city) {
+        double infectionChance;
+        double fireChance;
+
+        if(city.isPlague()) {
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
+                infectionChance = 0.0005;
+            else
+                infectionChance = 0.0002;
+
+            if(Math.random() < infectionChance)
+                city.setPlague(false);
+        }
+
+        if(city.isFire()) {
+            if(Math.random() < 0.002) {
+                Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(city.getBuildings(), false)).sample();
+
+                selected.setHealth(selected.getHealth() - 30);
+                if(selected.getHealth() < 0) {
+                    city.removeBuilding(selected);
+                    buildingRepository.remove(selected);
+                }
+            }
+
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
+                fireChance = 0.0005;
+            else
+                fireChance = 0.0002;
+
+            if(Math.random() < fireChance)
+                city.setFire(false);
+        }
+
+        if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
+            infectionChance = 0.00001;
+        else
+            infectionChance = 0.00005;
+
+        if(!city.isPlague() && Math.random() < infectionChance) {
+            city.setPlague(true);
+            eventRepository.add(new Event("Disease", "Seuche in " + city.getName() + " ausgebrochen", "Es ist eine tödliche Seuche in " + city.getName() + " ausgebrochen. Errichte eine medizinische Einrichtung, um die Epidemie einzudämmen.", city, city.getPlayer()));
+        }
+
+        if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
+            fireChance = 0.00001;
+        else
+            fireChance = 0.00005;
+
+        if(!city.isFire() && Math.random() < fireChance) {
+            city.setFire(true);
+            eventRepository.add(new Event("Fire", "Großbrand in " + city.getName(), "In " + city.getName() + " ist ein Großbrand ausgebrochen. Je länger dieser wütet, desto mehr Gebäude fallen ihm zum Opfer. Errichte eine Brandlösch-Einrichtung, um das Feuer zu stoppen.", city, city.getPlayer()));
+        }
     }
 
     public void processProduction(City city) {
@@ -324,7 +379,7 @@ public class CityLogic {
         return probabilites;
     }
 
-    private List<Pair<Building, Double>> getBuildingProbabilities(List<Building> buildings) {
+    private List<Pair<Building, Double>> getBuildingProbabilities(List<Building> buildings, boolean targetDefence) {
         ArrayList<Pair<Building, Double>> probabilites = new ArrayList<>();
 
         for(Building building : buildings) {
@@ -333,7 +388,7 @@ public class CityLogic {
             if(building.getHealth() < 100)
                 probability += 0.3;
 
-            if(building.getBlueprint().getDefencePoints() > 0)
+            if(building.getBlueprint().getDefencePoints() > 0 && targetDefence)
                 probability += 0.3;
 
             probabilites.add(new Pair<>(building, probability));
@@ -439,8 +494,10 @@ public class CityLogic {
                 else
                     rel = 1;
 
+                if(player.equals(city.getPlayer()))
+                    rel = 3;
 
-                List<Building> enemyBuildings = (!city.getPlayer().equals(player) && rel <= 1) ? city.getBuildings() : new ArrayList<>();
+                List<Building> enemyBuildings = (!city.getPlayer().equals(player) && rel <= 2) ? city.getBuildings() : new ArrayList<>();
 
                 for(Formation formation : formations) {
                     if(!formation.getPlayer().equals(player)) {
@@ -453,6 +510,12 @@ public class CityLogic {
                     } else {
                         playerUnits.addAll(formation.getUnits());
                     }
+                }
+
+                if(rel <= 2) {
+                    enemyUnits.addAll(city.getUnits());
+                } else if(player.equals(city.getPlayer())) {
+                    playerUnits.addAll(city.getUnits());
                 }
 
                 if((enemyUnits.size() > 0 || !city.getPlayer().equals(player)) && playerUnits.size() > 0) {
@@ -489,7 +552,7 @@ public class CityLogic {
 
                                 selected.setHealth(newHealth);
                             } else if (enemyBuildings.stream().filter(b -> b.getBlueprint().getDefencePoints() > 0).count() > 0) {
-                                Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings)).sample();
+                                Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(enemyBuildings, true)).sample();
 
                                 int newHealth = selected.getHealth();
 

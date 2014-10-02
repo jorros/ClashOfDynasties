@@ -30,6 +30,9 @@ public class RelationRepository extends Repository<Relation> {
     }
 
     public Relation findByPlayers(Player player1, Player player2) {
-        return items.stream().filter(r -> r.getPlayer1().equals(player1) && r.getPlayer2().equals(player2) || r.getPlayer2().equals(player1) && r.getPlayer1().equals(player2)).findFirst().orElse(null);
+        if(player1 != null && player2 != null)
+            return items.stream().filter(r -> r.getPlayer1().equals(player1) && r.getPlayer2().equals(player2) || r.getPlayer2().equals(player1) && r.getPlayer1().equals(player2)).findFirst().orElse(null);
+        else
+            return null;
     }
 }

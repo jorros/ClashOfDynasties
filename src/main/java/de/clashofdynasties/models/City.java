@@ -56,6 +56,10 @@ public class City implements MapNode {
 
     private List<ObjectId> visibility;
 
+    private boolean fire;
+
+    private boolean plague;
+
     public City() {
         units = new ArrayList<>();
         items = new HashMap<>();
@@ -97,6 +101,22 @@ public class City implements MapNode {
     public void setPlayer(Player player) {
         this.player = player.getId();
         updateTimestamp();
+    }
+
+    public boolean isFire() {
+        return fire;
+    }
+
+    public void setFire(boolean fire) {
+        this.fire = fire;
+    }
+
+    public boolean isPlague() {
+        return plague;
+    }
+
+    public void setPlague(boolean plague) {
+        this.plague = plague;
     }
 
     public int getPopulation() {

@@ -21,6 +21,16 @@
         <td>Zustimmung: <c:if test="${satisfaction != null}"><img src="assets/satisfaction/${satisfaction}.png" style="width:16px; height:16px;" />(${city.satisfaction}%)</c:if><c:if test="${satisfaction == null}">?</c:if></td>
     </tr>
     </c:if>
+    <c:if test="${city.plague}">
+        <tr>
+            <td colspan="2" class="red">Es grassiert eine Seuche in dieser Stadt.</td>
+        </tr>
+    </c:if>
+    <c:if test="${city.fire}">
+        <tr>
+            <td colspan="2" class="red">Ein Feuer wütet in dieser Stadt.</td>
+        </tr>
+    </c:if>
     <c:if test="${ city.player == player }">
     <tr>
         <td colspan="2">Bilanz: ${city.getIncome() - city.getOutcome()} (<span class="green">${city.getIncome()}</span>/<span class="red">${city.getOutcome()}</span>)</td>

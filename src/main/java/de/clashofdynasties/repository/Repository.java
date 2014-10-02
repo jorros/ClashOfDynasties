@@ -27,7 +27,7 @@ public class Repository<K>{
     public void remove(List<K> item) {
         if(items.containsAll(item)) {
             mongoTemplate.remove(item);
-            items.remove(item);
+            items.removeAll(item);
         }
     }
 
