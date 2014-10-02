@@ -600,6 +600,15 @@ public class CityLogic {
                 }
             }
 
+            Party cityParty = report.getParties().stream().filter(p -> p.getPlayer().equals(city.getPlayer())).findFirst().get();
+            for(Unit unit : city.getUnits()) {
+                if(unit.getHealth() <= 0) {
+                    city.removeUnit(unit);
+                    cityParty.setLosses(cityParty.getLosses() + 1);
+                    unitRepository.remove(unit);
+                }
+            }
+
             formations.stream().filter(f -> f.getUnits().size() == 0).forEach(f -> {
                 eventRepository.add(new Event("Loss", f.getName() + " wurde vernichtet.", "Deine Formation " + f.getName() + " wurde bei der Schlacht um " + city.getName() + " vom Gegner ausradiert!", city, f.getPlayer()));
                 formationRepository.remove(f);
