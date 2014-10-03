@@ -123,9 +123,10 @@ public class PlayerLogic {
 
             if(!other.isVisible(player)) {
                 other.addVisibility(player);
-                if(level > 1)
-                    setVisible(other, level - 1, cities, player);
             }
+
+            if(level > 1)
+                setVisible(other, level - 1, cities, player);
         }
     }
 }
