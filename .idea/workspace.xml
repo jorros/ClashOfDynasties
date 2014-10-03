@@ -7,13 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/Disease.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/Fire.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/War.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/events/DiplomaticWar.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/events/DiplomaticWar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -102,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="11152">
-              <caret line="197" column="36" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.5177665" vertical-offset="6137" max-vertical-offset="11152">
+              <caret line="388" column="34" selection-start-line="388" selection-start-column="34" selection-end-line="388" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -126,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="report.jsp" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="report.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15752213" vertical-offset="795" max-vertical-offset="1768">
+            <state vertical-scroll-proportion="-3.4230769" vertical-offset="795" max-vertical-offset="1768">
               <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
               <folding />
             </state>
@@ -247,10 +241,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RelationRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       </list>
     </option>
   </component>
@@ -1345,7 +1339,7 @@
       <workItem from="1412166729346" duration="351000" />
       <workItem from="1412167113262" duration="1877000" />
       <workItem from="1412241596185" duration="6162000" />
-      <workItem from="1412328568799" duration="1500000" />
+      <workItem from="1412328568799" duration="1564000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2127,11 +2121,15 @@
       <created>1412251827153</created>
       <updated>1412251827153</updated>
     </task>
-    <option name="localTasksCounter" value="196" />
+    <task id="LOCAL-00196" summary="Icons in Stadtanzeige hinzugefügt">
+      <created>1412330080396</created>
+      <updated>1412330080396</updated>
+    </task>
+    <option name="localTasksCounter" value="197" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1021664000" />
+    <option name="totallyTimeSpent" value="1021728000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2212,7 +2210,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Formationsbewegung: Gefixt und Memory Leak behoben" />
     <MESSAGE value="Baumenü: Layoutfix" />
     <MESSAGE value="Kriegsalgorithmus: 50 Einheiten werden je Kampfrunde ausgewählt" />
     <MESSAGE value="Dorf benötigt nur Zentrum für maximale Zufriedenheit" />
@@ -2237,7 +2234,8 @@
     <MESSAGE value="Seuche und Feuer Events hinzugefügt" />
     <MESSAGE value="Stadteinheiten werden bei Verlustrechnung einbezogen" />
     <MESSAGE value="Warscheinlichkeiten geändert für Events" />
-    <option name="LAST_COMMIT_MESSAGE" value="Warscheinlichkeiten geändert für Events" />
+    <MESSAGE value="Icons in Stadtanzeige hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Icons in Stadtanzeige hinzugefügt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2545,14 +2543,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3077" max-vertical-offset="11152">
-          <caret line="197" column="36" selection-start-line="197" selection-start-column="36" selection-end-line="197" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-19.615385" vertical-offset="0" max-vertical-offset="1020">
@@ -2591,8 +2581,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15752213" vertical-offset="795" max-vertical-offset="1768">
+        <state vertical-scroll-proportion="-3.4230769" vertical-offset="795" max-vertical-offset="1768">
           <caret line="52" column="33" selection-start-line="52" selection-start-column="33" selection-end-line="52" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5177665" vertical-offset="6137" max-vertical-offset="11152">
+          <caret line="388" column="34" selection-start-line="388" selection-start-column="34" selection-end-line="388" selection-end-column="34" />
           <folding />
         </state>
       </provider>

@@ -371,7 +371,7 @@ public class CityLogic {
                 probability += 0.2;
 
             if(unit.getHealth() < 100)
-                probability += 0.3;
+                probability += 0.5;
 
             probabilites.add(new Pair<>(unit, probability));
         }
@@ -386,7 +386,7 @@ public class CityLogic {
             double probability = 0.1;
 
             if(building.getHealth() < 100)
-                probability += 0.3;
+                probability += 0.5;
 
             if(building.getBlueprint().getDefencePoints() > 0 && targetDefence)
                 probability += 0.3;
