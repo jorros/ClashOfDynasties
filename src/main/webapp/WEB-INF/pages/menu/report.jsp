@@ -50,7 +50,7 @@
     <div style="float:right;">
         <div class="section" style="width:450px; margin-bottom:20px;">
             <h4>Kriegsparteien</h4>
-            <div style="height:80px; overflow-y:auto; overflow-x:hidden;">
+            <div style="height:65px; overflow-y:auto; overflow-x:hidden;">
                 <table style="width:100%;">
                     <tr>
                         <td style="width:50%;">
@@ -74,6 +74,9 @@
                 </table>
             </div>
         </div>
+    </div>
+    <div>
+        <button onclick="closeMenu()" style="position:absolute; right:25px; bottom: 120px;">Schlie&szlig;en</button>
     </div>
 </div>
 

@@ -408,6 +408,9 @@ public class City implements MapNode {
                     node.put("satisfaction", getSatisfaction());
                     node.put("population", getPopulation());
                     node.put("defence", getDefencePoints());
+                    node.put("war", getReport() != null);
+                    node.put("disease", isPlague());
+                    node.put("fire", isFire());
 
                     List<Formation> formations = getFormations();
                     ArrayNode formationNodes = factory.arrayNode();

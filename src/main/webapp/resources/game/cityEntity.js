@@ -69,7 +69,10 @@ Crafty.c("City", {
             $(this._infoEntity._element).append('<div id="' + this._cid + '_build" onclick="openMenu(\'build?city=' + this._cid + '\'); openCommand(\'city?city=' + this._cid + '\', \'' + Cities[this._cid].name + '\');" style="cursor:pointer; float:right; border-left: 1px solid #000; border-top-right-radius: 20px; border-bottom-right-radius: 20px; height:35px; width:40px; background-color:#3F4C6B;"><img src="assets/build.png" style="margin-right:7px; margin-top:3px;" /></div>');
             $(this._infoEntity._element).append('<span id="' + this._cid + '_people" style="float:left; margin-left:10px; font-size:22px">?</span>');
             $(this._infoEntity._element).append('<img id="' + this._cid + '_satisfaction" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/satisfaction/Happy.png" />');
+            $(this._infoEntity._element).append('<img id="' + this._cid + '_disease" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/Disease.png" />');
+            $(this._infoEntity._element).append('<img id="' + this._cid + '_fire" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/Fire.png" />');
             $(this._infoEntity._element).append('<div id="' + this._cid + '_defence" style="float:right; margin-top:3px; margin-right:5px;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_defencePoints" style="font-size:22px; vertical-align:top;">0</span></div>');
+            $(this._infoEntity._element).append('<img id="' + this._cid + '_war" style="float:right; margin-top:7px; margin-right:5px; height:20px; width:20px; cursor:pointer;" onclick="openMenu(\'report?city=' + this._cid + '\', false)" src="assets/War.png" />');
 
             $(this._formationsInfoEntity._element).html('<span style="line-height: 20px;" id="' + this._cid + '_formations">0</span>');
 
@@ -130,6 +133,21 @@ Crafty.c("City", {
             else
                 $("#" + this._cid + "_build").hide();
 
+            if (Cities[this._cid].war)
+                $("#" + this._cid + "_war").show();
+            else
+                $("#" + this._cid + "_war").hide();
+
+            if (Cities[this._cid].fire)
+                $("#" + this._cid + "_fire").show();
+            else
+                $("#" + this._cid + "_fire").hide();
+
+            if (Cities[this._cid].disease)
+                $("#" + this._cid + "_disease").show();
+            else
+                $("#" + this._cid + "_disease").hide();
+
             if (Cities[this._cid].formations != null && Cities[this._cid].formations.length > 0) {
                 $("#" + this._cid + "_formations").text(Cities[this._cid].formations.length);
                 $(this._formationsInfoEntity._element).show();
@@ -147,6 +165,15 @@ Crafty.c("City", {
 
             if ($("#" + this._cid + "_build").is(":visible"))
                 infoWidth += $("#" + this._cid + "_build").width();
+
+            if ($("#" + this._cid + "_war").is(":visible"))
+                infoWidth += $("#" + this._cid + "_war").width();
+
+            if ($("#" + this._cid + "_disease").is(":visible"))
+                infoWidth += $("#" + this._cid + "_disease").width();
+
+            if ($("#" + this._cid + "_fire").is(":visible"))
+                infoWidth += $("#" + this._cid + "_fire").width();
 
             if ($("#" + this._cid + "_satisfaction").is(":visible"))
                 infoWidth += $("#" + this._cid + "_satisfaction").width();
