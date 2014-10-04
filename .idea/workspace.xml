@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -126,16 +126,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="caravan.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2567">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -146,12 +136,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoreItem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="StoreItem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61025643" vertical-offset="442" max-vertical-offset="1615">
+            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1615">
               <caret line="63" column="83" selection-start-line="63" selection-start-column="83" selection-end-line="63" selection-end-column="83" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.7726495" vertical-offset="2975" max-vertical-offset="11339">
+              <caret line="236" column="9" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -230,7 +232,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" />
@@ -241,6 +242,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       </list>
     </option>
   </component>
@@ -1434,7 +1436,7 @@
       <workItem from="1412409067544" duration="16348000" />
       <workItem from="1412440240625" duration="407000" />
       <workItem from="1412443283018" duration="491000" />
-      <workItem from="1412443795703" duration="279000" />
+      <workItem from="1412443795703" duration="340000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2236,11 +2238,15 @@
       <created>1412428074076</created>
       <updated>1412428074076</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="Lager Konsumrate Anzeige optimiert">
+      <created>1412444085566</created>
+      <updated>1412444085566</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1044154000" />
+    <option name="totallyTimeSpent" value="1044215000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2321,7 +2327,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Events hinzugefügt" />
     <MESSAGE value="Ressource Rosen hinzugefügt" />
     <MESSAGE value="Zufriedenheit steigt schneller an" />
     <MESSAGE value="Bei negativen freien Bauplätzen verdoppel Kosten" />
@@ -2346,7 +2351,8 @@
     <MESSAGE value="Sichtfeld fix" />
     <MESSAGE value="Formationssetup überarbeitet" />
     <MESSAGE value="Formationsinfo: Grenze für Verletztenstatus liegt jetzt bei 90" />
-    <option name="LAST_COMMIT_MESSAGE" value="Formationsinfo: Grenze für Verletztenstatus liegt jetzt bei 90" />
+    <MESSAGE value="Lager Konsumrate Anzeige optimiert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lager Konsumrate Anzeige optimiert" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2591,13 +2597,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6137" max-vertical-offset="11152">
-          <caret line="388" column="34" selection-start-line="388" selection-start-column="34" selection-end-line="388" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/assets.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7466887" vertical-offset="1334" max-vertical-offset="1989">
@@ -2693,9 +2692,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61025643" vertical-offset="442" max-vertical-offset="1615">
+        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="1615">
           <caret line="63" column="83" selection-start-line="63" selection-start-column="83" selection-end-line="63" selection-end-column="83" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7726495" vertical-offset="2975" max-vertical-offset="11339">
+          <caret line="236" column="9" selection-start-line="236" selection-start-column="9" selection-end-line="236" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
