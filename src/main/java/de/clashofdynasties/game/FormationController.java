@@ -1,5 +1,7 @@
 package de.clashofdynasties.game;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
@@ -11,11 +13,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/game/formations")
@@ -95,7 +99,7 @@ public class FormationController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
-    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam("units[]") List<ObjectId> unitsId) {
+    public void create(Principal principal, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam String unitsJson, @RequestParam String injuredUnitsJson) {
         City city = cityRepository.findById(cityId);
         Player player = playerRepository.findByName(principal.getName());
 
@@ -107,14 +111,24 @@ public class FormationController {
 
         formationRepository.add(formation);
 
-        save(principal, formation.getId(), name, cityId, unitsId);
+        save(principal, formation.getId(), name, cityId, unitsJson, injuredUnitsJson);
     }
 
     @RequestMapping(value = "/{formation}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(Principal principal, @PathVariable("formation") ObjectId formationId, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam("units[]") List<ObjectId> unitsId) {
+    public void save(Principal principal, @PathVariable("formation") ObjectId formationId, @RequestParam("name") String name, @RequestParam("city") ObjectId cityId, @RequestParam String unitsJson, @RequestParam String injuredUnitsJson) {
         City city = cityRepository.findById(cityId);
         Player player = playerRepository.findByName(principal.getName());
+        ObjectMapper mapper = new ObjectMapper();
+
+        Map<Integer, Integer> units = new HashMap<>();
+        Map<Integer, Integer> injuredUnits = new HashMap<>();
+        try {
+            units = mapper.readValue(unitsJson, new TypeReference<HashMap<Integer, Integer>>() {});
+            injuredUnits = mapper.readValue(injuredUnitsJson, new TypeReference<HashMap<Integer, Integer>>() {});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         if (player.equals(city.getPlayer())) {
             Formation formation;
@@ -122,19 +136,36 @@ public class FormationController {
 
             if (player.equals(formation.getPlayer())) {
                 if (formation.getRoute() == null) {
-                    for (Unit unit : formation.getUnits()) {
-                        if (!unitsId.contains(unit.getId())) {
-                            formation.removeUnit(unit);
-                            city.addUnit(unit);
-                        }
+                    List<Unit> sumUnits = new ArrayList<>(formation.getUnits());
+                    sumUnits.addAll(city.getUnits());
+
+                    city.clearUnits();
+                    formation.clearUnits();
+
+                    for(Integer blp : units.keySet()) {
+                        List<Unit> healthyUnitList;
+                        List<Unit> newHealthyUnitList = new ArrayList<>();
+
+                        healthyUnitList = sumUnits.stream().filter(u -> u.getHealth() >= 90 && u.getBlueprint().getId() == blp).collect(Collectors.toList());
+                        newHealthyUnitList.addAll(healthyUnitList.subList(0, units.get(blp)));
+
+                        healthyUnitList.removeAll(newHealthyUnitList);
+
+                        healthyUnitList.forEach(city::addUnit);
+                        newHealthyUnitList.forEach(formation::addUnit);
                     }
-                    for (ObjectId unitId : unitsId) {
-                        Unit unit = unitRepository.findById(unitId);
 
-                        if (city.getUnits().contains(unit))
-                            city.removeUnit(unit);
+                    for(Integer blp : injuredUnits.keySet()) {
+                        List<Unit> injuredUnitList;
+                        List<Unit> newInjuredUnitList = new ArrayList<>();
 
-                        formation.addUnit(unit);
+                        injuredUnitList = sumUnits.stream().filter(u -> u.getHealth() < 90).collect(Collectors.toList());
+                        newInjuredUnitList.addAll(injuredUnitList.subList(0, injuredUnits.get(blp)));
+
+                        injuredUnitList.removeAll(newInjuredUnitList);
+
+                        injuredUnitList.forEach(city::addUnit);
+                        newInjuredUnitList.forEach(formation::addUnit);
                     }
 
                     formation.setName(name);

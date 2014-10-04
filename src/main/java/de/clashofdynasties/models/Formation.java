@@ -95,7 +95,12 @@ public class Formation implements MapNode {
     }
 
     public void addUnit(Unit unit) {
-        units.add(unit.getId());
+        if(!units.contains(unit.getId()))
+            units.add(unit.getId());
+    }
+
+    public void clearUnits() {
+        units.clear();
     }
 
     public void removeUnit(Unit unit) {

@@ -3,7 +3,7 @@
 
 <c:if test="${formation.deployed && player.id == formation.player.id && formation.lastCity.player.id == player.id }">
 <button onclick="openMenu('formation?formation=${formation.id}', false)"><img src="assets/setFormation.png" /></button>
-<button onclick="if(window.confirm('Bist du dir sicher?')) { $.delete('game/formations/${formation.id}'); deselect(); }"><img src="assets/removeCaravan.png" /></button>
+<button onclick="if(window.confirm('Bist du dir sicher?')) { $.delete('game/formations/${formation.id}', function() { forceUpdate(); }); deselect(); }"><img src="assets/removeCaravan.png" /></button>
 </c:if>
 <c:if test="${!formation.deployed || player.id != formation.player.id || formation.lastCity.player.id != player.id }">
     <button onclick="openMenu('formation?formation=${formation.id}', false)"><img src="assets/infoFormation.png" /></button>

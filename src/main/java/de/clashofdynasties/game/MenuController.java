@@ -1,14 +1,9 @@
 package de.clashofdynasties.game;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -51,15 +46,16 @@ public class MenuController {
     @Autowired
     private RelationRepository relationRepository;
 
-    @Autowired
-    private EventRepository eventRepository;
-
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) ObjectId id, @RequestParam(value = "city", required = false) ObjectId cityID) {
         Player player = playerRepository.findByName(principal.getName());
 
+        Formation formation = null;
+        City city = null;
+        boolean create = false;
+
         if (id != null) {
-            Formation formation = formationRepository.findById(id);
+            formation = formationRepository.findById(id);
 
             if (!formation.getPlayer().equals(player) || !formation.isDeployed() || !formation.getLastCity().getPlayer().equals(formation.getPlayer())) {
                 map.addAttribute("name", formation.getName());
@@ -81,23 +77,49 @@ public class MenuController {
                 return "menu/infoFormation";
             }
             else {
-                map.addAttribute("formation", formation);
-                map.addAttribute("city", formation.getLastCity());
-                map.addAttribute("create", false);
+                city = formation.getLastCity();
+                create = false;
             }
         } else if (cityID != null) {
-            City city = cityRepository.findById(cityID);
+            city = cityRepository.findById(cityID);
 
             if (!city.getPlayer().equals(player))
                 return null;
 
-            Formation formation = new Formation();
+            formation = new Formation();
             formation.setName("Neue Formation");
 
-            map.addAttribute("formation", formation);
-            map.addAttribute("city", city);
-            map.addAttribute("create", true);
+            create = true;
         }
+
+        map.addAttribute("formation", formation);
+        map.addAttribute("city", city);
+        map.addAttribute("create", create);
+
+        ArrayList<Unit> units = new ArrayList<>(formation.getUnits());
+        units.addAll(city.getUnits());
+
+        List<UnitBlueprint> blueprints = units.stream().map(u -> u.getBlueprint()).distinct().collect(Collectors.toList());
+
+        HashMap<Integer, Long> unitMap = new HashMap<>();
+        HashMap<Integer, Long> injuredUnitMap = new HashMap<>();
+
+        HashMap<Integer, Long> formationUnitMap = new HashMap<>();
+        HashMap<Integer, Long> formationInjuredUnitMap = new HashMap<>();
+
+        for(UnitBlueprint blueprint : blueprints) {
+            unitMap.put(blueprint.getId(), units.stream().filter(u -> u.getBlueprint().equals(blueprint) && u.getHealth() >= 90).count());
+            injuredUnitMap.put(blueprint.getId(), units.stream().filter(u -> u.getBlueprint().equals(blueprint) && u.getHealth() < 90).count());
+
+            formationUnitMap.put(blueprint.getId(), formation.getUnits().stream().filter(u -> u.getBlueprint().equals(blueprint) && u.getHealth() >= 90).count());
+            formationInjuredUnitMap.put(blueprint.getId(), formation.getUnits().stream().filter(u -> u.getBlueprint().equals(blueprint) && u.getHealth() < 90).count());
+        }
+
+        map.addAttribute("unitBlueprints", blueprints);
+        map.addAttribute("units", unitMap);
+        map.addAttribute("injuredUnits", injuredUnitMap);
+        map.addAttribute("formationUnits", formationUnitMap);
+        map.addAttribute("formationInjuredUnits", formationInjuredUnitMap);
 
         return "menu/setupFormation";
     }

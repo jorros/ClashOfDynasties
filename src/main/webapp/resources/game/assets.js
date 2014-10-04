@@ -95,6 +95,8 @@ var Assets = ["assets/buildings/1.png",
     "assets/build.png",
     "assets/Caravan.png",
     "assets/Caravan2.png",
+    "assets/Disease.png",
+    "assets/Fire.png",
     "assets/Formation.png",
     "assets/Formations.png",
     "assets/FormationsBlack.png",
@@ -105,5 +107,6 @@ var Assets = ["assets/buildings/1.png",
     "assets/report.png",
     "assets/setCaravan.png",
     "assets/setFormation.png",
-    "assets/showItems.png"
+    "assets/showItems.png",
+    "assets/War.png"
 ];

@@ -2,61 +2,74 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style>
-    .sortable { list-style-type: none; margin: 0; padding: 0; width: 380px; min-height:260px; }
-    .sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 50px; height: 50px; font-size: 4em; text-align: center; }
-    li.selected { outline: 1px dashed greenyellow; }
+    .outer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        display:-webkit-flex;
+        -webkit-flex-direction:row;
+        -webkit-flex-wrap:wrap;
+    }
 </style>
 <script>
     function save()
     {
-        var assigned = new Array();
-        $.each($("#formation_list > li").get(), function(count, obj) {
-            assigned.push($(obj).attr("id").slice(5));
+        var units = {};
+        var injuredUnits = {};
+
+        <c:forEach items="${unitBlueprints}" var="bp">
+        units[${bp.id}] = $("#${bp.id}_healthy").val();
+        injuredUnits[${bp.id}] = $("#${bp.id}_injured").val();
+        </c:forEach>
+
+        var counter = 0;
+
+        $.each(units, function(index, value) {
+            counter += value;
         });
+        $.each(injuredUnits, function(index, value) {
+            counter += value;
+        });
+
+        if(counter == 0) {
+            alert("Die Formation enthält keine Einheiten!");
+            return;
+        }
 
         <c:choose>
             <c:when test="${!create}">
-            $.put("/game/formations/${formation.id}", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
-                updateGame();
+            $.put("/game/formations/${formation.id}", { "city": "${city.id}", "unitsJson": JSON.stringify(units), "injuredUnitsJson": JSON.stringify(injuredUnits), "name": $("#formation_name").val() }, function() {
+                forceUpdate();
+                closeMenu();
             });
             </c:when>
             <c:otherwise>
-            $.post("/game/formations/", { "city": "${city.id}", "units": assigned, "name": $("#formation_name").val() }, function() {
-                updateGame();
+            $.post("/game/formations/", { "city": "${city.id}", "unitsJson": JSON.stringify(units), "injuredUnitsJson": JSON.stringify(injuredUnits), "name": $("#formation_name").val() }, function() {
+                forceUpdate();
+                closeMenu();
             });
             </c:otherwise>
         </c:choose>
-        closeMenu();
     }
 </script>
 <h1>${formation.name}</h1>
 <div id="content" style="overflow:hidden;">
-    <div style="text-align:center; margin-bottom:10px;">
-        <span style="color:white;">Ordne die Einheiten mittels Drag'n'Drop zu</span>
-    </div>
-    <div style="float:left;">
-        <div class="section" style="width:400px; margin-bottom:20px;">
-            <h4>${city.name}</h4>
-            <div style="height:290px; overflow-y:auto; overflow-x:hidden;">
-                <ul id="city_list" class="sortable">
-                    <c:forEach items="${city.units}" var="unit">
-                        <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
-                    </c:forEach>
-                </ul>
+    <div class="outer" style="height:400px; overflow-y:hidden; overflow-x:hidden; margin-bottom:20px;">
+        <c:forEach items="${unitBlueprints}" var="bp">
+            <div style="clear:both; width:430px; height:70px; border-bottom: thin solid #fff; margin-right:30px;">
+                <img style="float:left; margin-top:5px;" src="assets/units/${bp.id}.png" />
+                <div style="float:left; margin-left:20px; margin-top:5px;">
+                    <div>
+                        <div style="width:170px; margin-bottom:10px; float:left;" id="${bp.id}_healthy_slider"></div>
+                        <input id="${bp.id}_healthy" type="number" style="padding:5px; float:left; height:15px; margin-top:-5px; margin-left:12px; width:45px; font-size:15px;" value="${formationUnits[bp.id]}"<c:if test="${units[bp.id] == 0}"> disabled</c:if> /><span style="float:left; margin-left:5px;"> / ${units[bp.id]}</span>
+                    </div>
+                    <div>
+                        <div style="width:170px; float:left;" id="${bp.id}_injured_slider"></div>
+                        <input id="${bp.id}_injured" type="number" style="padding:5px; float:left; height:15px; margin-top:-5px; margin-left:12px; width:45px; font-size:15px;" value="${formationInjuredUnits[bp.id]}"<c:if test="${injuredUnits[bp.id] == 0}"> disabled</c:if> /><span class="red" style="float:left; margin-left:5px;"> / ${injuredUnits[bp.id]} Verletzte</span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div style="float:right;">
-        <div class="section" style="width:400px; margin-bottom:20px;">
-            <h4>${formation.name}</h4>
-            <div style="height:290px; overflow-y:auto; overflow-x:hidden;">
-                <ul id="formation_list" class="sortable">
-                    <c:forEach items="${formation.units}" var="unit">
-                        <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
-                    </c:forEach>
-                </ul>
-            </div>
-        </div>
+        </c:forEach>
     </div>
     <div style="clear:both;">
     </div>
@@ -69,8 +82,22 @@
 </div>
 
 <script>
-    $(".sortable").multisortable();
-    $("#city_list, #formation_list").sortable({
-        connectWith: ".sortable"
+    <c:forEach items="${unitBlueprints}" var="bp">
+    $("#${bp.id}_healthy_slider").slider({
+        max: ${units[bp.id]},
+        disabled: ${units[bp.id] == 0},
+        slide: function(event, ui) {
+            $("#${bp.id}_healthy").val(ui.value);
+        },
+        value: ${formationUnits[bp.id]}
     });
+    $("#${bp.id}_injured_slider").slider({
+        max: ${injuredUnits[bp.id]},
+        disabled: ${injuredUnits[bp.id] == 0},
+        slide: function(event, ui) {
+            $("#${bp.id}_injured").val(ui.value);
+        },
+        value: ${formationInjuredUnits[bp.id]}
+    });
+    </c:forEach>
 </script>
