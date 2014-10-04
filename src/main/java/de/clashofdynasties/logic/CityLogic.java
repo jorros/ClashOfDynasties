@@ -220,7 +220,7 @@ public class CityLogic {
             else
                 infectionChance = 0.0000005;
 
-            if (!city.isPlague() && Math.random() < infectionChance) {
+            if (!city.isPlague() && Math.random() < infectionChance && city.getPopulation() > 10) {
                 city.setPlague(true);
                 eventRepository.add(new Event("Disease", "Seuche in " + city.getName() + " ausgebrochen", "Es ist eine tödliche Seuche in " + city.getName() + " ausgebrochen. Errichte eine medizinische Einrichtung, um die Epidemie einzudämmen.", city, city.getPlayer()));
             }
@@ -230,7 +230,7 @@ public class CityLogic {
             else
                 fireChance = 0.0000005;
 
-            if (!city.isFire() && Math.random() < fireChance) {
+            if (!city.isFire() && Math.random() < fireChance && city.getBuildings().size() > 0) {
                 city.setFire(true);
                 eventRepository.add(new Event("Fire", "Großbrand in " + city.getName(), "In " + city.getName() + " ist ein Großbrand ausgebrochen. Je länger dieser wütet, desto mehr Gebäude fallen ihm zum Opfer. Errichte eine Brandlösch-Einrichtung, um das Feuer zu stoppen.", city, city.getPlayer()));
             }
