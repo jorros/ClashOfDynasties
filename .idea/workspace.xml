@@ -6,7 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Events nur bei Population &gt;">
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -149,8 +149,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6974359" vertical-offset="3536" max-vertical-offset="11339">
-              <caret line="232" column="94" selection-start-line="232" selection-start-column="94" selection-end-line="232" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.11623932" vertical-offset="3179" max-vertical-offset="11339">
+              <caret line="191" column="45" selection-start-line="191" selection-start-column="45" selection-end-line="191" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1436,7 +1436,7 @@
       <workItem from="1412409067544" duration="16348000" />
       <workItem from="1412440240625" duration="407000" />
       <workItem from="1412443283018" duration="491000" />
-      <workItem from="1412443795703" duration="408000" />
+      <workItem from="1412443795703" duration="458000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2246,11 +2246,15 @@
       <created>1412444143944</created>
       <updated>1412444143944</updated>
     </task>
-    <option name="localTasksCounter" value="203" />
+    <task id="LOCAL-00203" summary="Brand: Nur wenn Gebäude existieren, Seuche: Nur wenn Pop &gt; 10">
+      <created>1412444220913</created>
+      <updated>1412444220913</updated>
+    </task>
+    <option name="localTasksCounter" value="204" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1044283000" />
+    <option name="totallyTimeSpent" value="1044333000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2331,7 +2335,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Zufriedenheit steigt schneller an" />
     <MESSAGE value="Bei negativen freien Bauplätzen verdoppel Kosten" />
     <MESSAGE value="Neues Icon für Fierybrennerei" />
     <MESSAGE value="Baupopup optimiert" />
@@ -2356,7 +2359,8 @@
     <MESSAGE value="Formationsinfo: Grenze für Verletztenstatus liegt jetzt bei 90" />
     <MESSAGE value="Lager Konsumrate Anzeige optimiert" />
     <MESSAGE value="Türme dürfen keine Events haben" />
-    <option name="LAST_COMMIT_MESSAGE" value="Türme dürfen keine Events haben" />
+    <MESSAGE value="Brand: Nur wenn Gebäude existieren, Seuche: Nur wenn Pop &gt; 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="Brand: Nur wenn Gebäude existieren, Seuche: Nur wenn Pop &gt; 10" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2704,8 +2708,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6974359" vertical-offset="3536" max-vertical-offset="11339">
-          <caret line="232" column="94" selection-start-line="232" selection-start-column="94" selection-end-line="232" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.11623932" vertical-offset="3179" max-vertical-offset="11339">
+          <caret line="191" column="45" selection-start-line="191" selection-start-column="45" selection-end-line="191" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

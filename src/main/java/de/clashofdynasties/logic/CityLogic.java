@@ -189,7 +189,7 @@ public class CityLogic {
                 if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
                     infectionChance = 0.001;
                 else
-                    infectionChance = 0.0002;
+                    infectionChance = 0.000002;
 
                 if (Math.random() < infectionChance)
                     city.setPlague(false);
@@ -209,7 +209,7 @@ public class CityLogic {
                 if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
                     fireChance = 0.001;
                 else
-                    fireChance = 0.0002;
+                    fireChance = 0.000002;
 
                 if (Math.random() < fireChance)
                     city.setFire(false);
