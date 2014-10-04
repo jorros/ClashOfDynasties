@@ -68,7 +68,7 @@ public class MenuController {
 
                 for(int i : classes) {
                     unitsTotal.put(unitBlueprintRepository.findById(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
-                    unitsInjured.put(unitBlueprintRepository.findById(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
+                    unitsInjured.put(unitBlueprintRepository.findById(i).getName(), formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 90).count());
                 }
 
                 map.addAttribute("unitsTotal", unitsTotal);
@@ -140,7 +140,7 @@ public class MenuController {
 
         for(int i : classes) {
             unitsTotal.put(unitBlueprintRepository.findById(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i).count());
-            unitsInjured.put(unitBlueprintRepository.findById(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 100).count());
+            unitsInjured.put(unitBlueprintRepository.findById(i).getName(), city.getUnits().stream().filter(u -> u.getBlueprint().getId() == i && u.getHealth() < 90).count());
         }
 
         map.addAttribute("unitsTotal", unitsTotal);
