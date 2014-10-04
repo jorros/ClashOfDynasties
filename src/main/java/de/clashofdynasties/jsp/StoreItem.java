@@ -3,11 +3,14 @@ package de.clashofdynasties.jsp;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Item;
 import de.clashofdynasties.models.Player;
+import de.clashofdynasties.repository.ItemRepository;
+import de.clashofdynasties.repository.ItemTypeRepository;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
+import java.util.List;
 
 public class StoreItem extends SimpleTagSupport {
     private Player player;
@@ -58,7 +61,16 @@ public class StoreItem extends SimpleTagSupport {
             }
 
             if((city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) && city.getRequiredItemTypes().contains(item.getType())) {
+                List<Item> items = ItemRepository.get().findByType(item.getType());
+
                 consumption = new Double(city.getPopulation() * rate * 3600).intValue();
+
+                for(Item need : items) {
+                    if(city.getStoredItem(need.getId()) > 0 && !need.equals(item) && !city.getStopConsumption().contains(need)) {
+                        consumption = 0;
+                        break;
+                    }
+                }
             }
 
             int balance = production - consumption;
