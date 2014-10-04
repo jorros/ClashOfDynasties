@@ -135,6 +135,7 @@ public class CommandController {
         map.addAttribute("city", city);
         map.addAttribute("freeSlots", freeSlots);
         map.addAttribute("maxSlots", maxSlots);
+        map.addAttribute("canTrade", city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 12).count() > 0);
 
         return "command/city";
     }

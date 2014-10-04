@@ -571,16 +571,15 @@ public class LogicService {
             badehaus.addRequiredBiome(steppe);
             buildingBlueprintRepository.add(badehaus);
 
-            BuildingBlueprint universitat = new BuildingBlueprint();
-            universitat.setId(12);
-            universitat.setName("Universität");
-            universitat.addRequiredBiome(desert);
-            universitat.addRequiredBiome(savannah);
-            universitat.addRequiredBiome(jungle);
-            universitat.addRequiredBiome(forest);
-            universitat.addRequiredBiome(steppe);
-            universitat.setNation(nationRepository.findById(1));
-            buildingBlueprintRepository.add(universitat);
+            BuildingBlueprint marktplatz = new BuildingBlueprint();
+            marktplatz.setId(12);
+            marktplatz.setName("Marktplatz");
+            marktplatz.addRequiredBiome(desert);
+            marktplatz.addRequiredBiome(savannah);
+            marktplatz.addRequiredBiome(jungle);
+            marktplatz.addRequiredBiome(forest);
+            marktplatz.addRequiredBiome(steppe);
+            buildingBlueprintRepository.add(marktplatz);
 
             BuildingBlueprint oper = new BuildingBlueprint();
             oper.setId(13);
@@ -752,6 +751,13 @@ public class LogicService {
 
             if(duftmischerei.getRequiredResource() == null)
                 duftmischerei.setRequiredResource(resourceRepository.findById(2));
+
+            BuildingBlueprint marktplatz = buildingBlueprintRepository.findById(12);
+            if(!marktplatz.getName().equals("Marktplatz")) {
+                marktplatz.setName("Marktplatz");
+                marktplatz.setNation(null);
+            }
+
         }
 
         if(!mongoTemplate.collectionExists("unitBlueprint")) {

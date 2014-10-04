@@ -26,11 +26,11 @@
                     <c:when test="${city.player.nation.id == 1}">
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[0]}"/>
 
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
+
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[4]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[11]}"/>
-
-                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[1]}"/>
 
@@ -45,9 +45,11 @@
                     <c:otherwise>
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[0]}"/>
 
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
+
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[4]}"/>
 
-                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[3]}"/>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[11]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[2]}"/>
 

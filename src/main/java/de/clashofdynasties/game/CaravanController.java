@@ -49,10 +49,12 @@ public class CaravanController {
         City city2 = cityRepository.findById(point2);
 
         if (city1 != null && city2 != null) {
-            RoutingService routing = new RoutingService(roadRepository, relationRepository);
+            if(city1.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 12).count() > 0 && city2.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 12).count() > 0) {
+                RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
-            if(routing.calculateRoute(city1, city2, player)) {
-                return routing.getRoute().toJSON();
+                if (routing.calculateRoute(city1, city2, player)) {
+                    return routing.getRoute().toJSON();
+                }
             }
         }
 

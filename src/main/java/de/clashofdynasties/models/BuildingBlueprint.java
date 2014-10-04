@@ -72,7 +72,10 @@ public class BuildingBlueprint implements IBlueprint {
     }
 
     public void setNation(Nation nation) {
-        this.nation = nation.getId();
+        if(nation != null)
+            this.nation = nation.getId();
+        else
+            this.nation = 0;
     }
 
     public int getMaxCount() {
