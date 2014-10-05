@@ -1,6 +1,5 @@
 package de.clashofdynasties.service;
 
-import com.mongodb.Mongo;
 import de.clashofdynasties.logic.*;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
@@ -159,8 +158,6 @@ public class LogicService {
         List<Player> players = playerRepository.getList();
         tick++;
 
-        long started = System.currentTimeMillis();
-
         for(Player player : players) {
             if(tick == 600) {
                 playerLogic.processStatistics(player);
@@ -191,8 +188,10 @@ public class LogicService {
         List<Caravan> caravans = caravanRepository.getList();
 
         for(Caravan caravan : caravans) {
-            caravanLogic.processMovement(caravan);
-            caravanLogic.processMaintenance(caravan);
+            if(!caravan.isPaused()) {
+                caravanLogic.processMovement(caravan);
+                caravanLogic.processMaintenance(caravan);
+            }
         }
     }
 

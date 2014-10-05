@@ -238,7 +238,7 @@ public class MenuController {
         if (id != null) {
             Caravan caravan = caravanRepository.findById(id);
 
-            if (caravan.getPlayer().equals(player)) {
+            if (caravan.getPoint1().getPlayer().equals(player) || caravan.getPoint2().getPlayer().equals(player)) {
                 map.addAttribute("caravan", caravan);
                 map.addAttribute("point1", caravan.getPoint1());
                 map.addAttribute("point2", caravan.getPoint2());

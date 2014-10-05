@@ -2,19 +2,21 @@ package de.clashofdynasties.logic;
 
 import de.clashofdynasties.models.Caravan;
 import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Event;
 import de.clashofdynasties.models.Road;
 import de.clashofdynasties.repository.CaravanRepository;
 import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CaravanLogic {
     @Autowired
-    private CityRepository cityRepository;
+    private CaravanRepository caravanRepository;
 
     @Autowired
-    private CaravanRepository caravanRepository;
+    private EventRepository eventRepository;
 
     public void processMovement(Caravan caravan) {
         City next = caravan.getRoute().getNext();
@@ -63,8 +65,11 @@ public class CaravanLogic {
 
                     double amount = city.getStoredItem(caravan.getPoint1Item().getId());
 
-                    if(amount - 50 > 0)
-                        amount = 50;
+                    if(amount - caravan.getPoint1Load() > 0)
+                        amount = caravan.getPoint1Load();
+                    else if(!caravan.getPoint1().getPlayer().equals(caravan.getPoint2().getPlayer())) {
+                        eventRepository.add(new Event("Trade", caravan.getPoint1().getName() + " erfüllt den Handelsvertrag nicht!", "In der Stadt " + caravan.getPoint1().getName() + " wurde für die Karawane " + caravan.getName() + " statt der vereinbarten Menge an Ware (" + caravan.getPoint1Load() + "x " + caravan.getPoint1Item().getName() + ") nur " + new Double(amount).intValue() + "x " + caravan.getPoint1StoreItem().getName() + " eingeladen.", caravan.getPoint1(), caravan.getPoint2().getPlayer()));
+                    }
 
                     city.setStoredItem(caravan.getPoint1Item().getId(), city.getStoredItem(caravan.getPoint1Item().getId()) - amount);
                     caravan.setPoint1Store(amount);
@@ -103,7 +108,8 @@ public class CaravanLogic {
                 }
 
                 if(caravan.isTerminate()) {
-                    caravanRepository.remove(caravan);
+                    if(caravan.getPoint1().getPlayer().equals(caravan.getPoint2().getPlayer()))
+                        caravanRepository.remove(caravan);
                     return;
                 }
 
@@ -113,8 +119,11 @@ public class CaravanLogic {
 
                     double amount = city.getStoredItem(caravan.getPoint2Item().getId());
 
-                    if(amount - 50 > 0)
-                        amount = 50;
+                    if(amount - caravan.getPoint2Load() > 0)
+                        amount = caravan.getPoint2Load();
+                    else if(!caravan.getPoint1().getPlayer().equals(caravan.getPoint2().getPlayer())) {
+                        eventRepository.add(new Event("Trade", caravan.getPoint2().getName() + " erfüllt den Handelsvertrag nicht!", "In der Stadt " + caravan.getPoint2().getName() + " wurde für die Karawane " + caravan.getName() + " statt der vereinbarten Menge an Ware (" + caravan.getPoint2Load() + "x " + caravan.getPoint2Item().getName() + ") nur " + new Double(amount).intValue() + "x " + caravan.getPoint2StoreItem().getName() + " eingeladen.", caravan.getPoint2(), caravan.getPoint1().getPlayer()));
+                    }
 
                     city.setStoredItem(caravan.getPoint2Item().getId(), city.getStoredItem(caravan.getPoint2Item().getId()) - amount);
                     caravan.setPoint2Store(amount);

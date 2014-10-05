@@ -45,6 +45,8 @@ public class Caravan {
 
     private long timestamp;
 
+    private boolean paused;
+
     public Caravan() {
         id = new ObjectId();
     }
@@ -230,9 +232,20 @@ public class Caravan {
     }
 
     public boolean isVisible(Player player) {
+        if(isPaused())
+            return false;
+
         Road current = getRoute().getCurrentRoad();
 
         return current.getPoint1().isVisible(player) && current.getPoint2().isVisible(player);
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
     }
 
     public boolean equals(Object other) {

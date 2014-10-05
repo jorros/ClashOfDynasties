@@ -141,13 +141,19 @@
 
                 <c:forEach items="${relation.pendingCaravans}" var="caravan">
                     $("#dipl_removepending_${caravan.id}").click(function() {
-
+                        $.delete('game/caravans/${caravan.id}', function() {
+                            openMenu("diplomacy?pid=${otherPlayer.id}");
+                        });
                     });
                     $("#dipl_accept_${caravan.id}").click(function() {
-
+                        $.put('game/caravans/${caravan.id}/accept', function() {
+                            openMenu("diplomacy?pid=${otherPlayer.id}");
+                        });
                     });
                     $("#dipl_decline_${caravan.id}").click(function() {
-
+                        $.delete('game/caravans/${caravan.id}', function() {
+                            openMenu("diplomacy?pid=${otherPlayer.id}");
+                        });
                     });
                 </c:forEach>
 
