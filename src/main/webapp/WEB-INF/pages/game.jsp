@@ -39,13 +39,14 @@
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Formations.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalFormations">0</span></div>
         <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Camels.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCaravans">0</span></div>
         <div style="width:150px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Ranking.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalRanking">0</span></div>
+        <div style="width:80px; margin-right:10px; margin-top:4px; float:right; text-align:right;" class="logout"><a href="/logout">Logout</a></div>
     </div>
     <div id="header">
         <div id="menu1" class="menu menu-orange"><a>ranking</a></div>
         <div id="menu2" class="menu menu-yellow"><a>profil</a></div>
         <div id="menu3" class="menu menu-cyan"><a>dein reich</a></div>
         <div id="menu4" class="menu menu-green"><a>diplomatie</a></div>
-        <div id="menu5" class="menu menu-red"><a>logout</a></div>
+        <div id="menu5" class="menu menu-red"><a>nachrichten</a></div>
     </div>
     <div id="body" style="display: none;">
     </div>

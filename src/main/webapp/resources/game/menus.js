@@ -15,7 +15,7 @@ $(document).ready(function () {
             else if ($(this).attr("id") == "menu4")
                 openMenu("diplomacy", false);
             else if ($(this).attr("id") == "menu5")
-                window.location = "/logout";
+                openMenu("messages", false);
         }
         else {
             closeMenu();

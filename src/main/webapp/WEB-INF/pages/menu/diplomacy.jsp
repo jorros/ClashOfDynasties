@@ -5,7 +5,7 @@
 <div id="content">
     <div style="width:250px; overflow-y: auto; height: 100%; float:left;">
         <c:forEach items="${players}" var="player" varStatus="pstatus">
-            <div style="cursor:pointer;" onclick="openMenu('diplomacy?pid=${player.id}');">
+            <div style="cursor:pointer;" onclick="openMenu('diplomacy?pid=${player.id}', false);">
                 <span style="font-size:20px; font-weight: bold;">${player.name}</span><br>
                 <c:if test="${relations[player.id] == 0}"><span class="red">Verfeindet</span></c:if>
                 <c:if test="${relations[player.id] == 1}"><span>Neutral</span></c:if>

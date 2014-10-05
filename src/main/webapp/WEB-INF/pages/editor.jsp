@@ -24,6 +24,7 @@
 <div id="cr-stage"></div>
 <div id="wrapper">
     <div id="top">
+        <div style="width:80px; margin-right:10px; margin-top:4px; float:right; text-align:right;" class="logout"><a href="/logout">Logout</a></div>
     </div>
     <div id="header">
         <div id="menu1" class="menu menu-orange"><a>st&auml;dte</a></div>

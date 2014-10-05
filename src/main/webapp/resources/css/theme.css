@@ -466,3 +466,18 @@ h4 {
 .chooser:hover {
     opacity: 0.8;
 }
+
+.logout a {
+    color: #a8a8a8;
+    text-decoration: none;
+}
+
+.logout a:visited {
+    color: #a8a8a8;
+    text-decoration: none;
+}
+
+.logout a:hover {
+    color: #fff;
+    text-decoration: none;
+}

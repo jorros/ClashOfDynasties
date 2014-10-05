@@ -79,7 +79,7 @@ function updateGameContent() {
                         CityEntities[event.city].select();
                     }
                     else if(event.action != undefined)
-                        openMenu(event.action);
+                        openMenu(event.action, false);
                 }
                 else if(e.which == 3) {
                     $(this).fadeOut();

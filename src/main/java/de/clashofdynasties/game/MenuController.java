@@ -9,10 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -45,6 +43,9 @@ public class MenuController {
 
     @Autowired
     private RelationRepository relationRepository;
+
+    @Autowired
+    private MessageRepository messageRepository;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
     public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) ObjectId id, @RequestParam(value = "city", required = false) ObjectId cityID) {
@@ -292,6 +293,58 @@ public class MenuController {
         map.addAttribute("maxMilitary", maxMilitary);
 
         return "menu/ranking";
+    }
+
+    @RequestMapping(value = "/messages", method = RequestMethod.GET)
+    public String showMessages(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId pid) {
+        Player player = playerRepository.findByName(principal.getName());
+        List<Player> players = new ArrayList<>(playerRepository.getList().stream().filter(p -> !p.equals(player)).filter(p -> !p.isComputer()).filter(Player::isActivated).collect(Collectors.toList()));
+
+        Map<ObjectId, String> lastMessages = new HashMap<>();
+        Map<ObjectId, Long> playerSort = new HashMap<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
+        if(pid != null) {
+            Player other = playerRepository.findById(pid);
+
+            List<Message> messages = messageRepository.findByPlayers(player, other);
+            Collections.sort(messages, (Message m1, Message m2) -> Long.compare(m1.getTimestamp(), m2.getTimestamp()));
+
+            messages.stream().filter(m -> m.getTo().equals(player)).forEach(m -> m.setUnread(false));
+
+            map.addAttribute("other", other);
+            map.addAttribute("messages", messages);
+        }
+
+        for(Player other : players) {
+            List<Message> messages = messageRepository.findByPlayers(player, other);
+            Collections.sort(messages, (Message m1, Message m2) -> Long.compare(m2.getTimestamp(), m1.getTimestamp()));
+
+            if(messages.size() == 0) {
+                lastMessages.put(other.getId(), "Keine Nachrichten");
+
+                playerSort.put(other.getId(), 0L);
+            }
+            else {
+                if(messages.stream().filter(m -> m.isUnread() && m.getTo().equals(player)).count() > 0)
+                    lastMessages.put(other.getId(), "Neue Nachricht");
+                else {
+                    Date date = new Date(messages.get(0).getTimestamp());
+
+                    lastMessages.put(other.getId(), sdf.format(date));
+                }
+
+                playerSort.put(other.getId(), messages.get(0).getTimestamp());
+            }
+        }
+
+        Collections.sort(players, (Player p1, Player p2) -> Long.compare(playerSort.get(p2.getId()), playerSort.get(p1.getId())));
+
+        map.addAttribute("player", player);
+        map.addAttribute("players", players);
+        map.addAttribute("lastMessages", lastMessages);
+
+        return "menu/messages";
     }
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)

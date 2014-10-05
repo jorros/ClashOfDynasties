@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
@@ -43,7 +40,7 @@ public class PlayerController {
     private EventRepository eventRepository;
 
     @Autowired
-    private PlayerLogic playerLogic;
+    private MessageRepository messageRepository;
 
     @RequestMapping(value = "/{player}", method = RequestMethod.DELETE)
     @Secured("ROLE_ADMIN")
@@ -189,6 +186,23 @@ public class PlayerController {
                 other.setSightUpdate(true);
             }
         }
+    }
+
+    @RequestMapping(value = "/{player}/message", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public void sendMessage(Principal principal, @PathVariable("player") ObjectId playerId, @RequestParam String content) {
+        Player player = playerRepository.findByName(principal.getName());
+        Player other = playerRepository.findById(playerId);
+
+        Message message = new Message();
+        message.setFrom(player);
+        message.setTo(other);
+        message.setMessage(content);
+        message.setUnread(true);
+
+        eventRepository.add(new Event("NewMessage", "Neue Nachricht von " + player.getName(), "Du hast eine neue Nachricht erhalten!", "messages?pid=" + player.getId(), other));
+
+        messageRepository.add(message);
     }
 
     @RequestMapping(value = "/{player}/reset", method = RequestMethod.DELETE)

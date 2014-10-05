@@ -81,6 +81,9 @@ public class LogicService {
     private UnitRepository unitRepository;
 
     @Autowired
+    private MessageRepository messageRepository;
+
+    @Autowired
     private MongoTemplate mongoTemplate;
 
     private long tick = 599;
@@ -96,6 +99,7 @@ public class LogicService {
             cityTypeRepository.save();
             eventRepository.save();
             formationRepository.save();
+            messageRepository.save();
             playerRepository.save();
             relationRepository.save();
             roadRepository.save();
