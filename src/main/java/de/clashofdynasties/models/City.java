@@ -365,6 +365,14 @@ public class City implements MapNode {
         if(getBuildings() != null)
             defence += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();
 
+        if(getUnits().size() > 0)
+            defence += getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+
+        for(Formation formation : FormationRepository.get().findByCity(this)) {
+            if(formation.getPlayer().equals(player))
+            defence += formation.getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+        }
+
         return defence;
     }
 
