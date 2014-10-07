@@ -15,6 +15,10 @@
         <td colspan="2">Spieler: ${formation.player.name} (${formation.player.nation.name})</td>
     </tr>
     <tr>
+        <td>Stärke: ${formation.getStrength()}</td>
+        <td>Leben: ${formation.getHealth()}%</td>
+    </tr>
+    <tr>
         <td colspan="2">Unterhaltskosten: <span class="red">2</span></td>
     </tr>
     <tr>

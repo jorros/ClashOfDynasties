@@ -107,6 +107,20 @@ public class Formation implements MapNode {
         units.remove(unit.getId());
     }
 
+    public int getStrength() {
+        if(getUnits().size() > 0)
+            return getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+
+        return 0;
+    }
+
+    public int getHealth() {
+        double health = getUnits().stream().mapToInt(Unit::getHealth).sum();
+        double maxHealth = getUnits().size() * 100;
+
+        return new Double(health / maxHealth * 100).intValue();
+    }
+
     public Route getRoute() {
         return route;
     }
