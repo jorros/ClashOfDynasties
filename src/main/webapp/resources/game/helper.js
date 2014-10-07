@@ -14,10 +14,11 @@ function openMenu(menu, refresh) {
         currentMenu = menu;
 
         $.get("/game/menus/" + menu, function (data) {
-            isRefreshing = true;
-            $("#body").html(data);
-            $("#body").show();
-            isRefreshing = false;
+            if(currentMenu == menu) {
+                isRefreshing = true;
+                $("#body").html(data).show();
+                isRefreshing = false;
+            }
         });
     }
 }
