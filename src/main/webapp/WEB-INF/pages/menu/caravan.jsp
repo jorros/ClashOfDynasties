@@ -63,7 +63,7 @@
     </div>
     <div style="height:60px;">
         <label for="caravan_name">Name: </label>
-        <input id="caravan_name" maxlength="14" style="width:300px;" type="text" value="${caravan.name}" />
+        <input id="caravan_name" maxlength="14" style="width:300px;" type="text" value="${caravan.name}" <c:if test="${point1.player != point2.player && !create}">disabled</c:if> />
         <c:if test="${point1.player == point2.player || create}">
         <button onclick="save()" style="float:right;"><c:choose><c:when test="${create}"><c:choose><c:when test="${point1.player == point2.player}">Erstellen</c:when><c:otherwise>Vorschlagen</c:otherwise></c:choose></c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
         </c:if>
@@ -102,6 +102,7 @@
     }
 
     function selectItem(point, id, type, name) {
+        <c:if test="${point1.player == point2.player || create}">
         if(point == 1) {
             point1Item = id;
             point1Load = 0;
@@ -125,6 +126,7 @@
 
             $("#slider2").slider("enable");
         }
+        </c:if>
     }
 
     $("#slider1").slider({
@@ -134,7 +136,7 @@
             $("#point1ItemLoadText").text(ui.value + "t");
         },
         value: point1Load,
-        disabled: <c:if test="${caravan.point1Item != null}">false</c:if><c:if test="${caravan.point1Item == null}">true</c:if>
+        disabled: <c:choose><c:when test="${caravan.point1Item != null && (point1.player == point2.player || create)}">false</c:when><c:otherwise>true</c:otherwise></c:choose>
     });
     $("#slider2").slider({
         max: 50,
@@ -143,6 +145,6 @@
             $("#point2ItemLoadText").text(ui.value + "t");
         },
         value: point2Load,
-        disabled: <c:if test="${caravan.point2Item != null}">false</c:if><c:if test="${caravan.point2Item == null}">true</c:if>
+        disabled: <c:choose><c:when test="${caravan.point2Item != null && (point1.player == point2.player || create)}">false</c:when><c:otherwise>true</c:otherwise></c:choose>
     });
 </script>

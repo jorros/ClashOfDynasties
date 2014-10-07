@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Relation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Relation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -90,8 +89,8 @@
       <file leaf-file-name="caravan.jsp" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51699466" vertical-offset="1377" max-vertical-offset="2601">
-              <caret line="98" column="15" selection-start-line="98" selection-start-column="15" selection-end-line="98" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.72629696" vertical-offset="801" max-vertical-offset="2635">
+              <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -1304,7 +1303,7 @@
       <workItem from="1412506384382" duration="14452000" />
       <workItem from="1412533190524" duration="325000" />
       <workItem from="1412590391458" duration="3357000" />
-      <workItem from="1412678610493" duration="5258000" />
+      <workItem from="1412678610493" duration="5573000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2170,11 +2169,15 @@
       <created>1412682972091</created>
       <updated>1412682972091</updated>
     </task>
-    <option name="localTasksCounter" value="217" />
+    <task id="LOCAL-00217" summary="Karawane bearbeiten gefixt">
+      <created>1412684341291</created>
+      <updated>1412684341291</updated>
+    </task>
+    <option name="localTasksCounter" value="218" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1074039000" />
+    <option name="totallyTimeSpent" value="1074354000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2255,7 +2258,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Spieler löschen gefixt" />
     <MESSAGE value="Seuche und Feuer Events hinzugefügt" />
     <MESSAGE value="Stadteinheiten werden bei Verlustrechnung einbezogen" />
     <MESSAGE value="Warscheinlichkeiten geändert für Events" />
@@ -2280,7 +2282,8 @@
     <MESSAGE value="Menü wird nur aktualisiert, wenn es gerade offen ist" />
     <MESSAGE value="Befehlsbox wird nur aktualisiert, wenn es gerade offen ist" />
     <MESSAGE value="Stadt: Auswahl gefixt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stadt: Auswahl gefixt" />
+    <MESSAGE value="Karawane bearbeiten gefixt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Karawane bearbeiten gefixt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2680,8 +2683,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51699466" vertical-offset="1377" max-vertical-offset="2601">
-          <caret line="98" column="15" selection-start-line="98" selection-start-column="15" selection-end-line="98" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.72629696" vertical-offset="801" max-vertical-offset="2635">
+          <caret line="71" column="6" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
           <folding />
         </state>
       </provider>
