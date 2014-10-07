@@ -38,9 +38,11 @@ function openCommand(command, title) {
         currentCommand = command;
 
         $.get("/game/commands/" + command, function (data) {
-            $("#controls").html(data);
-            if (!$("#controls").dialog("isOpen"))
-                $("#controls").dialog("open");
+            if(currentCommand == command) {
+                $("#controls").html(data);
+                if (!$("#controls").dialog("isOpen"))
+                    $("#controls").dialog("open");
+            }
         });
     }
 }

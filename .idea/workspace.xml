@@ -166,8 +166,8 @@
       <file leaf-file-name="helper.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5117057" vertical-offset="0" max-vertical-offset="3519">
-              <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.73913044" vertical-offset="306" max-vertical-offset="3553">
+              <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -1359,7 +1359,7 @@
       <workItem from="1412506384382" duration="14452000" />
       <workItem from="1412533190524" duration="325000" />
       <workItem from="1412590391458" duration="3357000" />
-      <workItem from="1412678610493" duration="3584000" />
+      <workItem from="1412678610493" duration="3660000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2213,11 +2213,15 @@
       <created>1412682036715</created>
       <updated>1412682036715</updated>
     </task>
-    <option name="localTasksCounter" value="214" />
+    <task id="LOCAL-00214" summary="Menü wird nur aktualisiert, wenn es gerade offen ist">
+      <created>1412682207817</created>
+      <updated>1412682207817</updated>
+    </task>
+    <option name="localTasksCounter" value="215" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1072365000" />
+    <option name="totallyTimeSpent" value="1072441000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2298,7 +2302,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Gebäude anderer Nationen im Baumenü anzeigen" />
     <MESSAGE value="Verteidigungsgebäude wird in Zusammenstellung dargestellt" />
     <MESSAGE value="Mein Reich implementiert" />
     <MESSAGE value="Spieler löschen gefixt" />
@@ -2323,7 +2326,8 @@
     <MESSAGE value="Emailbenachrichtigung implementiert" />
     <MESSAGE value="Mein Reich -&gt; Bauen mit Zurück Button implementiert" />
     <MESSAGE value="Name wird in Befehlsbox angezeigt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Name wird in Befehlsbox angezeigt" />
+    <MESSAGE value="Menü wird nur aktualisiert, wenn es gerade offen ist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Menü wird nur aktualisiert, wenn es gerade offen ist" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2721,8 +2725,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5117057" vertical-offset="0" max-vertical-offset="3519">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.73913044" vertical-offset="306" max-vertical-offset="3553">
+          <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
           <folding />
         </state>
       </provider>
