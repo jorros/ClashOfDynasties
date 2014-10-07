@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="servlet-api">
+  <library name="javax.mail">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Dropbox/Clash Libs/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/javax.mail.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

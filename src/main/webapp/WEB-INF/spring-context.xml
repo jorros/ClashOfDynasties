@@ -42,6 +42,20 @@
         </security:authentication-provider>
     </security:authentication-manager>
 
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="127.0.0.1" />
+        <property name="port" value="25" />
+        <property name="username" value="root" />
+
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">false</prop>
+                <prop key="mail.smtp.starttls.enable">false</prop>
+            </props>
+        </property>
+    </bean>
+
     <mongo:repositories base-package="de.clashofdynasties.repository"/>
 
     <context:component-scan base-package="de.clashofdynasties.repository"/>

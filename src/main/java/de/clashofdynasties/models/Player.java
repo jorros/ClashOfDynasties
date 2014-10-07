@@ -6,6 +6,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Document
 public class Player {
     @Id
@@ -32,8 +35,11 @@ public class Player {
 
     private boolean sightUpdate;
 
+    private Map<String, Boolean> notification;
+
     public Player() {
         this.id = new ObjectId();
+        notification = new HashMap<>();
     }
 
     public ObjectId getId() {
@@ -146,6 +152,17 @@ public class Player {
 
     public void setSightUpdate(boolean sightUpdate) {
         this.sightUpdate = sightUpdate;
+    }
+
+    public boolean hasNotification(String type) {
+        if(notification.containsKey(type))
+            return notification.get(type);
+        else
+            return true;
+    }
+
+    public void setNotification(String type, boolean value) {
+        notification.put(type, value);
     }
 
     @Override

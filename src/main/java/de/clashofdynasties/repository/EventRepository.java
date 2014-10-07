@@ -3,7 +3,9 @@ package de.clashofdynasties.repository;
 import de.clashofdynasties.models.City;
 import de.clashofdynasties.models.Event;
 import de.clashofdynasties.models.Player;
+import de.clashofdynasties.service.MailService;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,9 @@ import java.util.stream.Collectors;
 public class EventRepository extends Repository<Event> {
     private static EventRepository instance;
 
+    @Autowired
+    private MailService mailService;
+
     @PostConstruct
     public void initialize() {
         load(Event.class);
@@ -23,6 +28,13 @@ public class EventRepository extends Repository<Event> {
 
     public static EventRepository get() {
         return instance;
+    }
+
+    @Override
+    public void add(Event item) {
+        super.add(item);
+        if(item.getPlayer().hasNotification(item.getType()))
+            mailService.sendMail(item.getPlayer(), item.getTitle(), item.getDescription());
     }
 
     public Event findById(ObjectId id) {
