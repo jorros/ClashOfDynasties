@@ -106,7 +106,10 @@ public class Relation {
     }
 
     public void setPendingRelationPlayer(Player pendingRelationPlayer) {
-        this.pendingRelationPlayer = pendingRelationPlayer.getId();
+        if(pendingRelationPlayer != null)
+            this.pendingRelationPlayer = pendingRelationPlayer.getId();
+        else
+            this.pendingRelationPlayer = null;
     }
 
     public Integer getTicksLeft() {
