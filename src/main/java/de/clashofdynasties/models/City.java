@@ -60,6 +60,8 @@ public class City implements MapNode {
 
     private boolean plague;
 
+    private String alias;
+
     public City() {
         units = new ArrayList<>();
         items = new HashMap<>();
@@ -357,6 +359,14 @@ public class City implements MapNode {
 
     public void updateTimestamp() {
         this.timestamp = System.currentTimeMillis();
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public int getDefencePoints() {

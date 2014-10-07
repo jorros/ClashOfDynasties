@@ -155,6 +155,17 @@ public class CityController {
         }
     }
 
+    @RequestMapping(value = "/{city}/alias", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void setAlias(Principal principal, @PathVariable("city") ObjectId id, @RequestParam String alias) {
+        Player player = playerRepository.findByName(principal.getName());
+        City city = cityRepository.findById(id);
+
+        if(city.getPlayer().equals(player)) {
+            city.setAlias(alias);
+        }
+    }
+
     @RequestMapping(value = "/{city}/destroy", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     public void destroy(Principal principal, @PathVariable("city") ObjectId id, @RequestParam int type, @RequestParam int blueprint, @RequestParam int count) {
