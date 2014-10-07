@@ -25,7 +25,7 @@
             <td><span style="vertical-align:middle;">${city.population} <c:if test="${city.satisfaction <= 30 && city.population > 10}"></span><img style="vertical-align:middle;" src="assets/negIndicator.png" /></c:if><c:if test="${city.satisfaction >= 80 && city.population < city.countBuildings(1) * 10 + 10}"><img style="vertical-align:middle;" src="assets/posIndicator.png" /></c:if></td>
             <td><span class="<c:if test="${city.satisfaction <= 30}">red</c:if><c:if test="${city.satisfaction >= 80}">green</c:if>">${city.satisfaction}</span></td>
             <td><span class="<c:choose><c:when test="${city.income-city.outcome > 0}">green</c:when><c:otherwise>red</c:otherwise></c:choose>">${city.income - city.outcome}</span> (<span class="green">${city.income}</span>/<span class="red">${city.outcome}</span>)</td>
-            <td><button style="height:36px;" onclick="openMenu('build?city=${city.id}')"><img style="vertical-align:middle;" src="assets/build.png" /></button></td>
+            <td><button style="height:36px;" onclick="openMenu('build?city=${city.id}&demography=1')"><img style="vertical-align:middle;" src="assets/build.png" /></button></td>
         </tr>
     </c:forEach>
     </tbody>

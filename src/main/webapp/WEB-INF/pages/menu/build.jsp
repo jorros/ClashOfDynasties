@@ -182,7 +182,14 @@
         </div>
     </div>
     <div>
-        <button onclick="closeMenu()" style="position:absolute; right:25px; bottom: 120px;">Schlie&szlig;en</button>
+        <c:choose>
+            <c:when test="${demography}">
+                <button onclick="openMenu('demography', false);" style="position:absolute; right:25px; bottom: 120px;">Zurück</button>
+            </c:when>
+            <c:otherwise>
+                <button onclick="closeMenu();" style="position:absolute; right:25px; bottom: 120px;">Schlie&szlig;en</button>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 

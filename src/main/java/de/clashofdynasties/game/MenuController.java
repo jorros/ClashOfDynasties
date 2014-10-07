@@ -151,7 +151,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/build", method = RequestMethod.GET)
-    public String showBuild(ModelMap map, Principal principal, @RequestParam("city") ObjectId id) {
+    public String showBuild(ModelMap map, Principal principal, @RequestParam("city") ObjectId id, @RequestParam boolean demography) {
         City city = cityRepository.findById(id);
         List<BuildingBlueprint> buildingBlueprints = buildingBlueprintRepository.getList();
         List<UnitBlueprint> unitBlueprints = unitBlueprintRepository.getList();
@@ -163,6 +163,7 @@ public class MenuController {
         map.addAttribute("buildingBlueprints", buildingBlueprints);
         map.addAttribute("unitBlueprints", unitBlueprints);
         map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("demography", demography);
 
         if(city.getBuildingConstruction() != null) {
             double neededProduction = city.getBuildingConstruction().getRequiredProduction();
