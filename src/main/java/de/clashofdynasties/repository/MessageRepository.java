@@ -30,4 +30,8 @@ public class MessageRepository extends Repository<Message> {
     public List<Message> findByPlayers(Player p1, Player p2) {
         return items.parallelStream().filter(m -> m.getFrom().equals(p1) && m.getTo().equals(p2) || m.getFrom().equals(p2) && m.getTo().equals(p1)).collect(Collectors.toList());
     }
+
+    public List<Message> findByPlayer(Player p) {
+        return items.parallelStream().filter(m -> m.getFrom().equals(p) || m.getTo().equals(p)).collect(Collectors.toList());
+    }
 }

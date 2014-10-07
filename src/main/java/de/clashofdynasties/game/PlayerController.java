@@ -28,9 +28,6 @@ public class PlayerController {
     private CityRepository cityRepository;
 
     @Autowired
-    private UnitRepository unitRepository;
-
-    @Autowired
     private CaravanRepository caravanRepository;
 
     @Autowired
@@ -232,6 +229,8 @@ public class PlayerController {
             city.clearUnits();
             city.updateTimestamp();
         }
+
+        messageRepository.remove(messageRepository.findByPlayer(player));
 
         players.forEach(p -> p.setSightUpdate(true));
 
