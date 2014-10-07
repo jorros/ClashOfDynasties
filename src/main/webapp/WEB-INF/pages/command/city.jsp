@@ -11,6 +11,7 @@
     <button onclick="openMenu('report?city=${city.id}', false)"><img src="assets/report.png" /></button>
 </c:if>
 <br><br>
+<b>${city.name}</b>
 <table style="width:100%;">
     <tr>
         <td colspan="2">Spieler: ${city.player.name} (${city.player.nation.name})</td>

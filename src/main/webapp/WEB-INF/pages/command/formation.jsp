@@ -9,6 +9,7 @@
     <button onclick="openMenu('formation?formation=${formation.id}', false)"><img src="assets/infoFormation.png" /></button>
 </c:if>
 <br><br>
+<b>${formation.name}</b>
 <table style="width:100%;">
     <tr>
         <td colspan="2">Spieler: ${formation.player.name} (${formation.player.nation.name})</td>

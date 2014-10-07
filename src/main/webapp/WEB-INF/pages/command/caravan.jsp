@@ -8,6 +8,7 @@
 </c:if>
 </c:if>
 <br><br>
+<b>${caravan.name}</b>
 <table style="width:100%;">
     <tr>
         <td colspan="2">Spieler: ${caravan.player.name} (${caravan.player.nation.name})</td>
