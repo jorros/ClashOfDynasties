@@ -423,12 +423,15 @@ public class MenuController {
     public String showEditBuildings(ModelMap map) {
         List<Item> items = itemRepository.getList();
         List<BuildingBlueprint> buildingBlueprints = buildingBlueprintRepository.getList();
+        List<CityType> cityTypes = cityTypeRepository.getList();
 
         Collections.sort(items, (Item i1, Item i2) -> ((Integer)i1.getId()).compareTo(i2.getId()));
         Collections.sort(buildingBlueprints, (BuildingBlueprint b1, BuildingBlueprint b2) -> ((Integer)b1.getId()).compareTo(b2.getId()));
+        Collections.sort(cityTypes, (CityType ct1, CityType ct2) -> ((Integer)ct1.getId()).compareTo(ct2.getId()));
 
         map.addAttribute("buildingBlueprints", buildingBlueprints);
         map.addAttribute("items", items);
+        map.addAttribute("cityTypes", cityTypes);
 
         return "menu/editbuildings";
     }

@@ -32,7 +32,7 @@ public class BuildingController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
     @ResponseStatus(HttpStatus.OK)
-    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer maxcount, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double pps, @RequestParam(required = false) Integer defence, @RequestParam(required = false) Integer item) {
+    public void save(@PathVariable int id, @RequestParam(required = false) String description, @RequestParam(required = false) Integer production, @RequestParam(required = false) Integer maxcount, @RequestParam(required = false) Integer price, @RequestParam(required = false) Double pps, @RequestParam(required = false) Integer defence, @RequestParam(required = false) Integer item, @RequestParam(required = false) Integer citytype) {
         BuildingBlueprint blueprint = buildingBlueprintRepository.findById(id);
 
         if (description != null)
@@ -52,6 +52,9 @@ public class BuildingController {
 
         if (pps != null)
             blueprint.setProducePerStep(pps);
+
+        if(citytype != null)
+            blueprint.setRequiredCityType(citytype);
 
         if(item != null) {
             if(item > 0)

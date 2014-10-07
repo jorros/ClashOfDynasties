@@ -40,7 +40,7 @@ public class BuildItem extends SimpleTagSupport {
         } else {
             BuildingBlueprint building = (BuildingBlueprint)blueprint;
 
-            boolean allowed = building.getRequiredBiomes().contains(city.getBiome()) && (building.getRequiredResource() == null || building.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (building.getMaxCount() == 0 || building.getMaxCount() > city.countBuildings(building) && (blueprint.getNation() == null || blueprint.getNation().equals(city.getPlayer().getNation())));
+            boolean allowed = building.getRequiredBiomes().contains(city.getBiome()) && (building.getRequiredResource() == null || building.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (building.getMaxCount() == 0 || building.getMaxCount() > city.countBuildings(building) && (blueprint.getNation() == null || blueprint.getNation().equals(city.getPlayer().getNation()))) && building.getRequiredCityType().getId() <= city.getType().getId() && city.getType().getId() != 4;
 
             out.println("<button data-blueprint=\"" + building.getId() + "\" data-type=\"0\" class=\"build " + (allowed ? "" : "disabled") + "\" style=\"position:absolute; top:15px;\"><img style=\"width:32px;height:32px;\" src=\"assets/buildings/" + building.getId() + ".png\" /></button>");
 

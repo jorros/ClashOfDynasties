@@ -1,9 +1,6 @@
 package de.clashofdynasties.models;
 
-import de.clashofdynasties.repository.BiomeRepository;
-import de.clashofdynasties.repository.ItemRepository;
-import de.clashofdynasties.repository.NationRepository;
-import de.clashofdynasties.repository.ResourceRepository;
+import de.clashofdynasties.repository.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,6 +17,8 @@ public class BuildingBlueprint implements IBlueprint {
     private int price;
 
     private int requiredProduction;
+
+    private int requiredCityType;
 
     private int nation;
 
@@ -41,6 +40,7 @@ public class BuildingBlueprint implements IBlueprint {
 
     public BuildingBlueprint() {
         requiredBiomes = new ArrayList<>();
+        requiredCityType = 1;
     }
 
     public int getId() {
@@ -76,6 +76,16 @@ public class BuildingBlueprint implements IBlueprint {
             this.nation = nation.getId();
         else
             this.nation = 0;
+    }
+
+    public CityType getRequiredCityType() {
+        if(requiredCityType == 0)
+            requiredCityType = 1;
+        return CityTypeRepository.get().findById(requiredCityType);
+    }
+
+    public void setRequiredCityType(int requiredCityType) {
+        this.requiredCityType = requiredCityType;
     }
 
     public int getMaxCount() {
