@@ -7,6 +7,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,6 +61,38 @@ public class PlayerController {
         player.setLastScrollY(-1);
 
         playerRepository.add(player);
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    public void save(Principal principal, String email, String oldpw, String newpw, String newpw2, boolean CityConquered, boolean CityLost, boolean CityUpgrade, boolean DiplomaticAlliance, boolean DiplomaticPeace, boolean DiplomaticTrade, boolean DiplomaticWar, boolean Disease, boolean Fire, boolean Loss, boolean NewMessage, boolean ProductionReady, boolean Trade, boolean TradeNotEnoughLoaded, boolean War) {
+        Player player = playerRepository.findByName(principal.getName());
+
+        player.setEmail(email);
+
+        Md5PasswordEncoder encoder = new Md5PasswordEncoder();
+
+        if(!oldpw.equals("") && !newpw.equals("") && !newpw2.equals("")) {
+            if(player.getPassword().equals(encoder.encodePassword(oldpw, null)) && newpw.equals(newpw2)) {
+                player.setPassword(encoder.encodePassword(newpw, null));
+            }
+        }
+
+        player.setNotification("CityConquered", CityConquered);
+        player.setNotification("CityLost", CityLost);
+        player.setNotification("CityUpgrade", CityUpgrade);
+        player.setNotification("DiplomaticAlliance", DiplomaticAlliance);
+        player.setNotification("DiplomaticPeace", DiplomaticPeace);
+        player.setNotification("DiplomaticTrade", DiplomaticTrade);
+        player.setNotification("DiplomaticWar", DiplomaticWar);
+        player.setNotification("Disease", Disease);
+        player.setNotification("Fire", Fire);
+        player.setNotification("Loss", Loss);
+        player.setNotification("NewMessage", NewMessage);
+        player.setNotification("ProductionReady", ProductionReady);
+        player.setNotification("Trade", Trade);
+        player.setNotification("TradeNotEnoughLoaded", TradeNotEnoughLoaded);
+        player.setNotification("War", War);
     }
 
     private void updateCityTimestamps(Player player) {

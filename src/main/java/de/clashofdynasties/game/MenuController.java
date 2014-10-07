@@ -349,7 +349,11 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/settings", method = RequestMethod.GET)
-    public String showSettings(ModelMap map) {
+    public String showSettings(ModelMap map, Principal principal) {
+        Player player = playerRepository.findByName(principal.getName());
+
+        map.addAttribute("player", player);
+
         return "menu/settings";
     }
 
