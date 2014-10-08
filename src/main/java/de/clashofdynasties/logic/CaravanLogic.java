@@ -82,7 +82,7 @@ public class CaravanLogic {
                         amount = caravan.getPoint1Load();
                     }
                     else if(!caravan.getPoint1().getPlayer().equals(caravan.getPoint2().getPlayer())) {
-                        eventRepository.add(new Event("TradeNotEnoughLoaded", caravan.getPoint1().getPlayer().getName() + " erfüllt den Handelsvertrag nicht!", "In der Stadt " + caravan.getPoint1().getName() + " wurde für die Karawane " + caravan.getName() + " statt der vereinbarten Menge an Ware (" + caravan.getPoint1Load() + "x " + caravan.getPoint1Item().getName() + ") nur " + new Double(amount).intValue() + "x " + caravan.getPoint1StoreItem().getName() + " eingeladen.", caravan.getPoint1(), caravan.getPoint2().getPlayer()));
+                        eventRepository.add(new Event("TradeNotEnoughLoaded", caravan.getPoint1().getPlayer().getName() + " erfüllt den Handelsvertrag nicht!", "In der Stadt " + caravan.getPoint1().getName() + " wurde für die Karawane " + caravan.getName() + " statt der vereinbarten Menge an Ware (" + caravan.getPoint1Load() + "t " + caravan.getPoint1Item().getName() + ") nur " + new Double(amount).intValue() + "t " + caravan.getPoint1StoreItem().getName() + " eingeladen.", caravan.getPoint1(), caravan.getPoint2().getPlayer()));
                     }
 
                     city.setStoredItem(caravan.getPoint1Item().getId(), total - amount);
@@ -150,7 +150,7 @@ public class CaravanLogic {
                         amount = caravan.getPoint2Load();
                     }
                     else if(!caravan.getPoint1().getPlayer().equals(caravan.getPoint2().getPlayer())) {
-                        eventRepository.add(new Event("TradeNotEnoughLoaded", caravan.getPoint2().getPlayer().getName() + " erfüllt den Handelsvertrag nicht!", "In der Stadt " + caravan.getPoint2().getName() + " wurde für die Karawane " + caravan.getName() + " statt der vereinbarten Menge an Ware (" + caravan.getPoint2Load() + "x " + caravan.getPoint2Item().getName() + ") nur " + new Double(amount).intValue() + "x " + caravan.getPoint2StoreItem().getName() + " eingeladen.", caravan.getPoint2(), caravan.getPoint1().getPlayer()));
+                        eventRepository.add(new Event("TradeNotEnoughLoaded", caravan.getPoint2().getPlayer().getName() + " erfüllt den Handelsvertrag nicht!", "In der Stadt " + caravan.getPoint2().getName() + " wurde für die Karawane " + caravan.getName() + " statt der vereinbarten Menge an Ware (" + caravan.getPoint2Load() + "t " + caravan.getPoint2Item().getName() + ") nur " + new Double(amount).intValue() + "t " + caravan.getPoint2StoreItem().getName() + " eingeladen.", caravan.getPoint2(), caravan.getPoint1().getPlayer()));
                     }
 
                     city.setStoredItem(caravan.getPoint2Item().getId(), total - amount);
