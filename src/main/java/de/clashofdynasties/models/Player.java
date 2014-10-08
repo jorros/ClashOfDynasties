@@ -1,5 +1,6 @@
 package de.clashofdynasties.models;
 
+import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.NationRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -8,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Document
 public class Player {
@@ -152,6 +154,10 @@ public class Player {
 
     public void setSightUpdate(boolean sightUpdate) {
         this.sightUpdate = sightUpdate;
+    }
+
+    public boolean hasWon() {
+        return (CityRepository.get().findByPlayer(this).stream().filter(c -> c.countBuildings(5) > 0).count() > 0);
     }
 
     public boolean hasNotification(String type) {

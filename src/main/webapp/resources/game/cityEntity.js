@@ -71,6 +71,7 @@ Crafty.c("City", {
             $(this._infoEntity._element).append('<img id="' + this._cid + '_satisfaction" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/satisfaction/Happy.png" />');
             $(this._infoEntity._element).append('<img id="' + this._cid + '_disease" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/Disease.png" />');
             $(this._infoEntity._element).append('<img id="' + this._cid + '_fire" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/Fire.png" />');
+            $(this._infoEntity._element).append('<img id="' + this._cid + '_wonder" style="float:left; margin-top:7px; margin-left:5px; height:20px; width:20px;" src="assets/Wonder.png" />');
             $(this._infoEntity._element).append('<div id="' + this._cid + '_defence" style="float:right; margin-top:3px; margin-right:5px;"><img style="width:20px; height:20px;" src="assets/FormationsBlack.png" /><span id="' + this._cid + '_defencePoints" style="font-size:22px; vertical-align:top;">0</span></div>');
             $(this._infoEntity._element).append('<img id="' + this._cid + '_war" style="float:right; margin-top:7px; margin-right:5px; height:20px; width:20px; cursor:pointer;" onclick="openMenu(\'report?city=' + this._cid + '\', false)" src="assets/War.png" />');
 
@@ -148,6 +149,11 @@ Crafty.c("City", {
             else
                 $("#" + this._cid + "_disease").hide();
 
+            if (Cities[this._cid].wonder)
+                $("#" + this._cid + "_wonder").show();
+            else
+                $("#" + this._cid + "_wonder").hide();
+
             if (Cities[this._cid].formations != null && Cities[this._cid].formations.length > 0) {
                 $("#" + this._cid + "_formations").text(Cities[this._cid].formations.length);
                 $(this._formationsInfoEntity._element).show();
@@ -173,6 +179,9 @@ Crafty.c("City", {
                 infoWidth += $("#" + this._cid + "_disease").width();
 
             if ($("#" + this._cid + "_fire").is(":visible"))
+                infoWidth += $("#" + this._cid + "_fire").width();
+
+            if ($("#" + this._cid + "_wonder").is(":visible"))
                 infoWidth += $("#" + this._cid + "_fire").width();
 
             if ($("#" + this._cid + "_satisfaction").is(":visible"))

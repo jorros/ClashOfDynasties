@@ -121,11 +121,13 @@ public class LogicService {
     @Scheduled(fixedDelay = 1000)
     public void Worker() {
         try {
-            processCities();
-            processPlayer();
-            processFormations();
-            processCaravans();
-            processDiplomacy();
+            if(playerRepository.getList().stream().filter(p -> p.hasWon()).count() == 0) {
+                processCities();
+                processPlayer();
+                processFormations();
+                processCaravans();
+                processDiplomacy();
+            }
         }
         catch(Exception ex) {
             ex.printStackTrace();
@@ -504,15 +506,15 @@ public class LogicService {
             zentrum.addRequiredBiome(steppe);
             buildingBlueprintRepository.add(zentrum);
 
-            BuildingBlueprint schule = new BuildingBlueprint();
-            schule.setId(5);
-            schule.setName("Schule");
-            schule.addRequiredBiome(desert);
-            schule.addRequiredBiome(savannah);
-            schule.addRequiredBiome(jungle);
-            schule.addRequiredBiome(forest);
-            schule.addRequiredBiome(steppe);
-            buildingBlueprintRepository.add(schule);
+            BuildingBlueprint weltwunder = new BuildingBlueprint();
+            weltwunder.setId(5);
+            weltwunder.setName("Weltwunder");
+            weltwunder.addRequiredBiome(desert);
+            weltwunder.addRequiredBiome(savannah);
+            weltwunder.addRequiredBiome(jungle);
+            weltwunder.addRequiredBiome(forest);
+            weltwunder.addRequiredBiome(steppe);
+            buildingBlueprintRepository.add(weltwunder);
 
             BuildingBlueprint schenke = new BuildingBlueprint();
             schenke.setId(6);
@@ -763,6 +765,10 @@ public class LogicService {
                 marktplatz.setNation(null);
             }
 
+            BuildingBlueprint weltwunder = buildingBlueprintRepository.findById(5);
+            if(!weltwunder.getName().equals("Weltwunder")) {
+                weltwunder.setName("Weltwunder");
+            }
         }
 
         if(!mongoTemplate.collectionExists("unitBlueprint")) {

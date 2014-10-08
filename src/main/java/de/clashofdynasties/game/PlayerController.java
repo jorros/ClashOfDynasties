@@ -65,7 +65,7 @@ public class PlayerController {
 
     @RequestMapping(value = "/", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public void save(Principal principal, String email, String oldpw, String newpw, String newpw2, boolean CityConquered, boolean CityLost, boolean CityUpgrade, boolean DiplomaticAlliance, boolean DiplomaticPeace, boolean DiplomaticTrade, boolean DiplomaticWar, boolean Disease, boolean Fire, boolean Loss, boolean NewMessage, boolean ProductionReady, boolean Trade, boolean TradeNotEnoughLoaded, boolean War) {
+    public void save(Principal principal, String email, String oldpw, String newpw, String newpw2, boolean CityConquered, boolean CityLost, boolean CityUpgrade, boolean DiplomaticAlliance, boolean DiplomaticPeace, boolean DiplomaticTrade, boolean DiplomaticWar, boolean Disease, boolean Fire, boolean Loss, boolean NewMessage, boolean ProductionReady, boolean Trade, boolean TradeNotEnoughLoaded, boolean War, boolean Wonder) {
         Player player = playerRepository.findByName(principal.getName());
 
         player.setEmail(email);
@@ -93,6 +93,7 @@ public class PlayerController {
         player.setNotification("Trade", Trade);
         player.setNotification("TradeNotEnoughLoaded", TradeNotEnoughLoaded);
         player.setNotification("War", War);
+        player.setNotification("Wonder", Wonder);
     }
 
     private void updateCityTimestamps(Player player) {

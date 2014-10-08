@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,9 +37,30 @@ public class PublicController {
     LoginService loginService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(HttpServletRequest request, ModelMap map) {
-        if (request.isUserInRole("ROLE_USER"))
-            return "game";
+    public String index(HttpServletRequest request, ModelMap map, Principal principal) {
+        if (request.isUserInRole("ROLE_USER")) {
+            if(playerRepository.getList().stream().filter(Player::hasWon).count() > 0) {
+                Player player = playerRepository.findByName(principal.getName());
+                List<Player> players = playerRepository.getList().stream().filter(p -> p.getStatistic() != null).collect(Collectors.toList());
+
+                Collections.sort(players, (Player p1, Player p2) -> Integer.compare(p1.getStatistic().getRank(), p2.getStatistic().getRank()));
+
+                Player maxDemography = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getDemography(), p2.getStatistic().getDemography())).get();
+                Player maxEconomy = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getEconomy(), p2.getStatistic().getEconomy())).get();
+                Player maxMilitary = players.stream().max((Player p1, Player p2) -> Integer.compare(p1.getStatistic().getMilitary(), p2.getStatistic().getMilitary())).get();
+
+                map.addAttribute("player", player);
+                map.addAttribute("players", players);
+                map.addAttribute("maxDemography", maxDemography);
+                map.addAttribute("maxEconomy", maxEconomy);
+                map.addAttribute("maxMilitary", maxMilitary);
+                map.addAttribute("winner", playerRepository.getList().stream().filter(Player::hasWon).findAny().get());
+
+                return "winner";
+            }
+            else
+                return "game";
+        }
         else
             return "login";
     }

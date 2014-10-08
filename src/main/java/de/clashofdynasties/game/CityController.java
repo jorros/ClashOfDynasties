@@ -54,6 +54,9 @@ public class CityController {
     @Autowired
     private UnitRepository unitRepository;
 
+    @Autowired
+    private EventRepository eventRepository;
+
     @RequestMapping(value = "/{city}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
@@ -150,6 +153,13 @@ public class CityController {
                     construction.setCount(count);
                     city.setBuildingConstruction(construction);
                     player.addCoins(-construction.getBlueprint().getPrice() * count);
+
+                    if(type == 0 && blueprint == 5) {
+                        for(Player other : playerRepository.getList()) {
+                            if(!other.equals(player))
+                                eventRepository.add(new Event("Wonder", player.getName() + " baut ein Weltwunder", "Der Spieler " + player.getName() + " baut ein Weltwunder in " + city.getName() + ". Bei Abschluss gewinnt er das Spiel.", city, other));
+                        }
+                    }
                 }
             }
         }

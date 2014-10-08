@@ -402,6 +402,10 @@ public class City implements MapNode {
         visibility.add(player.getId());
     }
 
+    public boolean isWonder() {
+        return buildingConstruction != null && buildingConstruction.getBlueprint() instanceof BuildingBlueprint && ((BuildingBlueprint) buildingConstruction.getBlueprint()).getId() == 5;
+    }
+
     public ObjectNode toJSON(boolean editor, long timestamp, Player player) {
         JsonNodeFactory factory = JsonNodeFactory.instance;
         ObjectNode node = factory.objectNode();
@@ -412,7 +416,7 @@ public class City implements MapNode {
             node.put("type", getType().getId());
             node.put("visible", isVisible(player));
 
-            if(isVisible(player) || editor) {
+            if(isVisible(player) || editor || isWonder()) {
                 node.put("name", getName());
                 node.put("nn", false);
                 node.put("color", getPlayer().getColor());
@@ -430,6 +434,7 @@ public class City implements MapNode {
                     node.put("war", getReport() != null);
                     node.put("disease", isPlague());
                     node.put("fire", isFire());
+                    node.put("wonder", isWonder());
 
                     List<Formation> formations = getFormations();
                     ArrayNode formationNodes = factory.arrayNode();

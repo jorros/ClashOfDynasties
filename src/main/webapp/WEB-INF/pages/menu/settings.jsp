@@ -90,6 +90,10 @@
                     <td><input type="checkbox" id="notificationWar" <c:if test="${player.hasNotification(\"War\")}">checked</c:if> /></td>
                     <td><label for="notificationWar">Deine Stadt wird angegriffen</label></td>
                 </tr>
+                <tr>
+                    <td><input type="checkbox" id="notificationWonder" <c:if test="${player.hasNotification(\"Wonder\")}">checked</c:if> /></td>
+                    <td><label for="notificationWonder">Ein Mitspieler baut ein Weltwunder</label></td>
+                </tr>
             </table>
         </div>
     </div>
@@ -122,7 +126,8 @@
             ProductionReady: $("#notificationProductionReady").is(":checked"),
             Trade: $("#notificationTrade").is(":checked"),
             TradeNotEnoughLoaded: $("#notificationTradeNotEnoughLoaded").is(":checked"),
-            War: $("#notificationWar").is(":checked")
+            War: $("#notificationWar").is(":checked"),
+            Wonder: $("#notificationWonder").is(":checked")
         };
 
         $.put("/game/players/", data);

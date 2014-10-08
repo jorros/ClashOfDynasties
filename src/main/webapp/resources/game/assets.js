@@ -79,6 +79,7 @@ var Assets = ["assets/buildings/1.png",
     "assets/events/Trade.png",
     "assets/events/TradeNotEnoughLoaded.png",
     "assets/events/War.png",
+    "assets/events/Wonder.png",
 
     "assets/top/Camels.png",
     "assets/top/Cities.png",
@@ -110,5 +111,6 @@ var Assets = ["assets/buildings/1.png",
     "assets/setCaravan.png",
     "assets/setFormation.png",
     "assets/showItems.png",
-    "assets/War.png"
+    "assets/War.png",
+    "assets/Wonder.png"
 ];
