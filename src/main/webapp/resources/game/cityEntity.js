@@ -243,7 +243,7 @@ Crafty.c("City", {
             }
             else if (isCaravanSelected) {
                 if (Selected._cid != this._cid) {
-                    openMenu("caravan?point1=" + Selected._cid + "&point2=" + this._cid);
+                    openMenu("caravan?point1=" + Selected._cid + "&point2=" + this._cid, false);
 
                     isCaravanSelected = false;
                     $("#caravanText").hide();

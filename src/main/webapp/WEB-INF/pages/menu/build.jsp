@@ -244,7 +244,7 @@
         }
 
         $.put("/game/cities/${city.id}/build", { type: type, blueprint: blueprint, count: count }, function() {
-            openMenu("build?city=${city.id}");
+            openMenu("build?city=${city.id}&demography=0");
             forceUpdate();
         });
     }
@@ -267,7 +267,7 @@
 
     function stopBuild() {
         $.delete("/game/cities/${city.id}/build", function() {
-            openMenu("build?city=${city.id}");
+            openMenu("build?city=${city.id}&demography=0");
             forceUpdate();
         })
     }

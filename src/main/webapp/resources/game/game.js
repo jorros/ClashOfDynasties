@@ -44,6 +44,24 @@ window.onload = function () {
         var lastViewX = 0;
         var lastViewY = 0;
 
+        $(document).mousedown(function(e) {
+            Crafty.viewport.mouselook('start', e);
+            lastViewX = Crafty.viewport.x;
+            lastViewY = Crafty.viewport.y;
+        });
+
+        $(document).mousemove(function(e) {
+            Crafty.viewport.mouselook('drag', e);
+        });
+
+        $(document).mouseup(function() {
+            Crafty.viewport.mouselook('stop');
+
+            if (lastViewX != Crafty.viewport.x || lastViewY != Crafty.viewport.y) {
+                $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
+            }
+        });
+
         Crafty.e("2D, Canvas, Image, Mouse").attr({
             x: 0,
             y: 0,
@@ -51,14 +69,7 @@ window.onload = function () {
             h: 3600,
             z: 0
         }).image("assets/map.jpg")
-            .bind("MouseDown", function (e) {
-                Crafty.viewport.mouselook('start', e);
-                lastViewX = Crafty.viewport.x;
-                lastViewY = Crafty.viewport.y;
-            })
             .bind("MouseMove", function (e) {
-                Crafty.viewport.mouselook('drag', e);
-
                 if (Selected != null && Selected._fid != null) {
                     if (isCalculatedRoute && !Formations[Selected._fid].deployed) {
                         isCalculatedRoute = false;
@@ -77,8 +88,6 @@ window.onload = function () {
                 }
             })
             .bind("MouseUp", function () {
-                Crafty.viewport.mouselook('stop');
-
                 if (lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y) {
                     if (isCaravanSelected) {
                         isCaravanSelected = false;
@@ -86,8 +95,6 @@ window.onload = function () {
                     }
                     else
                         deselect();
-                } else {
-                    $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
                 }
             })
 
