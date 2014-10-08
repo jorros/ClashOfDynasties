@@ -35,17 +35,17 @@ window.onload = function () {
         var lastViewX = 0;
         var lastViewY = 0;
 
-        $(document).mousedown(function(e) {
+        $("#cr-stage").mousedown(function(e) {
             Crafty.viewport.mouselook('start', e);
             lastViewX = Crafty.viewport.x;
             lastViewY = Crafty.viewport.y;
         });
 
-        $(document).mousemove(function(e) {
+        $("#cr-stage").mousemove(function(e) {
             Crafty.viewport.mouselook('drag', e);
         });
 
-        $(document).mouseup(function() {
+        $("#cr-stage").mouseup(function() {
             Crafty.viewport.mouselook('stop');
 
             if (lastViewX != Crafty.viewport.x || lastViewY != Crafty.viewport.y) {
