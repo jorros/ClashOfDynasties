@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -77,35 +76,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4341" max-vertical-offset="7718">
-              <caret line="279" column="63" selection-start-line="279" selection-start-column="44" selection-end-line="279" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="cityEntity.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="6188">
-              <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="73" selection-end-column="81" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2703" max-vertical-offset="6188">
+              <caret line="178" column="29" selection-start-line="178" selection-start-column="29" selection-end-line="178" selection-end-column="69" />
               <folding>
-                <marker date="1412766748276" expanded="false" signature="2514:2551" placeholder="..." />
-                <marker date="1412766748276" expanded="false" signature="3611:3644" placeholder="..." />
-                <marker date="1412766748276" expanded="false" signature="4744:4768" placeholder="..." />
+                <marker date="1412770366842" expanded="false" signature="2514:2551" placeholder="..." />
+                <marker date="1412770366842" expanded="false" signature="3611:3644" placeholder="..." />
+                <marker date="1412770366842" expanded="false" signature="4744:4768" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
+      <file leaf-file-name="caravanEntity.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/caravanEntity.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2091">
-              <caret line="158" column="25" selection-start-line="158" selection-start-column="19" selection-end-line="158" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.31063122" vertical-offset="0" max-vertical-offset="1530">
+              <caret line="11" column="195" selection-start-line="11" selection-start-column="195" selection-end-line="11" selection-end-column="195" />
               <folding />
             </state>
           </provider>
@@ -115,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="2057">
-              <caret line="56" column="119" selection-start-line="56" selection-start-column="119" selection-end-line="56" selection-end-column="119" />
+              <caret line="41" column="85" selection-start-line="41" selection-start-column="84" selection-end-line="41" selection-end-column="85" />
               <folding>
                 <element signature="e#3307#3308#0" expanded="true" />
                 <element signature="e#3338#3339#0" expanded="true" />
@@ -164,11 +153,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editor.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="editor.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18106312" vertical-offset="367" max-vertical-offset="1717">
+            <state vertical-scroll-proportion="0.0" vertical-offset="367" max-vertical-offset="1717">
               <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MailService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/MailService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+              <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -198,7 +197,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
@@ -217,7 +215,6 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-context.xml" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/EventRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/MailService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
@@ -237,18 +234,20 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/settings.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/winner.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/MailService.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/caravanEntity.js" />
       </list>
     </option>
   </component>
@@ -1324,7 +1323,7 @@
       <workItem from="1412698524886" duration="32000" />
       <workItem from="1412712003434" duration="515000" />
       <workItem from="1412712617347" duration="636000" />
-      <workItem from="1412753630795" duration="9608000" />
+      <workItem from="1412753630795" duration="10653000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2242,11 +2241,19 @@
       <created>1412769362606</created>
       <updated>1412769362606</updated>
     </task>
-    <option name="localTasksCounter" value="230" />
+    <task id="LOCAL-00230" summary="Scrollfix #2">
+      <created>1412769745080</created>
+      <updated>1412769745080</updated>
+    </task>
+    <task id="LOCAL-00231" summary="Email leerer Empfänger fix">
+      <created>1412769986452</created>
+      <updated>1412769986452</updated>
+    </task>
+    <option name="localTasksCounter" value="232" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1098211000" />
+    <option name="totallyTimeSpent" value="1099256000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2327,8 +2334,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Events: Uhrzeit wird dargestellt" />
-    <MESSAGE value="Marktplatz hinzugefügt" />
     <MESSAGE value="Spielerhandel implementiert" />
     <MESSAGE value="Kampfwert der Stadt zeigt Wert aller Einheiten + Gebäude" />
     <MESSAGE value="Nachrichtensystem implementiert" />
@@ -2352,7 +2357,9 @@
     <MESSAGE value="Handelskarawane FIX" />
     <MESSAGE value="Weltwunder implementiert&#10;" />
     <MESSAGE value="Game-Fixes in Editor übernommen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Game-Fixes in Editor übernommen" />
+    <MESSAGE value="Scrollfix #2" />
+    <MESSAGE value="Email leerer Empfänger fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Email leerer Empfänger fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2364,13 +2371,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/messages.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="280" max-vertical-offset="1173">
-          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/spring-mvc.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="897">
@@ -2407,13 +2407,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
           <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/MailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="782">
-          <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
         </state>
       </provider>
     </entry>
@@ -2650,18 +2643,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2754" max-vertical-offset="6188">
-          <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="73" selection-end-column="81" />
-          <folding>
-            <marker date="1412766748276" expanded="false" signature="2514:2551" placeholder="..." />
-            <marker date="1412766748276" expanded="false" signature="3611:3644" placeholder="..." />
-            <marker date="1412766748276" expanded="false" signature="4744:4768" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/ranking.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
@@ -2675,17 +2656,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4341" max-vertical-offset="7718">
           <caret line="279" column="63" selection-start-line="279" selection-start-column="44" selection-end-line="279" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="2057">
-          <caret line="56" column="119" selection-start-line="56" selection-start-column="119" selection-end-line="56" selection-end-column="119" />
-          <folding>
-            <element signature="e#3307#3308#0" expanded="true" />
-            <element signature="e#3338#3339#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2737,6 +2707,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="367" max-vertical-offset="1717">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/MailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="2108">
@@ -2745,10 +2731,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18106312" vertical-offset="367" max-vertical-offset="1717">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="2057">
+          <caret line="41" column="85" selection-start-line="41" selection-start-column="84" selection-end-line="41" selection-end-column="85" />
+          <folding>
+            <element signature="e#3307#3308#0" expanded="true" />
+            <element signature="e#3338#3339#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2703" max-vertical-offset="6188">
+          <caret line="178" column="29" selection-start-line="178" selection-start-column="29" selection-end-line="178" selection-end-column="69" />
+          <folding>
+            <marker date="1412770366842" expanded="false" signature="2514:2551" placeholder="..." />
+            <marker date="1412770366842" expanded="false" signature="3611:3644" placeholder="..." />
+            <marker date="1412770366842" expanded="false" signature="4744:4768" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/caravanEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31063122" vertical-offset="0" max-vertical-offset="1530">
+          <caret line="11" column="195" selection-start-line="11" selection-start-column="195" selection-end-line="11" selection-end-column="195" />
           <folding />
         </state>
       </provider>

@@ -27,7 +27,7 @@ Crafty.c("City", {
             h: 35,
             x: (Cities[this._cid].x - 270 / 2),
             y: (this._y - 40),
-            z: 11
+            z: 13
         }); //.text(this._name).textFont("size", "24px").textFont("family", "Philosopher-Regular").unselectable().css({"text-shadow": "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000"});
 
         this._infoEntity.css({ "border-radius": "20px", "-moz-border-radius": "20px", "border": "1px #000 solid", "text-align": "center", "color": "#000", "font-family": "Philosopher-Regular", "font-size": "18px", "line-height": "35px", "vertical-align": "middle" });
@@ -38,7 +38,7 @@ Crafty.c("City", {
             h: 20,
             x: this._infoEntity.x + 25,
             y: (this._y - 75),
-            z: 11
+            z: 13
         });
 
         this._formationsInfoEntity.css({
