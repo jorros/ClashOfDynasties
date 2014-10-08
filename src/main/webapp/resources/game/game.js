@@ -15,8 +15,6 @@ window.onload = function () {
     Crafty.init();
     Crafty.canvas.init(5100, 3600);
 
-    console.log("Crafty " + Crafty.getVersion());
-
     Crafty.scene("loading", function () {
         var logo = Crafty.e("2D, DOM, Image").image("/images/Logo.png", "no-repeat").attr({ x: Crafty.viewport.width / 2 - 200, y: Crafty.viewport.height / 2 - 100 });
         var progress = Crafty.e("2D, DOM, Color").color("#FFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
@@ -26,14 +24,12 @@ window.onload = function () {
                     Crafty.scene("main");
                 });
             },
-
             function (e) {
                 progress.w = e.percent * 4;
-            }),
-
+            },
             function (e) {
                 console.log("Fehler beim Laden");
-            }
+            });
     });
 
     Crafty.scene("main", function () {

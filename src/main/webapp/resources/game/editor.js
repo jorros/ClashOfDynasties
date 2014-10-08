@@ -6,29 +6,25 @@ var timeoutID;
 
 window.onload = function () {
     Crafty.init();
-    Crafty.canvas.init();
+    Crafty.canvas.init(5100, 3600);
+
+    console.log("Crafty " + Crafty.getVersion());
 
     Crafty.scene("loading", function () {
-        Crafty.background = "#000";
-
-        var txt = Crafty.e("2D, DOM, Text").attr({
-            x: 0,
-            y: 0
-        }).text("Laden (" + 0 + "%)").textColor("#FFF", 1);
+        var logo = Crafty.e("2D, DOM, Image").image("/images/Logo.png", "no-repeat").attr({ x: Crafty.viewport.width / 2 - 200, y: Crafty.viewport.height / 2 - 100 });
+        var progress = Crafty.e("2D, DOM, Color").color("#FFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
 
         Crafty.load(Assets, function () {
                 loadGame(function() {
                     Crafty.scene("main");
                 });
             },
-
             function (e) {
-                txt.text("Laden (" + e.percent + "%)");
-            }),
-
+                progress.w = e.percent * 4;
+            },
             function (e) {
-                txt.text("Fehler beim Laden");
-            }
+                console.log("Fehler beim Laden");
+            });
     });
 
     Crafty.scene("main", function () {
@@ -39,23 +35,31 @@ window.onload = function () {
         var lastViewX = 0;
         var lastViewY = 0;
 
+        $(document).mousedown(function(e) {
+            Crafty.viewport.mouselook('start', e);
+            lastViewX = Crafty.viewport.x;
+            lastViewY = Crafty.viewport.y;
+        });
+
+        $(document).mousemove(function(e) {
+            Crafty.viewport.mouselook('drag', e);
+        });
+
+        $(document).mouseup(function() {
+            Crafty.viewport.mouselook('stop');
+
+            if (lastViewX != Crafty.viewport.x || lastViewY != Crafty.viewport.y) {
+                $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
+            }
+        });
+
         Crafty.e("2D, Canvas, Image, Mouse").attr({
             x: 0,
             y: 0,
             w: 5100,
             h: 3600
         }).image("assets/map.jpg")
-            .bind("MouseDown", function (e) {
-                Crafty.viewport.mouselook('start', e);
-                lastViewX = Crafty.viewport.x;
-                lastViewY = Crafty.viewport.y;
-            })
-            .bind("MouseMove", function (e) {
-                Crafty.viewport.mouselook('drag', e);
-            })
             .bind("MouseUp", function (e) {
-                Crafty.viewport.mouselook('stop');
-
                 if (lastViewX == Crafty.viewport.x && lastViewY == Crafty.viewport.y) {
                     if (Selected != null)
                         Selected.deselect();
@@ -67,10 +71,8 @@ window.onload = function () {
                             forceUpdate();
                         });
                     }
-                } else {
-                    $.put("/game/core/scroll", { x: Math.round(Crafty.viewport.x), y: Math.round(Crafty.viewport.y) });
                 }
-            })
+            });
 
         $("#cr-stage").on("mousewheel", function(event) {
             var calcScale = Crafty.viewport._scale + (event.deltaY / 10);
@@ -82,10 +84,10 @@ window.onload = function () {
                 Crafty.viewport.scale(0.5);
         });
 
+        updateGameEntities();
+
         Crafty.viewport.x = tempScrollX;
         Crafty.viewport.y = tempScrollY;
-
-        updateGameEntities();
 
         timeoutID = window.setInterval(updateGame, 5000);
     });
