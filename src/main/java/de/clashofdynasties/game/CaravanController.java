@@ -107,6 +107,8 @@ public class CaravanController {
                 caravan.setPaused(false);
                 loadPoint1In(caravan);
 
+                caravan.updateTimestamp();
+
                 eventRepository.add(new Event("Trade", "Handelsweg wurde etabliert", "Der Handelsweg zwischen " + caravan.getPoint1().getName() + " und " + caravan.getPoint2().getName() + " wurde etabliert. Die Karawane " + caravan.getName() + " wurde entsandt.", caravan.getPoint1(), caravan.getPoint1().getPlayer()));
             } else {
                 remove(principal, caravanId);

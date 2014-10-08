@@ -102,7 +102,7 @@ public class GameController {
         }
 
         for (Caravan caravan : caravans) {
-            if(!editor && caravan.isVisible(player)) {
+            if(!editor && caravan.isVisible(player) && !caravan.isPaused()) {
                 if (player.equals(caravan.getPlayer())) {
                     numCaravans++;
                     balance -= 1;
