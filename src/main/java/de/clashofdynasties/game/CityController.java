@@ -247,9 +247,9 @@ public class CityController {
     @Secured("ROLE_ADMIN")
     public void reset(@PathVariable("city") ObjectId id) {
         City city = cityRepository.findById(id);
-        city.clearBuildings();
+        city.clearBuildings(true);
         city.getItems().clear();
-        city.clearUnits();
+        city.clearUnits(true);
         city.setHealth(100);
         city.setPopulation(5);
         city.updateTimestamp();

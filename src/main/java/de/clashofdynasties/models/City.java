@@ -216,8 +216,9 @@ public class City implements MapNode {
         return buildings.stream().map(b -> BuildingRepository.get().findById(b)).collect(Collectors.toList());
     }
 
-    public void clearBuildings() {
-        BuildingRepository.get().remove(getBuildings());
+    public void clearBuildings(boolean remove) {
+        if(remove)
+            BuildingRepository.get().remove(getBuildings());
         buildings.clear();
     }
 
@@ -241,8 +242,9 @@ public class City implements MapNode {
         return units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
     }
 
-    public void clearUnits() {
-        UnitRepository.get().remove(getUnits());
+    public void clearUnits(boolean remove) {
+        if(remove)
+            UnitRepository.get().remove(getUnits());
         units.clear();
     }
 
@@ -377,7 +379,7 @@ public class City implements MapNode {
         if(getBuildings() != null)
             defence += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();
 
-        if(getUnits().size() > 0)
+        if(!units.isEmpty())
             defence += getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
 
         for(Formation formation : FormationRepository.get().findByCity(this)) {

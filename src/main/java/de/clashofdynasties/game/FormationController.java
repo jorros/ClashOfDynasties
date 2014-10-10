@@ -25,19 +25,19 @@ import java.util.stream.Collectors;
 @RequestMapping("/game/formations")
 public class FormationController {
     @Autowired
-    FormationRepository formationRepository;
+    private FormationRepository formationRepository;
 
     @Autowired
-    PlayerRepository playerRepository;
+    private PlayerRepository playerRepository;
 
     @Autowired
-    CityRepository cityRepository;
+    private CityRepository cityRepository;
 
     @Autowired
-    UnitRepository unitRepository;
+    private UnitRepository unitRepository;
 
     @Autowired
-    RoadRepository roadRepository;
+    private RoadRepository roadRepository;
 
     @Autowired
     private RelationRepository relationRepository;
@@ -139,8 +139,8 @@ public class FormationController {
                     List<Unit> sumUnits = new ArrayList<>(formation.getUnits());
                     sumUnits.addAll(city.getUnits());
 
-                    city.clearUnits();
-                    formation.clearUnits();
+                    city.clearUnits(false);
+                    formation.clearUnits(false);
 
                     for(Integer blp : units.keySet()) {
                         List<Unit> healthyUnitList;

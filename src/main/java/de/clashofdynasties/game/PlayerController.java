@@ -266,13 +266,13 @@ public class PlayerController {
             formationRepository.remove(formations);
 
         for(City city : cities) {
-            city.clearBuildings();
+            city.clearBuildings(true);
             city.setItems(new HashMap<>());
             city.setHealth(100);
             city.setPlayer(players.stream().filter(Player::isComputer).findFirst().get());
             city.setPopulation(5);
             city.setSatisfaction(100);
-            city.clearUnits();
+            city.clearUnits(true);
             city.updateTimestamp();
         }
 

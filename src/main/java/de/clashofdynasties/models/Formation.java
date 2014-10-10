@@ -99,7 +99,9 @@ public class Formation implements MapNode {
             units.add(unit.getId());
     }
 
-    public void clearUnits() {
+    public void clearUnits(boolean remove) {
+        if(remove)
+            UnitRepository.get().remove(getUnits());
         units.clear();
     }
 
@@ -109,13 +111,13 @@ public class Formation implements MapNode {
 
     public int getStrength() {
         if(getUnits().size() > 0)
-            return getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+            return getUnits().stream().filter(u -> u != null).mapToInt(b -> b.getBlueprint().getStrength()).sum();
 
         return 0;
     }
 
     public int getHealth() {
-        double health = getUnits().stream().mapToInt(Unit::getHealth).sum();
+        double health = getUnits().stream().filter(u -> u != null).mapToInt(Unit::getHealth).sum();
         double maxHealth = getUnits().size() * 100;
 
         return new Double(health / maxHealth * 100).intValue();
