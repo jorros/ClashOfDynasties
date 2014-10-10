@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="cod" uri="/WEB-INF/clashofdynasties.tld" %>
 
 <h1>St&auml;dte</h1>
 <div id="content">
@@ -19,11 +19,11 @@
             <tr>
                 <td style="font-weight: bold;"><c:out value="${ct.name}" /> :</td>
                 <td><input id="${ct.id}_capacityRel" style="width:40px; height:10px;" type="text" value="${ct.capacity}" /></td>
-                <td><input id="${ct.id}_consumeBasic" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeBasic}"/>" /></td>
-                <td><input id="${ct.id}_consumeLuxury1" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeLuxury1}"/>" /></td>
-                <td><input id="${ct.id}_consumeLuxury2" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeLuxury2}"/>" /></td>
-                <td><input id="${ct.id}_consumeLuxury3" style="width:70px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.consumeLuxury3}"/>" /></td>
-                <td><input id="${ct.id}_productionRate" style="width:60px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${ct.productionRate}"/>" /></td>
+                <td><input id="${ct.id}_consumeBasic" style="width:70px; height:10px;" type="text" value="<cod:Number value="${ct.consumeBasic}"/>" /></td>
+                <td><input id="${ct.id}_consumeLuxury1" style="width:70px; height:10px;" type="text" value="<cod:Number value="${ct.consumeLuxury1}"/>" /></td>
+                <td><input id="${ct.id}_consumeLuxury2" style="width:70px; height:10px;" type="text" value="<cod:Number value="${ct.consumeLuxury2}"/>" /></td>
+                <td><input id="${ct.id}_consumeLuxury3" style="width:70px; height:10px;" type="text" value="<cod:Number value="${ct.consumeLuxury3}"/>" /></td>
+                <td><input id="${ct.id}_productionRate" style="width:60px; height:10px;" type="text" value="<cod:Number value="${ct.productionRate}"/>" /></td>
                 <td><input id="${ct.id}_taxes" style="width:60px; height:10px;" type="text" value="${ct.taxes}" /></td>
             </tr>
         </c:forEach>

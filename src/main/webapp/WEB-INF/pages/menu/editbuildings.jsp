@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="cod" uri="/WEB-INF/clashofdynasties.tld" %>
 
 <h1>Gebäude</h1>
 <div id="content">
@@ -28,7 +28,7 @@
             <td><input id="${bp.id}_maxcount" style="width:30px; height:10px;" type="text" value="${bp.maxCount}" /></td>
             <td><select id="${bp.id}_citytype"><c:forEach items="${cityTypes}" var="cityType"><option <c:if test="${cityType == bp.requiredCityType}">selected</c:if> value="${cityType.id}">${cityType.name}</option></c:forEach></select></td>
             <td><select id="${bp.id}_item"><option <c:if test="${bp.produceItem == null}">selected</c:if> value="0">Kein</option><c:forEach items="${items}" var="item"><option <c:if test="${item == bp.produceItem}">selected</c:if> value="${item.id}">${item.name}</option></c:forEach></select></td>
-            <td><input id="${bp.id}_pps" style="width:60px; height:10px;" type="text" value="<fmt:formatNumber type="number" maxFractionDigits="8" value="${bp.producePerStep}"/>" /></td>
+            <td><input id="${bp.id}_pps" style="width:60px; height:10px;" type="text" value="<cod:Number value="${bp.producePerStep}"/>" /></td>
         </tr>
         </c:forEach>
     </table>
