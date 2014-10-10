@@ -7,13 +7,13 @@ $(document).ready(function () {
             $(this).addClass("selected");
 
             if ($(this).attr("id") == "menu1")
-                openMenu("editcity");
+                openMenu("editcity", false);
             else if ($(this).attr("id") == "menu2")
-                openMenu("editplayers");
+                openMenu("editplayers", false);
             else if ($(this).attr("id") == "menu3")
-                openMenu("editbuildings");
+                openMenu("editbuildings", false);
             else if ($(this).attr("id") == "menu4")
-                openMenu("editunits");
+                openMenu("editunits", false);
             else if ($(this).attr("id") == "menu5")
                 window.location = "/logout";
         }

@@ -217,6 +217,7 @@ public class City implements MapNode {
     }
 
     public void clearBuildings() {
+        BuildingRepository.get().remove(getBuildings());
         buildings.clear();
     }
 
@@ -241,6 +242,7 @@ public class City implements MapNode {
     }
 
     public void clearUnits() {
+        UnitRepository.get().remove(getUnits());
         units.clear();
     }
 

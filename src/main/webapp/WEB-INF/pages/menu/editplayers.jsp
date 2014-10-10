@@ -23,12 +23,16 @@
         <c:forEach items="${players}" var="player">
             $("#${player.id}_delete").click(function() {
                 if(window.confirm("Spieler wirklich löschen?")) {
-                    $.delete("/game/players/${player.id}");
+                    $.delete("/game/players/${player.id}", function() {
+                        openMenu("editplayers", false);
+                    });
                 }
             });
             $("#${player.id}_reset").click(function() {
                 if(window.confirm("Spieler wirklich resetten?")) {
-                    $.delete("/game/players/${player.id}/reset");
+                    $.delete("/game/players/${player.id}/reset", function() {
+                        openMenu("editplayers", false);
+                    });
                 }
             });
             $("#${player.id}_link").click(function() {

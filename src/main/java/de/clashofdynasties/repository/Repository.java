@@ -26,7 +26,9 @@ public class Repository<K>{
 
     public void remove(List<K> item) {
         if(items.containsAll(item)) {
-            mongoTemplate.remove(item);
+            for(K removable : item) {
+                mongoTemplate.remove(removable);
+            }
             items.removeAll(item);
         }
     }

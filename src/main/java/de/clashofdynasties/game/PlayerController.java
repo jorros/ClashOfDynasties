@@ -246,6 +246,18 @@ public class PlayerController {
         List<City> cities = cityRepository.findByPlayer(player);
         List<Formation> formations = formationRepository.findByPlayer(player);
         List<Caravan> caravans = caravanRepository.findByPlayer(player);
+        List<Relation> relations = relationRepository.finyByPlayer(player);
+        List<Event> events = eventRepository.findByPlayer(player);
+        List<Message> messages = messageRepository.findByPlayer(player);
+
+        if(!events.isEmpty())
+            eventRepository.remove(events);
+
+        if(!relations.isEmpty())
+            relationRepository.remove(relations);
+
+        if(!messages.isEmpty())
+            messageRepository.remove(messages);
 
         if(caravans.size() > 0)
             caravanRepository.remove(caravans);
@@ -263,8 +275,6 @@ public class PlayerController {
             city.clearUnits();
             city.updateTimestamp();
         }
-
-        messageRepository.remove(messageRepository.findByPlayer(player));
 
         players.forEach(p -> p.setSightUpdate(true));
 
