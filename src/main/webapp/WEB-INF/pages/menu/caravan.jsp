@@ -67,7 +67,14 @@
         <c:if test="${point1.player == point2.player || create}">
         <button onclick="save()" style="float:right;"><c:choose><c:when test="${create}"><c:choose><c:when test="${point1.player == point2.player}">Erstellen</c:when><c:otherwise>Vorschlagen</c:otherwise></c:choose></c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
         </c:if>
-        <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
+        <c:choose>
+            <c:when test="${demography}">
+                <button onclick="openMenu('demography?p=2', false);" style="float:right; margin-right:4px;">Zurück</button>
+            </c:when>
+            <c:otherwise>
+                <button onclick="closeMenu()" style="float:right; margin-right:4px;">Abbrechen</button>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 <script>

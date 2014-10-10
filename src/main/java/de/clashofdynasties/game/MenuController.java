@@ -48,7 +48,7 @@ public class MenuController {
     private MessageRepository messageRepository;
 
     @RequestMapping(value = "/formation", method = RequestMethod.GET)
-    public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) ObjectId id, @RequestParam(value = "city", required = false) ObjectId cityID) {
+    public String showFormationSetup(ModelMap map, Principal principal, @RequestParam(value = "formation", required = false) ObjectId id, @RequestParam(value = "city", required = false) ObjectId cityID, @RequestParam(required = false) Boolean demography) {
         Player player = playerRepository.findByName(principal.getName());
 
         Formation formation = null;
@@ -121,6 +121,8 @@ public class MenuController {
         map.addAttribute("injuredUnits", injuredUnitMap);
         map.addAttribute("formationUnits", formationUnitMap);
         map.addAttribute("formationInjuredUnits", formationInjuredUnitMap);
+
+        map.addAttribute("demography", demography != null ? demography : false);
 
         return "menu/setupFormation";
     }
@@ -231,7 +233,7 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/caravan", method = RequestMethod.GET)
-    public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId point1, @RequestParam(required = false) ObjectId point2, @RequestParam(value = "caravan", required = false) ObjectId id) {
+    public String showCaravan(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId point1, @RequestParam(required = false) ObjectId point2, @RequestParam(value = "caravan", required = false) ObjectId id, @RequestParam(required = false) Boolean demography) {
         Player player = playerRepository.findByName(principal.getName());
         List<Item> items = itemRepository.getList();
 
@@ -258,6 +260,7 @@ public class MenuController {
 
         map.addAttribute("items", items);
         map.addAttribute("player", player);
+        map.addAttribute("demography", demography != null ? demography : false);
 
         return "menu/caravan";
     }
@@ -358,11 +361,26 @@ public class MenuController {
     }
 
     @RequestMapping(value = "/demography", method = RequestMethod.GET)
-    public String showDemography(ModelMap map, Principal principal) {
+    public String showDemography(ModelMap map, Principal principal, @RequestParam(required = false) String p) {
         Player player = playerRepository.findByName(principal.getName());
-        List<City> cities = cityRepository.findByPlayer(player);
+        if(p == null || p.equals("1")) {
+            List<City> cities = cityRepository.findByPlayer(player);
 
-        map.addAttribute("cities", cities);
+            map.addAttribute("cities", cities);
+            map.addAttribute("page", 1);
+        } else if(p.equals("2")) {
+            List<Caravan> caravans = caravanRepository.findByPlayer(player);
+
+            map.addAttribute("caravans", caravans);
+            map.addAttribute("page", 2);
+        } else if(p.equals("3")) {
+            List<Formation> formations = formationRepository.findByPlayer(player);
+
+            map.addAttribute("formations", formations);
+            map.addAttribute("page", 3);
+        }
+
+        map.addAttribute("player", player);
 
         return "menu/demography";
     }

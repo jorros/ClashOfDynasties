@@ -77,7 +77,14 @@
         <label for="formation_name">Name: </label>
         <input id="formation_name" maxlength="14" style="width:300px;" type="text" value="${formation.name}" />
         <button onclick="save()" style="float:right;"><c:choose><c:when test="${create}">Erstellen</c:when><c:otherwise>Ändern</c:otherwise></c:choose></button>
-        <button onclick="closeMenu()" style="float:right;">Abbrechen</button>
+        <c:choose>
+            <c:when test="${demography}">
+                <button onclick="openMenu('demography?p=3', false);" style="float:right; margin-right:4px;">Zurück</button>
+            </c:when>
+            <c:otherwise>
+                <button onclick="closeMenu()" style="float:right; margin-right:4px;">Abbrechen</button>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 

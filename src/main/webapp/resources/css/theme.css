@@ -481,3 +481,27 @@ h4 {
     color: #fff;
     text-decoration: none;
 }
+
+.tabMenu {
+    font-size: 24px;
+    text-align: center;
+}
+
+.tabMenu a {
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.tabMenu a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+.tabMenu a:hover {
+    text-decoration: none;
+    color: #a8a8a8 !important;
+}
+
+.tabMenu .selected {
+    color: #a8a8a8 !important;
+}

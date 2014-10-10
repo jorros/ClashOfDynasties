@@ -29,7 +29,12 @@
             </c:forEach>
         </table>
     </div>
-    <div>
-        <button onclick="closeMenu()" style="position:absolute; right:25px; bottom: 120px;">Schlie&szlig;en</button>
-    </div>
+    <c:choose>
+        <c:when test="${demography}">
+            <button onclick="openMenu('demography?p=3', false);" style="position:absolute; right:25px; bottom: 120px;">Zurück</button>
+        </c:when>
+        <c:otherwise>
+            <button onclick="closeMenu()" style="position:absolute; right:25px; bottom: 120px;">Schlie&szlig;en</button>
+        </c:otherwise>
+    </c:choose>
 </div>
