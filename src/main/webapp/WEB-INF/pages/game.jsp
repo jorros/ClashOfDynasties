@@ -44,7 +44,7 @@
     <div id="header">
         <div id="menu1" class="menu menu-orange"><a>ranking</a></div>
         <div id="menu2" class="menu menu-yellow"><a>profil</a></div>
-        <div id="menu3" class="menu menu-cyan"><a>dein reich</a></div>
+        <div id="menu3" class="menu menu-cyan"><a>mein reich</a></div>
         <div id="menu4" class="menu menu-green"><a>diplomatie</a></div>
         <div id="menu5" class="menu menu-red"><a>nachrichten</a></div>
     </div>
