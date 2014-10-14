@@ -2,13 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${player == city.player}">
-<button <c:if test="${!canTrade}">disabled</c:if> onclick="isCaravanSelected=true; $('#caravanText').show();"><img src="assets/setCaravan.png" /></button>
-<button <c:if test="${empty city.units}">disabled</c:if> onclick="openMenu('formation?city=${city.id}', false)"><img src="assets/setFormation.png" /></button>
+<button title="Karawane erstellen" <c:if test="${!canTrade}">disabled</c:if> onclick="isCaravanSelected=true; $('#caravanText').show();"><img src="assets/setCaravan.png" /></button>
+<button title="Formation erstellen" <c:if test="${empty city.units}">disabled</c:if> onclick="openMenu('formation?city=${city.id}', false)"><img src="assets/setFormation.png" /></button>
 </c:if>
-<button onclick="openMenu('store?city=${city.id}', false)"><img src="assets/showItems.png" /></button>
-<button onclick="openMenu('units?city=${city.id}', false)"><img src="assets/infoFormation.png" /></button>
+<button title="Lager öffnen" onclick="openMenu('store?city=${city.id}', false)"><img src="assets/showItems.png" /></button>
+<button title="Einheiten und Verteidigungsgebäude der Stadt anzeigen" onclick="openMenu('units?city=${city.id}', false)"><img src="assets/infoFormation.png" /></button>
 <c:if test="${city.report != null}">
-    <button onclick="openMenu('report?city=${city.id}', false)"><img src="assets/report.png" /></button>
+    <button title="Kriegsbericht öffnen" onclick="openMenu('report?city=${city.id}', false)"><img src="assets/report.png" /></button>
 </c:if>
 <br><br>
 <b>${city.name}</b>

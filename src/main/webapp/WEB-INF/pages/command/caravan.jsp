@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${caravan.point1.player == player || caravan.point2.player == player}">
-<button onclick="openMenu('caravan?caravan=${caravan.id}', false)"><img src="assets/setCaravan.png" /></button>
+<button title="Karawane bearbeiten" onclick="openMenu('caravan?caravan=${caravan.id}', false)"><img src="assets/setCaravan.png" /></button>
 <c:if test="${(caravan.player == player && caravan.point1.player == caravan.point2.player) || ((caravan.point1.player == player || caravan.point2.player == player) && !caravan.terminate)}">
-<button onclick="if(window.confirm('Bist du dir sicher?')) { $.delete('game/caravans/${caravan.id}'); deselect(); }"><img src="assets/removeCaravan.png" /></button>
+<button title="Karawane für Auflösung markieren" onclick="if(window.confirm('Bist du dir sicher?')) { $.delete('game/caravans/${caravan.id}'); deselect(); }"><img src="assets/removeCaravan.png" /></button>
 </c:if>
 </c:if>
 <br><br>

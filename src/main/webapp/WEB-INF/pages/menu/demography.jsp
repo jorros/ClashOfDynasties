@@ -31,7 +31,7 @@
                     <td><span style="vertical-align:middle;">${city.population} <c:if test="${city.satisfaction <= 30 && city.population > 10}"></span><img style="vertical-align:middle;" src="assets/negIndicator.png" /></c:if><c:if test="${city.satisfaction >= 80 && city.population < city.countBuildings(1) * 10 + 10}"><img style="vertical-align:middle;" src="assets/posIndicator.png" /></c:if></td>
                     <td><span class="<c:if test="${city.satisfaction <= 30}">red</c:if><c:if test="${city.satisfaction >= 80}">green</c:if>">${city.satisfaction}</span></td>
                     <td><span class="<c:choose><c:when test="${city.income-city.outcome > 0}">green</c:when><c:otherwise>red</c:otherwise></c:choose>">${city.income - city.outcome}</span> (<span class="green">${city.income}</span>/<span class="red">${city.outcome}</span>)</td>
-                    <td><button style="height:36px;" onclick="openMenu('build?city=${city.id}&demography=1')"><img style="vertical-align:middle;" src="assets/build.png" /></button><button style="height:36px;" onclick="setAlias('${city.id}', '${city.name}', '${city.alias}')"><img style="vertical-align:middle;" src="assets/setAlias.png" /></button></td>
+                    <td><button title="Baumenü öffnen" style="height:36px; margin-right:2px;" onclick="openMenu('build?city=${city.id}&demography=1')"><img style="vertical-align:middle;" src="assets/build.png" /></button><button title="Alias für Stadt benennen" style="height:36px;" onclick="setAlias('${city.id}', '${city.name}', '${city.alias}')"><img style="vertical-align:middle;" src="assets/setAlias.png" /></button></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -59,7 +59,7 @@
                         <td><c:choose><c:when test="${caravan.point2Item != null}">${caravan.point2Load}t ${caravan.point2Item.name}</c:when><c:otherwise>Nichts</c:otherwise></c:choose></td>
                         <td><c:if test="${caravan.point1StoreItem != null}"><fmt:formatNumber value="${caravan.point1Store}" maxFractionDigits="0" />t ${caravan.point1StoreItem.name}</c:if><c:if test="${caravan.point1StoreItem != null && caravan.point2StoreItem != null}"><br></c:if><c:if test="${caravan.point2StoreItem != null}"><fmt:formatNumber value="${caravan.point2Store}" maxFractionDigits="0" />t ${caravan.point2StoreItem.name}</c:if></td>
                         <td><c:choose><c:when test="${caravan.direction == 1}">Rückweg</c:when><c:otherwise>Hinweg</c:otherwise></c:choose></td>
-                        <td><button style="height:36px;" onclick="openMenu('caravan?caravan=${caravan.id}&demography=1')"><img style="vertical-align:middle; width:30px; height:30px;" src="assets/setCaravan.png" /></button></td>
+                        <td><button title="Karawane bearbeiten" style="height:36px;" onclick="openMenu('caravan?caravan=${caravan.id}&demography=1')"><img style="vertical-align:middle; width:30px; height:30px;" src="assets/setCaravan.png" /></button></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -104,7 +104,7 @@
                         </td>
                         <td><span class="<c:if test="${formation.health >= 90}">green</c:if><c:if test="${formation.health <= 30}">red</c:if>">${formation.health}</span></td>
                         <td>${formation.strength}</td>
-                        <td><c:choose><c:when test="${formation.deployed && formation.lastCity.player.id == player.id}"><button style="height:36px;" onclick="openMenu('formation?formation=${formation.id}&demography=1')"><img style="vertical-align:middle; width:30px; height:30px;" src="assets/setFormation.png" /></button></c:when><c:otherwise><button style="height:36px;" onclick="openMenu('formation?formation=${formation.id}&demography=1')"><img style="vertical-align:middle; width:30px; height:30px;" src="assets/infoFormation.png" /></button></c:otherwise></c:choose></td>
+                        <td><c:choose><c:when test="${formation.deployed && formation.lastCity.player.id == player.id}"><button style="height:36px;" title="Formation bearbeiten" onclick="openMenu('formation?formation=${formation.id}&demography=1')"><img style="vertical-align:middle; width:30px; height:30px;" src="assets/setFormation.png" /></button></c:when><c:otherwise><button title="Formationsaufstellung anzeigen" style="height:36px;" onclick="openMenu('formation?formation=${formation.id}&demography=1')"><img style="vertical-align:middle; width:30px; height:30px;" src="assets/infoFormation.png" /></button></c:otherwise></c:choose></td>
                     </tr>
                 </c:forEach>
                 </tbody>
