@@ -277,6 +277,7 @@ public class PlayerController {
             city.updateTimestamp();
         }
 
+        player.setLevel(0);
         players.forEach(p -> p.setSightUpdate(true));
 
         player.setLastScrollX(-1);
