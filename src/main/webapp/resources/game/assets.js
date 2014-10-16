@@ -81,6 +81,9 @@ var Assets = ["assets/buildings/1.png",
     "assets/events/War.png",
     "assets/events/Wonder.png",
 
+    "assets/objectives/Checked.png",
+    "assets/objectives/Unchecked.png",
+
     "assets/top/Camels.png",
     "assets/top/Cities.png",
     "assets/top/Coins.png",
