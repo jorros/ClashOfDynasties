@@ -18,6 +18,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/game/players")
+@Secured("ROLE_USER")
 public class PlayerController {
     @Autowired
     private FormationRepository formationRepository;

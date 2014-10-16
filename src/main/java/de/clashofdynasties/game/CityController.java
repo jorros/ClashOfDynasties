@@ -17,6 +17,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/game/cities")
+@Secured("ROLE_USER")
 public class CityController {
     @Autowired
     private CityRepository cityRepository;

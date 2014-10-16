@@ -4,6 +4,7 @@ import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/game/menus")
+@Secured("ROLE_USER")
 public class MenuController {
     @Autowired
     private PlayerRepository playerRepository;

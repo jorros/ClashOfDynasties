@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/game/citytypes")
+@Secured("ROLE_USER")
 public class CityTypeController {
     @Autowired
     CityTypeRepository cityTypeRepository;

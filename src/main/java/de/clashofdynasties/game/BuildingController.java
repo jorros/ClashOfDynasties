@@ -22,6 +22,7 @@ import java.io.InputStream;
 
 @Controller
 @RequestMapping("/game/buildings")
+@Secured("ROLE_USER")
 public class BuildingController {
     @Autowired
     BuildingBlueprintRepository buildingBlueprintRepository;

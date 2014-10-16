@@ -8,6 +8,7 @@ import de.clashofdynasties.repository.*;
 import de.clashofdynasties.service.RoutingService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.security.Principal;
 
 @Controller
 @RequestMapping("/game/commands")
+@Secured("ROLE_USER")
 public class CommandController {
     @Autowired
     private FormationRepository formationRepository;

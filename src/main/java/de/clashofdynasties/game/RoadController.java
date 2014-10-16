@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/game/roads")
+@Secured("ROLE_USER")
 public class RoadController {
     @Autowired
     private RoadRepository roadRepository;

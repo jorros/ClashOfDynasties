@@ -21,6 +21,7 @@ import java.io.InputStream;
 
 @Controller
 @RequestMapping("/game/units")
+@Secured("ROLE_USER")
 public class UnitController {
     @Autowired
     UnitBlueprintRepository unitBlueprintRepository;
