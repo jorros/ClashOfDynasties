@@ -47,12 +47,14 @@ function updateGameContent() {
         });
 
         $("#objectives").empty();
-        $.each(data.objectives, function(id, objective) {
-            var image = "<img src=\"assets/objectives/" + (objective.completed ? "Checked" : "Unchecked") + ".png\"/>";
-            var text = "<span>" + objective.text + "</span><br>";
+        if(data.objectives != undefined) {
+            $.each(data.objectives, function (id, objective) {
+                var image = "<img src=\"assets/objectives/" + (objective.completed ? "Checked" : "Unchecked") + ".png\"/>";
+                var text = "<span>" + objective.text + "</span><br>";
 
-            $("#objectives").append(image).append(text);
-        });
+                $("#objectives").append(image).append(text);
+            });
+        }
 
         Cities = tempCities;
         Roads = tempRoads;

@@ -278,6 +278,7 @@ public class PlayerController {
         }
 
         player.setLevel(0);
+        player.getObjectives().clear();
         players.forEach(p -> p.setSightUpdate(true));
 
         player.setLastScrollX(-1);
