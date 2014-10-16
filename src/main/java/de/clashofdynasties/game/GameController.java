@@ -41,6 +41,12 @@ public class GameController {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private BuildingBlueprintRepository buildingBlueprintRepository;
+
+    @Autowired
+    private UnitBlueprintRepository unitBlueprintRepository;
+
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, Object> getUpdate(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {
@@ -61,6 +67,7 @@ public class GameController {
         HashMap<String, ObjectNode> cityJSON = new HashMap<>();
         HashMap<String, Object> topMap = new HashMap<>();
         List<Object> eventList = new ArrayList<>();
+        List<Object> objectiveList = new ArrayList<>();
 
         int people = 0;
         int balance = 0;
@@ -128,6 +135,36 @@ public class GameController {
             events.stream().filter(e -> e.toJSON(timestamp) != null).forEach(e -> eventList.add(e.toJSON(timestamp)));
         }
 
+        if(player.getLevel() == 0 || !player.getObjectives().isEmpty()) {
+            if(player.getLevel() == 0 || player.getObjectives().stream().filter(o -> !o.isCompleted()).count() == 0) {
+                player.setLevel(player.getLevel() + 1);
+
+                player.getObjectives().clear();
+
+                switch(player.getLevel()) {
+                    case 1:
+                        Objective A = new Objective();
+                        A.setBuilding(buildingBlueprintRepository.findById(1));
+                        A.setCount(2);
+                        A.setCity(cityRepository.findByPlayer(player).get(0));
+                        player.getObjectives().add(A);
+
+                        data.put("brief", 1);
+                        break;
+
+                    case 2:
+
+                        break;
+
+                    case 3:
+
+                        break;
+                }
+            }
+
+            player.getObjectives().stream().filter(e -> e.toJSON() != null).forEach(e -> objectiveList.add(e.toJSON()));
+        }
+
         data.put("cities", cityJSON);
         data.put("roads", roadMap);
         data.put("formations", formationMap);
@@ -135,6 +172,7 @@ public class GameController {
         data.put("timestamp", System.currentTimeMillis());
         data.put("top", topMap);
         data.put("events", eventList);
+        data.put("objectives", objectiveList);
 
         return data;
     }

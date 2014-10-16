@@ -171,6 +171,11 @@ public class CityLogic {
 
             if (city.getSatisfaction() >= 80 && Math.random() < 0.01 && city.getPopulation() < maxPeople && !city.isPlague()) {
                 city.setPopulation(city.getPopulation() + 1);
+
+                for(Objective objective : city.getPlayer().getObjectives()) {
+                    if(objective.getCity().equals(city) && objective.getPopulation() != null && city.getPopulation() >= objective.getPopulation())
+                        objective.setCompleted(true);
+                }
             } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation() || (city.isPlague() && Math.random() < 0.002)) && city.getPopulation() > 10) {
                 city.setPopulation(city.getPopulation() - 1);
             }
@@ -283,6 +288,16 @@ public class CityLogic {
                         building.setHealth(100);
                         buildingRepository.add(building);
 
+                        for(Objective objective : city.getPlayer().getObjectives()) {
+                            if(objective.getCity().equals(city)) {
+                                if(objective.getBuilding() != null && objective.getBuilding().equals(construction.getBlueprint()))
+                                    objective.setCountReady(objective.getCountReady() + 1);
+
+                                if(objective.getCountReady() >= objective.getCount())
+                                    objective.setCompleted(true);
+                            }
+                        }
+
                         city.addBuilding(building);
 
                         eventRepository.add(new Event("ProductionReady", "Neues Gebäude errichtet", "In " + city.getName() + " wurde das Gebäude " + building.getBlueprint().getName() + " errichtet!", city, city.getPlayer()));
@@ -300,6 +315,16 @@ public class CityLogic {
                             eventRepository.add(new Event("ProductionReady", "Neue Einheiten ausgebildet", "In " + city.getName() + " wurden " + construction.getCount() + " Einheiten " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
                         else
                             eventRepository.add(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
+
+                        for(Objective objective : city.getPlayer().getObjectives()) {
+                            if(objective.getCity().equals(city)) {
+                                if(objective.getUnit() != null && objective.getUnit().equals(construction.getBlueprint()))
+                                    objective.setCountReady(objective.getCountReady() + construction.getCount());
+
+                                if(objective.getCountReady() >= objective.getCount())
+                                    objective.setCompleted(true);
+                            }
+                        }
                     }
 
                     city.setBuildingConstruction(null);
@@ -636,6 +661,11 @@ public class CityLogic {
                     city.setPlayer(conqueror);
                     city.setReport(null);
                     city.getPlayer().setSightUpdate(true);
+
+                    for(Objective objective : conqueror.getObjectives()) {
+                        if(objective.getConquerCity() != null && objective.getConquerCity().equals(city))
+                            objective.setCompleted(true);
+                    }
 
                     if(conqueror.getNation().getId() == 1) {
                         List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 3 || b.getBlueprint().getId() == 14 || b.getBlueprint().getId() == 15).collect(Collectors.toList());

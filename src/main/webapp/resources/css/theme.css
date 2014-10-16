@@ -422,6 +422,31 @@ h4 {
     float: left;
 }
 
+
+/* Objectives */
+#objectives {
+    position: absolute;
+    left: 0;
+    top: 300px;
+    text-align: left;
+    z-index: 40;
+}
+
+#objectives span {
+    color: #000;
+    font-size: 20px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#objectives img {
+    vertical-align: baseline;
+}
+
 /* Sonstiges */
 .no-close .ui-dialog-titlebar-close {
     display: none;

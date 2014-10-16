@@ -48,8 +48,8 @@
         <div id="menu4" class="menu menu-green"><a>diplomatie</a></div>
         <div id="menu5" class="menu menu-red"><a>nachrichten</a></div>
     </div>
-    <div id="body" style="display: none;">
-    </div>
+    <div id="body" style="display: none;"></div>
+    <div id="objectives"></div>
     <div id="controls"></div>
     <div id="events"></div>
     <span id="caravanText" style="position:absolute; width:200px; margin:auto auto; left:50%; top:80%; font-family:'Philosopher-Bold'; font-size:28px; color:#000; text-align:center; z-index:30; display:none;">W&auml;hle eine Zielstadt aus!</span>

@@ -46,6 +46,14 @@ function updateGameContent() {
                 tempCaravans[id].route = Caravans[id].route;
         });
 
+        $("#objectives").empty();
+        $.each(data.objectives, function(id, objective) {
+            var image = "<img src=\"assets/objectives/" + (objective.completed ? "Checked" : "Unchecked") + ".png\"/>";
+            var text = "<span>" + objective.text + "</span><br>";
+
+            $("#objectives").append(image).append(text);
+        });
+
         Cities = tempCities;
         Roads = tempRoads;
         Formations = tempFormations;
@@ -97,6 +105,10 @@ function updateGameContent() {
                 items: "button"
             });
         });
+
+        if(data.brief != undefined) {
+            openMenu("briefing?level=" + data.brief, false);
+        }
     });
 }
 

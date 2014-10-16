@@ -276,7 +276,7 @@ public class City implements MapNode {
 
     public double getProductionRate() {
         if(population > 0)
-            return population * 0.1 * getType().getProductionRate();
+            return population * 0.1 * getType().getProductionRate() * (getPlayer().getLevel() == 1 ? 10 : 1);
         else
             return getType().getProductionRate();
     }

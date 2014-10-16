@@ -431,6 +431,13 @@ public class MenuController {
         return "menu/diplomacy";
     }
 
+    @RequestMapping(value = "/briefing", method = RequestMethod.GET)
+    public String showBriefing(ModelMap map, @RequestParam int level) {
+        map.addAttribute("link", "http://");
+
+        return "menu/briefing";
+    }
+
     @RequestMapping(value = "/editcity", method = RequestMethod.GET)
     public String showEditCity(ModelMap map) {
         List<CityType> cityTypes = cityTypeRepository.getList();

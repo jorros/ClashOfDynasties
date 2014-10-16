@@ -7,7 +7,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -39,9 +41,14 @@ public class Player {
 
     private Map<String, Boolean> notification;
 
+    private List<Objective> objectives;
+
+    private int level;
+
     public Player() {
         this.id = new ObjectId();
         notification = new HashMap<>();
+        objectives = new ArrayList<>();
     }
 
     public ObjectId getId() {
@@ -158,6 +165,18 @@ public class Player {
 
     public boolean hasWon() {
         return (CityRepository.get().findByPlayer(this).stream().filter(c -> c.countBuildings(5) > 0).count() > 0);
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public List<Objective> getObjectives() {
+        return objectives;
     }
 
     public boolean hasNotification(String type) {

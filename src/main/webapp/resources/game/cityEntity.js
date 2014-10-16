@@ -241,6 +241,8 @@ Crafty.c("City", {
                     return;
                 }
             }
+
+            return;
         }
         else if(Cities[this._cid].visible) {
             if (isFormationSelected) {
