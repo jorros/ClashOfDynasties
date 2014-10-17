@@ -211,7 +211,7 @@ public class CityLogic {
                     }
                 }
 
-                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2).count() > 0)
                     fireChance = 0.001;
                 else
                     fireChance = 0.000002;
@@ -230,14 +230,14 @@ public class CityLogic {
                 eventRepository.add(new Event("Disease", "Seuche in " + city.getName() + " ausgebrochen", "Es ist eine tödliche Seuche in " + city.getName() + " ausgebrochen. Errichte eine medizinische Einrichtung, um die Epidemie einzudämmen.", city, city.getPlayer()));
             }
 
-            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 3).count() > 0)
+            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2).count() > 0)
                 fireChance = 0.0000001;
             else
                 fireChance = 0.0000005;
 
             if (!city.isFire() && Math.random() < fireChance && city.getBuildings().size() > 0) {
                 city.setFire(true);
-                eventRepository.add(new Event("Fire", "Großbrand in " + city.getName(), "In " + city.getName() + " ist ein Großbrand ausgebrochen. Je länger dieser wütet, desto mehr Gebäude fallen ihm zum Opfer. Errichte eine Brandlösch-Einrichtung, um das Feuer zu stoppen.", city, city.getPlayer()));
+                eventRepository.add(new Event("Fire", "Großbrand in " + city.getName(), "In " + city.getName() + " ist ein Großbrand ausgebrochen. Je länger dieser wütet, desto mehr Gebäude fallen ihm zum Opfer. Errichte eine Feuerwehr, um das Feuer zu stoppen.", city, city.getPlayer()));
             }
         }
     }
@@ -668,14 +668,14 @@ public class CityLogic {
                     }
 
                     if(conqueror.getNation().getId() == 1) {
-                        List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 3 || b.getBlueprint().getId() == 14 || b.getBlueprint().getId() == 15).collect(Collectors.toList());
+                        List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 14 || b.getBlueprint().getId() == 15).collect(Collectors.toList());
 
                         for(Building building : buildings) {
                             city.removeBuilding(building);
                             buildingRepository.remove(building);
                         }
                     } else if(conqueror.getNation().getId() == 2) {
-                        List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2 || b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 8 || b.getBlueprint().getId() == 12 || b.getBlueprint().getId() == 13).collect(Collectors.toList());
+                        List<Building> buildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 7 || b.getBlueprint().getId() == 8 || b.getBlueprint().getId() == 12 || b.getBlueprint().getId() == 13).collect(Collectors.toList());
 
                         for(Building building : buildings) {
                             city.removeBuilding(building);

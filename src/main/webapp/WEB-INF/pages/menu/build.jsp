@@ -51,7 +51,7 @@
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[11]}"/>
 
-                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[2]}"/>
+                        <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[1]}"/>
 
                         <cod:BuildItem city="${city}" blueprint="${buildingBlueprints[9]}"/>
 

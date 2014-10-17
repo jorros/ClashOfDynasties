@@ -474,27 +474,15 @@ public class LogicService {
             house.addRequiredBiome(steppe);
             buildingBlueprintRepository.add(house);
 
-            BuildingBlueprint feuerwache = new BuildingBlueprint();
-            feuerwache.setId(2);
-            feuerwache.setName("Feuerwache");
-            feuerwache.setNation(nationRepository.findById(1));
-            feuerwache.addRequiredBiome(desert);
-            feuerwache.addRequiredBiome(savannah);
-            feuerwache.addRequiredBiome(jungle);
-            feuerwache.addRequiredBiome(forest);
-            feuerwache.addRequiredBiome(steppe);
-            buildingBlueprintRepository.add(feuerwache);
-
-            BuildingBlueprint feuerbandiger = new BuildingBlueprint();
-            feuerbandiger.setId(3);
-            feuerbandiger.setName("Feuerbändiger");
-            feuerbandiger.setNation(nationRepository.findById(2));
-            feuerbandiger.addRequiredBiome(desert);
-            feuerbandiger.addRequiredBiome(savannah);
-            feuerbandiger.addRequiredBiome(jungle);
-            feuerbandiger.addRequiredBiome(forest);
-            feuerbandiger.addRequiredBiome(steppe);
-            buildingBlueprintRepository.add(feuerbandiger);
+            BuildingBlueprint feuerwehr = new BuildingBlueprint();
+            feuerwehr.setId(2);
+            feuerwehr.setName("Feuerwehr");
+            feuerwehr.addRequiredBiome(desert);
+            feuerwehr.addRequiredBiome(savannah);
+            feuerwehr.addRequiredBiome(jungle);
+            feuerwehr.addRequiredBiome(forest);
+            feuerwehr.addRequiredBiome(steppe);
+            buildingBlueprintRepository.add(feuerwehr);
 
             BuildingBlueprint zentrum = new BuildingBlueprint();
             zentrum.setId(4);
@@ -768,6 +756,12 @@ public class LogicService {
             BuildingBlueprint weltwunder = buildingBlueprintRepository.findById(5);
             if(!weltwunder.getName().equals("Weltwunder")) {
                 weltwunder.setName("Weltwunder");
+            }
+
+            BuildingBlueprint feuerwehr = buildingBlueprintRepository.findById(2);
+            if(!feuerwehr.getName().equals("Feuerwehr")) {
+                feuerwehr.setName("Feuerwehr");
+                feuerwehr.setNation(null);
             }
         }
 

@@ -1,6 +1,5 @@
 var Assets = ["assets/buildings/1.png",
     "assets/buildings/2.png",
-    "assets/buildings/3.png",
     "assets/buildings/4.png",
     "assets/buildings/5.png",
     "assets/buildings/6.png",
