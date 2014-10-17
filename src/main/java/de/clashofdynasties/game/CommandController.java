@@ -52,6 +52,7 @@ public class CommandController {
     public String showFormation(ModelMap map, Principal principal, @RequestParam("formation") ObjectId id) {
         Formation formation = formationRepository.findById(id);
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
+        Player player = playerRepository.findByName(principal.getName());
 
         String time = "";
 
@@ -74,9 +75,10 @@ public class CommandController {
                 time = "Unter 1 Minute";
         }
 
-        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("player", player);
         map.addAttribute("formation", formation);
         map.addAttribute("time", time);
+        map.addAttribute("visible", formation.isVisible(player));
 
         return "command/formation";
     }
@@ -85,6 +87,7 @@ public class CommandController {
     public String showCaravan(ModelMap map, Principal principal, @RequestParam("caravan") ObjectId id) {
         Caravan caravan = caravanRepository.findById(id);
         RoutingService routing = new RoutingService(roadRepository, relationRepository);
+        Player player = playerRepository.findByName(principal.getName());
 
         String time = "";
 
@@ -100,9 +103,10 @@ public class CommandController {
         if (mn > 0)
             time += mn + " Minuten";
 
-        map.addAttribute("player", playerRepository.findByName(principal.getName()));
+        map.addAttribute("player", player);
         map.addAttribute("caravan", caravan);
         map.addAttribute("time", time);
+        map.addAttribute("visible", caravan.isVisible(player));
 
         return "command/caravan";
     }
@@ -138,6 +142,7 @@ public class CommandController {
         map.addAttribute("freeSlots", freeSlots);
         map.addAttribute("maxSlots", maxSlots);
         map.addAttribute("canTrade", city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 12).count() > 0);
+        map.addAttribute("visible", city.isVisible(player));
 
         return "command/city";
     }

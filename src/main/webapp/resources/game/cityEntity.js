@@ -263,11 +263,15 @@ Crafty.c("City", {
 
                 return;
             }
+
+            deselect();
+            Selected = this;
+            openCommand('city?city=' + this._cid);
+
+            return;
         }
 
         deselect();
-        Selected = this;
-        openCommand('city?city=' + this._cid);
     },
 
     deselect: function () {
