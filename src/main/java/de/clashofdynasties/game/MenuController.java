@@ -436,7 +436,8 @@ public class MenuController {
     @RequestMapping(value = "/briefing", method = RequestMethod.GET)
     public String showBriefing(ModelMap map, Principal principal) {
         Player player = playerRepository.findByName(principal.getName());
-        map.addAttribute("link", "http://");
+
+        map.addAttribute("ytid", "9SgYw9gBqBg");
 
         return "menu/briefing";
     }

@@ -46,9 +46,6 @@ public class GameController {
     @Autowired
     private BuildingBlueprintRepository buildingBlueprintRepository;
 
-    @Autowired
-    private UnitBlueprintRepository unitBlueprintRepository;
-
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public @ResponseBody
     Map<String, Object> getUpdate(Principal principal, @RequestParam boolean editor, @RequestParam long timestamp) {

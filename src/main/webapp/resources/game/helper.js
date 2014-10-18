@@ -26,6 +26,7 @@ function openMenu(menu, refresh) {
 function closeMenu() {
     $("#body").hide();
     $(".menu").removeClass("selected");
+    $("#body").empty();
     currentMenu = undefined;
 }
 

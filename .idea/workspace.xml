@@ -9,8 +9,8 @@
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/update.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/update.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -70,8 +70,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
+    <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -79,41 +79,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="cityEntity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4159" max-vertical-offset="6290">
-              <caret line="262" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogicService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="12971" max-vertical-offset="14637">
-              <caret line="763" column="42" selection-start-line="763" selection-start-column="42" selection-end-line="763" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6522" max-vertical-offset="11781">
+            <state vertical-scroll-proportion="0.0" vertical-offset="7004" max-vertical-offset="11934">
               <caret line="412" column="0" selection-start-line="412" selection-start-column="0" selection-end-line="412" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="theme.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="theme.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/theme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7671233" vertical-offset="6998" max-vertical-offset="9163">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6998" max-vertical-offset="9163">
               <caret line="438" column="19" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="briefing.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.15525115" vertical-offset="0" max-vertical-offset="657">
+              <caret line="6" column="79" selection-start-line="6" selection-start-column="79" selection-end-line="6" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="helper.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="infoFormation.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/infoFormation.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.384615" vertical-offset="82" max-vertical-offset="765">
+              <caret line="36" column="120" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="120" />
               <folding />
             </state>
           </provider>
@@ -122,8 +132,8 @@
       <file leaf-file-name="MenuController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6018" max-vertical-offset="8177">
-              <caret line="437" column="73" selection-start-line="437" selection-start-column="73" selection-end-line="437" selection-end-column="73" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="7446" max-vertical-offset="8415">
+              <caret line="438" column="0" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,8 +142,8 @@
       <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="3434">
-              <caret line="153" column="46" selection-start-line="153" selection-start-column="46" selection-end-line="153" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="3655">
+              <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -155,18 +165,8 @@
       <file leaf-file-name="game.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.346154" vertical-offset="598" max-vertical-offset="1156">
+            <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1156">
               <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormationLogic.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1428">
-              <caret line="78" column="121" selection-start-line="78" selection-start-column="121" selection-end-line="78" selection-end-column="121" />
               <folding />
             </state>
           </provider>
@@ -175,9 +175,28 @@
       <file leaf-file-name="build.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.9615384" vertical-offset="816" max-vertical-offset="4760">
+            <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="4760">
               <caret line="45" column="92" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
-              <folding />
+              <folding>
+                <marker date="1413573291918" expanded="true" signature="9948:11908" placeholder="{&quot;theme&quot;: 'tooltipster-light'...}" />
+                <marker date="1413573291918" expanded="true" signature="10020:10066" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="10102:10149" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="11927:11968" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="12054:12096" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="12241:13052" placeholder="{&quot;theme&quot;: 'tooltipster-light'...}" />
+                <marker date="1413573291918" expanded="true" signature="12314:12360" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="12397:12444" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13071:13108" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13190:13228" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13285:13703" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13333:13473" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13585:13695" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13742:14162" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="13790:13930" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="14044:14154" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="14189:14369" placeholder="{...}" />
+                <marker date="1413573291918" expanded="true" signature="14252:14362" placeholder="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,7 +215,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/BuildItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/BuildingBlueprint.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/settings.jsp" />
@@ -221,7 +239,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Objective.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/BuildingController.java" />
@@ -243,10 +260,12 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/update.js" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp" />
       </list>
     </option>
   </component>
@@ -1055,6 +1074,24 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -1073,24 +1110,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 8.0.9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.9" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -1451,7 +1470,8 @@
       <workItem from="1413451343983" duration="4000000" />
       <workItem from="1413462045533" duration="8912000" />
       <workItem from="1413572425782" duration="1302000" />
-      <workItem from="1413620052675" duration="1575000" />
+      <workItem from="1413620052675" duration="2765000" />
+      <workItem from="1413622934400" duration="308000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2437,11 +2457,15 @@
       <created>1413620412658</created>
       <updated>1413620412658</updated>
     </task>
-    <option name="localTasksCounter" value="247" />
+    <task id="LOCAL-00247" summary="Objective Text angepasst und Link hinzugefügt">
+      <created>1413621695664</created>
+      <updated>1413621695664</updated>
+    </task>
+    <option name="localTasksCounter" value="248" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1129794000" />
+    <option name="totallyTimeSpent" value="1131292000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2476,13 +2500,13 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23268399" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.46588486" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23135135" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23051947" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2522,7 +2546,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Karawane auflösen wenn bei gegnerische Stadt; Bei neutrale Stadt nicht abladen" />
     <MESSAGE value="Stadttyp Voraussetzung hinzugefügt" />
     <MESSAGE value="Profil implementiert" />
     <MESSAGE value="Scrollen: Maus bleibt bei Städte hängen gefixt" />
@@ -2547,7 +2570,8 @@
     <MESSAGE value="Nicht sichtbare Stadt kann nicht mehr ausgewählt werden" />
     <MESSAGE value="Feuerwache und Feuerbändiger verschmolzen: Feuerwehr für alle" />
     <MESSAGE value="Medikus wird für heilen von Einheiten benötigt;Bei Brand nichts reparieren" />
-    <option name="LAST_COMMIT_MESSAGE" value="Medikus wird für heilen von Einheiten benötigt;Bei Brand nichts reparieren" />
+    <MESSAGE value="Objective Text angepasst und Link hinzugefügt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Objective Text angepasst und Link hinzugefügt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2559,13 +2583,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editplayers.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24511546" vertical-offset="185" max-vertical-offset="918">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editunits.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30195382" vertical-offset="153" max-vertical-offset="867">
@@ -2599,13 +2616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/infoFormation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="765">
-          <caret line="33" column="53" selection-start-line="33" selection-start-column="53" selection-end-line="33" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5318792" vertical-offset="856" max-vertical-offset="2856">
@@ -2631,7 +2641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30454546" vertical-offset="1330" max-vertical-offset="2210">
           <caret line="94" column="46" selection-start-line="94" selection-start-column="46" selection-end-line="94" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2673,21 +2682,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09518477" vertical-offset="0" max-vertical-offset="893">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1291" max-vertical-offset="2346">
           <caret line="169" column="27" selection-start-line="169" selection-start-column="27" selection-end-line="169" selection-end-column="27" />
           <folding>
-            <element signature="e#3521#3522#0" expanded="true" />
-            <element signature="e#3560#3561#0" expanded="true" />
-            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3521#3522#0" expanded="false" />
+            <element signature="e#3560#3561#0" expanded="false" />
+            <element signature="e#3594#3595#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2711,7 +2713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.59599334" vertical-offset="459" max-vertical-offset="1632">
           <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2719,7 +2720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17028381" vertical-offset="0" max-vertical-offset="3519">
           <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2727,7 +2727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17028381" vertical-offset="0" max-vertical-offset="5151">
           <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2735,7 +2734,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17028381" vertical-offset="0" max-vertical-offset="765">
           <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2743,16 +2741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1253" max-vertical-offset="1989">
           <caret line="117" column="48" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
-          <folding>
-            <element signature="e#1265#1266#0" expanded="false" />
-            <element signature="e#1298#1299#0" expanded="false" />
-            <element signature="e#1351#1352#0" expanded="false" />
-            <element signature="e#1395#1396#0" expanded="false" />
-            <element signature="e#1808#1809#0" expanded="false" />
-            <element signature="e#1841#1842#0" expanded="false" />
-            <element signature="e#1890#1891#0" expanded="false" />
-            <element signature="e#1934#1935#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2768,7 +2756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
           <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2776,7 +2763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1360">
           <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2784,7 +2770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3877" max-vertical-offset="4760">
           <caret line="280" column="39" selection-start-line="280" selection-start-column="39" selection-end-line="280" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2792,7 +2777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1411" max-vertical-offset="2618">
           <caret line="144" column="40" selection-start-line="144" selection-start-column="40" selection-end-line="144" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2815,7 +2799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.5769231" vertical-offset="111" max-vertical-offset="969">
           <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2895,7 +2878,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.346154" vertical-offset="598" max-vertical-offset="1156">
+        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1156">
           <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
           <folding />
         </state>
@@ -2903,25 +2886,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9615384" vertical-offset="816" max-vertical-offset="4760">
+        <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="4760">
           <caret line="45" column="92" selection-start-line="45" selection-start-column="92" selection-end-line="45" selection-end-column="92" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6018" max-vertical-offset="8177">
-          <caret line="437" column="73" selection-start-line="437" selection-start-column="73" selection-end-line="437" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="3434">
-          <caret line="153" column="46" selection-start-line="153" selection-start-column="46" selection-end-line="153" selection-end-column="46" />
-          <folding />
+          <folding>
+            <marker date="1413573291918" expanded="true" signature="9948:11908" placeholder="{&quot;theme&quot;: 'tooltipster-light'...}" />
+            <marker date="1413573291918" expanded="true" signature="10020:10066" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="10102:10149" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="11927:11968" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="12054:12096" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="12241:13052" placeholder="{&quot;theme&quot;: 'tooltipster-light'...}" />
+            <marker date="1413573291918" expanded="true" signature="12314:12360" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="12397:12444" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13071:13108" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13190:13228" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13285:13703" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13333:13473" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13585:13695" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13742:14162" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="13790:13930" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="14044:14154" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="14189:14369" placeholder="{...}" />
+            <marker date="1413573291918" expanded="true" signature="14252:14362" placeholder="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2938,8 +2924,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/theme.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7671233" vertical-offset="6998" max-vertical-offset="9163">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6998" max-vertical-offset="9163">
           <caret line="438" column="19" selection-start-line="438" selection-start-column="19" selection-end-line="438" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="3383">
+          <caret line="86" column="24" selection-start-line="86" selection-start-column="24" selection-end-line="86" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6936" max-vertical-offset="8194">
+          <caret line="438" column="0" selection-start-line="438" selection-start-column="0" selection-end-line="438" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/helper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/infoFormation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.384615" vertical-offset="82" max-vertical-offset="765">
+          <caret line="36" column="120" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/briefing.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15525115" vertical-offset="0" max-vertical-offset="657">
+          <caret line="6" column="79" selection-start-line="6" selection-start-column="79" selection-end-line="6" selection-end-column="79" />
           <folding />
         </state>
       </provider>
