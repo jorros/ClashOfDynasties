@@ -152,6 +152,10 @@ public class BuildingBlueprint implements IBlueprint {
         requiredBiomes.add(biome.getId());
     }
 
+    public void removeRequiredBiome(Biome biome) {
+        requiredBiomes.remove(requiredBiomes.indexOf(biome.getId()));
+    }
+
     public boolean equals(Object other) {
         if (other instanceof BuildingBlueprint && ((BuildingBlueprint) other).getId() == this.id)
             return true;

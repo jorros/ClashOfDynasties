@@ -228,12 +228,12 @@ public class LogicService {
             grassland.setProductionFactor(0.6f);
             biomeRepository.add(grassland);
 
-            Biome jungle = new Biome();
-            jungle.setName("Dschungel");
-            jungle.setId(3);
-            jungle.setFertilityFactor(0.6f);
-            jungle.setProductionFactor(0.8f);
-            biomeRepository.add(jungle);
+            Biome coast = new Biome();
+            coast.setName("Küste");
+            coast.setId(3);
+            coast.setFertilityFactor(0.8f);
+            coast.setProductionFactor(0.6f);
+            biomeRepository.add(coast);
 
             Biome forest = new Biome();
             forest.setName("Wald");
@@ -263,6 +263,13 @@ public class LogicService {
                 mountains.setName("Gebirge");
                 mountains.setFertilityFactor(0.5f);
                 mountains.setProductionFactor(0.7f);
+            }
+
+            Biome coast = biomeRepository.findById(3);
+            if(!coast.getName().equals("Küste")) {
+                coast.setName("Küste");
+                coast.setFertilityFactor(0.8f);
+                coast.setProductionFactor(0.6f);
             }
         }
 
@@ -473,7 +480,7 @@ public class LogicService {
 
         Biome desert = biomeRepository.findById(1);
         Biome grassland = biomeRepository.findById(2);
-        Biome jungle = biomeRepository.findById(3);
+        Biome coast = biomeRepository.findById(3);
         Biome forest = biomeRepository.findById(4);
         Biome mountains = biomeRepository.findById(5);
 
@@ -483,7 +490,7 @@ public class LogicService {
             house.setName("Wohnhaus");
             house.addRequiredBiome(desert);
             house.addRequiredBiome(grassland);
-            house.addRequiredBiome(jungle);
+            house.addRequiredBiome(coast);
             house.addRequiredBiome(forest);
             house.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(house);
@@ -493,7 +500,7 @@ public class LogicService {
             feuerwehr.setName("Feuerwehr");
             feuerwehr.addRequiredBiome(desert);
             feuerwehr.addRequiredBiome(grassland);
-            feuerwehr.addRequiredBiome(jungle);
+            feuerwehr.addRequiredBiome(coast);
             feuerwehr.addRequiredBiome(forest);
             feuerwehr.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(feuerwehr);
@@ -503,7 +510,7 @@ public class LogicService {
             zentrum.setName("Zentrum");
             zentrum.addRequiredBiome(desert);
             zentrum.addRequiredBiome(grassland);
-            zentrum.addRequiredBiome(jungle);
+            zentrum.addRequiredBiome(coast);
             zentrum.addRequiredBiome(forest);
             zentrum.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(zentrum);
@@ -513,7 +520,7 @@ public class LogicService {
             weltwunder.setName("Weltwunder");
             weltwunder.addRequiredBiome(desert);
             weltwunder.addRequiredBiome(grassland);
-            weltwunder.addRequiredBiome(jungle);
+            weltwunder.addRequiredBiome(coast);
             weltwunder.addRequiredBiome(forest);
             weltwunder.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(weltwunder);
@@ -523,7 +530,7 @@ public class LogicService {
             schenke.setName("Schenke");
             schenke.addRequiredBiome(desert);
             schenke.addRequiredBiome(grassland);
-            schenke.addRequiredBiome(jungle);
+            schenke.addRequiredBiome(coast);
             schenke.addRequiredBiome(forest);
             schenke.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(schenke);
@@ -534,7 +541,7 @@ public class LogicService {
             militaranlage.setNation(nationRepository.findById(1));
             militaranlage.addRequiredBiome(desert);
             militaranlage.addRequiredBiome(grassland);
-            militaranlage.addRequiredBiome(jungle);
+            militaranlage.addRequiredBiome(coast);
             militaranlage.addRequiredBiome(forest);
             militaranlage.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(militaranlage);
@@ -545,7 +552,7 @@ public class LogicService {
             verteidigungsanlage.setNation(nationRepository.findById(1));
             verteidigungsanlage.addRequiredBiome(desert);
             verteidigungsanlage.addRequiredBiome(grassland);
-            verteidigungsanlage.addRequiredBiome(jungle);
+            verteidigungsanlage.addRequiredBiome(coast);
             verteidigungsanlage.addRequiredBiome(forest);
             verteidigungsanlage.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(verteidigungsanlage);
@@ -555,7 +562,7 @@ public class LogicService {
             wachturm.setName("Wachturm");
             wachturm.addRequiredBiome(desert);
             wachturm.addRequiredBiome(grassland);
-            wachturm.addRequiredBiome(jungle);
+            wachturm.addRequiredBiome(coast);
             wachturm.addRequiredBiome(forest);
             wachturm.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(wachturm);
@@ -565,7 +572,7 @@ public class LogicService {
             medikus.setName("Medikus");
             medikus.addRequiredBiome(desert);
             medikus.addRequiredBiome(grassland);
-            medikus.addRequiredBiome(jungle);
+            medikus.addRequiredBiome(coast);
             medikus.addRequiredBiome(forest);
             medikus.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(medikus);
@@ -575,7 +582,7 @@ public class LogicService {
             badehaus.setName("Badehaus");
             badehaus.addRequiredBiome(desert);
             badehaus.addRequiredBiome(grassland);
-            badehaus.addRequiredBiome(jungle);
+            badehaus.addRequiredBiome(coast);
             badehaus.addRequiredBiome(forest);
             badehaus.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(badehaus);
@@ -585,7 +592,7 @@ public class LogicService {
             marktplatz.setName("Marktplatz");
             marktplatz.addRequiredBiome(desert);
             marktplatz.addRequiredBiome(grassland);
-            marktplatz.addRequiredBiome(jungle);
+            marktplatz.addRequiredBiome(coast);
             marktplatz.addRequiredBiome(forest);
             marktplatz.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(marktplatz);
@@ -596,7 +603,7 @@ public class LogicService {
             oper.setNation(nationRepository.findById(1));
             oper.addRequiredBiome(desert);
             oper.addRequiredBiome(grassland);
-            oper.addRequiredBiome(jungle);
+            oper.addRequiredBiome(coast);
             oper.addRequiredBiome(forest);
             oper.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(oper);
@@ -607,7 +614,7 @@ public class LogicService {
             tempel.setNation(nationRepository.findById(2));
             tempel.addRequiredBiome(desert);
             tempel.addRequiredBiome(grassland);
-            tempel.addRequiredBiome(jungle);
+            tempel.addRequiredBiome(coast);
             tempel.addRequiredBiome(forest);
             tempel.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(tempel);
@@ -618,7 +625,7 @@ public class LogicService {
             garnison.setNation(nationRepository.findById(2));
             garnison.addRequiredBiome(desert);
             garnison.addRequiredBiome(grassland);
-            garnison.addRequiredBiome(jungle);
+            garnison.addRequiredBiome(coast);
             garnison.addRequiredBiome(forest);
             garnison.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(garnison);
@@ -629,7 +636,7 @@ public class LogicService {
             goldmine.setNation(nationRepository.findById(2));
             goldmine.addRequiredBiome(desert);
             goldmine.addRequiredBiome(grassland);
-            goldmine.addRequiredBiome(jungle);
+            goldmine.addRequiredBiome(coast);
             goldmine.addRequiredBiome(forest);
             goldmine.addRequiredBiome(mountains);
             goldmine.setRequiredResource(resourceRepository.findById(1));
@@ -646,14 +653,13 @@ public class LogicService {
             fleischerei.setId(18);
             fleischerei.setName("Fleischerei");
             fleischerei.addRequiredBiome(grassland);
-            fleischerei.addRequiredBiome(jungle);
+            fleischerei.addRequiredBiome(coast);
             fleischerei.addRequiredBiome(forest);
             buildingBlueprintRepository.add(fleischerei);
 
             BuildingBlueprint druckerei = new BuildingBlueprint();
             druckerei.setId(19);
             druckerei.setName("Druckerei");
-            druckerei.addRequiredBiome(jungle);
             druckerei.addRequiredBiome(forest);
             buildingBlueprintRepository.add(druckerei);
 
@@ -663,7 +669,7 @@ public class LogicService {
             brauerei.setNation(nationRepository.findById(1));
             brauerei.addRequiredBiome(desert);
             brauerei.addRequiredBiome(grassland);
-            brauerei.addRequiredBiome(jungle);
+            brauerei.addRequiredBiome(coast);
             brauerei.addRequiredBiome(forest);
             brauerei.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(brauerei);
@@ -674,7 +680,7 @@ public class LogicService {
             fierybrennerei.setNation(nationRepository.findById(2));
             fierybrennerei.addRequiredBiome(desert);
             fierybrennerei.addRequiredBiome(grassland);
-            fierybrennerei.addRequiredBiome(jungle);
+            fierybrennerei.addRequiredBiome(coast);
             fierybrennerei.addRequiredBiome(forest);
             fierybrennerei.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(fierybrennerei);
@@ -685,7 +691,7 @@ public class LogicService {
             imkerei.setNation(nationRepository.findById(2));
             imkerei.addRequiredBiome(desert);
             imkerei.addRequiredBiome(grassland);
-            imkerei.addRequiredBiome(jungle);
+            imkerei.addRequiredBiome(coast);
             imkerei.addRequiredBiome(forest);
             imkerei.addRequiredBiome(mountains);
             imkerei.setRequiredResource(resourceRepository.findById(3));
@@ -697,7 +703,7 @@ public class LogicService {
             adyllmine.setNation(nationRepository.findById(1));
             adyllmine.addRequiredBiome(desert);
             adyllmine.addRequiredBiome(grassland);
-            adyllmine.addRequiredBiome(jungle);
+            adyllmine.addRequiredBiome(coast);
             adyllmine.addRequiredBiome(forest);
             adyllmine.addRequiredBiome(mountains);
             adyllmine.setRequiredResource(resourceRepository.findById(4));
@@ -708,7 +714,7 @@ public class LogicService {
             walfang.setName("Walfang");
             walfang.addRequiredBiome(desert);
             walfang.addRequiredBiome(grassland);
-            walfang.addRequiredBiome(jungle);
+            walfang.addRequiredBiome(coast);
             walfang.addRequiredBiome(forest);
             walfang.addRequiredBiome(mountains);
             walfang.setRequiredResource(resourceRepository.findById(5));
@@ -720,7 +726,7 @@ public class LogicService {
             parfumerie.setNation(nationRepository.findById(2));
             parfumerie.addRequiredBiome(desert);
             parfumerie.addRequiredBiome(grassland);
-            parfumerie.addRequiredBiome(jungle);
+            parfumerie.addRequiredBiome(coast);
             parfumerie.addRequiredBiome(forest);
             parfumerie.addRequiredBiome(mountains);
             parfumerie.setProduceItem(itemRepository.findById(2));
@@ -732,7 +738,7 @@ public class LogicService {
             duftmischerei.setNation(nationRepository.findById(1));
             duftmischerei.addRequiredBiome(desert);
             duftmischerei.addRequiredBiome(grassland);
-            duftmischerei.addRequiredBiome(jungle);
+            duftmischerei.addRequiredBiome(coast);
             duftmischerei.addRequiredBiome(forest);
             duftmischerei.addRequiredBiome(mountains);
             duftmischerei.setProduceItem(itemRepository.findById(2));
@@ -744,7 +750,7 @@ public class LogicService {
             konfiserie.setNation(nationRepository.findById(1));
             konfiserie.addRequiredBiome(desert);
             konfiserie.addRequiredBiome(grassland);
-            konfiserie.addRequiredBiome(jungle);
+            konfiserie.addRequiredBiome(coast);
             konfiserie.addRequiredBiome(forest);
             konfiserie.addRequiredBiome(mountains);
             konfiserie.setRequiredResource(resourceRepository.findById(6));
@@ -777,6 +783,10 @@ public class LogicService {
                 feuerwehr.setName("Feuerwehr");
                 feuerwehr.setNation(null);
             }
+
+            BuildingBlueprint druckerei = buildingBlueprintRepository.findById(19);
+            if(druckerei.getRequiredBiomes().contains(coast))
+                druckerei.removeRequiredBiome(coast);
         }
 
         if(!mongoTemplate.collectionExists("unitBlueprint")) {
