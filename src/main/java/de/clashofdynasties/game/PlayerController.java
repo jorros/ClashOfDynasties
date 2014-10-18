@@ -1,6 +1,5 @@
 package de.clashofdynasties.game;
 
-import de.clashofdynasties.logic.PlayerLogic;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
 import org.bson.types.ObjectId;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,7 +54,7 @@ public class PlayerController {
         int num = playerRepository.getList().size() - 1;
         Player player = new Player();
         player.setActivated(false);
-        player.setCoins(100);
+        player.setCoins(200);
         player.setName("Neuer Spieler #" + num);
         player.setLastScrollX(-1);
         player.setLastScrollY(-1);
@@ -283,6 +281,6 @@ public class PlayerController {
 
         player.setLastScrollX(-1);
         player.setLastScrollY(-1);
-        player.setCoins(100);
+        player.setCoins(200);
     }
 }
