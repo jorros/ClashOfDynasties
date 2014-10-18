@@ -33,12 +33,12 @@
 </div>
 <div id="wrapper">
     <div id="top">
-        <div style="width:200px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Coins.png" style="vertical-align:bottom; width:22px;" /> <span id="globalCoins">0</span> (<span id="globalBalance" class="green">0</span>)</div>
-        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/People.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalPeople">0</span></div>
-        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Cities.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCities">0</span></div>
-        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Formations.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalFormations">0</span></div>
-        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Camels.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCaravans">0</span></div>
-        <div style="width:150px; margin-left:10px; margin-top:2px; float:left;"><img src="assets/top/Ranking.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalRanking">0</span></div>
+        <div style="width:200px; margin-left:10px; margin-top:2px; float:left;" title="Geldbestand (Bilanz)"><img src="assets/top/Coins.png" style="vertical-align:bottom; width:22px;" /> <span id="globalCoins">0</span> (<span id="globalBalance" class="green">0</span>)</div>
+        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;" title="Gesamtpopulation"><img src="assets/top/People.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalPeople">0</span></div>
+        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;" title="Anzahl an St&auml;dten"><img src="assets/top/Cities.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCities">0</span></div>
+        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;" title="Anzahl an Formationen"><img src="assets/top/Formations.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalFormations">0</span></div>
+        <div style="width:100px; margin-left:10px; margin-top:2px; float:left;" title="Anzahl an Karawanen"><img src="assets/top/Camels.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalCaravans">0</span></div>
+        <div style="width:150px; margin-left:10px; margin-top:2px; float:left;" title="Platzierung im Ranking"><img src="assets/top/Ranking.png" style="vertical-align:bottom; width:22px;" /> <span style="" id="globalRanking">0</span></div>
         <div style="width:80px; margin-right:10px; margin-top:4px; float:right; text-align:right;" class="logout"><a href="/logout">Logout</a></div>
     </div>
     <div id="header">
