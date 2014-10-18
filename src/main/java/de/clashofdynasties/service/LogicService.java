@@ -221,12 +221,12 @@ public class LogicService {
             desert.setProductionFactor(0.3f);
             biomeRepository.add(desert);
 
-            Biome savannah = new Biome();
-            savannah.setName("Savanne");
-            savannah.setId(2);
-            savannah.setFertilityFactor(0.5f);
-            savannah.setProductionFactor(0.4f);
-            biomeRepository.add(savannah);
+            Biome grassland = new Biome();
+            grassland.setName("Grasland");
+            grassland.setId(2);
+            grassland.setFertilityFactor(1f);
+            grassland.setProductionFactor(0.6f);
+            biomeRepository.add(grassland);
 
             Biome jungle = new Biome();
             jungle.setName("Dschungel");
@@ -242,14 +242,28 @@ public class LogicService {
             forest.setProductionFactor(1.0f);
             biomeRepository.add(forest);
 
-            Biome steppe = new Biome();
-            steppe.setName("Steppe");
-            steppe.setId(5);
-            steppe.setFertilityFactor(0.9f);
-            steppe.setProductionFactor(0.3f);
-            biomeRepository.add(steppe);
+            Biome mountains = new Biome();
+            mountains.setName("Gebirge");
+            mountains.setId(5);
+            mountains.setFertilityFactor(0.5f);
+            mountains.setProductionFactor(0.7f);
+            biomeRepository.add(mountains);
 
             System.out.println("Setup: Biome eingerichtet!");
+        } else {
+            Biome grassland = biomeRepository.findById(2);
+            if(!grassland.getName().equals("Grasland")) {
+                grassland.setName("Grasland");
+                grassland.setFertilityFactor(1f);
+                grassland.setProductionFactor(0.6f);
+            }
+
+            Biome mountains = biomeRepository.findById(5);
+            if(!mountains.getName().equals("Gebirge")) {
+                mountains.setName("Gebirge");
+                mountains.setFertilityFactor(0.5f);
+                mountains.setProductionFactor(0.7f);
+            }
         }
 
         if(!mongoTemplate.collectionExists("nation")) {
@@ -458,60 +472,60 @@ public class LogicService {
         }
 
         Biome desert = biomeRepository.findById(1);
-        Biome savannah = biomeRepository.findById(2);
+        Biome grassland = biomeRepository.findById(2);
         Biome jungle = biomeRepository.findById(3);
         Biome forest = biomeRepository.findById(4);
-        Biome steppe = biomeRepository.findById(5);
+        Biome mountains = biomeRepository.findById(5);
 
         if(!mongoTemplate.collectionExists("buildingBlueprint")) {
             BuildingBlueprint house = new BuildingBlueprint();
             house.setId(1);
             house.setName("Wohnhaus");
             house.addRequiredBiome(desert);
-            house.addRequiredBiome(savannah);
+            house.addRequiredBiome(grassland);
             house.addRequiredBiome(jungle);
             house.addRequiredBiome(forest);
-            house.addRequiredBiome(steppe);
+            house.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(house);
 
             BuildingBlueprint feuerwehr = new BuildingBlueprint();
             feuerwehr.setId(2);
             feuerwehr.setName("Feuerwehr");
             feuerwehr.addRequiredBiome(desert);
-            feuerwehr.addRequiredBiome(savannah);
+            feuerwehr.addRequiredBiome(grassland);
             feuerwehr.addRequiredBiome(jungle);
             feuerwehr.addRequiredBiome(forest);
-            feuerwehr.addRequiredBiome(steppe);
+            feuerwehr.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(feuerwehr);
 
             BuildingBlueprint zentrum = new BuildingBlueprint();
             zentrum.setId(4);
             zentrum.setName("Zentrum");
             zentrum.addRequiredBiome(desert);
-            zentrum.addRequiredBiome(savannah);
+            zentrum.addRequiredBiome(grassland);
             zentrum.addRequiredBiome(jungle);
             zentrum.addRequiredBiome(forest);
-            zentrum.addRequiredBiome(steppe);
+            zentrum.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(zentrum);
 
             BuildingBlueprint weltwunder = new BuildingBlueprint();
             weltwunder.setId(5);
             weltwunder.setName("Weltwunder");
             weltwunder.addRequiredBiome(desert);
-            weltwunder.addRequiredBiome(savannah);
+            weltwunder.addRequiredBiome(grassland);
             weltwunder.addRequiredBiome(jungle);
             weltwunder.addRequiredBiome(forest);
-            weltwunder.addRequiredBiome(steppe);
+            weltwunder.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(weltwunder);
 
             BuildingBlueprint schenke = new BuildingBlueprint();
             schenke.setId(6);
             schenke.setName("Schenke");
             schenke.addRequiredBiome(desert);
-            schenke.addRequiredBiome(savannah);
+            schenke.addRequiredBiome(grassland);
             schenke.addRequiredBiome(jungle);
             schenke.addRequiredBiome(forest);
-            schenke.addRequiredBiome(steppe);
+            schenke.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(schenke);
 
             BuildingBlueprint militaranlage = new BuildingBlueprint();
@@ -519,10 +533,10 @@ public class LogicService {
             militaranlage.setName("Militäranlage");
             militaranlage.setNation(nationRepository.findById(1));
             militaranlage.addRequiredBiome(desert);
-            militaranlage.addRequiredBiome(savannah);
+            militaranlage.addRequiredBiome(grassland);
             militaranlage.addRequiredBiome(jungle);
             militaranlage.addRequiredBiome(forest);
-            militaranlage.addRequiredBiome(steppe);
+            militaranlage.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(militaranlage);
 
             BuildingBlueprint verteidigungsanlage = new BuildingBlueprint();
@@ -530,50 +544,50 @@ public class LogicService {
             verteidigungsanlage.setName("Verteidigungsanlage");
             verteidigungsanlage.setNation(nationRepository.findById(1));
             verteidigungsanlage.addRequiredBiome(desert);
-            verteidigungsanlage.addRequiredBiome(savannah);
+            verteidigungsanlage.addRequiredBiome(grassland);
             verteidigungsanlage.addRequiredBiome(jungle);
             verteidigungsanlage.addRequiredBiome(forest);
-            verteidigungsanlage.addRequiredBiome(steppe);
+            verteidigungsanlage.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(verteidigungsanlage);
 
             BuildingBlueprint wachturm = new BuildingBlueprint();
             wachturm.setId(9);
             wachturm.setName("Wachturm");
             wachturm.addRequiredBiome(desert);
-            wachturm.addRequiredBiome(savannah);
+            wachturm.addRequiredBiome(grassland);
             wachturm.addRequiredBiome(jungle);
             wachturm.addRequiredBiome(forest);
-            wachturm.addRequiredBiome(steppe);
+            wachturm.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(wachturm);
 
             BuildingBlueprint medikus = new BuildingBlueprint();
             medikus.setId(10);
             medikus.setName("Medikus");
             medikus.addRequiredBiome(desert);
-            medikus.addRequiredBiome(savannah);
+            medikus.addRequiredBiome(grassland);
             medikus.addRequiredBiome(jungle);
             medikus.addRequiredBiome(forest);
-            medikus.addRequiredBiome(steppe);
+            medikus.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(medikus);
 
             BuildingBlueprint badehaus = new BuildingBlueprint();
             badehaus.setId(11);
             badehaus.setName("Badehaus");
             badehaus.addRequiredBiome(desert);
-            badehaus.addRequiredBiome(savannah);
+            badehaus.addRequiredBiome(grassland);
             badehaus.addRequiredBiome(jungle);
             badehaus.addRequiredBiome(forest);
-            badehaus.addRequiredBiome(steppe);
+            badehaus.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(badehaus);
 
             BuildingBlueprint marktplatz = new BuildingBlueprint();
             marktplatz.setId(12);
             marktplatz.setName("Marktplatz");
             marktplatz.addRequiredBiome(desert);
-            marktplatz.addRequiredBiome(savannah);
+            marktplatz.addRequiredBiome(grassland);
             marktplatz.addRequiredBiome(jungle);
             marktplatz.addRequiredBiome(forest);
-            marktplatz.addRequiredBiome(steppe);
+            marktplatz.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(marktplatz);
 
             BuildingBlueprint oper = new BuildingBlueprint();
@@ -581,10 +595,10 @@ public class LogicService {
             oper.setName("Oper");
             oper.setNation(nationRepository.findById(1));
             oper.addRequiredBiome(desert);
-            oper.addRequiredBiome(savannah);
+            oper.addRequiredBiome(grassland);
             oper.addRequiredBiome(jungle);
             oper.addRequiredBiome(forest);
-            oper.addRequiredBiome(steppe);
+            oper.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(oper);
 
             BuildingBlueprint tempel = new BuildingBlueprint();
@@ -592,10 +606,10 @@ public class LogicService {
             tempel.setName("Tempel");
             tempel.setNation(nationRepository.findById(2));
             tempel.addRequiredBiome(desert);
-            tempel.addRequiredBiome(savannah);
+            tempel.addRequiredBiome(grassland);
             tempel.addRequiredBiome(jungle);
             tempel.addRequiredBiome(forest);
-            tempel.addRequiredBiome(steppe);
+            tempel.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(tempel);
 
             BuildingBlueprint garnison = new BuildingBlueprint();
@@ -603,10 +617,10 @@ public class LogicService {
             garnison.setName("Garnison");
             garnison.setNation(nationRepository.findById(2));
             garnison.addRequiredBiome(desert);
-            garnison.addRequiredBiome(savannah);
+            garnison.addRequiredBiome(grassland);
             garnison.addRequiredBiome(jungle);
             garnison.addRequiredBiome(forest);
-            garnison.addRequiredBiome(steppe);
+            garnison.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(garnison);
 
             BuildingBlueprint goldmine = new BuildingBlueprint();
@@ -614,10 +628,10 @@ public class LogicService {
             goldmine.setName("Goldmine");
             goldmine.setNation(nationRepository.findById(2));
             goldmine.addRequiredBiome(desert);
-            goldmine.addRequiredBiome(savannah);
+            goldmine.addRequiredBiome(grassland);
             goldmine.addRequiredBiome(jungle);
             goldmine.addRequiredBiome(forest);
-            goldmine.addRequiredBiome(steppe);
+            goldmine.addRequiredBiome(mountains);
             goldmine.setRequiredResource(resourceRepository.findById(1));
             buildingBlueprintRepository.add(goldmine);
 
@@ -625,13 +639,13 @@ public class LogicService {
             backerei.setId(17);
             backerei.setName("Bäckerei");
             backerei.addRequiredBiome(desert);
-            backerei.addRequiredBiome(steppe);
+            backerei.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(backerei);
 
             BuildingBlueprint fleischerei = new BuildingBlueprint();
             fleischerei.setId(18);
             fleischerei.setName("Fleischerei");
-            fleischerei.addRequiredBiome(savannah);
+            fleischerei.addRequiredBiome(grassland);
             fleischerei.addRequiredBiome(jungle);
             fleischerei.addRequiredBiome(forest);
             buildingBlueprintRepository.add(fleischerei);
@@ -648,10 +662,10 @@ public class LogicService {
             brauerei.setName("Brauerei");
             brauerei.setNation(nationRepository.findById(1));
             brauerei.addRequiredBiome(desert);
-            brauerei.addRequiredBiome(savannah);
+            brauerei.addRequiredBiome(grassland);
             brauerei.addRequiredBiome(jungle);
             brauerei.addRequiredBiome(forest);
-            brauerei.addRequiredBiome(steppe);
+            brauerei.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(brauerei);
 
             BuildingBlueprint fierybrennerei = new BuildingBlueprint();
@@ -659,10 +673,10 @@ public class LogicService {
             fierybrennerei.setName("Fierybrennerei");
             fierybrennerei.setNation(nationRepository.findById(2));
             fierybrennerei.addRequiredBiome(desert);
-            fierybrennerei.addRequiredBiome(savannah);
+            fierybrennerei.addRequiredBiome(grassland);
             fierybrennerei.addRequiredBiome(jungle);
             fierybrennerei.addRequiredBiome(forest);
-            fierybrennerei.addRequiredBiome(steppe);
+            fierybrennerei.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(fierybrennerei);
 
             BuildingBlueprint imkerei = new BuildingBlueprint();
@@ -670,10 +684,10 @@ public class LogicService {
             imkerei.setName("Imkerei");
             imkerei.setNation(nationRepository.findById(2));
             imkerei.addRequiredBiome(desert);
-            imkerei.addRequiredBiome(savannah);
+            imkerei.addRequiredBiome(grassland);
             imkerei.addRequiredBiome(jungle);
             imkerei.addRequiredBiome(forest);
-            imkerei.addRequiredBiome(steppe);
+            imkerei.addRequiredBiome(mountains);
             imkerei.setRequiredResource(resourceRepository.findById(3));
             buildingBlueprintRepository.add(imkerei);
 
@@ -682,10 +696,10 @@ public class LogicService {
             adyllmine.setName("Adyllmine");
             adyllmine.setNation(nationRepository.findById(1));
             adyllmine.addRequiredBiome(desert);
-            adyllmine.addRequiredBiome(savannah);
+            adyllmine.addRequiredBiome(grassland);
             adyllmine.addRequiredBiome(jungle);
             adyllmine.addRequiredBiome(forest);
-            adyllmine.addRequiredBiome(steppe);
+            adyllmine.addRequiredBiome(mountains);
             adyllmine.setRequiredResource(resourceRepository.findById(4));
             buildingBlueprintRepository.add(adyllmine);
 
@@ -693,10 +707,10 @@ public class LogicService {
             walfang.setId(24);
             walfang.setName("Walfang");
             walfang.addRequiredBiome(desert);
-            walfang.addRequiredBiome(savannah);
+            walfang.addRequiredBiome(grassland);
             walfang.addRequiredBiome(jungle);
             walfang.addRequiredBiome(forest);
-            walfang.addRequiredBiome(steppe);
+            walfang.addRequiredBiome(mountains);
             walfang.setRequiredResource(resourceRepository.findById(5));
             buildingBlueprintRepository.add(walfang);
 
@@ -705,10 +719,10 @@ public class LogicService {
             parfumerie.setName("Parfümerie");
             parfumerie.setNation(nationRepository.findById(2));
             parfumerie.addRequiredBiome(desert);
-            parfumerie.addRequiredBiome(savannah);
+            parfumerie.addRequiredBiome(grassland);
             parfumerie.addRequiredBiome(jungle);
             parfumerie.addRequiredBiome(forest);
-            parfumerie.addRequiredBiome(steppe);
+            parfumerie.addRequiredBiome(mountains);
             parfumerie.setProduceItem(itemRepository.findById(2));
             buildingBlueprintRepository.add(parfumerie);
 
@@ -717,10 +731,10 @@ public class LogicService {
             duftmischerei.setName("Duftmischerei");
             duftmischerei.setNation(nationRepository.findById(1));
             duftmischerei.addRequiredBiome(desert);
-            duftmischerei.addRequiredBiome(savannah);
+            duftmischerei.addRequiredBiome(grassland);
             duftmischerei.addRequiredBiome(jungle);
             duftmischerei.addRequiredBiome(forest);
-            duftmischerei.addRequiredBiome(steppe);
+            duftmischerei.addRequiredBiome(mountains);
             duftmischerei.setProduceItem(itemRepository.findById(2));
             buildingBlueprintRepository.add(duftmischerei);
 
@@ -729,10 +743,10 @@ public class LogicService {
             konfiserie.setName("Konfiserie");
             konfiserie.setNation(nationRepository.findById(1));
             konfiserie.addRequiredBiome(desert);
-            konfiserie.addRequiredBiome(savannah);
+            konfiserie.addRequiredBiome(grassland);
             konfiserie.addRequiredBiome(jungle);
             konfiserie.addRequiredBiome(forest);
-            konfiserie.addRequiredBiome(steppe);
+            konfiserie.addRequiredBiome(mountains);
             konfiserie.setRequiredResource(resourceRepository.findById(6));
             buildingBlueprintRepository.add(konfiserie);
 
