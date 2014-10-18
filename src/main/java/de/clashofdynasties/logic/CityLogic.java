@@ -352,18 +352,23 @@ public class CityLogic {
 
     public void processHealing(City city) {
         if(city.getReport() == null) {
-            List<Unit> units = city.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
-            List<Building> buildings = city.getBuildings().stream().filter(b -> b.getHealth() < 100).collect(Collectors.toList());
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0) {
+                List<Unit> units = city.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
 
-            for (Unit unit : units) {
-                if(Math.random() < 0.01) {
-                    unit.setHealth(unit.getHealth() + 1);
+                for (Unit unit : units) {
+                    if (Math.random() < 0.01) {
+                        unit.setHealth(unit.getHealth() + 1);
+                    }
                 }
             }
 
-            for(Building building : buildings) {
-                if(Math.random() < 0.01) {
-                    building.setHealth(building.getHealth() + 1);
+            if(!city.isFire()) {
+                List<Building> buildings = city.getBuildings().stream().filter(b -> b.getHealth() < 100).collect(Collectors.toList());
+
+                for (Building building : buildings) {
+                    if (Math.random() < 0.01) {
+                        building.setHealth(building.getHealth() + 1);
+                    }
                 }
             }
 
