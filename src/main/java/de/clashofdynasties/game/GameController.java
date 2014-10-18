@@ -151,7 +151,7 @@ public class GameController {
                         A.setCity(cityRepository.findByPlayer(player).get(0));
                         player.getObjectives().add(A);
 
-                        data.put("brief", 1);
+                        data.put("brief", true);
                         break;
 
                     case 2:

@@ -50,7 +50,7 @@ function updateGameContent() {
         if(data.objectives != undefined) {
             $.each(data.objectives, function (id, objective) {
                 var image = "<img src=\"assets/objectives/" + (objective.completed ? "Checked" : "Unchecked") + ".png\"/>";
-                var text = "<span>" + objective.text + "</span><br>";
+                var text = "<span onclick=\"openMenu('briefing', false);\">" + objective.text + "</span><br>";
 
                 $("#objectives").append(image).append(text);
             });
@@ -108,8 +108,8 @@ function updateGameContent() {
             });
         });
 
-        if(data.brief != undefined) {
-            openMenu("briefing?level=" + data.brief, false);
+        if(data.brief != undefined && data.brief) {
+            openMenu("briefing", false);
         }
     });
 }
