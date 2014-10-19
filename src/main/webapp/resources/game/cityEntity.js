@@ -278,7 +278,7 @@ Crafty.c("City", {
     },
 
     over: function () {
-        if(Cities[this._cid].visible) {
+        if(Cities[this._cid].visible && currentMenu == undefined) {
             if (!Editor && isFormationSelected && !isCalculatedRoute) {
                 Selected.showRoute(this._cid);
                 isCalculatedRoute = true;

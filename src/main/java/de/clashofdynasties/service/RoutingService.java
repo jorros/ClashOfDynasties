@@ -232,10 +232,10 @@ public class RoutingService {
 
         int rel;
 
-        if(city.getPlayer().equals(player))
+        if(city.getPlayer().equals(formation.getPlayer()))
             rel = 4;
         else {
-            Relation relation = relationRepository.findByPlayers(player, city.getPlayer());
+            Relation relation = relationRepository.findByPlayers(formation.getPlayer(), city.getPlayer());
             if(relation != null)
                 rel = relation.getRelation();
             else
