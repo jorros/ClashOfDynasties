@@ -1,7 +1,9 @@
 package de.clashofdynasties.game;
 
 import de.clashofdynasties.models.BuildingBlueprint;
+import de.clashofdynasties.models.City;
 import de.clashofdynasties.repository.BuildingBlueprintRepository;
+import de.clashofdynasties.repository.CityRepository;
 import de.clashofdynasties.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -25,10 +27,13 @@ import java.io.InputStream;
 @Secured("ROLE_USER")
 public class BuildingController {
     @Autowired
-    BuildingBlueprintRepository buildingBlueprintRepository;
+    private BuildingBlueprintRepository buildingBlueprintRepository;
 
     @Autowired
-    ItemRepository itemRepository;
+    private ItemRepository itemRepository;
+
+    @Autowired
+    private CityRepository cityRepository;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
@@ -48,8 +53,13 @@ public class BuildingController {
         if (price != null)
             blueprint.setPrice(price);
 
-        if (defence != null)
-            blueprint.setDefencePoints(defence);
+        if (defence != null) {
+            if(defence != blueprint.getDefencePoints()) {
+                blueprint.setDefencePoints(defence);
+
+                cityRepository.getList().forEach(City::recalculateStrength);
+            }
+        }
 
         if (pps != null)
             blueprint.setProducePerStep(pps);

@@ -35,6 +35,8 @@ public class City implements MapNode {
 
     private int type;
 
+    private int strength;
+
     private Report report;
 
     private int capacity;
@@ -373,18 +375,21 @@ public class City implements MapNode {
         this.alias = alias;
     }
 
-    public int getDefencePoints() {
-        int defence = 0;
-
+    public void recalculateStrength() {
+        strength = 0;
         if(getBuildings() != null)
-            defence += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();
+            strength += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();
 
         if(!units.isEmpty())
-            defence += getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+            strength += getUnits().parallelStream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+    }
+
+    public int getDefencePoints() {
+        int defence = strength;
 
         for(Formation formation : FormationRepository.get().findByCity(this)) {
             if(formation.getPlayer().equals(getPlayer()))
-                defence += formation.getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+                defence += formation.getStrength();
         }
 
         return defence;
@@ -425,9 +430,6 @@ public class City implements MapNode {
                 node.put("nn", false);
                 node.put("color", getPlayer().getColor());
 
-                if(!editor)
-                    node.put("build", player.equals(getPlayer()) && getType().getId() <= 3);
-
                 if (editor) {
                     node.put("resource", getResource().getId());
                     node.put("capacity", getRawCapacity());
@@ -439,6 +441,7 @@ public class City implements MapNode {
                     node.put("disease", isPlague());
                     node.put("fire", isFire());
                     node.put("wonder", isWonder());
+                    node.put("build", player.equals(getPlayer()) && getType().getId() <= 3);
 
                     List<Formation> formations = getFormations();
                     ArrayNode formationNodes = factory.arrayNode();

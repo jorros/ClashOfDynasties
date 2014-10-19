@@ -172,6 +172,9 @@ public class FormationController {
 
                     formation.setName(name);
                     formation.updateTimestamp();
+
+                    formation.recalculateStrength();
+                    city.recalculateStrength();
                 }
             }
         }

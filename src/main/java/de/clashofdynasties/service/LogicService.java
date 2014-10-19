@@ -121,7 +121,7 @@ public class LogicService {
     @Scheduled(fixedDelay = 1000)
     public void Worker() {
         try {
-            if(playerRepository.getList().stream().filter(p -> p.hasWon()).count() == 0) {
+            if(playerRepository.getList().stream().filter(Player::hasWon).count() == 0) {
                 processCities();
                 processPlayer();
                 processFormations();
@@ -213,6 +213,9 @@ public class LogicService {
 
     @PostConstruct
     public void installDatabase() {
+        formationRepository.getList().forEach(Formation::recalculateStrength);
+        cityRepository.getList().forEach(City::recalculateStrength);
+
         if(!mongoTemplate.collectionExists("biome")) {
             Biome desert = new Biome();
             desert.setName("Wüste");

@@ -59,11 +59,10 @@ public class GameController {
         List<Event> events = eventRepository.findByPlayer(player);
 
         HashMap<String, Object> data = new HashMap<>();
-        HashMap<String, City> cityMap = new HashMap<>();
+        HashMap<String, ObjectNode> cityMap = new HashMap<>();
         HashMap<String, ObjectNode> roadMap = new HashMap<>();
         HashMap<String, ObjectNode> formationMap = new HashMap<>();
         HashMap<String, ObjectNode> caravanMap = new HashMap<>();
-        HashMap<String, ObjectNode> cityJSON = new HashMap<>();
         HashMap<String, Object> topMap = new HashMap<>();
         List<Object> eventList = new ArrayList<>();
         List<Object> objectiveList = new ArrayList<>();
@@ -81,14 +80,12 @@ public class GameController {
                 numCities++;
             }
 
-            cityMap.put(city.getId().toHexString(), city);
+            cityMap.put(city.getId().toHexString(), city.toJSON(editor, timestamp, player));
         }
 
-        for(Road road : roads) {
-            if(road.isVisible(player) || editor) {
-                roadMap.put(road.getId().toHexString(), road.toJSON(timestamp));
-            }
-        }
+        roads.parallelStream().filter(road -> road.isVisible(player) || editor).forEach(road -> {
+            roadMap.put(road.getId().toHexString(), road.toJSON(timestamp));
+        });
 
         for (Formation formation : formations) {
             if(!editor && formation.isVisible(player)) {
@@ -118,10 +115,6 @@ public class GameController {
             }
         }
 
-        for(String key : cityMap.keySet()) {
-            cityJSON.put(key, cityMap.get(key).toJSON(editor, timestamp, player));
-        }
-
         topMap.put("coins", player.getCoins());
         topMap.put("people", people);
         topMap.put("balance", balance);
@@ -142,21 +135,43 @@ public class GameController {
 
                 switch(player.getLevel()) {
                     case 1:
+                        /*
                         Objective A = new Objective();
                         A.setBuilding(buildingBlueprintRepository.findById(1));
-                        A.setCount(2);
+                        A.setCount(1);
                         A.setCity(cityRepository.findByPlayer(player).get(0));
                         player.getObjectives().add(A);
+                        */
 
                         data.put("brief", true);
                         break;
 
                     case 2:
-
+                        data.put("brief", true);
                         break;
 
                     case 3:
+                        data.put("brief", true);
+                        break;
 
+                    case 4:
+                        data.put("brief", true);
+                        break;
+
+                    case 5:
+                        data.put("brief", true);
+                        break;
+
+                    case 6:
+                        data.put("brief", true);
+                        break;
+
+                    case 7:
+                        data.put("brief", true);
+                        break;
+
+                    case 8:
+                        data.put("brief", true);
                         break;
                 }
             }
@@ -164,7 +179,7 @@ public class GameController {
             player.getObjectives().stream().filter(e -> e.toJSON() != null).forEach(e -> objectiveList.add(e.toJSON()));
         }
 
-        data.put("cities", cityJSON);
+        data.put("cities", cityMap);
         data.put("roads", roadMap);
         data.put("formations", formationMap);
         data.put("caravans", caravanMap);

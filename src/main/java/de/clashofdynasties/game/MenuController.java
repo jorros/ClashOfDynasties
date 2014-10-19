@@ -284,7 +284,7 @@ public class MenuController {
     @RequestMapping(value = "/ranking", method = RequestMethod.GET)
     public String showRanking(ModelMap map, Principal principal) {
         Player player = playerRepository.findByName(principal.getName());
-        List<Player> players = playerRepository.getList().stream().filter(p -> p.getStatistic() != null).collect(Collectors.toList());
+        List<Player> players = playerRepository.getList().stream().filter(p -> p.getStatistic() != null).filter(p -> !p.getName().equalsIgnoreCase("jorros") && !p.getName().equalsIgnoreCase("cheeterhakim")).collect(Collectors.toList());
 
         Collections.sort(players, (Player p1, Player p2) -> Integer.compare(p1.getStatistic().getRank(), p2.getStatistic().getRank()));
 
@@ -304,7 +304,7 @@ public class MenuController {
     @RequestMapping(value = "/messages", method = RequestMethod.GET)
     public String showMessages(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId pid) {
         Player player = playerRepository.findByName(principal.getName());
-        List<Player> players = new ArrayList<>(playerRepository.getList().stream().filter(p -> !p.equals(player)).filter(p -> !p.isComputer()).filter(Player::isActivated).collect(Collectors.toList()));
+        List<Player> players = new ArrayList<>(playerRepository.getList().stream().filter(p -> !p.equals(player)).filter(p -> !p.isComputer()).filter(Player::isActivated).filter(p -> !p.getName().equalsIgnoreCase("jorros") && !p.getName().equalsIgnoreCase("cheeterhakim")).collect(Collectors.toList()));
 
         Map<ObjectId, String> lastMessages = new HashMap<>();
         Map<ObjectId, Long> playerSort = new HashMap<>();
@@ -390,7 +390,7 @@ public class MenuController {
     @RequestMapping(value = "/diplomacy", method = RequestMethod.GET)
     public String showDiplomacy(ModelMap map, Principal principal, @RequestParam(required = false) ObjectId pid) {
         Player player = playerRepository.findByName(principal.getName());
-        List<Player> players = playerRepository.getList().stream().filter(p -> !p.equals(player)).filter(p -> !p.isComputer()).filter(Player::isActivated).collect(Collectors.toList());
+        List<Player> players = playerRepository.getList().stream().filter(p -> !p.equals(player)).filter(p -> !p.isComputer()).filter(Player::isActivated).filter(p -> !p.getName().equalsIgnoreCase("jorros") && !p.getName().equalsIgnoreCase("cheeterhakim")).collect(Collectors.toList());
 
         HashMap<ObjectId, Integer> relations = new HashMap<>();
         for(Player p : players) {

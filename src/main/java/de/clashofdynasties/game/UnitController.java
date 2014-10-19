@@ -1,7 +1,12 @@
 package de.clashofdynasties.game;
 
+import de.clashofdynasties.models.City;
+import de.clashofdynasties.models.Formation;
 import de.clashofdynasties.models.UnitBlueprint;
+import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.FormationRepository;
 import de.clashofdynasties.repository.UnitBlueprintRepository;
+import de.clashofdynasties.repository.UnitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,7 +29,13 @@ import java.io.InputStream;
 @Secured("ROLE_USER")
 public class UnitController {
     @Autowired
-    UnitBlueprintRepository unitBlueprintRepository;
+    private UnitBlueprintRepository unitBlueprintRepository;
+
+    @Autowired
+    private CityRepository cityRepository;
+
+    @Autowired
+    private FormationRepository formationRepository;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @Secured("ROLE_ADMIN")
@@ -38,8 +49,14 @@ public class UnitController {
         if (production != null)
             blueprint.setRequiredProduction(production);
 
-        if(strength != null)
-            blueprint.setStrength(strength);
+        if(strength != null) {
+            if(strength != blueprint.getStrength()) {
+                blueprint.setStrength(strength);
+
+                cityRepository.getList().forEach(City::recalculateStrength);
+                formationRepository.getList().forEach(Formation::recalculateStrength);
+            }
+        }
 
         if (price != null)
             blueprint.setPrice(price);

@@ -191,6 +191,9 @@ public class CityController {
                     Building building = city.getBuildings().stream().filter(b -> b.getBlueprint().equals(buildingBlueprint)).findFirst().get();
                     city.removeBuilding(building);
                     buildingRepository.remove(building);
+
+                    city.recalculateStrength();
+
                     player.addCoins(buildingBlueprint.getPrice() * 0.5);
                 }
             } else {
@@ -210,6 +213,8 @@ public class CityController {
 
                         player.addCoins(unitBlueprint.getPrice() * 0.5);
                     }
+
+                    city.recalculateStrength();
                 }
             }
         }

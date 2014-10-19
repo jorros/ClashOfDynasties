@@ -40,9 +40,6 @@ public class CityLogic {
     @Autowired
     private RelationRepository relationRepository;
 
-    @Autowired
-    private PlayerLogic playerLogic;
-
     private double calculateSatisfaction(int cityType, double base, double level1, double level2, double level3, double general) {
         double satisfaction = 0;
         switch(cityType) {
@@ -207,6 +204,10 @@ public class CityLogic {
                     selected.setHealth(selected.getHealth() - 30);
                     if (selected.getHealth() < 0) {
                         city.removeBuilding(selected);
+
+                        if(selected.getBlueprint().getDefencePoints() > 0)
+                            city.recalculateStrength();
+
                         buildingRepository.remove(selected);
                     }
                 }
@@ -300,6 +301,9 @@ public class CityLogic {
 
                         city.addBuilding(building);
 
+                        if(building.getBlueprint().getDefencePoints() > 0)
+                            city.recalculateStrength();
+
                         eventRepository.add(new Event("ProductionReady", "Neues Gebäude errichtet", "In " + city.getName() + " wurde das Gebäude " + building.getBlueprint().getName() + " errichtet!", city, city.getPlayer()));
                     } else if (construction.getBlueprint() instanceof UnitBlueprint) {
                         for(int i = 0; i < construction.getCount(); i++) {
@@ -315,6 +319,8 @@ public class CityLogic {
                             eventRepository.add(new Event("ProductionReady", "Neue Einheiten ausgebildet", "In " + city.getName() + " wurden " + construction.getCount() + " Einheiten " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
                         else
                             eventRepository.add(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
+
+                        city.recalculateStrength();
 
                         for(Objective objective : city.getPlayer().getObjectives()) {
                             if(objective.getCity().equals(city)) {
@@ -643,6 +649,7 @@ public class CityLogic {
 
             formations.stream().filter(f -> f.getUnits().size() == 0).forEach(f -> {
                 eventRepository.add(new Event("Loss", f.getName() + " wurde vernichtet.", "Deine Formation " + f.getName() + " wurde bei der Schlacht um " + city.getName() + " vom Gegner ausradiert!", city, f.getPlayer()));
+                formations.remove(f);
                 formationRepository.remove(f);
             });
 
@@ -652,6 +659,9 @@ public class CityLogic {
                     buildingRepository.remove(building);
                 }
             }
+
+            city.recalculateStrength();
+            formations.forEach(Formation::recalculateStrength);
 
             if(city.getHealth() <= 0) {
                 if(!city.getPlayer().isComputer()) {
@@ -677,6 +687,7 @@ public class CityLogic {
 
                         for(Building building : buildings) {
                             city.removeBuilding(building);
+
                             buildingRepository.remove(building);
                         }
                     } else if(conqueror.getNation().getId() == 2) {

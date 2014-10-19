@@ -39,6 +39,8 @@ public class Formation implements MapNode {
 
     private long timestamp;
 
+    private int strength;
+
     public ObjectId getId() {
         return id;
     }
@@ -110,10 +112,14 @@ public class Formation implements MapNode {
     }
 
     public int getStrength() {
-        if(getUnits().size() > 0)
-            return getUnits().stream().filter(u -> u != null).mapToInt(b -> b.getBlueprint().getStrength()).sum();
+        return strength;
+    }
 
-        return 0;
+    public void recalculateStrength() {
+        if(getUnits().size() > 0)
+            strength = getUnits().stream().filter(u -> u != null).mapToInt(b -> b.getBlueprint().getStrength()).sum();
+        else
+            strength = 0;
     }
 
     public int getHealth() {
