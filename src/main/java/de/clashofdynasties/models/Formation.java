@@ -30,6 +30,8 @@ public class Formation implements MapNode {
 
     private List<ObjectId> units;
 
+    private int health;
+
     private Route route;
 
     public Formation() {
@@ -122,11 +124,15 @@ public class Formation implements MapNode {
             strength = 0;
     }
 
-    public int getHealth() {
+    public void recalculateHealth() {
         double health = getUnits().stream().filter(u -> u != null).mapToInt(Unit::getHealth).sum();
         double maxHealth = getUnits().size() * 100;
 
-        return new Double(health / maxHealth * 100).intValue();
+        this.health = new Double(health / maxHealth * 100).intValue();
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public Route getRoute() {

@@ -174,6 +174,7 @@ public class FormationController {
                     formation.updateTimestamp();
 
                     formation.recalculateStrength();
+                    formation.recalculateHealth();
                     city.recalculateStrength();
                 }
             }

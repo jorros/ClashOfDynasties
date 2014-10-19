@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Vector;
 
 public class Repository<K>{
     protected List<K> items;
@@ -14,7 +16,7 @@ public class Repository<K>{
     private MongoTemplate mongoTemplate;
 
     public void load(Class<K> clazz) {
-        items = mongoTemplate.findAll(clazz);
+        items = Collections.synchronizedList(mongoTemplate.findAll(clazz));
     }
 
     public void remove(K item) {

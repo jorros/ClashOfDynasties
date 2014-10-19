@@ -214,6 +214,7 @@ public class LogicService {
     @PostConstruct
     public void installDatabase() {
         formationRepository.getList().forEach(Formation::recalculateStrength);
+        formationRepository.getList().forEach(Formation::recalculateHealth);
         cityRepository.getList().forEach(City::recalculateStrength);
 
         if(!mongoTemplate.collectionExists("biome")) {

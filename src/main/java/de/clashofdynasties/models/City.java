@@ -9,10 +9,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Document
@@ -65,9 +62,9 @@ public class City implements MapNode {
     private String alias;
 
     public City() {
-        units = new ArrayList<>();
+        units = Collections.synchronizedList(new ArrayList<>());
         items = new HashMap<>();
-        buildings = new ArrayList<>();
+        buildings = Collections.synchronizedList(new ArrayList<>());
         requiredItemTypes = new ArrayList<>();
         stopConsumption = new ArrayList<>();
         visibility = new ArrayList<>();

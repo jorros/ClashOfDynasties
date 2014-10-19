@@ -662,6 +662,7 @@ public class CityLogic {
 
             city.recalculateStrength();
             formations.forEach(Formation::recalculateStrength);
+            formations.forEach(Formation::recalculateHealth);
 
             if(city.getHealth() <= 0) {
                 if(!city.getPlayer().isComputer()) {
