@@ -378,7 +378,7 @@ public class City implements MapNode {
             strength += getBuildings().stream().mapToInt(b -> b.getBlueprint().getDefencePoints()).sum();
 
         if(!units.isEmpty())
-            strength += getUnits().parallelStream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
+            strength += getUnits().stream().mapToInt(b -> b.getBlueprint().getStrength()).sum();
     }
 
     public int getDefencePoints() {

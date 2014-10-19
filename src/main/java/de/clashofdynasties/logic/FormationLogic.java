@@ -77,7 +77,7 @@ public class FormationLogic {
     public void processHealing(Formation formation) {
         if(formation.isDeployed() && formation.getLastCity().getReport() == null) {
             if(formation.getLastCity().getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0) {
-                List<Unit> units = formation.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
+                List<Unit> units = formation.getUnits().stream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
 
                 for (Unit unit : units) {
                     if (Math.random() < 0.01) {

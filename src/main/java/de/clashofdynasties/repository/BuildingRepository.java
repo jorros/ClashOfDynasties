@@ -21,6 +21,6 @@ public class BuildingRepository extends Repository<Building> {
     }
 
     public Building findById(ObjectId id) {
-        return items.parallelStream().filter(b -> b.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(b -> b.getId().equals(id)).findFirst().orElse(null);
     }
 }

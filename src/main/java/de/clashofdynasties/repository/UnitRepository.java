@@ -23,6 +23,6 @@ public class UnitRepository extends Repository<Unit> {
     }
 
     public Unit findById(ObjectId id) {
-        return items.parallelStream().filter(u -> u.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(u -> u.getId().equals(id)).findFirst().orElse(null);
     }
 }

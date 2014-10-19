@@ -22,7 +22,7 @@ public class CityRepository extends Repository<City> {
     }
 
     public City findById(ObjectId id) {
-        return items.parallelStream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
     }
 
     public List<City> findByPlayer(Player player) {

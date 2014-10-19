@@ -95,7 +95,7 @@ public class Formation implements MapNode {
     }
 
     public List<Unit> getUnits() {
-        return units.parallelStream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
+        return units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
     }
 
     public void addUnit(Unit unit) {

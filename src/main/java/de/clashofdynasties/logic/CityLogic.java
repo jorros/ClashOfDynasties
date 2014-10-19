@@ -359,7 +359,7 @@ public class CityLogic {
     public void processHealing(City city) {
         if(city.getReport() == null) {
             if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0) {
-                List<Unit> units = city.getUnits().parallelStream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
+                List<Unit> units = city.getUnits().stream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
 
                 for (Unit unit : units) {
                     if (Math.random() < 0.01) {
@@ -438,10 +438,10 @@ public class CityLogic {
     private List<Pair<Unit, Double>> getAttackerProbabilities(List<Unit> playerUnits, List<Unit> enemyUnits) {
         ArrayList<Pair<Unit, Double>> probabilites = new ArrayList<>();
 
-        long infantry = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 1).count();
-        long shooter = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 2).count();
-        long rider = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 3).count();
-        long siege = enemyUnits.parallelStream().filter(u -> u.getBlueprint().getType() == 4).count();
+        long infantry = enemyUnits.stream().filter(u -> u.getBlueprint().getType() == 1).count();
+        long shooter = enemyUnits.stream().filter(u -> u.getBlueprint().getType() == 2).count();
+        long rider = enemyUnits.stream().filter(u -> u.getBlueprint().getType() == 3).count();
+        long siege = enemyUnits.stream().filter(u -> u.getBlueprint().getType() == 4).count();
 
         for(Unit unit : playerUnits) {
             double probability = 0.1;

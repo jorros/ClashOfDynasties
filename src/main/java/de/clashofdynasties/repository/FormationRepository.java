@@ -27,7 +27,7 @@ public class FormationRepository extends Repository<Formation> {
     }
 
     public List<Formation> findByCity(City city) {
-        return items.parallelStream().filter(f -> f.getLastCity().equals(city) && f.getRoute() == null).collect(Collectors.toList());
+        return items.stream().filter(f -> f.getLastCity().equals(city) && f.getRoute() == null).collect(Collectors.toList());
     }
 
     public List<Formation> findByPlayer(Player player) {
@@ -35,6 +35,6 @@ public class FormationRepository extends Repository<Formation> {
     }
 
     public Formation findById(ObjectId id) {
-        return items.parallelStream().filter(f -> f.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(f -> f.getId().equals(id)).findFirst().orElse(null);
     }
 }

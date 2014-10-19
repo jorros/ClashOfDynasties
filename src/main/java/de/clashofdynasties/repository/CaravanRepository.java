@@ -23,11 +23,11 @@ public class CaravanRepository extends Repository<Caravan> {
     }
 
     public List<Caravan> findByPlayer(Player player) {
-        return items.parallelStream().filter(c -> c.getPlayer().equals(player)).collect(Collectors.toList());
+        return items.stream().filter(c -> c.getPlayer().equals(player)).collect(Collectors.toList());
     }
 
     public Caravan findById(ObjectId id) {
-        return items.parallelStream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
     }
 
     public static CaravanRepository get() {

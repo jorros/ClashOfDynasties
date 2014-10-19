@@ -26,7 +26,7 @@ public class RoadRepository extends Repository<Road> {
     }
 
     public Road findById(ObjectId id) {
-        return items.parallelStream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
     }
 
     public Road findByCities(City city1, City city2) {

@@ -38,10 +38,10 @@ public class EventRepository extends Repository<Event> {
     }
 
     public Event findById(ObjectId id) {
-        return items.parallelStream().filter(e -> e.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(e -> e.getId().equals(id)).findFirst().orElse(null);
     }
 
     public List<Event> findByPlayer(Player player) {
-        return items.parallelStream().filter(e -> e.getPlayer().equals(player)).collect(Collectors.toList());
+        return items.stream().filter(e -> e.getPlayer().equals(player)).collect(Collectors.toList());
     }
 }

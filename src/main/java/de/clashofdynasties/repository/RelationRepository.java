@@ -27,7 +27,7 @@ public class RelationRepository extends Repository<Relation> {
     }
 
     public Relation findById(ObjectId id) {
-        return items.parallelStream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
+        return items.stream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
     }
 
     public Relation findByPlayers(Player player1, Player player2) {
@@ -38,6 +38,6 @@ public class RelationRepository extends Repository<Relation> {
     }
 
     public List<Relation> finyByPlayer(Player player) {
-        return items.parallelStream().filter(r -> r.getPlayer1().equals(player) || r.getPlayer2().equals(player)).collect(Collectors.toList());
+        return items.stream().filter(r -> r.getPlayer1().equals(player) || r.getPlayer2().equals(player)).collect(Collectors.toList());
     }
 }

@@ -86,7 +86,7 @@ public class GameController {
                 cityMap.put(city.getId().toHexString(), city.toJSON(editor, timestamp, player));
             }
 
-            roads.parallelStream().filter(road -> road.isVisible(player) || editor).forEach(road -> {
+            roads.stream().filter(road -> road.isVisible(player) || editor).forEach(road -> {
                 roadMap.put(road.getId().toHexString(), road.toJSON(timestamp));
             });
 
