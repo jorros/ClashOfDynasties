@@ -52,12 +52,15 @@ public class FormationController {
         Formation formation = formationRepository.findById(id);
         City city = cityRepository.findById(target);
 
-        RoutingService routing = new RoutingService(roadRepository, relationRepository);
+        if(!formation.isDeployed() || !formation.getLastCity().equals(city)) {
 
-        if(routing.calculateRoute(formation, city, player))
-            return routing.getRoute().toJSON();
-        else
-            return JsonNodeFactory.instance.objectNode();
+            RoutingService routing = new RoutingService(roadRepository, relationRepository);
+
+            if (routing.calculateRoute(formation, city, player))
+                return routing.getRoute().toJSON();
+        }
+
+        return JsonNodeFactory.instance.objectNode();
     }
 
     @RequestMapping(value = "/{formation}/move", method = RequestMethod.GET)
