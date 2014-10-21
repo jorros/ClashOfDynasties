@@ -71,7 +71,7 @@ public class FormationLogic {
     }
 
     public void processMaintenance(Formation formation) {
-        formation.getPlayer().addCoins(-2 / 3600);
+        formation.getPlayer().addCoins(-(double)formation.getCosts() / 3600.0d);
     }
 
     public void processHealing(Formation formation) {

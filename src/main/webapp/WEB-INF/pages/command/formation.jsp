@@ -20,7 +20,7 @@
             <td>Leben: ${formation.getHealth()}%</td>
         </tr>
         <tr>
-            <td colspan="2">Unterhaltskosten: <span class="red">2</span></td>
+            <td colspan="2">Unterhaltskosten: <span class="red">${formation.costs}</span></td>
         </tr>
         <tr>
             <c:choose>

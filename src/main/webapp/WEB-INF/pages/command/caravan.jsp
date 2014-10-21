@@ -15,7 +15,7 @@
             <td colspan="2">Spieler: ${caravan.player.name} (${caravan.player.nation.name})</td>
         </tr>
         <tr>
-            <td colspan="2">Unterhaltskosten: <span class="red">1</span></td>
+            <td colspan="2">Unterhaltskosten: <span class="red">5</span></td>
         </tr>
         <tr>
             <td colspan="2">Handelsweg: ${caravan.point1.name} bis ${caravan.point2.name}</td>

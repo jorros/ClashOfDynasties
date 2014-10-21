@@ -185,6 +185,6 @@ public class CaravanLogic {
     }
 
     public void processMaintenance(Caravan caravan) {
-        caravan.getPlayer().addCoins(-1 / 3600);
+        caravan.getPlayer().addCoins(-5d / 3600d);
     }
 }

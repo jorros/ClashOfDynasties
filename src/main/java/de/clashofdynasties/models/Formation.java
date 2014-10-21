@@ -133,6 +133,10 @@ public class Formation implements MapNode {
         this.health = new Double(health / maxHealth * 100).intValue();
     }
 
+    public int getCosts() {
+        return units.size() / 100;
+    }
+
     public int getHealth() {
         return health;
     }
