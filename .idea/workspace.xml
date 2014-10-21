@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -87,11 +86,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormationController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FormationController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3321918" vertical-offset="384" max-vertical-offset="2975">
-              <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="282" max-vertical-offset="2975">
+              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoutingService.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.76884425" vertical-offset="3400" max-vertical-offset="5984">
+              <caret line="247" column="36" selection-start-line="247" selection-start-column="36" selection-end-line="247" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -228,7 +237,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/update.js" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
@@ -236,6 +244,7 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
       </list>
     </option>
   </component>
@@ -1512,7 +1521,7 @@
       <workItem from="1413740255821" duration="6217000" />
       <workItem from="1413827333670" duration="616000" />
       <workItem from="1413880592380" duration="2246000" />
-      <workItem from="1413883378869" duration="667000" />
+      <workItem from="1413883378869" duration="1529000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2558,11 +2567,15 @@
       <created>1413882161554</created>
       <updated>1413882161554</updated>
     </task>
-    <option name="localTasksCounter" value="262" />
+    <task id="LOCAL-00262" summary="Formation: Client Route fix">
+      <created>1413884057736</created>
+      <updated>1413884057736</updated>
+    </task>
+    <option name="localTasksCounter" value="263" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1154928000" />
+    <option name="totallyTimeSpent" value="1155790000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2644,7 +2657,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Formation Erstellen Fix" />
     <MESSAGE value="Tooltips für Buttons hinzugefügt" />
     <MESSAGE value="Grundlagen für Missionsziele implementiert" />
     <MESSAGE value="Nur noch eingeloggte User können auf alle Controller zugreifen" />
@@ -2669,11 +2681,12 @@
     <MESSAGE value="Speedberechnung wurde optimiert" />
     <MESSAGE value="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt" />
     <MESSAGE value="City: Berechnung der Gebäudezahl und Einheitenzahl optimiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="City: Berechnung der Gebäudezahl und Einheitenzahl optimiert" />
+    <MESSAGE value="Formation: Client Route fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formation: Client Route fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="162" />
+      <option name="time" value="164" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -2907,14 +2920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3366" max-vertical-offset="5933">
-          <caret line="234" column="56" selection-start-line="234" selection-start-column="56" selection-end-line="234" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/update.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.01923077" vertical-offset="357" max-vertical-offset="2873">
@@ -3039,8 +3044,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3321918" vertical-offset="384" max-vertical-offset="2975">
-          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="384" max-vertical-offset="2975">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76884425" vertical-offset="3400" max-vertical-offset="5984">
+          <caret line="247" column="36" selection-start-line="247" selection-start-column="36" selection-end-line="247" selection-end-column="36" />
           <folding />
         </state>
       </provider>

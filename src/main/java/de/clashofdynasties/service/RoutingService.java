@@ -231,18 +231,21 @@ public class RoutingService {
         this.formation = formation;
 
         int rel;
+        Integer ticksLeft = null;
 
         if(city.getPlayer().equals(formation.getPlayer()))
             rel = 4;
         else {
             Relation relation = relationRepository.findByPlayers(formation.getPlayer(), city.getPlayer());
-            if(relation != null)
+            if(relation != null) {
                 rel = relation.getRelation();
+                ticksLeft = relation.getTicksLeft();
+            }
             else
                 rel = 1;
         }
 
-        if(rel >= 3 || rel == 0 || city.getPlayer().isComputer()) {
+        if((rel == 3 && ticksLeft == null) || rel == 4 || rel == 0 || city.getPlayer().isComputer()) {
             Node from;
             if (formation.isDeployed())
                 from = new Node(formation.getLastCity());
