@@ -134,7 +134,7 @@ public class Formation implements MapNode {
     }
 
     public int getCosts() {
-        return units.size() / 100;
+        return Math.max(units.size() / 100, 2);
     }
 
     public int getHealth() {

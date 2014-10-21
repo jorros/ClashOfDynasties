@@ -111,7 +111,7 @@ public class GameController {
                 if (!editor && caravan.isVisible(player) && !caravan.isPaused()) {
                     if (player.equals(caravan.getPlayer())) {
                         numCaravans++;
-                        balance -= 5;
+                        balance -= caravan.getCost();
                     }
 
                     caravanMap.put(caravan.getId().toHexString(), caravan.toJSON(timestamp));

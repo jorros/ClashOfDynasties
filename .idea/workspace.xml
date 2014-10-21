@@ -7,12 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/formation.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/formation.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -81,15 +80,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Formation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Formation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6281407" vertical-offset="1206" max-vertical-offset="3094">
-              <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1206" max-vertical-offset="3094">
+              <caret line="136" column="45" selection-start-line="136" selection-start-column="45" selection-end-line="136" selection-end-column="45" />
               <folding>
                 <element signature="e#3114#3115#0" expanded="true" />
-                <element signature="e#3155#3156#0" expanded="true" />
+                <element signature="e#3168#3169#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Caravan.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2068" max-vertical-offset="3485">
+              <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
+              <folding>
+                <element signature="e#4569#4570#0" expanded="true" />
+                <element signature="e#4593#4594#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="caravan.jsp" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.35085008" vertical-offset="62" max-vertical-offset="867">
+              <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,7 +129,7 @@
       <file leaf-file-name="FormationController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="3315">
+            <state vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="2975">
               <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
@@ -134,20 +156,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cityEntity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4437" max-vertical-offset="6290">
-              <caret line="282" column="46" selection-start-line="282" selection-start-column="46" selection-end-line="282" selection-end-column="46" />
-              <folding>
-                <marker date="1413749105085" expanded="false" signature="2514:2551" placeholder="..." />
-                <marker date="1413749105085" expanded="false" signature="3611:3644" placeholder="..." />
-                <marker date="1413749105085" expanded="false" signature="4744:4768" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="FormationLogic.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -161,8 +169,8 @@
       <file leaf-file-name="GameController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1178" max-vertical-offset="3706">
-              <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1127" max-vertical-offset="3706">
+              <caret line="113" column="52" selection-start-line="113" selection-start-column="52" selection-end-line="113" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -171,19 +179,12 @@
       <file leaf-file-name="CaravanLogic.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2612" max-vertical-offset="3196">
-              <caret line="187" column="40" selection-start-line="187" selection-start-column="40" selection-end-line="187" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="formationEntity.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2261">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="2540" max-vertical-offset="3230">
+              <caret line="187" column="62" selection-start-line="187" selection-start-column="62" selection-end-line="187" selection-end-column="62" />
+              <folding>
+                <element signature="e#9245#9246#0" expanded="true" />
+                <element signature="e#9324#9325#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -202,7 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editorMenus.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editplayers.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp" />
@@ -247,12 +247,13 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/formation.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" />
       </list>
     </option>
   </component>
@@ -1530,7 +1531,7 @@
       <workItem from="1413827333670" duration="616000" />
       <workItem from="1413880592380" duration="2246000" />
       <workItem from="1413883378869" duration="1685000" />
-      <workItem from="1413897169906" duration="990000" />
+      <workItem from="1413897169906" duration="1494000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2588,11 +2589,15 @@
       <created>1413897256437</created>
       <updated>1413897256437</updated>
     </task>
-    <option name="localTasksCounter" value="265" />
+    <task id="LOCAL-00265" summary="Unterhaltskosten angepasst">
+      <created>1413898303744</created>
+      <updated>1413898303744</updated>
+    </task>
+    <option name="localTasksCounter" value="266" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1156936000" />
+    <option name="totallyTimeSpent" value="1157440000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2616,7 +2621,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2635,9 +2640,9 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22727273" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22727273" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -2674,7 +2679,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Nur noch eingeloggte User können auf alle Controller zugreifen" />
     <MESSAGE value="Reset: Setzt Level auf 0 zurück" />
     <MESSAGE value="Reset: Ziele werden gelöscht" />
     <MESSAGE value="Loading: Objectives hinzugefügt" />
@@ -2699,7 +2703,8 @@
     <MESSAGE value="Formation: Client Route fix" />
     <MESSAGE value="Formation: Route über verbündeten mit Ticks left verbieten" />
     <MESSAGE value="Krieg: 25 aktiv kämpfende Einheiten" />
-    <option name="LAST_COMMIT_MESSAGE" value="Krieg: 25 aktiv kämpfende Einheiten" />
+    <MESSAGE value="Unterhaltskosten angepasst" />
+    <option name="LAST_COMMIT_MESSAGE" value="Unterhaltskosten angepasst" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2787,13 +2792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45561138" vertical-offset="0" max-vertical-offset="597">
           <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2764" max-vertical-offset="3417">
-          <caret line="258" column="8" selection-start-line="258" selection-start-column="8" selection-end-line="259" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -2993,9 +2991,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4437" max-vertical-offset="6290">
           <caret line="282" column="46" selection-start-line="282" selection-start-column="46" selection-end-line="282" selection-end-column="46" />
           <folding>
-            <marker date="1413749105085" expanded="false" signature="2514:2551" placeholder="..." />
-            <marker date="1413749105085" expanded="false" signature="3611:3644" placeholder="..." />
-            <marker date="1413749105085" expanded="false" signature="4744:4768" placeholder="..." />
+            <marker date="1413749105085" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1413749105085" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1413749105085" expanded="false" signature="-1:-1" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -3004,30 +3002,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2261">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="384" max-vertical-offset="2975">
-          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3400" max-vertical-offset="5984">
-          <caret line="247" column="36" selection-start-line="247" selection-start-column="36" selection-end-line="247" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33722287" vertical-offset="0" max-vertical-offset="867">
-          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
           <folding />
         </state>
       </provider>
@@ -3048,22 +3022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1178" max-vertical-offset="3706">
-          <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2612" max-vertical-offset="3196">
-          <caret line="187" column="40" selection-start-line="187" selection-start-column="40" selection-end-line="187" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="443" max-vertical-offset="1496">
@@ -3072,14 +3030,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3400" max-vertical-offset="5984">
+          <caret line="247" column="36" selection-start-line="247" selection-start-column="36" selection-end-line="247" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="384" max-vertical-offset="2975">
+          <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1127" max-vertical-offset="3706">
+          <caret line="113" column="52" selection-start-line="113" selection-start-column="52" selection-end-line="113" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2540" max-vertical-offset="3230">
+          <caret line="187" column="62" selection-start-line="187" selection-start-column="62" selection-end-line="187" selection-end-column="62" />
+          <folding>
+            <element signature="e#9245#9246#0" expanded="true" />
+            <element signature="e#9324#9325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6281407" vertical-offset="1206" max-vertical-offset="3094">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1206" max-vertical-offset="3094">
+          <caret line="136" column="45" selection-start-line="136" selection-start-column="45" selection-end-line="136" selection-end-column="45" />
           <folding>
             <element signature="e#3114#3115#0" expanded="true" />
-            <element signature="e#3155#3156#0" expanded="true" />
+            <element signature="e#3168#3169#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2068" max-vertical-offset="3485">
+          <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
+          <folding>
+            <element signature="e#4569#4570#0" expanded="true" />
+            <element signature="e#4593#4594#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35085008" vertical-offset="62" max-vertical-offset="867">
+          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+          <folding />
         </state>
       </provider>
     </entry>

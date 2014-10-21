@@ -210,6 +210,10 @@ public class Caravan {
             this.point2StoreItem = 0;
     }
 
+    public int getCost() {
+        return 2;
+    }
+
     public long getTimestamp() {
         return timestamp;
     }
