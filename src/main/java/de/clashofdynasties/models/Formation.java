@@ -32,6 +32,8 @@ public class Formation implements MapNode {
 
     private int health;
 
+    private double speed;
+
     private Route route;
 
     public Formation() {
@@ -135,6 +137,19 @@ public class Formation implements MapNode {
         return health;
     }
 
+    public void recalculateSpeed() {
+        speed = Double.MAX_VALUE;
+
+        for (Unit unit : getUnits()) {
+            if (unit.getSpeed() < speed)
+                speed = unit.getSpeed();
+        }
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
     public Route getRoute() {
         return route;
     }
@@ -145,17 +160,6 @@ public class Formation implements MapNode {
 
     public boolean isDeployed() {
         return (this.getRoute() == null);
-    }
-
-    public double getSpeed() {
-        double speed = Double.MAX_VALUE;
-
-        for (Unit unit : getUnits()) {
-            if (unit.getSpeed() < speed)
-                speed = unit.getSpeed();
-        }
-
-        return speed;
     }
 
     public long getTimestamp() {

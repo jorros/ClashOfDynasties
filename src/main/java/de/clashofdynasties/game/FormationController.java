@@ -175,6 +175,7 @@ public class FormationController {
 
                     formation.recalculateStrength();
                     formation.recalculateHealth();
+                    formation.recalculateSpeed();
                     city.recalculateStrength();
                 }
             }
