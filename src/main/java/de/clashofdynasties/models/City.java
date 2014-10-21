@@ -317,7 +317,7 @@ public class City implements MapNode {
     }
 
     public long countBuildings(long blueprint) {
-        return getBuildings().stream().filter(b -> b.getBlueprint().getId() == blueprint).count();
+        return buildings.stream().map(b -> BuildingRepository.get().findById(b)).filter(b -> b.getBlueprint().getId() == blueprint).count();
     }
 
     public long countBuildings(BuildingBlueprint blueprint) {
@@ -325,7 +325,7 @@ public class City implements MapNode {
     }
 
     public long countUnits(long blueprint) {
-        return getUnits().stream().filter(b -> b.getBlueprint().getId() == blueprint).count();
+        return units.stream().map(u -> UnitRepository.get().findById(u)).filter(b -> b.getBlueprint().getId() == blueprint).count();
     }
 
     public long countUnits(UnitBlueprint blueprint) {

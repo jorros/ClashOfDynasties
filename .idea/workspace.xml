@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -87,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormationController.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FormationController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.060921248" vertical-offset="1350" max-vertical-offset="2924">
+            <state vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="2924">
               <caret line="97" column="39" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
               <folding />
             </state>
@@ -107,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="City.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="City.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3690" max-vertical-offset="6205">
-              <caret line="327" column="132" selection-start-line="327" selection-start-column="132" selection-end-line="327" selection-end-column="132" />
+            <state vertical-scroll-proportion="0.59329444" vertical-offset="3690" max-vertical-offset="6205">
+              <caret line="319" column="80" selection-start-line="319" selection-start-column="80" selection-end-line="319" selection-end-column="80" />
               <folding />
             </state>
           </provider>
@@ -210,8 +209,8 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
       </list>
     </option>
   </component>
@@ -1487,7 +1486,7 @@
       <workItem from="1413739811242" duration="427000" />
       <workItem from="1413740255821" duration="6217000" />
       <workItem from="1413827333670" duration="616000" />
-      <workItem from="1413880592380" duration="1317000" />
+      <workItem from="1413880592380" duration="1393000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2525,11 +2524,15 @@
       <created>1413881798489</created>
       <updated>1413881798489</updated>
     </task>
-    <option name="localTasksCounter" value="260" />
+    <task id="LOCAL-00260" summary="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt">
+      <created>1413882096524</created>
+      <updated>1413882096524</updated>
+    </task>
+    <option name="localTasksCounter" value="261" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1153332000" />
+    <option name="totallyTimeSpent" value="1153408000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2611,7 +2614,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Mein Reich erweitert: Karawanen, Formationen" />
     <MESSAGE value="Typo Fehler gefixt" />
     <MESSAGE value="Formation Erstellen Fix" />
     <MESSAGE value="Tooltips für Buttons hinzugefügt" />
@@ -2636,7 +2638,8 @@
     <MESSAGE value="Parallelisierung entfernt" />
     <MESSAGE value="Wenn Menü geöffnet wird Routenberechnung deaktiviert" />
     <MESSAGE value="Speedberechnung wurde optimiert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Speedberechnung wurde optimiert" />
+    <MESSAGE value="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2995,18 +2998,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3690" max-vertical-offset="6205">
-          <caret line="327" column="132" selection-start-line="327" selection-start-column="132" selection-end-line="327" selection-end-column="132" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="891" max-vertical-offset="2924">
+          <caret line="97" column="39" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.060921248" vertical-offset="1350" max-vertical-offset="2924">
-          <caret line="97" column="39" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.59329444" vertical-offset="3690" max-vertical-offset="6205">
+          <caret line="319" column="80" selection-start-line="319" selection-start-column="80" selection-end-line="319" selection-end-column="80" />
           <folding />
         </state>
       </provider>
