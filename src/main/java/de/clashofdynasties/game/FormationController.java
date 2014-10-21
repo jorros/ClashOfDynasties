@@ -93,7 +93,9 @@ public class FormationController {
         if (formation.getPlayer().equals(player) && formation.isDeployed() && formation.getLastCity().getPlayer().equals(formation.getPlayer())) {
             City city = formation.getLastCity();
 
-            formation.getUnits().forEach(u -> city.addUnit(u));
+            formation.getUnits().forEach(city::addUnit);
+
+            city.recalculateStrength();
 
             formationRepository.remove(formation);
         }
