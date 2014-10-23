@@ -91,9 +91,10 @@ public class PlayerLogic {
         List<City> cities = cityRepository.getList();
         cities.forEach(c -> c.removeVisibility(player));
 
+        cities.forEach(c -> c.removeVisibility(player));
+
         for(City city : cities) {
             List<Road> roads = roadRepository.findByCity(city);
-            roads.forEach(Road::updateTimestamp);
 
             if(city.getPlayer().equals(player))
                 setVisible(city, city.getType().getId(), cities, player);
@@ -107,6 +108,8 @@ public class PlayerLogic {
                         city.addVisibility(player);
                 }
             }
+
+            roads.forEach(Road::updateTimestamp);
         }
     }
 

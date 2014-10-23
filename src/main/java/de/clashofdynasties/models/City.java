@@ -415,11 +415,12 @@ public class City implements MapNode {
     }
 
     public void removeVisibility(Player player) {
-        visibility.remove(player.getId());
+        visibility.removeIf(v -> v.equals(player.getId()));
     }
 
     public void addVisibility(Player player) {
-        visibility.add(player.getId());
+        if(!visibility.contains(player.getId()))
+            visibility.add(player.getId());
     }
 
     public boolean isWonder() {
