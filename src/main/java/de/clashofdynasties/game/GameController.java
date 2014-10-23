@@ -218,10 +218,12 @@ public class GameController {
     @RequestMapping(value = "/scroll", method = RequestMethod.GET)
     public @ResponseBody ObjectNode getScrollPosition(Principal principal) {
         ObjectNode node = JsonNodeFactory.instance.objectNode();
-        Player player = playerRepository.findByName(principal.getName());
+        if(principal != null) {
+            Player player = playerRepository.findByName(principal.getName());
 
-        node.put("x", player.getLastScrollX());
-        node.put("y", player.getLastScrollY());
+            node.put("x", player.getLastScrollX());
+            node.put("y", player.getLastScrollY());
+        }
 
         return node;
     }

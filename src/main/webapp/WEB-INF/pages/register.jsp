@@ -10,7 +10,14 @@
 <body>
 <div id="wrapper">
     <div id="body">
-        <h1>Registrieren</h1>
+        <c:choose>
+            <c:when test="${error}">
+                <h1 style="color:#FF1A00;">Es existiert bereits ein Spieler mit diesem Namen</h1>
+            </c:when>
+            <c:otherwise>
+                <h1>Registrieren</h1>
+            </c:otherwise>
+        </c:choose>
         <div id="content">
             <div style="width:317px; height:260px; margin: auto auto;">
                 <form action="/step1" id="register" method="post">

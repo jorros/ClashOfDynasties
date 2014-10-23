@@ -76,6 +76,9 @@ public class PublicController {
         Player player = playerRepository.findById(key);
         Md5PasswordEncoder encoder = new Md5PasswordEncoder();
 
+        if(playerRepository.findByNameIgnoreCase(name) != null)
+            return "redirect:/register?key=" + key + "&error=true";
+
         player.setName(name);
         player.setPassword(encoder.encodePassword(password, null));
         player.setEmail(email);
