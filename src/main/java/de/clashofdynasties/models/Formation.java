@@ -30,6 +30,9 @@ public class Formation implements MapNode {
 
     private List<ObjectId> units;
 
+    @Transient
+    private List<Unit> unitObjects;
+
     private int health;
 
     private double speed;
@@ -96,23 +99,34 @@ public class Formation implements MapNode {
         this.lastCity = lastCity.getId();
     }
 
+    public void rebuildUnitList() {
+        unitObjects = units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
+    }
+
     public List<Unit> getUnits() {
-        return units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
+        if(unitObjects == null)
+            rebuildUnitList();
+
+        return unitObjects;
     }
 
     public void addUnit(Unit unit) {
-        if(!units.contains(unit.getId()))
+        if(!units.contains(unit.getId())) {
             units.add(unit.getId());
+            unitObjects.add(unit);
+        }
     }
 
     public void clearUnits(boolean remove) {
         if(remove)
             UnitRepository.get().remove(getUnits());
         units.clear();
+        unitObjects.clear();
     }
 
     public void removeUnit(Unit unit) {
         units.remove(unit.getId());
+        unitObjects.remove(unit);
     }
 
     public int getStrength() {

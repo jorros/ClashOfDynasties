@@ -522,7 +522,6 @@ public class CityLogic {
             }
 
             for(Player player : players) {
-                List<Building> playerBuildings = city.getPlayer().equals(player) ? city.getBuildings() : new ArrayList<>();
                 List<Unit> playerUnits = new ArrayList<>();
                 List<Unit> enemyUnits = new ArrayList<>();
                 Relation cityRelation = relationRepository.findByPlayers(player, city.getPlayer());
@@ -535,6 +534,7 @@ public class CityLogic {
                 if(player.equals(city.getPlayer()))
                     rel = 3;
 
+                List<Building> playerBuildings = city.getPlayer().equals(player) ? city.getBuildings() : new ArrayList<>();
                 List<Building> enemyBuildings = (!city.getPlayer().equals(player) && rel <= 2) ? city.getBuildings() : new ArrayList<>();
 
                 for(Formation formation : formations) {
@@ -542,8 +542,7 @@ public class CityLogic {
                         Relation relation = relationRepository.findByPlayers(player, formation.getPlayer());
 
                         if(relation == null || relation.getRelation() <= 2) {
-                            if(formation.getUnits() != null)
-                                enemyUnits.addAll(formation.getUnits());
+                            enemyUnits.addAll(formation.getUnits());
                         }
                     } else {
                         playerUnits.addAll(formation.getUnits());

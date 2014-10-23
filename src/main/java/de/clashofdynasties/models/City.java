@@ -49,6 +49,9 @@ public class City implements MapNode {
 
     private List<ObjectId> units;
 
+    @Transient
+    private List<Unit> unitObjects;
+
     private Map<Integer, Double> items;
 
     private long timestamp;
@@ -237,23 +240,34 @@ public class City implements MapNode {
         this.type = type.getId();
     }
 
+    public void rebuildUnitList() {
+        unitObjects = units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
+    }
+
     public List<Unit> getUnits() {
-        return units.stream().map(u -> UnitRepository.get().findById(u)).collect(Collectors.toList());
+        if(unitObjects == null)
+            rebuildUnitList();
+
+        return unitObjects;
+    }
+
+    public void addUnit(Unit unit) {
+        if(!units.contains(unit.getId())) {
+            units.add(unit.getId());
+            unitObjects.add(unit);
+        }
     }
 
     public void clearUnits(boolean remove) {
         if(remove)
             UnitRepository.get().remove(getUnits());
         units.clear();
-    }
-
-    public void addUnit(Unit unit) {
-        if(!units.contains(unit.getId()))
-            units.add(unit.getId());
+        unitObjects.clear();
     }
 
     public void removeUnit(Unit unit) {
         units.remove(unit.getId());
+        unitObjects.remove(unit);
     }
 
     public Report getReport() {
@@ -325,7 +339,7 @@ public class City implements MapNode {
     }
 
     public long countUnits(long blueprint) {
-        return units.stream().map(u -> UnitRepository.get().findById(u)).filter(b -> b.getBlueprint().getId() == blueprint).count();
+        return unitObjects.stream().filter(b -> b.getBlueprint().getId() == blueprint).count();
     }
 
     public long countUnits(UnitBlueprint blueprint) {
