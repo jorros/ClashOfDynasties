@@ -28,7 +28,7 @@ public class LoginService implements UserDetailsService {
         ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-        if (player.getName().equalsIgnoreCase("jorros") || player.getName().equalsIgnoreCase("cheeterhakim") || player.getName().equalsIgnoreCase("Vladi"))
+        if (player.getName().equalsIgnoreCase("jorros"))
             authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 
         User userDetail = new User(player.getName(), player.getPassword(), true, true, true, true, authorities);

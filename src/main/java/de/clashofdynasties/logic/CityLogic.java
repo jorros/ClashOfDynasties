@@ -485,7 +485,7 @@ public class CityLogic {
             for(Formation formation : formations) {
                 Relation relation = relationRepository.findByPlayers(city.getPlayer(), formation.getPlayer());
 
-                if((relation != null && relation.getRelation() == 0) || city.getPlayer().isComputer()) {
+                if((relation != null && relation.getRelation() <= 2) || relation == null || city.getPlayer().isComputer()) {
                     isWar = true;
                     break;
                 }

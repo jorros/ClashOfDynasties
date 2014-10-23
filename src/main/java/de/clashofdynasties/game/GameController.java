@@ -46,6 +46,9 @@ public class GameController {
     @Autowired
     private BuildingBlueprintRepository buildingBlueprintRepository;
 
+    @Autowired
+    private BiomeRepository biomeRepository;
+
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     @Secured("ROLE_USER")
     public @ResponseBody
@@ -136,44 +139,146 @@ public class GameController {
 
                     player.getObjectives().clear();
 
+                    Biome desert = biomeRepository.findById(1);
+                    Biome grassland = biomeRepository.findById(2);
+                    Biome coast = biomeRepository.findById(3);
+                    Biome forest = biomeRepository.findById(4);
+                    Biome mountains = biomeRepository.findById(5);
+
+                    City start = cityRepository.findByPlayer(player).get(0);
+                    BuildingBlueprint blp, blp2;
+
                     switch (player.getLevel()) {
                         case 1:
-                        /*
-                        Objective A = new Objective();
-                        A.setBuilding(buildingBlueprintRepository.findById(1));
-                        A.setCount(1);
-                        A.setCity(cityRepository.findByPlayer(player).get(0));
-                        player.getObjectives().add(A);
-                        */
+                            blp = buildingBlueprintRepository.findById(18);
+
+                            if(start.getBiome().equals(desert) || start.getBiome().equals(mountains))
+                                blp = buildingBlueprintRepository.findById(17);
+
+                            Objective A = new Objective();
+                            A.setBuilding(blp);
+                            A.setCount(1);
+                            A.setCity(start);
+                            player.getObjectives().add(A);
 
                             data.put("brief", true);
                             break;
 
                         case 2:
+                            blp = buildingBlueprintRepository.findById(20);
+
+                            if(player.getNation().getId() == 2)
+                                blp = buildingBlueprintRepository.findById(21);
+
+                            Objective B = new Objective();
+                            B.setBuilding(blp);
+                            B.setCount(1);
+                            B.setCity(start);
+                            player.getObjectives().add(B);
+
                             data.put("brief", true);
                             break;
 
                         case 3:
+                            blp = buildingBlueprintRepository.findById(4);
+
+                            Objective H = new Objective();
+                            H.setBuilding(blp);
+                            H.setCount(1);
+                            H.setCity(start);
+                            player.getObjectives().add(H);
+
                             data.put("brief", true);
                             break;
 
                         case 4:
+                            blp = buildingBlueprintRepository.findById(1);
+
+                            Objective C = new Objective();
+                            C.setBuilding(blp);
+                            C.setCount(2);
+                            C.setCity(start);
+                            player.getObjectives().add(C);
+
                             data.put("brief", true);
                             break;
 
                         case 5:
+                            blp = buildingBlueprintRepository.findById(18);
+
+                            if(start.getBiome().equals(desert) || start.getBiome().equals(mountains))
+                                blp = buildingBlueprintRepository.findById(17);
+
+                            Objective D = new Objective();
+                            D.setBuilding(blp);
+                            D.setCount(1);
+                            D.setCity(start);
+                            player.getObjectives().add(D);
+
+                            blp2 = buildingBlueprintRepository.findById(20);
+
+                            if(player.getNation().getId() == 2)
+                                blp2 = buildingBlueprintRepository.findById(21);
+
+                            Objective E = new Objective();
+                            E.setBuilding(blp2);
+                            E.setCount(1);
+                            E.setCity(start);
+                            player.getObjectives().add(E);
+
                             data.put("brief", true);
                             break;
 
                         case 6:
+                            blp = buildingBlueprintRepository.findById(18);
+
+                            if(start.getBiome().equals(desert) || start.getBiome().equals(mountains))
+                                blp = buildingBlueprintRepository.findById(17);
+
+                            Objective F = new Objective();
+                            F.setBuilding(blp);
+                            F.setCount(2);
+                            F.setCity(start);
+                            player.getObjectives().add(F);
+
+                            blp2 = buildingBlueprintRepository.findById(1);
+
+                            Objective G = new Objective();
+                            G.setBuilding(blp2);
+                            G.setCount(2);
+                            G.setCity(start);
+                            player.getObjectives().add(G);
+
                             data.put("brief", true);
                             break;
 
                         case 7:
+                            blp = buildingBlueprintRepository.findById(7);
+
+                            if(player.getNation().getId() == 2)
+                                blp = buildingBlueprintRepository.findById(15);
+
+                            Objective I = new Objective();
+                            I.setBuilding(blp);
+                            I.setCount(1);
+                            I.setCity(start);
+                            player.getObjectives().add(I);
+
                             data.put("brief", true);
                             break;
 
                         case 8:
+                            Road road = roadRepository.findByCity(start).get(0);
+                            City other = road.getPoint1().equals(start) ? road.getPoint2() : road.getPoint1();
+
+                            Objective J = new Objective();
+                            J.setConquerCity(other);
+                            player.getObjectives().add(J);
+
+                            data.put("brief", true);
+                            break;
+
+                        case 9:
                             data.put("brief", true);
                             break;
                     }
