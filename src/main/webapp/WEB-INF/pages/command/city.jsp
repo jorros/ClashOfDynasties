@@ -3,6 +3,7 @@
 
 <c:if test="${visible}">
     <c:if test="${player == city.player}">
+    <button title="Bauen" onclick="openMenu('build?city=${city.id}&demography=0')"><img src="assets/build.png" /></button>
     <button title="Karawane erstellen" <c:if test="${!canTrade}">disabled</c:if> onclick="isCaravanSelected=true; $('#caravanText').show();"><img src="assets/setCaravan.png" /></button>
     <button title="Formation erstellen" <c:if test="${empty city.units}">disabled</c:if> onclick="openMenu('formation?city=${city.id}', false)"><img src="assets/setFormation.png" /></button>
     </c:if>

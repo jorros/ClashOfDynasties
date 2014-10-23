@@ -7,9 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/assets/build.png" afterPath="$PROJECT_DIR$/src/main/webapp/resources/assets/build.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -78,11 +79,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8714" max-vertical-offset="11985">
-              <caret line="539" column="0" selection-start-line="539" selection-start-column="0" selection-end-line="539" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3321918" vertical-offset="10363" max-vertical-offset="11985">
+              <caret line="630" column="0" selection-start-line="630" selection-start-column="0" selection-end-line="630" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -98,10 +99,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Formation.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Formation.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.480737" vertical-offset="202" max-vertical-offset="3400">
+            <state vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="3400">
               <caret line="129" column="5" selection-start-line="101" selection-start-column="4" selection-end-line="129" selection-end-column="5" />
               <folding>
                 <element signature="e#1523#1524#0" expanded="true" />
@@ -109,6 +110,40 @@
                 <element signature="e#2020#2021#0" expanded="true" />
                 <element signature="e#2068#2069#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="city.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1088">
+              <caret line="5" column="79" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cityEntity.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="6290">
+              <caret line="68" column="439" selection-start-line="68" selection-start-column="439" selection-end-line="68" selection-end-column="439" />
+              <folding>
+                <marker date="1414062631885" expanded="false" signature="2514:2551" placeholder="..." />
+                <marker date="1414062631885" expanded="true" signature="3611:3670" placeholder="..." />
+                <marker date="1414062631885" expanded="false" signature="4770:4794" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demography.jsp" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-17.653847" vertical-offset="102" max-vertical-offset="2210">
+              <caret line="33" column="210" selection-start-line="33" selection-start-column="210" selection-end-line="33" selection-end-column="210" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -130,14 +165,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editplayers.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Objective.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityTypeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/helper.js" />
@@ -164,7 +197,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/update.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
@@ -178,6 +210,9 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp" />
       </list>
     </option>
   </component>
@@ -824,14 +859,11 @@
       <recent name="de.clashofdynasties.jdbc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\assets" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\lib" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\assets\buildings" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\assets\objectives" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\events" />
-      <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="de.clashofdynasties" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\css" />
@@ -839,6 +871,9 @@
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\images\chooser" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\top" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\lib" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="de.clashofdynasties" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.0.9">
@@ -1457,7 +1492,7 @@
       <workItem from="1413883378869" duration="1685000" />
       <workItem from="1413897169906" duration="1550000" />
       <workItem from="1414055149542" duration="2420000" />
-      <workItem from="1414061216306" duration="1080000" />
+      <workItem from="1414061216306" duration="1485000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2523,11 +2558,15 @@
       <created>1413898807782</created>
       <updated>1413898807782</updated>
     </task>
-    <option name="localTasksCounter" value="267" />
+    <task id="LOCAL-00267" summary="Optimierungen">
+      <created>1414062303558</created>
+      <updated>1414062303558</updated>
+    </task>
+    <option name="localTasksCounter" value="268" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1160996000" />
+    <option name="totallyTimeSpent" value="1161401000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2623,7 +2662,6 @@
     <MESSAGE value="Tooltips für Topleiste" />
     <MESSAGE value="Exception für MailService" />
     <MESSAGE value="Stärke werden nicht mehr realtime berechnet" />
-    <MESSAGE value="Optimierungen" />
     <MESSAGE value="Parallelisierung entfernt" />
     <MESSAGE value="Wenn Menü geöffnet wird Routenberechnung deaktiviert" />
     <MESSAGE value="Speedberechnung wurde optimiert" />
@@ -2634,7 +2672,8 @@
     <MESSAGE value="Krieg: 25 aktiv kämpfende Einheiten" />
     <MESSAGE value="Unterhaltskosten angepasst" />
     <MESSAGE value="Kosten angepasst" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kosten angepasst" />
+    <MESSAGE value="Optimierungen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Optimierungen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2646,16 +2685,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/8.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/9.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/assets/buildings/6.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -2908,13 +2937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4437" max-vertical-offset="6290">
-          <caret line="282" column="46" selection-start-line="282" selection-start-column="46" selection-end-line="282" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="2261">
@@ -2985,14 +3007,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="8714" max-vertical-offset="11985">
-          <caret line="539" column="0" selection-start-line="539" selection-start-column="0" selection-end-line="539" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4129" max-vertical-offset="6477">
@@ -3003,7 +3017,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.480737" vertical-offset="202" max-vertical-offset="3400">
+        <state vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="3400">
           <caret line="129" column="5" selection-start-line="101" selection-start-column="4" selection-end-line="129" selection-end-column="5" />
           <folding>
             <element signature="e#1523#1524#0" expanded="true" />
@@ -3011,6 +3025,42 @@
             <element signature="e#2020#2021#0" expanded="true" />
             <element signature="e#2068#2069#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.2692308" vertical-offset="0" max-vertical-offset="1088">
+          <caret line="5" column="79" selection-start-line="5" selection-start-column="79" selection-end-line="5" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="6290">
+          <caret line="68" column="439" selection-start-line="68" selection-start-column="439" selection-end-line="68" selection-end-column="439" />
+          <folding>
+            <marker date="1414062631885" expanded="false" signature="2514:2551" placeholder="..." />
+            <marker date="1414062631885" expanded="true" signature="3611:3670" placeholder="..." />
+            <marker date="1414062631885" expanded="false" signature="4770:4794" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.653847" vertical-offset="102" max-vertical-offset="2210">
+          <caret line="33" column="210" selection-start-line="33" selection-start-column="210" selection-end-line="33" selection-end-column="210" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3321918" vertical-offset="10363" max-vertical-offset="11985">
+          <caret line="630" column="0" selection-start-line="630" selection-start-column="0" selection-end-line="630" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
