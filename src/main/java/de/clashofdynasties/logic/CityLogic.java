@@ -562,7 +562,6 @@ public class CityLogic {
                     EnumeratedDistribution<Unit> attackDistribution = new EnumeratedDistribution<>(getAttackerProbabilities(playerUnits, enemyUnits));
                     List<Unit> attackers = new ArrayList<>();
                     int max = new Double((enemyUnits.size() + playerUnits.size()) / formations.size() * 0.1).intValue();
-                    System.out.println(max);
                     if(playerUnits.size() < max)
                         max = playerUnits.size();
                     for(int i = 0; i < max; i++) {
