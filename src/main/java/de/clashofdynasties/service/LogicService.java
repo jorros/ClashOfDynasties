@@ -140,7 +140,13 @@ public class LogicService {
 
         for(City city : cities) {
             if(tickWar == 30) {
-                cityLogic.processWar(city);
+                System.out.println("Test");
+                try {
+                    cityLogic.processWar(city);
+                }
+                catch(Exception ignored) {
+
+                }
             }
             cityLogic.processPopulation(city);
 

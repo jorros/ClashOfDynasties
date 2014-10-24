@@ -562,6 +562,7 @@ public class CityLogic {
                     EnumeratedDistribution<Unit> attackDistribution = new EnumeratedDistribution<>(getAttackerProbabilities(playerUnits, enemyUnits));
                     List<Unit> attackers = new ArrayList<>();
                     int max = new Double((enemyUnits.size() + playerUnits.size()) / formations.size() * 0.1).intValue();
+                    System.out.println(max);
                     if(playerUnits.size() < max)
                         max = playerUnits.size();
                     for(int i = 0; i < max; i++) {
@@ -631,21 +632,31 @@ public class CityLogic {
             for(Formation formation : formations) {
                 Party party = report.getParties().stream().filter(p -> p.getPlayer().equals(formation.getPlayer())).findFirst().get();
 
-                for(Unit unit : formation.getUnits()) {
-                    if(unit.getHealth() <= 0) {
-                        formation.removeUnit(unit);
-                        party.setLosses(party.getLosses() + 1);
-                        unitRepository.remove(unit);
+                try {
+                    for (Unit unit : formation.getUnits()) {
+                        if (unit.getHealth() <= 0) {
+                            formation.removeUnit(unit);
+                            party.setLosses(party.getLosses() + 1);
+                            unitRepository.remove(unit);
+                        }
                     }
+                }
+                catch(Exception ignored) {
+
                 }
             }
 
             Party cityParty = report.getParties().stream().filter(p -> p.getPlayer().equals(city.getPlayer())).findFirst().get();
             for(Unit unit : city.getUnits()) {
-                if(unit.getHealth() <= 0) {
-                    city.removeUnit(unit);
-                    cityParty.setLosses(cityParty.getLosses() + 1);
-                    unitRepository.remove(unit);
+                try {
+                    if (unit.getHealth() <= 0) {
+                        city.removeUnit(unit);
+                        cityParty.setLosses(cityParty.getLosses() + 1);
+                        unitRepository.remove(unit);
+                    }
+                }
+                catch(Exception ignored) {
+
                 }
             }
 
