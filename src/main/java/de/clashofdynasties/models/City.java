@@ -435,7 +435,10 @@ public class City implements MapNode {
         if (getTimestamp() >= timestamp) {
             node.put("x", getX());
             node.put("y", getY());
-            node.put("type", getType().getId());
+            if(isVisible(player) || getType().getId() == 4)
+                node.put("type", getType().getId());
+            else
+                node.put("type", 1);
             node.put("visible", isVisible(player));
 
             if(isVisible(player) || editor || isWonder()) {
