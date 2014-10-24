@@ -31,9 +31,6 @@ public class PlayerLogic {
     @Autowired
     private RelationRepository relationRepository;
 
-    @Autowired
-    private UnitBlueprintRepository unitBlueprintRepository;
-
     public void processStatistics(Player player) {
         Statistic stat = player.getStatistic();
 
@@ -51,14 +48,15 @@ public class PlayerLogic {
             for(City city : cities) {
                 stat.addDemography(city.getPopulation());
                 stat.addDemography(city.getSatisfaction());
+                stat.addDemography(10);
 
                 stat.addMilitary(city.getDefencePoints());
-                if(city.getUnits() != null)
-                    stat.addMilitary(city.getUnits().size() * 10);
+
+                stat.addEconomy(city.getIncome() - city.getOutcome());
 
                 if(city.getBuildings() != null) {
                     for(Building building : city.getBuildings()) {
-                        stat.addEconomy(new Double(building.getBlueprint().getProducePerStep() * 100).intValue());
+                        stat.addEconomy(new Double(building.getBlueprint().getProducePerStep() * 3600).intValue());
                     }
                 }
             }
@@ -66,13 +64,11 @@ public class PlayerLogic {
             stat.addEconomy(caravanRepository.findByPlayer(player).size() * 10);
 
             for(Formation formation : formations) {
-                stat.addMilitary(50);
-
-                if(formation.getUnits() != null)
-                    stat.addMilitary(formation.getUnits().size() * 10);
+                stat.addMilitary(formation.getStrength());
+                stat.addEconomy(-formation.getCosts());
             }
 
-            stat.addEconomy(player.getCoins());
+            stat.addEconomy(player.getCoins() / 10);
 
             player.setStatistic(stat);
         }
