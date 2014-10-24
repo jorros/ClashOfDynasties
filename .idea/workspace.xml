@@ -79,8 +79,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38505095" vertical-offset="5219" max-vertical-offset="12036">
-              <caret line="336" column="17" selection-start-line="336" selection-start-column="17" selection-end-line="336" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.72480184" vertical-offset="8744" max-vertical-offset="12036">
+              <caret line="561" column="58" selection-start-line="561" selection-start-column="58" selection-end-line="561" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -1531,7 +1531,7 @@
       <workItem from="1414084910378" duration="824000" />
       <workItem from="1414085893193" duration="5485000" />
       <workItem from="1414097110629" duration="7513000" />
-      <workItem from="1414170314228" duration="988000" />
+      <workItem from="1414170314228" duration="1136000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2629,11 +2629,15 @@
       <created>1414170600551</created>
       <updated>1414170600552</updated>
     </task>
-    <option name="localTasksCounter" value="275" />
+    <task id="LOCAL-00275" summary="Bei CityUpgrade FOV updaten">
+      <created>1414171331053</created>
+      <updated>1414171331053</updated>
+    </task>
+    <option name="localTasksCounter" value="276" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1178126000" />
+    <option name="totallyTimeSpent" value="1178274000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2715,7 +2719,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Heiler -&gt; Icon Update" />
     <MESSAGE value="Startgeld erhöht auf 200" />
     <MESSAGE value="Savanne -&gt; Grasland, Steppe -&gt; Gebirge" />
     <MESSAGE value="Dschungel -&gt; Küste" />
@@ -2740,7 +2743,8 @@
     <MESSAGE value="Fehlermeldung bei Anmeldung mit selbem Namen" />
     <MESSAGE value="Missionen eingebaut" />
     <MESSAGE value="Reset gefixt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reset gefixt" />
+    <MESSAGE value="Bei CityUpgrade FOV updaten" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bei CityUpgrade FOV updaten" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3126,8 +3130,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38505095" vertical-offset="5219" max-vertical-offset="12036">
-          <caret line="336" column="17" selection-start-line="336" selection-start-column="17" selection-end-line="336" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.72480184" vertical-offset="8744" max-vertical-offset="12036">
+          <caret line="561" column="58" selection-start-line="561" selection-start-column="58" selection-end-line="561" selection-end-column="58" />
           <folding />
         </state>
       </provider>
