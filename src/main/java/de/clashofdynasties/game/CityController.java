@@ -257,9 +257,12 @@ public class CityController {
         city.getItems().clear();
         city.clearUnits(true);
         city.setHealth(100);
-        city.setPopulation(5);
+        city.setPopulation(10);
         city.updateTimestamp();
         city.setType(cityTypeRepository.findById(1));
+        city.setAlias("");
+        city.setFire(false);
+        city.setPlague(false);
 
         city.clearRequiredItemTypes();
         generateRandomRequiredItems(city);

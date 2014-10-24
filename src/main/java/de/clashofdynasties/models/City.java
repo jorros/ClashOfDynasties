@@ -263,6 +263,7 @@ public class City implements MapNode {
             UnitRepository.get().remove(getUnits());
         units.clear();
         unitObjects.clear();
+        recalculateStrength();
     }
 
     public void removeUnit(Unit unit) {
