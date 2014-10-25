@@ -133,8 +133,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32740742" vertical-offset="9027" max-vertical-offset="12036">
-              <caret line="553" column="133" selection-start-line="553" selection-start-column="133" selection-end-line="553" selection-end-column="133" />
+            <state vertical-scroll-proportion="0.27703702" vertical-offset="9027" max-vertical-offset="12036">
+              <caret line="551" column="85" selection-start-line="551" selection-start-column="85" selection-end-line="551" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -1481,7 +1481,7 @@
       <workItem from="1414182346257" duration="285000" />
       <workItem from="1414229243652" duration="3786000" />
       <workItem from="1414237606752" duration="6140000" />
-      <workItem from="1414279155483" duration="397000" />
+      <workItem from="1414279155483" duration="439000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2635,11 +2635,15 @@
       <created>1414279265541</created>
       <updated>1414279265541</updated>
     </task>
-    <option name="localTasksCounter" value="289" />
+    <task id="LOCAL-00289" summary="Kriegsfix: Bei kleineren Anzahl Krieg">
+      <created>1414279569694</created>
+      <updated>1414279569694</updated>
+    </task>
+    <option name="localTasksCounter" value="290" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1192251000" />
+    <option name="totallyTimeSpent" value="1192293000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2721,7 +2725,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Krieg: 25 aktiv kämpfende Einheiten" />
     <MESSAGE value="Unterhaltskosten angepasst" />
     <MESSAGE value="Kosten angepasst" />
     <MESSAGE value="Optimierungen" />
@@ -2746,7 +2749,8 @@
     <MESSAGE value="Sicherheitsabfrage für Formationsbewegung" />
     <MESSAGE value="Reset: Kriegsreport wird entfernt" />
     <MESSAGE value="Mobil Optimierung #1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mobil Optimierung #1" />
+    <MESSAGE value="Kriegsfix: Bei kleineren Anzahl Krieg" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kriegsfix: Bei kleineren Anzahl Krieg" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3126,8 +3130,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32740742" vertical-offset="9027" max-vertical-offset="12036">
-          <caret line="553" column="133" selection-start-line="553" selection-start-column="133" selection-end-line="553" selection-end-column="133" />
+        <state vertical-scroll-proportion="0.27703702" vertical-offset="9027" max-vertical-offset="12036">
+          <caret line="551" column="85" selection-start-line="551" selection-start-column="85" selection-end-line="551" selection-end-column="85" />
           <folding />
         </state>
       </provider>
