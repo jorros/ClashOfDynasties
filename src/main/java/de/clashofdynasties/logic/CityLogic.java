@@ -290,7 +290,7 @@ public class CityLogic {
                         buildingRepository.add(building);
 
                         for(Objective objective : city.getPlayer().getObjectives()) {
-                            if(objective.getCity().equals(city)) {
+                            if(objective.getCity() != null && objective.getCity().equals(city)) {
                                 if(objective.getBuilding() != null && objective.getBuilding().equals(construction.getBlueprint()))
                                     objective.setCountReady(objective.getCountReady() + 1);
 
@@ -321,16 +321,6 @@ public class CityLogic {
                             eventRepository.add(new Event("ProductionReady", "Neue Einheit ausgebildet", "In " + city.getName() + " wurde die Einheit " + construction.getBlueprint().getName() + " ausgebildet!", city, city.getPlayer()));
 
                         city.recalculateStrength();
-
-                        for(Objective objective : city.getPlayer().getObjectives()) {
-                            if(objective.getCity() != null && objective.getCity().equals(city)) {
-                                if(objective.getUnit() != null && objective.getUnit().equals(construction.getBlueprint()))
-                                    objective.setCountReady(objective.getCountReady() + construction.getCount());
-
-                                if(objective.getCountReady() >= objective.getCount())
-                                    objective.setCompleted(true);
-                            }
-                        }
                     }
 
                     city.setBuildingConstruction(null);
@@ -488,7 +478,7 @@ public class CityLogic {
             for(Formation formation : formations) {
                 Relation relation = relationRepository.findByPlayers(city.getPlayer(), formation.getPlayer());
 
-                if((relation != null && relation.getRelation() <= 2) || relation == null || city.getPlayer().isComputer()) {
+                if((relation != null && relation.getRelation() <= 2) || (relation == null && !city.getPlayer().equals(formation.getPlayer())) || city.getPlayer().isComputer()) {
                     isWar = true;
                     break;
                 }
