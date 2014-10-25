@@ -323,7 +323,7 @@ public class CityLogic {
                         city.recalculateStrength();
 
                         for(Objective objective : city.getPlayer().getObjectives()) {
-                            if(objective.getCity().equals(city)) {
+                            if(objective.getCity() != null && objective.getCity().equals(city)) {
                                 if(objective.getUnit() != null && objective.getUnit().equals(construction.getBlueprint()))
                                     objective.setCountReady(objective.getCountReady() + construction.getCount());
 
