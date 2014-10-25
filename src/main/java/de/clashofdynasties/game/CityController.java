@@ -263,6 +263,7 @@ public class CityController {
         city.setAlias("");
         city.setFire(false);
         city.setPlague(false);
+        city.setReport(null);
 
         city.clearRequiredItemTypes();
         generateRandomRequiredItems(city);
