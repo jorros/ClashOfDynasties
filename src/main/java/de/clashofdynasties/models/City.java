@@ -471,7 +471,7 @@ public class City implements MapNode {
                         }
                     }
 
-                    node.put("formations", formationNodes);
+                    node.set("formations", formationNodes);
                 }
             }
         } else

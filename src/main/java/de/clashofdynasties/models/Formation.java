@@ -233,7 +233,7 @@ public class Formation implements MapNode {
             node.put("mvbl", player.equals(getPlayer()));
 
             if (getRoute() != null)
-                node.put("route", getRoute().toJSON());
+                node.set("route", getRoute().toJSON());
         } else
             node.put("nn", true);
 

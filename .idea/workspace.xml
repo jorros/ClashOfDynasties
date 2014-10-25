@@ -6,8 +6,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Einheitfix">
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -89,18 +93,48 @@
       <file leaf-file-name="City.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5495" max-vertical-offset="6596">
-              <caret line="440" column="34" selection-start-line="440" selection-start-column="34" selection-end-line="440" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5909" max-vertical-offset="6596">
+              <caret line="473" column="24" selection-start-line="473" selection-start-column="24" selection-end-line="473" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Formation.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.57933044" vertical-offset="2645" max-vertical-offset="3332">
+              <caret line="231" column="40" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Route.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="469" max-vertical-offset="1156">
+              <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Caravan.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2555" max-vertical-offset="3451">
+              <caret line="270" column="42" selection-start-line="270" selection-start-column="42" selection-end-line="270" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54599404" vertical-offset="7639" max-vertical-offset="12036">
-              <caret line="480" column="94" selection-start-line="480" selection-start-column="94" selection-end-line="480" selection-end-column="94" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="4284" max-vertical-offset="12036">
+              <caret line="271" column="123" selection-start-line="271" selection-start-column="123" selection-end-line="271" selection-end-column="123" />
               <folding />
             </state>
           </provider>
@@ -120,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityTypeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/RoadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
@@ -151,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/formation.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
@@ -165,12 +197,14 @@
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosenation.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
       </list>
     </option>
   </component>
@@ -1529,7 +1563,7 @@
       <workItem from="1414175391617" duration="771000" />
       <workItem from="1414180778676" duration="589000" />
       <workItem from="1414182346257" duration="285000" />
-      <workItem from="1414229243652" duration="1108000" />
+      <workItem from="1414229243652" duration="2892000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2663,11 +2697,15 @@
       <created>1414229370867</created>
       <updated>1414229370867</updated>
     </task>
-    <option name="localTasksCounter" value="284" />
+    <task id="LOCAL-00284" summary="Weitere fixes">
+      <created>1414230358533</created>
+      <updated>1414230358533</updated>
+    </task>
+    <option name="localTasksCounter" value="285" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1183036000" />
+    <option name="totallyTimeSpent" value="1184820000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2749,7 +2787,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Speedberechnung wurde optimiert" />
     <MESSAGE value="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt" />
     <MESSAGE value="City: Berechnung der Gebäudezahl und Einheitenzahl optimiert" />
     <MESSAGE value="Formation: Client Route fix" />
@@ -2774,7 +2811,8 @@
     <MESSAGE value="Chooser angepasst" />
     <MESSAGE value="Verborgene Stadttypen nicht sichtbar" />
     <MESSAGE value="Einheitfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Einheitfix" />
+    <MESSAGE value="Weitere fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Weitere fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2786,13 +2824,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/MailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5769231" vertical-offset="0" max-vertical-offset="884">
-          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/theme.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.50678736" vertical-offset="6998" max-vertical-offset="9163">
@@ -2969,13 +3000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1895206" vertical-offset="1330" max-vertical-offset="3451">
-          <caret line="213" column="17" selection-start-line="213" selection-start-column="17" selection-end-line="213" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="384" max-vertical-offset="2975">
@@ -3091,14 +3115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="3332">
-          <caret line="33" column="16" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2503" max-vertical-offset="5525">
@@ -3137,18 +3153,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5495" max-vertical-offset="6596">
-          <caret line="440" column="34" selection-start-line="440" selection-start-column="34" selection-end-line="440" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="4284" max-vertical-offset="12036">
+          <caret line="271" column="123" selection-start-line="271" selection-start-column="123" selection-end-line="271" selection-end-column="123" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54599404" vertical-offset="7639" max-vertical-offset="12036">
-          <caret line="480" column="94" selection-start-line="480" selection-start-column="94" selection-end-line="480" selection-end-column="94" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5909" max-vertical-offset="6596">
+          <caret line="473" column="24" selection-start-line="473" selection-start-column="24" selection-end-line="473" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="469" max-vertical-offset="1156">
+          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2555" max-vertical-offset="3451">
+          <caret line="270" column="42" selection-start-line="270" selection-start-column="42" selection-end-line="270" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57933044" vertical-offset="2645" max-vertical-offset="3332">
+          <caret line="231" column="40" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
           <folding />
         </state>
       </provider>
@@ -3161,9 +3201,9 @@
           <artifact-editor>
             <show-content>
               <type id="library" />
-              <type id="javaee-facet-resources" />
               <type id="artifact" />
               <type id="jpa-descriptors" />
+              <type id="javaee-facet-resources" />
             </show-content>
           </artifact-editor>
           <last-edited>Clash of Dynasties:war exploded</last-edited>

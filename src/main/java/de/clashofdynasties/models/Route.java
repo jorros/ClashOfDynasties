@@ -85,7 +85,7 @@ public class Route {
         for (Road road : roads) {
             roadNodes.add(road.getId().toHexString());
         }
-        node.put("roads", roadNodes);
+        node.set("roads", roadNodes);
 
         return node;
     }

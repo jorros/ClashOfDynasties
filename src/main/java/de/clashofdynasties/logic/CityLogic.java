@@ -269,7 +269,7 @@ public class CityLogic {
     public void processConstruction(City city) {
         BuildingConstruction construction = city.getBuildingConstruction();
         if (construction != null) {
-            if (city.getCapacity() < city.getBuildings().size())
+            if (city.getCapacity() < city.getBuildings().size() && construction.getBlueprint() instanceof BuildingBlueprint)
                 city.setBuildingConstruction(null);
             else {
                 double production = 0;

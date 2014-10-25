@@ -269,7 +269,7 @@ public class Caravan {
         node.put("direction", getRoute().getNext().getX() - getX() < 0 ? "2" : "");
 
         if (getTimestamp() >= timestamp) {
-            node.put("route", getRoute().toJSON());
+            node.set("route", getRoute().toJSON());
             node.put("color", getPlayer().getColor());
         }
 
