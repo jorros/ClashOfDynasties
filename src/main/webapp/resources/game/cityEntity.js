@@ -246,9 +246,11 @@ Crafty.c("City", {
         }
         else if(Cities[this._cid].visible) {
             if (isFormationSelected) {
-                $.get("game/formations/" + Selected._fid + "/move", { "target": this._cid }, function() {
-                    forceUpdate();
-                });
+                if(confirm("Willst du deine Formation nach " + Cities[this._cid].name + " schicken?")) {
+                    $.get("game/formations/" + Selected._fid + "/move", { "target": this._cid }, function () {
+                        forceUpdate();
+                    });
+                }
 
                 return;
             }
