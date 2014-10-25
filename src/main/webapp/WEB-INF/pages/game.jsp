@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Clash of Dynasties</title>
     <link rel="stylesheet" href="/css/theme.css" type="text/css">
     <link rel="stylesheet" href="/css/jquery-ui-1.10.4.custom.css" type="text/css" />

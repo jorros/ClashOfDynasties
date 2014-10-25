@@ -58,7 +58,7 @@ window.onload = function () {
             }
         });
 
-        Crafty.e("2D, Canvas, Image, Mouse").attr({
+        var map = Crafty.e("2D, Canvas, Image, Mouse").attr({
             x: 0,
             y: 0,
             w: 5100,
@@ -92,7 +92,7 @@ window.onload = function () {
                     else
                         deselect();
                 }
-            })
+            });
 
         $(document).powerTip({smartPlacement: true, followMouse: true, manual: true});
 
