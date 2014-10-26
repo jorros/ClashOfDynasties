@@ -250,7 +250,7 @@ public class City implements MapNode {
     }
 
     public List<Unit> getUnits() {
-        if(unitObjects == null)
+        if(unitObjects.isEmpty())
             rebuildUnitList();
 
         return unitObjects;
