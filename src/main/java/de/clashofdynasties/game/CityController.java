@@ -264,6 +264,7 @@ public class CityController {
         city.setFire(false);
         city.setPlague(false);
         city.setReport(null);
+        city.clearStoppedConsumption();
 
         city.clearRequiredItemTypes();
         generateRandomRequiredItems(city);

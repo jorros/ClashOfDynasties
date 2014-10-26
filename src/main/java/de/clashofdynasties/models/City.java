@@ -206,6 +206,10 @@ public class City implements MapNode {
         this.requiredItemTypes.clear();
     }
 
+    public void clearStoppedConsumption() {
+        this.stopConsumption.clear();
+    }
+
     public Map<Integer, Double> getItems() {
         return items;
     }
