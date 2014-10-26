@@ -48,7 +48,7 @@ public class PlayerLogic {
             for(City city : cities) {
                 stat.addDemography(city.getPopulation());
                 stat.addDemography(city.getSatisfaction());
-                stat.addDemography(10);
+                stat.addDemography(10 * city.getType().getId() < 4 ? city.getType().getId() : 1);
 
                 stat.addMilitary(city.getDefencePoints());
 
