@@ -24,6 +24,7 @@
 <div id="cr-stage"></div>
 <div id="wrapper">
     <div id="top">
+        <div style="width:80px; margin-right:10px; margin-top:4px; float:right; text-align:right;" class="logout"><a onclick="fastForward();" href="#">Logout</a></div>
         <div style="width:80px; margin-right:10px; margin-top:4px; float:right; text-align:right;" class="logout"><a href="/logout">Logout</a></div>
     </div>
     <div id="header">
@@ -39,5 +40,13 @@
         <button style="margin-left:5px; float:left;" onclick="SelectionMode = 1; $('#cr-stage').css('cursor', 'url(assets/cities/1.png), crosshair');">Stadt</button>
         <button style="margin-left:5px; float:left;" onclick="SelectionMode = 2; $('#cr-stage').css('cursor', 'crosshair');">Weg</button></div>
 </div>
+<script>
+    function fastForward() {
+        var hours = window.prompt("Wieviele Stunden?", "1");
+        $.post("/game/core/fastForward", { hours: hours }, function() {
+            forceUpdate();
+        });
+    }
+</script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.clashofdynasties.models.*;
 import de.clashofdynasties.repository.*;
+import de.clashofdynasties.service.LogicService;
 import de.clashofdynasties.service.RoutingService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -298,6 +299,18 @@ public class GameController {
         }
 
         return data;
+    }
+
+    @Autowired
+    private LogicService logicService;
+
+    @RequestMapping(value = "/fastForward", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
+    public void fastForward(@RequestParam int hours) {
+        for(int i = 0; i < hours * 3600; i++) {
+            logicService.Worker();
+        }
     }
 
     @RequestMapping(value = "/event", method = RequestMethod.DELETE)
