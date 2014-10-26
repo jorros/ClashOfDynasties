@@ -72,6 +72,7 @@ public class City implements MapNode {
         stopConsumption = new ArrayList<>();
         visibility = new ArrayList<>();
         id = new ObjectId();
+        unitObjects = new ArrayList<>();
     }
 
     public ObjectId getId() {

@@ -401,7 +401,7 @@ h4 {
 
 /* Events */
 #events {
-    width: 55px;
+    width: 70px;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -412,10 +412,13 @@ h4 {
     flex-direction: column-reverse;
     display:-webkit-flex;
     -webkit-flex-direction:column-reverse;
+    text-align: right;
+    margin-right: 4px;
 }
 
 .event {
     margin-bottom: 5px;
+    min-height: 45px;
 }
 
 .event img {
