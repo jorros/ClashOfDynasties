@@ -147,6 +147,7 @@ public class LogicService {
 
                 }
             }
+
             cityLogic.processPopulation(city);
 
             cityLogic.processEvents(city);

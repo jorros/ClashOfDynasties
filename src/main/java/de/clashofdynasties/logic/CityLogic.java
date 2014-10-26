@@ -125,6 +125,18 @@ public class CityLogic {
                     level3Satisfaction = 1 - satisfied;
             }
 
+            if(baseSatisfaction < 0)
+                baseSatisfaction = 0;
+
+            if(level1Satisfaction < 0)
+                level1Satisfaction = 0;
+
+            if(level2Satisfaction < 0)
+                level2Satisfaction = 0;
+
+            if(level3Satisfaction < 0)
+                level3Satisfaction = 0;
+
             if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 4).count() > 0) {
                 if(city.getType().getId() == 1)
                     generalSatisfaction = 1.0;
