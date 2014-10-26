@@ -353,7 +353,18 @@ public class City implements MapNode {
     }
 
     public double calculateCoins() {
-        return (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 3600;
+        double max = 0d;
+
+        switch(getType().getId()) {
+            case 2:
+                max = CityTypeRepository.get().findById(1).getProductionRate();
+                break;
+
+            case 3:
+                max = CityTypeRepository.get().findById(2).getProductionRate();
+                break;
+        }
+        return Math.max(max, (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 3600) * getType().getTaxes();
     }
 
     public double calculateMaintenance() {
