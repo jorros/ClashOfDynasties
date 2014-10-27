@@ -364,7 +364,7 @@ public class City implements MapNode {
                 max = CityTypeRepository.get().findById(2).getProductionRate();
                 break;
         }
-        return Math.max(max, (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 3600) * getType().getTaxes();
+        return Math.max(this.getPopulation() / 3600 * max, (this.getPopulation() * ((double) this.getSatisfaction() / 100)) / 3600) * getType().getTaxes();
     }
 
     public double calculateMaintenance() {

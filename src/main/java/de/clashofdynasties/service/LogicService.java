@@ -139,7 +139,7 @@ public class LogicService {
         tickWar++;
 
         for(City city : cities) {
-            if(tickWar == 30) {
+            if(tickWar >= 30) {
                 try {
                     cityLogic.processWar(city);
                 }
@@ -163,7 +163,7 @@ public class LogicService {
             cityLogic.processHealing(city);
         }
 
-        if(tickWar == 30) {
+        if(tickWar >= 30) {
             tickWar = 0;
         }
     }
@@ -515,6 +515,16 @@ public class LogicService {
             feuerwehr.addRequiredBiome(forest);
             feuerwehr.addRequiredBiome(mountains);
             buildingBlueprintRepository.add(feuerwehr);
+
+            BuildingBlueprint platzhalter = new BuildingBlueprint();
+            platzhalter.setId(3);
+            platzhalter.setName("Platzhalter");
+            platzhalter.addRequiredBiome(desert);
+            platzhalter.addRequiredBiome(grassland);
+            platzhalter.addRequiredBiome(coast);
+            platzhalter.addRequiredBiome(forest);
+            platzhalter.addRequiredBiome(mountains);
+            buildingBlueprintRepository.add(platzhalter);
 
             BuildingBlueprint zentrum = new BuildingBlueprint();
             zentrum.setId(4);
