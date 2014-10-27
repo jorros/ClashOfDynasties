@@ -184,6 +184,10 @@ public class FormationController {
                     city.recalculateStrength();
                 }
             }
+
+            if(formation.getUnits().isEmpty()) {
+                formationRepository.remove(formation);
+            }
         }
     }
 }
