@@ -37,7 +37,7 @@ public class StoreItem extends SimpleTagSupport {
         out.print("<span style=\"color:#FFF; font-weight:bold;\">" + amount + "t " + item.getName() + " (" + item.getType().getName() + ")</span><br>");
 
         if(city.getPlayer().equals(player)) {
-            int production = (int)(Math.round(city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum()));
+            int production = (int)(Math.floor(city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum()));
 
             int consumption = 0;
             double rate = 0;
@@ -63,7 +63,7 @@ public class StoreItem extends SimpleTagSupport {
             if((city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) && city.getRequiredItemTypes().contains(item.getType())) {
                 List<Item> items = ItemRepository.get().findByType(item.getType());
 
-                consumption = new Double(city.getPopulation() * rate * 3600).intValue();
+                consumption = (int)Math.ceil(city.getPopulation() * rate * 3600);
 
                 for(Item need : items) {
                     if(city.getStoredItem(need.getId()) > 0 && !need.equals(item) && !city.getStopConsumption().contains(need)) {
