@@ -12,6 +12,9 @@ var lastUpdate = 0;
 
 function updateGameContent() {
     return $.getJSON("/game/core/update", { timestamp: lastUpdate, editor: Editor }, function (data) {
+        if($.isEmptyObject(data)) {
+            window.location.href = "/";
+        }
         var tempCities = {};
         var tempCaravans = {};
         var tempFormations = {};
