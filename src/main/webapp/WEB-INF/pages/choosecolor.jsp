@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -38,7 +39,7 @@
                 <h1 style="color:#FF1A00;">Diese Farbe wurde bereits gew&auml;hlt</h1>
             </c:when>
             <c:otherwise>
-                <h1>W&auml;hle eine Farbe</h1>
+                <h1>Wähle eine Farbe</h1>
             </c:otherwise>
         </c:choose>
         <div id="content" class="colorChooseOuter">

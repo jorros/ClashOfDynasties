@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -32,6 +33,10 @@
                             <td><input type="password" id="password" name="password" /></td>
                         </tr>
                         <tr>
+                            <td><label for="password">Passwort wiederholen:</label></td>
+                            <td><input type="password" id="password2" name="password2" /></td>
+                        </tr>
+                        <tr>
                             <td><label for="email">EMail:</label></td>
                             <td><input type="text" id="email" name="email" /></td>
                         </tr>
@@ -44,5 +49,18 @@
         </div>
     </div>
 </div>
+<script>
+    $("#register").submit(function(event) {
+        if($("#name").val() == "" || $("#password").val() == "" || $("#email").val() == "") {
+            alert("Bitte alle Felder ausfüllen!");
+            event.preventDefault();
+        }
+        if($("#password").val() != $("#password2").val()) {
+            alert("Passwörter stimmen nicht überein!");
+            event.preventDefault();
+        }
+
+    });
+</script>
 </body>
 </html>

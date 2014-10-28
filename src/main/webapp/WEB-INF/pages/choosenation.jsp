@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
@@ -10,7 +11,7 @@
 <body>
 <div id="wrapper">
     <div id="body">
-        <h1>W&auml;hle ein Volk</h1>
+        <h1>Wähle ein Volk</h1>
         <div id="content" style="overflow-y:hidden;">
             <a href="/step2?key=${key}&nation=1" class="chooser" style="float:left; margin-left:40px;"><img src="images/chooser/Gato.png" /></a>
             <a href="/step2?key=${key}&nation=2" class="chooser" style="float:right; margin-right:40px;"><img src="images/chooser/Nagori.png" /></a>
