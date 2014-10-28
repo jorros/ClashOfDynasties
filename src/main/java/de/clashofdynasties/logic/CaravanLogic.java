@@ -31,11 +31,12 @@ public class CaravanLogic {
                 City city = caravan.getPoint1();
 
                 int rel = 1;
+                Relation relation = null;
 
                 if(city.getPlayer().equals(caravan.getPlayer()))
                     rel = 4;
                 else {
-                    Relation relation = relationRepository.findByPlayers(city.getPlayer(), caravan.getPlayer());
+                    relation = relationRepository.findByPlayers(city.getPlayer(), caravan.getPlayer());
 
                     if(relation != null)
                         rel = relation.getRelation();
@@ -52,6 +53,14 @@ public class CaravanLogic {
                         city.setStoredItem(caravan.getPoint2StoreItem().getId(), city.getStoredItem(caravan.getPoint2StoreItem().getId()) + caravan.getPoint2Store());
                         caravan.setPoint2Store(0);
                         caravan.setPoint2StoreItem(null);
+                    }
+                }
+
+                if(caravan.isTerminate() || rel == 0) {
+                    if(relation != null) {
+                        if(relation.getCaravans().contains(caravan)) {
+                            relation.removeCaravan(caravan);
+                        }
                     }
                 }
 
