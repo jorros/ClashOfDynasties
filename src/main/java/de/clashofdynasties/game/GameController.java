@@ -60,6 +60,9 @@ public class GameController {
             Player player = playerRepository.findByName(principal.getName());
             RoutingService routing = new RoutingService(roadRepository, relationRepository);
 
+            if(player.getRegistration() == 0)
+                player.setRegistration(System.currentTimeMillis());
+
             List<City> cities = cityRepository.getList();
             List<Road> roads = roadRepository.getList();
             List<Formation> formations = formationRepository.getList();

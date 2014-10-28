@@ -45,6 +45,8 @@ public class Player {
 
     private int level;
 
+    private long registration;
+
     public Player() {
         this.id = new ObjectId();
         notification = new HashMap<>();
@@ -161,6 +163,14 @@ public class Player {
 
     public void setSightUpdate(boolean sightUpdate) {
         this.sightUpdate = sightUpdate;
+    }
+
+    public long getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(long registration) {
+        this.registration = registration;
     }
 
     public boolean hasWon() {

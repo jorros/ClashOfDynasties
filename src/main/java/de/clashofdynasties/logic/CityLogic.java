@@ -233,24 +233,26 @@ public class CityLogic {
                     city.setFire(false);
             }
 
-            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
-                infectionChance = 0.0000001;
-            else
-                infectionChance = 0.0000005;
+            if(System.currentTimeMillis() - city.getPlayer().getRegistration() >= 1209600000) {
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0)
+                    infectionChance = 0.0000001;
+                else
+                    infectionChance = 0.0000005;
 
-            if (!city.isPlague() && Math.random() < infectionChance && city.getPopulation() > 10) {
-                city.setPlague(true);
-                eventRepository.add(new Event("Disease", "Seuche in " + city.getName() + " ausgebrochen", "Es ist eine tödliche Seuche in " + city.getName() + " ausgebrochen. Errichte eine medizinische Einrichtung, um die Epidemie einzudämmen.", city, city.getPlayer()));
-            }
+                if (!city.isPlague() && Math.random() < infectionChance && city.getPopulation() > 10) {
+                    city.setPlague(true);
+                    eventRepository.add(new Event("Disease", "Seuche in " + city.getName() + " ausgebrochen", "Es ist eine tödliche Seuche in " + city.getName() + " ausgebrochen. Errichte eine medizinische Einrichtung, um die Epidemie einzudämmen.", city, city.getPlayer()));
+                }
 
-            if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2).count() > 0)
-                fireChance = 0.0000001;
-            else
-                fireChance = 0.0000005;
+                if (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 2).count() > 0)
+                    fireChance = 0.0000001;
+                else
+                    fireChance = 0.0000005;
 
-            if (!city.isFire() && Math.random() < fireChance && city.getBuildings().size() > 0) {
-                city.setFire(true);
-                eventRepository.add(new Event("Fire", "Großbrand in " + city.getName(), "In " + city.getName() + " ist ein Großbrand ausgebrochen. Je länger dieser wütet, desto mehr Gebäude fallen ihm zum Opfer. Errichte eine Feuerwehr, um das Feuer zu stoppen.", city, city.getPlayer()));
+                if (!city.isFire() && Math.random() < fireChance && city.getBuildings().size() > 0) {
+                    city.setFire(true);
+                    eventRepository.add(new Event("Fire", "Großbrand in " + city.getName(), "In " + city.getName() + " ist ein Großbrand ausgebrochen. Je länger dieser wütet, desto mehr Gebäude fallen ihm zum Opfer. Errichte eine Feuerwehr, um das Feuer zu stoppen.", city, city.getPlayer()));
+                }
             }
         }
     }
