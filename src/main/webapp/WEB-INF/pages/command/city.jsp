@@ -20,8 +20,8 @@
         </tr>
         <c:if test="${!city.player.computer}">
         <tr>
-            <td style="width:45%;">Population: ${ city.population }</td>
-            <td>Zustimmung: <c:if test="${satisfaction != null}"><img src="assets/satisfaction/${satisfaction}.png" style="width:16px; height:16px;" />(${city.satisfaction}%)</c:if><c:if test="${satisfaction == null}">?</c:if></td>
+            <td style="width:40%;">Population: ${ city.population }</td>
+            <td>Zufriedenheit: <c:if test="${satisfaction != null}"><img src="assets/satisfaction/${satisfaction}.png" style="width:16px; height:16px;" />(${city.satisfaction}%) <c:if test="${city.satisfaction > city.calculatedSatisfaction && city.type.id < 4}"><img style="vertical-align:middle;" src="assets/negIndicator.png" /></c:if><c:if test="${city.satisfaction < city.calculatedSatisfaction && city.type.id < 4}"><img style="vertical-align:middle;" src="assets/posIndicator.png" /></c:if></c:if><c:if test="${satisfaction == null}">?</c:if></td>
         </tr>
         </c:if>
         <c:if test="${city.plague}">

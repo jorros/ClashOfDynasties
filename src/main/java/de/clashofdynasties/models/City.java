@@ -24,6 +24,7 @@ public class City implements MapNode {
 
     private int population;
     private double satisfaction;
+    private double calculatedSatisfaction;
     private int health;
 
     private int resource;
@@ -139,6 +140,14 @@ public class City implements MapNode {
 
     public double getRawSatisfaction() {
         return satisfaction;
+    }
+
+    public int getCalculatedSatisfaction() {
+        return (int)Math.round(calculatedSatisfaction);
+    }
+
+    public void setCalculatedSatisfaction(double calculatedSatisfaction) {
+        this.calculatedSatisfaction = calculatedSatisfaction;
     }
 
     public void setSatisfaction(double satisfaction) {
