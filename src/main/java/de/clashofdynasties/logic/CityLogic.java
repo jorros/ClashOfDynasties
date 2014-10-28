@@ -182,7 +182,7 @@ public class CityLogic {
                 city.setPopulation(city.getPopulation() + 1);
 
                 for(Objective objective : city.getPlayer().getObjectives()) {
-                    if(objective.getCity().equals(city) && objective.getPopulation() != null && city.getPopulation() >= objective.getPopulation())
+                    if(objective.getCity() != null && objective.getCity().equals(city) && objective.getPopulation() != null && city.getPopulation() >= objective.getPopulation())
                         objective.setCompleted(true);
                 }
             } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation() || (city.isPlague() && Math.random() < 0.002)) && city.getPopulation() > 10) {

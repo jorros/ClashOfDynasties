@@ -19,14 +19,14 @@
             <h4>Zusammenstellung</h4>
             <div style="height:320px; overflow-y:auto; overflow-x:hidden;">
                 <ul id="formation_city" class="sortable">
-                    <li id="unit_city"><img src="/game/units/0/icon?health=${city.health}" /></li>
+                    <li id="unit_city"><img title="${city.name} (${city.health}%)" src="/game/units/0/icon?health=${city.health}" /></li>
                     <c:forEach items="${city.buildings}" var="building">
                         <c:if test="${building.blueprint.defencePoints > 0}">
-                            <li id="unit_${building.id}"><img src="/game/buildings/${building.blueprint.id}/icon?health=${building.health}" /></li>
+                            <li id="unit_${building.id}"><img title="${building.blueprint.name} (${building.health}%)" src="/game/buildings/${building.blueprint.id}/icon?health=${building.health}" /></li>
                         </c:if>
                     </c:forEach>
                     <c:forEach items="${city.units}" var="unit">
-                        <li id="unit_${unit.id}"><img src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
+                        <li id="unit_${unit.id}"><img title="${unit.blueprint.name} (${unit.health}%)" src="/game/units/${unit.blueprint.id}/icon?health=${unit.health}" /></li>
                     </c:forEach>
                 </ul>
                 <c:forEach items="${formations}" var="formation">
