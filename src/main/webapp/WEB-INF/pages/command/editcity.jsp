@@ -17,6 +17,10 @@
         <td><input style="height:10px;" id="capacity" type="text" value="${city.getRawCapacity()}" /></td>
     </tr>
     <tr>
+        <td>Gebäude: ${city.buildings.size()}</td>
+        <td>Einheiten: ${city.units.size()}</td>
+    </tr>
+    <tr>
         <td>Stadttyp:</td>
         <td><select id="type"><c:forEach items="${types}" var="type"><option <c:if test="${type.id == city.type.id}">selected</c:if> value="${type.id}">${type.name}</option></c:forEach></select></td>
     </tr>
@@ -33,6 +37,6 @@
         <td><select id="player"><c:forEach items="${players}" var="player"><option <c:if test="${player == city.player}">selected</c:if> value="${player.id}">${player.name}</option></c:forEach></select></td>
     </tr>
     <tr>
-        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val(), biome: $('#biome').val(), player: $('#player').val() }, function() { forceUpdate(); });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}', function() { forceUpdate(); })">Entfernen</button> <button onclick="$.post('/game/cities/${city.id}/reset', function() { forceUpdate(); })">Reset</button></td>
+        <td colspan="2"><button onclick="$.put('/game/cities/${city.id}', { name: $('#name').val(), capacity: $('#capacity').val(), 'type': $('#type').val(), resource: $('#resource').val(), biome: $('#biome').val(), player: $('#player').val() }, function() { forceUpdate(); });">Speichern</button> <button onclick="$.delete('/game/cities/${city.id}', function() { forceUpdate(); })">Entfernen</button> <button onclick="$.post('/game/cities/${city.id}/reset', function() { forceUpdate(); })">Reset</button> <button onclick="$.put('/game/cities/${city.id}/prebuild', function() { forceUpdate(); })">PreBuild</button></td>
     </tr>
 </table>

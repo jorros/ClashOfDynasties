@@ -270,6 +270,23 @@ public class CityController {
         generateRandomRequiredItems(city);
     }
 
+    @RequestMapping(value = "/{city}/prebuild", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.OK)
+    @Secured("ROLE_ADMIN")
+    public void preBuild(@PathVariable("city") ObjectId id) {
+        City city = cityRepository.findById(id);
+
+        city.clearBuildings(true);
+        for(int i = 0; i < 5; i++) {
+            Building building = new Building();
+            building.setHealth(100);
+            building.setBlueprint(buildingBlueprintRepository.findById(9));
+            buildingRepository.add(building);
+
+            city.addBuilding(building);
+        }
+    }
+
     @RequestMapping(value = "/{city}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
     @Secured("ROLE_ADMIN")
