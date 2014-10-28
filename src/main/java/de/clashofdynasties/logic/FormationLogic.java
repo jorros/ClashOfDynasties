@@ -76,12 +76,14 @@ public class FormationLogic {
 
     public void processHealing(Formation formation) {
         if(formation.isDeployed() && formation.getLastCity().getReport() == null) {
-            if(formation.getLastCity().getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0) {
+            if(formation.getLastCity().getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0 || formation.getUnits().stream().filter(u -> u.getBlueprint().getId() == 4).count() > 0) {
                 List<Unit> units = formation.getUnits().stream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
 
                 for (Unit unit : units) {
                     if (Math.random() < 0.01) {
                         unit.setHealth(unit.getHealth() + 1);
+                        if(unit.getHealth() > 100)
+                            unit.setHealth(100);
                     }
                 }
 

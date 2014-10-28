@@ -363,7 +363,7 @@ public class CityLogic {
 
     public void processHealing(City city) {
         if(city.getReport() == null) {
-            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0) {
+            if(city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 10).count() > 0 || city.getUnits().stream().filter(u -> u.getBlueprint().getId() == 4).count() > 0) {
                 List<Unit> units = city.getUnits().stream().filter(u -> u.getHealth() < 100).collect(Collectors.toList());
 
                 for (Unit unit : units) {
