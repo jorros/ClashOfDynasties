@@ -15,7 +15,7 @@ public class DiplomacyLogic {
 
     public void processTimer(Relation relation, double delta) {
         if(relation.getTicksLeft() != null) {
-            relation.setTicksLeft((relation.getTicksLeft() - 1) * delta);
+            relation.setTicksLeft(relation.getTicksLeft() - (1 * delta) );
 
             if(relation.getTicksLeft() <= 0) {
                 relation.setTicksLeft(null);
