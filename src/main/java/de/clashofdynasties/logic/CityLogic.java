@@ -162,9 +162,9 @@ public class CityLogic {
 
             double computedSatisfaction;
             if (maxSatisfaction > city.getRawSatisfaction())
-                computedSatisfaction = (city.getRawSatisfaction() + 1.0 / 120) * delta;
+                computedSatisfaction = (city.getRawSatisfaction() + (1.0 / 120 * delta));
             else if (maxSatisfaction < city.getRawSatisfaction())
-                computedSatisfaction = (city.getRawSatisfaction() - 1.0 / 360) * delta;
+                computedSatisfaction = (city.getRawSatisfaction() - (1.0 / 360 * delta));
             else
                 computedSatisfaction = city.getRawSatisfaction();
 
