@@ -120,7 +120,8 @@ public class LogicService {
         lastLoopTime = now;
         double delta = updateLength / ((double)1000);
 
-        System.out.println("Tick: " + delta);
+        if(delta <= 0)
+            delta = 1;
 
         tick(delta);
     }
