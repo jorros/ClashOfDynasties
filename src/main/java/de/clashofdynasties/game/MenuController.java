@@ -422,8 +422,8 @@ public class MenuController {
             map.addAttribute("otherPlayer", other);
 
             if(relation.getTicksLeft() != null) {
-                int hours = relation.getTicksLeft() / 3600;
-                int minutes = (relation.getTicksLeft() - hours * 3600) / 60;
+                int hours = (int)Math.round(relation.getTicksLeft()) / 3600;
+                int minutes = ((int)Math.round(relation.getTicksLeft()) - hours * 3600) / 60;
                 map.addAttribute("hoursLeft", hours);
                 map.addAttribute("minutesLeft", minutes);
             }

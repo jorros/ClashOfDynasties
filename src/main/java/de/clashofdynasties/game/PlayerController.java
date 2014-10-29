@@ -166,7 +166,7 @@ public class PlayerController {
                             relation.setPendingRelationPlayer(null);
                         }
                         else {
-                            relation.setTicksLeft(86400);
+                            relation.setTicksLeft(86400d);
                             relation.setPendingRelation(null);
                             relation.setPendingRelationPlayer(null);
                             event = new Event("DiplomaticTrade", "Handelsabkommen aufgelöst", player.getName() + " hat den bestehenden Handelsvertrag aufgelöst. Der Vertrag wird in 24 Stunden endgültig aufgelöst!", "diplomacy?pid=" + player.getId(), other);
@@ -198,7 +198,7 @@ public class PlayerController {
                             relation.setPendingRelationPlayer(null);
                         }
                         else {
-                            relation.setTicksLeft(86400);
+                            relation.setTicksLeft(86400d);
                             relation.setPendingRelation(null);
                             relation.setPendingRelationPlayer(null);
                             event = new Event("DiplomaticAlliance", "Allianz ausgetreten", player.getName() + " hat die Allianz mit euch aufgelöst. Der Vertrag wird in 24 Stunden endgültig aufgelöst!", "diplomacy?pid=" + player.getId(), other);

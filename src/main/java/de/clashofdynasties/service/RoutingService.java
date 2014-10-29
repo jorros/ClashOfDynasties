@@ -231,7 +231,7 @@ public class RoutingService {
         this.formation = formation;
 
         int rel;
-        Integer ticksLeft = null;
+        Double ticksLeft = null;
 
         if(city.getPlayer().equals(formation.getPlayer()))
             rel = 4;
