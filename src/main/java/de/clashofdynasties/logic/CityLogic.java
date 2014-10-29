@@ -14,9 +14,6 @@ import java.util.stream.Collectors;
 @Component
 public class CityLogic {
     @Autowired
-    private CityRepository cityRepository;
-
-    @Autowired
     private BuildingRepository buildingRepository;
 
     @Autowired
@@ -59,7 +56,7 @@ public class CityLogic {
         return satisfaction * base;
     }
 
-    public void processPopulation(City city) {
+    public void processPopulation(City city, double delta) {
         if(city.getPlayer().isComputer() || city.getType().getId() == 4)
             city.setSatisfaction(100);
         else {
@@ -165,9 +162,9 @@ public class CityLogic {
 
             double computedSatisfaction;
             if (maxSatisfaction > city.getRawSatisfaction())
-                computedSatisfaction = city.getRawSatisfaction() + 1.0 / 120;
+                computedSatisfaction = (city.getRawSatisfaction() + 1.0 / 120) * delta;
             else if (maxSatisfaction < city.getRawSatisfaction())
-                computedSatisfaction = city.getRawSatisfaction() - 1.0 / 360;
+                computedSatisfaction = (city.getRawSatisfaction() - 1.0 / 360) * delta;
             else
                 computedSatisfaction = city.getRawSatisfaction();
 
@@ -259,7 +256,7 @@ public class CityLogic {
         }
     }
 
-    public void processProduction(City city) {
+    public void processProduction(City city, double delta) {
         List<Building> productionBuildings = city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).collect(Collectors.toList());
 
         for(Building b : productionBuildings) {
@@ -268,7 +265,7 @@ public class CityLogic {
             if(city.getItems().containsKey(b.getBlueprint().getProduceItem().getId()))
                 sum = city.getItems().get(b.getBlueprint().getProduceItem().getId());
 
-            sum += b.getBlueprint().getProducePerStep();
+            sum += b.getBlueprint().getProducePerStep() * delta;
 
             if(sum > 100)
                 sum = 100;
@@ -277,12 +274,12 @@ public class CityLogic {
         }
     }
 
-    public void processCoins(City city) {
+    public void processCoins(City city, double delta) {
         Player player = playerRepository.findById(city.getPlayer().getId());
-        player.addCoins(city.calculateCoins() - city.calculateMaintenance());
+        player.addCoins((city.calculateCoins() - city.calculateMaintenance()) * delta);
     }
 
-    public void processConstruction(City city) {
+    public void processConstruction(City city, double delta) {
         BuildingConstruction construction = city.getBuildingConstruction();
         if (construction != null) {
             if (city.getCapacity() < city.getBuildings().size() && construction.getBlueprint() instanceof BuildingBlueprint)
@@ -294,7 +291,7 @@ public class CityLogic {
                     production = city.getProductionRate();
                 }
 
-                construction.addProduction(production);
+                construction.addProduction(production * delta);
 
                 city.setBuildingConstruction(construction);
 

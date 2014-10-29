@@ -312,7 +312,7 @@ public class GameController {
     @Secured("ROLE_ADMIN")
     public void fastForward(@RequestParam int hours) {
         for(int i = 0; i < hours * 3600; i++) {
-            logicService.Worker();
+            logicService.tick(1);
         }
     }
 

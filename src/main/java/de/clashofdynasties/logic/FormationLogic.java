@@ -20,7 +20,7 @@ public class FormationLogic {
     @Autowired
     private RelationRepository relationRepository;
 
-    public void processMovement(Formation formation) {
+    public void processMovement(Formation formation, double delta) {
         if(formation.getRoute() != null) {
             City next = formation.getRoute().getNext();
 
@@ -60,7 +60,7 @@ public class FormationLogic {
                     formation.setY(next.getY());
                 }
             } else {
-                double multiplier = formation.getSpeed() / distance;
+                double multiplier = formation.getSpeed() / distance * delta;
 
                 formation.setX(formation.getX() + (vecX * multiplier * formation.getRoute().getCurrentRoad().getWeight()));
                 formation.setY(formation.getY() + (vecY * multiplier * formation.getRoute().getCurrentRoad().getWeight()));
@@ -70,8 +70,8 @@ public class FormationLogic {
         }
     }
 
-    public void processMaintenance(Formation formation) {
-        formation.getPlayer().addCoins(-(double)formation.getCosts() / 3600.0d);
+    public void processMaintenance(Formation formation, double delta) {
+        formation.getPlayer().addCoins(-((double)formation.getCosts() / 3600.0d) * delta);
     }
 
     public void processHealing(Formation formation) {

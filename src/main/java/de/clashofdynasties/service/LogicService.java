@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -91,26 +92,21 @@ public class LogicService {
     private long tick = 599;
     private long tickWar = 29;
 
+    private long lastLoopTime = System.currentTimeMillis();
+
+    @PostConstruct
+    public void startLogic() {
+        installDatabase();
+
+        formationRepository.getList().forEach(Formation::recalculateStrength);
+        formationRepository.getList().forEach(Formation::recalculateHealth);
+        formationRepository.getList().forEach(Formation::recalculateSpeed);
+        cityRepository.getList().forEach(City::recalculateStrength);
+    }
+
     @PreDestroy
-    private void saveToDatabase() {
-        try {
-            buildingBlueprintRepository.save();
-            buildingRepository.save();
-            caravanRepository.save();
-            cityRepository.save();
-            cityTypeRepository.save();
-            eventRepository.save();
-            formationRepository.save();
-            messageRepository.save();
-            playerRepository.save();
-            relationRepository.save();
-            roadRepository.save();
-            unitBlueprintRepository.save();
-            unitRepository.save();
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
+    public void endLogic() {
+        saveToDatabase();
     }
 
     @Scheduled(fixedDelay = 10000)
@@ -118,23 +114,32 @@ public class LogicService {
         saveToDatabase();
     }
 
-    @Scheduled(fixedDelay = 1000)
-    public void Worker() {
+    public void logicLoop() {
+        long now = System.currentTimeMillis();
+        long updateLength = now - lastLoopTime;
+        lastLoopTime = now;
+        double delta = updateLength / ((double)1000);
+
+        System.out.println("Tick: " + delta);
+
+        tick(delta);
+    }
+
+    public void tick(double delta) {
         try {
-            if(playerRepository.getList().stream().filter(Player::hasWon).count() == 0) {
-                processCities();
+            if (playerRepository.getList().stream().filter(Player::hasWon).count() == 0) {
+                processCities(delta);
                 processPlayer();
-                processFormations();
-                processCaravans();
-                processDiplomacy();
+                processFormations(delta);
+                processCaravans(delta);
+                processDiplomacy(delta);
             }
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
-    private void processCities() {
+    private void processCities(double delta) {
         List<City> cities = cityRepository.getList();
         tickWar++;
 
@@ -148,15 +153,15 @@ public class LogicService {
                 }
             }
 
-            cityLogic.processPopulation(city);
+            cityLogic.processPopulation(city, delta);
 
             cityLogic.processEvents(city);
 
-            cityLogic.processProduction(city);
+            cityLogic.processProduction(city, delta);
 
-            cityLogic.processCoins(city);
+            cityLogic.processCoins(city, delta);
 
-            cityLogic.processConstruction(city);
+            cityLogic.processConstruction(city, delta);
 
             cityLogic.processType(city);
 
@@ -188,42 +193,57 @@ public class LogicService {
         }
     }
 
-    private void processFormations() {
+    private void processFormations(double delta) {
         List<Formation> formations = formationRepository.getList();
 
         for(Formation formation : formations) {
-            formationLogic.processMovement(formation);
-            formationLogic.processMaintenance(formation);
+            formationLogic.processMovement(formation, delta);
+            formationLogic.processMaintenance(formation, delta);
             formationLogic.processHealing(formation);
         }
     }
 
-    private void processCaravans() {
+    private void processCaravans(double delta) {
         List<Caravan> caravans = caravanRepository.getList();
 
         for(Caravan caravan : caravans) {
             if(!caravan.isPaused()) {
-                caravanLogic.processMovement(caravan);
-                caravanLogic.processMaintenance(caravan);
+                caravanLogic.processMovement(caravan, delta);
+                caravanLogic.processMaintenance(caravan, delta);
             }
         }
     }
 
-    private void processDiplomacy() {
+    private void processDiplomacy(double delta) {
         List<Relation> relations = relationRepository.getList();
 
         for(Relation relation : relations) {
-            diplomacyLogic.processTimer(relation);
+            diplomacyLogic.processTimer(relation, delta);
         }
     }
 
-    @PostConstruct
-    public void installDatabase() {
-        formationRepository.getList().forEach(Formation::recalculateStrength);
-        formationRepository.getList().forEach(Formation::recalculateHealth);
-        formationRepository.getList().forEach(Formation::recalculateSpeed);
-        cityRepository.getList().forEach(City::recalculateStrength);
+    private void saveToDatabase() {
+        try {
+            buildingBlueprintRepository.save();
+            buildingRepository.save();
+            caravanRepository.save();
+            cityRepository.save();
+            cityTypeRepository.save();
+            eventRepository.save();
+            formationRepository.save();
+            messageRepository.save();
+            playerRepository.save();
+            relationRepository.save();
+            roadRepository.save();
+            unitBlueprintRepository.save();
+            unitRepository.save();
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
+    public void installDatabase() {
         if(!mongoTemplate.collectionExists("biome")) {
             Biome desert = new Biome();
             desert.setName("Wüste");

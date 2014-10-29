@@ -11,17 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class DiplomacyLogic {
     @Autowired
-    private PlayerRepository playerRepository;
-
-    @Autowired
     private EventRepository eventRepository;
 
-    @Autowired
-    private PlayerLogic playerLogic;
-
-    public void processTimer(Relation relation) {
+    public void processTimer(Relation relation, double delta) {
         if(relation.getTicksLeft() != null) {
-            relation.setTicksLeft(relation.getTicksLeft() - 1);
+            relation.setTicksLeft((relation.getTicksLeft() - 1) * delta);
 
             if(relation.getTicksLeft() <= 0) {
                 relation.setTicksLeft(null);

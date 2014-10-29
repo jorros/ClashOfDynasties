@@ -29,7 +29,7 @@ public class Relation {
 
     private Integer pendingRelation;
 
-    private Integer ticksLeft;
+    private Double ticksLeft;
 
     public Relation() {
         this.id = new ObjectId();
@@ -112,11 +112,11 @@ public class Relation {
             this.pendingRelationPlayer = null;
     }
 
-    public Integer getTicksLeft() {
+    public Double getTicksLeft() {
         return ticksLeft;
     }
 
-    public void setTicksLeft(Integer ticksLeft) {
+    public void setTicksLeft(Double ticksLeft) {
         this.ticksLeft = ticksLeft;
     }
 }

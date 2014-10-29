@@ -19,7 +19,7 @@ public class CaravanLogic {
     @Autowired
     private RelationRepository relationRepository;
 
-    public void processMovement(Caravan caravan) {
+    public void processMovement(Caravan caravan, double delta) {
         City next = caravan.getRoute().getNext();
 
         double vecX = next.getX() - caravan.getX();
@@ -186,14 +186,14 @@ public class CaravanLogic {
                 caravan.move(70);
             }
         } else {
-            double multiplier = 0.1 / distance;
+            double multiplier = 0.1 / distance * delta;
 
             caravan.setX(caravan.getX() + (vecX * multiplier * caravan.getRoute().getCurrentRoad().getWeight()));
             caravan.setY(caravan.getY() + (vecY * multiplier * caravan.getRoute().getCurrentRoad().getWeight()));
         }
     }
 
-    public void processMaintenance(Caravan caravan) {
-        caravan.getPlayer().addCoins((double)caravan.getCost() / 3600d);
+    public void processMaintenance(Caravan caravan, double delta) {
+        caravan.getPlayer().addCoins(-((double)caravan.getCost() / 3600d) * delta);
     }
 }
