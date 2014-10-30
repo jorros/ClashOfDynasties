@@ -61,8 +61,11 @@ public class UnitController {
         if (price != null)
             blueprint.setPrice(price);
 
-        if (speed != null)
+        if (speed != null) {
             blueprint.setSpeed(speed);
+
+            formationRepository.getList().forEach(Formation::recalculateSpeed);
+        }
     }
 
     @RequestMapping(value = "/{unit}/icon", headers = "Accept=image/png", method = RequestMethod.GET)
