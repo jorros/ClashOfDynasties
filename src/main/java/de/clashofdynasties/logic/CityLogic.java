@@ -561,7 +561,7 @@ public class CityLogic {
                     playerUnits.addAll(city.getUnits());
                 }
 
-                if((enemyUnits.size() > 0 || !city.getPlayer().equals(player)) && playerUnits.size() > 0) {
+                if((!enemyUnits.isEmpty() || !city.getPlayer().equals(player)) && !playerUnits.isEmpty()) {
                     EnumeratedDistribution<Unit> attackDistribution = new EnumeratedDistribution<>(getAttackerProbabilities(playerUnits, enemyUnits));
                     List<Unit> attackers = new ArrayList<>();
                     int max = Math.max(new Double((enemyUnits.size() + playerUnits.size()) / formations.size() * 0.1).intValue(), 30);
@@ -617,6 +617,9 @@ public class CityLogic {
                             }
                         }
                     }
+                }
+
+                if((!enemyUnits.isEmpty() || !city.getPlayer().equals(player)) && !playerBuildings.isEmpty()) {
                     for(Building building : playerBuildings) {
                         if(enemyUnits.size() > 0) {
                             Unit selected = enemyUnits.get(random.nextInt(enemyUnits.size()));
