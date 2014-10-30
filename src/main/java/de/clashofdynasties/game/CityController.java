@@ -126,7 +126,7 @@ public class CityController {
                 BuildingBlueprint blp = buildingBlueprintRepository.findById(blueprint);
                 count = 1;
 
-                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (blp.getMaxCount() == 0 || blp.getMaxCount() > city.countBuildings(blp)))
+                if(blp.getRequiredBiomes().contains(city.getBiome()) && (blp.getRequiredResource() == null || blp.getRequiredResource().equals(city.getResource())) && city.getBuildings().size() < city.getCapacity() && (blp.getMaxCount() == 0 || blp.getMaxCount() > city.countBuildings(blp)) && (blp.getNation() == null || blp.getNation().equals(city.getPlayer().getNation())) && blp.getRequiredCityType().getId() <= city.getType().getId() && city.getType().getId() != 4)
                     construction.setBlueprint(blp);
             }
             else if(type == 1) {
