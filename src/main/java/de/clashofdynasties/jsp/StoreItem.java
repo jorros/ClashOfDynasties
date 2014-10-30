@@ -37,9 +37,9 @@ public class StoreItem extends SimpleTagSupport {
         out.print("<span style=\"color:#FFF; font-weight:bold;\">" + amount + "t " + item.getName() + " (" + item.getType().getName() + ")</span><br>");
 
         if(city.getPlayer().equals(player)) {
-            int production = (int)(Math.floor(city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum()));
+            double production = city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum();
 
-            int consumption = 0;
+            double consumption = 0;
             double rate = 0;
 
             switch (item.getType().getType()) {
@@ -63,7 +63,7 @@ public class StoreItem extends SimpleTagSupport {
             if((city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) && city.getRequiredItemTypes().contains(item.getType())) {
                 List<Item> items = ItemRepository.get().findByType(item.getType());
 
-                consumption = (int)Math.ceil(city.getPopulation() * rate * 3600);
+                consumption = city.getPopulation() * rate * 3600;
 
                 for(Item need : items) {
                     if(city.getStoredItem(need.getId()) > 0 && !need.equals(item) && !city.getStopConsumption().contains(need)) {
@@ -73,18 +73,18 @@ public class StoreItem extends SimpleTagSupport {
                 }
             }
 
-            int balance = production - consumption;
+            double balance = production - consumption;
 
             if(balance > 0)
-                out.print("<span class=\"green\">+" + balance + "</span>");
+                out.print("<span class=\"green\">+" + Math.round(balance) + "</span>");
             else if(balance < 0)
-                out.print("<span class=\"red\">" + balance + "</span>");
+                out.print("<span class=\"red\">" + Math.round(balance) + "</span>");
             else
-                out.print("<span>" + balance + "</span>");
+                out.print("<span>" + Math.round(balance) + "</span>");
 
             if(rate > 0) {
                 if(city.getRequiredItemTypes().contains(item.getType())) {
-                    out.print("(<span class=\"green\">" + production + "</span>/<span class=\"red\">" + consumption + "</span>)<br>");
+                    out.print("(<span class=\"green\">" + Math.round(production) + "</span>/<span class=\"red\">" + Math.round(consumption) + "</span>)<br>");
 
                     String linkName;
 
