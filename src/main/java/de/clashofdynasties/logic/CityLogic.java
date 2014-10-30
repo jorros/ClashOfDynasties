@@ -161,9 +161,9 @@ public class CityLogic {
             city.setCalculatedSatisfaction(maxSatisfaction);
 
             double computedSatisfaction;
-            if (maxSatisfaction > city.getRawSatisfaction())
+            if (maxSatisfaction > city.getRawSatisfaction() && !city.isPlague())
                 computedSatisfaction = (city.getRawSatisfaction() + (1.0 / 120 * delta));
-            else if (maxSatisfaction < city.getRawSatisfaction())
+            else if (maxSatisfaction < city.getRawSatisfaction() || city.isPlague())
                 computedSatisfaction = (city.getRawSatisfaction() - (1.0 / 360 * delta));
             else
                 computedSatisfaction = city.getRawSatisfaction();
@@ -177,14 +177,14 @@ public class CityLogic {
 
             long maxPeople = (city.getBuildings().stream().filter(b -> b.getBlueprint().getId() == 1).count() * 10) + 10;
 
-            if (city.getSatisfaction() >= 80 && Math.random() < 0.01 && city.getPopulation() < maxPeople && !city.isPlague()) {
+            if (city.getSatisfaction() >= 80 && Math.random() < 0.01 && city.getPopulation() < maxPeople) {
                 city.setPopulation(city.getPopulation() + 1);
 
                 for(Objective objective : city.getPlayer().getObjectives()) {
                     if(objective.getCity() != null && objective.getCity().equals(city) && objective.getPopulation() != null && city.getPopulation() >= objective.getPopulation())
                         objective.setCompleted(true);
                 }
-            } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation() || (city.isPlague() && Math.random() < 0.002)) && city.getPopulation() > 10) {
+            } else if (((city.getSatisfaction() < 30 && Math.random() < 0.02) || maxPeople < city.getPopulation()) && city.getPopulation() > 10) {
                 city.setPopulation(city.getPopulation() - 1);
             }
         }

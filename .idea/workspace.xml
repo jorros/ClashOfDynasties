@@ -79,8 +79,8 @@
       <file leaf-file-name="CityLogic.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5650685" vertical-offset="9088" max-vertical-offset="12308">
-              <caret line="563" column="104" selection-start-line="563" selection-start-column="104" selection-end-line="563" selection-end-column="104" />
+            <state vertical-scroll-proportion="-0.45376712" vertical-offset="3274" max-vertical-offset="12308">
+              <caret line="186" column="114" selection-start-line="186" selection-start-column="114" selection-end-line="186" selection-end-column="114" />
               <folding />
             </state>
           </provider>
@@ -1373,7 +1373,7 @@
       <workItem from="1414516240770" duration="11000" />
       <workItem from="1414575732007" duration="3455000" />
       <workItem from="1414594620145" duration="7640000" />
-      <workItem from="1414691512710" duration="1304000" />
+      <workItem from="1414691512710" duration="1413000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1392208188214</created>
@@ -2639,11 +2639,15 @@
       <created>1414692723001</created>
       <updated>1414692723001</updated>
     </task>
-    <option name="localTasksCounter" value="317" />
+    <task id="LOCAL-00317" summary="Krieg: Gebäude gegen Einheiten gefixt">
+      <created>1414693001200</created>
+      <updated>1414693001200</updated>
+    </task>
+    <option name="localTasksCounter" value="318" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1226398000" />
+    <option name="totallyTimeSpent" value="1226507000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2725,7 +2729,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Ranking leicht angepasst" />
     <MESSAGE value="Reset: Gestoppten Konsum leeren" />
     <MESSAGE value="Events Scrollbarfix" />
     <MESSAGE value="City Objects Fix" />
@@ -2750,7 +2753,8 @@
     <MESSAGE value="Diplomacy Delta fix" />
     <MESSAGE value="Bauen: Stadttyp Limit gefixt" />
     <MESSAGE value="Bei Änderung der Einheit-Geschwindigkeit: Aktualisieren!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bei Änderung der Einheit-Geschwindigkeit: Aktualisieren!" />
+    <MESSAGE value="Krieg: Gebäude gegen Einheiten gefixt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Krieg: Gebäude gegen Einheiten gefixt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -3137,8 +3141,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5650685" vertical-offset="9088" max-vertical-offset="12308">
-          <caret line="563" column="104" selection-start-line="563" selection-start-column="104" selection-end-line="563" selection-end-column="104" />
+        <state vertical-scroll-proportion="-0.45376712" vertical-offset="3274" max-vertical-offset="12308">
+          <caret line="186" column="114" selection-start-line="186" selection-start-column="114" selection-end-line="186" selection-end-column="114" />
           <folding />
         </state>
       </provider>
