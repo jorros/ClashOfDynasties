@@ -154,7 +154,7 @@ public class FormationController {
                         List<Unit> newHealthyUnitList = new ArrayList<>();
 
                         healthyUnitList = sumUnits.stream().filter(u -> u.getHealth() >= 90 && u.getBlueprint().getId() == blp).collect(Collectors.toList());
-                        newHealthyUnitList.addAll(healthyUnitList.subList(0, units.get(blp)));
+                        newHealthyUnitList.addAll(healthyUnitList.subList(0, units.get(blp) - 1));
 
                         healthyUnitList.removeAll(newHealthyUnitList);
 
@@ -167,7 +167,7 @@ public class FormationController {
                         List<Unit> newInjuredUnitList = new ArrayList<>();
 
                         injuredUnitList = sumUnits.stream().filter(u -> u.getHealth() < 90).collect(Collectors.toList());
-                        newInjuredUnitList.addAll(injuredUnitList.subList(0, injuredUnits.get(blp)));
+                        newInjuredUnitList.addAll(injuredUnitList.subList(0, injuredUnits.get(blp) - 1));
 
                         injuredUnitList.removeAll(newInjuredUnitList);
 
