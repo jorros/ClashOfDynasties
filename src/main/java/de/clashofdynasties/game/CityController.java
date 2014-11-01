@@ -135,10 +135,10 @@ public class CityController {
                 }
             }
 
-            if(construction.getBlueprint().getNation() != null && !construction.getBlueprint().getNation().equals(player.getNation()))
-                construction.setBlueprint(null);
-
             if(construction.getBlueprint() != null) {
+                if(construction.getBlueprint().getNation() != null && !construction.getBlueprint().getNation().equals(player.getNation()))
+                    construction.setBlueprint(null);
+
                 if(city.getBuildingConstruction() != null) {
                     stopBuild(principal, id);
                     player = playerRepository.findByName(principal.getName());
