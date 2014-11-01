@@ -151,6 +151,8 @@ public class CaravanController {
         caravan.setX(point1.getX());
         caravan.setY(point1.getY());
 
+        caravanRepository.add(caravan);
+
         caravan.getRoute().setCurrentRoad(roadRepository.findByCities(point1, caravan.getRoute().getNext()));
 
         caravan.setPoint1Item(point1Item);
@@ -172,8 +174,6 @@ public class CaravanController {
         caravan.updateTimestamp();
 
         caravan.setDirection(2);
-
-        caravanRepository.add(caravan);
 
         return caravan;
     }
