@@ -30,7 +30,7 @@ public class StoreItem extends SimpleTagSupport {
     }
 
     public void doTag() throws JspException, IOException {
-        int amount = city.getItems().containsKey(item.getId()) ? city.getItems().get(item.getId()).intValue() : 0;
+        int amount = (int)Math.floor(city.getStoredItem(item.getId()));
 
         JspWriter out = getJspContext().getOut();
         out.print("<img src=\"assets/items/" + item.getId() + ".png\" style=\"float:left; margin-right:5px;\" />");
@@ -76,15 +76,15 @@ public class StoreItem extends SimpleTagSupport {
             double balance = production - consumption;
 
             if(balance > 0)
-                out.print("<span class=\"green\">+" + Math.round(balance) + "</span>");
+                out.print("<span class=\"green\">+" + Math.floor(balance) + "</span>");
             else if(balance < 0)
-                out.print("<span class=\"red\">" + Math.round(balance) + "</span>");
+                out.print("<span class=\"red\">" + Math.floor(balance) + "</span>");
             else
-                out.print("<span>" + Math.round(balance) + "</span>");
+                out.print("<span>" + Math.floor(balance) + "</span>");
 
             if(rate > 0) {
                 if(city.getRequiredItemTypes().contains(item.getType())) {
-                    out.print("(<span class=\"green\">" + Math.round(production) + "</span>/<span class=\"red\">" + Math.round(consumption) + "</span>)<br>");
+                    out.print("(<span class=\"green\">" + Math.floor(production) + "</span>/<span class=\"red\">" + Math.floor(consumption) + "</span>)<br>");
 
                     String linkName;
 

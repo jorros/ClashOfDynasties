@@ -35,9 +35,9 @@ public class CaravanItem extends SimpleTagSupport {
             out.print("<span style=\"color:#FFF; font-weight:bold;\">" + amount + "t " + item.getName() + " (" + item.getType().getName() + ")</span><br>");
 
             if (city.getPlayer().equals(player)) {
-                int production = (int) (Math.floor(city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum()));
+                double production = city.getBuildings().stream().filter(b -> b.getBlueprint().getProduceItem() != null).filter(b -> b.getBlueprint().getProduceItem().equals(item)).mapToDouble(b -> b.getBlueprint().getProducePerStep() * 3600).sum();
 
-                int consumption = 0;
+                double consumption = 0;
                 double rate = 0;
 
                 switch (item.getType().getType()) {
@@ -59,21 +59,21 @@ public class CaravanItem extends SimpleTagSupport {
                 }
 
                 if ((city.getStopConsumption() == null || !city.getStopConsumption().contains(item)) && city.getRequiredItemTypes().contains(item.getType())) {
-                    consumption = (int) Math.ceil(city.getPopulation() * rate * 3600);
+                    consumption = city.getPopulation() * rate * 3600;
                 }
 
                 if (production > 0 || amount > 0) {
-                    int balance = production - consumption;
+                    double balance = production - consumption;
 
                     if (balance > 0)
-                        out.print("<span class=\"green\">+" + balance + "</span>");
+                        out.print("<span class=\"green\">+" + Math.floor(balance) + "</span>");
                     else if (balance < 0)
-                        out.print("<span class=\"red\">" + balance + "</span>");
+                        out.print("<span class=\"red\">" + Math.floor(balance) + "</span>");
                     else
-                        out.print("<span>" + balance + "</span>");
+                        out.print("<span>" + Math.floor(balance) + "</span>");
 
                     if (production > 0 || consumption > 0) {
-                        out.print(" (<span class=\"green\">" + production + "</span>/<span class=\"red\">" + consumption + "</span>)");
+                        out.print(" (<span class=\"green\">" + Math.floor(production) + "</span>/<span class=\"red\">" + Math.floor(consumption) + "</span>)");
                     }
                 } else
                     out.print("<span>0</span>");
