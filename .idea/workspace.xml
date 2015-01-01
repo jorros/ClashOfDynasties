@@ -6,16 +6,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Lager Anzeige feixt">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java" />
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clash of Dynasties.iml" afterPath="$PROJECT_DIR$/Clash of Dynasties.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Clash_of_Dynasties_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Clash_of_Dynasties_war.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Clash_of_Dynasties_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Clash_of_Dynasties_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/lib/crafty-min.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/lib/crafty-min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +39,14 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
+  <component name="DatabaseView">
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+  </component>
   <component name="DebuggerManager">
+    <ui_properties converted="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -71,7 +83,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -80,102 +91,104 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CaravanItem.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CaravanItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07692308" vertical-offset="306" max-vertical-offset="1343">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1343">
+              <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoreItem.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="cityEntity.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="6324">
+              <caret line="57" column="3" selection-start-line="57" selection-start-column="3" selection-end-line="57" selection-end-column="3" />
+              <folding>
+                <marker date="1414237855694" expanded="true" signature="2514:2551" placeholder="..." />
+                <marker date="1414237855694" expanded="true" signature="3611:3670" placeholder="..." />
+                <marker date="1414237855694" expanded="true" signature="4770:4794" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2108">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="editor.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.39865997" vertical-offset="0" max-vertical-offset="1717">
+              <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoreItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1615">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1615">
               <caret line="78" column="65" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerLogic.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="850" max-vertical-offset="2329">
-              <caret line="50" column="95" selection-start-line="50" selection-start-column="95" selection-end-line="50" selection-end-column="95" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FormationController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2567" max-vertical-offset="3383">
-              <caret line="151" column="20" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CityController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2380" max-vertical-offset="5831">
-              <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CaravanController.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CaravanController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2380" max-vertical-offset="3519">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2601" max-vertical-offset="3519">
               <caret line="168" column="19" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CityLogic.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="CityLogic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="12461">
+            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="12308">
               <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginService.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LoginService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+            <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="646">
               <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
-              <folding>
-                <element signature="e#1156#1174#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildItem.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="BuildItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/BuildItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="901">
+            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="901">
               <caret line="42" column="527" selection-start-line="42" selection-start-column="330" selection-end-line="42" selection-end-column="527" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="City.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="City.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5134" max-vertical-offset="8721">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3876" max-vertical-offset="6987">
               <caret line="302" column="5" selection-start-line="302" selection-start-column="5" selection-end-line="302" selection-end-column="5" />
               <folding />
             </state>
@@ -194,61 +207,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
-    <option name="changedFiles">
+    <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/MessageRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RelationRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/RoadRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/repository/UnitRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/formationEntity.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/formation.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/caravan.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PublicController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Route.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/assets.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/game/game.js" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Formation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/theme.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/update.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/register.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosecolor.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosenation.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/game.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/winner.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/infoFormation.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/report.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/editcity.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/command/city.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/demography.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/AppConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Relation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/resources/game/editor.js" />
       </list>
     </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -402,6 +370,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -417,6 +386,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -533,6 +516,66 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="game" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -714,7 +757,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -732,10 +774,10 @@
     <property name="Downloaded.Files.Path" value="C:\Users\Jörg\Dropbox\Clash Libs" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2788388" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/javax.mail.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../BeGe_AD2" />
     <property name="options.lastSelected" value="File.Encoding" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -770,20 +812,16 @@
     <property name="GenerateAntBuildDialog.inclineRuntiemClasspath" value="false" />
     <property name="GenerateAntBuildDialog.generateIdeaHomeProperty" value="false" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="clashofdynasties" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript 1.5" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="de.clashofdynasties.jdbc" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\lib" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\images\chooser" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\assets" />
-      <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\lib" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\assets\buildings" />
       <recent name="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\webapp\resources\assets\objectives" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="de.clashofdynasties" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\css" />
@@ -792,8 +830,80 @@
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\assets\top" />
       <recent name="C:\Users\Jörg\Documents\Clash of Dynasties\src\main\webapp\resources\lib" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="de.clashofdynasties" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.clashofdynasties.jdbc" />
+    </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 8.0.9">
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <module name="" />
       <setting name="vmparams" value="" />
@@ -804,21 +914,16 @@
       <setting name="launchBrowser" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="transportHostId" />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -849,38 +954,33 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
+    <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
+      <module name="" />
       <envs />
-      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -918,17 +1018,6 @@
       <option name="usbDebugPort" value="7936" />
       <method />
     </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -950,18 +1039,20 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
@@ -981,59 +1072,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="LOCAL" value="false" />
-      <deployment />
-      <server-settings>
-        <data>
-          <option name="transportHostId" />
-        </data>
-      </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
     <configuration default="false" name="Tomcat 8.0.9" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.9" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -1177,6 +1215,7 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="" />
       <created>1389702775402</created>
+      <option name="number" value="Default" />
       <updated>1389702775402</updated>
       <workItem from="1389702777773" duration="78000" />
       <workItem from="1389702867746" duration="29000" />
@@ -1435,1305 +1474,316 @@
       <workItem from="1414702854436" duration="778000" />
       <workItem from="1414838211151" duration="2341000" />
       <workItem from="1414951859811" duration="675000" />
-      <workItem from="1415014690270" duration="368000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial commit">
-      <created>1392208188214</created>
-      <updated>1392208188214</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Initial commit">
-      <created>1392208969669</created>
-      <updated>1392208969669</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Initial commit&#10;">
-      <created>1392209105627</created>
-      <updated>1392209105627</updated>
-    </task>
-    <task id="LOCAL-00004" summary="int -&gt; double für alle wachsenden Größen (Produktion und Coins)&#10;Dynamische Aktualisierung für Topleiste&#10;Verschiebung der City Views in eigenen Ordner&#10;Ersetzen von restlichen Platzhaltern in den Views durch Variabeln">
-      <created>1392217358673</created>
-      <updated>1392217358673</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Hinzufügen von Units zum Buildmenu">
-      <created>1392222484622</created>
-      <updated>1392222484622</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Hinzufügen des Itemmenüs">
-      <created>1392251769472</created>
-      <updated>1392251769472</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Berechtigungsfix und Optimierung der Entities in JS">
-      <created>1392323334950</created>
-      <updated>1392323334950</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Erstellen von Formationen hinzugefügt">
-      <created>1394534626830</created>
-      <updated>1394534626830</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Anzeige für stationierte Formationen in der Stadt hinzugefügt">
-      <created>1394658383172</created>
-      <updated>1394658383172</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Formation Entity hinzugefügt&#10;">
-      <created>1395569430782</created>
-      <updated>1395569430782</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Formation Entity wird selbst bei deployed Formationen erstellt">
-      <created>1396099039198</created>
-      <updated>1396099039198</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Route Objekt hinzugefügt">
-      <created>1396100808109</created>
-      <updated>1396100808109</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Formation Entity fixes">
-      <created>1396101021121</created>
-      <updated>1396101021121</updated>
-    </task>
-    <task id="LOCAL-00014" summary="A* Routing Implementiert">
-      <created>1396716411836</created>
-      <updated>1396716411836</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Login Seite Darstellungsfix">
-      <created>1396782599639</created>
-      <updated>1396782599639</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Formation Bewegungsbefehl hinzugefügt">
-      <created>1396876826065</created>
-      <updated>1396876826065</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Formation Move Fix">
-      <created>1396877220102</created>
-      <updated>1396877220102</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Roads Update Verbesserung + City/Formation Update">
-      <created>1396878254253</created>
-      <updated>1396878254253</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Positionsfix + Formation wird bei Befehl in richtige Position gesetzt">
-      <created>1396896737762</created>
-      <updated>1396896737762</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Formationsmenü enhält jetzt einen Button für Formationsaufstellung">
-      <created>1396897403841</created>
-      <updated>1396897403841</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Festgelegte Route für ausgewähltes Objekt wird dargestellt">
-      <created>1396901526300</created>
-      <updated>1396901526300</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Geschätzte Zeit für Route">
-      <created>1396981067550</created>
-      <updated>1396981067550</updated>
-    </task>
-    <task id="LOCAL-00023" summary="UnitEditor hinzugefügt">
-      <created>1396982079616</created>
-      <updated>1396982079616</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Zeitanzeige Fix">
-      <created>1396988544787</created>
-      <updated>1396988544787</updated>
-    </task>
-    <task id="LOCAL-00025" summary="null durch undefined ersetzt">
-      <created>1397116076030</created>
-      <updated>1397116076030</updated>
-    </task>
-    <task id="LOCAL-00026" summary="RESTful #2">
-      <created>1397157003226</created>
-      <updated>1397157003226</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Routing -&gt; RoutingService">
-      <created>1397157128656</created>
-      <updated>1397157128656</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Routing -&gt; RoutingService">
-      <created>1397157520002</created>
-      <updated>1397157520002</updated>
-    </task>
-    <task id="LOCAL-00029" summary="$.delete fix und Road Post fix">
-      <created>1397158264741</created>
-      <updated>1397158264741</updated>
-    </task>
-    <task id="LOCAL-00030" summary="$.put param list fix">
-      <created>1397160022846</created>
-      <updated>1397160022846</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Routenauswahl für Formation nur für Formationbesitzer">
-      <created>1397203168737</created>
-      <updated>1397203168738</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Formation Info für !deployed oder Gegner">
-      <created>1397246015922</created>
-      <updated>1397246015922</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Formation Info für !deployed oder Gegner">
-      <created>1397549764384</created>
-      <updated>1397549764384</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Route hat jetzt Target / Ziel wird in Formationsmenü korrekt dargestellt">
-      <created>1397550099874</created>
-      <updated>1397550099874</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Editor Route fix, Entities werden jetzt korrekt entfernt">
-      <created>1397552478957</created>
-      <updated>1397552478957</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Kriegsbericht hinzugefügt">
-      <created>1397909628111</created>
-      <updated>1397909628111</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Library Update">
-      <created>1397925651191</created>
-      <updated>1397925651191</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Komprimierung der Update Daten + Reduzierung der Updaterate">
-      <created>1398021083451</created>
-      <updated>1398021083451</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Ladebildschirm verbessert">
-      <created>1398089226704</created>
-      <updated>1398089226704</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Header Height fix">
-      <created>1398104952086</created>
-      <updated>1398104952086</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Weg Weight wird in Routenberechnungen einbezogen">
-      <created>1398105388832</created>
-      <updated>1398105388832</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Upgrade auf Spring 4.0 + Karawanen hinzugefügt">
-      <created>1398505058991</created>
-      <updated>1398505058991</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Karawanenmenü komplettiert">
-      <created>1398619540967</created>
-      <updated>1398619540967</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Blende titlebar in Commandmenü aus">
-      <created>1398623739740</created>
-      <updated>1398623739740</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Anzeige der Karawanenladung bei Wahl gefixt">
-      <created>1398628820256</created>
-      <updated>1398628820256</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Code Reformat + Events hinzugefügt">
-      <created>1398947109058</created>
-      <updated>1398947109058</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Letzte Scrollposition wird gespeichert&#10;">
-      <created>1398947755911</created>
-      <updated>1398947755911</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Zufriedenheit wird in Stadtleiste bei Population == 0 ausgeblendet">
-      <created>1398948677348</created>
-      <updated>1398948677348</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Zoomfunktionalität hinzugefügt">
-      <created>1398958423762</created>
-      <updated>1398958423762</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Straßen werden nur noch im Editor aktualisiert">
-      <created>1398958681681</created>
-      <updated>1398958681681</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Formationen werden im Editor nicht mehr dargestellt">
-      <created>1398958770542</created>
-      <updated>1398958770542</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Zoomed nur noch wenn Maus über Spielfeld ist">
-      <created>1398960508898</created>
-      <updated>1398960508898</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Nach Erstellung von Karawane/Formation Spiel aktualisieren">
-      <created>1398960795190</created>
-      <updated>1398960795190</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Editor gefixed">
-      <created>1398961312808</created>
-      <updated>1398961312808</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Leichte Änderungen im Formationsmenü">
-      <created>1399025889949</created>
-      <updated>1399025889949</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Topleiste wurde überarbeitet">
-      <created>1399030502691</created>
-      <updated>1399030502691</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Topleiste erweitert">
-      <created>1399031716512</created>
-      <updated>1399031716512</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Assetliste angepasst">
-      <created>1399032816133</created>
-      <updated>1399032816133</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Stadt Baumenü fertiggestellt">
-      <created>1399120422825</created>
-      <updated>1399120422825</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Stadt Lager fertiggestellt">
-      <created>1400582203016</created>
-      <updated>1400582203016</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Ranking fertiggestellt">
-      <created>1401182385206</created>
-      <updated>1401182385206</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Editor Städte bearbeiten um Biom und Spieler erweitert">
-      <created>1401183007774</created>
-      <updated>1401183007774</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Editor: Stadt wird jetzt korrekt positioniert">
-      <created>1401183380932</created>
-      <updated>1401183380932</updated>
-    </task>
-    <task id="LOCAL-00064" summary="Baumenü fix: Während Gebäude gebaut wird ein neues Auswählen gibt kein Geld zurück">
-      <created>1401184836556</created>
-      <updated>1401184836556</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Editor: Ressourcen und Gebäude zusammengelegt + Spielerliste hinzugefügt">
-      <created>1401302083609</created>
-      <updated>1401302083609</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Diplomatie Grundlagen">
-      <created>1401560879267</created>
-      <updated>1401560879267</updated>
-    </task>
-    <task id="LOCAL-00067" summary="Datenbank: integer ID -&gt; Object ID">
-      <created>1405166237702</created>
-      <updated>1405166237702</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Registrierung eingebaut">
-      <created>1405184953690</created>
-      <updated>1405184953690</updated>
-    </task>
-    <task id="LOCAL-00069" summary="Darstellungsfix im Karawanen/Formationsmenü">
-      <created>1405188482255</created>
-      <updated>1405188482255</updated>
-    </task>
-    <task id="LOCAL-00070" summary="Diplomatie fertiggestellt">
-      <created>1406373703631</created>
-      <updated>1406373703631</updated>
-    </task>
-    <task id="LOCAL-00071" summary="Events um Diplomatie erweitert">
-      <created>1406457727584</created>
-      <updated>1406457727584</updated>
-    </task>
-    <task id="LOCAL-00072" summary="ObjectId für ID">
-      <created>1406464109084</created>
-      <updated>1406464109084</updated>
-    </task>
-    <task id="LOCAL-00073" summary="Routing bezieht Diplomatiestatus ein">
-      <created>1406476989461</created>
-      <updated>1406476989461</updated>
-    </task>
-    <task id="LOCAL-00074" summary="Cityheadlinebreite wird dynamisch festgelegt">
-      <created>1406479315475</created>
-      <updated>1406479315475</updated>
-    </task>
-    <task id="LOCAL-00075" summary="Sicht hinzugefügt">
-      <created>1406890150774</created>
-      <updated>1406890150774</updated>
-    </task>
-    <task id="LOCAL-00076" summary="Logikbasis implementiert">
-      <created>1406893203530</created>
-      <updated>1406893203530</updated>
-    </task>
-    <task id="LOCAL-00077" summary="Stadtlogik implementiert">
-      <created>1406984698902</created>
-      <updated>1406984698902</updated>
-    </task>
-    <task id="LOCAL-00078" summary="Menüs Autoupdate">
-      <created>1407059800532</created>
-      <updated>1407059800532</updated>
-    </task>
-    <task id="LOCAL-00079" summary="Logik aufsplitten">
-      <created>1407097183323</created>
-      <updated>1407097183323</updated>
-    </task>
-    <task id="LOCAL-00080" summary="StoreItem zeigt Konsum nur noch bei Konsumgütern an">
-      <created>1407097420354</created>
-      <updated>1407097420354</updated>
-    </task>
-    <task id="LOCAL-00081" summary="Zufriedenheitsalgorithmus umgeschrieben">
-      <created>1408102073910</created>
-      <updated>1408102073910</updated>
-    </task>
-    <task id="LOCAL-00082" summary="Zufriedenheitsalgorithmus umgeschrieben">
-      <created>1408104882441</created>
-      <updated>1408104882441</updated>
-    </task>
-    <task id="LOCAL-00083" summary="Grundpopulation auf 5 + Computerzufriedenheit immer 100">
-      <created>1408105175643</created>
-      <updated>1408105175643</updated>
-    </task>
-    <task id="LOCAL-00084" summary="Ranking wird jetzt innerhalb der Logik berechnet">
-      <created>1408187679148</created>
-      <updated>1408187679148</updated>
-    </task>
-    <task id="LOCAL-00085" summary="Imports optimiert">
-      <created>1408542786887</created>
-      <updated>1408542786887</updated>
-    </task>
-    <task id="LOCAL-00086" summary="Fog of War umgeschrieben">
-      <created>1408558217301</created>
-      <updated>1408558217302</updated>
-    </task>
-    <task id="LOCAL-00087" summary="Routing für Formation gefixt">
-      <created>1408560734936</created>
-      <updated>1408560734936</updated>
-    </task>
-    <task id="LOCAL-00088" summary="Formationbewegungs Logik implementiert">
-      <created>1408617052588</created>
-      <updated>1408617052588</updated>
-    </task>
-    <task id="LOCAL-00089" summary="Initiales Laden der Daten zum Ladebildschirm verschoben">
-      <created>1408641010202</created>
-      <updated>1408641010202</updated>
-    </task>
-    <task id="LOCAL-00090" summary="Routing gefixt">
-      <created>1408710418456</created>
-      <updated>1408710418456</updated>
-    </task>
-    <task id="LOCAL-00091" summary="Formation Ändern Button gefixt">
-      <created>1408710694233</created>
-      <updated>1408710694233</updated>
-    </task>
-    <task id="LOCAL-00092" summary="Formationsbewegung: Roadweight einbezogen">
-      <created>1408711477017</created>
-      <updated>1408711477017</updated>
-    </task>
-    <task id="LOCAL-00093" summary="Editorfixes">
-      <created>1408794603917</created>
-      <updated>1408794603917</updated>
-    </task>
-    <task id="LOCAL-00094" summary="Zugehörige Wege werden mitgelöscht, wenn Stadt entfernt wird">
-      <created>1408794895196</created>
-      <updated>1408794895196</updated>
-    </task>
-    <task id="LOCAL-00095" summary="currentRoad: von Formation nach Route verschoben">
-      <created>1408877654925</created>
-      <updated>1408877654926</updated>
-    </task>
-    <task id="LOCAL-00096" summary="Karawanenlogik implementiert">
-      <created>1408907199144</created>
-      <updated>1408907199144</updated>
-    </task>
-    <task id="LOCAL-00097" summary="Karawanen können jetzt entfernt werden">
-      <created>1408907580641</created>
-      <updated>1408907580641</updated>
-    </task>
-    <task id="LOCAL-00098" summary="Diplomatielogik implementiert">
-      <created>1409219201157</created>
-      <updated>1409219201157</updated>
-    </task>
-    <task id="LOCAL-00099" summary="Gebäude/Einheit Heilungsprozess implementiert">
-      <created>1409229360906</created>
-      <updated>1409229360906</updated>
-    </task>
-    <task id="LOCAL-00100" summary="Karawanen und Formationen werden nun im Editor und für nicht sichtbare ausgeblendet">
-      <created>1409229771946</created>
-      <updated>1409229771946</updated>
-    </task>
-    <task id="LOCAL-00101" summary="Straßen zu nicht sichtbaren Städten werden ausgeblendet">
-      <created>1409230063940</created>
-      <updated>1409230063940</updated>
-    </task>
-    <task id="LOCAL-00102" summary="Nach Handelskommenauflösung aktualisiere FOW Map">
-      <created>1409230193751</created>
-      <updated>1409230193751</updated>
-    </task>
-    <task id="LOCAL-00103" summary="Mehrere Einheiten können auf einmal ausgebildet werden">
-      <created>1409233329774</created>
-      <updated>1409233329774</updated>
-    </task>
-    <task id="LOCAL-00104" summary="Alle Wege sind im Editor ab sofort sichtbar">
-      <created>1409234296614</created>
-      <updated>1409234296614</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Verberge nicht aktivierte Spieler in Ranking und Diplomatie">
-      <created>1409234572455</created>
-      <updated>1409234572455</updated>
-    </task>
-    <task id="LOCAL-00106" summary="Gebäude und Einheiten für beide Völker angepasst">
-      <created>1409317853113</created>
-      <updated>1409317853113</updated>
-    </task>
-    <task id="LOCAL-00107" summary="Bei Abbruch der Einheitmenge wird nichts in Auftrag gestellt">
-      <created>1409328266537</created>
-      <updated>1409328266537</updated>
-    </task>
-    <task id="LOCAL-00108" summary="Gebäudelimiter implementiert">
-      <created>1409332386266</created>
-      <updated>1409332386266</updated>
-    </task>
-    <task id="LOCAL-00109" summary="Nicht baubare Inhalte werden markiert">
-      <created>1409333307461</created>
-      <updated>1409333307461</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Maven Update">
-      <created>1409918530099</created>
-      <updated>1409918530099</updated>
-    </task>
-    <task id="LOCAL-00111" summary="Memory Leak Fix">
-      <created>1409942016223</created>
-      <updated>1409942016223</updated>
-    </task>
-    <task id="LOCAL-00112" summary="GameController hinzugefügt">
-      <created>1410000558142</created>
-      <updated>1410000558142</updated>
-    </task>
-    <task id="LOCAL-00113" summary="Scrollfix">
-      <created>1410001211359</created>
-      <updated>1410001211359</updated>
-    </task>
-    <task id="LOCAL-00114" summary="Editor: Reset implementiert">
-      <created>1410003900327</created>
-      <updated>1410003900328</updated>
-    </task>
-    <task id="LOCAL-00115" summary="Editor: Textboxbreite angepasst">
-      <created>1410017521103</created>
-      <updated>1410017521104</updated>
-    </task>
-    <task id="LOCAL-00116" summary="Editor: Stadtreset hinzugefügt">
-      <created>1410017974485</created>
-      <updated>1410017974485</updated>
-    </task>
-    <task id="LOCAL-00117" summary="Stadt wird für Neulinge zu Beginn zentriert">
-      <created>1410021228558</created>
-      <updated>1410021228558</updated>
-    </task>
-    <task id="LOCAL-00118" summary="Zentriere Stadt auch bei Reset">
-      <created>1410021302118</created>
-      <updated>1410021302118</updated>
-    </task>
-    <task id="LOCAL-00119" summary="Spieler Reset gefixt">
-      <created>1410021973816</created>
-      <updated>1410021973816</updated>
-    </task>
-    <task id="LOCAL-00120" summary="Formations- und Karawanennamen beschränkt auf 14 Zeichen">
-      <created>1410083197680</created>
-      <updated>1410083197680</updated>
-    </task>
-    <task id="LOCAL-00121" summary="Editor: Weg löschen gefixt">
-      <created>1410083569273</created>
-      <updated>1410083569273</updated>
-    </task>
-    <task id="LOCAL-00122" summary="Editor: Neue Spieler werden nummeriert">
-      <created>1410083799841</created>
-      <updated>1410083799841</updated>
-    </task>
-    <task id="LOCAL-00123" summary="Editor: Zahlen werden nicht mehr in wissenschaftlicher Notation dargestellt">
-      <created>1410084411161</created>
-      <updated>1410084411161</updated>
-    </task>
-    <task id="LOCAL-00124" summary="Button für Einheitendarstellung in einer Stadt hinzugefügt">
-      <created>1410085411171</created>
-      <updated>1410085411171</updated>
-    </task>
-    <task id="LOCAL-00125" summary="Formation: Info Anzeige verbessert">
-      <created>1410087566786</created>
-      <updated>1410087566786</updated>
-    </task>
-    <task id="LOCAL-00126" summary="Formation: Info Anzeige verbessert">
-      <created>1410089722240</created>
-      <updated>1410089722240</updated>
-    </task>
-    <task id="LOCAL-00127" summary="Formation kann in fremder Stadt geändert werden gefixt">
-      <created>1410090171323</created>
-      <updated>1410090171323</updated>
-    </task>
-    <task id="LOCAL-00128" summary="Handelspartner können nur Städte des Partners sehen">
-      <created>1410090422969</created>
-      <updated>1410090422969</updated>
-    </task>
-    <task id="LOCAL-00129" summary="Diplomatiestatus geändert: FOW Update">
-      <created>1410090591201</created>
-      <updated>1410090591202</updated>
-    </task>
-    <task id="LOCAL-00130" summary="Farben hinzugefügt">
-      <created>1410096035947</created>
-      <updated>1410096035947</updated>
-    </task>
-    <task id="LOCAL-00131" summary="Formationsliste in Stadt verbessert">
-      <created>1410097550898</created>
-      <updated>1410097550898</updated>
-    </task>
-    <task id="LOCAL-00132" summary="Kriegslogik Basis implementiert">
-      <created>1410112657654</created>
-      <updated>1410112657654</updated>
-    </task>
-    <task id="LOCAL-00133" summary="14 Zeichen Namensfix">
-      <created>1410113029305</created>
-      <updated>1410113029305</updated>
-    </task>
-    <task id="LOCAL-00134" summary="Formationen können nicht bewegt werden gefixt">
-      <created>1410252154255</created>
-      <updated>1410252154255</updated>
-    </task>
-    <task id="LOCAL-00135" summary="Kriegsalgorithmus implementiert">
-      <created>1410520970280</created>
-      <updated>1410520970280</updated>
-    </task>
-    <task id="LOCAL-00136" summary="FOW wird bei Eroberung/Verlust aktualisiert">
-      <created>1410521470115</created>
-      <updated>1410521470115</updated>
-    </task>
-    <task id="LOCAL-00137" summary="FOW Update angepasst">
-      <created>1410537550599</created>
-      <updated>1410537550599</updated>
-    </task>
-    <task id="LOCAL-00138" summary="Bauzeit String angepasst">
-      <created>1410537965971</created>
-      <updated>1410537965972</updated>
-    </task>
-    <task id="LOCAL-00139" summary="Wege werden bei FOW Update dargestellt">
-      <created>1410611468656</created>
-      <updated>1410611468656</updated>
-    </task>
-    <task id="LOCAL-00140" summary="Zusammenstellung: Schließen Button hinzugefügt">
-      <created>1410611620839</created>
-      <updated>1410611620839</updated>
-    </task>
-    <task id="LOCAL-00141" summary="FOWUpdate: Status aktualisieren">
-      <created>1410612055682</created>
-      <updated>1410612055682</updated>
-    </task>
-    <task id="LOCAL-00142" summary="Healing Logic optimiert">
-      <created>1410623840069</created>
-      <updated>1410623840069</updated>
-    </task>
-    <task id="LOCAL-00143" summary="Code Optimierung: Datenbank wird nicht mehr ständig aufgerufen">
-      <created>1410878635324</created>
-      <updated>1410878635324</updated>
-    </task>
-    <task id="LOCAL-00144" summary="RequiredItemTypes werden bei Reset erneut generiert">
-      <created>1410880346446</created>
-      <updated>1410880346446</updated>
-    </task>
-    <task id="LOCAL-00145" summary="Vladi Editor Rechte geben">
-      <created>1410880382139</created>
-      <updated>1410880382139</updated>
-    </task>
-    <task id="LOCAL-00146" summary="Freie Bauplätze Anzeige gefixt">
-      <created>1411116917975</created>
-      <updated>1411116917975</updated>
-    </task>
-    <task id="LOCAL-00147" summary="Bewegungszeit: Unter 1 Minute wird dargestellt">
-      <created>1411117002090</created>
-      <updated>1411117002090</updated>
-    </task>
-    <task id="LOCAL-00148" summary="Grafikglitches gefixt">
-      <created>1411120002308</created>
-      <updated>1411120002309</updated>
-    </task>
-    <task id="LOCAL-00149" summary="Reportdarstellung gefixt">
-      <created>1411120466925</created>
-      <updated>1411120466925</updated>
-    </task>
-    <task id="LOCAL-00150" summary="Ausgelöschte Formation entfernen">
-      <created>1411120772677</created>
-      <updated>1411120772678</updated>
-    </task>
-    <task id="LOCAL-00151" summary="Zufriedenheit optimiert">
-      <created>1411204414948</created>
-      <updated>1411204414948</updated>
-    </task>
-    <task id="LOCAL-00152" summary="Editor zeigt Standardkapazität an">
-      <created>1411205471321</created>
-      <updated>1411205471321</updated>
-    </task>
-    <task id="LOCAL-00153" summary="Formationsbewegung gefixt">
-      <created>1411205854927</created>
-      <updated>1411205854927</updated>
-    </task>
-    <task id="LOCAL-00154" summary="Formationsbewegung gefixt">
-      <created>1411206665455</created>
-      <updated>1411206665455</updated>
-    </task>
-    <task id="LOCAL-00155" summary="Kriegsalgorithmus gefixt: Verteidigungsgebäude werden mitinvolviert">
-      <created>1411206770054</created>
-      <updated>1411206770054</updated>
-    </task>
-    <task id="LOCAL-00156" summary="Kriegsalgorithmus gefixt: Verteidigungsgebäude fügen Schaden hinzu">
-      <created>1411207292386</created>
-      <updated>1411207292386</updated>
-    </task>
-    <task id="LOCAL-00157" summary="Kriegsalgorithmus: Spezialkräfte implementiert">
-      <created>1411208226310</created>
-      <updated>1411208226310</updated>
-    </task>
-    <task id="LOCAL-00158" summary="Bauen: Tooltip maxWidth gesetzt">
-      <created>1411209977582</created>
-      <updated>1411209977582</updated>
-    </task>
-    <task id="LOCAL-00159" summary="Krieg: Maximal 500 Soldaten pro Seite dürfen kämpfen">
-      <created>1411210505300</created>
-      <updated>1411210505300</updated>
-    </task>
-    <task id="LOCAL-00160" summary="Krieg: Maximal 500 Soldaten pro Seite dürfen kämpfen">
-      <created>1411210531430</created>
-      <updated>1411210531431</updated>
-    </task>
-    <task id="LOCAL-00161" summary="Formationsbewegung: Nur bei verbündeten Städten weiterziehen">
-      <created>1411213442294</created>
-      <updated>1411213442294</updated>
-    </task>
-    <task id="LOCAL-00162" summary="Produktionsrate: 10% der Bürger">
-      <created>1411214613926</created>
-      <updated>1411214613926</updated>
-    </task>
-    <task id="LOCAL-00163" summary="Gebäude Abreißen implementiert">
-      <created>1411217236862</created>
-      <updated>1411217236862</updated>
-    </task>
-    <task id="LOCAL-00164" summary="Einheiten entlassen implementiert">
-      <created>1411217457381</created>
-      <updated>1411217457381</updated>
-    </task>
-    <task id="LOCAL-00165" summary="Karawanen Erstellen gefixt">
-      <created>1411224545549</created>
-      <updated>1411224545549</updated>
-    </task>
-    <task id="LOCAL-00166" summary="Zufriedenheitsalgorithmus gefixt">
-      <created>1411225256537</created>
-      <updated>1411225256537</updated>
-    </task>
-    <task id="LOCAL-00167" summary="Zufriedenheit gefixt (*100)">
-      <created>1411226932887</created>
-      <updated>1411226932887</updated>
-    </task>
-    <task id="LOCAL-00168" summary="Bauen: Anzahl Schrift gefixt">
-      <created>1411229224682</created>
-      <updated>1411229224682</updated>
-    </task>
-    <task id="LOCAL-00169" summary="Krieg: Relation Fix">
-      <created>1411234264031</created>
-      <updated>1411234264031</updated>
-    </task>
-    <task id="LOCAL-00170" summary="Formationsbewegung: Gefixt und Memory Leak behoben">
-      <created>1411296528184</created>
-      <updated>1411296528184</updated>
-    </task>
-    <task id="LOCAL-00171" summary="Baumenü: Layoutfix">
-      <created>1411297151271</created>
-      <updated>1411297151271</updated>
-    </task>
-    <task id="LOCAL-00172" summary="Kriegsalgorithmus: 50 Einheiten werden je Kampfrunde ausgewählt">
-      <created>1411299560770</created>
-      <updated>1411299560770</updated>
-    </task>
-    <task id="LOCAL-00173" summary="Dorf benötigt nur Zentrum für maximale Zufriedenheit">
-      <created>1411299945074</created>
-      <updated>1411299945074</updated>
-    </task>
-    <task id="LOCAL-00174" summary="Infoanzeigen: Unnötige Informationen ausblenden">
-      <created>1411300288304</created>
-      <updated>1411300288304</updated>
-    </task>
-    <task id="LOCAL-00175" summary="Events hinzugefügt">
-      <created>1411301543695</created>
-      <updated>1411301543695</updated>
-    </task>
-    <task id="LOCAL-00176" summary="Ressource Rosen hinzugefügt">
-      <created>1411306040554</created>
-      <updated>1411306040554</updated>
-    </task>
-    <task id="LOCAL-00177" summary="Zufriedenheit steigt schneller an">
-      <created>1411306607413</created>
-      <updated>1411306607413</updated>
-    </task>
-    <task id="LOCAL-00178" summary="Bei negativen freien Bauplätzen verdoppel Kosten">
-      <created>1411309089605</created>
-      <updated>1411309089605</updated>
-    </task>
-    <task id="LOCAL-00179" summary="Neues Icon für Fierybrennerei">
-      <created>1411309343295</created>
-      <updated>1411309343295</updated>
-    </task>
-    <task id="LOCAL-00180" summary="Baupopup optimiert">
-      <created>1411312204507</created>
-      <updated>1411312204507</updated>
-    </task>
-    <task id="LOCAL-00181" summary="Formationen &amp; Karawanen laufende Kosten hinzugefügt">
-      <created>1411312809109</created>
-      <updated>1411312809109</updated>
-    </task>
-    <task id="LOCAL-00182" summary="Formation: Bewegung von Stadt erste Strecke gefixt">
-      <created>1411325599546</created>
-      <updated>1411325599546</updated>
-    </task>
-    <task id="LOCAL-00183" summary="Zeitberechnung gefixt">
-      <created>1411580211672</created>
-      <updated>1411580211672</updated>
-    </task>
-    <task id="LOCAL-00184" summary="Zeitberechnung gefixt">
-      <created>1411589139558</created>
-      <updated>1411589139558</updated>
-    </task>
-    <task id="LOCAL-00185" summary="Cast Exception bei Krieg gefixt">
-      <created>1411808900555</created>
-      <updated>1411808900555</updated>
-    </task>
-    <task id="LOCAL-00186" summary="Kosten werden bei Ausbildung/Abbruch korrekt berechnet">
-      <created>1411809598887</created>
-      <updated>1411809598887</updated>
-    </task>
-    <task id="LOCAL-00187" summary="Smiley Darstellung bei 80% Zufriedenheit gefixt">
-      <created>1411809654888</created>
-      <updated>1411809654888</updated>
-    </task>
-    <task id="LOCAL-00188" summary="Autorefresh bei Karawanen Erstellen/Bearbeiten deaktiviert">
-      <created>1411809761913</created>
-      <updated>1411809761913</updated>
-    </task>
-    <task id="LOCAL-00189" summary="Gebäude anderer Nationen im Baumenü anzeigen">
-      <created>1411812325911</created>
-      <updated>1411812325911</updated>
-    </task>
-    <task id="LOCAL-00190" summary="Verteidigungsgebäude wird in Zusammenstellung dargestellt">
-      <created>1411812841289</created>
-      <updated>1411812841289</updated>
-    </task>
-    <task id="LOCAL-00191" summary="Mein Reich implementiert">
-      <created>1411820093511</created>
-      <updated>1411820093511</updated>
-    </task>
-    <task id="LOCAL-00192" summary="Spieler löschen gefixt">
-      <created>1411821023133</created>
-      <updated>1411821023133</updated>
-    </task>
-    <task id="LOCAL-00193" summary="Seuche und Feuer Events hinzugefügt">
-      <created>1412246074500</created>
-      <updated>1412246074500</updated>
-    </task>
-    <task id="LOCAL-00194" summary="Stadteinheiten werden bei Verlustrechnung einbezogen">
-      <created>1412248328777</created>
-      <updated>1412248328777</updated>
-    </task>
-    <task id="LOCAL-00195" summary="Warscheinlichkeiten geändert für Events">
-      <created>1412251827153</created>
-      <updated>1412251827153</updated>
-    </task>
-    <task id="LOCAL-00196" summary="Icons in Stadtanzeige hinzugefügt">
-      <created>1412330080396</created>
-      <updated>1412330080396</updated>
-    </task>
-    <task id="LOCAL-00197" summary="Warscheinlichkeit für Angriff auf verletzte Einheiten erhöht (Balancing)">
-      <created>1412330148126</created>
-      <updated>1412330148126</updated>
-    </task>
-    <task id="LOCAL-00198" summary="Sichtfeld fix">
-      <created>1412330518660</created>
-      <updated>1412330518660</updated>
-    </task>
-    <task id="LOCAL-00199" summary="Formationssetup überarbeitet">
-      <created>1412427934628</created>
-      <updated>1412427934628</updated>
-    </task>
-    <task id="LOCAL-00200" summary="Formationsinfo: Grenze für Verletztenstatus liegt jetzt bei 90">
-      <created>1412428074076</created>
-      <updated>1412428074076</updated>
-    </task>
-    <task id="LOCAL-00201" summary="Lager Konsumrate Anzeige optimiert">
-      <created>1412444085566</created>
-      <updated>1412444085566</updated>
-    </task>
-    <task id="LOCAL-00202" summary="Türme dürfen keine Events haben">
-      <created>1412444143944</created>
-      <updated>1412444143944</updated>
-    </task>
-    <task id="LOCAL-00203" summary="Brand: Nur wenn Gebäude existieren, Seuche: Nur wenn Pop &gt; 10">
-      <created>1412444220913</created>
-      <updated>1412444220913</updated>
-    </task>
-    <task id="LOCAL-00204" summary="Warscheinlichkeiten gesenkt für Event ohne Hilfsgebäude">
-      <created>1412444269584</created>
-      <updated>1412444269584</updated>
-    </task>
-    <task id="LOCAL-00205" summary="Events: Uhrzeit wird dargestellt">
-      <created>1412444918253</created>
-      <updated>1412444918253</updated>
-    </task>
-    <task id="LOCAL-00206" summary="Marktplatz hinzugefügt">
-      <created>1412445843999</created>
-      <updated>1412445843999</updated>
-    </task>
-    <task id="LOCAL-00207" summary="Spielerhandel implementiert">
-      <created>1412517738794</created>
-      <updated>1412517738794</updated>
-    </task>
-    <task id="LOCAL-00208" summary="Kampfwert der Stadt zeigt Wert aller Einheiten + Gebäude">
-      <created>1412518096972</created>
-      <updated>1412518096972</updated>
-    </task>
-    <task id="LOCAL-00209" summary="Nachrichtensystem implementiert">
-      <created>1412526952633</created>
-      <updated>1412526952633</updated>
-    </task>
-    <task id="LOCAL-00210" summary="Formationsstärke wird miteingerechnet">
-      <created>1412533453515</created>
-      <updated>1412533453515</updated>
-    </task>
-    <task id="LOCAL-00211" summary="Emailbenachrichtigung implementiert">
-      <created>1412681247826</created>
-      <updated>1412681247826</updated>
-    </task>
-    <task id="LOCAL-00212" summary="Mein Reich -&gt; Bauen mit Zurück Button implementiert">
-      <created>1412681754227</created>
-      <updated>1412681754228</updated>
-    </task>
-    <task id="LOCAL-00213" summary="Name wird in Befehlsbox angezeigt">
-      <created>1412682036715</created>
-      <updated>1412682036715</updated>
-    </task>
-    <task id="LOCAL-00214" summary="Menü wird nur aktualisiert, wenn es gerade offen ist">
-      <created>1412682207817</created>
-      <updated>1412682207817</updated>
-    </task>
-    <task id="LOCAL-00215" summary="Befehlsbox wird nur aktualisiert, wenn es gerade offen ist">
-      <created>1412682279880</created>
-      <updated>1412682279880</updated>
-    </task>
-    <task id="LOCAL-00216" summary="Stadt: Auswahl gefixt">
-      <created>1412682972091</created>
-      <updated>1412682972091</updated>
-    </task>
-    <task id="LOCAL-00217" summary="Karawane bearbeiten gefixt">
-      <created>1412684341291</created>
-      <updated>1412684341291</updated>
-    </task>
-    <task id="LOCAL-00218" summary="Karawane bearbeiten: Elemente bei Handelbearbeiten disabled">
-      <created>1412684659698</created>
-      <updated>1412684659698</updated>
-    </task>
-    <task id="LOCAL-00219" summary="Formationsanzeige um Leben und Stärke ergänzt">
-      <created>1412685164060</created>
-      <updated>1412685164060</updated>
-    </task>
-    <task id="LOCAL-00220" summary="Bei Reset werden alle Spielernachrichten gelöscht">
-      <created>1412685299208</created>
-      <updated>1412685299208</updated>
-    </task>
-    <task id="LOCAL-00221" summary="Alias für Städte hinzugefügt">
-      <created>1412686087549</created>
-      <updated>1412686087549</updated>
-    </task>
-    <task id="LOCAL-00222" summary="Karawane auflösen wenn bei gegnerische Stadt; Bei neutrale Stadt nicht abladen">
-      <created>1412689483581</created>
-      <updated>1412689483581</updated>
-    </task>
-    <task id="LOCAL-00223" summary="Stadttyp Voraussetzung hinzugefügt">
-      <created>1412692374902</created>
-      <updated>1412692374902</updated>
-    </task>
-    <task id="LOCAL-00224" summary="Profil implementiert">
-      <created>1412698183272</created>
-      <updated>1412698183272</updated>
-    </task>
-    <task id="LOCAL-00225" summary="Scrollen: Maus bleibt bei Städte hängen gefixt">
-      <created>1412754270298</created>
-      <updated>1412754270298</updated>
-    </task>
-    <task id="LOCAL-00226" summary="Nicht genug eingeladen: t statt x">
-      <created>1412754326298</created>
-      <updated>1412754326298</updated>
-    </task>
-    <task id="LOCAL-00227" summary="Handelskarawane FIX">
-      <created>1412764674589</created>
-      <updated>1412764674589</updated>
-    </task>
-    <task id="LOCAL-00228" summary="Weltwunder implementiert&#10;">
-      <created>1412769010719</created>
-      <updated>1412769010719</updated>
-    </task>
-    <task id="LOCAL-00229" summary="Game-Fixes in Editor übernommen">
-      <created>1412769362606</created>
-      <updated>1412769362606</updated>
-    </task>
-    <task id="LOCAL-00230" summary="Scrollfix #2">
-      <created>1412769745080</created>
-      <updated>1412769745080</updated>
-    </task>
-    <task id="LOCAL-00231" summary="Email leerer Empfänger fix">
-      <created>1412769986452</created>
-      <updated>1412769986452</updated>
-    </task>
-    <task id="LOCAL-00232" summary="Z-Wert für Stadt Info erhöht">
-      <created>1412770793333</created>
-      <updated>1412770793333</updated>
-    </task>
-    <task id="LOCAL-00233" summary="Editor: Kommazahlen werden korrekt dargestellt">
-      <created>1412929797422</created>
-      <updated>1412929797422</updated>
-    </task>
-    <task id="LOCAL-00234" summary="Spieler löschen gefixt">
-      <created>1412931666341</created>
-      <updated>1412931666341</updated>
-    </task>
-    <task id="LOCAL-00235" summary="Mein Reich erweitert: Karawanen, Formationen">
-      <created>1412937046426</created>
-      <updated>1412937046426</updated>
-    </task>
-    <task id="LOCAL-00236" summary="Typo Fehler gefixt">
-      <created>1412937437365</created>
-      <updated>1412937437365</updated>
-    </task>
-    <task id="LOCAL-00237" summary="Formation Erstellen Fix">
-      <created>1412943828955</created>
-      <updated>1412943828955</updated>
-    </task>
-    <task id="LOCAL-00238" summary="Tooltips für Buttons hinzugefügt">
-      <created>1413284522977</created>
-      <updated>1413284522977</updated>
-    </task>
-    <task id="LOCAL-00239" summary="Grundlagen für Missionsziele implementiert">
-      <created>1413472366628</created>
-      <updated>1413472366628</updated>
-    </task>
-    <task id="LOCAL-00240" summary="Nur noch eingeloggte User können auf alle Controller zugreifen">
-      <created>1413474027973</created>
-      <updated>1413474027973</updated>
-    </task>
-    <task id="LOCAL-00241" summary="Reset: Setzt Level auf 0 zurück">
-      <created>1413474130919</created>
-      <updated>1413474130919</updated>
-    </task>
-    <task id="LOCAL-00242" summary="Reset: Ziele werden gelöscht">
-      <created>1413476863357</created>
-      <updated>1413476863357</updated>
-    </task>
-    <task id="LOCAL-00243" summary="Loading: Objectives hinzugefügt">
-      <created>1413476950959</created>
-      <updated>1413476950959</updated>
-    </task>
-    <task id="LOCAL-00244" summary="Nicht sichtbare Stadt kann nicht mehr ausgewählt werden">
-      <created>1413572894502</created>
-      <updated>1413572894502</updated>
-    </task>
-    <task id="LOCAL-00245" summary="Feuerwache und Feuerbändiger verschmolzen: Feuerwehr für alle">
-      <created>1413573414890</created>
-      <updated>1413573414890</updated>
-    </task>
-    <task id="LOCAL-00246" summary="Medikus wird für heilen von Einheiten benötigt;Bei Brand nichts reparieren">
-      <created>1413620412658</created>
-      <updated>1413620412658</updated>
-    </task>
-    <task id="LOCAL-00247" summary="Objective Text angepasst und Link hinzugefügt">
-      <created>1413621695664</created>
-      <updated>1413621695664</updated>
-    </task>
-    <task id="LOCAL-00248" summary="Briefing implementiert">
-      <created>1413623263476</created>
-      <updated>1413623263476</updated>
-    </task>
-    <task id="LOCAL-00249" summary="Heiler -&gt; Icon Update">
-      <created>1413626641865</created>
-      <updated>1413626641865</updated>
-    </task>
-    <task id="LOCAL-00250" summary="Startgeld erhöht auf 200">
-      <created>1413632357134</created>
-      <updated>1413632357134</updated>
-    </task>
-    <task id="LOCAL-00251" summary="Savanne -&gt; Grasland, Steppe -&gt; Gebirge">
-      <created>1413649429788</created>
-      <updated>1413649429788</updated>
-    </task>
-    <task id="LOCAL-00252" summary="Dschungel -&gt; Küste">
-      <created>1413650037603</created>
-      <updated>1413650037603</updated>
-    </task>
-    <task id="LOCAL-00253" summary="Tooltips für Topleiste">
-      <created>1413650173072</created>
-      <updated>1413650173072</updated>
-    </task>
-    <task id="LOCAL-00254" summary="Exception für MailService">
-      <created>1413660743092</created>
-      <updated>1413660743092</updated>
-    </task>
-    <task id="LOCAL-00255" summary="Stärke werden nicht mehr realtime berechnet">
-      <created>1413713722020</created>
-      <updated>1413713722020</updated>
-    </task>
-    <task id="LOCAL-00256" summary="Optimierungen">
-      <created>1413735785624</created>
-      <updated>1413735785624</updated>
-    </task>
-    <task id="LOCAL-00257" summary="Parallelisierung entfernt">
-      <created>1413745638432</created>
-      <updated>1413745638432</updated>
-    </task>
-    <task id="LOCAL-00258" summary="Wenn Menü geöffnet wird Routenberechnung deaktiviert">
-      <created>1413749232379</created>
-      <updated>1413749232379</updated>
-    </task>
-    <task id="LOCAL-00259" summary="Speedberechnung wurde optimiert">
-      <created>1413881798489</created>
-      <updated>1413881798489</updated>
-    </task>
-    <task id="LOCAL-00260" summary="Formation gelöscht: Neuberechnung der Verteidigungsstärke der Stadt">
-      <created>1413882096524</created>
-      <updated>1413882096524</updated>
-    </task>
-    <task id="LOCAL-00261" summary="City: Berechnung der Gebäudezahl und Einheitenzahl optimiert">
-      <created>1413882161554</created>
-      <updated>1413882161554</updated>
-    </task>
-    <task id="LOCAL-00262" summary="Formation: Client Route fix">
-      <created>1413884057736</created>
-      <updated>1413884057736</updated>
-    </task>
-    <task id="LOCAL-00263" summary="Formation: Route über verbündeten mit Ticks left verbieten">
-      <created>1413885069820</created>
-      <updated>1413885069820</updated>
-    </task>
-    <task id="LOCAL-00264" summary="Krieg: 25 aktiv kämpfende Einheiten">
-      <created>1413897256437</created>
-      <updated>1413897256437</updated>
-    </task>
-    <task id="LOCAL-00265" summary="Unterhaltskosten angepasst">
-      <created>1413898303744</created>
-      <updated>1413898303744</updated>
-    </task>
-    <task id="LOCAL-00266" summary="Kosten angepasst">
-      <created>1413898807782</created>
-      <updated>1413898807782</updated>
-    </task>
-    <task id="LOCAL-00267" summary="Optimierungen">
-      <created>1414062303558</created>
-      <updated>1414062303558</updated>
-    </task>
-    <task id="LOCAL-00268" summary="Bauen Icon in Commandbox hinzugefügt">
-      <created>1414062718941</created>
-      <updated>1414062718941</updated>
-    </task>
-    <task id="LOCAL-00269" summary="Sight wird korrekt geupdatet">
-      <created>1414063283699</created>
-      <updated>1414063283699</updated>
-    </task>
-    <task id="LOCAL-00270" summary="FOW wird nicht korrekt aktualisiert gefixt">
-      <created>1414064338182</created>
-      <updated>1414064338182</updated>
-    </task>
-    <task id="LOCAL-00271" summary="Erhöhe Anzahl kämpfender Einheiten">
-      <created>1414085128122</created>
-      <updated>1414085128122</updated>
-    </task>
-    <task id="LOCAL-00272" summary="Fehlermeldung bei Anmeldung mit selbem Namen">
-      <created>1414086392301</created>
-      <updated>1414086392301</updated>
-    </task>
-    <task id="LOCAL-00273" summary="Missionen eingebaut">
-      <created>1414107443979</created>
-      <updated>1414107443979</updated>
-    </task>
-    <task id="LOCAL-00274" summary="Reset gefixt">
-      <created>1414170600551</created>
-      <updated>1414170600552</updated>
-    </task>
-    <task id="LOCAL-00275" summary="Bei CityUpgrade FOV updaten">
-      <created>1414171331053</created>
-      <updated>1414171331053</updated>
+      <workItem from="1415014690270" duration="1575000" />
+      <workItem from="1415445929913" duration="24000" />
+      <workItem from="1415445973808" duration="370000" />
+      <workItem from="1419186056638" duration="622000" />
+      <workItem from="1419602689464" duration="41000" />
+      <workItem from="1419763081455" duration="22000" />
+      <workItem from="1419766922276" duration="111000" />
+      <workItem from="1419951383569" duration="176000" />
+      <workItem from="1420113194266" duration="37000" />
+      <workItem from="1420113332519" duration="584000" />
     </task>
     <task id="LOCAL-00276" summary="Krieg: 10% der Durchschnittsanzahl -&gt; aktiver Kampf">
       <created>1414171495683</created>
+      <option name="number" value="00276" />
+      <option name="project" value="LOCAL" />
       <updated>1414171495683</updated>
     </task>
     <task id="LOCAL-00277" summary="Bauen: Wenn Bauvorhaben bereits existiert frage nach">
       <created>1414171826974</created>
+      <option name="number" value="00277" />
+      <option name="project" value="LOCAL" />
       <updated>1414171826974</updated>
     </task>
     <task id="LOCAL-00278" summary="Krieg: Exception unterbricht Verlauf gefixt">
       <created>1414172768033</created>
+      <option name="number" value="00278" />
+      <option name="project" value="LOCAL" />
       <updated>1414172768033</updated>
     </task>
     <task id="LOCAL-00279" summary="Debuginfo rausgenommen">
       <created>1414172868165</created>
+      <option name="number" value="00279" />
+      <option name="project" value="LOCAL" />
       <updated>1414172868165</updated>
     </task>
     <task id="LOCAL-00280" summary="Statistikberechnung angepasst">
       <created>1414175810797</created>
+      <option name="number" value="00280" />
+      <option name="project" value="LOCAL" />
       <updated>1414175810797</updated>
     </task>
     <task id="LOCAL-00281" summary="Chooser angepasst">
       <created>1414181208668</created>
+      <option name="number" value="00281" />
+      <option name="project" value="LOCAL" />
       <updated>1414181208668</updated>
     </task>
     <task id="LOCAL-00282" summary="Verborgene Stadttypen nicht sichtbar">
       <created>1414182493087</created>
+      <option name="number" value="00282" />
+      <option name="project" value="LOCAL" />
       <updated>1414182493087</updated>
     </task>
     <task id="LOCAL-00283" summary="Einheitfix">
       <created>1414229370867</created>
+      <option name="number" value="00283" />
+      <option name="project" value="LOCAL" />
       <updated>1414229370867</updated>
     </task>
     <task id="LOCAL-00284" summary="Weitere fixes">
       <created>1414230358533</created>
+      <option name="number" value="00284" />
+      <option name="project" value="LOCAL" />
       <updated>1414230358533</updated>
     </task>
     <task id="LOCAL-00285" summary="JACKSON Upgrade (deprecated entfernt)">
       <created>1414232650829</created>
+      <option name="number" value="00285" />
+      <option name="project" value="LOCAL" />
       <updated>1414232650829</updated>
     </task>
     <task id="LOCAL-00286" summary="Sicherheitsabfrage für Formationsbewegung">
       <created>1414237960977</created>
+      <option name="number" value="00286" />
+      <option name="project" value="LOCAL" />
       <updated>1414237960977</updated>
     </task>
     <task id="LOCAL-00287" summary="Reset: Kriegsreport wird entfernt">
       <created>1414254431176</created>
+      <option name="number" value="00287" />
+      <option name="project" value="LOCAL" />
       <updated>1414254431176</updated>
     </task>
     <task id="LOCAL-00288" summary="Mobil Optimierung #1">
       <created>1414279265541</created>
+      <option name="number" value="00288" />
+      <option name="project" value="LOCAL" />
       <updated>1414279265541</updated>
     </task>
     <task id="LOCAL-00289" summary="Kriegsfix: Bei kleineren Anzahl Krieg">
       <created>1414279569694</created>
+      <option name="number" value="00289" />
+      <option name="project" value="LOCAL" />
       <updated>1414279569694</updated>
     </task>
     <task id="LOCAL-00290" summary="Kriegsfix: Bei kleineren Anzahl Krieg">
       <created>1414279599202</created>
+      <option name="number" value="00290" />
+      <option name="project" value="LOCAL" />
       <updated>1414279599202</updated>
     </task>
     <task id="LOCAL-00291" summary="Fix">
       <created>1414279747270</created>
+      <option name="number" value="00291" />
+      <option name="project" value="LOCAL" />
       <updated>1414279747270</updated>
     </task>
     <task id="LOCAL-00292" summary="Ranking leicht angepasst">
       <created>1414313776995</created>
+      <option name="number" value="00292" />
+      <option name="project" value="LOCAL" />
       <updated>1414313776995</updated>
     </task>
     <task id="LOCAL-00293" summary="Reset: Gestoppten Konsum leeren">
       <created>1414313947557</created>
+      <option name="number" value="00293" />
+      <option name="project" value="LOCAL" />
       <updated>1414313947557</updated>
     </task>
     <task id="LOCAL-00294" summary="Events Scrollbarfix">
       <created>1414318282330</created>
+      <option name="number" value="00294" />
+      <option name="project" value="LOCAL" />
       <updated>1414318282330</updated>
     </task>
     <task id="LOCAL-00295" summary="City Objects Fix">
       <created>1414320315823</created>
+      <option name="number" value="00295" />
+      <option name="project" value="LOCAL" />
       <updated>1414320315823</updated>
     </task>
     <task id="LOCAL-00296" summary="Satisfaction Fix">
       <created>1414323234714</created>
+      <option name="number" value="00296" />
+      <option name="project" value="LOCAL" />
       <updated>1414323234714</updated>
     </task>
     <task id="LOCAL-00297" summary="Coins Algorithmus angepasst">
       <created>1414324109248</created>
+      <option name="number" value="00297" />
+      <option name="project" value="LOCAL" />
       <updated>1414324109248</updated>
     </task>
     <task id="LOCAL-00298" summary="FastForward implementiert">
       <created>1414325578634</created>
+      <option name="number" value="00298" />
+      <option name="project" value="LOCAL" />
       <updated>1414325578634</updated>
     </task>
     <task id="LOCAL-00299" summary="Krieg: Fix">
       <created>1414428667749</created>
+      <option name="number" value="00299" />
+      <option name="project" value="LOCAL" />
       <updated>1414428667749</updated>
     </task>
     <task id="LOCAL-00300" summary="Formation: Löschen wenn leer">
       <created>1414429511354</created>
+      <option name="number" value="00300" />
+      <option name="project" value="LOCAL" />
       <updated>1414429511354</updated>
     </task>
     <task id="LOCAL-00301" summary="Autologout implementiert">
       <created>1414494972050</created>
+      <option name="number" value="00301" />
+      <option name="project" value="LOCAL" />
       <updated>1414494972050</updated>
     </task>
     <task id="LOCAL-00302" summary="Feldarzt heilt Einheiten auch abseits der Schlacht">
       <created>1414496527041</created>
+      <option name="number" value="00302" />
+      <option name="project" value="LOCAL" />
       <updated>1414496527041</updated>
     </task>
     <task id="LOCAL-00303" summary="Registrierung: Felder dürfen nicht leer sein">
       <created>1414497457262</created>
+      <option name="number" value="00303" />
+      <option name="project" value="LOCAL" />
       <updated>1414497457262</updated>
     </task>
     <task id="LOCAL-00304" summary="Handelskarawane aus Diplomatie bei Terminate entfernen">
       <created>1414497695702</created>
+      <option name="number" value="00304" />
+      <option name="project" value="LOCAL" />
       <updated>1414497695702</updated>
     </task>
     <task id="LOCAL-00305" summary="Einheiten mit Title versehen">
       <created>1414498458130</created>
+      <option name="number" value="00305" />
+      <option name="project" value="LOCAL" />
       <updated>1414498458130</updated>
     </task>
     <task id="LOCAL-00306" summary="Rundungen korrigiert">
       <created>1414508338787</created>
+      <option name="number" value="00306" />
+      <option name="project" value="LOCAL" />
       <updated>1414508338787</updated>
     </task>
     <task id="LOCAL-00307" summary="PreBuild implementiert">
       <created>1414509290250</created>
+      <option name="number" value="00307" />
+      <option name="project" value="LOCAL" />
       <updated>1414509290250</updated>
     </task>
     <task id="LOCAL-00308" summary="Spieler: 2 Wochen Schutz vor Seuche und Brand">
       <created>1414509545015</created>
+      <option name="number" value="00308" />
+      <option name="project" value="LOCAL" />
       <updated>1414509545015</updated>
     </task>
     <task id="LOCAL-00309" summary="Indicator für Population">
       <created>1414510231986</created>
+      <option name="number" value="00309" />
+      <option name="project" value="LOCAL" />
       <updated>1414510231986</updated>
     </task>
     <task id="LOCAL-00310" summary="Gameloop umgeschrieben">
       <created>1414599871583</created>
+      <option name="number" value="00310" />
+      <option name="project" value="LOCAL" />
       <updated>1414599871583</updated>
     </task>
     <task id="LOCAL-00311" summary="Gameloop umgeschrieben #2">
       <created>1414600040105</created>
+      <option name="number" value="00311" />
+      <option name="project" value="LOCAL" />
       <updated>1414600040105</updated>
     </task>
     <task id="LOCAL-00312" summary="Deltafix">
       <created>1414600579787</created>
+      <option name="number" value="00312" />
+      <option name="project" value="LOCAL" />
       <updated>1414600579787</updated>
     </task>
     <task id="LOCAL-00313" summary="Satisfactiondelta Fix">
       <created>1414601359706</created>
+      <option name="number" value="00313" />
+      <option name="project" value="LOCAL" />
       <updated>1414601359706</updated>
     </task>
     <task id="LOCAL-00314" summary="Diplomacy Delta fix">
       <created>1414601572463</created>
+      <option name="number" value="00314" />
+      <option name="project" value="LOCAL" />
       <updated>1414601572463</updated>
     </task>
     <task id="LOCAL-00315" summary="Bauen: Stadttyp Limit gefixt">
       <created>1414692427503</created>
+      <option name="number" value="00315" />
+      <option name="project" value="LOCAL" />
       <updated>1414692427503</updated>
     </task>
     <task id="LOCAL-00316" summary="Bei Änderung der Einheit-Geschwindigkeit: Aktualisieren!">
       <created>1414692723001</created>
+      <option name="number" value="00316" />
+      <option name="project" value="LOCAL" />
       <updated>1414692723001</updated>
     </task>
     <task id="LOCAL-00317" summary="Krieg: Gebäude gegen Einheiten gefixt">
       <created>1414693001200</created>
+      <option name="number" value="00317" />
+      <option name="project" value="LOCAL" />
       <updated>1414693001200</updated>
     </task>
     <task id="LOCAL-00318" summary="Seuche senkt Zufriedenheit nicht Bürger">
       <created>1414693108908</created>
+      <option name="number" value="00318" />
+      <option name="project" value="LOCAL" />
       <updated>1414693108908</updated>
     </task>
     <task id="LOCAL-00319" summary="Formationserstellen IndexOutOfBound fix">
       <created>1414693442949</created>
+      <option name="number" value="00319" />
+      <option name="project" value="LOCAL" />
       <updated>1414693442949</updated>
     </task>
     <task id="LOCAL-00320" summary="Lagerbilanz: Rundung gefixt">
       <created>1414694613789</created>
+      <option name="number" value="00320" />
+      <option name="project" value="LOCAL" />
       <updated>1414694613789</updated>
     </task>
     <task id="LOCAL-00321" summary="Formationerstellen fix">
       <created>1414703031744</created>
+      <option name="number" value="00321" />
+      <option name="project" value="LOCAL" />
       <updated>1414703031744</updated>
     </task>
     <task id="LOCAL-00322" summary="Build: Nullpointerexception behoben">
       <created>1414838372865</created>
+      <option name="number" value="00322" />
+      <option name="project" value="LOCAL" />
       <updated>1414838372865</updated>
     </task>
     <task id="LOCAL-00323" summary="Karawane fix">
       <created>1414840719613</created>
+      <option name="number" value="00323" />
+      <option name="project" value="LOCAL" />
       <updated>1414840719613</updated>
     </task>
-    <option name="localTasksCounter" value="324" />
+    <task id="LOCAL-00324" summary="Lager Anzeige gefixt">
+      <created>1415015064706</created>
+      <option name="number" value="00324" />
+      <option name="project" value="LOCAL" />
+      <updated>1415015064706</updated>
+    </task>
+    <option name="localTasksCounter" value="325" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1232280000" />
+    <option name="totallyTimeSpent" value="1235474000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2759,43 +1809,43 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23268399" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.46588486" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21428572" sideWeight="0.58220214" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.56396586" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.46588486" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.29697624" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22162162" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.56396586" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23268399" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21428572" sideWeight="0.58220214" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25541127" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22186147" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.29697624" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25513515" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -2815,7 +1865,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Krieg: Fix" />
     <MESSAGE value="Formation: Löschen wenn leer" />
     <MESSAGE value="Autologout implementiert" />
     <MESSAGE value="Feldarzt heilt Einheiten auch abseits der Schlacht" />
@@ -2840,53 +1889,20 @@
     <MESSAGE value="Formationerstellen fix" />
     <MESSAGE value="Build: Nullpointerexception behoben" />
     <MESSAGE value="Karawane fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Karawane fix" />
+    <MESSAGE value="Lager Anzeige gefixt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lager Anzeige gefixt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="181" />
     </breakpoint-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.807693" vertical-offset="2884" max-vertical-offset="4828">
-          <caret line="229" column="71" selection-start-line="229" selection-start-column="71" selection-end-line="229" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/caravan.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2754">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/diplomacy.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2975">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editcity.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editbuildings.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/editplayers.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
@@ -3010,7 +2026,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1443" max-vertical-offset="2448">
           <caret line="167" column="35" selection-start-line="167" selection-start-column="35" selection-end-line="167" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3055,11 +2070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="321" max-vertical-offset="918">
           <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#954#955#0" expanded="false" />
-            <element signature="e#1014#1015#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3130,9 +2140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="15147">
           <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="75" />
-          <folding>
-            <element signature="method#saveToDatabase#0;class#LogicService#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3147,7 +2154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="2176">
           <caret line="50" column="95" selection-start-line="50" selection-start-column="95" selection-end-line="50" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3179,7 +2185,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36008918" vertical-offset="527" max-vertical-offset="2329">
           <caret line="50" column="21" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3203,9 +2208,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
           <caret line="30" column="55" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="55" />
-          <folding>
-            <element signature="e#1156#1174#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3227,8 +2230,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07692308" vertical-offset="306" max-vertical-offset="1343">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1343">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/lib/crafty-min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21153846" vertical-offset="0" max-vertical-offset="884">
+          <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/cityEntity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="6324">
+          <caret line="57" column="3" selection-start-line="57" selection-start-column="3" selection-end-line="57" selection-end-column="3" />
+          <folding>
+            <marker date="1414237855694" expanded="true" signature="2514:2551" placeholder="..." />
+            <marker date="1414237855694" expanded="true" signature="3611:3670" placeholder="..." />
+            <marker date="1414237855694" expanded="true" signature="4770:4794" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/assets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.17085427" vertical-offset="306" max-vertical-offset="2142">
+          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2108">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/game/editor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39865997" vertical-offset="0" max-vertical-offset="1717">
+          <caret line="14" column="62" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
           <folding />
         </state>
       </provider>
@@ -3306,7 +2353,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>Clash of Dynasties</last-edited>
+          <last-edited>Spring|Clash of Dynasties</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -3331,4 +2378,3 @@
     </states>
   </component>
 </project>
-

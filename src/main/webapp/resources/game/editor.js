@@ -12,7 +12,7 @@ window.onload = function () {
 
     Crafty.scene("loading", function () {
         var logo = Crafty.e("2D, DOM, Image").image("/images/Logo.png", "no-repeat").attr({ x: Crafty.viewport.width / 2 - 200, y: Crafty.viewport.height / 2 - 100 });
-        var progress = Crafty.e("2D, DOM, Color").color("#FFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
+        var progress = Crafty.e("2D, DOM, Color").color("#FFFFFF").attr({ x: logo.x, y: logo.y + 200, w: 0, h: 15 });
 
         Crafty.load(Assets, function () {
                 loadGame(function() {
