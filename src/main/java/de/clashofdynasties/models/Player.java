@@ -1,6 +1,7 @@
 package de.clashofdynasties.models;
 
 import de.clashofdynasties.repository.CityRepository;
+import de.clashofdynasties.repository.FormationRepository;
 import de.clashofdynasties.repository.NationRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -198,6 +199,10 @@ public class Player {
 
     public void setNotification(String type, boolean value) {
         notification.put(type, value);
+    }
+
+    public boolean hasLost() {
+        return CityRepository.get().findByPlayer(this).isEmpty() && FormationRepository.get().findByPlayer(this).isEmpty();
     }
 
     @Override

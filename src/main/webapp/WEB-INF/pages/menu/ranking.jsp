@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         <c:forEach items="${players}" var="rankedPlayer">
-            <tr>
+            <tr <c:if test="${rankedPlayer.hasLost()}">style="text-decoration: line-through;"</c:if>>
                 <td <c:if test="${player == rankedPlayer}">class="green"</c:if>>${rankedPlayer.statistic.rank}</td>
                 <td <c:if test="${player == rankedPlayer}">class="green"</c:if>>${rankedPlayer.name}</td>
                 <td <c:if test="${maxEconomy == rankedPlayer}">class="green"</c:if>>${rankedPlayer.statistic.economy}</td>
