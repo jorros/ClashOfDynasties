@@ -6,13 +6,82 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="gitignore hinzugefügt">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Dynasties_of_Scorpia_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/Dynasties_of_Scorpia_war_exploded.xml" />
-      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\Clash of Dynasties.iml" afterPath="$PROJECT_DIR$/Dynasties of Scorpia.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+    <list default="true" id="da1c35e0-acd8-4a68-8956-87c97c8a4fb5" name="Default" comment="Dynasties of Scorpia Vorbereitung">
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\BuildingController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/BuildingController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\CaravanController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CaravanController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\CityController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CityController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\CityTypeController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CityTypeController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\CommandController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CommandController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\FormationController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/FormationController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\GameController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/GameController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\MenuController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/MenuController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\PlayerController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PlayerController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\PublicController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PublicController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\RoadController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/RoadController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\game\UnitController.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/UnitController.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\jsp\BuildItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/BuildItem.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\jsp\CaravanItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/CaravanItem.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\jsp\Number.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/Number.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\jsp\StoreItem.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/StoreItem.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\jsp\Time.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/Time.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\logic\CaravanLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/CaravanLogic.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\logic\CityLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/CityLogic.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\logic\DiplomacyLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/DiplomacyLogic.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\logic\FormationLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/FormationLogic.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\logic\PlayerLogic.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/PlayerLogic.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Biome.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Biome.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Building.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Building.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\BuildingBlueprint.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/BuildingBlueprint.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\BuildingConstruction.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/BuildingConstruction.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Caravan.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Caravan.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\City.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/City.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\CityType.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/CityType.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Event.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Event.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Formation.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Formation.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\IBlueprint.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/IBlueprint.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Item.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Item.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\ItemType.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/ItemType.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\MapNode.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/MapNode.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Message.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Message.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Nation.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Nation.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Objective.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Objective.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Party.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Party.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Player.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Player.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Relation.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Relation.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Report.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Report.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Resource.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Resource.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Road.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Road.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Route.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Route.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Statistic.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Statistic.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\Unit.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Unit.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\models\UnitBlueprint.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/UnitBlueprint.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\BiomeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/BiomeRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\BuildingBlueprintRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/BuildingBlueprintRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\BuildingRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/BuildingRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\CaravanRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/CaravanRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\CityRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/CityRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\CityTypeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/CityTypeRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\EventRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/EventRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\FormationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/FormationRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\ItemRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/ItemRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\ItemTypeRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/ItemTypeRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\MessageRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/MessageRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\NationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/NationRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\PlayerRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/PlayerRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\RelationRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/RelationRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\Repository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/Repository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\ResourceRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/ResourceRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\RoadRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/RoadRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\UnitBlueprintRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/UnitBlueprintRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\repository\UnitRepository.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/UnitRepository.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\service\AppConfig.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/AppConfig.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\service\LogicService.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/LogicService.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\service\LoginService.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/LoginService.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\service\MailService.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/MailService.java" />
+      <change type="MOVED" beforePath="C:\Users\Jörg\Documents\ClashOfDynasties\src\main\java\de\clashofdynasties\service\RoutingService.java" afterPath="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/RoutingService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/Dynasties_of_Scorpia_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/Dynasties_of_Scorpia_war_exploded.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/build.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/clashofdynasties.tld" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/clashofdynasties.tld" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Source.iws" />
@@ -90,81 +159,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="winner.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/winner.jsp">
+      <file leaf-file-name="LoginService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/LoginService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="850">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+              <caret line="0" column="29" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ranking.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/ranking.jsp">
+      <file leaf-file-name="BuildItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/BuildItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="595">
-              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1037">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PublicController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PublicController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.24665178" vertical-offset="255" max-vertical-offset="2448">
+              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java">
+      <file leaf-file-name="BuildingController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/BuildingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="2618">
-              <caret line="67" column="23" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1768">
+              <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
+      <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1551" max-vertical-offset="2448">
-              <caret line="177" column="28" selection-start-line="177" selection-start-column="28" selection-end-line="177" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayerController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3825" max-vertical-offset="4760">
-              <caret line="207" column="13" selection-start-line="207" selection-start-column="13" selection-end-line="207" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55022323" vertical-offset="0" max-vertical-offset="896">
-              <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogicService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1445" max-vertical-offset="15470">
-              <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="75" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="6069">
+              <caret line="311" column="26" selection-start-line="311" selection-start-column="26" selection-end-line="311" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="AppConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/AppConfig.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/AppConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="646">
-              <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
+              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -196,6 +249,19 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/ranking.jsp" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/BuildingBlueprint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/LogicService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PlayerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CommandController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/BuildItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/RoutingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/UnitBlueprint.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/CaravanLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/FormationLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PublicController.java" />
       </list>
     </option>
   </component>
@@ -383,11 +449,51 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DynastiesOfScorpia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DynastiesOfScorpia" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ClashOfDynasties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dynastiesofscorpia" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -410,7 +516,7 @@
     <property name="Downloaded.Files.Path" value="C:\Users\Jörg\Dropbox\Clash Libs" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2788388" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../BeGe_AD2" />
@@ -421,7 +527,7 @@
     <property name="SearchEverywhereHistory" value="" />
     <property name="dynamic.classpath" value="false" />
     <property name="LayoutCode.rearrangeEntriesJava" value="false" />
-    <property name="LayoutCode.rearrangeEntries" value="false" />
+    <property name="LayoutCode.rearrangeEntries" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="272" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
@@ -1160,13 +1266,7 @@
       <workItem from="1421933709009" duration="918000" />
       <workItem from="1422040881168" duration="1461000" />
       <workItem from="1422385534484" duration="981000" />
-      <workItem from="1422386527757" duration="435000" />
-    </task>
-    <task id="LOCAL-00278" summary="Krieg: Exception unterbricht Verlauf gefixt">
-      <created>1414172768033</created>
-      <option name="number" value="00278" />
-      <option name="project" value="LOCAL" />
-      <updated>1414172768033</updated>
+      <workItem from="1422386527757" duration="1086000" />
     </task>
     <task id="LOCAL-00279" summary="Debuginfo rausgenommen">
       <created>1414172868165</created>
@@ -1456,11 +1556,17 @@
       <option name="project" value="LOCAL" />
       <updated>1421850862905</updated>
     </task>
-    <option name="localTasksCounter" value="327" />
+    <task id="LOCAL-00327" summary="Dynasties of Scorpia Vorbereitung">
+      <created>1422386984316</created>
+      <option name="number" value="00327" />
+      <option name="project" value="LOCAL" />
+      <updated>1422386984317</updated>
+    </task>
+    <option name="localTasksCounter" value="328" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1244974000" />
+    <option name="totallyTimeSpent" value="1245625000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1486,42 +1592,42 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.46588486" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23268399" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21428572" sideWeight="0.58220214" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32942432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24946696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22077923" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.56396586" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23268399" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32864866" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21428572" sideWeight="0.58220214" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25324675" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17377399" sideWeight="0.4162896" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32792208" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32359308" sideWeight="0.53411514" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22162162" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" x="0" y="409" width="1920" height="221" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39935064" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26298702" sideWeight="0.56396586" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.178515" sideWeight="0.29697624" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25513515" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1543,7 +1649,6 @@
       <TodoPanelSettings />
     </option>
     <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
-    <MESSAGE value="Feldarzt heilt Einheiten auch abseits der Schlacht" />
     <MESSAGE value="Registrierung: Felder dürfen nicht leer sein" />
     <MESSAGE value="Handelskarawane aus Diplomatie bei Terminate entfernen" />
     <MESSAGE value="Einheiten mit Title versehen" />
@@ -1568,7 +1673,9 @@
     <MESSAGE value="Lager Anzeige gefixt" />
     <MESSAGE value="Update auf craftyjs 0.6.3" />
     <MESSAGE value="Spieler wird im Ranking durchgestrichen, wenn er nichts hat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Spieler wird im Ranking durchgestrichen, wenn er nichts hat" />
+    <MESSAGE value="Dynasties of Scorpia Vorbereitung" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dynasties of Scorpia Vorbereitung" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1581,34 +1688,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/setupFormation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1955">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/menu/store.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosenation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2977233" vertical-offset="0" max-vertical-offset="571">
-          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/choosecolor.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1313485" vertical-offset="0" max-vertical-offset="1853">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/editor.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7740806" vertical-offset="0" max-vertical-offset="969">
@@ -1658,7 +1737,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Caravan.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Caravan.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1021775" vertical-offset="2555" max-vertical-offset="3451">
           <caret line="270" column="42" selection-start-line="270" selection-start-column="42" selection-end-line="270" selection-end-column="42" />
@@ -1695,84 +1774,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Relation.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Relation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="865" max-vertical-offset="1462">
           <caret line="102" column="0" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/FormationLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="1530">
-          <caret line="73" column="88" selection-start-line="73" selection-start-column="88" selection-end-line="73" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4696" max-vertical-offset="5780">
-          <caret line="311" column="26" selection-start-line="311" selection-start-column="26" selection-end-line="311" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/DiplomacyLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/DiplomacyLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20763358" vertical-offset="0" max-vertical-offset="697">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CaravanLogic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2705" max-vertical-offset="3383">
-          <caret line="196" column="38" selection-start-line="196" selection-start-column="38" selection-end-line="196" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/BuildingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.15384616" vertical-offset="255" max-vertical-offset="1768">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/RoutingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4088" max-vertical-offset="5984">
-          <caret line="231" column="0" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/MenuController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6521" max-vertical-offset="8874">
           <caret line="425" column="71" selection-start-line="425" selection-start-column="71" selection-end-line="425" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/UnitController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/UnitController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="1615">
           <caret line="66" column="79" selection-start-line="66" selection-start-column="79" selection-end-line="66" selection-end-column="79" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/PlayerLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/PlayerLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="2176">
           <caret line="50" column="95" selection-start-line="50" selection-start-column="95" selection-end-line="50" selection-end-column="95" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/FormationController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/FormationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2124" max-vertical-offset="3043">
           <caret line="151" column="20" selection-start-line="151" selection-start-column="20" selection-end-line="151" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CityController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CityController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1700" max-vertical-offset="5610">
           <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
@@ -1821,42 +1865,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/CaravanItem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/CaravanItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.59615386" vertical-offset="51" max-vertical-offset="1343">
           <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/StoreItem.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/StoreItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3653846" vertical-offset="731" max-vertical-offset="1615">
           <caret line="78" column="65" selection-start-line="78" selection-start-column="54" selection-end-line="78" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CaravanController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CaravanController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2199" max-vertical-offset="3519">
           <caret line="168" column="19" selection-start-line="168" selection-start-column="19" selection-end-line="168" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/jsp/BuildItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61538464" vertical-offset="17" max-vertical-offset="901">
-          <caret line="42" column="527" selection-start-line="42" selection-start-column="330" selection-end-line="42" selection-end-column="527" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/City.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/City.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3570" max-vertical-offset="6987">
           <caret line="302" column="5" selection-start-line="302" selection-start-column="5" selection-end-line="302" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/logic/CityLogic.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/CityLogic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10863" max-vertical-offset="12308">
           <caret line="683" column="60" selection-start-line="683" selection-start-column="60" selection-end-line="683" selection-end-column="60" />
@@ -1880,42 +1917,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/CommandController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/AppConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="2618">
-          <caret line="67" column="23" selection-start-line="67" selection-start-column="23" selection-end-line="67" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/AppConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <caret line="38" column="46" selection-start-line="38" selection-start-column="46" selection-end-line="38" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LogicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1496" max-vertical-offset="15470">
-          <caret line="102" column="8" selection-start-line="102" selection-start-column="8" selection-end-line="102" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/models/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1551" max-vertical-offset="2448">
-          <caret line="177" column="28" selection-start-line="177" selection-start-column="28" selection-end-line="177" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/game/PlayerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3825" max-vertical-offset="4760">
-          <caret line="207" column="13" selection-start-line="207" selection-start-column="13" selection-end-line="207" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="646">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -1944,10 +1949,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/clashofdynasties/service/LoginService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/BuildingController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55022323" vertical-offset="0" max-vertical-offset="896">
-          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1768">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/repository/RelationRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/BuildingBlueprint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4248555" vertical-offset="1275" max-vertical-offset="2142">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/LogicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.098265894" vertical-offset="0" max-vertical-offset="15640">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="6069">
+          <caret line="311" column="26" selection-start-line="311" selection-start-column="26" selection-end-line="311" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PlayerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07511046" vertical-offset="0" max-vertical-offset="4964">
+          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24277456" vertical-offset="2" max-vertical-offset="2635">
+          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/CommandController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2283237" vertical-offset="969" max-vertical-offset="2873">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
+          <caret line="0" column="29" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/service/RoutingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.6459538" vertical-offset="1173" max-vertical-offset="6052">
+          <caret line="2" column="59" selection-start-line="2" selection-start-column="59" selection-end-line="2" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/models/UnitBlueprint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.049132947" vertical-offset="0" max-vertical-offset="1207">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/CaravanLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05007364" vertical-offset="0" max-vertical-offset="3468">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/logic/FormationLogic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05007364" vertical-offset="0" max-vertical-offset="1700">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/jsp/BuildItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="1037">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/dynastiesofscorpia/game/PublicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.24665178" vertical-offset="255" max-vertical-offset="2448">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
           <folding />
         </state>
       </provider>
@@ -1965,7 +2090,7 @@
               <type id="library" />
             </show-content>
           </artifact-editor>
-          <last-edited>Dynasties of Scorpia:war</last-edited>
+          <last-edited>Dynasties of Scorpia:war exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -13,7 +13,7 @@
                 <c:if test="${city.buildingConstruction == null}">Kein Bauvorhaben</c:if>
                 <c:if test="${city.buildingConstruction != null}">
                     <div>
-                <img style="float:left; margin-right:5px;" src="assets/${city.buildingConstruction.blueprint.getClass().name == "de.clashofdynasties.models.BuildingBlueprint" ? "buildings" : "units"}/${city.buildingConstruction.blueprint.id}.png" />
+                <img style="float:left; margin-right:5px;" src="assets/${city.buildingConstruction.blueprint.getClass().name == "BuildingBlueprint" ? "buildings" : "units"}/${city.buildingConstruction.blueprint.id}.png" />
                 <span style="color:#FFF; font-weight:bold;"><c:if test="${city.buildingConstruction.count > 1}">${city.buildingConstruction.count}x </c:if>${city.buildingConstruction.blueprint.name}</span><br><span style="color:#FFF">noch ${productionTime}(${productionPercent}%)<br><a style="font-weight:bold; cursor:pointer;" onclick="stopBuild();">Abbrechen?</a></span>
                     </div>
                 </c:if>

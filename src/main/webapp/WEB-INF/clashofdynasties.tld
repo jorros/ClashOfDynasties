@@ -4,47 +4,47 @@
     <short-name>Clash of Dynasties Tags</short-name>
     <tag>
         <name>StoreItem</name>
-        <tag-class>de.clashofdynasties.jsp.StoreItem</tag-class>
+        <tag-class>de.dynastiesofscorpia.jsp.StoreItem</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>player</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.Player</type>
+            <type>de.dynastiesofscorpia.models.Player</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
             <name>item</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.Item</type>
+            <type>de.dynastiesofscorpia.models.Item</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
             <name>city</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.City</type>
+            <type>de.dynastiesofscorpia.models.City</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
     <tag>
         <name>CaravanItem</name>
-        <tag-class>de.clashofdynasties.jsp.CaravanItem</tag-class>
+        <tag-class>de.dynastiesofscorpia.jsp.CaravanItem</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>player</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.Player</type>
+            <type>de.dynastiesofscorpia.models.Player</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
             <name>item</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.Item</type>
+            <type>de.dynastiesofscorpia.models.Item</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
             <name>city</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.City</type>
+            <type>de.dynastiesofscorpia.models.City</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
@@ -55,19 +55,19 @@
         <attribute>
             <name>city</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.City</type>
+            <type>de.dynastiesofscorpia.models.City</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
         <attribute>
             <name>blueprint</name>
             <required>true</required>
-            <type>de.clashofdynasties.models.IBlueprint</type>
+            <type>de.dynastiesofscorpia.models.IBlueprint</type>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
     <tag>
         <name>Time</name>
-        <tag-class>de.clashofdynasties.jsp.Time</tag-class>
+        <tag-class>de.dynastiesofscorpia.jsp.Time</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>time</name>
@@ -78,7 +78,7 @@
     </tag>
     <tag>
         <name>Number</name>
-        <tag-class>de.clashofdynasties.jsp.Number</tag-class>
+        <tag-class>de.dynastiesofscorpia.jsp.Number</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <name>value</name>
