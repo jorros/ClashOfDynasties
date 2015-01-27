@@ -1,4 +1,4 @@
-ClashOfDynasties
+Dynasties-Of-Scorpia
 ================
 
-Clash of Dynasties
+Dynasties of Scorpia: Runde 2
