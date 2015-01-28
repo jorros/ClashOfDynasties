@@ -83,7 +83,7 @@ public class StoreItem extends SimpleTagSupport {
             else if(balance < 0) {
                 production = Math.round(production);
                 consumption = Math.round(consumption);
-                out.print("<span class=\"red\">" + (int) (production - consumption) + "</span>");
+                out.print("<span class=\"red\">-" + (int) (production - consumption) + "</span>");
             }
             else {
                 out.print("<span>0</span>");
