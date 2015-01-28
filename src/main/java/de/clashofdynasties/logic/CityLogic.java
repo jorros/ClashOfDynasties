@@ -209,6 +209,9 @@ public class CityLogic {
             }
 
             if (city.isFire()) {
+                if(city.getBuildings().isEmpty())
+                    city.setFire(false);
+
                 if (Math.random() < 0.0002) {
                     Building selected = new EnumeratedDistribution<>(getBuildingProbabilities(city.getBuildings(), false)).sample();
 
