@@ -75,16 +75,25 @@ public class StoreItem extends SimpleTagSupport {
 
             double balance = production - consumption;
 
-            if(balance > 0)
-                out.print("<span class=\"green\">+" + Math.floor(balance) + "</span>");
-            else if(balance < 0)
-                out.print("<span class=\"red\">" + Math.floor(balance) + "</span>");
-            else
-                out.print("<span>" + Math.floor(balance) + "</span>");
+            if(balance > 0) {
+                production = Math.round(production);
+                consumption = Math.round(consumption);
+                out.print("<span class=\"green\">+" + (int) (production - consumption) + "</span>");
+            }
+            else if(balance < 0) {
+                production = Math.round(production);
+                consumption = Math.round(consumption);
+                out.print("<span class=\"red\">" + (int) (production - consumption) + "</span>");
+            }
+            else {
+                out.print("<span>0</span>");
+                production = Math.round(production);
+                consumption = Math.round(consumption);
+            }
 
             if(rate > 0) {
                 if(city.getRequiredItemTypes().contains(item.getType())) {
-                    out.print("(<span class=\"green\">" + Math.floor(production) + "</span>/<span class=\"red\">" + Math.floor(consumption) + "</span>)<br>");
+                    out.print("(<span class=\"green\">" + (int)production + "</span>/<span class=\"red\">" + (int)consumption + "</span>)<br>");
 
                     String linkName;
 
