@@ -21,7 +21,7 @@ public class BuildingBlueprintRepository extends Repository<BuildingBlueprint> {
         return instance;
     }
 
-    public BuildingBlueprint findById(int id) {
+    public synchronized BuildingBlueprint findById(int id) {
         return items.stream().filter(b -> b.getId() == id).findFirst().orElse(null);
     }
 }

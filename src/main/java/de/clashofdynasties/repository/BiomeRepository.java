@@ -21,7 +21,7 @@ public class BiomeRepository extends Repository<Biome> {
         return instance;
     }
 
-    public Biome findById(int id) {
+    public synchronized Biome findById(int id) {
         return items.stream().filter(b -> b.getId() == id).findFirst().orElse(null);
     }
 }

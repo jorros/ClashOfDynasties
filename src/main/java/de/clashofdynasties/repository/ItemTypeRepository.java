@@ -21,7 +21,7 @@ public class ItemTypeRepository extends Repository<ItemType> {
         return instance;
     }
 
-    public ItemType findById(int id) {
+    public synchronized ItemType findById(int id) {
         return items.stream().filter(i -> i.getId() == id).findFirst().orElse(null);
     }
 }

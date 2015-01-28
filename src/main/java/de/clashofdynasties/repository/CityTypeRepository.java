@@ -21,7 +21,7 @@ public class CityTypeRepository extends Repository<CityType> {
         return instance;
     }
 
-    public CityType findById(int id) {
+    public synchronized CityType findById(int id) {
         return items.stream().filter(c -> c.getId() == id).findFirst().orElse(null);
     }
 }

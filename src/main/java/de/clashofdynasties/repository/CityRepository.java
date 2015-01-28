@@ -21,11 +21,11 @@ public class CityRepository extends Repository<City> {
         instance = this;
     }
 
-    public City findById(ObjectId id) {
+    public synchronized City findById(ObjectId id) {
         return items.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public List<City> findByPlayer(Player player) {
+    public synchronized List<City> findByPlayer(Player player) {
         return items.stream().filter(c -> c.getPlayer().equals(player)).collect(Collectors.toList());
     }
 

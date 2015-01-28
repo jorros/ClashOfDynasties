@@ -19,14 +19,14 @@ public class Repository<K>{
         items = Collections.synchronizedList(mongoTemplate.findAll(clazz));
     }
 
-    public void remove(K item) {
+    public synchronized void remove(K item) {
         if(items.contains(item)) {
             mongoTemplate.remove(item);
             items.remove(item);
         }
     }
 
-    public void remove(List<K> item) {
+    public synchronized void remove(List<K> item) {
         if(items.containsAll(item)) {
             for(K removable : item) {
                 mongoTemplate.remove(removable);
@@ -35,12 +35,12 @@ public class Repository<K>{
         }
     }
 
-    public void add(K item) {
+    public synchronized void add(K item) {
         mongoTemplate.insert(item);
         items.add(item);
     }
 
-    public List<K> getList() {
+    public synchronized List<K> getList() {
         return items;
     }
 

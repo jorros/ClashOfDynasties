@@ -26,15 +26,15 @@ public class FormationRepository extends Repository<Formation> {
         return instance;
     }
 
-    public List<Formation> findByCity(City city) {
+    public synchronized List<Formation> findByCity(City city) {
         return items.stream().filter(f -> f.getLastCity().equals(city) && f.getRoute() == null).collect(Collectors.toList());
     }
 
-    public List<Formation> findByPlayer(Player player) {
+    public synchronized List<Formation> findByPlayer(Player player) {
         return items.stream().filter(f -> f.getPlayer().equals(player)).collect(Collectors.toList());
     }
 
-    public Formation findById(ObjectId id) {
+    public synchronized Formation findById(ObjectId id) {
         return items.stream().filter(f -> f.getId().equals(id)).findFirst().orElse(null);
     }
 }

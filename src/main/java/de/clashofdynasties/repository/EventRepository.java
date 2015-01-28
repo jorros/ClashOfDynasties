@@ -31,17 +31,17 @@ public class EventRepository extends Repository<Event> {
     }
 
     @Override
-    public void add(Event item) {
+    public synchronized void add(Event item) {
         super.add(item);
         if(item.getPlayer().hasNotification(item.getType()))
             mailService.sendMail(item.getPlayer(), item.getTitle(), item.getDescription());
     }
 
-    public Event findById(ObjectId id) {
+    public synchronized Event findById(ObjectId id) {
         return items.stream().filter(e -> e.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public List<Event> findByPlayer(Player player) {
+    public synchronized List<Event> findByPlayer(Player player) {
         return items.stream().filter(e -> e.getPlayer().equals(player)).collect(Collectors.toList());
     }
 }

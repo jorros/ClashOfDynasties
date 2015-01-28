@@ -23,23 +23,23 @@ public class PlayerRepository extends Repository<Player> {
         return instance;
     }
 
-    public Player findById(ObjectId id) {
+    public synchronized Player findById(ObjectId id) {
         return items.stream().filter(p -> p.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public Player findByName(String name) {
+    public synchronized Player findByName(String name) {
         return items.stream().filter(p -> p.getName().equals(name)).findFirst().orElse(null);
     }
 
-    public Player findByNameIgnoreCase(String name) {
+    public synchronized Player findByNameIgnoreCase(String name) {
         return items.stream().filter(p -> p.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
     }
 
-    public boolean exists(ObjectId id) {
+    public synchronized boolean exists(ObjectId id) {
         return items.stream().filter(p -> p.getId().equals(id)).count() > 0;
     }
 
-    public Player findComputer() {
+    public synchronized Player findComputer() {
         return items.stream().filter(Player::isComputer).findFirst().orElse(null);
     }
 }

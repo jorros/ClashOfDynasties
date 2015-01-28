@@ -25,15 +25,15 @@ public class RoadRepository extends Repository<Road> {
         return instance;
     }
 
-    public Road findById(ObjectId id) {
+    public synchronized Road findById(ObjectId id) {
         return items.stream().filter(r -> r.getId().equals(id)).findFirst().orElse(null);
     }
 
-    public Road findByCities(City city1, City city2) {
+    public synchronized Road findByCities(City city1, City city2) {
         return items.stream().filter(r -> r.getPoint1().equals(city1) && r.getPoint2().equals(city2) || r.getPoint2().equals(city1) && r.getPoint1().equals(city2)).findFirst().orElse(null);
     }
 
-    public List<Road> findByCity(City city) {
+    public synchronized List<Road> findByCity(City city) {
         return items.stream().filter(r -> r.getPoint1().equals(city) || r.getPoint2().equals(city)).collect(Collectors.toList());
     }
 }

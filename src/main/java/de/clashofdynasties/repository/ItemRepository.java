@@ -24,11 +24,11 @@ public class ItemRepository extends Repository<Item> {
         return instance;
     }
 
-    public Item findById(int id) {
+    public synchronized Item findById(int id) {
         return items.stream().filter(i -> i.getId() == id).findFirst().orElse(null);
     }
 
-    public List<Item> findByType(ItemType itemType) {
+    public synchronized List<Item> findByType(ItemType itemType) {
         return items.stream().filter(i -> i.getType().equals(itemType)).collect(Collectors.toList());
     }
 }

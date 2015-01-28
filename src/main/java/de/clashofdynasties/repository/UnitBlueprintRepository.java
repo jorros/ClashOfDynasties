@@ -21,7 +21,7 @@ public class UnitBlueprintRepository extends Repository<UnitBlueprint> {
         return instance;
     }
 
-    public UnitBlueprint findById(int id) {
+    public synchronized UnitBlueprint findById(int id) {
         return items.stream().filter(u -> u.getId() == id).findFirst().orElse(null);
     }
 }

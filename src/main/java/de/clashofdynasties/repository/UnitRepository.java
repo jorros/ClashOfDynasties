@@ -22,7 +22,7 @@ public class UnitRepository extends Repository<Unit> {
         return instance;
     }
 
-    public Unit findById(ObjectId id) {
+    public synchronized Unit findById(ObjectId id) {
         return items.stream().filter(u -> u.getId().equals(id)).findFirst().orElse(null);
     }
 }

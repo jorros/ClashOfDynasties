@@ -21,7 +21,7 @@ public class ResourceRepository extends Repository<Resource> {
         return instance;
     }
 
-    public Resource findById(int id) {
+    public synchronized Resource findById(int id) {
         return items.stream().filter(r -> r.getId() == id).findFirst().orElse(null);
     }
 }

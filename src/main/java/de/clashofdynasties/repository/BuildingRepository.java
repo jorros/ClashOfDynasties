@@ -20,7 +20,7 @@ public class BuildingRepository extends Repository<Building> {
         return instance;
     }
 
-    public Building findById(ObjectId id) {
+    public synchronized Building findById(ObjectId id) {
         return items.stream().filter(b -> b.getId().equals(id)).findFirst().orElse(null);
     }
 }

@@ -22,7 +22,7 @@ public class NationRepository extends Repository<Nation> {
         return instance;
     }
 
-    public Nation findById(int id) {
+    public synchronized Nation findById(int id) {
         return items.stream().filter(n -> n.getId() == id).findFirst().orElse(null);
     }
 }
